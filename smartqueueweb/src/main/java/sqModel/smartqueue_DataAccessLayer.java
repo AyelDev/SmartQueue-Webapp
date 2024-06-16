@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServlet;
+
 public class smartqueue_DataAccessLayer {
 	public Connection conn = null;
 	
@@ -22,7 +24,6 @@ public class smartqueue_DataAccessLayer {
 	}
 	
 	public boolean Login(String username, String password) {
-		
 		try {
 			PreparedStatement prs = conn.prepareStatement("SELECT uname FROM user WHERE uname=? AND upass=?");
 			prs.setString(1, username);
