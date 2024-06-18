@@ -67,7 +67,7 @@ body{
 }
 .username-container, .password-container{
     border-radius: 25px;
-    font-size: 20px;
+    font-size: 15px;
     background-color: #D9D9D9;
     width: 85%;
     padding: 7px;
@@ -151,4 +151,9 @@ p{
     width: 47%;
     bottom: 14%;
     right: 0;
+}
+.error-message{
+    top: 30%;
+    margin-left: 10%;
+    color: red;
 }
