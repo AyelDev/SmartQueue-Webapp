@@ -27,7 +27,7 @@
 								<p class="error-message">error message<c:out value="${errorLogin}"></c:out></p>
 								<br> <a href="forgotpass" class="forgotpass">Forgot password?</a>
 								<br> <input class="login-btn" type="submit" value="Login">
-							</form>
+							</form>	
 						</div>
 
 						<button class="signup-btn" type="button" value="signup-btn">Sign
