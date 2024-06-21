@@ -1,10 +1,10 @@
-package sqTestCases;
+package com.smartqueueweb.Test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import sqModel.smartqueue_DataAccessLayer;
+import com.smartqueueweb.DAO.smartqueue_DataAccessLayer;
 
 public class SQLConnection_Test {
 

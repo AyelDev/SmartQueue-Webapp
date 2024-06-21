@@ -11,6 +11,9 @@
 <title>admin page</title>
 </head>
 <body>
+
+
+
 	<h1>
 		Welcome
 		<c:out value="${admin}"></c:out>
@@ -21,5 +24,9 @@
 	<form action=logout_Servlet method=get>
 		<input type="submit" value="logout">
 	</form>
+
+	<h1>create staff account</h1>
+	<form action=method=get></form>
+
 </body>
 </html>

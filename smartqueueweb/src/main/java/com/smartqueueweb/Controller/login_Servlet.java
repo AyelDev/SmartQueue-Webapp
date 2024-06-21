@@ -1,4 +1,4 @@
-package sqController;
+package com.smartqueueweb.Controller;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import sqModel.smartqueue_DataAccessLayer;
+import com.smartqueueweb.DAO.smartqueue_DataAccessLayer;
 
 @WebServlet("/login_Servlet")
 public class login_Servlet extends HttpServlet {

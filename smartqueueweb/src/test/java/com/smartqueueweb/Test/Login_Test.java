@@ -1,23 +1,19 @@
-package sqTestCases;
+package com.smartqueueweb.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import sqModel.smartqueue_DataAccessLayer;
+import com.smartqueueweb.DAO.smartqueue_DataAccessLayer;
 
 public class Login_Test {
 
 	@Test
 	public void test() {
-		String User = "user";
-		String Pass = "pass";
-		
+		String User = "testuser";
+		String Pass = "testpass";
 		smartqueue_DataAccessLayer database = new smartqueue_DataAccessLayer();
-		database.Login(User, Pass);
 		assertTrue(database.Login(User, Pass));
-		
-		
 	}
 
 }
