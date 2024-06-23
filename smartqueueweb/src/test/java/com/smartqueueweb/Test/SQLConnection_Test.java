@@ -11,7 +11,6 @@ public class SQLConnection_Test {
 	@Test
 	public void test() {
 	smartqueue_DataAccessLayer data = new smartqueue_DataAccessLayer();
-		
 		assertNotNull(data.conn);
 	
 	}

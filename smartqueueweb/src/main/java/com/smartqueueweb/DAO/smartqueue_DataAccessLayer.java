@@ -15,7 +15,7 @@ public class smartqueue_DataAccessLayer {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.2:3307/smartqueuedb", "root", "");
 			
-		} catch (Exception e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.getMessage();
 			e.printStackTrace();
@@ -36,7 +36,7 @@ public class smartqueue_DataAccessLayer {
 		}
 	}
 	
-	public boolean RegisterStaff(String firstname, String lastname, String email, Integer contactnumber, String username, String password) {
+	public boolean Register(String firstname, String lastname, String email, Integer contactnumber, String username, String password) {
 		try {
 			prs = conn.prepareStatement("INSERT INTO staff (staff_id, firstname, lastname, email, contactnumber, username, password) VALUES (? ,? ,? ,? ,? ,? ,?)");
 			prs.setString(1, "");
@@ -47,7 +47,7 @@ public class smartqueue_DataAccessLayer {
 			prs.setString(6, username);
 			prs.setString(7, password);
 			
-			//ResultSet registerStaffResult = prs.
+			ResultSet registerStaffResult = prs.executeQuery();
 			
 			return true;
 		}catch (SQLException e) {

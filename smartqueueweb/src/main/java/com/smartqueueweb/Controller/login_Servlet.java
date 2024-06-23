@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.smartqueueweb.DAO.smartqueue_DataAccessLayer;
+import com.smartqueueweb.Service.AuthenticationImp;
 
 @WebServlet("/login_Servlet")
 public class login_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	smartqueue_DataAccessLayer database = new smartqueue_DataAccessLayer();
+	//smartqueue_DataAccessLayer database = new smartqueue_DataAccessLayer();
+	AuthenticationImp services = new AuthenticationImp();
 	RequestDispatcher rd = null;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -33,8 +34,8 @@ public class login_Servlet extends HttpServlet {
 			rd.forward(request, response);
 		}
 
-		database.Login(userName, passWord);
-		if (!database.Login(userName, passWord)) {
+		services.loginStaff(userName, passWord);
+		if (!services.loginStaff(userName, passWord)) {
 			request.setAttribute("errorLogin", "login failed");
 			rd = request.getRequestDispatcher("login.jsp");
 			rd.include(request, response);
