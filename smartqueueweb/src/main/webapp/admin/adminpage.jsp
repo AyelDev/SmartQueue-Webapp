@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>admin page</title>
+<title>Admin Page</title>
 </head>
 <body>
 

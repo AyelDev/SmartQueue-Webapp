@@ -1,4 +1,9 @@
 @charset "UTF-8";
+/* colors: 
+    light blue - 77B6EA
+    dark blue - 00296B
+    red - E72929
+    white - FFFFFF */
 
 body{
     width: 100%;
@@ -23,7 +28,7 @@ body{
     box-shadow: 5px 2px 18px 1px #888888
 }
 .image-container{
-    background: url(image.png);
+    background: url(images/image.png);
     background-repeat: no-repeat;
     display: flex;
     background-size: 100% 80%;
@@ -97,6 +102,7 @@ body{
     left: 220px;
     cursor: pointer;
     background-color: #77B6EA;
+    border-color: #77B6EA;
 }
 .signup-btn{
     position: absolute;
@@ -107,6 +113,7 @@ body{
     left: 40px;
     cursor: pointer;
     background-color: #77B6EA;
+    border-color: #77B6EA;
 }
 .userinquiry-btn{
     position: absolute;
@@ -117,6 +124,9 @@ body{
     left: 130px;
     cursor: pointer;
     background-color: #77B6EA;
+    text-decoration: none;
+    color: black;
+    box-shadow: 1px 2px 5px 1px #888888;
 }
 .signup-btn:hover{
     background-color: #40679E;
@@ -155,5 +165,5 @@ p{
 .error-message{
     top: 30%;
     margin-left: 10%;
-    color: red;
+    color: #C40C0C;
 }
