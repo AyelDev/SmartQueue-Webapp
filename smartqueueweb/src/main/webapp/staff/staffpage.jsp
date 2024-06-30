@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:if test="${empty sessionScope.sessionName}">
+<c:if test="${empty sessionScope.sessionStaff}">
 	<c:redirect url="/" />
 </c:if>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 <body>
 	<h1>
 		Welcome staff
-		<c:out value="${sessionScope.sessionName}"></c:out>
+		<c:out value="${sessionStaff.getUsername()}"></c:out>
 	</h1>
 
 	<form action=logout_Servlet method=get>

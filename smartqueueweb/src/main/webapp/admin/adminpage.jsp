@@ -1,13 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-		<c:if test="${empty sessionScope.sessionName}">
+		<c:if test="${empty sessionScope.sessionAdmin.getUsername()}">
 			<c:redirect url="/" />
 		</c:if>
 		<!DOCTYPE html>
-		<html>
-
-		</html>
-
 		<head>
 			<meta charset="UTF-8">
 			<link rel="stylesheet"
@@ -215,7 +211,7 @@
 					<div class="admintxt"><b>
 							Welcome
 							<c:out value="${admin}"></c:out>
-							<c:out value="${sessionScope.sessionName}"></c:out>
+							<c:out value="${sessionScope.sessionAdmin.getUsername()}"></c:out>
 						</b></div>
 					<div class="menu-navbar">
 						<a href="adminpage.jsp" class="dropdown-menu">Dashboard</a>

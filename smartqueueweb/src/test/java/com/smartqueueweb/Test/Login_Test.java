@@ -1,19 +1,33 @@
 package com.smartqueueweb.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import com.smartqueueweb.DAO.smartqueue_DataAccessLayer;
+import com.smartqueueweb.Model.AdminBean;
+import com.smartqueueweb.Model.StaffBean;
+import com.smartqueueweb.Service.ServiceImpl;
 
 public class Login_Test {
 
 	@Test
 	public void test() {
-		String User = "testuser";
-		String Pass = "testpass";
-		smartqueue_DataAccessLayer database = new smartqueue_DataAccessLayer();
-		assertTrue(database.Login(User, Pass));
+		
+		ServiceImpl services = new ServiceImpl();
+		String User = "cindy";
+		String Pass = "labra";
+		
+		
+		boolean actual = services.loginStaff(User, Pass);
+		boolean expected = true;
+		assertEquals(expected, actual);
+	
+		
+		
+		
+		
+	
 	}
 
 }

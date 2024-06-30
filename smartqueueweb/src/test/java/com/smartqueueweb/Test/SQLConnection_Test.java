@@ -4,13 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.smartqueueweb.DAO.smartqueue_DataAccessLayer;
+import com.smartqueueweb.DAO.SQLConnection;
 
 public class SQLConnection_Test {
 
 	@Test
 	public void test() {
-	smartqueue_DataAccessLayer data = new smartqueue_DataAccessLayer();
+	SQLConnection data = new SQLConnection();
 		assertNotNull(data.conn);
 	
 	}
