@@ -4,7 +4,7 @@
 		<html>
 
 		<head>
-			<link rel="stylesheet" href="style.css">
+			<link rel="stylesheet" href="loginstyle.css">
 			<meta charset="UTF-8">
 			<title>login page</title>
 		</head>
@@ -32,8 +32,9 @@
 							</form>
 						</div>
 
-						<button class="signup-btn" type="button" value="signup-btn">Sign
-							Up</button>
+						<a href="signup.jsp" class="signup-btn" type="button" value="signup-btn">Sign Up</a>
+						<!-- <button class="signup-btn" type="button" value="signup-btn">Sign
+							Up</button> -->
 						<hr class="hr-left">
 						<p>or</p>
 						<hr class="hr-right">

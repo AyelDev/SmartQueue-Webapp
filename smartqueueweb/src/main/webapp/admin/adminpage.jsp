@@ -145,12 +145,10 @@
 				}
 
 				.total-counter {
-					background: linear-gradient(90deg, rgba(0, 41, 107, 1) 5%, rgba(119, 182, 234, 1) 94%);
-				}
+					background: radial-gradient(circle, rgba(119, 182, 234, 1) 0%, rgba(0, 41, 107, 1) 100%);				}
 
 				.total-video {
-					background: linear-gradient(0deg, rgba(0, 41, 107, 1) 16%, rgba(119, 182, 234, 1) 100%);
-
+					background: radial-gradient(circle, rgba(119, 182, 234, 1) 0%, rgba(0, 41, 107, 1) 100%);
 				}
 
 				.total-student {
@@ -158,8 +156,7 @@
 				}
 
 				.total-staff {
-					background: linear-gradient(0deg, rgba(119, 182, 234, 1) 15%, rgba(0, 41, 107, 1) 100%);
-				}
+					background: radial-gradient(circle, rgba(119, 182, 234, 1) 0%, rgba(0, 41, 107, 1) 100%);				}
 
 				.graph {
 					width: 76vw;

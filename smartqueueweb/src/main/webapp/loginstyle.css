@@ -114,6 +114,9 @@ body{
     cursor: pointer;
     background-color: #77B6EA;
     border-color: #77B6EA;
+    text-decoration: none;
+    color: black;
+    
 }
 .userinquiry-btn{
     position: absolute;
