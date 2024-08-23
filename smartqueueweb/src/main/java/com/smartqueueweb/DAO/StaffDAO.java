@@ -60,5 +60,17 @@ public class StaffDAO extends SQLConnection {
 		}
 		return staffbean;
 	}
+	
+	public int registerStaff(int staff_id,String firstname, String lastname, String email, int contactNumber, String usernane, String password){
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("SELECT * FROM tbl_login_staff WHERE username=?");
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return 0;
+	}
 
 }

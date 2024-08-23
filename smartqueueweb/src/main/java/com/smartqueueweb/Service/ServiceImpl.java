@@ -17,6 +17,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	}
 	
 	@Override
+	public boolean registerStaff() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	@Override
 	public StaffBean loginStaffDetail(String username) {
 		// TODO Auto-generated method stub
 		return staffdata.staffDetails(username);
@@ -34,7 +40,6 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return admindata.adminDetail(username);
 	}
-
 	
 	//Student
 	
