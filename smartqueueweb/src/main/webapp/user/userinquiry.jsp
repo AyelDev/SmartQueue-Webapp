@@ -11,6 +11,7 @@
             margin: 0%;
             padding: 0%;
             font-family: arial black;
+            overflow: hidden;
         }
         .container{
             margin: 0%;
@@ -21,29 +22,29 @@
         }
         .header{
             width: 100%;
-            height: 25vh;
+            height: 18vh;
             background-color: #00296b;
         }
         .head{
             background-color: #fff;
             width: 100%;
-            height: 15vh;
+            height: 11vh;
             align-items: center;
             display: flex;
             justify-content: center;
         }
         .logo{
             margin-left: 2%;
-            width: 15vw;
-            height: 27vh;
+            width: 10vw;
+            height: 18vh;
             display: flex;
             position: absolute;
             z-index: 1;
-            top: -1%;
+            top: .1%;
         }
         .name{
             position: absolute;
-            top: 4%;
+            top: 2%;
             z-index: 2;
             color: red;
             letter-spacing: 80px;
@@ -53,37 +54,45 @@
         .title{
             text-align: center;
             font-size: 47px;
-            top: 10%;
+            top: 7%;
             position: absolute;
         }
         .address{
             margin-left: 20%;
             color: #fff;
             font-family: tahoma;
-            top: 21%;
+            top: 16%;
             position: absolute;
+            font-size: 13px;
         }
         .info{
             margin-left: 50%;
             font-family: tahoma;
-            top: 19%;
+            top: 14%;
             position: absolute;
             color: #fff;
+            font-size: 13px;
         }
         .main {
             width: 100%;
-            height: 75vh;
+            height: 82vh;
             display: flex;
             justify-content: space-evenly;
             background-color: #77b6ea;
             align-items: center;
             float: left;
         }
+        .bg-logo{
+            opacity: .5;
+            min-height: 80%;
+            width: 42vw;
+            position: absolute;
+        }
 
         .main .box {
-            position: relative;
-            width: 25vw;
-            height: 50vh;
+            position: absolute;
+            width: 22vw;
+            height: 45vh;
             background: #f2f2f2;
             overflow: hidden;
             transition: all 0.5s ease-in;
@@ -91,6 +100,8 @@
             box-sizing: border-box;
             padding: 30px;
             box-shadow: -10px 25px 50px rgba(0, 0, 0, 0.3);
+            margin-top: -10%;
+            margin-left: -10%;
         }            
         .main .box::before {
             position: absolute;
@@ -177,7 +188,7 @@
     <div class="container">
         <div class="header">
             <p>.</p>
-            <img src="/src/main/webapp/images/logo.png" class="logo">
+            <img src="/logo (1).png" class="logo">
             <div class="head">      
                 <h2 class="name">宿务东方学院</h2>
                 <h1 class="title">CEBU EASTERN COLLEGE, INC.</h1>
@@ -189,8 +200,9 @@
             <span>ATTENTION! ONCE YOUR NUMBER IS CALLED AND YOU ARE NOT AROUND, YOU NEED TO GET ANOTHER PRIORITY NUMBER. &ensp;</span>
     </div>
         <div class="main">
+            <img src="/logo.png" class="bg-logo" alt="">
             <div class="card">
-                <a href="general.html">
+                <a href="general.jsp">
                     <div class="box box1">
                         <p>-Enrollment <br>-Assesment</p>
                         <h2>General</h2>
@@ -198,7 +210,7 @@
                 </a>     
                 </div>
                 <div class="card">
-                    <a href="records.html">
+                    <a href="records.jsp">
                         <div class="box box1">
                             <p>-Certifications <br>-Studyload <br>-TOR</p>
                             <h2>Records</h2>                                
@@ -206,10 +218,10 @@
                     </a>
                 </div>
                 <div class="card">
-                    <a href="payments.html">
+                    <a href="payments.jsp">
                         <div class="box box1">
                             <p>-Tuition</h2>
-                            <h2>Payments</h2>
+                            <h2>Payment</h2>
                         </div>
                     </a>    
                 </div>
