@@ -53,4 +53,8 @@ public class SQLConnection {
 			}
 		}
 	}
+	
+	public Connection getConn() {
+		return conn;
+	}
 }

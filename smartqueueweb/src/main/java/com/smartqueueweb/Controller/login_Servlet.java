@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.smartqueueweb.Model.AdminBean;
 import com.smartqueueweb.Model.StaffBean;
 import com.smartqueueweb.Service.ServiceImpl;
 
@@ -46,7 +45,7 @@ public class login_Servlet extends HttpServlet {
 			rd.forward(request, response);
 		}
 		
-		if (!isStaffLogTrue && isAdminLogTrue) {
+		if (!isStaffLogTrue && !isAdminLogTrue) {
 			request.setAttribute("errorLogin", "login failed");
 			rd = request.getRequestDispatcher("login.jsp");
 			rd.include(request, response);

@@ -1,5 +1,7 @@
 package com.smartqueueweb.Service;
 
-public interface StudentServices {
+public interface StudentServices{
+	
 
+	 
 }
