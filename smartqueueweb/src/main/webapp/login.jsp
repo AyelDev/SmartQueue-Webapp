@@ -31,14 +31,14 @@
 								<br> <input class="login-btn" type="submit" value="Login">
 							</form>
 						</div>
-
-						<a href="signup.jsp" class="signup-btn" type="button" value="signup-btn">Sign Up</a>
-						<!-- <button class="signup-btn" type="button" value="signup-btn">Sign
-							Up</button> -->
+						
+						<button class="signup-btn" type="button" value="signup-btn" onclick="document.location='signup.jsp'">Sign
+							Up</button>
 						<hr class="hr-left">
 						<p>or</p>
 						<hr class="hr-right">
-						<a href="user/userinquiry.jsp" class="userinquiry-btn" type="button" value="userinquiry-btn">User Inquiry</a>
+						
+						<button class="userinquiry-btn" type="button" value="userinquiry-btn" onclick="document.location='user/userinquiry.jsp'">User Inquiry</button>
 
 						<!-- <button class="userinquiry-btn" type="button" value="userinquiry-btn">User Inquiry</button> -->
 					</div>
