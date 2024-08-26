@@ -2,6 +2,8 @@ package com.smartqueueweb.DAO;
 
 import java.sql.SQLException;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import com.smartqueueweb.Model.StaffBean;
 
 public class StaffDAO extends SQLConnection {
@@ -15,13 +17,20 @@ public class StaffDAO extends SQLConnection {
 	public Boolean authLoginStaff(String username, String password) {
 
 		try {
+			String candidate = null;
 			ConnectDriver();
-			prs = conn.prepareStatement("SELECT * FROM tbl_login_staff WHERE username=? AND password=?");
+			prs = conn.prepareStatement("SELECT password FROM tbl_login_staff WHERE username=?");
 			prs.setString(1, username);
-			prs.setString(2, password);
 			rs = prs.executeQuery();
 
-			return rs.next();
+			while (rs.next()) {
+				candidate = rs.getString("password");
+			}
+
+			if (candidate == null)
+				return false;
+			else
+				return BCrypt.checkpw(password, candidate);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -61,13 +70,13 @@ public class StaffDAO extends SQLConnection {
 		return staffbean;
 	}
 
-	public Integer registerStaff(String firstname, String lastname, String email, int contactNumber,
-			String username, String password) {
+	public Integer registerStaff(String firstname, String lastname, String email, int contactNumber, String username,
+			String password) {
 		try {
 			ConnectDriver();
 			prs = conn.prepareStatement(
 					"INSERT INTO tbl_login_staff (firstname, lastname, email, contact_number, username, password) "
-					+ " VALUES (?, ?, ?, ?, ?, ?)");
+							+ " VALUES (?, ?, ?, ?, ?, ?)");
 
 			prs.setString(1, firstname);
 			prs.setString(2, lastname);
@@ -80,30 +89,30 @@ public class StaffDAO extends SQLConnection {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			SQLClose();
 		}
 		return 0;
 	}
-	
+
 	public boolean checkStaffIfLocked(String username) {
 		int isLocked = 0;
-		
+
 		try {
 			ConnectDriver();
 			prs = conn.prepareStatement("SELECT isLocked FROM tbl_login_staff WHERE username=?");
 			prs.setString(1, username);
 			rs = prs.executeQuery();
-			
-			while(rs.next()) {
-			isLocked = rs.getInt("isLocked");
+
+			while (rs.next()) {
+				isLocked = rs.getInt("isLocked");
 			}
-			
-			if(isLocked == 1) 
-			return true;
+
+			if (isLocked == 1)
+				return true;
 			else
-			return false;
-			
+				return false;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
