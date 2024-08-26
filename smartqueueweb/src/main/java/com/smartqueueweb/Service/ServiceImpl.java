@@ -17,15 +17,22 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	}
 	
 	@Override
-	public boolean registerStaff() {
+	public Integer registerStaff(String firstname, String lastname, String email, int contactNumber,
+			String username, String password) {
 		// TODO Auto-generated method stub
-		return false;
+		return staffdata.registerStaff(firstname, lastname, email, contactNumber, username, password);
 	}
 	
 	@Override
 	public StaffBean loginStaffDetail(String username) {
 		// TODO Auto-generated method stub
 		return staffdata.staffDetails(username);
+	}
+	
+	@Override
+	public Boolean isStaffLocked(String username) {
+		// TODO Auto-generated method stub
+		return staffdata.checkStaffIfLocked(username);
 	}
 	
 	///////////////// --------------------       Admin
@@ -41,7 +48,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return admindata.adminDetail(username);
 	}
 	
-	//Student
+	//////////////// -----------------------	Student
 	
 
 

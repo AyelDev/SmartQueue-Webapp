@@ -7,7 +7,10 @@ public interface StaffServices {
 	boolean loginStaff(String username, String password);
 	
 	//staff can register but unable to use (need verification to the admin)
-	boolean registerStaff();
+	Integer registerStaff(String firstname, String lastname, String email, int contactNumber,
+			String username, String password);
 	
 	StaffBean loginStaffDetail(String username);
+	
+	Boolean isStaffLocked(String username);
 }

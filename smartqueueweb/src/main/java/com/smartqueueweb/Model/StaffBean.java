@@ -8,6 +8,7 @@ public class StaffBean {
 	private String lastname;
 	private String email;
 	private long contactNumber;
+	private int isLocked;
 	
 	
 	public int getStaffID() {
@@ -65,5 +66,15 @@ public class StaffBean {
 	public void setContactNumber(long contactNumber) {
 		this.contactNumber = contactNumber;
 	}
+
+	public int getIsLocked() {
+		return isLocked;
+	}
+
+	public void setIsLocked(int isLocked) {
+		this.isLocked = isLocked;
+	}
+	
+	
 	
 }
