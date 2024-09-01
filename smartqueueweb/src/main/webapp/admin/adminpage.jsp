@@ -4,8 +4,12 @@
 			<c:redirect url="/" />
 		</c:if>
 		<!DOCTYPE html>
+
 		<head>
 			<meta charset="UTF-8">
+			<script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
+            <script type="text/javascript" src="./scripts/fadetransition.js"></script>
+            <link rel="stylesheet" href="./css/loader.css">
 			<link rel="stylesheet"
 				href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 			<title>Admin Page</title>
@@ -302,6 +306,14 @@
 					});
 				}
 			</script>
+
+
+			<div class="load-wrapper">
+				<div class="main-loader">
+					<div class="box-loader">
+					</div>
+				</div>
+			</div>
 		</body>
 
 		</html>
