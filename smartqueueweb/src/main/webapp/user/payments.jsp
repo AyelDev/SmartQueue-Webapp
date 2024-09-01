@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fontawesome.com/license/free">
+    <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="../scripts/fadetransition.js"></script>
+    <link rel="stylesheet" href="../css/loader.css">
     <title>Payment</title>
 </head>
 
@@ -64,7 +67,7 @@
             height: 68vh;
             width: 65%;
             background-color: #fff;
-            background: rgb(72.5%,85.5%,95.7%);
+            background: rgb(72.5%, 85.5%, 95.7%);
         }
 
         .fillupform {
@@ -73,7 +76,7 @@
             flex-direction: column;
             display: flex;
             position: absolute;
-            color: black;       
+            color: black;
         }
 
         label {
@@ -81,16 +84,20 @@
             position: relative;
             margin-top: 40px;
         }
-        .printbutton{
+
+        .printbutton {
             width: 6rem;
             height: 2rem;
             margin-top: 40%;
             margin-left: 82%;
         }
-        .student-id, .student-name, .cash-on-hand, .amount-to-pay{
+
+        .student-id,
+        .student-name,
+        .cash-on-hand,
+        .amount-to-pay {
             height: 40px;
         }
-
     </style>
     <div class="container">
         <div class="header">
@@ -108,16 +115,22 @@
                 <div class="form">
                     <div class="fillupform">
                         <label for="studentIdNo">Student ID No.</label>
-                        <input type="text" class="student-id" id="student-id" >
+                        <input type="text" class="student-id" id="student-id">
                         <label for="studentName">Student Name</label>
                         <input type="text" class="student-name" id="student-name" disabled>
                         <label for="yearLevel">Cash On Hand</label>
                         <input type="text" class="cash-on-hand" id="cash-on-hand">
                         <label for="purpose">Amount To Pay</label>
-                        <input type="text" class="amount-to-pay" id="amount-to-pay" >
+                        <input type="text" class="amount-to-pay" id="amount-to-pay">
                     </div>
                     <input type="button" name="printbutton" id="printbutton" class="printbutton" value="Print">
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="load-wrapper">
+        <div class="main-loader">
+            <div class="box-loader">
             </div>
         </div>
     </div>

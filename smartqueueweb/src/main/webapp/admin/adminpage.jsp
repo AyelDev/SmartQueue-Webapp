@@ -4,8 +4,12 @@
 			<c:redirect url="/" />
 		</c:if>
 		<!DOCTYPE html>
+
 		<head>
 			<meta charset="UTF-8">
+			<script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
+			<script type="text/javascript" src="./scripts/fadetransition.js"></script>
+			<link rel="stylesheet" href="./css/loader.css">
 			<link rel="stylesheet"
 				href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 			<title>Admin Page</title>
@@ -225,8 +229,8 @@
 						<div class="dropdown-dashboard">
 							<a href="#">add student info</a><br>
 							<a href="#">add staff account</a><br>
-							<a href="list_of_student.jsp">list of student info</a><br>
-							<a href="list_of_staff.jsp">list of staff</a>
+							<a href="#">list of student info</a><br>
+							<a href="http://localhost:8080/smartqueueweb/StaffList_Servlet">list of Staff</a>
 						</div>
 						<button class="dropdown-menu">Entertainment<i class="fa fa-caret-down"></i></button>
 						<div class="dropdown-dashboard">
@@ -302,6 +306,14 @@
 					});
 				}
 			</script>
+
+
+			<div class="load-wrapper">
+				<div class="main-loader">
+					<div class="box-loader">
+					</div>
+				</div>
+			</div>
 		</body>
 
 		</html>

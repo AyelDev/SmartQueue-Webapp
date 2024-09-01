@@ -32,13 +32,15 @@ public class login_Servlet extends HttpServlet {
 		boolean isAdminLogTrue = services.loginAdmin(userName, passWord);
 		boolean isStaffLogTrue = services.loginStaff(userName, passWord);
 		
+		boolean isStaffLocked = services.isStaffLocked(userName);
+		
 		if (isAdminLogTrue) {
 			session.setAttribute("sessionAdmin", services.adminDetails(userName));
 			rd = request.getRequestDispatcher("admin/adminpage.jsp");
 			rd.forward(request, response);
 		}
 
-		if (isStaffLogTrue) {
+		if (isStaffLogTrue && !isStaffLocked) {
 			StaffBean staffDetails = services.loginStaffDetail(userName);
 			session.setAttribute("sessionStaff", staffDetails);
 			rd = request.getRequestDispatcher("staff/staffpage.jsp");
@@ -49,7 +51,13 @@ public class login_Servlet extends HttpServlet {
 			request.setAttribute("errorLogin", "login failed");
 			rd = request.getRequestDispatcher("login.jsp");
 			rd.include(request, response);
-		} 
+		}
+		
+		if(isStaffLocked) {
+			request.setAttribute("errorLogin", "Your Account is Locked Please Contact the Admin");
+			rd = request.getRequestDispatcher("login.jsp");
+			rd.include(request, response);
+		}
 
 	}
 

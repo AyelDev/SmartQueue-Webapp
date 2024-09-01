@@ -8,8 +8,22 @@ public class StaffBean {
 	private String lastname;
 	private String email;
 	private long contactNumber;
+	private int isLocked;
 	
+	public StaffBean() {};
 	
+	public StaffBean(int staffID, String username, String password, String firstname, String lastname, String email,
+			long contactNumber, int isLocked) {
+		this.staffID = staffID;
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.contactNumber = contactNumber;
+		this.isLocked = isLocked;
+	}
+
 	public int getStaffID() {
 		return staffID;
 	}
@@ -65,5 +79,22 @@ public class StaffBean {
 	public void setContactNumber(long contactNumber) {
 		this.contactNumber = contactNumber;
 	}
+
+	public int getIsLocked() {
+		return isLocked;
+	}
+
+	public void setIsLocked(int isLocked) {
+		this.isLocked = isLocked;
+	}
+
+	@Override
+	public String toString() {
+		return "StaffBean [staffID=" + staffID + ", username=" + username + ", password=" + password + ", firstname="
+				+ firstname + ", lastname=" + lastname + ", email=" + email + ", contactNumber=" + contactNumber
+				+ ", isLocked=" + isLocked + "]";
+	}
+	
+	
 	
 }
