@@ -1,8 +1,10 @@
 package com.smartqueueweb.DAO;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.mindrot.jbcrypt.BCrypt;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import com.smartqueueweb.Model.StaffBean;
 
@@ -30,7 +32,7 @@ public class StaffDAO extends SQLConnection {
 			if (candidate == null)
 				return false;
 			else
-				return BCrypt.checkpw(password, candidate);
+				return password.equals(candidate);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -70,9 +72,15 @@ public class StaffDAO extends SQLConnection {
 		return staffbean;
 	}
 
-	public Integer registerStaff(String firstname, String lastname, String email, int contactNumber, String username,
-			String password) {
+	public Integer registerStaff(String firstname, String lastname, String email, int contactNumber, String username) {
 		try {
+			String defaultFirst = "CEC";
+			int length = 5;
+			boolean useLetters = true;
+			boolean useNumbers = true;
+			String GeneratedPassword = defaultFirst + RandomStringUtils.random(length, useLetters, useNumbers);
+			
+			
 			ConnectDriver();
 			prs = conn.prepareStatement(
 					"INSERT INTO tbl_login_staff (firstname, lastname, email, contact_number, username, password) "
@@ -83,8 +91,8 @@ public class StaffDAO extends SQLConnection {
 			prs.setString(3, email);
 			prs.setInt(4, contactNumber);
 			prs.setString(5, username);
-			prs.setString(6, password);
-
+			prs.setString(6, GeneratedPassword);
+			
 			return prs.executeUpdate();
 
 		} catch (Exception e) {
@@ -119,5 +127,28 @@ public class StaffDAO extends SQLConnection {
 			SQLClose();
 		}
 		return false;
+	}
+	
+	List<StaffBean> listOfStaff = null;
+	public List<StaffBean> listOfStaff(){
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("SELECT * FROM tbl_login_staff");
+			rs = prs.executeQuery();
+			listOfStaff = new ArrayList<StaffBean>();
+			
+			while(rs.next()) {
+				staffbean = new StaffBean(rs.getInt("staff_id"), rs.getString("username"), rs.getString("password") 
+						,rs.getString("firstname"), rs.getString("lastname"), rs.getString("email")
+						,rs.getLong("contact_number"), rs.getInt("isLocked"));
+				listOfStaff.add(staffbean);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			SQLClose();
+		}
+		return listOfStaff;
 	}
 }

@@ -1,5 +1,7 @@
 package com.smartqueueweb.Service;
 
+import java.util.List;
+
 import com.smartqueueweb.DAO.AdminDAO;
 import com.smartqueueweb.DAO.StaffDAO;
 import com.smartqueueweb.Model.AdminBean;
@@ -18,9 +20,9 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	
 	@Override
 	public Integer registerStaff(String firstname, String lastname, String email, int contactNumber,
-			String username, String password) {
+			String username) {
 		// TODO Auto-generated method stub
-		return staffdata.registerStaff(firstname, lastname, email, contactNumber, username, password);
+		return staffdata.registerStaff(firstname, lastname, email, contactNumber, username);
 	}
 	
 	@Override
@@ -33,6 +35,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	public Boolean isStaffLocked(String username) {
 		// TODO Auto-generated method stub
 		return staffdata.checkStaffIfLocked(username);
+	}
+	
+	@Override
+	public List<StaffBean> listsOfStaff() {
+		// TODO Auto-generated method stub
+		return staffdata.listOfStaff();
 	}
 	
 	///////////////// --------------------       Admin

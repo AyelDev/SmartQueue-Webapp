@@ -3,6 +3,7 @@
 
 		<head>
 			<link rel="stylesheet" href="css/signupstyle.css">
+			<link rel="stylesheet" href="css/fadetransition.css">
 			<meta charset="UTF-8">
 			<title>login page</title>
 		</head>
@@ -47,7 +48,6 @@
 
 				</div>
 			</div>
-
 
 		</body>
 

@@ -1,5 +1,7 @@
 package com.smartqueueweb.Service;
 
+import java.util.List;
+
 import com.smartqueueweb.Model.StaffBean;
 
 public interface StaffServices {
@@ -8,9 +10,11 @@ public interface StaffServices {
 	
 	//staff can register but unable to use (need verification to the admin)
 	Integer registerStaff(String firstname, String lastname, String email, int contactNumber,
-			String username, String password);
+			String username);
 	
 	StaffBean loginStaffDetail(String username);
 	
 	Boolean isStaffLocked(String username);
+	
+	List<StaffBean> listsOfStaff();
 }
