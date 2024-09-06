@@ -210,63 +210,60 @@
 				<b class="title-page">List of Staff</b>
 
 				<table class="counter-list" id="tablelist">
-
-					<tr>
-						<th>Id No.</th>
-						<th>Name</th>
-						<th>Contact no.</th>
-						<th>Email</th>
-						<th>Username</th>
-						<th>Password</th>
-						<th>Restriction</th>
-						<th>Actions</th>
-					</tr>
-					<c:forEach var="staff" items="${stafflists}">
-						<tr>
-						<tr>
-							<td>${staff.staffID}</td>
-							<td>${staff.firstname} ${staff.lastname}</td>
-							<td>${staff.contactNumber}</td>
-							<td>${staff.email}</td>
-							<td>${staff.username}</td>
-							<td>${staff.password}</td>
-							<td>${staff.isLocked == 1 ? 'Locked' : 'Unlocked'}</td>
-							<td><button class="update" style="background-color: #97BE5A;">Update</button>
-								<button class="delete" style="background-color: #EE4E4E;">Delete</button>
-							</td>
-						</tr>
-					</c:forEach>
-
-
+					
 
 				</table>
 
 			</div>
+			
+			
 
-			<a hidden="true" id="requestLink" href="http://localhost:8080/smartqueueweb/StaffList_Servlet">REQUEST</a>
 
 			<script>
-				var dropdown = document.getElementsByClassName("dropdown-menu");
-				var i;
+			var staffListInfo = document.getElementById("tablelist");
 
-				for (i = 0; i < dropdown.length; i++) {
-					dropdown[i].addEventListener("click", function () {
+			function updateData(){	
+			    var request = new XMLHttpRequest();
+			    request.open('GET', 'http://localhost:8080/smartqueueweb/JsonStaffListAPI');
+			    request.onload = function(){
+			        var data = JSON.parse(request.responseText);
+			        renderHTML(data);
+			    }
+			    request.send();
+			}
 
-						var dropdownContent = this.nextElementSibling;
-						if (dropdownContent.style.display === "block") {
-							dropdownContent.style.display = "none";
-						} else {
-							dropdownContent.style.display = "block";
-						}
-					});
-				}
+			function renderHTML(data){
+			    var htmlString = `<tr>
+					<th>Id No.</th>
+					<th>Name</th>
+					<th>Contact no.</th>
+					<th>Email</th>
+					<th>Username</th>
+					<th>Password</th>
+					<th>Restriction</th>
+					<th>Actions</th>
+				</tr>`;
+			    
+			    for(var i = 0; i < data.length; i++){
+			    	
+			    	htmlString += "<tr>";
+			        htmlString += "<td>" + data[i].staffID + "</td>";
+			        htmlString += "<td>" + data[i].firstname + "</td>";
+			        htmlString += "<td>" + data[i].contactNumber + "</td>";
+			        htmlString += "<td>" + data[i].email + "</td>";
+			        htmlString += "<td>" + data[i].username + "</td>";
+			        htmlString += "<td>" + data[i].password + "</td>";
+			        htmlString += "<td>" + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + "</td>";
+			        htmlString += '<td><button class="update" style="background-color: #97BE5A;">Update</button>';	
+			        htmlString += '<button class="delete" style="background-color: #EE4E4E;">Delete</button>';
+			        htmlString += "</tr>";
+			    }
+			    
+			    staffListInfo.innerHTML = htmlString; // Corrected to set htmlString, not updateData
+			}
 
-				function clickLink() {
-					document.getElementById('requestLink').click();
-				}
-
-				setInterval(clickLink, 10000); // 2000 milliseconds = 2 seconds
-
+			setInterval(updateData, 1500);
+			
 			</script>
 
 			<div class="load-wrapper">

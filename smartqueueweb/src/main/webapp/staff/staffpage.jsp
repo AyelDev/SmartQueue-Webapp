@@ -20,7 +20,7 @@
 				<c:out value="${sessionStaff.getUsername()}"></c:out>
 			</h1>
 
-			<form action=logout_Servlet method=get>
+			<form action=login method=get>
 				<input type="submit" value="logout">
 			</form>
 
