@@ -11,6 +11,7 @@
 			<title>login page</title>
 		</head>
 		<body>
+		
 			<div class="outer-wrapper">
 			<div class="bg-container">
 				<div class="login-container">
@@ -20,7 +21,7 @@
 							<label class="title" for="title">login</label>
 						</div>
 						<div class="form-container">
-							<form action=login_Servlet method=post>
+							<form action=dashboard method=post>
 								<label class="username">Username</label> <br> <input class="username-container"
 									required="required" type="text" name="txtUsername"><br> <label
 									class="password">Password</label>

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.smartqueueweb.Model.StaffBean;
 import com.smartqueueweb.Service.ServiceImpl;
 
-@WebServlet("/login_Servlet")
+@WebServlet({"/login_Servlet", "/dashboard"})
 public class login_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

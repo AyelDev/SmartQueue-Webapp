@@ -3,6 +3,7 @@
 		<c:if test="${empty sessionScope.sessionAdmin.getUsername()}">
 			<c:redirect url="/" />
 		</c:if>
+		
 		<!DOCTYPE html>
 
 		<head>
@@ -230,7 +231,7 @@
 							<a href="#">add student info</a><br>
 							<a href="#">add staff account</a><br>
 							<a href="#">list of student info</a><br>
-							<a href="http://localhost:8080/smartqueueweb/StaffList_Servlet">list of Staff</a>
+							<a href="http://localhost:8080/smartqueueweb/stafflist">list of Staff</a>
 						</div>
 						<button class="dropdown-menu">Entertainment<i class="fa fa-caret-down"></i></button>
 						<div class="dropdown-dashboard">
@@ -243,7 +244,7 @@
 							<a href="#">user window</a><br>
 							<a href="#">counter window</a>
 						</div>
-						<form action=logout_Servlet method=get>
+						<form action=login method=get>
 							<input type="submit" value="Logout" class="dropdown-menu">
 						</form>
 					</div>
