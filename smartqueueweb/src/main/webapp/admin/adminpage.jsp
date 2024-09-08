@@ -3,296 +3,409 @@
 		<c:if test="${empty sessionScope.sessionAdmin.getUsername()}">
 			<c:redirect url="/" />
 		</c:if>
-		
+
 		<!DOCTYPE html>
 
 		<head>
 			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
 			<script type="text/javascript" src="./scripts/fadetransition.js"></script>
 			<link rel="stylesheet" href="./css/loader.css">
-			<link rel="stylesheet"
-				href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-			<title>Admin Page</title>
+			<title>Admin | Dashboard</title>
 		</head>
 
+
+		<style>
+			@import url('./css/fonts.css');
+
+			:root {
+				--primary-color: #1e91d0;
+				--secondary-color: #00509d;
+				--body-fonts: "Roboto Condensed", sans-serif;
+				--background-color: #F6F4EB;
+				--select-text-color: #B4B4B8;
+				--text-color: #272829;
+				font-optical-sizing: auto;
+				font-style: normal;
+			}
+
+			* {
+				font-family: var(--body-fonts);
+				padding: 0;
+				margin: 0;
+			}
+
+			body {
+				width: 100%;
+				height: 100%;
+				font-family: var(--body-fonts);
+				margin: 0;
+				padding: 0;
+				font-optical-sizing: auto;
+				font-style: normal;
+			}
+
+			.container {
+				width: 100%;
+				height: 100%;
+				background-color: white;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				align-items: center;
+				justify-content: center;
+
+			}
+
+
+
+			.navbar {
+				width: 15vw;
+				height: 100vh;
+				background-color: var(--primary-color);
+				position: fixed;
+				justify-content: center;
+				align-items: center;
+				left: 0;
+				float: left;
+			}
+
+			.logoContainer {
+				width: 15vw;
+				height: 7%;
+				align-items: center;
+				display: flex;
+				justify-content: center;
+				margin-top: 10px;
+			}
+
+			.title {
+				margin-left: 10px;
+				color: var(--background-color);
+				font-size: .8em;
+			}
+
+			.logo {
+				width: 25%;
+				max-width: 100%;
+				object-fit: scale-down;
+			}
+
+			.adminProfile {
+				margin-left: 2.5rem;
+				position: absolute;
+				background-color: var(--background-color);
+				width: 9.5vw;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				z-index: 1;
+				display: none;
+			}
+
+			.adminProfile a,
+			.dropdown-dashboard a {
+				text-decoration: none;
+				color: var(--background-color);
+				overflow: hidden;
+				color: black;
+				width: 9.5vw;
+				height: 20%;
+				text-align: center;
+				align-items: center;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				padding: .5rem 0 0 0;
+				height: 2rem;
+			}
+
+			.adminProfile a:hover {
+				background-color: var(--select-text-color);
+			}
+
+			.button-profile {
+				align-items: center;
+				justify-content: center;
+				display: flex;
+				width: 10vw;
+				margin-top: 30px;
+				margin-left: 36px;
+				border-radius: 10px;
+				padding: 15px 10px 15px 10px;
+				/*tlbr*/
+				overflow: hidden;
+				cursor: pointer;
+			}
+
+			.profile {
+				width: 10%;
+				object-fit: scale-down;
+				margin-right: 20px;
+			}
+
+			.caretdown {
+				mix-blend-mode: multiply;
+				width: 10px;
+				margin-left: 20px;
+			}
+
+			/* navbar */
+			.menu-navbar {
+				margin-top: 2rem;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.dropdown {
+				position: relative;
+				display: inline-block;
+			}
+
+			.dropdown-dashboard {
+				display: none;
+				position: absolute;
+				background-color: var(--background-color);
+				min-width: 160px;
+				top: 100%;
+				left: 80%;
+				z-index: 1;
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+				border-radius: 4px;
+			}
+
+			.dropdown-dashboard a {
+				display: block;
+				text-decoration: none;
+				color: var(--text-color);
+				padding: 12px 16px;
+				text-align: center;
+			}
+
+			.dropdown-dashboard a:hover {
+				background-color: var(--select-text-color);
+			}
+
+			.dropdown-btn {
+				background: none;
+				padding: 20px;
+				display: flex;
+				align-items: center;
+				width: 20vw;
+				border: 0;
+				font-size: 15px;
+				color: #F6F4EB;
+				border-radius: 15px;
+				padding-right: 60px;
+				margin-left: 10px;
+				cursor: pointer;
+				position: relative;
+			}
+
+			.dropdown:hover .dropdown-dashboard {
+				display: block;
+			}
+
+			.dropdown-btn:hover {
+				background-color: var(--background-color);
+				width: 18vw;
+				color: var(--text-color);
+				font-weight: bold;
+			}
+
+			.dropdown-btn:hover+.dropdown-dashboard {
+				display: block;
+			}
+
+			.dashboard-icon,
+			.users-icon,
+			.display-icon,
+			.entertainment-icon,
+			.counter-icon {
+				object-fit: scale-down;
+				width: 10%;
+			}
+
+			.dashboard-icon,
+			.users-icon,
+			.display-icon,
+			.entertainment-icon,
+			.counter-icon {
+				margin-right: 17px;
+			}
+
+			.dashboard-caretright {
+				margin-left: 50px;
+			}
+
+			.caretright {
+				object-fit: scale-down;
+				width: 5%;
+				right: 5.5rem;
+				position: absolute;
+			}
+
+			.dashboard-section {
+				width: 85vw;
+				height: 100vh;
+				background-color: var(--background-color);
+				float: right;
+				margin-left: 15%;
+				align-items: center;
+				display: flex;
+				justify-content: center;
+			}
+
+			.dashboard-section h1 {
+				color: black;
+				font-size: 2rem;
+				margin-top: -40%;
+				margin-left: -60%;
+				position: absolute;
+			}
+
+			.card-total p {
+				font-size: .7rem;
+			}
+
+			.card-total p h3 {
+				margin: 10px;
+			}
+
+			.dashboard-content {
+				width: 75vw;
+				height: 80vh;
+				justify-content: space-evenly;
+				display: flex;
+			}
+
+			.card-total {
+				width: 20%;
+				height: 20%;
+				background-image: linear-gradient(to right, #1e91d0, #00509d);
+				border-radius: 15px;
+				justify-content: space-evenly;
+				margin-top: 2rem;
+			}
+
+			.department-graph {
+				width: 30%;
+				height: 60%;
+				background-color: #ffff;
+				border-radius: 15px;
+				margin-top: 2rem;
+			}
+
+			.total-graph {
+				width: 48%;
+				height: 30%;
+				margin-top: 11%;
+				margin-left: -24%;
+				background-color: #ffff;
+				position: absolute;
+				z-index: 1;
+				border-radius: 15px;
+			}
+		</style>
+
 		<body>
-			<style>
-				* {
-					margin: 0;
-					padding: 0;
-				}
-
-				body {
-					font-family: Verdana, Geneva, Tahoma, sans-serif;
-					width: 100vw;
-					height: 100vh;
-					margin: 0;
-					overflow: hidden;
-				}
-
-				.main-container {
-					background-color: #F1F6F9;
-					width: 85vw;
-					height: 100vh;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					float: right;
-
-				}
-
-				.navbar {
-					background-color: #EEEDEB;
-					width: 16vw;
-					height: 100vh;
-					align-items: center;
-					justify-content: center;
-					position: fixed;
-					z-index: 1;
-					top: 0;
-					left: 0;
-					overflow-x: hidden;
-				}
-
-				.admintxt {
-					text-align: center;
-					align-items: center;
-					display: flex;
-					justify-content: center;
-					padding: 20px;
-					background-color: #77b6ea;
-					border-style: ridge;
-				}
-
-				.menu-navbar {
-					justify-content: space-evenly;
-					align-items: center;
-					text-align: center;
-					line-height: 4;
-					margin-top: 40%;
-				}
-
-				.menu-navbar,
-				.dropdown-menu,
-				.dropdown-menu a {
-					text-decoration: none;
-					background: none;
-					outline: none;
-					border: none;
-					cursor: pointer;
-					font-size: 18px;
-					flex-direction: column;
-					align-items: center;
-					justify-content: center;
-					display: block;
-					padding: 3px 30px 10px 10px;
-					text-align: center;
-					margin: 3px;
-					color: #7D7C7C;
-				}
-
-				.dropdown-menu:hover {
-					color: #191717;
-				}
-
-				.dropdown-dashboard {
-					display: none;
-					padding: 2px;
-					background-color: #B4B4B3;
-					text-decoration: none;
-					font-size: 10px;
-					width: 100%;
-					height: auto;
-				}
-
-				.dropdown-dashboard a {
-					text-decoration: none;
-					color: #ffff;
-					padding: 10px;
-				}
-
-				.dropdown-dashboard a:hover {
-					background-color: #D0D4CA;
-					color: #191717;
-
-				}
-
-
-				.fa-caret-down {
-					float: right;
-					padding-left: 20%;
-					position: absolute;
-					left: 60%;
-				}
-
-				.total-video,
-				.total-counter,
-				.total-student,
-				.total-staff {
-					color: #EEEDEB;
-					border-radius: 25px;
-					width: 20vw;
-					height: 20vh;
-					display: flex;
-					margin: 70px;
-					margin-top: -30%;
-					justify-content: center;
-					align-items: center;
-
-				}
-
-				.total-staff:hover,
-				.total-counter:hover,
-				.total-student:hover,
-				.total-video:hover {
-					width: 30vw;
-				}
-
-				.total-counter {
-					background: linear-gradient(90deg, rgba(0, 41, 107, 1) 5%, rgba(119, 182, 234, 1) 94%);
-				}
-
-				.total-video {
-					background: linear-gradient(0deg, rgba(0, 41, 107, 1) 16%, rgba(119, 182, 234, 1) 100%);
-
-				}
-
-				.total-student {
-					background: radial-gradient(circle, rgba(119, 182, 234, 1) 0%, rgba(0, 41, 107, 1) 100%);
-				}
-
-				.total-staff {
-					background: linear-gradient(0deg, rgba(119, 182, 234, 1) 15%, rgba(0, 41, 107, 1) 100%);
-				}
-
-				.graph {
-					width: 76vw;
-					height: 60vh;
-					background-color: #7D7C7C;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					position: absolute;
-					border-radius: 25px;
-					bottom: 5%;
-					opacity: .5;
-				}
-
-				.totals {
-					width: 78vw;
-					height: 40vh;
-					display: flex;
-					align-items: center;
-					justify-content: space-evenly;
-					background-color: aqua;
-					margin-top: -30%;
-				}
-
-				.main-container .title-page {
-					display: flex;
-					position: absolute;
-					margin-top: -43%;
-					margin-left: -70%;
-				}
-
-				.fa-video-camera {
-					font-size: 30px;
-					text-align: center;
-					align-items: center;
-					justify-content: center;
-					display: flex;
-				}
-
-				.userpng {
-					width: auto;
-					height: 30px;
-					color: #F1F6F9;
-
-				}
-			</style>
 			<div class="container">
 				<div class="navbar">
-					<div class="admintxt"><b>
-							Welcome
-							<c:out value="${admin}"></c:out>
-							<c:out value="${sessionScope.sessionAdmin.getUsername()}"></c:out>
-						</b></div>
-					<div class="menu-navbar">
-						<a href="adminpage.jsp" class="dropdown-menu">Dashboard</a>
-
-						<button class="dropdown-menu">Counter<i class="fa fa-caret-down"></i></button>
-						<div class="dropdown-dashboard">
-							<a href="#">add window</a><br>
-							<a href="list_of_counter.jsp">list of counter</a>
-						</div>
-						<button class="dropdown-menu">User<i class="fa fa-caret-down"></i></button>
-						<div class="dropdown-dashboard">
-							<a href="#">add student info</a><br>
-							<a href="#">add staff account</a><br>
-							<a href="#">list of student info</a><br>
-							<a href="http://localhost:8080/smartqueueweb/stafflist">list of Staff</a>
-						</div>
-						<button class="dropdown-menu">Entertainment<i class="fa fa-caret-down"></i></button>
-						<div class="dropdown-dashboard">
-							<a href="#">advertisement</a><br>
-							<a href="#">add video</a>
-						</div>
-						<button class="dropdown-menu">Display<i class="fa fa-caret-down"></i></button>
-						<div class="dropdown-dashboard">
-							<a href="user/userinquiry.jsp">user inquiry</a><br>
-							<a href="#">user window</a><br>
-							<a href="#">counter window</a>
-						</div>
-						<form action=login method=get>
-							<input type="submit" value="Logout" class="dropdown-menu">
-						</form>
+					<div class="logoContainer">
+						<img src="./images/logo.png" alt="" class="logo">
+						<p class="title">Cebu Eastern College
+						<p>
+					</div>
+					<!-- admin profile -->
+					<button class="button-profile" id="button-profile"><img src="/src/main/webapp/images/profile.png"
+							alt="" class="profile">ADMIN<img src="./images/caretdown.png" alt=""
+							class="caretdown"></button>
+					<div class="adminProfile" id="adminProfile">
+						<a href="">Settings</a>
+						<a href="login">Signout</a>
 					</div>
 
+					<div class="menu-navbar">
+						<div class="dropdown">
+							<button class="dropdown-btn"><img src="./images/dashboard.png" alt=""
+									class="dashboard-icon">Dashboard<img src="./images/caretright.png" alt=""
+									class="caretright"></button>
+							<div class="dropdown-dashboard">
+								<a href="">Total of Counter</a>
+								<a href="">Total of Students</a>
+							</div>
+						</div>
+
+						<div class="dropdown">
+							<button class="dropdown-btn"><img src="./images/counter.png" alt=""
+									class="counter-icon">Counter<img src="./images/caretright.png" alt=""
+									class="caretright"></button>
+							<div class="dropdown-dashboard">
+								<a href="">Add Counter</a>
+								<a href="admin/list_of_counter.jsp">List of Counter</a>
+							</div>
+						</div>
+
+						<div class="dropdown">
+							<button class="dropdown-btn"><img src="./images/users.png" alt=""
+									class="users-icon">Users<img src="./images/caretright.png" alt=""
+									class="caretright"></button>
+							<div class="dropdown-dashboard">
+								<a href="">Add Student</a>
+								<a href="">Add Staff</a>
+								<a href="">List of Student</a>
+								<a href="stafflist">List of Staff</a>
+							</div>
+						</div>
+
+						<div class="dropdown">
+							<button class="dropdown-btn"><img src="./images/entertainment.png" alt=""
+									class="entertainment-icon">Entertainment<img src="./images/caretright.png" alt=""
+									class="caretright"></button>
+							<div class="dropdown-dashboard">
+								<a href="">Video advertisement</a>
+							</div>
+						</div>
+
+						<div class="dropdown">
+							<button class="dropdown-btn"><img src="./images/display.png" alt=""
+									class="display-icon">Display<img src="./images/caretright.png" alt=""
+									class="caretright"></button>
+							<div class="dropdown-dashboard">
+								<a href="">User Inquiry</a>
+								<a href="">User Window</a>
+								<a href="">Counter Window</a>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="main-container">
-					<b class="title-page">Dashboard</b>
+				<div class="dashboard-section">
+					<h1 class="title">Dashboard</h1>
+					<div class="dashboard-content">
+						<div class="card-total"><br>
+							<p>Total counter</p>
+							<h3>100</h3>
+						</div>
+						<div class="card-total"><br>
+							<p>Total counter</p>
+							<h3>100</h3>
+						</div>
+						<div class="card-total"><br>
+							<p>Total counter</p>
+							<h3>100</h3>
+						</div>
+						<div class="department-graph">
 
-					<div class="total-staff"><svg xmlns="http://www.w3.org/2000/svg" height="40" width="40"
-							viewBox="0 0 576 512">
-							<path fill="#ffffff"
-								d="M512 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H512zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM208 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128zm-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16H304c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80H176zM376 144c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24H376zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24H376z" />
-						</svg></div>
-					<div class="total-counter"><svg xmlns="http://www.w3.org/2000/svg" height="40" width="40"
-							viewBox="0 0 512 512">
-							<path fill="#ffffff"
-								d="M64 0C46.3 0 32 14.3 32 32V96c0 17.7 14.3 32 32 32h80v32H87c-31.6 0-58.5 23.1-63.3 54.4L1.1 364.1C.4 368.8 0 373.6 0 378.4V448c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V378.4c0-4.8-.4-9.6-1.1-14.4L488.2 214.4C483.5 183.1 456.6 160 425 160H208V128h80c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H64zM96 48H256c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zM64 432c0-8.8 7.2-16 16-16H432c8.8 0 16 7.2 16 16s-7.2 16-16 16H80c-8.8 0-16-7.2-16-16zm48-168a24 24 0 1 1 0-48 24 24 0 1 1 0 48zm120-24a24 24 0 1 1 -48 0 24 24 0 1 1 48 0zM160 344a24 24 0 1 1 0-48 24 24 0 1 1 0 48zM328 240a24 24 0 1 1 -48 0 24 24 0 1 1 48 0zM256 344a24 24 0 1 1 0-48 24 24 0 1 1 0 48zM424 240a24 24 0 1 1 -48 0 24 24 0 1 1 48 0zM352 344a24 24 0 1 1 0-48 24 24 0 1 1 0 48z" />
-						</svg></div>
-					<div class="total-student"><svg xmlns="http://www.w3.org/2000/svg" height="40" width="45"
-							viewBox="0 0 640 512">
-							<path fill="#ffffff"
-								d="M211.2 96a64 64 0 1 0 -128 0 64 64 0 1 0 128 0zM32 256c0 17.7 14.3 32 32 32h85.6c10.1-39.4 38.6-71.5 75.8-86.6c-9.7-6-21.2-9.4-33.4-9.4H96c-35.3 0-64 28.7-64 64zm461.6 32H576c17.7 0 32-14.3 32-32c0-35.3-28.7-64-64-64H448c-11.7 0-22.7 3.1-32.1 8.6c38.1 14.8 67.4 47.3 77.7 87.4zM391.2 226.4c-6.9-1.6-14.2-2.4-21.6-2.4h-96c-8.5 0-16.7 1.1-24.5 3.1c-30.8 8.1-55.6 31.1-66.1 60.9c-3.5 10-5.5 20.8-5.5 32c0 17.7 14.3 32 32 32h224c17.7 0 32-14.3 32-32c0-11.2-1.9-22-5.5-32c-10.8-30.7-36.8-54.2-68.9-61.6zM563.2 96a64 64 0 1 0 -128 0 64 64 0 1 0 128 0zM321.6 192a80 80 0 1 0 0-160 80 80 0 1 0 0 160zM32 416c-17.7 0-32 14.3-32 32s14.3 32 32 32H608c17.7 0 32-14.3 32-32s-14.3-32-32-32H32z" />
-						</svg></i></div>
-					<div class="total-video"><i class="fa fa-video-camera"></i></div>
+						</div>
+						<div class="total-graph">
 
-					<div class="graph"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 
-
-
-			<!-- <h1>
-					Welcome
-					<c:out value="${admin}"></c:out>
-					<c:out value="${sessionScope.sessionName}"></c:out>
-				</h1>
-
-
-				<form action=logout_Servlet method=get>
-					<input type="submit" value="logout">
-				</form>
-
-				
-		 -->
-
-
 			<script>
-				var dropdown = document.getElementsByClassName("dropdown-menu");
+				var dropdown = document.getElementsByClassName("button-profile");
 				var i;
 
 				for (i = 0; i < dropdown.length; i++) {
@@ -306,6 +419,8 @@
 						}
 					});
 				}
+
+
 			</script>
 
 

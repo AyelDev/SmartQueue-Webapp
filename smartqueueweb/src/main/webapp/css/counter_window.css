@@ -1,0 +1,151 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1.25rem;
+    background: #fff;
+    border-radius: 0.625rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    margin-top: 1.875rem;
+}
+
+.real-time {
+    text-align: center;
+    font-size: 1.25rem;
+    margin: 1.25rem 0;
+    width: 30%;
+    /* height: 20%; */
+    padding: none ;
+    background-color: #f0f6f6;
+    border: 0.125rem solid black;
+    border-radius: 1.25rem;
+    display: block;
+    margin-left: 35%;
+}
+.tables {
+    margin-bottom: 1.25rem;
+    margin-top: 1.875rem;
+}
+.table-container {
+    margin-bottom: 1.25rem;
+}
+.table-container h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.625rem;
+    text-align: center;
+    line-height: 0.625rem;
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.875rem;
+}
+.data-table th, .data-table td {
+    padding: 0.625rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+.thd{
+    border-left: 0.125rem solid blue;
+    
+}
+.tsd{
+    border-right: 0.125rem solid blue;
+}
+.data-table tr:hover {
+    background-color: #eff7f6;
+    border-left: 0.125rem solid blue;
+    border-right: 0.125rem solid blue;
+}
+.data-table .selected {
+    background-color: #d1e7dd;
+}
+.data-table th {
+    background-color: #3090C7;
+    color: white;
+}
+.actions {
+    text-align: center;
+    margin-top: 1.25rem;
+}
+.actions .btn {
+    border: none;
+    padding: 0.625rem 1.25rem;
+    color: #fff;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 0.3125rem;
+    color: black;
+}
+.actions .btn.call {
+    background-color: #7dcfb6;
+    border: 0.125rem solid #7dcfb6;
+    border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
+}
+.actions .btn.call:hover{
+    color: white;
+    border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
+}
+.actions .btn.recall {
+    background-color: #00b2ca;
+    border: 0.125rem solid #00b2ca;
+    border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
+}
+.actions .btn.recall:hover {
+    color: white;
+    border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
+}
+.actions .btn.done {
+    background-color: #fbd1a2;
+    border: 0.125rem solid #fbd1a2;
+    border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
+}
+.actions .btn.done:hover {
+    color: white;
+    border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
+}
+.actions .btn.cancel {
+    background-color: #f79256;
+    border: 0.125rem solid #f79256;
+    border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
+}
+.actions .btn.cancel:hover {
+    color: white;
+    border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
+}
+.actions .btn.call:hover {
+    background-color: #218838;
+}
+.actions .btn.recall:hover {
+    background-color: #0056b3;
+}
+.actions .btn.done:hover {
+    background-color: #e0a800;
+}
+.actions .btn.cancel:hover {
+    background-color: #c82333;
+}
+@media (max-width: 1200px) {
+    :root {
+        font-size: 0.9375rem; 
+        }
+    }
+
+@media (max-width: 768px) {
+    :root {
+        font-size: 0.875rem; 
+        }
+    }
+
+@media (max-width: 480px) {
+    :root {
+        font-size: 0.8125rem; 
+     }
+}

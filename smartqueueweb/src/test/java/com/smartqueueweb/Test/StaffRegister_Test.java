@@ -17,8 +17,8 @@ public class StaffRegister_Test {
 		String hashed = BCrypt.hashpw(mypass, BCrypt.gensalt(10));
 		
 		int expected = 1;
-		
-		int actual = obj.registerStaff("ariel", "abelgas", "arie;@gmail.com", 21234, "cindy");
+		double ss = 09672919283d;
+		int actual = obj.registerStaff("lolos", "lolos", "lolos@gmail.com", ss, "lolos");
 		assertEquals(expected, actual);
 		
 	}

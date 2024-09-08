@@ -72,13 +72,15 @@ public class StaffDAO extends SQLConnection {
 		return staffbean;
 	}
 
-	public Integer registerStaff(String firstname, String lastname, String email, int contactNumber, String username) {
+	public Integer registerStaff(String firstname, String lastname, String email, double contactNumber, String username) {
 		try {
-			String defaultFirst = "CEC";
-			int length = 5;
+			int length = 4;
 			boolean useLetters = true;
 			boolean useNumbers = true;
-			String GeneratedPassword = defaultFirst + RandomStringUtils.random(length, useLetters, useNumbers);
+			String GeneratedPassword = RandomStringUtils.random(length, useLetters, useNumbers);
+			String specialChars = "!@#$&*"; 
+			
+			GeneratedPassword += RandomStringUtils.random(2, specialChars);
 			
 			
 			ConnectDriver();
@@ -89,9 +91,9 @@ public class StaffDAO extends SQLConnection {
 			prs.setString(1, firstname);
 			prs.setString(2, lastname);
 			prs.setString(3, email);
-			prs.setInt(4, contactNumber);
+			prs.setDouble(4, contactNumber);
 			prs.setString(5, username);
-			prs.setString(6, GeneratedPassword);
+			prs.setString(6, GeneratedPassword.toUpperCase());
 			
 			return prs.executeUpdate();
 
@@ -140,7 +142,7 @@ public class StaffDAO extends SQLConnection {
 			while(rs.next()) {
 				staffbean = new StaffBean(rs.getInt("staff_id"), rs.getString("username"), rs.getString("password") 
 						,rs.getString("firstname"), rs.getString("lastname"), rs.getString("email")
-						,rs.getLong("contact_number"), rs.getInt("isLocked"));
+						,rs.getDouble("contact_number"), rs.getInt("isLocked"));
 				listOfStaff.add(staffbean);
 			}
 			

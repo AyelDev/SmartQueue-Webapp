@@ -7,13 +7,13 @@ public class StaffBean {
 	private String firstname;
 	private String lastname;
 	private String email;
-	private long contactNumber;
+	private double contactNumber;
 	private int isLocked;
 	
 	public StaffBean() {};
 	
 	public StaffBean(int staffID, String username, String password, String firstname, String lastname, String email,
-			long contactNumber, int isLocked) {
+			double contactNumber, int isLocked) {
 		this.staffID = staffID;
 		this.username = username;
 		this.password = password;
@@ -72,11 +72,11 @@ public class StaffBean {
 		this.email = email;
 	}
 
-	public long getContactNumber() {
+	public double getContactNumber() {
 		return contactNumber;
 	}
 
-	public void setContactNumber(long contactNumber) {
+	public void setContactNumber(double contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 
