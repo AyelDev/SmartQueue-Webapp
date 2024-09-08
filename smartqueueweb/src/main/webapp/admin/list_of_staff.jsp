@@ -259,7 +259,7 @@
 			        htmlString += "</tr>";
 			    }
 			    
-			    staffListInfo.innerHTML = htmlString; // Corrected to set htmlString, not updateData
+			    staffListInfo.innerHTML = htmlString;
 			}
 
 			setInterval(updateData, 1500);

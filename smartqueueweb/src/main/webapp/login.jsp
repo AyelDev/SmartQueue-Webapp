@@ -2,17 +2,19 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 		<!DOCTYPE html>
 		<html>
+
 		<head>
 			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script>
 			<script type="text/javascript" src="scripts/fadetransition.js"></script>
 			<link rel="stylesheet" href="css/loginstyle.css">
 			<link rel="stylesheet" href="css/loader.css">
 			<title>login page</title>
 		</head>
+
 		<body>
-		
-			<div class="outer-wrapper">
+
 			<div class="bg-container">
 				<div class="login-container">
 					<div class="image-container"></div>
@@ -27,7 +29,7 @@
 									class="password">Password</label>
 								<br> <input class="password-container" required="required" type="password"
 									name="txtPassword">
-								<p class="error-message"><c:out value="${errorLogin}"></c:out>
+								<p class="error-message">error message<c:out value="${errorLogin}"></c:out>
 								</p>
 								<br> <a href="forgotpass" class="forgotpass">Forgot password?</a>
 								<br> <input class="login-btn" type="submit" value="Login">
@@ -48,16 +50,15 @@
 				</div>
 			</div>
 
-</div>
 
 
-	<!-- loader please do not remove -->
-	    <div class="load-wrapper">
-        <div class="main-loader">
-            <div class="box-loader">
-            </div>
-        </div>
-    </div>
+			<!-- loader please do not remove -->
+			<div class="load-wrapper">
+				<div class="main-loader">
+					<div class="box-loader">
+					</div>
+				</div>
+			</div>
 
 
 
