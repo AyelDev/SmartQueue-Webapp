@@ -4,13 +4,13 @@
 		<html>
 
 		<head>
+			<meta name="viewport" content="width=device-width", initial-scale="1.0">
 			<link rel="stylesheet" href="loginstyle.css">
 			<meta charset="UTF-8">
 			<title>login page</title>
 		</head>
 
 		<body>
-
 			<div class="bg-container">
 				<div class="login-container">
 					<div class="image-container"></div>
