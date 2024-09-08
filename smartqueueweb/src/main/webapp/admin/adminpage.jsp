@@ -17,21 +17,33 @@
 
 
 		<style>
+			@import url('./css/fonts.css');
+
 			:root {
 				--primary-color: #1e91d0;
 				--secondary-color: #00509d;
-				--body-fonts: Arial, Helvetica black;
+				--body-fonts: "Roboto Condensed", sans-serif;
 				--background-color: #F6F4EB;
 				--select-text-color: #B4B4B8;
 				--text-color: #272829;
+				font-optical-sizing: auto;
+				font-style: normal;
+			}
+
+			* {
+				font-family: var(--body-fonts);
+				padding: 0;
+				margin: 0;
 			}
 
 			body {
 				width: 100%;
 				height: 100%;
-				font-family: Arial, Helvetica black;
+				font-family: var(--body-fonts);
 				margin: 0;
 				padding: 0;
+				font-optical-sizing: auto;
+				font-style: normal;
 			}
 
 			.container {
@@ -45,12 +57,7 @@
 
 			}
 
-			.main {
-				width: 100vw;
-				height: 100vh;
-				background-color: var(--background-color);
-				display: flex;
-			}
+
 
 			.navbar {
 				width: 15vw;
@@ -60,7 +67,7 @@
 				justify-content: center;
 				align-items: center;
 				left: 0;
-
+				float: left;
 			}
 
 			.logoContainer {
@@ -237,6 +244,68 @@
 				right: 5.5rem;
 				position: absolute;
 			}
+
+			.dashboard-section {
+				width: 85vw;
+				height: 100vh;
+				background-color: var(--background-color);
+				float: right;
+				margin-left: 15%;
+				align-items: center;
+				display: flex;
+				justify-content: center;
+			}
+
+			.dashboard-section h1 {
+				color: black;
+				font-size: 2rem;
+				margin-top: -40%;
+				margin-left: -60%;
+				position: absolute;
+			}
+
+			.card-total p {
+				font-size: .7rem;
+			}
+
+			.card-total p h3 {
+				margin: 10px;
+			}
+
+			.dashboard-content {
+				width: 75vw;
+				height: 80vh;
+				justify-content: space-evenly;
+				display: flex;
+			}
+
+			.card-total {
+				width: 20%;
+				height: 20%;
+				background-image: linear-gradient(to right, #1e91d0, #00509d);
+				border-radius: 15px;
+				justify-content: space-evenly;
+				margin-top: 2rem;
+			}
+
+			.department-graph {
+				width: 30%;
+				height: 60%;
+				background-color: #ffff;
+				border-radius: 15px;
+				margin-top: 2rem;
+			}
+
+			.total-graph {
+				width: 48%;
+				height: 30%;
+				margin-top: 11%;
+				margin-left: -24%;
+				background-color: #ffff;
+				position: absolute;
+				z-index: 1;
+				border-radius: 15px;
+			}
 		</style>
 
 		<body>
@@ -310,8 +379,28 @@
 						</div>
 					</div>
 				</div>
-				<div class="main">
+				<div class="dashboard-section">
+					<h1 class="title">Dashboard</h1>
+					<div class="dashboard-content">
+						<div class="card-total"><br>
+							<p>Total counter</p>
+							<h3>100</h3>
+						</div>
+						<div class="card-total"><br>
+							<p>Total counter</p>
+							<h3>100</h3>
+						</div>
+						<div class="card-total"><br>
+							<p>Total counter</p>
+							<h3>100</h3>
+						</div>
+						<div class="department-graph">
 
+						</div>
+						<div class="total-graph">
+
+						</div>
+					</div>
 				</div>
 			</div>
 

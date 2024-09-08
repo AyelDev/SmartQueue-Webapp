@@ -196,10 +196,8 @@
 							<a href="user/userinquiry.jsp">user inquiry</a><br> <a href="#">user window</a><br> <a
 								href="#">counter window</a>
 						</div>
-						<form action="logout_Servlet">
-							<button class="dropdown-menu">Logout</button>
-						</form>
-
+					<a href="login"><button class="dropdown-menu">Logout</button></a>
+					
 
 					</div>
 
@@ -210,30 +208,33 @@
 				<b class="title-page">List of Staff</b>
 
 				<table class="counter-list" id="tablelist">
-					
+					<tr>
+						<td>loading...</td>
+					</tr>
 
 				</table>
 
 			</div>
-			
-			
 
+
+			
 
 			<script>
-			var staffListInfo = document.getElementById("tablelist");
+				var staffListInfo = document.getElementById("tablelist");
 
-			function updateData(){	
-			    var request = new XMLHttpRequest();
-			    request.open('GET', 'http://localhost:8080/smartqueueweb/JsonStaffListAPI');
-			    request.onload = function(){
-			        var data = JSON.parse(request.responseText);
-			        renderHTML(data);
-			    }
-			    request.send();
-			}
+				
+				function updateData() {
+					var request = new XMLHttpRequest();
+					request.open('GET', 'http://localhost:8080/smartqueueweb/JsonStaffListAPI');
+					request.onload = function () {
+						var data = JSON.parse(request.responseText);
+						renderHTML(data);
+					}
+					request.send();
+				}
 
-			function renderHTML(data){
-			    var htmlString = `<tr>
+				function renderHTML(data) {
+					var htmlString = `<tr>
 					<th>Id No.</th>
 					<th>Name</th>
 					<th>Contact no.</th>
@@ -243,27 +244,27 @@
 					<th>Restriction</th>
 					<th>Actions</th>
 				</tr>`;
-			    
-			    for(var i = 0; i < data.length; i++){
-			    	
-			    	htmlString += "<tr>";
-			        htmlString += "<td>" + data[i].staffID + "</td>";
-			        htmlString += "<td>" + data[i].firstname + "</td>";
-			        htmlString += "<td>" + data[i].contactNumber + "</td>";
-			        htmlString += "<td>" + data[i].email + "</td>";
-			        htmlString += "<td>" + data[i].username + "</td>";
-			        htmlString += "<td>" + data[i].password + "</td>";
-			        htmlString += "<td>" + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + "</td>";
-			        htmlString += '<td><button class="update" style="background-color: #97BE5A;">Update</button>';	
-			        htmlString += '<button class="delete" style="background-color: #EE4E4E;">Delete</button>';
-			        htmlString += "</tr>";
-			    }
-			    
-			    staffListInfo.innerHTML = htmlString;
-			}
 
-			setInterval(updateData, 1500);
-			
+					for (var i = 0; i < data.length; i++) {
+
+						htmlString += "<tr>";
+						htmlString += "<td>" + data[i].staffID + "</td>";
+						htmlString += "<td>" + data[i].firstname + "</td>";
+						htmlString += "<td>+63" + data[i].contactNumber + "</td>";
+						htmlString += "<td>" + data[i].email + "</td>";
+						htmlString += "<td>" + data[i].username + "</td>";
+						htmlString += "<td>" + data[i].password + "</td>";
+						htmlString += "<td>" + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + "</td>";
+						htmlString += '<td><a href="update?staffId='+ data[i].staffID + '"><button class="update" style="background-color: #97BE5A;">Update</button></a> ';
+						htmlString += '<a href="delete?staffId='+ data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E;">Delete</button></a>';
+						htmlString += "</tr>";
+					}
+
+					staffListInfo.innerHTML = htmlString;
+				}
+
+				setInterval(updateData, 2000);
+
 			</script>
 
 			<div class="load-wrapper">

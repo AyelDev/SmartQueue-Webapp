@@ -19,7 +19,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	}
 	
 	@Override
-	public Integer registerStaff(String firstname, String lastname, String email, int contactNumber,
+	public Integer registerStaff(String firstname, String lastname, String email, double contactNumber,
 			String username) {
 		// TODO Auto-generated method stub
 		return staffdata.registerStaff(firstname, lastname, email, contactNumber, username);

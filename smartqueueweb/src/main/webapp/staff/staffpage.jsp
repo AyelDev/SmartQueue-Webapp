@@ -49,8 +49,8 @@
 							<div class="dropdown">
 								<h3>QUEUEING</h3>
 								<div class="dropdown-content">
-									<a href="staff/user_window.jsp">User Window</a>
-									<a href="staff/counter_window.jsp">Counter Window</a>
+									<a href="userwindow">User Window</a>
+									<a href="counterwindow">Counter Window</a>
 								</div>
 							</div>
 							<div class="dropdown">
