@@ -14,10 +14,8 @@
 			<link rel="stylesheet" href="./css/loader.css">
 			<title>Admin | Dashboard</title>
 		</head>
-
-
 		<style>
-			@import url('./css/fonts.css');
+			@import url('./admin/fonts.css');
 
 			:root {
 				--primary-color: #1e91d0;
@@ -29,13 +27,11 @@
 				font-optical-sizing: auto;
 				font-style: normal;
 			}
-
-			* {
+			*{
 				font-family: var(--body-fonts);
 				padding: 0;
 				margin: 0;
 			}
-
 			body {
 				width: 100%;
 				height: 100%;
@@ -255,20 +251,17 @@
 				display: flex;
 				justify-content: center;
 			}
-
-			.dashboard-section h1 {
+			.dashboard-section h1{
 				color: black;
 				font-size: 2rem;
 				margin-top: -40%;
 				margin-left: -60%;
 				position: absolute;
 			}
-
-			.card-total p {
+			.card-total p{
 				font-size: .7rem;
 			}
-
-			.card-total p h3 {
+			.card-total p h3{
 				margin: 10px;
 			}
 
@@ -278,25 +271,22 @@
 				justify-content: space-evenly;
 				display: flex;
 			}
-
-			.card-total {
+			.card-total{
 				width: 20%;
 				height: 20%;
-				background-image: linear-gradient(to right, #1e91d0, #00509d);
+				background-image: linear-gradient(to right,#1e91d0, #00509d);
 				border-radius: 15px;
 				justify-content: space-evenly;
 				margin-top: 2rem;
 			}
-
-			.department-graph {
+			.department-graph{
 				width: 30%;
 				height: 60%;
 				background-color: #ffff;
 				border-radius: 15px;
 				margin-top: 2rem;
 			}
-
-			.total-graph {
+			.total-graph{
 				width: 48%;
 				height: 30%;
 				margin-top: 11%;
@@ -433,3 +423,20 @@
 		</body>
 
 		</html>
+
+
+
+
+		<!-- <h1>
+					Welcome
+					<c:out value="${admin}"></c:out>
+					<c:out value="${sessionScope.sessionName}"></c:out>
+				</h1>
+
+
+				<form action=logout_Servlet method=get>
+					<input type="submit" value="logout">
+				</form>
+
+				
+		 -->
