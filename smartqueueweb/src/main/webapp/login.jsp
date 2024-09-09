@@ -24,20 +24,28 @@
 						</div>
 						<div class="form-container">
 							<form action=dashboard method=post>
-								<label class="username">Username</label> <br> <input class="username-container"
-									required="required" type="text" name="txtUsername"><br> <label
-									class="password">Password</label>
-								<br> <input class="password-container" required="required" type="password"
+								<div class="username-container">
+								<input class="username-input"
+									required="required" type="text" name="txtUsername">	
+									<label for="username" class="username-label">Username</label>
+								</div>
+								
+								<br>
+								<div class="password-container">
+									<input class="password-input" required="required" type="password"
 									name="txtPassword">
-								<p class="error-message">error message<c:out value="${errorLogin}"></c:out>
+									<label for="password" class="password-label">Password</label>
+								</div>
+								
+								<p class="error-message"><c:out value="${errorLogin}"></c:out>
 								</p>
 								<br> <a href="forgotpass" class="forgotpass">Forgot password?</a>
-								<br> <input class="login-btn" type="submit" value="Login">
+								<br> <input class="login-btn" type="submit" value="Log in">
 							</form>
 						</div>
 						
-						<button class="signup-btn" type="button" value="signup-btn" onclick="document.location='signup.jsp'">Sign
-							Up</button>
+						<!-- <button class="signup-btn" type="button" value="signup-btn" onclick="document.location='signup.jsp'">Sign
+							Up</button> -->
 						<hr class="hr-left">
 						<p>or</p>
 						<hr class="hr-right">
