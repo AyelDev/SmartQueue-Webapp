@@ -6,6 +6,11 @@ public class StudentBean {
 	private String firstname;
 	private String lastname;
 	
+	public StudentBean(long idnumber, String firstname, String lastname) {
+		this.idnumber = idnumber;
+		this.firstname = firstname;
+		this.lastname = lastname;
+	}
 	
 	public long getIdnumber() {
 		return idnumber;
@@ -24,6 +29,11 @@ public class StudentBean {
 	}
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+	}
+
+	@Override
+	public String toString() {
+		return "StudentBean [idnumber=" + idnumber + ", firstname=" + firstname + ", lastname=" + lastname + "]";
 	}
 	
 	

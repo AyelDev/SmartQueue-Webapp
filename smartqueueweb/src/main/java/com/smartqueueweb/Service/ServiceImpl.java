@@ -4,13 +4,14 @@ import java.util.List;
 
 import com.smartqueueweb.DAO.AdminDAO;
 import com.smartqueueweb.DAO.StaffDAO;
+import com.smartqueueweb.DAO.StudentDAO;
 import com.smartqueueweb.Model.AdminBean;
 import com.smartqueueweb.Model.StaffBean;
 
 public class ServiceImpl implements StaffServices, StudentServices, AdminServices {
 	StaffDAO staffdata = new StaffDAO();
 	AdminDAO admindata = new AdminDAO();
-	
+	StudentDAO studentdata = new StudentDAO();
 	/////////////////// ------------------      Staff
 	@Override
 	public boolean loginStaff(String username, String password) {
@@ -55,9 +56,14 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return admindata.adminDetail(username);
 	}
+
 	
 	//////////////// -----------------------	Student
 	
+	@Override
+	public Integer addStudent(long idnumber, String firstname, String lastname) {
+		return studentdata.addStudent(idnumber, firstname, lastname);
+	}
 
 
 }
