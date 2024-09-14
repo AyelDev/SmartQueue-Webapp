@@ -123,7 +123,7 @@ body {
 }
 .password-label{
     position: absolute;
-    top: 48%;
+    top: 47.5%;
     left: 7%;
     translate: 10px 10px;
     color: var(--text-color);

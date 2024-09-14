@@ -292,8 +292,7 @@
 				margin-top: 11%;
 				margin-left: -24%;
 				background-color: #ffff;
-				position: absolute;
-				z-index: 1;
+				position: fixed;
 				border-radius: 15px;
 			}
 		</style>
