@@ -27,11 +27,13 @@
 				font-optical-sizing: auto;
 				font-style: normal;
 			}
-			*{
+
+			* {
 				font-family: var(--body-fonts);
 				padding: 0;
 				margin: 0;
 			}
+
 			body {
 				width: 100%;
 				height: 100%;
@@ -67,24 +69,19 @@
 			}
 
 			.logoContainer {
-				width: 15vw;
-				height: 7%;
-				align-items: center;
-				display: flex;
-				justify-content: center;
-				margin-top: 10px;
-			}
-
-			.title {
-				margin-left: 10px;
-				color: var(--background-color);
-				font-size: .8em;
+				width: 100%;
+				text-align: center;
 			}
 
 			.logo {
-				width: 25%;
+				width: 50%;
 				max-width: 100%;
-				object-fit: scale-down;
+				object-fit: contain;
+			}
+
+			.title {
+				color: var(--background-color);
+				font-size: 0.8em;
 			}
 
 			.adminProfile {
@@ -132,6 +129,7 @@
 				/*tlbr*/
 				overflow: hidden;
 				cursor: pointer;
+				border: none;
 			}
 
 			.profile {
@@ -139,6 +137,7 @@
 				object-fit: scale-down;
 				margin-right: 20px;
 			}
+
 
 			.caretdown {
 				mix-blend-mode: multiply;
@@ -251,17 +250,20 @@
 				display: flex;
 				justify-content: center;
 			}
-			.dashboard-section h1{
+
+			.dashboard-section h1 {
 				color: black;
 				font-size: 2rem;
 				margin-top: -40%;
 				margin-left: -60%;
 				position: absolute;
 			}
-			.card-total p{
+
+			.card-total p {
 				font-size: .7rem;
 			}
-			.card-total p h3{
+
+			.card-total p h3 {
 				margin: 10px;
 			}
 
@@ -271,22 +273,25 @@
 				justify-content: space-evenly;
 				display: flex;
 			}
-			.card-total{
+
+			.card-total {
 				width: 20%;
 				height: 20%;
-				background-image: linear-gradient(to right,#1e91d0, #00509d);
+				background-image: linear-gradient(to right, #1e91d0, #00509d);
 				border-radius: 15px;
 				justify-content: space-evenly;
 				margin-top: 2rem;
 			}
-			.department-graph{
+
+			.department-graph {
 				width: 30%;
 				height: 60%;
 				background-color: #ffff;
 				border-radius: 15px;
 				margin-top: 2rem;
 			}
-			.total-graph{
+
+			.total-graph {
 				width: 48%;
 				height: 30%;
 				margin-top: 11%;
@@ -306,7 +311,7 @@
 						<p>
 					</div>
 					<!-- admin profile -->
-					<button class="button-profile" id="button-profile"><img src="/src/main/webapp/images/profile.png"
+					<button class="button-profile" id="button-profile"><img src="./images/profile.png"
 							alt="" class="profile">ADMIN<img src="./images/caretdown.png" alt=""
 							class="caretdown"></button>
 					<div class="adminProfile" id="adminProfile">
@@ -320,6 +325,7 @@
 									class="dashboard-icon">Dashboard<img src="./images/caretright.png" alt=""
 									class="caretright"></button>
 							<div class="dropdown-dashboard">
+								<a href="admin/adminpage.jsp">Dashboard</a>
 								<a href="">Total of Counter</a>
 								<a href="">Total of Students</a>
 							</div>
@@ -342,8 +348,8 @@
 							<div class="dropdown-dashboard">
 								<a href="">Add Student</a>
 								<a href="">Add Staff</a>
-								<a href="">List of Student</a>
-								<a href="stafflist">List of Staff</a>
+								<a href="admin/list_of_student.jsp">List of Student</a>
+								<a href="admin/list_of_staff.jsp">List of Staff</a>
 							</div>
 						</div>
 

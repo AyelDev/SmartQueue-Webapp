@@ -4,237 +4,523 @@
 			<c:redirect url="/" />
 		</c:if>
 		<!DOCTYPE html>
-		<html lang="en">
 
 		<head>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
 			<script type="text/javascript" src="./scripts/fadetransition.js"></script>
-			<link rel="stylesheet" href="./css/loader.css">
-			<link rel="stylesheet"
-				href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-			<title>List of Staff</title>
+			<link rel="stylesheet" href=".css/loader.css">
+			<title>Admin | List of Staff</title>
 		</head>
+		<style>
+			@import url('./admin/fonts.css');
+
+			:root {
+				--primary-color: #1e91d0;
+				--secondary-color: #00509d;
+				--body-fonts: Arial, Helvetica black;
+				--background-color: #F6F4EB;
+				--select-text-color: #B4B4B8;
+				--text-color: #272829;
+			}
+
+			body {
+				width: 100%;
+				height: 100%;
+				font-family: Arial, Helvetica black;
+				margin: 0;
+				padding: 0;
+			}
+
+			.container {
+				width: 100%;
+				height: 100%;
+				background-color: white;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				align-items: center;
+				justify-content: center;
+
+			}
+
+			.main {
+				width: 100vw;
+				height: 100vh;
+				background-color: var(--background-color);
+				display: flex;
+			}
+
+			.navbar {
+				width: 15vw;
+				height: 100vh;
+				background-color: var(--primary-color);
+				position: fixed;
+				justify-content: center;
+				align-items: center;
+				left: 0;
+
+			}
+
+			.logoContainer {
+				width: 100%;
+				text-align: center;
+			}
+
+			.logo {
+				width: 50%;
+				max-width: 100%;
+				object-fit: contain;
+			}
+
+			.title {
+				color: var(--background-color);
+				font-size: 0.8em;
+			}
+
+			.adminProfile {
+				margin-left: 2.5rem;
+				position: absolute;
+				background-color: var(--background-color);
+				width: 9.5vw;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				z-index: 1;
+				display: none;
+			}
+
+			.adminProfile a,
+			.dropdown-dashboard a {
+				text-decoration: none;
+				color: var(--background-color);
+				overflow: hidden;
+				color: black;
+				width: 9.5vw;
+				height: 20%;
+				text-align: center;
+				align-items: center;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				padding: .5rem 0 0 0;
+				height: 2rem;
+			}
+
+			.adminProfile a:hover {
+				background-color: var(--select-text-color);
+			}
+
+			.button-profile {
+				align-items: center;
+				justify-content: center;
+				display: flex;
+				width: 10vw;
+				margin-top: 30px;
+				margin-left: 36px;
+				border-radius: 10px;
+				padding: 15px 10px 15px 10px;
+				/*tlbr*/
+				overflow: hidden;
+				cursor: pointer;
+			}
+
+			.profile {
+				width: 10%;
+				object-fit: scale-down;
+				margin-right: 20px;
+			}
+
+			.caretdown {
+				mix-blend-mode: multiply;
+				width: 10px;
+				margin-left: 20px;
+			}
+
+			/* navbar */
+			.menu-navbar {
+				margin-top: 2rem;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.dropdown {
+				position: relative;
+				display: inline-block;
+			}
+
+			.dropdown-dashboard {
+				display: none;
+				position: absolute;
+				background-color: var(--background-color);
+				min-width: 160px;
+				top: 100%;
+				left: 80%;
+				z-index: 1;
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+				border-radius: 4px;
+			}
+
+			.dropdown-dashboard a {
+				display: block;
+				text-decoration: none;
+				color: var(--text-color);
+				padding: 12px 16px;
+				text-align: center;
+			}
+
+			.dropdown-dashboard a:hover {
+				background-color: var(--select-text-color);
+			}
+
+			.dropdown-btn {
+				background: none;
+				padding: 20px;
+				display: flex;
+				align-items: center;
+				width: 20vw;
+				border: 0;
+				font-size: 15px;
+				color: #F6F4EB;
+				border-radius: 15px;
+				padding-right: 60px;
+				margin-left: 10px;
+				cursor: pointer;
+				position: relative;
+			}
+
+			.dropdown:hover .dropdown-dashboard {
+				display: block;
+			}
+
+			.dropdown-btn:hover {
+				background-color: var(--background-color);
+				width: 18vw;
+				color: var(--text-color);
+				font-weight: bold;
+			}
+
+			.dropdown-btn:hover+.dropdown-dashboard {
+				display: block;
+			}
+
+			.dashboard-icon,
+			.users-icon,
+			.display-icon,
+			.entertainment-icon,
+			.counter-icon {
+				object-fit: scale-down;
+				width: 10%;
+			}
+
+			.dashboard-icon,
+			.users-icon,
+			.display-icon,
+			.entertainment-icon,
+			.counter-icon {
+				margin-right: 17px;
+			}
+
+			.dashboard-caretright {
+				margin-left: 50px;
+			}
+
+			.caretright {
+				object-fit: scale-down;
+				width: 5%;
+				right: 5.5rem;
+				position: absolute;
+			}
+
+			.stafflist-section {
+				width: 85vw;
+				height: 100vh;
+				background-color: var(--background-color);
+				float: right;
+				margin-left: 30%;
+				align-items: center;
+				display: flex;
+				justify-content: center;
+			}
+
+			.title-page {
+				margin-top: -50%;
+			}
+
+			h1 {
+				font-size: 24px;
+				margin-bottom: 20px;
+				text-align: center;
+				color: #2c3e50;
+			}
+
+			table {
+				width: 100%;
+				border-collapse: separate;
+				border-spacing: 0;
+				border-radius: 10px;
+				overflow: hidden;
+				/* Ensures the border radius applies to the table */
+			}
+
+			thead {
+				background-color: #3498db;
+				color: #ffffff;
+			}
+
+			th {
+				padding: 12px 15px;
+				text-align: left;
+				font-size: 16px;
+				font-weight: 600;
+				border-bottom: 3px solid #2980b9;
+			}
+
+			tbody tr {
+				transition: background-color 0.3s, transform 0.3s;
+			}
+
+			tbody tr:hover {
+				background-color: #ecf0f1;
+				transform: translateY(-2px);
+			}
+
+			td {
+				padding: 12px 15px;
+				border-bottom: 1px solid #e1e5ea;
+				font-size: 14px;
+				color: #555;
+				text-align: center;
+				/* Center-align text in cells */
+			}
+
+			tr:first-child td {
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
+			}
+
+			tr:last-child td {
+				border-bottom-left-radius: 10px;
+				border-bottom-right-radius: 10px;
+			}
+
+			button {
+				border: none;
+				padding: 8px 12px;
+				font-size: 14px;
+				font-weight: bold;
+				border-radius: 5px;
+				cursor: pointer;
+				margin: 0 5px;
+				transition: background-color 0.3s, color 0.3s;
+			}
+
+			.btn.update {
+				background-color: #3498db;
+				color: #ffffff;
+			}
+
+			.btn.update:hover {
+				background-color: #2980b9;
+			}
+
+			.btn.delete {
+				background-color: #e74c3c;
+				color: #ffffff;
+			}
+
+			.btn.delete:hover {
+				background-color: #c0392b;
+			}
+
+			/* Responsive design for smaller screens */
+			@media (max-width: 768px) {
+
+				table,
+				thead,
+				tbody,
+				th,
+				td,
+				tr {
+					display: block;
+					width: 100%;
+				}
+
+				th,
+				td {
+					position: relative;
+					padding-left: 50%;
+					text-align: right;
+				}
+
+				th::before,
+				td::before {
+					content: attr(data-label);
+					position: absolute;
+					left: 0;
+					width: 50%;
+					padding-left: 10px;
+					font-weight: bold;
+					text-align: left;
+					background: #f7f9fc;
+					border-right: 1px solid #ddd;
+					white-space: nowrap;
+				}
+
+				td::before {
+					content: "";
+				}
+			}
+
+			.stafflist-content {
+				width: 90%;
+				max-width: 1000px;
+				margin: 20px;
+				background: #ffffff;
+				border-radius: 10px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				overflow: hidden;
+				padding: 20px;
+			}
+		</style>
 
 		<body>
-			<style>
-				/* superlightblue - #DFF5FF
-        light blue - 77B6EA
-        dark blue - 00296B
-        red - EE4E4E
-        white - FFFFFF */
-				* {
-					margin: 0;
-					padding: 0;
-				}
-
-				body {
-					font-family: Verdana, Geneva, Tahoma, sans-serif;
-					width: 100vw;
-					height: 100vh;
-					margin: 0;
-					overflow: hidden;
-				}
-
-				.main-container {
-					background-color: #F1F6F9;
-					width: 85vw;
-					height: 100vh;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					float: right;
-				}
-
-				.navbar {
-					background-color: #EEEDEB;
-					width: 16vw;
-					height: 100vh;
-					align-items: center;
-					justify-content: center;
-					position: fixed;
-					z-index: 1;
-					top: 0;
-					left: 0;
-					overflow-x: hidden;
-				}
-
-				.admintxt {
-					text-align: center;
-					align-items: center;
-					display: flex;
-					justify-content: center;
-					padding: 20px;
-					background-color: #77b6ea;
-					border-style: ridge;
-				}
-
-				.menu-navbar {
-					justify-content: space-evenly;
-					align-items: center;
-					text-align: center;
-					line-height: 4;
-					margin-top: 40%;
-				}
-
-				.menu-navbar,
-				.dropdown-menu,
-				.dropdown-menu a {
-					text-decoration: none;
-					background: none;
-					outline: none;
-					border: none;
-					cursor: pointer;
-					font-size: 18px;
-					flex-direction: column;
-					align-items: center;
-					justify-content: center;
-					display: block;
-					padding: 3px 30px 10px 10px;
-					text-align: center;
-					margin: 3px;
-					color: #7D7C7C;
-				}
-
-				.dropdown-menu:hover {
-					color: #191717;
-				}
-
-				.dropdown-dashboard {
-					display: none;
-					padding: 2px;
-					background-color: #B4B4B3;
-					text-decoration: none;
-					font-size: 10px;
-					width: 100%;
-					height: auto;
-				}
-
-				.dropdown-dashboard a {
-					text-decoration: none;
-					color: #ffff;
-					padding: 10px;
-				}
-
-				.dropdown-dashboard a:hover {
-					background-color: #D0D4CA;
-					color: #191717;
-				}
-
-				.fa-caret-down {
-					float: right;
-					padding-left: 20%;
-					position: absolute;
-					left: 60%;
-				}
-
-				.title-page {
-					display: flex;
-					position: absolute;
-					margin-top: -43%;
-					margin-left: -70%;
-				}
-
-				.counter-list {
-					font-family: Verdana, Geneva, Tahoma, sans-serif;
-					width: 70vw;
-					border-collapse: collapse;
-					margin-top: -40%;
-					font-size: 15px;
-					text-align: center;
-				}
-
-				.counter-list td,
-				.counter-list th {
-					border: 1px solid #7D7C7C;
-				}
-
-				.counter-list th {
-					background-color: #77B6EA;
-				}
-
-				.counter-list tr:hover {
-					background-color: #DFF5FF;
-				}
-			</style>
-
 			<div class="container">
 				<div class="navbar">
-					<div class="admintxt">
-						<b>Admin</b>
+					<div class="logoContainer">
+						<img src="../images/cec.png" alt="" class="logo">
+						<p class="title">Cebu Eastern College
+						<p>
 					</div>
+					<!-- admin profile -->
+					<button class="button-profile" id="button-profile"><img src="../images/profile.png" alt=""
+							class="profile">ADMIN<img src="../images/caretdown.png" alt="" class="caretdown"></button>
+					<div class="adminProfile" id="adminProfile">
+						<a href="">Settings</a>
+						<a href="#">Signout</a>
+					</div>
+
 					<div class="menu-navbar">
-						<a href="adminpage.jsp" class="dropdown-menu">Dashboard</a>
+						<div class="dropdown">
+							<button class="dropdown-btn"><img src="../images/dashboard.png" alt=""
+									class="dashboard-icon">Dashboard<img src="./images/caretright.png" alt=""
+									class="caretright"></button>
+							<div class="dropdown-dashboard">
+								<a href="adminpage.jsp">Dashboard</a>
+								<a href="">Total of Counter</a>
+								<a href="">Total of Students</a>
+							</div>
+						</div>
 
-						<button class="dropdown-menu">
-							Counter<i class="fa fa-caret-down"></i>
-						</button>
-						<div class="dropdown-dashboard">
-							<a href="#">add window</a><br> <a href="list_of_counter.jsp">list
-								of counter</a>
+						<div class="dropdown">
+							<button class="dropdown-btn"><img src="../images/counter.png" alt=""
+									class="counter-icon">Counter<img src="./images/caretright.png" alt=""
+									class="caretright"></button>
+							<div class="dropdown-dashboard">
+								<a href="">Add Counter</a>
+								<a href="list_of_counter.jsp">List of Counter</a>
+							</div>
 						</div>
-						<button class="dropdown-menu">
-							User<i class="fa fa-caret-down"></i>
-						</button>
-						<div class="dropdown-dashboard">
-							<a href="#">add student info</a><br> <a href="#">add staff
-								account</a><br> <a href="list_of_student.jsp">list of student
-								info</a><br> <a href="http://localhost:8080/smartqueueweb/StaffList_Servlet">list
-								of staff</a>
-						</div>
-						<button class="dropdown-menu">
-							Entertainment<i class="fa fa-caret-down"></i>
-						</button>
-						<div class="dropdown-dashboard">
-							<a href="#">advertisement</a><br> <a href="#">add video</a>
-						</div>
-						<button class="dropdown-menu">
-							Display<i class="fa fa-caret-down"></i>
-						</button>
-						<div class="dropdown-dashboard">
-							<a href="user/userinquiry.jsp">user inquiry</a><br> <a href="#">user window</a><br> <a
-								href="#">counter window</a>
-						</div>
-					<a href="login"><button class="dropdown-menu">Logout</button></a>
-					
 
+						<div class="dropdown">
+							<button class="dropdown-btn"><img src="../images/users.png" alt=""
+									class="users-icon">Users<img src="./images/caretright.png" alt=""
+									class="caretright"></button>
+							<div class="dropdown-dashboard">
+								<a href="">Add Student</a>
+								<a href="">Add Staff</a>
+								<a href="">List of Student</a>
+								<a href="list_of_staff.jsp">List of Staff</a>
+							</div>
+						</div>
+
+						<div class="dropdown">
+							<button class="dropdown-btn"><img src="../images/entertainment.png" alt=""
+									class="entertainment-icon">Entertainment<img src="./images/caretright.png" alt=""
+									class="caretright"></button>
+							<div class="dropdown-dashboard">
+								<a href="">Video advertisement</a>
+							</div>
+						</div>
+
+						<div class="dropdown">
+							<button class="dropdown-btn"><img src="../images/display.png" alt=""
+									class="display-icon">Display<img src="./images/caretright.png" alt=""
+									class="caretright"></button>
+							<div class="dropdown-dashboard">
+								<a href="">User Inquiry</a>
+								<a href="">User Window</a>
+								<a href="">Counter Window</a>
+							</div>
+						</div>
 					</div>
-
 				</div>
-			</div>
+				<div class="stafflist-section">
+					<div class="stafflist-content">
+						<h1>Staff List</h1>
+						<table>
+							<thead>
+								<tr>
 
-			<div class="main-container">
-				<b class="title-page">List of Staff</b>
+									<th>Id No.</th>
+									<th>Name</th>
+									<th>Contact no.</th>
+									<th>Email</th>
+									<th>Username</th>
+									<th>Password</th>
+									<th>Restriction</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
 
-				<table class="counter-list" id="tablelist">
-					<tr>
-						<td>loading...</td>
-					</tr>
+								</tr>
+								<tr>
 
-				</table>
+								</tr>
+								<tr>
 
-			</div>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 
+				<script>
+					var dropdown = document.getElementsByClassName("button-profile");
+					var i;
 
-			
+					for (i = 0; i < dropdown.length; i++) {
+						dropdown[i].addEventListener("click", function () {
 
-			<script>
-				var staffListInfo = document.getElementById("tablelist");
-
-				
-				function updateData() {
-					var request = new XMLHttpRequest();
-					request.open('GET', 'http://localhost:8080/smartqueueweb/JsonStaffListAPI');
-					request.onload = function () {
-						var data = JSON.parse(request.responseText);
-						renderHTML(data);
+							var dropdownContent = this.nextElementSibling;
+							if (dropdownContent.style.display === "block") {
+								dropdownContent.style.display = "none";
+							} else {
+								dropdownContent.style.display = "block";
+							}
+						});
 					}
-					request.send();
-				}
 
-				function renderHTML(data) {
-					var htmlString = `<tr>
+
+				</script>
+				<script>
+					var staffListInfo = document.getElementById("tablelist");
+
+
+					function updateData() {
+						var request = new XMLHttpRequest();
+						request.open('GET', 'http://localhost:8080/smartqueueweb/JsonStaffListAPI');
+						request.onload = function () {
+							var data = JSON.parse(request.responseText);
+							renderHTML(data);
+						}
+						request.send();
+					}
+
+					function renderHTML(data) {
+						var htmlString = `<tr>
 					<th>Id No.</th>
 					<th>Name</th>
 					<th>Contact no.</th>
@@ -245,34 +531,52 @@
 					<th>Actions</th>
 				</tr>`;
 
-					for (var i = 0; i < data.length; i++) {
+						for (var i = 0; i < data.length; i++) {
 
-						htmlString += "<tr>";
-						htmlString += "<td>" + data[i].staffID + "</td>";
-						htmlString += "<td>" + data[i].firstname + "</td>";
-						htmlString += "<td>+63" + data[i].contactNumber + "</td>";
-						htmlString += "<td>" + data[i].email + "</td>";
-						htmlString += "<td>" + data[i].username + "</td>";
-						htmlString += "<td>" + data[i].password + "</td>";
-						htmlString += "<td>" + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + "</td>";
-						htmlString += '<td><a href="update?staffId='+ data[i].staffID + '"><button class="update" style="background-color: #97BE5A;">Update</button></a> ';
-						htmlString += '<a href="delete?staffId='+ data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E;">Delete</button></a>';
-						htmlString += "</tr>";
+							htmlString += "<tr>";
+							htmlString += "<td>" + data[i].staffID + "</td>";
+							htmlString += "<td>" + data[i].firstname + "</td>";
+							htmlString += "<td>+63" + data[i].contactNumber + "</td>";
+							htmlString += "<td>" + data[i].email + "</td>";
+							htmlString += "<td>" + data[i].username + "</td>";
+							htmlString += "<td>" + data[i].password + "</td>";
+							htmlString += "<td>" + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + "</td>";
+							htmlString += '<td><a href="update?staffId=' + data[i].staffID + '"><button class="update" style="background-color: #97BE5A;">Update</button></a> ';
+							htmlString += '<a href="delete?staffId=' + data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E;">Delete</button></a>';
+							htmlString += "</tr>";
+						}
+
+						staffListInfo.innerHTML = htmlString;
 					}
 
-					staffListInfo.innerHTML = htmlString;
-				}
+					setInterval(updateData, 2000);
 
-				setInterval(updateData, 2000);
+				</script>
 
-			</script>
 
-			<div class="load-wrapper">
-				<div class="main-loader">
-					<div class="box-loader">
+				<div class="load-wrapper">
+					<div class="main-loader">
+						<div class="box-loader">
+						</div>
 					</div>
 				</div>
-			</div>
 		</body>
 
 		</html>
+
+
+
+
+		<!-- <h1>
+					Welcome
+					<c:out value="${admin}"></c:out>
+					<c:out value="${sessionScope.sessionName}"></c:out>
+				</h1>
+
+
+				<form action=logout_Servlet method=get>
+					<input type="submit" value="logout">
+				</form>
+
+				
+		 -->
