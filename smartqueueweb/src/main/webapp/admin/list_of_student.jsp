@@ -454,39 +454,18 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Name</th>
                                 <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Course</th>
                                 <th>Options</th> <!-- Added Options Header -->
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tablelist">
                             <tr>
-                                <td>1</td>
-                                <td>Cindy Mae Labra</td>
-                                <td>001101101</td>
-                                <td>
-                                    <button class="btn update">Update</button>
-                                    <button class="btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Ariel Abelgas</td>
-                                <td>0110101</td>
-                                <td>
-                                    <button class="btn update">Update</button>
-                                    <button class="btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Irish Cabanero</td>
-                                <td>1023342</td>
-                                <td>
-                                    <button class="btn update">Update</button>
-                                    <button class="btn delete">Delete</button>
-                                </td>
+                                <td>Loading...</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -508,6 +487,37 @@
                         }
                     });
                 }
+
+                var staffListInfo = document.getElementById("tablelist");
+
+                function updateData() {
+                    var request = new XMLHttpRequest();
+                    request.open('GET', 'http://localhost:8080/smartqueueweb/JsonStudentListAPI');
+                    request.onload = function () {
+                        var data = JSON.parse(request.responseText);
+                        renderHTML(data);
+                    }
+                    request.send();
+                }
+
+                function renderHTML(data) {
+                    var htmlString = ``;
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        htmlString += "<tr>";
+                        htmlString += "<td>" + data[i].idnumber + "</td>";
+                        htmlString += "<td>" + data[i].firstname + " " + data[i].middlename + " " + data[i].lastname + " </td>";
+                        htmlString += "<td>" + data[i].course + "</td>";
+                        htmlString += '<td><a href="update?staffId=' + data[i].staffID + '"><button class="update" style="background-color: #97BE5A;">Update</button></a> ';
+                        htmlString += '<a href="delete?staffId=' + data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E;">Delete</button></a>';
+                        htmlString += "</tr>";
+                    }
+
+                    staffListInfo.innerHTML = htmlString;
+                }
+
+                setInterval(updateData, 2000);
 
 
             </script>
