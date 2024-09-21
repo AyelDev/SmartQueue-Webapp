@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="./scripts/fadetransition.js"></script>
+    <link rel="stylesheet" href="./css/loader.css">
     <title>Admin | List of Student</title>
 </head>
 
@@ -379,7 +382,7 @@
         <div class="container">
             <div class="navbar">
                 <div class="logoContainer">
-                    <img src="../images/cec.png" alt="" class="logo">
+                    <img src="./images/cec.png" alt="" class="logo">
                     <p class="title">Cebu Eastern College
                     <p>
                 </div>
@@ -388,7 +391,7 @@
                         class="profile">ADMIN<img src="../images/caretdown.png" alt="" class="caretdown"></button>
                 <div class="adminProfile" id="adminProfile">
                     <a href="">Settings</a>
-                    <a href="#">Signout</a>
+                    <a href="login">Signout</a>
                 </div>
 
                 <div class="menu-navbar">
@@ -397,7 +400,7 @@
                                 class="dashboard-icon">Dashboard<img src="./images/caretright.png" alt=""
                                 class="caretright"></button>
                         <div class="dropdown-dashboard">
-                            <a href="adminpage.jsp">Dashboard</a>
+                            <a href="dashboard">Dashboard</a>
                             <a href="">Total of Counter</a>
                             <a href="">Total of Students</a>
                         </div>
@@ -409,7 +412,7 @@
                                 class="caretright"></button>
                         <div class="dropdown-dashboard">
                             <a href="">Add Counter</a>
-                            <a href="list_of_counter.jsp">List of Counter</a>
+                            <a href="listofcounter">List of Counter</a>
                         </div>
                     </div>
 
@@ -419,8 +422,8 @@
                         <div class="dropdown-dashboard">
                             <a href="">Add Student</a>
                             <a href="">Add Staff</a>
-                            <a href="">List of Student</a>
-                            <a href="list_of_staff.jsp">List of Staff</a>
+                            <a href="studentlist">List of Student</a>
+                            <a href="stafflist">List of Staff</a>
                         </div>
                     </div>
 
@@ -451,39 +454,18 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Name</th>
                                 <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Course</th>
                                 <th>Options</th> <!-- Added Options Header -->
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tablelist">
                             <tr>
-                                <td>1</td>
-                                <td>Cindy Mae Labra</td>
-                                <td>001101101</td>
-                                <td>
-                                    <button class="btn update">Update</button>
-                                    <button class="btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Ariel Abelgas</td>
-                                <td>0110101</td>
-                                <td>
-                                    <button class="btn update">Update</button>
-                                    <button class="btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Irish Cabanero</td>
-                                <td>1023342</td>
-                                <td>
-                                    <button class="btn update">Update</button>
-                                    <button class="btn delete">Delete</button>
-                                </td>
+                                <td>Loading...</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -506,8 +488,47 @@
                     });
                 }
 
+                var staffListInfo = document.getElementById("tablelist");
+
+                function updateData() {
+                    var request = new XMLHttpRequest();
+                    request.open('GET', 'http://localhost:8080/smartqueueweb/JsonStudentListAPI');
+                    request.onload = function () {
+                        var data = JSON.parse(request.responseText);
+                        renderHTML(data);
+                    }
+                    request.send();
+                }
+
+                function renderHTML(data) {
+                    var htmlString = ``;
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        htmlString += "<tr>";
+                        htmlString += "<td>" + data[i].idnumber + "</td>";
+                        htmlString += "<td>" + data[i].firstname + " " + data[i].middlename + " " + data[i].lastname + " </td>";
+                        htmlString += "<td>" + data[i].course + "</td>";
+                        htmlString += '<td><a href="update?staffId=' + data[i].staffID + '"><button class="update" style="background-color: #97BE5A;">Update</button></a> ';
+                        htmlString += '<a href="delete?staffId=' + data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E;">Delete</button></a>';
+                        htmlString += "</tr>";
+                    }
+
+                    staffListInfo.innerHTML = htmlString;
+                }
+
+                setInterval(updateData, 2000);
+
 
             </script>
+
+            <div class="load-wrapper">
+                <div class="main-loader">
+                    <div class="box-loader">
+                    </div>
+                </div>
+            </div>
+
     </body>
 
 </html>
