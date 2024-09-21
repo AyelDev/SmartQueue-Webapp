@@ -77,6 +77,7 @@
 				width: 50%;
 				max-width: 100%;
 				object-fit: contain;
+				margin-top: 15px;
 			}
 
 			.title {
@@ -94,6 +95,7 @@
 				text-align: center;
 				z-index: 1;
 				display: none;
+				border-radius: 7px;
 			}
 
 			.adminProfile a,
@@ -115,6 +117,7 @@
 
 			.adminProfile a:hover {
 				background-color: var(--select-text-color);
+				border-radius: 7px;
 			}
 
 			.button-profile {
@@ -161,24 +164,30 @@
 				display: none;
 				position: absolute;
 				background-color: var(--background-color);
-				min-width: 160px;
+				width: 120px;
 				top: 100%;
-				left: 80%;
+				left: 70%;
 				z-index: 1;
 				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 				border-radius: 4px;
 			}
 
 			.dropdown-dashboard a {
-				display: block;
+				display: flex;
 				text-decoration: none;
 				color: var(--text-color);
-				padding: 12px 16px;
 				text-align: center;
+				align-items: center;
+				justify-content: center;
+				font-size: 11px;
 			}
 
 			.dropdown-dashboard a:hover {
 				background-color: var(--select-text-color);
+				border-radius: 4px;
+				padding: 3px;
+				margin-top: -7%;
+				width: 115px;
 			}
 
 			.dropdown-btn {
@@ -325,7 +334,7 @@
 									class="dashboard-icon">Dashboard<img src="./images/caretright.png" alt=""
 									class="caretright"></button>
 							<div class="dropdown-dashboard">
-								<a href="admin/adminpage.jsp">Dashboard</a>
+								<a href="#">Dashboard</a>
 								<a href="">Total of Counter</a>
 								<a href="">Total of Students</a>
 							</div>
@@ -382,11 +391,11 @@
 							<h3>100</h3>
 						</div>
 						<div class="card-total"><br>
-							<p>Total counter</p>
+							<p>Total student</p>
 							<h3>100</h3>
 						</div>
 						<div class="card-total"><br>
-							<p>Total counter</p>
+							<p>Total transaction</p>
 							<h3>100</h3>
 						</div>
 						<div class="department-graph">
