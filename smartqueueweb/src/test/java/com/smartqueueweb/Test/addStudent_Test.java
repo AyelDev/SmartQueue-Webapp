@@ -14,7 +14,7 @@ public class addStudent_Test {
 		
 		ServiceImpl service = new ServiceImpl();
 		
-		int actual = service.addStudent(123131231, "ariel", "abelgas");
+		int actual = service.addStudent(1231231, "ariel", "piodena", "abelgas", "BSIT");
 		int expected = 1;
 		
 		assertEquals(expected, actual);

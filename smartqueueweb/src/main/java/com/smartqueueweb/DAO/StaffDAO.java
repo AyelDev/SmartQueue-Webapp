@@ -140,14 +140,20 @@ public class StaffDAO extends SQLConnection {
 			listOfStaff = new ArrayList<StaffBean>();
 			
 			while(rs.next()) {
-				staffbean = new StaffBean(rs.getInt("staff_id"), rs.getString("username"), rs.getString("password") 
-						,rs.getString("firstname"), rs.getString("lastname"), rs.getString("email")
-						,rs.getDouble("contact_number"), rs.getInt("isLocked"));
+				staffbean = new StaffBean(rs.getInt("staff_id"), 
+				rs.getString("username"), 
+				rs.getString("password"),
+				rs.getString("firstname"), 
+				rs.getString("lastname"), 
+				rs.getString("email"),
+				rs.getDouble("contact_number"), 
+				rs.getInt("isLocked"));
 				listOfStaff.add(staffbean);
 			}
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}finally {
 			SQLClose();
 		}

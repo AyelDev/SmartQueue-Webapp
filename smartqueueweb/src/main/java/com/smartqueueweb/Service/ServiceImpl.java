@@ -7,6 +7,7 @@ import com.smartqueueweb.DAO.StaffDAO;
 import com.smartqueueweb.DAO.StudentDAO;
 import com.smartqueueweb.Model.AdminBean;
 import com.smartqueueweb.Model.StaffBean;
+import com.smartqueueweb.Model.StudentBean;
 
 public class ServiceImpl implements StaffServices, StudentServices, AdminServices {
 	StaffDAO staffdata = new StaffDAO();
@@ -61,8 +62,14 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	//////////////// -----------------------	Student
 	
 	@Override
-	public Integer addStudent(long idnumber, String firstname, String lastname) {
-		return studentdata.addStudent(idnumber, firstname, lastname);
+	public Integer addStudent(long idnumber, String firstname, String middlename, String lastname, String course) {
+		return studentdata.addStudent(idnumber, firstname, middlename, lastname, course);
+	}
+
+	@Override
+	public List<StudentBean> listsOfStudent() {
+		// TODO Auto-generated method stub
+		return studentdata.listOfStudent();
 	}
 
 
