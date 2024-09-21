@@ -41,7 +41,6 @@
 									name="txtConfirmPassword" placeholder="Confirm Password">
 								<br> <input class="signup-btn" type="submit" value="Signup">
 							</form>
-							<a href="login.jsp" class="backtologin">Back to login.</a>
 						</div>
 
 

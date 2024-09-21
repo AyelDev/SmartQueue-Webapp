@@ -333,7 +333,7 @@
 									class="dashboard-icon">Dashboard<img src="./images/caretright.png" alt=""
 									class="caretright"></button>
 							<div class="dropdown-dashboard">
-								<a href="#">Dashboard</a>
+								<a href="dashboard">Dashboard</a>
 								<a href="">Total of Counter</a>
 								<a href="">Total of Students</a>
 							</div>
