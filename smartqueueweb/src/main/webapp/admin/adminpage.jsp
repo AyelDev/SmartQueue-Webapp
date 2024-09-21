@@ -395,7 +395,7 @@
 							<h3>100</h3>
 						</div>
 						<div class="card-total"><br>
-							<p>Total Transaction</p>
+							<p>Total transaction</p>
 							<h3>100</h3>
 						</div>
 						<div class="department-graph">
