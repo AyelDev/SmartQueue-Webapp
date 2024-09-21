@@ -507,7 +507,7 @@
 
                         htmlString += "<tr>";
                         htmlString += "<td>" + data[i].idnumber + "</td>";
-                        htmlString += "<td>" + data[i].firstname + " " + data[i].middlename + " " + data[i].middlename + " </td>";
+                        htmlString += "<td>" + data[i].firstname + " " + data[i].middlename + " " + data[i].lastname + " </td>";
                         htmlString += "<td>" + data[i].course + "</td>";
                         htmlString += '<td><a href="update?staffId=' + data[i].staffID + '"><button class="update" style="background-color: #97BE5A;">Update</button></a> ';
                         htmlString += '<a href="delete?staffId=' + data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E;">Delete</button></a>';

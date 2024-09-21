@@ -311,9 +311,8 @@
 						<p>
 					</div>
 					<!-- admin profile -->
-					<button class="button-profile" id="button-profile"><img src="./images/profile.png"
-							alt="" class="profile">ADMIN<img src="./images/caretdown.png" alt=""
-							class="caretdown"></button>
+					<button class="button-profile" id="button-profile"><img src="./images/profile.png" alt=""
+							class="profile">ADMIN<img src="./images/caretdown.png" alt="" class="caretdown"></button>
 					<div class="adminProfile" id="adminProfile">
 						<a href="">Settings</a>
 						<a href="login">Signout</a>
@@ -351,7 +350,7 @@
 								<a href="studentlist">List of Student</a>
 								<a href="stafflist">List of Staff</a>
 							</div>
-						</div> 
+						</div>
 
 						<div class="dropdown">
 							<button class="dropdown-btn"><img src="./images/entertainment.png" alt=""
@@ -390,15 +389,16 @@
 							<h3>100</h3>
 						</div>
 						<div class="department-graph">
-
+							<canvas id="myPie"></canvas>
 						</div>
 						<div class="total-graph">
-
+							<canvas id="myChart"></canvas>
 						</div>
 					</div>
 				</div>
 			</div>
 
+			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 			<script>
 				var dropdown = document.getElementsByClassName("button-profile");
 				var i;
@@ -414,6 +414,125 @@
 						}
 					});
 				}
+
+
+				/* <summary>
+				CHARTJS.....	
+				</summary>*/
+
+				let staffNum, studentNum, inquiryNum;
+
+				Promise.all([
+					fetch('http://localhost:8080/smartqueueweb/JsonStaffListAPI'),
+					fetch('http://localhost:8080/smartqueueweb/JsonStudentListAPI')
+					// fetch('http://localhost:8080/smartqueueweb/JsonInquiryListAPI')
+				])
+					.then(responses => {
+						responses.forEach(response => {
+							if (!response.ok) {
+								throw new Error('Network response problem' + response.statusText);
+							}
+						});
+						return Promise.all(responses.map(response => response.json()));
+					})
+					.then(data => {
+						staffNum = data[0].length; // Staff count
+						studentNum = data[1].length; // Student count
+						inquiryNum = 10; // Inquiry count
+
+						console.log(studentNum, staffNum, inquiryNum); // Use as needed
+						myChart(studentNum, staffNum, inquiryNum);
+					})
+					.catch(error => {
+						console.error('There was a problem with the fetch operation:', error);
+					});
+
+
+
+				// fetch('http://localhost:8080/smartqueueweb/JsonStaffListAPI')
+				// 	.then(response => {
+				// 		if (!response.ok) {
+				// 			throw new Error('Network response was not ok ' + response.statusText);
+				// 		}
+				// 		return response.json();
+				// 	})
+				// 	.then(data => {
+				// 		let student = 3;
+				// 		let staff = data.length; // Get the number of items
+				// 		let totalInquiry = 20;
+				// 		myChart(student, staff, totalInquiry);
+				// 	})
+				// 	.catch(error => {
+				// 		console.error('There was a problem with the fetch operation:', error);
+				// 	});
+
+
+				let delayed;
+				function myChart(studentNum, staffNum, inquiryNum) {
+					const ctx = document.querySelector('#myChart');
+
+
+					new Chart(ctx, {
+						type: 'bar',
+						data: {
+							labels: ['Students', 'Staff', 'Inquiry Today'],
+							datasets: [{
+								label: 'Total Number',
+								data: [studentNum, staffNum, inquiryNum],
+								borderWidth: 2
+							}]
+						},
+						options: {
+							animation: {
+								onComplete: () => {
+									delayed = true;
+								},
+								delay: (context) => {
+									let delay = 0;
+									if (context.type === 'data' && context.mode === 'default' && !delayed) {
+										delay = context.dataIndex * 2000 + context.datasetIndex * 400;
+									}
+									return delay;
+								},
+							},
+							scales: {
+								y: {
+									beginAtZero: true
+								}
+							}
+						}
+					});
+				}
+
+
+				const ctz = document.querySelector('#myPie');
+				let pattern;
+				new Chart(ctz, {
+					type: 'doughnut',
+					data: {
+						labels: ['BSIT', 'BEED', 'DEVCOM', 'BSTM', 'BSHM'],
+						datasets: [{
+							data: [19, 10, 50, 30, 20],
+						}],
+
+
+					},
+					options: {
+						animation: {
+							onComplete: () => {
+								delayed = true;
+							},
+							delay: (context) => {
+								let delay = 0;
+								if (context.type === 'data' && context.mode === 'default' && !delayed) {
+									delay = context.dataIndex * 300 + context.datasetIndex * 200;
+								}
+								return delay;
+							},
+						}
+					}
+				});
+
 
 
 			</script>
