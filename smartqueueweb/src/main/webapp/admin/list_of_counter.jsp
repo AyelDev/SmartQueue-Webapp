@@ -384,7 +384,9 @@
         <div class="container">
             <div class="navbar">
                 <div class="logoContainer">
-                    <img src="./images/cec.png" alt="" class="logo">
+                    <a href="dashboard">
+                        <img src="./images/cec.png" alt="" class="logo">
+                    </a>
                     <p class="title">Cebu Eastern College
                     <p>
                 </div>
