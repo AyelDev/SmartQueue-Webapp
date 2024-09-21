@@ -472,15 +472,16 @@
 									<th>Actions</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="tablelist">
 								<tr>
-
-								</tr>
-								<tr>
-
-								</tr>
-								<tr>
-
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>Loading data please wait...</td>
+									<td></td>
+									<td></td>
+									<td></td>
 								</tr>
 							</tbody>
 						</table>
@@ -520,16 +521,7 @@
 					}
 
 					function renderHTML(data) {
-						var htmlString = `<tr>
-					<th>Id No.</th>
-					<th>Name</th>
-					<th>Contact no.</th>
-					<th>Email</th>
-					<th>Username</th>
-					<th>Password</th>
-					<th>Restriction</th>
-					<th>Actions</th>
-				</tr>`;
+						var htmlString = ``;
 
 						for (var i = 0; i < data.length; i++) {
 
