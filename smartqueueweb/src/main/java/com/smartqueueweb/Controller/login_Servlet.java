@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.smartqueueweb.Model.StaffBean;
 import com.smartqueueweb.Service.ServiceImpl;
 
-@WebServlet({"/login_Servlet", "/dashboard"})
+@WebServlet({ "/login_Servlet", "/dashboard" })
 public class login_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -28,12 +28,12 @@ public class login_Servlet extends HttpServlet {
 		String passWord = request.getParameter("txtPassword");
 		HttpSession session = request.getSession();
 		// PrintWriter out = response.getWriter();
-		
+
 		boolean isAdminLogTrue = services.loginAdmin(userName, passWord);
 		boolean isStaffLogTrue = services.loginStaff(userName, passWord);
-		
+
 		boolean isStaffLocked = services.isStaffLocked(userName);
-		
+
 		if (isAdminLogTrue) {
 			session.setAttribute("sessionAdmin", services.adminDetails(userName));
 			rd = request.getRequestDispatcher("admin/adminpage.jsp");
@@ -46,14 +46,14 @@ public class login_Servlet extends HttpServlet {
 			rd = request.getRequestDispatcher("staff/staffpage.jsp");
 			rd.forward(request, response);
 		}
-		
+
 		if (!isStaffLogTrue && !isAdminLogTrue) {
 			request.setAttribute("errorLogin", "login failed");
 			rd = request.getRequestDispatcher("login.jsp");
 			rd.include(request, response);
 		}
-		
-		if(isStaffLocked) {
+
+		if (isStaffLocked) {
 			request.setAttribute("errorLogin", "Your Account is Locked Please Contact the Admin");
 			rd = request.getRequestDispatcher("login.jsp");
 			rd.include(request, response);
@@ -61,4 +61,22 @@ public class login_Servlet extends HttpServlet {
 
 	}
 
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+
+		boolean loginSessionsAdmin = session.getAttribute("sessionAdmin") != null ? true : false;
+		boolean loginSessionsStaff = session.getAttribute("sessionStaff") != null ? true : false;
+		
+		if(loginSessionsAdmin) {
+			rd = request.getRequestDispatcher("admin/adminpage.jsp");
+			rd.forward(request, response);
+		}
+		
+		request.setAttribute("errorLogin", "Access Denied");
+		rd = request.getRequestDispatcher("login.jsp");
+		rd.include(request, response);
+		
+	}
 }

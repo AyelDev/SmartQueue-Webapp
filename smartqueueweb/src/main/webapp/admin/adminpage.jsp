@@ -325,7 +325,7 @@
 									class="dashboard-icon">Dashboard<img src="./images/caretright.png" alt=""
 									class="caretright"></button>
 							<div class="dropdown-dashboard">
-								<a href="admin/adminpage.jsp">Dashboard</a>
+								<a href="dashboard">Dashboard</a>
 								<a href="">Total of Counter</a>
 								<a href="">Total of Students</a>
 							</div>
@@ -337,7 +337,7 @@
 									class="caretright"></button>
 							<div class="dropdown-dashboard">
 								<a href="">Add Counter</a>
-								<a href="admin/list_of_counter.jsp">List of Counter</a>
+								<a href="listofcounter">List of Counter</a>
 							</div>
 						</div>
 
@@ -348,10 +348,10 @@
 							<div class="dropdown-dashboard">
 								<a href="">Add Student</a>
 								<a href="">Add Staff</a>
-								<a href="admin/list_of_student.jsp">List of Student</a>
-								<a href="admin/list_of_staff.jsp">List of Staff</a>
+								<a href="studentlist">List of Student</a>
+								<a href="stafflist">List of Staff</a>
 							</div>
-						</div>
+						</div> 
 
 						<div class="dropdown">
 							<button class="dropdown-btn"><img src="./images/entertainment.png" alt=""

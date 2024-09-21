@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="./scripts/fadetransition.js"></script>
-    <link rel="stylesheet" href=".css/loader.css">
+    <link rel="stylesheet" href="./css/loader.css">
     <title>Admin | List of Counter</title>
 </head>
 
@@ -384,7 +384,7 @@
         <div class="container">
             <div class="navbar">
                 <div class="logoContainer">
-                    <img src="../images/cec.png" alt="" class="logo">
+                    <img src="./images/cec.png" alt="" class="logo">
                     <p class="title">Cebu Eastern College
                     <p>
                 </div>
@@ -393,7 +393,7 @@
                         class="profile">ADMIN<img src="../images/caretdown.png" alt="" class="caretdown"></button>
                 <div class="adminProfile" id="adminProfile">
                     <a href="">Settings</a>
-                    <a href="#">Signout</a>
+                    <a href="login">Signout</a>
                 </div>
 
                 <div class="menu-navbar">
@@ -402,7 +402,7 @@
                                 class="dashboard-icon">Dashboard<img src="./images/caretright.png" alt=""
                                 class="caretright"></button>
                         <div class="dropdown-dashboard">
-                            <a href="adminpage.jsp">Dashboard</a>
+                            <a href="dashboard">Dashboard</a>
                             <a href="">Total of Counter</a>
                             <a href="">Total of Students</a>
                         </div>
@@ -414,7 +414,7 @@
                                 class="caretright"></button>
                         <div class="dropdown-dashboard">
                             <a href="">Add Counter</a>
-                            <a href="admin/list_of_counter.jsp">List of Counter</a>
+                            <a href="listofcounter">List of Counter</a>
                         </div>
                     </div>
 
@@ -424,8 +424,8 @@
                         <div class="dropdown-dashboard">
                             <a href="">Add Student</a>
                             <a href="">Add Staff</a>
-                            <a href="list_of_student.jsp">List of Student</a>
-                            <a href="list_of_staff.jsp">List of Staff</a>
+                            <a href="studentlist">List of Student</a>
+                            <a href="stafflist">List of Staff</a>
                         </div>
                     </div>
 
@@ -457,10 +457,10 @@
                         <thead>
                             <tr>
                                 <th>Counter no.</th>
-								<th>Description</th>
-								<th>Created date</th>
-								<th>Status</th>
-								<th>Actions</th>
+                                <th>Description</th>
+                                <th>Created date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -517,6 +517,14 @@
 
 
             </script>
+
+            <div class="load-wrapper">
+                <div class="main-loader">
+                    <div class="box-loader">
+                    </div>
+                </div>
+            </div>
+
     </body>
 
 </html>
