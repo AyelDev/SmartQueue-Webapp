@@ -428,12 +428,15 @@
 				/* <summary>
 				CHARTJS.....	
 				</summary>*/
-
 				let staffNum, studentNum, inquiryNum;
-
+				let BSIT = 0;
+				let BEED = 0;
+				let DEVCOM = 0;
+				let BSTM = 0;
+				let BSHM = 0;
 				Promise.all([
-					fetch('http://localhost:8080/smartqueueweb/JsonStaffListAPI'),
-					fetch('http://localhost:8080/smartqueueweb/JsonStudentListAPI')
+					fetch('/smartqueueweb/JsonStaffListAPI'),
+					fetch('/smartqueueweb/JsonStudentListAPI')
 					// fetch('http://localhost:8080/smartqueueweb/JsonInquiryListAPI')
 				])
 					.then(responses => {
@@ -449,8 +452,29 @@
 						studentNum = data[1].length; // Student count
 						inquiryNum = 10; // Inquiry count
 
+						data[1].forEach(item => { 
+							if(item.course.includes('BSIT')){ 
+								BSIT++;
+							}
+							if(item.course.includes('BEED')){ 
+								BEED++
+							}
+							if(item.course.includes('DEVCOM')){ 
+								DEVCOM++
+							}
+							if(item.course.includes('BSTM')){ 
+								BSTM++
+							}
+							if(item.course.includes('BSHM')){ 
+								BSHM++
+							}
+						 });
+						
+					
+				
 						console.log(studentNum, staffNum, inquiryNum); // Use as needed
 						myChart(studentNum, staffNum, inquiryNum);
+						PieChart(BSIT, BEED, DEVCOM, BSTM, BSHM)
 					})
 					.catch(error => {
 						console.error('There was a problem with the fetch operation:', error);
@@ -513,36 +537,35 @@
 					});
 				}
 
+				function PieChart(BSIT, BEED, DEVCOM, BSTM, BSHM) {
+					const ctz = document.querySelector('#myPie');
+					let pattern;
+					new Chart(ctz, {
+						type: 'doughnut',
+						data: {
+							labels: ['BSIT', 'BEED', 'DEVCOM', 'BSTM', 'BSHM'],
+							datasets: [{
+								data: [BSIT, BEED, DEVCOM, BSTM, BSHM],
+							}],
 
-				const ctz = document.querySelector('#myPie');
-				let pattern;
-				new Chart(ctz, {
-					type: 'doughnut',
-					data: {
-						labels: ['BSIT', 'BEED', 'DEVCOM', 'BSTM', 'BSHM'],
-						datasets: [{
-							data: [19, 10, 50, 30, 20],
-						}],
 
-
-					},
-					options: {
-						animation: {
-							onComplete: () => {
-								delayed = true;
-							},
-							delay: (context) => {
-								let delay = 0;
-								if (context.type === 'data' && context.mode === 'default' && !delayed) {
-									delay = context.dataIndex * 300 + context.datasetIndex * 200;
-								}
-								return delay;
-							},
+						},
+						options: {
+							animation: {
+								onComplete: () => {
+									delayed = true;
+								},
+								delay: (context) => {
+									let delay = 0;
+									if (context.type === 'data' && context.mode === 'default' && !delayed) {
+										delay = context.dataIndex * 300 + context.datasetIndex * 200;
+									}
+									return delay;
+								},
+							}
 						}
-					}
-				});
-
-
+					});
+				}
 
 			</script>
 

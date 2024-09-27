@@ -740,7 +740,7 @@
 
 					function updateData() {
 						var request = new XMLHttpRequest();
-						request.open('GET', 'http://localhost:8080/smartqueueweb/JsonStaffListAPI');
+						request.open('GET', '/smartqueueweb/JsonStaffListAPI');
 						request.onload = function () {
 							var data = JSON.parse(request.responseText);
 							renderHTML(data);
@@ -755,7 +755,7 @@
 
 							htmlString += "<tr>";
 							htmlString += "<td>" + data[i].staffID + "</td>";
-							htmlString += "<td>" + data[i].firstname + "</td>";
+							htmlString += "<td>" + data[i].firstname + " " + data[i].lastname + "</td>";
 							htmlString += "<td>+63" + data[i].contactNumber + "</td>";
 							htmlString += "<td>" + data[i].email + "</td>";
 							htmlString += "<td>" + data[i].username + "</td>";

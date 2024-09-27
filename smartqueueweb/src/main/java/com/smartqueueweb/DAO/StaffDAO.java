@@ -1,6 +1,8 @@
 package com.smartqueueweb.DAO;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,17 +74,17 @@ public class StaffDAO extends SQLConnection {
 		return staffbean;
 	}
 
-	public Integer registerStaff(String firstname, String lastname, String email, double contactNumber, String username) {
+	public Integer registerStaff(String firstname, String lastname, String email, double contactNumber,
+			String username) {
 		try {
 			int length = 4;
 			boolean useLetters = true;
 			boolean useNumbers = true;
 			String GeneratedPassword = RandomStringUtils.random(length, useLetters, useNumbers);
-			String specialChars = "!@#$&*"; 
-			
+			String specialChars = "!@#$&*";
+
 			GeneratedPassword += RandomStringUtils.random(2, specialChars);
-			
-			
+
 			ConnectDriver();
 			prs = conn.prepareStatement(
 					"INSERT INTO tbl_login_staff (firstname, lastname, email, contact_number, username, password) "
@@ -94,7 +96,7 @@ public class StaffDAO extends SQLConnection {
 			prs.setDouble(4, contactNumber);
 			prs.setString(5, username);
 			prs.setString(6, GeneratedPassword.toUpperCase());
-			
+
 			return prs.executeUpdate();
 
 		} catch (Exception e) {
@@ -130,33 +132,60 @@ public class StaffDAO extends SQLConnection {
 		}
 		return false;
 	}
-	
+
 	List<StaffBean> listOfStaff = null;
-	public List<StaffBean> listOfStaff(){
+
+	public List<StaffBean> listOfStaff() {
 		try {
 			ConnectDriver();
 			prs = conn.prepareStatement("SELECT * FROM tbl_login_staff");
 			rs = prs.executeQuery();
 			listOfStaff = new ArrayList<StaffBean>();
-			
-			while(rs.next()) {
-				staffbean = new StaffBean(rs.getInt("staff_id"), 
-				rs.getString("username"), 
-				rs.getString("password"),
-				rs.getString("firstname"), 
-				rs.getString("lastname"), 
-				rs.getString("email"),
-				rs.getDouble("contact_number"), 
-				rs.getInt("isLocked"));
+
+			while (rs.next()) {
+				staffbean = new StaffBean(rs.getInt("staff_id"),
+						rs.getString("username"),
+						rs.getString("password"),
+						rs.getString("firstname"),
+						rs.getString("lastname"),
+						rs.getString("email"),
+						rs.getDouble("contact_number"),
+						rs.getInt("isLocked"));
 				listOfStaff.add(staffbean);
 			}
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally {
+		} finally {
 			SQLClose();
 		}
 		return listOfStaff;
+	}
+
+	public Integer GenerateToken(String role, String value) {
+
+		try {
+			ConnectDriver();
+			LocalDateTime now = LocalDateTime.now();
+			LocalDateTime expiryDate = now.plusHours(2);
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+			prs = conn.prepareStatement(
+					"INSERT INTO accesstokens (role, value, date_expired) "
+							+ " VALUES (?, ?, ?)");
+
+			prs.setString(1, role);
+			prs.setString(2, value);
+			prs.setString(3, expiryDate.format(formatter));
+
+			return prs.executeUpdate();
+
+		} catch (Exception err) {
+			err.printStackTrace();
+		}finally{
+			SQLClose();
+		}
+		return null;
 	}
 }

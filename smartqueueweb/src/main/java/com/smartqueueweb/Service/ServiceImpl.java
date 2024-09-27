@@ -1,5 +1,6 @@
 package com.smartqueueweb.Service;
 
+import java.text.DateFormat;
 import java.util.List;
 
 import com.smartqueueweb.DAO.AdminDAO;
@@ -13,7 +14,8 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	StaffDAO staffdata = new StaffDAO();
 	AdminDAO admindata = new AdminDAO();
 	StudentDAO studentdata = new StudentDAO();
-	/////////////////// ------------------      Staff
+
+	//////////////////////////////////////////////////////////////////////// ------------------      Staff
 	@Override
 	public boolean loginStaff(String username, String password) {
 		// TODO Auto-generated method stub
@@ -45,7 +47,13 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return staffdata.listOfStaff();
 	}
 	
-	///////////////// --------------------       Admin
+	@Override
+	public Integer GenerateStaffToken(String role, String value) {
+		// TODO Auto-generated method stub
+		return staffdata.GenerateToken(role, value);
+	}
+
+	//////////////////////////////////////////////////////////////////////// --------------------       Admin
 	@Override
 	public boolean loginAdmin(String username, String password) {
 		// TODO Auto-generated method stub
@@ -59,7 +67,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	}
 
 	
-	//////////////// -----------------------	Student
+	//////////////////////////////////////////////////////////////////////// -----------------------	Student
 	
 	@Override
 	public Integer addStudent(long idnumber, String firstname, String middlename, String lastname, String course) {
@@ -71,6 +79,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return studentdata.listOfStudent();
 	}
+
 
 
 }

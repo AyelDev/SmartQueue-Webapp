@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,14 +30,17 @@ public class StaffList_Servlet extends HttpServlet {
 		boolean loginSessionsAdmin = session.getAttribute("sessionAdmin") != null ? true : false;
 		boolean loginSessionsStaff = session.getAttribute("sessionStaff") != null ? true : false;
 
-		if (loginSessionsAdmin) {
-			rd = request.getRequestDispatcher("admin/list_of_staff.jsp");
-			rd.forward(request, response);
-		}
+		cookiess(request, response,"admin/list_of_student.jsp");
+			
 
-		request.setAttribute("errorLogin", "Access Denied");
-		rd = request.getRequestDispatcher("login.jsp");
-		rd.include(request, response);
+		// if (loginSessionsAdmin) {
+		// 	rd = request.getRequestDispatcher("admin/list_of_staff.jsp");
+		// 	rd.forward(request, response);
+		// }
+
+		// request.setAttribute("errorLogin", "Access Denied");
+		// rd = request.getRequestDispatcher("login.jsp");
+		// rd.include(request, response);
 
 		
 //		response.getWriter().append("Served at:"
@@ -61,4 +65,20 @@ public class StaffList_Servlet extends HttpServlet {
 //		rd.forward(request, response);
 	}
 
+	public static void cookiess(HttpServletRequest request, HttpServletResponse response, String path)throws ServletException, IOException{
+		RequestDispatcher rd = null;
+		Cookie cookies[] = request.getCookies();
+		for (Cookie c : cookies) {
+			if (c.getName().equals("_auth")) {
+				rd = request.getRequestDispatcher(path);
+				rd.forward(request, response);
+			
+			}else {
+				request.setAttribute("errorLogin", "Access Denied");
+				rd = request.getRequestDispatcher("login.jsp");
+				rd.include(request, response);
+				
+			}
+		}
+	}
 }
