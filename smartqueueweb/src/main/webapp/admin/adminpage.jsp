@@ -27,11 +27,13 @@
 				font-optical-sizing: auto;
 				font-style: normal;
 			}
-			*{
+
+			* {
 				font-family: var(--body-fonts);
 				padding: 0;
 				margin: 0;
 			}
+
 			body {
 				width: 100%;
 				height: 100%;
@@ -67,24 +69,20 @@
 			}
 
 			.logoContainer {
-				width: 15vw;
-				height: 7%;
-				align-items: center;
-				display: flex;
-				justify-content: center;
-				margin-top: 10px;
-			}
-
-			.title {
-				margin-left: 10px;
-				color: var(--background-color);
-				font-size: .8em;
+				width: 100%;
+				text-align: center;
 			}
 
 			.logo {
-				width: 25%;
+				width: 50%;
 				max-width: 100%;
-				object-fit: scale-down;
+				object-fit: contain;
+				margin-top: 15px;
+			}
+
+			.title {
+				color: var(--background-color);
+				font-size: 0.8em;
 			}
 
 			.adminProfile {
@@ -97,6 +95,7 @@
 				text-align: center;
 				z-index: 1;
 				display: none;
+				border-radius: 7px;
 			}
 
 			.adminProfile a,
@@ -118,6 +117,7 @@
 
 			.adminProfile a:hover {
 				background-color: var(--select-text-color);
+				border-radius: 7px;
 			}
 
 			.button-profile {
@@ -132,6 +132,7 @@
 				/*tlbr*/
 				overflow: hidden;
 				cursor: pointer;
+				border: none;
 			}
 
 			.profile {
@@ -139,6 +140,7 @@
 				object-fit: scale-down;
 				margin-right: 20px;
 			}
+
 
 			.caretdown {
 				mix-blend-mode: multiply;
@@ -162,24 +164,30 @@
 				display: none;
 				position: absolute;
 				background-color: var(--background-color);
-				min-width: 160px;
+				width: 120px;
 				top: 100%;
-				left: 80%;
+				left: 70%;
 				z-index: 1;
 				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 				border-radius: 4px;
 			}
 
 			.dropdown-dashboard a {
-				display: block;
+				display: flex;
 				text-decoration: none;
 				color: var(--text-color);
-				padding: 12px 16px;
 				text-align: center;
+				align-items: center;
+				justify-content: center;
+				font-size: 11px;
 			}
 
 			.dropdown-dashboard a:hover {
 				background-color: var(--select-text-color);
+				border-radius: 4px;
+				padding: 3px;
+				margin-top: -7%;
+				width: 115px;
 			}
 
 			.dropdown-btn {
@@ -251,17 +259,20 @@
 				display: flex;
 				justify-content: center;
 			}
-			.dashboard-section h1{
+
+			.dashboard-section h1 {
 				color: black;
 				font-size: 2rem;
 				margin-top: -40%;
 				margin-left: -60%;
 				position: absolute;
 			}
-			.card-total p{
+
+			.card-total p {
 				font-size: .7rem;
 			}
-			.card-total p h3{
+
+			.card-total p h3 {
 				margin: 10px;
 			}
 
@@ -271,29 +282,31 @@
 				justify-content: space-evenly;
 				display: flex;
 			}
-			.card-total{
+
+			.card-total {
 				width: 20%;
 				height: 20%;
-				background-image: linear-gradient(to right,#1e91d0, #00509d);
+				background-image: linear-gradient(to right, #1e91d0, #00509d);
 				border-radius: 15px;
 				justify-content: space-evenly;
 				margin-top: 2rem;
 			}
-			.department-graph{
+
+			.department-graph {
 				width: 30%;
 				height: 60%;
 				background-color: #ffff;
 				border-radius: 15px;
 				margin-top: 2rem;
 			}
-			.total-graph{
+
+			.total-graph {
 				width: 48%;
 				height: 30%;
 				margin-top: 11%;
 				margin-left: -24%;
 				background-color: #ffff;
-				position: absolute;
-				z-index: 1;
+				position: fixed;
 				border-radius: 15px;
 			}
 		</style>
@@ -307,9 +320,8 @@
 						<p>
 					</div>
 					<!-- admin profile -->
-					<button class="button-profile" id="button-profile"><img src="/src/main/webapp/images/profile.png"
-							alt="" class="profile">ADMIN<img src="./images/caretdown.png" alt=""
-							class="caretdown"></button>
+					<button class="button-profile" id="button-profile"><img src="./images/profile.png" alt=""
+							class="profile">ADMIN<img src="./images/caretdown.png" alt="" class="caretdown"></button>
 					<div class="adminProfile" id="adminProfile">
 						<a href="">Settings</a>
 						<a href="login">Signout</a>
@@ -321,6 +333,7 @@
 									class="dashboard-icon">Dashboard<img src="./images/caretright.png" alt=""
 									class="caretright"></button>
 							<div class="dropdown-dashboard">
+								<a href="dashboard">Dashboard</a>
 								<a href="">Total of Counter</a>
 								<a href="">Total of Students</a>
 							</div>
@@ -332,7 +345,7 @@
 									class="caretright"></button>
 							<div class="dropdown-dashboard">
 								<a href="">Add Counter</a>
-								<a href="admin/list_of_counter.jsp">List of Counter</a>
+								<a href="listofcounter">List of Counter</a>
 							</div>
 						</div>
 
@@ -343,7 +356,7 @@
 							<div class="dropdown-dashboard">
 								<a href="">Add Student</a>
 								<a href="">Add Staff</a>
-								<a href="">List of Student</a>
+								<a href="studentlist">List of Student</a>
 								<a href="stafflist">List of Staff</a>
 							</div>
 						</div>
@@ -377,23 +390,24 @@
 							<h3>100</h3>
 						</div>
 						<div class="card-total"><br>
-							<p>Total counter</p>
+							<p>Total student</p>
 							<h3>100</h3>
 						</div>
 						<div class="card-total"><br>
-							<p>Total counter</p>
+							<p>Total transaction</p>
 							<h3>100</h3>
 						</div>
 						<div class="department-graph">
-
+							<canvas id="myPie"></canvas>
 						</div>
 						<div class="total-graph">
-
+							<canvas id="myChart"></canvas>
 						</div>
 					</div>
 				</div>
 			</div>
 
+			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 			<script>
 				var dropdown = document.getElementsByClassName("button-profile");
 				var i;
@@ -410,6 +424,148 @@
 					});
 				}
 
+
+				/* <summary>
+				CHARTJS.....	
+				</summary>*/
+				let staffNum, studentNum, inquiryNum;
+				let BSIT = 0;
+				let BEED = 0;
+				let DEVCOM = 0;
+				let BSTM = 0;
+				let BSHM = 0;
+				Promise.all([
+					fetch('/smartqueueweb/JsonStaffListAPI'),
+					fetch('/smartqueueweb/JsonStudentListAPI')
+					// fetch('http://localhost:8080/smartqueueweb/JsonInquiryListAPI')
+				])
+					.then(responses => {
+						responses.forEach(response => {
+							if (!response.ok) {
+								throw new Error('Network response problem' + response.statusText);
+							}
+						});
+						return Promise.all(responses.map(response => response.json()));
+					})
+					.then(data => {
+						staffNum = data[0].length; // Staff count
+						studentNum = data[1].length; // Student count
+						inquiryNum = 10; // Inquiry count
+
+						data[1].forEach(item => { 
+							if(item.course.includes('BSIT')){ 
+								BSIT++;
+							}
+							if(item.course.includes('BEED')){ 
+								BEED++
+							}
+							if(item.course.includes('DEVCOM')){ 
+								DEVCOM++
+							}
+							if(item.course.includes('BSTM')){ 
+								BSTM++
+							}
+							if(item.course.includes('BSHM')){ 
+								BSHM++
+							}
+						 });
+						
+					
+				
+						console.log(studentNum, staffNum, inquiryNum); // Use as needed
+						myChart(studentNum, staffNum, inquiryNum);
+						PieChart(BSIT, BEED, DEVCOM, BSTM, BSHM)
+					})
+					.catch(error => {
+						console.error('There was a problem with the fetch operation:', error);
+					});
+
+
+
+				// fetch('http://localhost:8080/smartqueueweb/JsonStaffListAPI')
+				// 	.then(response => {
+				// 		if (!response.ok) {
+				// 			throw new Error('Network response was not ok ' + response.statusText);
+				// 		}
+				// 		return response.json();
+				// 	})
+				// 	.then(data => {
+				// 		let student = 3;
+				// 		let staff = data.length; // Get the number of items
+				// 		let totalInquiry = 20;
+				// 		myChart(student, staff, totalInquiry);
+				// 	})
+				// 	.catch(error => {
+				// 		console.error('There was a problem with the fetch operation:', error);
+				// 	});
+
+
+				let delayed;
+				function myChart(studentNum, staffNum, inquiryNum) {
+					const ctx = document.querySelector('#myChart');
+
+
+					new Chart(ctx, {
+						type: 'bar',
+						data: {
+							labels: ['Students', 'Staff', 'Inquiry Today'],
+							datasets: [{
+								label: 'Total Number',
+								data: [studentNum, staffNum, inquiryNum],
+								borderWidth: 2
+							}]
+						},
+						options: {
+							animation: {
+								onComplete: () => {
+									delayed = true;
+								},
+								delay: (context) => {
+									let delay = 0;
+									if (context.type === 'data' && context.mode === 'default' && !delayed) {
+										delay = context.dataIndex * 2000 + context.datasetIndex * 400;
+									}
+									return delay;
+								},
+							},
+							scales: {
+								y: {
+									beginAtZero: true
+								}
+							}
+						}
+					});
+				}
+
+				function PieChart(BSIT, BEED, DEVCOM, BSTM, BSHM) {
+					const ctz = document.querySelector('#myPie');
+					let pattern;
+					new Chart(ctz, {
+						type: 'doughnut',
+						data: {
+							labels: ['BSIT', 'BEED', 'DEVCOM', 'BSTM', 'BSHM'],
+							datasets: [{
+								data: [BSIT, BEED, DEVCOM, BSTM, BSHM],
+							}],
+
+
+						},
+						options: {
+							animation: {
+								onComplete: () => {
+									delayed = true;
+								},
+								delay: (context) => {
+									let delay = 0;
+									if (context.type === 'data' && context.mode === 'default' && !delayed) {
+										delay = context.dataIndex * 300 + context.datasetIndex * 200;
+									}
+									return delay;
+								},
+							}
+						}
+					});
+				}
 
 			</script>
 

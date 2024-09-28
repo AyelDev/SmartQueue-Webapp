@@ -13,17 +13,10 @@ public class SQLConnection_Test {
 	@Test
 	public void test() {
 
-		try {
+		SQLConnection data = new SQLConnection();
+		data.ConnectDriver();
 
-			SQLConnection data = new SQLConnection();
-			data.ConnectDriver();
-
-			assertNotNull(data.getConn());
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		assertNotNull(data.getConn());
 
 	}
 

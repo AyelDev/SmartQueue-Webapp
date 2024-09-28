@@ -17,4 +17,6 @@ public interface StaffServices {
 	Boolean isStaffLocked(String username);
 	
 	List<StaffBean> listsOfStaff();
+
+	Integer GenerateStaffToken(String role, String value);
 }

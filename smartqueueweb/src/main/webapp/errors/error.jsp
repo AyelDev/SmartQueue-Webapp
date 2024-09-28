@@ -60,5 +60,6 @@
 		<c:out value="${requestScope['javax.servlet.error.servlet_name']}"
 			default="N//A"></c:out>
 	</p>
+	<a href="/smartqueueweb/login">Go back</a>
 </body>
 </html>
