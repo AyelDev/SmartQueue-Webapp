@@ -1,151 +1,335 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+*{
     margin: 0;
     padding: 0;
+    font-family: Arial;
 }
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 1.25rem;
-    background: #fff;
-    border-radius: 0.625rem;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+}
+body{
+    background-color: white; 
+}
+.container{
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.leftnav{
+    width: 15%;
+    height: 100%;
+    background-color: #5CB3FF;
+    color: white;
+}
+.top-lnav{
+    width: 100%;
+    height: 22%;
+    background-color: #5CB3FF;
+    text-align: center;
+    display: block;
+    position: relative;
+    line-height: 10px;
+    font-size: 0.875rem;
+    color: white;
+}
+.cec{
+    width: 50%;
+    max-width: 100%;
+    object-fit: contain;
+    margin-top: 15px;
+    margin-left: 2px;
+    margin-bottom: 5px;
+}
+.title {
+    color: #F6F4EB;
+    font-size: 1em;
+    
+}
+.bottom-lnav{
+    width: 100%;
+    height: 80%;
+    background-color: transparent;
+    text-align: center;
+    color: white;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: 4.375rem;
+    width: 100%; 
+}
+.dropdown h3 {
+    cursor: pointer;
+    margin: 1.25rem 0; 
+    color: white;
+    transition: transform 0.3s ease;
+}
+.dropdown h3:hover{
+    background-color: white;
+    height: 1.875rem;
+    width: 100%;
+    border-radius: 3.125rem;
+    transform: translateX(1.25rem);
+    color: black;
+}
+.staffProfile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.staffProfile a {
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem; 
+    box-sizing: border-box;
+}
+
+.staffProfile a:hover {
+    background-color: #F6F4EB;
+    width: 65%; 
+    border-radius: 0.625rem; 
+    border: 0.0625rem solid black;
+    margin-left: 1.875rem;
+    margin-top: 0.125rem;
+    color: black;
+}
+.button-profile {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 10vw;
+    text-align: center;
     margin-top: 1.875rem;
+    margin-left: 1.875rem;
+    border-radius: 0.625rem;
+    padding: 0.9375rem 0.625rem 0.9375rem 0.625rem; /* tlbr */
+    overflow: hidden;
+}
+.profile{
+    width: 10%;
+    object-fit: scale-down;
+    margin-right: 1.25rem;
+}
+.caretdown{
+    mix-blend-mode: multiply;
+    width: 0.625rem;
+    margin-left: 1.25rem;
+}
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: white;
+    min-width: 11.25rem; 
+    box-shadow: 0px 0.5rem 1rem 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    left: 95%;
+    top: 0;
+    margin-left: 0.625rem;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; 
+}
+
+.sign{
+    text-decoration: none;
+    color: black;
+    font-size: 1.25rem;
+    display: inline-block;
+    margin-top: 5.625rem;
+}
+.sign:hover{
+    background-color: #95B9C7;
+    border-radius: 3.125rem;
+    width: 90%;
+}
+.rightnav{
+    width: 85%;
+    height: 100%;
+    background-color: #f4f4f4;
+    float: right;
+}
+.scontainer {
+width: 70%;
+margin: 0 auto;
+padding: 1.25rem;
+background: #fff;
+border-radius: 0.625rem;
+box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+margin-top: 1.875rem;
 }
 
 .real-time {
-    text-align: center;
-    font-size: 1.25rem;
-    margin: 1.25rem 0;
-    width: 30%;
-    /* height: 20%; */
-    padding: none ;
-    background-color: #f0f6f6;
-    border: 0.125rem solid black;
-    border-radius: 1.25rem;
-    display: block;
-    margin-left: 35%;
+text-align: center;
+font-size: 1.25rem;
+margin: 1.25rem 0;
+width: 30%;
+padding: none ;
+background-color: #f0f6f6;
+border: 0.125rem solid black;
+border-radius: 1.25rem;
+display: block;
+margin-left: 35%;
 }
 .tables {
-    margin-bottom: 1.25rem;
-    margin-top: 1.875rem;
+margin-bottom: 1.25rem;
+margin-top: 1.875rem;
 }
 .table-container {
-    margin-bottom: 1.25rem;
+margin-bottom: 1.25rem;
 }
 .table-container h2 {
-    font-size: 1.25rem;
-    margin-bottom: 0.625rem;
-    text-align: center;
-    line-height: 0.625rem;
+font-size: 1.25rem;
+margin-bottom: 0.625rem;
+text-align: center;
+line-height: 0.625rem;
 }
 .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.875rem;
+width: 100%;
+border-collapse: collapse;
+margin-top: 1.875rem;
 }
 .data-table th, .data-table td {
-    padding: 0.625rem;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
+padding: 0.625rem;
+text-align: center;
+border-bottom: 1px solid #ddd;
 }
 .thd{
-    border-left: 0.125rem solid blue;
-    
+border-left: 0.125rem solid blue;
+
 }
 .tsd{
-    border-right: 0.125rem solid blue;
+border-right: 0.125rem solid blue;
 }
 .data-table tr:hover {
-    background-color: #eff7f6;
-    border-left: 0.125rem solid blue;
-    border-right: 0.125rem solid blue;
+background-color: #eff7f6;
+border-left: 0.125rem solid blue;
+border-right: 0.125rem solid blue;
 }
 .data-table .selected {
-    background-color: #d1e7dd;
+background-color: #d1e7dd;
 }
 .data-table th {
-    background-color: #3090C7;
-    color: white;
+background-color: #3090C7;
+color: white;
 }
 .actions {
-    text-align: center;
-    margin-top: 1.25rem;
+text-align: center;
+margin-top: 1.25rem;
 }
 .actions .btn {
-    border: none;
-    padding: 0.625rem 1.25rem;
-    color: #fff;
-    border-radius: 0.3125rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 0 0.3125rem;
-    color: black;
+border: none;
+padding: 0.625rem 1.25rem;
+color: #fff;
+border-radius: 0.3125rem;
+cursor: pointer;
+transition: background-color 0.3s;
+margin: 0 0.3125rem;
+color: black;
 }
 .actions .btn.call {
-    background-color: #7dcfb6;
-    border: 0.125rem solid #7dcfb6;
-    border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
+background-color: #7dcfb6;
+border: 0.125rem solid #7dcfb6;
+border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
 }
 .actions .btn.call:hover{
-    color: white;
-    border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
+color: white;
+border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
 }
 .actions .btn.recall {
-    background-color: #00b2ca;
-    border: 0.125rem solid #00b2ca;
-    border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
+background-color: #00b2ca;
+border: 0.125rem solid #00b2ca;
+border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
 }
 .actions .btn.recall:hover {
-    color: white;
-    border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
+color: white;
+border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
 }
 .actions .btn.done {
-    background-color: #fbd1a2;
-    border: 0.125rem solid #fbd1a2;
-    border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
+background-color: #fbd1a2;
+border: 0.125rem solid #fbd1a2;
+border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
 }
 .actions .btn.done:hover {
-    color: white;
-    border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
+color: white;
+border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
 }
 .actions .btn.cancel {
-    background-color: #f79256;
-    border: 0.125rem solid #f79256;
-    border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
+background-color: #f79256;
+border: 0.125rem solid #f79256;
+border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
 }
 .actions .btn.cancel:hover {
-    color: white;
-    border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
+color: white;
+border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
 }
 .actions .btn.call:hover {
-    background-color: #218838;
+background-color: #218838;
 }
 .actions .btn.recall:hover {
-    background-color: #0056b3;
+background-color: #0056b3;
 }
 .actions .btn.done:hover {
-    background-color: #e0a800;
+background-color: #e0a800;
 }
 .actions .btn.cancel:hover {
-    background-color: #c82333;
+background-color: #c82333;
 }
 @media (max-width: 1200px) {
-    :root {
-        font-size: 0.9375rem; 
-        }
+    .leftnav {
+        width: 20%;
     }
-
+    .rightnav {
+        width: 80%;
+    }
+}
+@media (max-width: 992px) {
+    .leftnav {
+        width: 25%;
+    }
+    .rightnav {
+        width: 75%;
+    }
+    .scontainer {
+        width: 90%;
+    }
+}
 @media (max-width: 768px) {
-    :root {
-        font-size: 0.875rem; 
-        }
+    .leftnav {
+        width: 30%;
     }
-
+    .rightnav {
+        width: 70%;
+    }
+    .scontainer {
+        width: 95%; 
+    }
+}
 @media (max-width: 480px) {
-    :root {
-        font-size: 0.8125rem; 
-     }
+    .leftnav {
+        width: 20%;
+    }
 }
