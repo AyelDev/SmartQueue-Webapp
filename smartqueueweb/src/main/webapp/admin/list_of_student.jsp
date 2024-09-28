@@ -16,10 +16,29 @@
         :root {
             --primary-color: #1e91d0;
             --secondary-color: #00509d;
+            --darkblue: #2D59B2;
             --body-fonts: Arial, Helvetica black;
             --background-color: #F6F4EB;
             --select-text-color: #B4B4B8;
             --text-color: #272829;
+        }
+
+        /* custom scroll bar */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html::-webkit-scrollbar {
+            width: .8rem;
+        }
+
+        html::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color);
+            border-radius: 5rem;
         }
 
         body {
@@ -38,15 +57,9 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             align-items: center;
             justify-content: center;
-
+            overflow: hidden;
         }
 
-        .main {
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--background-color);
-            display: flex;
-        }
 
         .navbar {
             width: 15vw;
@@ -62,6 +75,7 @@
         .logoContainer {
             width: 100%;
             text-align: center;
+            margin-top: 1rem;
         }
 
         .logo {
@@ -135,6 +149,14 @@
         }
 
         /* navbar */
+        .navbar {
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+
+        }
+
         .menu-navbar {
             margin-top: 2rem;
             display: flex;
@@ -231,13 +253,14 @@
 
         .studentlist-section {
             width: 85vw;
-            height: 100vh;
+            height: auto;
             background-color: var(--background-color);
             float: right;
             margin-left: 15%;
             align-items: center;
             display: flex;
             justify-content: center;
+
         }
 
 
@@ -376,9 +399,204 @@
             overflow: hidden;
             padding: 20px;
         }
+
+        .add-account-icon {
+            object-fit: scale-down;
+            width: 10%;
+        }
+
+        .add-account-btn {
+            width: 10%;
+            background-color: var(--primary-color);
+            margin-top: 1%;
+            position: absolute;
+        }
+
+        .add-account-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .search-container {
+            margin-top: -5.5%;
+            margin-left: 75%;
+            margin-bottom: 2%;
+        }
+
+        .search-bar {
+            border-radius: 15px;
+            width: 80%;
+            padding: 5px;
+            border: 1px solid;
+        }
+
+        .search-btn {
+            border-radius: 15px;
+            border: none;
+            padding: 5px;
+            width: 50px;
+            margin-left: -20%;
+            background: none;
+            margin-bottom: -5%;
+        }
+
+        .search-icon {
+            object-fit: scale-down;
+            width: 14px;
+            height: 20px;
+            background: none;
+            margin-bottom: -10%;
+        }
+
+        .fillup-form-container {
+            width: 40%;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-left: 10%;
+            position: absolute;
+            z-index: 1;
+            display: none;
+            align-items: center;
+        }
+
+        .fillup-form-container h1 {
+            margin-top: 2%;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .close-btn {
+            font-size: 2rem;
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            cursor: pointer;
+
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .input-container {
+            position: relative;
+            width: 48%;
+
+        }
+
+        .input-container input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 15px;
+            border: none;
+            outline: 2px solid var(--primary-color);
+            background-color: transparent;
+            transition: outline-color 500ms;
+        }
+
+        .input-container select {
+            width: 110%;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 15px;
+            border: none;
+            outline: 2px solid var(--primary-color);
+            background-color: transparent;
+            transition: outline-color 500ms;
+        }
+        .input-container input:focus {
+            outline-color: var(--secondary-color);
+        }
+
+        .input-container label{
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            color: var(--text-color);
+            transition: 0.3s ease;
+            background-color: white;
+            padding-inline: 5px;
+        }
+
+        .input-container input:focus+label,
+        .input-container input:valid+label{
+            top: -10px;
+            transform: translateY(0);
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+        }
+
+        .full-width {
+            width: 100%;
+        }
+
+        .sign-btn {
+            width: 95.2%;
+            margin-left: 3.2%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 300ms;
+        }
+
+        .sign-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .add-account {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 300ms;
+        }
+
+        .add-account:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Overlay for background when modal is active */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        .register-form {
+            margin-top: 7%;
+        }
     </style>
 
     <body>
+
         <div class="container">
             <div class="navbar">
                 <div class="logoContainer">
@@ -396,7 +614,7 @@
 
                 <div class="menu-navbar">
                     <div class="dropdown">
-                        <button class="dropdown-btn"><img src="../images/dashboard.png" alt=""
+                        <button class="dropdown-btn"><img src="./images/dashboard.png" alt=""
                                 class="dashboard-icon">Dashboard<img src="./images/caretright.png" alt=""
                                 class="caretright"></button>
                         <div class="dropdown-dashboard">
@@ -407,7 +625,7 @@
                     </div>
 
                     <div class="dropdown">
-                        <button class="dropdown-btn"><img src="../images/counter.png" alt=""
+                        <button class="dropdown-btn"><img src="./images/counter.png" alt=""
                                 class="counter-icon">Counter<img src="./images/caretright.png" alt=""
                                 class="caretright"></button>
                         <div class="dropdown-dashboard">
@@ -417,7 +635,7 @@
                     </div>
 
                     <div class="dropdown">
-                        <button class="dropdown-btn"><img src="../images/users.png" alt="" class="users-icon">Users<img
+                        <button class="dropdown-btn"><img src="./images/users.png" alt="" class="users-icon">Users<img
                                 src="./images/caretright.png" alt="" class="caretright"></button>
                         <div class="dropdown-dashboard">
                             <a href="">Add Student</a>
@@ -428,7 +646,7 @@
                     </div>
 
                     <div class="dropdown">
-                        <button class="dropdown-btn"><img src="../images/entertainment.png" alt=""
+                        <button class="dropdown-btn"><img src="./images/entertainment.png" alt=""
                                 class="entertainment-icon">Entertainment<img src="./images/caretright.png" alt=""
                                 class="caretright"></button>
                         <div class="dropdown-dashboard">
@@ -437,7 +655,7 @@
                     </div>
 
                     <div class="dropdown">
-                        <button class="dropdown-btn"><img src="../images/display.png" alt=""
+                        <button class="dropdown-btn"><img src="./images/display.png" alt=""
                                 class="display-icon">Display<img src="./images/caretright.png" alt=""
                                 class="caretright"></button>
                         <div class="dropdown-dashboard">
@@ -450,7 +668,54 @@
             </div>
             <div class="studentlist-section">
                 <div class="studentlist-content">
+                    <button class="add-account-btn"> <img src="./images/add-account.png" alt=""
+                            class="add-account-icon"> Add Student</button>
                     <h1>Student List</h1>
+                    <div class="search-container">
+                        <form action="" method=""></form>
+                        <input type="text" placeholder="Search.." name="search" class="search-bar">
+                        <button class="search-btn" type="submit"><img src="../images/search-icon.png" alt=""
+                                class="search-icon"></button>
+                        </form>
+                    </div>
+                    
+                    <div class="overlay"></div>
+                    <div class="fillup-form-container modal">
+                        <h1>Student Registration</h1>
+                        <span class="close-btn">&times;</span>
+                        <div class="register-form">
+                            <form action="" method="post">
+                                <div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+                                    <input class="firstname-input" required="required" type="text" name="txtFirstname">
+                                    <label for="firstname" class="firstname-label">First name</label>
+                                </div>
+                                <div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+                                    <input class="middlename-input" required="required" type="text"
+                                        name="txtMiddlename">
+                                    <label for="middlename" class="middlename-label">Middle name</label>
+                                </div>
+
+                                <div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+                                    <input class="lastname-input" required="required" type="text" name="txtLastname">
+                                    <label for="lastname" class="lastname-label">Last name</label>
+                                </div>
+
+                                <div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+                                    
+                                    <select name="purpose" id="records-purpose" class="purpose">
+                                        <option value="">--</option>
+                                        <option value="enrollment">BEED</option>
+                                        <option value="assesment">BSHM</option>
+                                        <option value="assesment">BSIT</option>
+                                        <option value="assesment">BSTM</option>
+                                        <option value="assesment">BSED</option>
+                                    </select>
+                                </div>
+
+                                <input class="sign-btn" type="submit" value="Signup">
+                            </form>
+                        </div>
+                    </div>
                     <table>
                         <thead>
                             <tr>
@@ -520,6 +785,31 @@
                 setInterval(updateData, 2000);
 
 
+            </script>
+
+            <script>
+                // Get elements
+                const addAccountButton = document.querySelector('.add-account-btn');
+                const closeModalButton = document.querySelector('.close-btn');
+                const modal = document.querySelector('.modal');
+                const overlay = document.querySelector('.overlay');
+
+                // Function to open the modal
+                function openModal() {
+                    modal.classList.add('active');
+                    overlay.classList.add('active');
+                }
+
+                // Function to close the modal
+                function closeModal() {
+                    modal.classList.remove('active');
+                    overlay.classList.remove('active');
+                }
+
+                // Event listeners
+                addAccountButton.addEventListener('click', openModal);
+                closeModalButton.addEventListener('click', closeModal);
+                overlay.addEventListener('click', closeModal);
             </script>
 
             <div class="load-wrapper">

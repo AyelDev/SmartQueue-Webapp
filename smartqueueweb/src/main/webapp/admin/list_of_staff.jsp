@@ -9,6 +9,9 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
+			<link rel="stylesheet"
+				href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 			<script type="text/javascript" src="./scripts/fadetransition.js"></script>
 			<link rel="stylesheet" href="./css/loader.css">
 			<title>Admin | List of Staff</title>
@@ -19,10 +22,25 @@
 			:root {
 				--primary-color: #1e91d0;
 				--secondary-color: #00509d;
+				--darkblue: #2D59B2;
 				--body-fonts: Arial, Helvetica black;
 				--background-color: #F6F4EB;
 				--select-text-color: #B4B4B8;
 				--text-color: #272829;
+			}
+
+			/* custom scroll bar */
+			html::-webkit-scrollbar {
+				width: .8rem;
+			}
+
+			html::-webkit-scrollbar-track {
+				background: transparent;
+			}
+
+			html::-webkit-scrollbar-thumb {
+				background-color: var(--darkblue);
+				border-radius: 5rem;
 			}
 
 			body {
@@ -35,20 +53,13 @@
 
 			.container {
 				width: 100%;
-				height: 100%;
+				height: auto;
 				background-color: white;
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 				align-items: center;
 				justify-content: center;
-
-			}
-
-			.main {
-				width: 100vw;
-				height: 100vh;
-				background-color: var(--background-color);
-				display: flex;
+				overflow: hidden;
 			}
 
 			.navbar {
@@ -139,10 +150,18 @@
 			}
 
 			/* navbar */
+			.navbar {
+				position: fixed;
+				z-index: 1;
+				top: 0;
+				left: 0;
+			}
+
 			.menu-navbar {
 				margin-top: 2rem;
 				display: flex;
 				flex-direction: column;
+				position: fixed;
 			}
 
 			.dropdown {
@@ -235,10 +254,9 @@
 
 			.stafflist-section {
 				width: 85vw;
-				height: 100vh;
 				background-color: var(--background-color);
 				float: right;
-				margin-left: 30%;
+				margin-left: 15%;
 				align-items: center;
 				display: flex;
 				justify-content: center;
@@ -259,6 +277,7 @@
 
 			table {
 				width: 100%;
+				height: auto;
 				border-collapse: separate;
 				border-spacing: 0;
 				border-radius: 10px;
@@ -269,13 +288,16 @@
 			thead {
 				background-color: #3498db;
 				color: #ffffff;
+				width: 20%;
+
 			}
 
 			th {
-				padding: 12px 15px;
+				padding: 12px 5px;
 				text-align: left;
 				font-size: 16px;
 				font-weight: 600;
+
 				border-bottom: 3px solid #2980b9;
 			}
 
@@ -430,131 +452,144 @@
 				background: none;
 				margin-bottom: -10%;
 			}
+
 			.fillup-form-container {
-            width: 40%;
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            position: absolute;
-			z-index: 1;
-            display: none;
-			align-items: center;
-        }
+				width: 40%;
+				background-color: white;
+				padding: 20px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				border-radius: 10px;
+				margin-left: 10%;
+				position: absolute;
+				z-index: 1;
+				display: none;
+				align-items: center;
+			}
 
-        .modal.active {
-            display: block;
-        }
+			.fillup-form-container h1 {
+				margin-top: 2%;
+			}
 
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+			.modal.active {
+				display: block;
+			}
 
-        .close-btn {
-            font-size: 2rem;
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            cursor: pointer;
-        }
+			h1 {
+				text-align: center;
+				margin-bottom: 20px;
+			}
 
-        form {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+			.close-btn {
+				font-size: 2rem;
+				position: absolute;
+				right: 20px;
+				top: 10px;
+				cursor: pointer;
 
-        .input-container {
-            position: relative;
-            width: 48%;
-        }
+			}
 
-        .input-container input {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 15px;
-            border: none;
-            outline: 2px solid var(--primary-color);
-            background-color: transparent;
-            transition: outline-color 500ms;
-        }
+			form {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 20px;
+			}
 
-        .input-container input:focus {
-            outline-color: var(--secondary-color);
-        }
+			.input-container {
+				position: relative;
+				width: 48%;
 
-        .input-container label {
-            position: absolute;
-            top: 50%;
-            left: 10px;
-            transform: translateY(-50%);
-            color: var(--text-color);
-            transition: 0.3s ease;
-            background-color: white;
-            padding-inline: 5px;
-        }
+			}
 
-        .input-container input:focus+label,
-        .input-container input:valid+label {
-            top: -10px;
-            transform: translateY(0);
-            font-size: 0.8rem;
-            color: var(--secondary-color);
-        }
+			.input-container input {
+				width: 100%;
+				padding: 10px;
+				border-radius: 5px;
+				font-size: 15px;
 
-        .full-width {
-            width: 100%;
-        }
+				border: none;
+				outline: 2px solid var(--primary-color);
+				background-color: transparent;
+				transition: outline-color 500ms;
+			}
 
-        .sign-btn {
-            width: 100%;
-            padding: 10px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 300ms;
-        }
+			.input-container input:focus {
+				outline-color: var(--secondary-color);
+			}
 
-        .sign-btn:hover {
-            background-color: var(--secondary-color);
-        }
+			.input-container label {
+				position: absolute;
+				top: 50%;
+				left: 10px;
+				transform: translateY(-50%);
+				color: var(--text-color);
+				transition: 0.3s ease;
+				background-color: white;
+				padding-inline: 5px;
+			}
 
-        .add-account {
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 300ms;
-        }
+			.input-container input:focus+label,
+			.input-container input:valid+label {
+				top: -10px;
+				transform: translateY(0);
+				font-size: 0.8rem;
+				color: var(--secondary-color);
+			}
 
-        .add-account:hover {
-            background-color: var(--secondary-color);
-        }
+			.full-width {
+				width: 100%;
+			}
 
-        /* Overlay for background when modal is active */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
+			.sign-btn {
+				width: 95%;
+				padding: 10px;
+				background-color: var(--primary-color);
+				color: white;
+				border: none;
+				border-radius: 5px;
+				margin-left: 3.5%;
+				font-size: 16px;
+				cursor: pointer;
+				transition: background-color 300ms;
+			}
 
-        .overlay.active {
-            display: block;
-        }
-			
+			.sign-btn:hover {
+				background-color: var(--secondary-color);
+			}
+
+			.add-account {
+				padding: 10px 20px;
+				background-color: var(--primary-color);
+				color: white;
+				border: none;
+				border-radius: 5px;
+				font-size: 16px;
+				cursor: pointer;
+				transition: background-color 300ms;
+			}
+
+			.add-account:hover {
+				background-color: var(--secondary-color);
+			}
+
+			/* Overlay for background when modal is active */
+			.overlay {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				z-index: 1;
+			}
+
+			.overlay.active {
+				display: block;
+			}
+
+			.register-form {
+				margin-top: 7%;
+			}
 		</style>
 
 		<body>
@@ -630,62 +665,56 @@
 				</div>
 				<div class="stafflist-section">
 					<div class="stafflist-content">
-						<button class="add-account-btn"> <img src="../images/add-account.png" alt=""
+						<button class="add-account-btn"> <img src="./images/add-account.png" alt=""
 								class="add-account-icon"> Add Staff</button>
 						<h1>Staff List</h1>
 						<div class="search-container">
 							<form action="" method=""></form>
 							<input type="text" placeholder="Search.." name="search" class="search-bar">
-							<button class="search-btn" type="submit"><img src="../images/search-icon.png" alt=""
+							<button class="search-btn" type="submit"><img src="./images/search-icon.png" alt=""
 									class="search-icon"></button>
 							</form>
 						</div>
 
 						<div class="overlay"></div>
 						<div class="fillup-form-container modal">
-							<h1>Signup</h1>
+							<h1>Staff Registration</h1>
 							<span class="close-btn">&times;</span>
 							<div class="register-form">
-								<form action="" method="post">
+								<form id="staffRegisterForm">
 									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="firstname-input" required="required" type="text" name="txtFirstname">
+										<input class="firstname-input" required="required" type="text"
+											name="txtFirstname">
 										<label for="firstname" class="firstname-label">First name</label>
 									</div>
 									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="lastname-input" required="required" type="text" name="txtLastname">
+										<input class="lastname-input" required="required" type="text"
+											name="txtLastname">
 										<label for="lastname" class="lastname-label">Last name</label>
 									</div>
-				
+
 									<div class="input-container full-width" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="username-input" required="required" type="text" name="txtUsername">
+										<input class="username-input" required="required" type="text"
+											name="txtUsername">
 										<label for="username" class="username-label">Username</label>
 									</div>
-				
+
 									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="contactno-input" required="required" type="text" name="txtContactno">
+										<input class="contactno-input" required="required" type="text"
+											name="txtContactno">
 										<label for="contactno" class="contactno-label">Contact no.</label>
 									</div>
-				
+
 									<div class="input-container" style="width: 91%; margin-left: 20px;">
 										<input class="email-input" required="required" type="text" name="txtEmail">
 										<label for="email" class="email-label">Email</label>
 									</div>
-				
-									<div class="input-container" style="width: 91%; margin-left: 20px;">
-										<input class="password-input" required="required" type="password" name="txtPassword">
-										<label for="password" class="password-label">Password</label>
-									</div>
-				
-									<div class="input-container" style="width: 91%; margin-left: 20px;">
-										<input class="confirmpassword-input" required="required" type="password" name="txtConfirmpassword">
-										<label for="confirmpassword" class="confirmpassword-label">Confirm Password</label>
-									</div>
-				
+
 									<input class="sign-btn" type="submit" value="Signup">
 								</form>
 							</div>
 						</div>
-					
+
 
 						<table>
 							<thead>
@@ -761,8 +790,8 @@
 							htmlString += "<td>" + data[i].username + "</td>";
 							htmlString += "<td>" + data[i].password + "</td>";
 							htmlString += "<td>" + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + "</td>";
-							htmlString += '<td><a href="update?staffId=' + data[i].staffID + '"><button class="update" style="background-color: #97BE5A;">Update</button></a> ';
-							htmlString += '<a href="delete?staffId=' + data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E;">Delete</button></a>';
+							htmlString += '<td><a href="update?staffId=' + data[i].staffID + '"><button class="update" style="background-color: #97BE5A; font-size: .7em;">Update</button></a> ';
+							htmlString += '<a href="delete?staffId=' + data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E; font-size: .7em;">Delete</button></a>';
 							htmlString += "</tr>";
 						}
 
@@ -772,29 +801,86 @@
 					setInterval(updateData, 2000);
 
 				</script>
-				 <script>
+				<script>
 					// Get elements
 					const addAccountButton = document.querySelector('.add-account-btn');
 					const closeModalButton = document.querySelector('.close-btn');
 					const modal = document.querySelector('.modal');
 					const overlay = document.querySelector('.overlay');
-			
+
 					// Function to open the modal
 					function openModal() {
 						modal.classList.add('active');
 						overlay.classList.add('active');
 					}
-			
+
 					// Function to close the modal
 					function closeModal() {
 						modal.classList.remove('active');
 						overlay.classList.remove('active');
 					}
-			
+
 					// Event listeners
 					addAccountButton.addEventListener('click', openModal);
 					closeModalButton.addEventListener('click', closeModal);
 					overlay.addEventListener('click', closeModal);
+
+					$(document).ready(function () {
+						$('#staffRegisterForm').on('submit', function (event) {
+							event.preventDefault(); // Prevent the default form submission
+
+							// Create a new AJAX request
+							var url = 'staffRegister_Servlet';
+
+							// Prepare the GET request with form data
+							var params = $(this).serialize();
+
+							$.ajax({
+								url: url,
+								type: 'GET',
+								data: params,
+								success: function (response) {
+									$.alert({
+										boxWidth: '30%',
+										useBootstrap: false,
+										title: 'Registration Successful',
+										content: response,
+										type: 'green',
+										typeAnimated: true,
+										buttons: {
+											tryAgain: {
+												text: 'add more',
+												btnClass: 'btn-green',
+												action: function () {
+													closeModal()
+												}
+											},
+										}
+									});
+								},
+								error: function (xhr) {
+									$.confirm({
+										boxWidth: '30%',
+										useBootstrap: false,
+										title: 'Encountered an error!',
+										content: xhr.statusText,
+										type: 'red',
+										typeAnimated: true,
+										buttons: {
+											tryAgain: {
+												text: 'Try again',
+												btnClass: 'btn-red',
+												action: function () {
+													closeModal()
+
+												}
+											},
+										}
+									});
+								}
+							});
+						});
+					});
 				</script>
 
 
