@@ -79,10 +79,11 @@ public class StaffDAO extends SQLConnection {
 			String username) {
 		try {
 			 LocalDate currentDate = LocalDate.now();
-			int length = 1;
+			String dateLast2Digit = String.valueOf(currentDate.getYear()).substring(2);
+			int length = 2;
 			boolean useLetters = true;
 			boolean useNumbers = true;
-			String GeneratedPassword = "CEC" + currentDate.getYear() + RandomStringUtils.random(length, useLetters, useNumbers);
+			String GeneratedPassword = "CEC" + dateLast2Digit + RandomStringUtils.random(length, useLetters, useNumbers);
 			String specialChars = "!@#$&*";
 
 			GeneratedPassword += RandomStringUtils.random(2, specialChars);

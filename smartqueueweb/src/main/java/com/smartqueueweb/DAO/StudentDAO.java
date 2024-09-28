@@ -37,7 +37,7 @@ public class StudentDAO extends SQLConnection{
 	public List<StudentBean> listOfStudent(){
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("SELECT * FROM tbl_student_info");
+			prs = conn.prepareStatement("SELECT * FROM tbl_student_info WHERE isDeleted=0");
 			rs = prs.executeQuery();
 			listOfStudent = new ArrayList<StudentBean>();
 
@@ -57,5 +57,21 @@ public class StudentDAO extends SQLConnection{
 			SQLClose();
 		}
 		return listOfStudent;
+	}
+
+	public Integer removeStudent(long idNumber){
+		try{
+			ConnectDriver();
+			prs = conn.prepareStatement("UPDATE `tbl_student_info` SET `isDeleted` = '1' WHERE `tbl_student_info`.`id_number` = ?");
+			prs.setLong(1, idNumber);
+
+			return prs.executeUpdate();
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			SQLClose();
+		}
+		return 0;
 	}
 }
