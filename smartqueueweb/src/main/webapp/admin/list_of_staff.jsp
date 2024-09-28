@@ -22,10 +22,25 @@
 			:root {
 				--primary-color: #1e91d0;
 				--secondary-color: #00509d;
+				--darkblue: #2D59B2;
 				--body-fonts: Arial, Helvetica black;
 				--background-color: #F6F4EB;
 				--select-text-color: #B4B4B8;
 				--text-color: #272829;
+			}
+
+			/* custom scroll bar */
+			html::-webkit-scrollbar {
+				width: .8rem;
+			}
+
+			html::-webkit-scrollbar-track {
+				background: transparent;
+			}
+
+			html::-webkit-scrollbar-thumb {
+				background-color: var(--darkblue);
+				border-radius: 5rem;
 			}
 
 			body {
@@ -38,20 +53,13 @@
 
 			.container {
 				width: 100%;
-				height: 100%;
+				height: auto;
 				background-color: white;
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 				align-items: center;
 				justify-content: center;
-
-			}
-
-			.main {
-				width: 100vw;
-				height: 100vh;
-				background-color: var(--background-color);
-				display: flex;
+				overflow: hidden;
 			}
 
 			.navbar {
@@ -142,10 +150,18 @@
 			}
 
 			/* navbar */
+			.navbar {
+				position: fixed;
+				z-index: 1;
+				top: 0;
+				left: 0;
+			}
+
 			.menu-navbar {
 				margin-top: 2rem;
 				display: flex;
 				flex-direction: column;
+				position: fixed;
 			}
 
 			.dropdown {
@@ -238,10 +254,9 @@
 
 			.stafflist-section {
 				width: 85vw;
-				height: 100vh;
 				background-color: var(--background-color);
 				float: right;
-				margin-left: 30%;
+				margin-left: 15%;
 				align-items: center;
 				display: flex;
 				justify-content: center;
@@ -262,6 +277,7 @@
 
 			table {
 				width: 100%;
+				height: auto;
 				border-collapse: separate;
 				border-spacing: 0;
 				border-radius: 10px;
@@ -272,13 +288,16 @@
 			thead {
 				background-color: #3498db;
 				color: #ffffff;
+				width: 20%;
+
 			}
 
 			th {
-				padding: 12px 15px;
+				padding: 12px 5px;
 				text-align: left;
 				font-size: 16px;
 				font-weight: 600;
+
 				border-bottom: 3px solid #2980b9;
 			}
 
@@ -440,10 +459,15 @@
 				padding: 20px;
 				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 				border-radius: 10px;
+				margin-left: 10%;
 				position: absolute;
 				z-index: 1;
 				display: none;
 				align-items: center;
+			}
+
+			.fillup-form-container h1 {
+				margin-top: 2%;
 			}
 
 			.modal.active {
@@ -459,8 +483,9 @@
 				font-size: 2rem;
 				position: absolute;
 				right: 20px;
-				top: 20px;
+				top: 10px;
 				cursor: pointer;
+
 			}
 
 			form {
@@ -472,6 +497,7 @@
 			.input-container {
 				position: relative;
 				width: 48%;
+
 			}
 
 			.input-container input {
@@ -479,6 +505,7 @@
 				padding: 10px;
 				border-radius: 5px;
 				font-size: 15px;
+
 				border: none;
 				outline: 2px solid var(--primary-color);
 				background-color: transparent;
@@ -513,12 +540,13 @@
 			}
 
 			.sign-btn {
-				width: 100%;
+				width: 95%;
 				padding: 10px;
 				background-color: var(--primary-color);
 				color: white;
 				border: none;
 				border-radius: 5px;
+				margin-left: 3.5%;
 				font-size: 16px;
 				cursor: pointer;
 				transition: background-color 300ms;
@@ -557,6 +585,10 @@
 
 			.overlay.active {
 				display: block;
+			}
+
+			.register-form {
+				margin-top: 7%;
 			}
 		</style>
 
@@ -633,20 +665,20 @@
 				</div>
 				<div class="stafflist-section">
 					<div class="stafflist-content">
-						<button class="add-account-btn"> <img src="../images/add-account.png" alt=""
+						<button class="add-account-btn"> <img src="./images/add-account.png" alt=""
 								class="add-account-icon"> Add Staff</button>
 						<h1>Staff List</h1>
 						<div class="search-container">
 							<form action="" method=""></form>
 							<input type="text" placeholder="Search.." name="search" class="search-bar">
-							<button class="search-btn" type="submit"><img src="../images/search-icon.png" alt=""
+							<button class="search-btn" type="submit"><img src="./images/search-icon.png" alt=""
 									class="search-icon"></button>
 							</form>
 						</div>
 
 						<div class="overlay"></div>
 						<div class="fillup-form-container modal">
-							<h1>Signup</h1>
+							<h1>Staff Registration</h1>
 							<span class="close-btn">&times;</span>
 							<div class="register-form">
 								<form id="staffRegisterForm">
@@ -677,16 +709,6 @@
 										<input class="email-input" required="required" type="text" name="txtEmail">
 										<label for="email" class="email-label">Email</label>
 									</div>
-
-									<!-- <div class="input-container" style="width: 91%; margin-left: 20px;">
-										<input class="password-input" required="required" type="password" name="txtPassword">
-										<label for="password" class="password-label">Password</label>
-									</div>
-				
-									<div class="input-container" style="width: 91%; margin-left: 20px;">
-										<input class="confirmpassword-input" required="required" type="password" name="txtConfirmpassword">
-										<label for="confirmpassword" class="confirmpassword-label">Confirm Password</label>
-									</div> -->
 
 									<input class="sign-btn" type="submit" value="Signup">
 								</form>
@@ -768,8 +790,8 @@
 							htmlString += "<td>" + data[i].username + "</td>";
 							htmlString += "<td>" + data[i].password + "</td>";
 							htmlString += "<td>" + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + "</td>";
-							htmlString += '<td><a href="update?staffId=' + data[i].staffID + '"><button class="update" style="background-color: #97BE5A;">Update</button></a> ';
-							htmlString += '<a href="delete?staffId=' + data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E;">Delete</button></a>';
+							htmlString += '<td><a href="update?staffId=' + data[i].staffID + '"><button class="update" style="background-color: #97BE5A; font-size: .7em;">Update</button></a> ';
+							htmlString += '<a href="delete?staffId=' + data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E; font-size: .7em;">Delete</button></a>';
 							htmlString += "</tr>";
 						}
 
@@ -859,8 +881,8 @@
 							});
 						});
 					});
-
 				</script>
+
 
 				<div class="load-wrapper">
 					<div class="main-loader">
