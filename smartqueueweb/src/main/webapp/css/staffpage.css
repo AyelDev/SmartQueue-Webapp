@@ -11,6 +11,7 @@
     width: 100%;
     height: 100vh;
     background-color: white;
+    overflow: hidden;
 }
 .cover {
     width: 100%;
@@ -86,23 +87,31 @@
     width: 15%;
     height: 100%;
     background-color: #5CB3FF;
+    color: white;
 }
 .top-lnav{
     width: 100%;
-    height: 20%;
+    height: 25%;
     background-color: #5CB3FF;
     text-align: center;
     display: block;
     position: relative;
-    line-height: 6.25rem;
+    line-height: 10px;
     font-size: 0.875rem;
+    color: white;
 }
 .cec{
-    width: 20%;
-    height: 25%;
-    margin: 1.875rem auto;
-    margin-left: 0.5rem;
-    float: left ;
+    width: 50%;
+    max-width: 100%;
+    object-fit: contain;
+    margin-top: 15px;
+    margin-left: 2px;
+    margin-bottom: 5px;
+}
+.title {
+    color: #F6F4EB;
+    font-size: 1em;
+    
 }
 .bottom-lnav{
     width: 100%;
@@ -121,6 +130,7 @@
     margin: 1.25rem 0; 
     color: black;
     transition: transform 0.3s ease;
+    color: white;
 }
 .dropdown h3:hover{
     background-color: white;
@@ -128,6 +138,7 @@
     width: 100%;
     border-radius: 3.125rem;
     transform: translateX(1.25rem);
+    color: black;
 }
 .staffProfile {
     display: flex;
@@ -138,7 +149,7 @@
 
 .staffProfile a {
     text-decoration: none;
-    color: black;
+    color: white;
     width: 100%;
     height: 100%;
     display: flex;
@@ -156,6 +167,7 @@
     border: 0.0625rem solid black;
     margin-left: 1.875rem;
     margin-top: 0.125rem;
+    color: black;
 }
 .button-profile {
     align-items: center;
@@ -235,6 +247,32 @@
 @media (max-width: 480px) {
     :root {
         font-size: 13px; 
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        font-size: 13px;
+    }
+
+    .button-profile {
+        width: 50vw;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    .dash {
+        font-size: 1.2rem;
+    }
+
+    .staffProfile a {
+        font-size: 0.9rem;
+    }
+
+    .dropdown h3 {
+        font-size: 1rem;
     }
 }
 
