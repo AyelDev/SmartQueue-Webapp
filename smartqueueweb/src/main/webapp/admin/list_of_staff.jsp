@@ -840,7 +840,7 @@
 								type: 'GET',
 								data: params,
 								success: function (response) {
-									closeModal()
+									openModal()
 									$.confirm({
 										boxWidth: '30%',
 										useBootstrap: false,
@@ -866,7 +866,7 @@
 									});
 								},
 								error: function (xhr) {
-									closeModal()
+									openModal()
 									$.confirm({
 										boxWidth: '30%',
 										useBootstrap: false,
