@@ -12,30 +12,28 @@ import javax.servlet.http.HttpServletResponse;
 import com.smartqueueweb.Service.ServiceImpl;
 
 
-@WebServlet("/RemoveStudent_Servlet")
-public class RemoveStudent_Servlet extends HttpServlet {
+@WebServlet("/RemoveStaff_Servlet")
+public class RemoveStaff_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	ServiceImpl services = new ServiceImpl();
 	RequestDispatcher rd = null;
 	
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		String idNo = request.getParameter("idNo");
 		
 		
 	    
 	     // Call the service to register staff
 	        try {
-	        	 services.deleteStudent(Long.parseLong(idNo));
+	        	 services.deleteStaff(Long.parseLong(idNo));
 	        	 response.setContentType("text/plain");
 	             response.setStatus(HttpServletResponse.SC_OK);
 	             response.getWriter().write("Deletion success.");
 	        } catch (Exception e) {
 	            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Deletion failed.");
 	        }
-		
-		
 		
 	}
 

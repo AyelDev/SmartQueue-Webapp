@@ -5,9 +5,11 @@ import java.util.List;
 
 public interface StudentServices{
 	
-	Integer addStudent(long idnumber, String firstname, String middlenmae, String lastname, String course);
+	Integer addStudent(long idnumber, String firstname, String middlename, String lastname, String course);
 	 
 	List<StudentBean> listsOfStudent();
 
 	Integer deleteStudent(long idnumber);
+
+	Integer updateStudent(long idNumber, long inputIdnumber, String inputfirstname, String inputMiddlename, String inputLastname, String inputCourse);
 }

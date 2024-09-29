@@ -19,4 +19,8 @@ public interface StaffServices {
 	List<StaffBean> listsOfStaff();
 
 	Integer GenerateStaffToken(String role, String value);
+	
+	Integer deleteStaff(long staffId);
+
+	Integer updateStaff(long staffId, String inputFirstname, String inputLastname, String inputEmail, double inputContactnumber, String inputUsername ,String inputPassword, int inputStafflocked);
 }
