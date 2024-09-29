@@ -53,6 +53,11 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return staffdata.GenerateToken(role, value);
 	}
 
+	@Override
+	public Integer deleteStaff(long staffId) {
+		// TODO Auto-generated method stub
+		return staffdata.removeStaff(staffId);
+	}
 	//////////////////////////////////////////////////////////////////////// --------------------       Admin
 	@Override
 	public boolean loginAdmin(String username, String password) {
@@ -85,6 +90,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return studentdata.removeStudent(idnumber);
 	}
+
 
 
 

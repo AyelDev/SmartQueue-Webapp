@@ -12,8 +12,8 @@ public class Login_Test {
 	public void test() {
 		
 		ServiceImpl services = new ServiceImpl();
-		String User = "rrreees";
-		String Pass = "password123";
+		String User = "cindylabss";
+		String Pass = "CEC24IB$#";
 		
 		
 		boolean actual = services.loginStaff(User, Pass);

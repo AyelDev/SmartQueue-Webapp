@@ -19,4 +19,6 @@ public interface StaffServices {
 	List<StaffBean> listsOfStaff();
 
 	Integer GenerateStaffToken(String role, String value);
+	
+	Integer deleteStaff(long staffId);
 }

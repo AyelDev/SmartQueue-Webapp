@@ -24,7 +24,7 @@ public class StaffDAO extends SQLConnection {
 		try {
 			String candidate = null;
 			ConnectDriver();
-			prs = conn.prepareStatement("SELECT password FROM tbl_login_staff WHERE username=?");
+			prs = conn.prepareStatement("SELECT password FROM tbl_login_staff WHERE username=? AND isDeleted=0");
 			prs.setString(1, username);
 			rs = prs.executeQuery();
 
@@ -141,7 +141,7 @@ public class StaffDAO extends SQLConnection {
 	public List<StaffBean> listOfStaff() {
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("SELECT * FROM tbl_login_staff");
+			prs = conn.prepareStatement("SELECT * FROM tbl_login_staff WHERE isDeleted=0");
 			rs = prs.executeQuery();
 			listOfStaff = new ArrayList<StaffBean>();
 
@@ -190,5 +190,21 @@ public class StaffDAO extends SQLConnection {
 			SQLClose();
 		}
 		return null;
+	}
+	
+	public Integer removeStaff(long idNumber){
+		try{
+			ConnectDriver();
+			prs = conn.prepareStatement("UPDATE `tbl_login_staff` SET `isDeleted` = '1' WHERE `tbl_login_staff`.`staff_id` = ?");
+			prs.setLong(1, idNumber);
+
+			return prs.executeUpdate();
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			SQLClose();
+		}
+		return 0;
 	}
 }
