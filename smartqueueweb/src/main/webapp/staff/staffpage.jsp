@@ -81,6 +81,63 @@
 						}
 					});
 				});
+
+				    //delete staff
+					function removeStaff(id) {
+                            $.confirm({
+                                boxWidth: '30%',
+                                useBootstrap: false,
+                                type: 'blue',
+                                typeAnimated: true,
+                                title: 'Delete student : ' + id + '?',
+                                content: 'This dialog will automatically trigger \'cancel\' in 10 seconds if you don\'t respond.',
+                                autoClose: 'cancel|10000',
+                                buttons: {
+                                    deleteUser: {
+                                        text: 'delete user',
+                                        btnClass: 'btn-red',
+                                        action: function () {
+                                            // Create the AJAX request
+                                            $.ajax({
+                                                url: 'RemoveStudent_Servlet?idNo=' + id, // Replace with your endpoint
+                                                type: 'DELETE', // Send the ID as data
+                                                success: function (response) {
+                                                    $.alert({
+                                                        boxWidth: '30%',
+                                                        useBootstrap: false,
+                                                        typeAnimated: true,
+                                                        type: 'green',
+                                                        title: 'Canceled',
+                                                        content: 'action is canceled'
+                                                    });
+                                                },
+                                                error: function (xhr) {
+                                                    $.alert({
+                                                        boxWidth: '30%',
+                                                        useBootstrap: false,
+                                                        type: 'red',
+                                                        typeAnimated: true,
+                                                        title: 'error',
+                                                        content: xhr.statusText
+                                                    });
+                                                }
+                                            });
+                                        }
+                                    },
+                                    cancel: function () {
+                                        $.alert({
+                                            boxWidth: '30%',
+                                            useBootstrap: false,
+                                            typeAnimated: true,
+                                            type: 'red',
+                                            title: 'Canceled',
+                                            content: 'action is canceled'
+                                        });
+                                    }
+                                }
+                            });
+
+                        }
 			</script>
 
 

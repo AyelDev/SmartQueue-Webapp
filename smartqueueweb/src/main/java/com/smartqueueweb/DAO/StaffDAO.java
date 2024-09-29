@@ -24,7 +24,7 @@ public class StaffDAO extends SQLConnection {
 		try {
 			String candidate = null;
 			ConnectDriver();
-			prs = conn.prepareStatement("SELECT password FROM tbl_login_staff WHERE username=?");
+			prs = conn.prepareStatement("SELECT password FROM tbl_login_staff WHERE username=? AND isDeleted=0");
 			prs.setString(1, username);
 			rs = prs.executeQuery();
 
@@ -78,12 +78,13 @@ public class StaffDAO extends SQLConnection {
 	public Integer registerStaff(String firstname, String lastname, String email, double contactNumber,
 			String username) {
 		try {
-			 LocalDate currentDate = LocalDate.now();
+			LocalDate currentDate = LocalDate.now();
 			String dateLast2Digit = String.valueOf(currentDate.getYear()).substring(2);
 			int length = 2;
 			boolean useLetters = true;
 			boolean useNumbers = true;
-			String GeneratedPassword = "CEC" + dateLast2Digit + RandomStringUtils.random(length, useLetters, useNumbers);
+			String GeneratedPassword = "CEC" + dateLast2Digit
+					+ RandomStringUtils.random(length, useLetters, useNumbers);
 			String specialChars = "!@#$&*";
 
 			GeneratedPassword += RandomStringUtils.random(2, specialChars);
@@ -141,7 +142,7 @@ public class StaffDAO extends SQLConnection {
 	public List<StaffBean> listOfStaff() {
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("SELECT * FROM tbl_login_staff");
+			prs = conn.prepareStatement("SELECT * FROM tbl_login_staff WHERE isDeleted=0");
 			rs = prs.executeQuery();
 			listOfStaff = new ArrayList<StaffBean>();
 
@@ -186,9 +187,54 @@ public class StaffDAO extends SQLConnection {
 
 		} catch (Exception err) {
 			err.printStackTrace();
-		}finally{
+		} finally {
 			SQLClose();
 		}
 		return null;
+	}
+
+	public Integer removeStaff(long idNumber) {
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement(
+					"UPDATE `tbl_login_staff` SET `isDeleted` = '1' WHERE `tbl_login_staff`.`staff_id` = ?");
+			prs.setLong(1, idNumber);
+
+			return prs.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return 0;
+	}
+
+	public Integer updateStaff(long staffId, String inputFirstname, String inputLastname, String inputEmail,
+			double inputContactnumber, String inputUsername, String inputPassword, int inputStafflocked) {
+
+				try {
+					ConnectDriver();
+					prs = conn.prepareStatement("UPDATE `tbl_login_staff` SET `firstname` = ?, `lastname` = ?, `email` = ?,"+
+					" `contact_number` = ?, `username` = ?, `password` = ?, `isLocked` = ? WHERE `tbl_login_staff`.`staff_id` = ?;");
+					prs.setString(1, inputFirstname);
+					prs.setString(2, inputLastname);
+					prs.setString(3, inputEmail);
+					prs.setDouble(4, inputContactnumber);
+					prs.setString(5, inputUsername);
+					prs.setString(6, inputPassword);
+					prs.setInt(7, inputStafflocked);
+					prs.setLong(8, staffId);
+					
+					return prs.executeUpdate();
+
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}finally{
+					SQLClose();
+				}
+
+		return 0;
 	}
 }

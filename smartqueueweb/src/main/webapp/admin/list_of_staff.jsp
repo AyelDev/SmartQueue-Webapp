@@ -9,9 +9,8 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
-			<link rel="stylesheet"
-				href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+			<link rel="stylesheet" type="text/css" href="./css/jquery-confirm.min.css" />
+			<script type="text/javascript" src="./scripts/jquery-confirm.min.js"></script>
 			<script type="text/javascript" src="./scripts/fadetransition.js"></script>
 			<link rel="stylesheet" href="./css/loader.css">
 			<title>Admin | List of Staff</title>
@@ -782,17 +781,32 @@
 
 						for (var i = 0; i < data.length; i++) {
 
-							htmlString += "<tr>";
-							htmlString += "<td>" + data[i].staffID + "</td>";
-							htmlString += "<td>" + data[i].firstname + " " + data[i].lastname + "</td>";
-							htmlString += "<td>+63" + data[i].contactNumber + "</td>";
-							htmlString += "<td>" + data[i].email + "</td>";
-							htmlString += "<td>" + data[i].username + "</td>";
-							htmlString += "<td>" + data[i].password + "</td>";
-							htmlString += "<td>" + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + "</td>";
-							htmlString += '<td><a href="update?staffId=' + data[i].staffID + '"><button class="update" style="background-color: #97BE5A; font-size: .7em;">Update</button></a> ';
-							htmlString += '<a href="delete?staffId=' + data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E; font-size: .7em;">Delete</button></a>';
-							htmlString += "</tr>";
+							htmlString += '<tr>' +
+								'<td>' + data[i].staffID + '</td>' +
+								'<td>' + data[i].firstname + ' ' + data[i].lastname + '</td>' +
+								'<td>+63' + data[i].contactNumber + '</td>' +
+								'<td>' + data[i].email + '</td>' +
+								'<td>' + data[i].username + '</td>' +
+								'<td>' + data[i].password + '</td>' +
+								'<td>' + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + '</td>' +
+								'<td><button onclick="updateStaff(' + data[i].staffID + ', \'' + data[i].firstname + '\', \'' + data[i].lastname + '\', \'' + data[i].username + '\', \'' + data[i].contactNumber + '\', \'' + data[i].email + '\', \'' + data[i].password + '\')" class="update" style="background-color: #97BE5A; font-size: .7em;">Update</button></td>' +
+								'<td><button onclick="removeStaff(' + data[i].staffID + ')" class="delete" style="background-color: #EE4E4E; font-size: .7em;">Delete</button></td>' +
+								'</tr>';
+
+
+
+
+							// htmlString += "<tr>";
+							// htmlString += "<td>" + data[i].staffID + "</td>";
+							// htmlString += "<td>" + data[i].firstname + " " + data[i].lastname + "</td>";
+							// htmlString += "<td>+63" + data[i].contactNumber + "</td>";
+							// htmlString += "<td>" + data[i].email + "</td>";
+							// htmlString += "<td>" + data[i].username + "</td>";
+							// htmlString += "<td>" + data[i].password + "</td>";
+							// htmlString += "<td>" + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + "</td>";
+							// htmlString += '<td><button onclick="updateStaff(' + data[i].staffID + ', \'' + data[i].firstname + '\')" class="update" style="background-color: #97BE5A; font-size: .7em;">Update</button></td>';
+							// htmlString += '<button onclick="removeStaff(' + data[i].staffID + ')" class="delete" style="background-color: #EE4E4E; font-size: .7em;">Delete</button>';
+							// htmlString += "</tr>";
 						}
 
 						staffListInfo.innerHTML = htmlString;
@@ -840,7 +854,7 @@
 								type: 'GET',
 								data: params,
 								success: function (response) {
-									closeModal()
+									openModal()
 									$.confirm({
 										boxWidth: '30%',
 										useBootstrap: false,
@@ -858,7 +872,7 @@
 											},
 											ok: {
 												text: 'ok',
-												action: function(){
+												action: function () {
 													closeModal()
 												}
 											}
@@ -866,7 +880,7 @@
 									});
 								},
 								error: function (xhr) {
-									closeModal()
+									openModal()
 									$.confirm({
 										boxWidth: '30%',
 										useBootstrap: false,
@@ -889,6 +903,141 @@
 							});
 						});
 					});
+
+					//delete staff
+					function removeStaff(id) {
+						$.confirm({
+							boxWidth: '30%',
+							useBootstrap: false,
+							type: 'blue',
+							typeAnimated: true,
+							title: 'Delete staff : ' + id + '?',
+							content: 'This dialog will automatically trigger \'cancel\' in 10 seconds if you don\'t respond.',
+							autoClose: 'cancel|10000',
+							buttons: {
+								deleteUser: {
+									text: 'delete user',
+									btnClass: 'btn-red',
+									action: function () {
+										// Create the AJAX request
+										$.ajax({
+											url: 'RemoveStaff_Servlet?idNo=' + id, // Replace with your endpoint
+											type: 'DELETE', // Send the ID as data
+											success: function (response) {
+												$.alert({
+													boxWidth: '30%',
+													useBootstrap: false,
+													typeAnimated: true,
+													type: 'green',
+													title: 'Response',
+													content: response
+												});
+											},
+											error: function (xhr) {
+												$.alert({
+													boxWidth: '30%',
+													useBootstrap: false,
+													type: 'red',
+													typeAnimated: true,
+													title: 'error',
+													content: xhr.statusText
+												});
+											}
+										});
+									}
+								},
+								cancel: function () {
+									$.alert({
+										boxWidth: '30%',
+										useBootstrap: false,
+										typeAnimated: true,
+										type: 'red',
+										title: 'Canceled',
+										content: 'action is canceled'
+									});
+								}
+							}
+						});
+
+					}
+
+
+					function updateStaff(id, firstname, lastname, username, contactnumber, email, password) {
+						$.confirm({
+							type: 'blue',
+							boxWidth: '50%',
+							useBootstrap: false,
+							title: 'Update Staff : ' + id,
+							content: `
+								<div class="register-form">
+								<form id="staffRegisterForm">
+									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+										<input class="firstname-input" required="required" type="text"
+											name="txtFirstname" value="`+ firstname + `">
+										<label for="firstname" class="firstname-label">First name</label>
+									</div>
+									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+										<input class="lastname-input" required="required" type="text"
+											name="txtLastname" value="`+ lastname +`">
+										<label for="lastname" class="lastname-label">Last name</label>
+									</div>
+
+									<div class="input-container full-width" style="width: 40%; margin: 0 20px 0 20px;">
+										<input class="username-input" required="required" type="text"
+											name="txtUsername" value="`+username+`">
+										<label for="username" class="username-label">Username</label>
+									</div>
+
+									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+										<input class="contactno-input" required="required" type="text"
+											name="txtContactno" value="`+contactnumber+`">
+										<label for="contactno" class="contactno-label">Contact no.</label>
+									</div>
+
+									<div class="input-container" style="width: 91%; margin-left: 20px;">
+										<input class="email-input" required="required" type="text" name="txtEmail" value="`+email+`">
+										<label for="email" class="email-label">Email</label>
+									</div>
+
+									
+									<div class="input-container" style="width: 91%; margin-left: 20px;">
+										<input class="password-input" required="required" type="password" name="txtPassword" value="`+password+`">
+										<label for="password" class="password-label">Password</label>
+									</div>
+
+									<div class="input-container" style="width: 91%; margin-left: 20px;">
+										<input class="confirmpassword-input" required="required" type="password" name="txtConfirmpassword" value="`+password+`">
+										<label for="confirmpassword" class="confirmpassword-label">Confirm Password</label>
+									</div>
+
+									<input class="sign-btn" type="submit" value="Signup">
+								</form>
+							</div>
+								`,
+							buttons: {
+								sayMyName: {
+									text: 'Say my name',
+									btnClass: 'btn-orange',
+									action: function () {
+										var input = this.$content.find('input#input-name');
+										var errorText = this.$content.find('.text-danger');
+										if (!input.val().trim()) {
+											$.alert({
+												content: "Please don't keep the name field empty.",
+												type: 'red'
+											});
+											return false;
+										} else {
+											$.alert('Hello ' + input.val() + ', i hope you have a great day!');
+										}
+									}
+								},
+								later: function () {
+									// do nothing.
+								}
+							}
+						});
+					}
 				</script>
 
 
