@@ -30,7 +30,7 @@ public class RemoveStaff_Servlet extends HttpServlet {
 	        	 services.deleteStaff(Long.parseLong(idNo));
 	        	 response.setContentType("text/plain");
 	             response.setStatus(HttpServletResponse.SC_OK);
-	             response.getWriter().write("Deletion successful.");
+	             response.getWriter().write("Deletion success.");
 	        } catch (Exception e) {
 	            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Deletion failed.");
 	        }
