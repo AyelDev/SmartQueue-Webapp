@@ -1,6 +1,7 @@
 package com.smartqueueweb.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,8 +20,25 @@ public class staffRegister_Servlet extends HttpServlet {
 	ServiceImpl services = new ServiceImpl();
 	RequestDispatcher rd = null;
 
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	   
+		   // Retrieve the parameters from the request
+        String firstName = request.getParameter("txtFirstname");
+        String lastName = request.getParameter("txtLastname");
+        String userName = request.getParameter("txtUsername");
+        String contactNo = request.getParameter("txtContactno");
+        String email = request.getParameter("txtEmail");
 
+       
+        
+     // Call the service to register staff
+        try {
+        	 services.registerStaff(firstName, lastName, email, Double.parseDouble(contactNo), userName);
+        	 response.setContentType("text/plain");
+             response.setStatus(HttpServletResponse.SC_OK);
+             response.getWriter().write("Registration successful.");
+        } catch (Exception e) {
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Registration failed.");
+        }
+	}
 }

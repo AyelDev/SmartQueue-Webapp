@@ -840,7 +840,8 @@
 								type: 'GET',
 								data: params,
 								success: function (response) {
-									$.alert({
+									closeModal()
+									$.confirm({
 										boxWidth: '30%',
 										useBootstrap: false,
 										title: 'Registration Successful',
@@ -852,13 +853,20 @@
 												text: 'add more',
 												btnClass: 'btn-green',
 												action: function () {
-													closeModal()
+													openModal()
 												}
 											},
+											ok: {
+												text: 'ok',
+												action: function(){
+													closeModal()
+												}
+											}
 										}
 									});
 								},
 								error: function (xhr) {
+									closeModal()
 									$.confirm({
 										boxWidth: '30%',
 										useBootstrap: false,

@@ -80,6 +80,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return studentdata.listOfStudent();
 	}
 
+	@Override
+	public Integer deleteStudent(long idnumber) {
+		// TODO Auto-generated method stub
+		return studentdata.removeStudent(idnumber);
+	}
+
 
 
 }

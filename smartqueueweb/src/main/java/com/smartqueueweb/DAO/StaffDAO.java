@@ -1,6 +1,7 @@
 package com.smartqueueweb.DAO;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -77,10 +78,12 @@ public class StaffDAO extends SQLConnection {
 	public Integer registerStaff(String firstname, String lastname, String email, double contactNumber,
 			String username) {
 		try {
-			int length = 4;
+			 LocalDate currentDate = LocalDate.now();
+			String dateLast2Digit = String.valueOf(currentDate.getYear()).substring(2);
+			int length = 2;
 			boolean useLetters = true;
 			boolean useNumbers = true;
-			String GeneratedPassword = RandomStringUtils.random(length, useLetters, useNumbers);
+			String GeneratedPassword = "CEC" + dateLast2Digit + RandomStringUtils.random(length, useLetters, useNumbers);
 			String specialChars = "!@#$&*";
 
 			GeneratedPassword += RandomStringUtils.random(2, specialChars);

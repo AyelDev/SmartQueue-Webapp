@@ -30,7 +30,7 @@ public class StaffList_Servlet extends HttpServlet {
 		boolean loginSessionsAdmin = session.getAttribute("sessionAdmin") != null ? true : false;
 		boolean loginSessionsStaff = session.getAttribute("sessionStaff") != null ? true : false;
 
-		cookiess(request, response,"admin/list_of_student.jsp");
+		cookiess(request, response,"admin/list_of_staff.jsp");
 			
 
 		// if (loginSessionsAdmin) {
@@ -74,10 +74,10 @@ public class StaffList_Servlet extends HttpServlet {
 				rd.forward(request, response);
 			
 			}else {
+				c.setMaxAge(0);
 				request.setAttribute("errorLogin", "Access Denied");
 				rd = request.getRequestDispatcher("login.jsp");
 				rd.include(request, response);
-				
 			}
 		}
 	}

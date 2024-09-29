@@ -3,6 +3,7 @@
 		<c:if test="${empty sessionScope.sessionStaff}">
 			<c:redirect url="/" />
 		</c:if>
+		
 		<!DOCTYPE html>
 		<html>
 
@@ -15,7 +16,6 @@
 			<link rel="stylesheet" href="./css/staffpage.css">
 			<title>staff page</title>
 		</head>
-
 		<body>
 			<div class="container">
 				<div class="cover">
@@ -34,8 +34,10 @@
 						<div class="b-container"></div>
 					</div>
 					<div class="leftnav">
-						<div class="top-lnav"><b>Cebu Eastern College</b>
+                        
+						<div class="top-lnav">
 							<img src="./images/logo.png" class="cec">
+                            <b class="title"><br>Cebu Eastern College</b>
 						</div>
 						<!-- staff profile -->
 						<button class="button-profile"><img src="./images/profile.png" alt=""

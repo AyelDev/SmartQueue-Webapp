@@ -12,213 +12,236 @@
             <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
             <script type="text/javascript" src="./scripts/fadetransition.js"></script>
             <link rel="stylesheet" href="./css/loader.css">
+            <link rel="stylesheet" href="./css/user_window.css">
             <title>SmartQueue</title>
-            <style>
-                table {
-                    font-family: tahoma;
-                    border-collapse: collapse;
-                    width: 64%;
-                    /* margin: 10px auto; */
-                }
-
-                td,
-                th {
-                    border: 3px solid #dddddd;
-                    text-align: left;
-                    padding: 10px;
-                    text-align: center;
-                }
-
-                th {
-                    border: 3px solid black;
-                    text-transform: uppercase;
-                }
-
-                tr:nth-child(even) {
-                    background-color: lightgrey;
-                }
-
-                .container {
-                    width: 100%;
-                    height: 100vh;
-                    background-color: #A0CFEC;
-                    margin: 0 auto;
-                    border-radius: 30px;
-                    padding: 20px;
-                    box-sizing: border-box;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    overflow: auto;
-                }
-
-                .ads {
-                    width: 35%;
-                    height: 97%;
-                    background-color: transparent;
-                    border-radius: 40px;
-                    text-align: center;
-                    border: 3px solid blue;
-                    padding: 20px;
-                    box-sizing: border-box;
-                    float: right;
-                    gap: 10px;
-                }
-
-                .windowads {
-
-                    width: 80%;
-                    height: 65%;
-                    background-color: white;
-                    margin: 20px auto;
-                    text-align: center;
-                    border-radius: 20px;
-                    padding: 20px;
-                    box-sizing: border-box;
-                }
-
-                .time {
-
-                    width: 80%;
-                    height: 10%;
-                    background-color: white;
-                    margin: 10px auto;
-                    text-align: center;
-                    border-radius: 20px;
-                    box-sizing: border-box;
-                    padding: 8px;
-                }
-
-                .h1,
-                h2,
-                h3,
-                p {
-                    margin-top: 8px;
-                }
-            </style>
+            
         </head>
-
         <body>
-            <div class="container">
-                <div class="ads">
-                    <h3>THIS IS VIDEO ADS</h3><b></b>
-                    <div class="windowads">
-                        <h2 style="margin-top: 10px;"><b>NOW SERVING</b></h2>
-                        <h1 id="serving-number" style="font-size: 85px;"><b>G O1</b></h1>
-                        <p id="serving-window" style="font-size: 20px;"><b>WINDOW 1</b></p>
+<style>
+    body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F6F4EB;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #00509d;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+  
+  .datetime {
+    font-size: 1.2rem;
+    margin-top: 15px;
+  }
+  
+  main {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+   
+  }
+  .counters {
+    display: flex;
+  
+  }
+  .counter {
+    padding: 20px;
+    width: 250px;
+    height: 92%;
+    text-align: center;
+    background-color: #1e91d0;
+  }
+  
+  .counter h2 {
+    background-color: #00509d;
+    color: #fff;
+    padding: 15px;
+    margin: 0;
+    margin-top: 10px;
+    border-radius: 15px 15px 0 0;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    box-shadow: inset 0 -4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .queue-numbers {
+    font-size: 1.8rem;
+    margin-top: 50px;
+    color: #444;
+    font-weight: bold;
+  }
+  
+  .queue-numbers p {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .advertisement {
+    width: 70%;
+    text-align: center;
+    background: transparent;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    /* transition: transform 0.3s ease-in-out; */
+  }
+  
+  /* .advertisement:hover {
+    transform: translateY(-10px);
+  } */
+  
+  .datetime {
+    background-color: #1e91d0;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    box-shadow: inset 0 -4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  video {
+    width: 100%;
+    height: 86%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border: 5px solid #333;
+    border-radius: 10px;
+    margin-top: 2px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #333;
+    color: #fff;
+    margin-top: 38px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+   
+  }
+  
+  footer p {
+    margin: 0;
+    font-size: 1rem;
+  }
+  @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .datetime {
+                font-size: 1rem;
+            }
+
+            .counter {
+                width: 100%; 
+                margin: 10px 0; 
+            }
+
+            .advertisement {
+                width: 90%;
+            }
+
+            .queue-numbers {
+                font-size: 1.5rem; 
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .datetime {
+                font-size: 0.9rem;
+            }
+
+            .queue-numbers {
+                font-size: 1.2rem; 
+            }
+        }
+            </style>
+                  <main>
+                    <div class="counters">
+                      <div class="counter" id="counter1">
+                        <h2>Counter 1</h2>
+                        <div class="queue-numbers" id="queue1"></div>
+                      </div>
+                      <div class="counter" id="counter2">
+                        <h2>Counter 2</h2>
+                        <div class="queue-numbers" id="queue2"></div>
+                      </div>
+                      <div class="counter" id="counter3">
+                        <h2>Counter 3</h2>
+                        <div class="queue-numbers" id="queue3"></div>
+                      </div>
                     </div>
-                    <!-- <div class="time">
-                <h2 id="current-time" style="font-size: 25px;">08:54:34 AM</h2><b></b>
-            </div> -->
-                </div>
-                <table>
-                    <tr>
-                        <th><b>Window</b></th>
-                        <th><b>Queue No.</b></th>
-
-                    </tr>
-                    <tr>
-                        <td>Window 1</td>
-                        <td>G 01</td>
-
-                    </tr>
-                    <tr>
-                        <td>Window 2</td>
-                        <td>G 02</td>
-                    </tr>
-                    <tr>
-                        <td>Window 3</td>
-                        <td>G 03</td>
-                    </tr>
-                    <tr>
-                        <td>Window 4</td>
-                        <td>G 04</td>
-                    </tr>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
-
-            <script>
-function updateServing() {
-    const servingNumber = document.getElementById('serving-number');
-    const servingWindow = document.getElementById('serving-window');
-
-    // Queue and window arrays
-    const queueData = [
-        { number: 'G 01', window: 'WINDOW 1' },
-        { number: 'G 02', window: 'WINDOW 2' },
-        { number: 'G 03', window: 'WINDOW 3' },
-        { number: 'G 04', window: 'WINDOW 4' },
-        { number: 'P 01', window: 'WINDOW 2' },
-    ];
-
-    // Select a random queue entry
-    const { number, window } = queueData[Math.floor(Math.random() * queueData.length)];
-
-    // Update DOM elements
-    servingNumber.textContent = number;
-    servingWindow.textContent = window;
-}
-
-function updateTime() {
-    const timeElement = document.getElementById('current-time');
-    const now = new Date();
-    
-    // Format time with zero padding and AM/PM conversion
-    const hours = now.getHours();
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    const displayHours = hours % 12 || 12;
-
-    // Update time element
-    timeElement.textContent = `${displayHours}:${minutes}:${seconds} ${ampm}`;
-}
-
-// Update serving and time every second
-setInterval(() => {
-    updateServing();
-    updateTime();
-}, 1000);
-            </script>
+                
+                    <div class="advertisement">
+                      <video id="adVideo" controls autoplay loop>
+                        <source src="video-ad.mp4" type="video/mp4">
+                      </video>
+                      <div class="datetime">
+                      <span id="date"></span> | <span id="time"></span>
+                    </div>
+                    </div>
+                  </main>
+                
+                  <footer>
+                    <b><p>&copy; 2024 Cebu Eastern College. All Rights Reserved.</p></b>
+                  </footer>
+                
+                  <script>
+                 
+                let startQueue = 1;
+                
+                function updateQueue(counterId, queueId) {
+                  let queueDiv = document.getElementById(queueId);
+                  queueDiv.innerHTML = '';  
+                
+                  for (let i = 0; i < 5; i++) {
+                    let number = startQueue + i;
+                    let p = document.createElement('p');
+                    p.textContent = `#${number}`;
+                    queueDiv.appendChild(p);
+                  }
+                  startQueue += 5;  
+                }
+                
+                setInterval(() => {
+                  updateQueue('counter1', 'queue1');
+                  updateQueue('counter2', 'queue2');
+                  updateQueue('counter3', 'queue3');
+                }, 10000);
+                
+                function updateTime() {
+                  const now = new Date();
+                  document.getElementById('date').textContent = now.toLocaleDateString();
+                  document.getElementById('time').textContent = now.toLocaleTimeString();
+                }
+                setInterval(updateTime, 1000);
+                
+                updateQueue('counter1', 'queue1');
+                updateQueue('counter2', 'queue2');
+                updateQueue('counter3', 'queue3');
+                updateTime();
+                
+                  </script>
 
             <div class="load-wrapper">
                 <div class="main-loader">
