@@ -428,7 +428,7 @@
 				</div>
 			</div>
 
-			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+			<script src="./scripts/chart.min.js"></script>
 			<script>
 				var dropdown = document.getElementsByClassName("button-profile");
 				var i;
