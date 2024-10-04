@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Errors>
+	<data name="API.LOGINFAILED">
+		<value>Login failed!</value>
+	</data>
+	<data name="API.ACCOUNTLOCKED">
+		<value>Your Account is Locked Please Contact the Admin</value>
+	</data>
+	<data name="API.INVALIDACCESS">
+		<value>Access Denied</value>
+	</data>
+</Errors>
