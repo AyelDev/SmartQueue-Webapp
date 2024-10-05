@@ -9,4 +9,7 @@
 	<data name="API.INVALIDACCESS">
 		<value>Access Denied</value>
 	</data>
+	<data name="API.TOKENAUTHTENTICATIONFAILED">
+		<value>Authentication expired, Please log in</value>
+	</data>
 </Errors>
