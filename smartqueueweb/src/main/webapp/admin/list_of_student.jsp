@@ -88,6 +88,7 @@
 					width: 50%;
 					max-width: 100%;
 					object-fit: contain;
+					margin-top: 15px;
 				}
 
 				.title {
@@ -258,7 +259,7 @@
 
 				.studentlist-section {
 					width: 85vw;
-					height: auto;
+					height: 100%;
 					background-color: var(--background-color);
 					float: right;
 					margin-left: 15%;
@@ -618,8 +619,7 @@
 						<div class="menu-navbar">
 							<div class="dropdown">
 								<button class="dropdown-btn">
-									<img src="./images/dashboard.png" alt="" class="dashboard-icon">Dashboard<img
-										src="./images/caretright.png" alt="" class="caretright">
+									<img src="./images/dashboard.png" alt="" class="dashboard-icon">Dashboard
 								</button>
 								<div class="dropdown-dashboard">
 									<a href="dashboard">Dashboard</a> <a href="">Total of Counter</a>
@@ -629,8 +629,7 @@
 
 							<div class="dropdown">
 								<button class="dropdown-btn">
-									<img src="./images/counter.png" alt="" class="counter-icon">Counter<img
-										src="./images/caretright.png" alt="" class="caretright">
+									<img src="./images/counter.png" alt="" class="counter-icon">Counter
 								</button>
 								<div class="dropdown-dashboard">
 									<a href="">Add Counter</a> <a href="listofcounter">List of
@@ -640,8 +639,7 @@
 
 							<div class="dropdown">
 								<button class="dropdown-btn">
-									<img src="./images/users.png" alt="" class="users-icon">Users<img
-										src="./images/caretright.png" alt="" class="caretright">
+									<img src="./images/users.png" alt="" class="users-icon">Users
 								</button>
 								<div class="dropdown-dashboard">
 									<a href="">Add Student</a> <a href="">Add Staff</a> <a href="studentlist">List of
@@ -653,8 +651,7 @@
 							<div class="dropdown">
 								<button class="dropdown-btn">
 									<img src="./images/entertainment.png" alt=""
-										class="entertainment-icon">Entertainment<img src="./images/caretright.png"
-										alt="" class="caretright">
+										class="entertainment-icon">Entertainment
 								</button>
 								<div class="dropdown-dashboard">
 									<a href="">Video advertisement</a>
@@ -663,8 +660,7 @@
 
 							<div class="dropdown">
 								<button class="dropdown-btn">
-									<img src="./images/display.png" alt="" class="display-icon">Display<img
-										src="./images/caretright.png" alt="" class="caretright">
+									<img src="./images/display.png" alt="" class="display-icon">Display
 								</button>
 								<div class="dropdown-dashboard">
 									<a href="">User Inquiry</a> <a href="">User Window</a> <a href="">Counter

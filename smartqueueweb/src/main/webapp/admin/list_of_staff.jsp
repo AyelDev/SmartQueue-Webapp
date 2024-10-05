@@ -174,7 +174,7 @@
 				background-color: var(--background-color);
 				min-width: 160px;
 				top: 100%;
-				left: 80%;
+				left: 60%;
 				z-index: 1;
 				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 				border-radius: 4px;
@@ -259,6 +259,7 @@
 				align-items: center;
 				display: flex;
 				justify-content: center;
+				height: 100vh;
 			}
 
 			.title-page {
@@ -405,6 +406,7 @@
 				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 				overflow: hidden;
 				padding: 20px;
+				margin-top: -30%;
 			}
 
 			.add-account-icon {
@@ -600,7 +602,7 @@
 						<p>
 					</div>
 					<!-- admin profile -->
-					<button class="button-profile" id="button-profile"><img src="../images/profile.png" alt=""
+					<button class="button-profile" id="button-profile"><img src="./images/profile.png" alt=""
 							class="profile">ADMIN<img src="../images/caretdown.png" alt="" class="caretdown"></button>
 					<div class="adminProfile" id="adminProfile">
 						<a href="">Settings</a>
@@ -609,9 +611,8 @@
 
 					<div class="menu-navbar">
 						<div class="dropdown">
-							<button class="dropdown-btn"><img src="../images/dashboard.png" alt=""
-									class="dashboard-icon">Dashboard<img src="./images/caretright.png" alt=""
-									class="caretright"></button>
+							<button class="dropdown-btn"><img src="./images/dashboard.png" alt=""
+									class="dashboard-icon">Dashboard</button>
 							<div class="dropdown-dashboard">
 								<a href="dashboard">Dashboard</a>
 								<a href="">Total of Counter</a>
@@ -620,9 +621,8 @@
 						</div>
 
 						<div class="dropdown">
-							<button class="dropdown-btn"><img src="../images/counter.png" alt=""
-									class="counter-icon">Counter<img src="./images/caretright.png" alt=""
-									class="caretright"></button>
+							<button class="dropdown-btn"><img src="./images/counter.png" alt=""
+									class="counter-icon">Counter</button>
 							<div class="dropdown-dashboard">
 								<a href="">Add Counter</a>
 								<a href="listofcounter">List of Counter</a>
@@ -630,9 +630,8 @@
 						</div>
 
 						<div class="dropdown">
-							<button class="dropdown-btn"><img src="../images/users.png" alt=""
-									class="users-icon">Users<img src="./images/caretright.png" alt=""
-									class="caretright"></button>
+							<button class="dropdown-btn"><img src="./images/users.png" alt=""
+									class="users-icon">Users</button>
 							<div class="dropdown-dashboard">
 								<a href="">Add Student</a>
 								<a href="">Add Staff</a>
@@ -642,18 +641,16 @@
 						</div>
 
 						<div class="dropdown">
-							<button class="dropdown-btn"><img src="../images/entertainment.png" alt=""
-									class="entertainment-icon">Entertainment<img src="./images/caretright.png" alt=""
-									class="caretright"></button>
+							<button class="dropdown-btn"><img src="./images/entertainment.png" alt=""
+									class="entertainment-icon">Entertainment</button>
 							<div class="dropdown-dashboard">
 								<a href="">Video advertisement</a>
 							</div>
 						</div>
 
 						<div class="dropdown">
-							<button class="dropdown-btn"><img src="../images/display.png" alt=""
-									class="display-icon">Display<img src="./images/caretright.png" alt=""
-									class="caretright"></button>
+							<button class="dropdown-btn"><img src="./images/display.png" alt=""
+									class="display-icon">Display</button>
 							<div class="dropdown-dashboard">
 								<a href="">User Inquiry</a>
 								<a href="">User Window</a>
