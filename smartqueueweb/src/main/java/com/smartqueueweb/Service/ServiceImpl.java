@@ -1,6 +1,18 @@
 package com.smartqueueweb.Service;
 
-import java.text.DateFormat;
+import java.io.File;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import java.util.List;
 
 import com.smartqueueweb.DAO.AdminDAO;
@@ -15,38 +27,39 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	AdminDAO admindata = new AdminDAO();
 	StudentDAO studentdata = new StudentDAO();
 
-	//////////////////////////////////////////////////////////////////////// ------------------      Staff
+	//////////////////////////////////////////////////////////////////////// ------------------
+	//////////////////////////////////////////////////////////////////////// Staff
 	@Override
 	public boolean loginStaff(String username, String password) {
 		// TODO Auto-generated method stub
 		return staffdata.authLoginStaff(username, password);
 	}
-	
+
 	@Override
 	public Integer registerStaff(String firstname, String lastname, String email, double contactNumber,
 			String username) {
 		// TODO Auto-generated method stub
 		return staffdata.registerStaff(firstname, lastname, email, contactNumber, username);
 	}
-	
+
 	@Override
 	public StaffBean loginStaffDetail(String username) {
 		// TODO Auto-generated method stub
 		return staffdata.staffDetails(username);
 	}
-	
+
 	@Override
 	public Boolean isStaffLocked(String username) {
 		// TODO Auto-generated method stub
 		return staffdata.checkStaffIfLocked(username);
 	}
-	
+
 	@Override
 	public List<StaffBean> listsOfStaff() {
 		// TODO Auto-generated method stub
 		return staffdata.listOfStaff();
 	}
-	
+
 	@Override
 	public Integer GenerateStaffToken(String role, String value) {
 		// TODO Auto-generated method stub
@@ -63,9 +76,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	public Integer updateStaff(long staffId, String inputFirstname, String inputLastname, String inputEmail,
 			double inputContactnumber, String inputUsername, String inputPassword, int inputStafflocked) {
 		// TODO Auto-generated method stub
-		return staffdata.updateStaff(staffId, inputFirstname, inputLastname, inputEmail, inputContactnumber, inputUsername, inputPassword, inputStafflocked);
+		return staffdata.updateStaff(staffId, inputFirstname, inputLastname, inputEmail, inputContactnumber,
+				inputUsername, inputPassword, inputStafflocked);
 	}
-	//////////////////////////////////////////////////////////////////////// --------------------       Admin
+
+	//////////////////////////////////////////////////////////////////////// --------------------
+	//////////////////////////////////////////////////////////////////////// Admin
 	@Override
 	public boolean loginAdmin(String username, String password) {
 		// TODO Auto-generated method stub
@@ -78,9 +94,9 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return admindata.adminDetail(username);
 	}
 
-	
-	//////////////////////////////////////////////////////////////////////// -----------------------	Student
-	
+	//////////////////////////////////////////////////////////////////////// -----------------------
+	//////////////////////////////////////////////////////////////////////// Student
+
 	@Override
 	public Integer addStudent(long idnumber, String firstname, String middlename, String lastname, String course) {
 		return studentdata.addStudent(idnumber, firstname, middlename, lastname, course);
@@ -99,10 +115,57 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	}
 
 	@Override
-	public Integer updateStudent(long idNumber, long inputIdnumber, String inputfirstname, String inputMiddlename, String inputLastname, String inputCourse) {
+	public Integer updateStudent(long idNumber, long inputIdnumber, String inputfirstname, String inputMiddlename,
+			String inputLastname, String inputCourse) {
 		// TODO Auto-generated method stub
-		return studentdata.updateStudent(idNumber, inputIdnumber, inputfirstname, inputMiddlename, inputLastname, inputCourse);
+		return studentdata.updateStudent(idNumber, inputIdnumber, inputfirstname, inputMiddlename, inputLastname,
+				inputCourse);
 	}
 
+	public String XMLERRORNAME(String errorName) {
+		try {
+		    // Specify the file path
+		    File xmlFile = new File("C:/Users/63966/git/SmartQueue-Webapp/smartqueueweb/src/main/webapp/WEB-INF/WebConfigErrors.xml");
+
+		    // Check if file exists
+		    if (!xmlFile.exists()) {
+		        System.out.println("File not found: " + xmlFile.getAbsolutePath());
+		        return "";
+		    }
+
+		    // Create a DocumentBuilderFactory
+		    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+		    // Create a DocumentBuilder
+		    DocumentBuilder builder = factory.newDocumentBuilder();
+
+		    // Parse the XML file and build a Document
+		    Document document = builder.parse(xmlFile);
+
+		    // Normalize the XML structure
+		    document.getDocumentElement().normalize();
+
+		    // Get all data elements
+		    NodeList nodeList = document.getElementsByTagName("data");
+
+		    // Iterate through the data elements
+		    for (int i = 0; i < nodeList.getLength(); i++) {
+		        Element dataElement = (Element) nodeList.item(i);
+		        String value = dataElement.getElementsByTagName("value").item(0).getTextContent();
+		        String name = dataElement.getAttribute("name");
+		        if (name.equals(errorName)) {
+		            // Print the information
+		            System.out.println("Name: " + name);
+		            System.out.println("Value: " + value);
+		            System.out.println();
+		            return value;
+		        }
+		    }
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}
+		return "";
+
+	}
 
 }
