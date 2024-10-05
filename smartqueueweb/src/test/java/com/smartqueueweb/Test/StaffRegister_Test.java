@@ -18,7 +18,7 @@ public class StaffRegister_Test {
 		
 		int expected = 1;
 		double ss = 09672919283d;
-		int actual = obj.registerStaff("lolos", "lolos", "lolos@gmail.com", ss, "lolos");
+		int actual = obj.registerStaff("lol", "loloÑÑññs", "lolos@gmail.com", ss, "lolos");
 		assertEquals(expected, actual);
 		
 	}

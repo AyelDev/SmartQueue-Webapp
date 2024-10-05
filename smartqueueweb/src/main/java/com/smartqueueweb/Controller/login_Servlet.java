@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
+import com.smartqueueweb.Class.JwtValidator;
 import com.smartqueueweb.Model.StaffBean;
 import com.smartqueueweb.Service.ServiceImpl;
 
@@ -21,32 +22,32 @@ import com.smartqueueweb.Service.ServiceImpl;
 public class login_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	// smartqueue_DataAccessLayer database = new smartqueue_DataAccessLayer();
 	ServiceImpl services = new ServiceImpl();
 	RequestDispatcher rd = null;
+	JwtValidator validator = new JwtValidator();
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Cookie cookie = null;
 		String userName = request.getParameter("txtUsername");
 		String passWord = request.getParameter("txtPassword");
+		
 		HttpSession session = request.getSession();
 
 		// PrintWriter out = response.getWriter();
 
 		boolean isAdminLogTrue = services.loginAdmin(userName, passWord);
 		boolean isStaffLogTrue = services.loginStaff(userName, passWord);
-
 		boolean isStaffLocked = services.isStaffLocked(userName);
 
 		if (isAdminLogTrue) {
-			String authcode = generatedAuthCode();
 			session.setAttribute("sessionAdmin", services.adminDetails(userName));
-			cookie = new Cookie("_auth", authcode);
+			cookie = new Cookie("_auth", validator.generatedAuthCode(services.adminDetails(userName).getAdminId(),
+					services.adminDetails(userName).getUsername()));
 			cookie.setMaxAge(7200); // Set the expiry time to 2 hour
 			cookie.setPath("/");
 			response.addCookie(cookie);
-			services.GenerateStaffToken("admin", authcode);
+			// services.GenerateStaffToken("admin", authcode);
 			rd = request.getRequestDispatcher("admin/adminpage.jsp");
 			rd.forward(request, response);
 		}
@@ -54,7 +55,8 @@ public class login_Servlet extends HttpServlet {
 		if (isStaffLogTrue && !isStaffLocked) {
 			StaffBean staffDetails = services.loginStaffDetail(userName);
 			session.setAttribute("sessionStaff", staffDetails);
-			cookie = new Cookie("_auth", generatedAuthCode());
+			cookie = new Cookie("_auth",
+					validator.generatedAuthCode(staffDetails.getStaffID(), staffDetails.getUsername()));
 			cookie.setMaxAge(7200); // Set the expiry time to 2 hour
 			cookie.setPath("/");
 			response.addCookie(cookie);
@@ -63,13 +65,13 @@ public class login_Servlet extends HttpServlet {
 		}
 
 		if (!isStaffLogTrue && !isAdminLogTrue) {
-			request.setAttribute("errorLogin", "login failed");
+			request.setAttribute("errorLogin", services.XMLERRORNAME("API.LOGINFAILED"));
 			rd = request.getRequestDispatcher("login.jsp");
 			rd.include(request, response);
 		}
 
 		if (isStaffLocked) {
-			request.setAttribute("errorLogin", "Your Account is Locked Please Contact the Admin");
+			request.setAttribute("errorLogin", services.XMLERRORNAME("API.ACCOUNTLOCKED"));
 			rd = request.getRequestDispatcher("login.jsp");
 			rd.include(request, response);
 		}
@@ -79,28 +81,32 @@ public class login_Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-
-		boolean loginSessionsAdmin = session.getAttribute("sessionAdmin") != null ? true : false;
-		boolean loginSessionsStaff = session.getAttribute("sessionStaff") != null ? true : false;
-
-		if (loginSessionsAdmin) {
+		try{
+			validator.decode(validator.getCookieValue(request.getCookies(), "_auth"));
 			rd = request.getRequestDispatcher("admin/adminpage.jsp");
 			rd.forward(request, response);
-		}
-
-		request.setAttribute("errorLogin", "Access Denied");
+		}catch(Exception e) {
+			//e.getMessage();
+		request.setAttribute("errorLogin", services.XMLERRORNAME("API.TOKENAUTHTENTICATIONFAILED"));
 		rd = request.getRequestDispatcher("login.jsp");
 		rd.include(request, response);
+		
+	}
+
+		// boolean loginSessionsAdmin = session.getAttribute("sessionAdmin") != null ? true : false;
+		// boolean loginSessionsStaff = session.getAttribute("sessionStaff") != null ? true : false;
+
+		// if (loginSessionsAdmin) {
+		// 	rd = request.getRequestDispatcher("admin/adminpage.jsp");
+		// 	rd.forward(request, response);
+		// }
+
+		// request.setAttribute("errorLogin", "Access Denied");
+		// rd = request.getRequestDispatcher("login.jsp");
+		// rd.include(request, response);
 
 	}
 
-	protected String generatedAuthCode() {
-		int length = 35;
-		boolean useLetters = true;
-		boolean useNumbers = true;
-		String GeneratedPassword = RandomStringUtils.random(length, useLetters, useNumbers);
-		String specialChars = "!@#$&()[]<>";
-		GeneratedPassword += RandomStringUtils.random(10, specialChars);
-		return GeneratedPassword;
-	}
+
+
 }

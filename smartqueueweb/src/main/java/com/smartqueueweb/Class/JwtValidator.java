@@ -3,6 +3,9 @@ package com.smartqueueweb.Class;
 import java.sql.Date;
 import java.util.UUID;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -10,23 +13,22 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 public class JwtValidator {
 
-    private JWTVerifier verifier;
+    String secretKey = "VuZyBEZXRhaWxzIiwibmJmIjoxNzI3OTQ0NzMxLCJ";
+    String issuer = "smartqueuewebauthors";
+    String subject = "smartqueueweb queueing system";
+    Algorithm algorithm = Algorithm.HMAC256(secretKey);
+    JWTVerifier verifier;
     long currentTimeMillis = System.currentTimeMillis();
     String jwtToken;
-    static String error;
 
-    public JwtValidator(String secretKey, String issuer, String subject, int userId, String userName) {
-
-        Algorithm algorithm = Algorithm.HMAC256(secretKey);
-
+    public String generatedAuthCode(int userId, String userName) {
         /*
          * issuer must change every month
          * allow changes in random nums and names
          */
+        verifier = JWT.require(algorithm).withIssuer(issuer).build();
 
-        this.verifier = JWT.require(algorithm).withIssuer(issuer).build();
-
-        jwtToken = JWT.create()
+        return jwtToken = JWT.create()
                 .withIssuer(issuer)
                 .withSubject(subject)
                 .withClaim("userId", userId)
@@ -38,28 +40,28 @@ public class JwtValidator {
                 .sign(algorithm);
     }
 
-    public String getJwtToken() {
-        return jwtToken;
+    public DecodedJWT decode(String token) {
+
+        return verifier.verify(token);
+
     }
 
-    public DecodedJWT decode(String token) {
-        try {
-            // Verify and decode the token
-            return this.verifier.verify(token);
-        } catch (Exception e) {
-            error = e.getMessage();
-            System.out.println("Token is invalid: " + e.getMessage());
-            return null;
+    public String getCookieValue(Cookie[] cookies, String cookiename) {
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookiename.equals(cookie.getName())) {
+                    return cookie.getValue();
+                }
+            }
         }
+        return null;
     }
 
     public static String fixGarbledCharacters(String input) {
-		if (input != null) {
-			input = input.replace("Ã±", "ñ"); // Fix for ñ
-			input = input.replace("Ã", "Ñ"); // Fix for Ñ
-		}
-		return input.trim();
-	}
-    
+        if (input != null) {
+            input = input.replace("Ã±", "ñ"); // Fix for ñ
+            input = input.replace("Ã", "Ñ"); // Fix for Ñ
+        }
+        return input.trim();
+    }
 }
-

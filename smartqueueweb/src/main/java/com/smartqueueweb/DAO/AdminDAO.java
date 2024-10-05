@@ -41,6 +41,7 @@ public class AdminDAO extends SQLConnection {
 
 			while (rs.next()) {
 				adminbean = new AdminBean();
+				adminbean.setAdminId(rs.getInt("admin_id"));
 				adminbean.setUsername(rs.getString("username"));
 				adminbean.setPassword(rs.getString("password"));
 			}

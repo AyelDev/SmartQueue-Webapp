@@ -932,6 +932,7 @@
 													title: 'Response',
 													content: response
 												});
+												updateData();
 											},
 											error: function (xhr) {
 												$.alert({
@@ -1063,6 +1064,8 @@
 																Email: ` + email.val() + `<br>
 																Password: `+ password.val() + `<br>
 																Restriction: `+ ischecked + `</h3>`;
+
+														updateData();
 														$.alert({
 															boxWidth: '30%',
 															useBootstrap: false,
