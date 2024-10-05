@@ -25,10 +25,10 @@ public class login_Servlet extends HttpServlet {
 	ServiceImpl services = new ServiceImpl();
 	RequestDispatcher rd = null;
 	JwtValidator validator = new JwtValidator();
-
+	Cookie cookie = null;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Cookie cookie = null;
+	
 		String userName = request.getParameter("txtUsername");
 		String passWord = request.getParameter("txtPassword");
 		

@@ -26,12 +26,15 @@ public class logout_Servlet extends HttpServlet {
 		if (session != null) {
 			session.invalidate();
 		}
-		
+
+
 		Cookie cookies[] = request.getCookies();
 		for(Cookie cookie : cookies) {
 			cookie.setMaxAge(0);
+			cookie.setPath("/");
+			response.addCookie(cookie);
 		}
-		
+
 		// response.sendRedirect("login.jsp");
 		rd = request.getRequestDispatcher("login.jsp");
 		rd.forward(request, response);

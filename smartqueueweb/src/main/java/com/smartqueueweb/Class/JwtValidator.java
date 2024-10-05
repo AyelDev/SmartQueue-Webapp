@@ -13,15 +13,15 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 public class JwtValidator {
 
-    String secretKey = "VuZyBEZXRhaWxzIiwibmJmIjoxNzI3OTQ0NzMxLCJ";
-    String issuer = "smartqueuewebauthors";
-    String subject = "smartqueueweb queueing system";
-    Algorithm algorithm = Algorithm.HMAC256(secretKey);
-    JWTVerifier verifier;
-    long currentTimeMillis = System.currentTimeMillis();
+    final String secretKey = "VuZyBEZXRhaWxzIiwibmJmIjoxNzI3OTQ0NzMxLCJ";
+    final String issuer = "smartqueuewebauthors";
+    final String subject = "smartqueueweb queueing system";
+    final Algorithm algorithm = Algorithm.HMAC256(secretKey);
+    static JWTVerifier verifier;
     String jwtToken;
 
     public String generatedAuthCode(int userId, String userName) {
+        long currentTimeMillis = System.currentTimeMillis();
         /*
          * issuer must change every month
          * allow changes in random nums and names
@@ -34,7 +34,7 @@ public class JwtValidator {
                 .withClaim("userId", userId)
                 .withClaim("userName", userName)
                 .withIssuedAt(new Date(currentTimeMillis))
-                .withExpiresAt(new Date(currentTimeMillis + 60000L))
+                .withExpiresAt(new Date(currentTimeMillis + 60000L)) //2 mins
                 .withJWTId(UUID.randomUUID().toString())
                 .withNotBefore(new Date(currentTimeMillis))
                 .sign(algorithm);

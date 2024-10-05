@@ -155,9 +155,9 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		        String name = dataElement.getAttribute("name");
 		        if (name.equals(errorName)) {
 		            // Print the information
-		            System.out.println("Name: " + name);
-		            System.out.println("Value: " + value);
-		            System.out.println();
+		            // System.out.println("Name: " + name);
+		            // System.out.println("Value: " + value);
+		            // System.out.println();
 		            return value;
 		        }
 		    }
