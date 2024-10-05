@@ -85,6 +85,7 @@
             width: 50%;
             max-width: 100%;
             object-fit: contain;
+            margin-top: 15px;
         }
 
         .title {
@@ -395,18 +396,10 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             padding: 20px;
+            margin-top: -20%;
         }
 
-        .studentlist-content {
-            width: 90%;
-            max-width: 1000px;
-            margin: 20px;
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            padding: 20px;
-        }
+    
 
         .add-account-icon {
             object-fit: scale-down;
@@ -622,9 +615,8 @@
 
                 <div class="menu-navbar">
                     <div class="dropdown">
-                        <button class="dropdown-btn"><img src="../images/dashboard.png" alt=""
-                                class="dashboard-icon">Dashboard<img src="./images/caretright.png" alt=""
-                                class="caretright"></button>
+                        <button class="dropdown-btn"><img src="./images/dashboard.png" alt=""
+                                class="dashboard-icon">Dashboard</button>
                         <div class="dropdown-dashboard">
                             <a href="">Dashboard</a>
                             <a href="">Total of Counter</a>
@@ -633,9 +625,8 @@
                     </div>
 
                     <div class="dropdown">
-                        <button class="dropdown-btn"><img src="../images/counter.png" alt=""
-                                class="counter-icon">Counter<img src="./images/caretright.png" alt=""
-                                class="caretright"></button>
+                        <button class="dropdown-btn"><img src="./images/counter.png" alt=""
+                                class="counter-icon">Counter</button>
                         <div class="dropdown-dashboard">
                             <a href="">Add Counter</a>
                             <a href="listofcounter">List of Counter</a>
@@ -643,8 +634,7 @@
                     </div>
 
                     <div class="dropdown">
-                        <button class="dropdown-btn"><img src="../images/users.png" alt="" class="users-icon">Users<img
-                                src="./images/caretright.png" alt="" class="caretright"></button>
+                        <button class="dropdown-btn"><img src="./images/users.png" alt="" class="users-icon">Users</button>
                         <div class="dropdown-dashboard">
                             <a href="">Add Student</a>
                             <a href="">Add Staff</a>
@@ -654,18 +644,16 @@
                     </div>
 
                     <div class="dropdown">
-                        <button class="dropdown-btn"><img src="../images/entertainment.png" alt=""
-                                class="entertainment-icon">Entertainment<img src="./images/caretright.png" alt=""
-                                class="caretright"></button>
+                        <button class="dropdown-btn"><img src="./images/entertainment.png" alt=""
+                                class="entertainment-icon">Entertainment</button>
                         <div class="dropdown-dashboard">
                             <a href="">Video advertisement</a>
                         </div>
                     </div>
 
                     <div class="dropdown">
-                        <button class="dropdown-btn"><img src="../images/display.png" alt=""
-                                class="display-icon">Display<img src="./images/caretright.png" alt=""
-                                class="caretright"></button>
+                        <button class="dropdown-btn"><img src="./images/display.png" alt=""
+                                class="display-icon">Display</button>
                         <div class="dropdown-dashboard">
                             <a href="">User Inquiry</a>
                             <a href="">User Window</a>

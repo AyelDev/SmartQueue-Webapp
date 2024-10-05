@@ -220,7 +220,7 @@
 
 			.dropdown:hover .dropdown-dashboard {
 				display: block;
-				color: black;
+				
 			}
 
 			.dropdown {
@@ -407,11 +407,11 @@
 					<h1 class="dashboard-title">Dashboard</h1>
 					<div class="dashboard-content">
 						<div class="card-total"><br>
-							<p>Total counter</p>
+							<p>Total students</p>
 							<h3>100</h3>
 						</div>
 						<div class="card-total"><br>
-							<p>Total student</p>
+							<p>Total staff</p>
 							<h3>100</h3>
 						</div>
 						<div class="card-total"><br>
