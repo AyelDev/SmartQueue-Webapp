@@ -37,99 +37,108 @@ body{
     background-color: #5CB3FF;
     color: white;
 }
-.top-lnav{
+.top-lnav {
     width: 100%;
     height: 20%;
     background-color: #5CB3FF;
     text-align: center;
     display: block;
     position: relative;
-    line-height: 6.25rem;
+    line-height: 10px;
     font-size: 0.875rem;
-   
+    color: white;
+    }
+        
+.cec {
+    width: 50%;
+    max-width: 100%;
+    object-fit: contain;
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
-.cec{
-    width: 20%;
-    height: 25%;
-    margin: 1.875rem auto;
-    margin-left: 0.5rem;
-    float: left ;
+        
+.title {
+    color: #F6F4EB;
+    font-size: 1.15em;
+    line-height: 3px;
 }
-.bottom-lnav{
+        
+.bottom-lnav {
     width: 100%;
     height: 80%;
     background-color: transparent;
     text-align: center;
+    padding-top: 4rem; 
+    overflow: hidden;
+ }
+        
+.bottom-lnav a {
+    display: block;
+    margin: 1rem 0;
     color: white;
-}
-.dropdown {
-    position: relative;
-    display: inline-block;
-    margin-top: 4.375rem;
-    width: 100%; 
-}
-.dropdown h3 {
-    cursor: pointer;
-    margin: 1.25rem 0; 
-    color: white;
-    transition: transform 0.3s ease;
-}
-.dropdown h3:hover{
-    background-color: white;
-    height: 1.875rem;
-    width: 100%;
-    border-radius: 3.125rem;
-    transform: translateX(1.25rem);
-    color: black;
-}
-.staffProfile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.staffProfile a {
     text-decoration: none;
-    color: black;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+    /* line-height: 60px; */
+    margin-top: 60px;
+    text-align: center;
     justify-content: center;
-    padding: 0.5rem; 
-    box-sizing: border-box;
+    align-items: center;
 }
-
-.staffProfile a:hover {
-    background-color: #F6F4EB;
-    width: 65%; 
-    border-radius: 0.625rem; 
-    border: 0.0625rem solid black;
-    margin-left: 1.875rem;
-    margin-top: 0.125rem;
+        
+.bottom-lnav a:hover {
+    padding: 5px 10px;
+    background-color: white;
+    position: relative;
+    left: 20px;
+    color: black; 
+    border-radius: 30px;
+    transition-timing-function:cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
+        
 .button-profile {
     align-items: center;
     justify-content: center;
     display: flex;
     width: 10vw;
     text-align: center;
-    margin-top: 1.875rem;
+    margin-top: auto;
     margin-left: 1.875rem;
     border-radius: 0.625rem;
-    padding: 0.9375rem 0.625rem 0.9375rem 0.625rem; /* tlbr */
-    overflow: hidden;
+    padding: 0.9375rem 0.625rem;
 }
-.profile{
+        
+.profile {
     width: 10%;
     object-fit: scale-down;
     margin-right: 1.25rem;
 }
-.caretdown{
+        
+.caretdown {
     mix-blend-mode: multiply;
     width: 0.625rem;
     margin-left: 1.25rem;
+}
+.staffProfile a {
+	text-decoration: none;
+	color: white;
+	overflow: hidden;
+	width: 10vw;
+	height: 20%;
+	text-align: center;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: .5rem 0 0 0;
+	height: 2rem;
+    margin-left: 30px;
+}
+
+.staffProfile a:hover {
+	background-color: lightgrey;
+	border-radius: 7px;
+    color: black;
 }
 .dropdown-content {
     display: none; 
@@ -303,6 +312,59 @@ background-color: #e0a800;
 .actions .btn.cancel:hover {
 background-color: #c82333;
 }
+
+.dropbtn {
+    background-color: transparent;
+    color: black;
+    padding: 10px 20px; 
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 20px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+.dropdown1 {
+    position: relative;
+    display: inline-block;
+    margin: 1rem 0;
+    margin-left: 650px;
+}
+
+.dropdown-content1 {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 165px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transition: visibility 0s, opacity 0.5s linear; 
+    opacity: 0;
+    visibility: hidden; 
+}
+
+.dropdown-content1 a {
+    color: black;
+    padding: 12px 16px; 
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s; 
+}
+
+.dropdown-content1 a:hover {
+    background-color: #ddd; 
+}
+
+.dropdown1:hover .dropdown-content1 {
+    display: block; 
+    opacity: 1; 
+    visibility: visible; 
+}
+
+.dropdown1:hover .dropbtn {
+    background-color: #E5E4E2; 
+}
+
 @media (max-width: 1200px) {
     .leftnav {
         width: 20%;
@@ -350,6 +412,15 @@ background-color: #c82333;
               
                 <div class="table-container">
                     <h2>COUNTER ACCESS</h2>
+                    
+<div class="dropdown1">
+    <button class="dropbtn">---------------</button>
+    <div class="dropdown-content1">
+      <a href="#">Counter 1 (General)</a>
+      <a href="#">Counter 2 (Records)</a>
+      <a href="#">Counter 3 (Archiving)</a>
+    </div>
+  </div>
                     <table id="counter-access-table" class="data-table">
                         <thead>
                             <tr>
@@ -422,7 +493,7 @@ background-color: #c82333;
         <div class="leftnav">
             <div class="top-lnav">
                 <img src="./images/logo.png" class="cec">
-                <p class="title"><br>Cebu Eastern College</p>
+                <p class="title"><br><b>Cebu Eastern College</b></p>
             </div>
             <!-- staff profile -->
             <button class="button-profile"><img src="./images/profile.png" alt=""
@@ -433,20 +504,9 @@ background-color: #c82333;
                 <a href="login">Signout</a>
             </div>
             <div class="bottom-lnav">
-                <div class="dropdown">
-                    <h3>QUEUEING</h3>
-                    <div class="dropdown-content">
-                        <a href="userwindow">User Window</a>
-                        <a href="counterwindow">Counter Window</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <h3>ENTERTAINMENT</h3>
-                    <div class="dropdown-content">
-                        <a href="staff/entertainment.jsp">Advertisement</a>
-                        <a href="staff/entertainment.jsp" class="video-link">Add Video</a>
-                    </div>
-                </div>
+                <b><a href="userwindow">User Window</a></b>
+                <b><a href="counterwindow">Counter Window</a></b>
+                <b><a href="staff/entertainment.jsp">Advertisement</a></b>
             </div>
         </div>
 
@@ -591,6 +651,25 @@ background-color: #c82333;
                 document.getElementById('cancel-button').disabled = true;
             }
         });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const dropdownButton = document.querySelector(".dropbtn");
+    const dropdownContent = document.querySelector(".dropdown-content1");
+
+    dropdownButton.addEventListener("click", function () {
+        const isVisible = dropdownContent.style.display === "block";
+        dropdownContent.style.display = isVisible ? "none" : "block";
+    });
+    
+    window.addEventListener("click", function(event) {
+        if (!event.target.matches('.dropbtn') && !dropdownContent.contains(event.target)) {
+            dropdownContent.style.display = "none";
+        }
+    });
+});
+
     </script>
     <div class="load-wrapper">
         <div class="main-loader">
