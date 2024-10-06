@@ -24,6 +24,10 @@
 	</session-config>
 
 	<error-page>
+		<error-code>503</error-code>
+		<location>/errors/error.jsp</location>
+	</error-page>
+	<error-page>
 		<error-code>500</error-code>
 		<location>/errors/error.jsp</location>
 	</error-page>
