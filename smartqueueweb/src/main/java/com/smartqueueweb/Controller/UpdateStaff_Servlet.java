@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.smartqueueweb.Class.JwtValidator;
 import com.smartqueueweb.Service.ServiceImpl;
 
 
@@ -21,14 +22,14 @@ public class UpdateStaff_Servlet extends HttpServlet {
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String idNo = request.getParameter("idNo");
-		String firstname = request.getParameter("firstname");
-		String lastname = request.getParameter("lastname");
-		String email = request.getParameter("email");
-		String contacno = request.getParameter("contactno");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String islocked = request.getParameter("islocked");
+		String idNo = JwtValidator.fixGarbledCharacters(request.getParameter("idNo"));
+		String firstname = JwtValidator.fixGarbledCharacters(request.getParameter("firstname"));
+		String lastname = JwtValidator.fixGarbledCharacters(request.getParameter("lastname"));
+		String email = JwtValidator.fixGarbledCharacters(request.getParameter("email"));
+		String contacno = JwtValidator.fixGarbledCharacters(request.getParameter("contactno"));
+		String username = JwtValidator.fixGarbledCharacters(request.getParameter("username"));
+		String password = JwtValidator.fixGarbledCharacters(request.getParameter("password"));
+		String islocked = JwtValidator.fixGarbledCharacters(request.getParameter("islocked"));
 		
 		  // Call the service to register staff
         try {

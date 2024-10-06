@@ -697,7 +697,7 @@
 												class="firstname-label">First name</label>
 										</div>
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-											<input class="middlename-input" required="required" type="text"
+											<input class="middlename-input" type="text"
 												name="txtMiddlename"> <label for="middlename"
 												class="middlename-label">Middle name</label>
 										</div>
@@ -838,6 +838,7 @@
 								$.ajax({
 									url: url,
 									type: 'GET',
+									contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 									data: params,
 									success: function (response) {
 										closeModal()
@@ -978,7 +979,7 @@
 
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
 
-											<select name="purpose" id="records-purpose" class="purpose">
+											<select name="purpose" class="purpose">
 												<option value="`+course+`" disabled selected hidden>`+course+`</option>
 												<option value="BEED">BEED</option>
 												<option value="BSHM">BSHM</option>
@@ -988,7 +989,7 @@
 											</select>
 										</div>
 										<div class="input-container" style="width: 40%; margin: 0 20px 5% 20px;">
-											<input class="lastname-input" required="required" type="text"
+											<input id="id-input" class="lastname-input" required="required" type="text"
 												name="txtIdnumber" value="`+id+`"> <label for="lastname" class="lastname-label">Id
 												number</label>
 										</div>
@@ -997,23 +998,69 @@
 								</div>`,
 								buttons: {
 									sayMyName: {
-										text: 'Say my name',
-										btnClass: 'btn-orange',
+										text: 'Update',
+										btnClass: 'btn-green',
 										action: function () {
-											var input = this.$content.find('input#input-name');
-											var errorText = this.$content.find('.text-danger');
-											if (!input.val().trim()) {
+											
+											var studentId = this.$content.find('#id-input');
+											var firstname = this.$content.find('.firstname-input');
+											var middlename = this.$content.find('.middlename-input');
+											var lastname = this.$content.find('.lastname-input');
+											var courses = this.$content.find('.purpose');
+											
+											//no use line
+											// var errorText = this.$content.find('.text-danger');
+
+											if (!studentId.val().trim() || !firstname.val().trim() || !lastname.val().trim()) {
 												$.alert({
+													boxWidth: '30%',
+													useBootstrap: false,
 													content: "Please don't keep the name field empty.",
 													type: 'red'
 												});
 												return false;
 											} else {
-												$.alert('Hello ' + input.val() + ', i hope you have a great day!');
+												var coursecheck = courses.val() == null ? course : courses.val() ;
+												$.ajax({
+													url: 'UpdateStudent_Servlet?idnum=' + id + 
+													'&inputidnum=' + studentId.val() +
+													'&firstname=' + firstname.val() +
+													'&middlename=' + middlename.val() +
+													'&lastname=' + lastname.val() +
+													'&course=' + coursecheck,
+													type: 'PUT',
+													success: function (response){
+														var successContent = `<h3>Student Number : ` + studentId.val() + `<br>
+															Firstname : ` + firstname.val() + `<br>
+															Middle : ` + middlename.val() + `<br>
+															Lastname : ` + lastname.val() + `<br>
+															Course : ` + coursecheck + `</hr>`;
+													
+													updateData();
+													$.alert({
+														boxWidth: '30%',
+														useBootstrap: false,
+														typeAnimated: true,
+														type: 'green',
+														title: 'Response : ' + response,
+														content: successContent
+													});
+													},
+													error: function (xhr){
+														$.alert({
+															boxWidth: '30%',
+															useBootstrap: false,
+															type: 'red',
+															typeAnimated: true,
+															title: 'error',
+															content: xhr.statusText
+														});
+													}
+												});
 											}
 										}
 									},
-									later: function () {
+									Close: function () {
 										// do nothing.
 									}
 								}
