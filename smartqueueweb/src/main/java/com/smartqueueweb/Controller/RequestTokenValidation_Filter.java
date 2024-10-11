@@ -25,7 +25,7 @@ import com.smartqueueweb.Service.ServiceImpl;
 	"/listofcounter","/UpdateStaff_Servlet",
 	"/UpdateStaff_Servlet",
 	"/UpdateStudent_Servlet",
-	"/userwindow", "/Userwindow_Servlet"
+	"/userwindow", "/Userwindow_Servlet",
 	 })
 public class RequestTokenValidation_Filter implements Filter {
 
@@ -57,7 +57,7 @@ public class RequestTokenValidation_Filter implements Filter {
 			// e.getMessage();
 			// 
 			request.setAttribute("errorLogin", services.XMLERRORNAME("API.TOKENAUTHTENTICATIONFAILED"));
-			rd = request.getRequestDispatcher("/login");
+			rd = request.getRequestDispatcher("/logout");
 			rd.forward(request, response);
 		}
 	}

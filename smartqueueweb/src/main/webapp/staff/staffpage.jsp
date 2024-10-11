@@ -280,7 +280,7 @@
                         <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
                         <div class="staffProfile" id="staffProfile">
                             <a href="#">Settings</a>
-                            <a href="login">Signout</a>
+                            <a href="logout">Signout</a>
                         </div>
                         <div class="bottom-lnav">
                             <b><a href="userwindow">User Window</a></b>

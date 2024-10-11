@@ -6,9 +6,9 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
-            <script type="text/javascript" src="../scripts/fadetransition.js"></script>
-            <link rel="stylesheet" href="../css/loader.css">
+            <script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script>
+            <script type="text/javascript" src="scripts/fadetransition.js"></script>
+            <link rel="stylesheet" href="css/loader.css">
             <title>Document</title>
         </head>
 
@@ -336,7 +336,7 @@
             <div class="container">
                 <div class="header">
                     <p>.</p>
-                    <img src="../images/logo.png" class="logo">
+                    <img src="./images/logo.png" class="logo">
                     <div class="head">
                         <h2 class="name">宿务东方学院</h2>
                         <h1 class="title">CEBU EASTERN COLLEGE, INC.</h1>
@@ -618,6 +618,15 @@
                 }
 
             </script>
+
+		<!-- loader please do not remove -->
+        <div class="load-wrapper">
+            <div class="main-loader">
+                <div class="box-loader">
+                </div>
+            </div>
+        </div>
+
 
         </body>
 
