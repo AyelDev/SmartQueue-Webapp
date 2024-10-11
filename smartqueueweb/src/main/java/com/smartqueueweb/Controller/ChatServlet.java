@@ -1,7 +1,10 @@
 package com.smartqueueweb.Controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 import javax.websocket.OnClose;
@@ -16,16 +19,10 @@ import com.smartqueueweb.Class.JwtValidator;
 
 @ServerEndpoint("/chat")
 public class ChatServlet {
-	private static final Set<Session> clients = new CopyOnWriteArraySet<>();
+	private static Map<Integer, String> clients = new ConcurrentHashMap<>();
+
 	JwtValidator validator = new JwtValidator();
 
-	@OnOpen
-	public void onOpen(Session session) {
-		System.out.println("Connected: " + session.getId());
-		//add session names for auto logout
-		clients.add(session);
-		// Retrieve the cookie from the session
-	}
 
 	@OnMessage
 	public void onMessage(String message, Session session) throws IOException {
@@ -39,9 +36,13 @@ public class ChatServlet {
 
 		DecodedJWT decoded = validator.decode(firstPart);
 
+		
+		
+
 		if (decoded != null) {
 			System.out.println("Subject: " + decoded.getClaim("userName"));
-		 	username = decoded.getClaim("userName").toString();
+		 	username = decoded.getClaim("userName").toString().replace("\"", "");
+			 clients.put(Integer.parseInt(session.getId()), decoded.getClaim("userName").toString());
 		} else {
 			System.out.println("null");
 		}
@@ -49,14 +50,24 @@ public class ChatServlet {
 		// Broadcast the message to all connected clients
 		for (Session s : session.getOpenSessions()) {
 			if (s.isOpen()) {
-				s.getBasicRemote().sendText(username + " : " +secondPart);
+				s.getBasicRemote().sendText(username + clients.values() + " : " +secondPart);
 			}
 		}
 	}
 
+	@OnOpen
+	public void onOpen(Session session) {
+
+		System.out.println("Connected: " + session.getId() + clients );
+		//add session names for auto logout
+		// Retrieve the cookie from the session
+	}
+
+
 	@OnClose
 	public void onClose(Session session) {
-		System.out.println("Closed: " + session.getId());
+		System.out.println("Closed: " + session.getId() + clients);
+		clients.remove(0);
 	}
 
 	@OnError
