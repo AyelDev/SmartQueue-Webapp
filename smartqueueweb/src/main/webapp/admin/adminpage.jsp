@@ -321,6 +321,7 @@
 				border-radius: 15px;
 				justify-content: space-evenly;
 				margin-top: 2rem;
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 			}
 
 			.department-graph {
@@ -355,7 +356,7 @@
 							class="profile">ADMIN<img src="./images/caretdown.png" alt="" class="caretdown"></button>
 					<div class="adminProfile" id="adminProfile">
 						<a href="">Settings</a>
-						<a href="logout">Signout</a>
+						<a href="login">Signout</a>
 					</div>
 
 					<div class="menu-navbar">

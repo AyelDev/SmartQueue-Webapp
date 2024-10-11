@@ -6,10 +6,10 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script>
-            <script type="text/javascript" src="scripts/fadetransition.js"></script>
-            <link rel="stylesheet" href="css/loader.css">
-            <title>Document</title>
+            <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+            <script type="text/javascript" src="../scripts/fadetransition.js"></script>
+            <link rel="stylesheet" href="../css/loader.css">
+            <title>User Inquiry</title>
         </head>
 
         <body>
@@ -134,7 +134,7 @@
                 .modal {
                     display: none;
                     position: fixed;
-                    z-index: 1;
+                    z-index: 1000;
                     left: 0;
                     top: 0;
                     width: 100%;
@@ -195,10 +195,15 @@
                 .student-id,
                 .student-name,
                 #yearLevel,
-                .purpose {
+                .purpose,
+                .program {
                     height: 5vh;
-                    width: 40%;
+                    width: 60%;
+                    text-indent: 10px;
+                    font-weight: normal;
+                    text-transform: uppercase;
                 }
+
 
                 @media print {
 
@@ -241,11 +246,13 @@
 
                 .slidetext {
                     display: inline-block;
-                    width: 100%;
+                    width: 120%;
                     white-space: nowrap;
                     animation: slide 20s linear infinite;
                     margin: 0 24px;
                     position: absolute;
+                    font-size: 24px;
+                    color: red;
                 }
 
                 @keyframes slide {
@@ -336,7 +343,7 @@
             <div class="container">
                 <div class="header">
                     <p>.</p>
-                    <img src="./images/logo.png" class="logo">
+                    <img src="../images/logo.png" class="logo">
                     <div class="head">
                         <h2 class="name">宿务东方学院</h2>
                         <h1 class="title">CEBU EASTERN COLLEGE, INC.</h1>
@@ -348,8 +355,7 @@
                 </div>
                 <!-- Scrolling Attention Text -->
                 <div class="slidetext">
-                    <span>ATTENTION! ONCE YOUR NUMBER IS CALLED AND YOU ARE NOT AROUND, YOU NEED TO GET ANOTHER PRIORITY
-                        NUMBER.
+                    <span>ATTENTION! ONCE YOUR NUMBER IS CALLED AND YOU ARE NOT AROUND, YOU NEED TO GET ANOTHER PRIORITY NUMBER.
                         &ensp;</span>
                 </div>
 
@@ -388,16 +394,24 @@
                     <h2>General Inquiry Form</h2>
                     <div class="form">
                         <label for="studentName">Student Name</label>
-                        <input type="text" class="student-name" id="general-student-name" disabled>
+                        <input type="text" class="student-name" id="general-student-name">
                         <label for="studentIdNo">Student ID No.</label>
                         <input type="text" class="student-id" id="general-student-id">
                         <label for="yearLevel">Year Level</label>
                         <input type="text" class="yearLevel" id="yearLevel">
+                        <label for="options">Program</label>
+                        <select name="program" id="program" class="program">
+                            <option value="">--</option>
+                            <option value="BEED">BEED</option>
+                            <option value="BSED">BSED</option>
+                            <option value="BSIT">BSIT</option>
+                            <option value="BSTM">BSTM</option>
+                            <option value="BSHM">BSHM</option>
+                        </select>
                         <label for="options">Option</label>
                         <select name="purpose" id="general-purpose" class="purpose">
                             <option value="">--</option>
                             <option value="enrollment">Enrollment</option>
-                            <option value="assesment">Assesment</option>
                         </select>
                     </div>
                     <input type="button" class="printbutton" value="Print" onclick="printQueue('General')">
@@ -466,10 +480,10 @@
                     <div id="receiptContainer">
                         <div id="printArea">
                             <h1 style="color: #00509d;">CEBU EASTERN COLLEGE</h1>
-                            <h2 style="color: #00296b;" id="serviceNamePrint">Service Name</h2>
+                            <h2 style="color: #00296b;" id="serviceNamePrint">Service:</h2>
                             <h3>Your Queue Number is:</h3>
                             <h1 id="queueNumberPrint" style="font-size: 60px; color: #d9534f;">###</h1>
-                            <p id="queueDetails"></p>
+                            <p id="queueDetails">Name:</p>
                             <p id="queueDateTime"></p>
                         </div>
                     </div>
@@ -560,17 +574,17 @@
                     let purpose = '';
 
                     if (serviceType === 'General') {
-                        studentName = document.getElementById('general-student-name').value;
-                        studentId = document.getElementById('general-student-id').value;
-                        purpose = document.getElementById('general-purpose').value;
+                        studentName = document.getElementById('general-student-name');
+                        studentId = document.getElementById('general-student-id');
+                        purpose = document.getElementById('general-purpose');
                     } else if (serviceType === 'Records') {
-                        studentName = document.getElementById('records-student-name').value;
-                        studentId = document.getElementById('records-student-id').value;
-                        purpose = document.getElementById('records-purpose').value;
+                        studentName = document.getElementById('records-student-name');
+                        studentId = document.getElementById('records-student-id');
+                        purpose = document.getElementById('records-purpose');
                     } else if (serviceType === 'Archiving') {
-                        studentName = document.getElementById('archiving-student-name').value;
-                        studentId = document.getElementById('archiving-student-id').value;
-                        purpose = document.getElementById('archiving-purpose').value;
+                        studentName = document.getElementById('archiving-student-name');
+                        studentId = document.getElementById('archiving-student-id');
+                        purpose = document.getElementById('archiving-purpose');
                     }
 
                     if (!studentId || !purpose) {
@@ -584,22 +598,20 @@
 
                     // Create the receipt content
                     var receiptContent = `
-    <center><h3>CEBU EASTERN COLLEGE</h3></center>
-    <center><h4>QUEUING NO.</h4>
-    <hr>
-    <h1>${queueNumber}</h1>
-    <hr>
-    <center><p>${studentName}</p>
-    <center><p>${studentId}</p></center>
-    <br><br><br>        
-    <h4>${serviceType} Service</h4>
-    <p>Purpose: ${purpose}</p>
-    
-    <p>${currentDateTime}</p>
-`;
+        <center><h3>CEBU EASTERN COLLEGE</h3></center>
+        <center><h4>QUEUING NO.</h4></center>
+        <hr>
+        <h1>${queueNumber}</h1>
+        <hr>
+        <p><strong>Name:</strong> `+studentName.value+`</p>
+        <p><strong>Student ID:</strong> `+studentId.value+`</p>
+        <p><strong>Service Type:</strong> ` +serviceType+ ` Service</p>
+        <p><strong>Purpose:</strong> `+purpose.value+ `</p>
+        <p><strong>Date & Time:</strong> `+currentDateTime+`</p>
+    `;
 
                     // Inject the receipt content into the modal
-                    document.getElementById('receiptContainer').innerHTML = receiptContent;
+                    document.getElementById('printArea').innerHTML = receiptContent;
 
                     // Show the modal
                     var modal = document.getElementById('receiptModal');
@@ -618,15 +630,6 @@
                 }
 
             </script>
-
-		<!-- loader please do not remove -->
-        <div class="load-wrapper">
-            <div class="main-loader">
-                <div class="box-loader">
-                </div>
-            </div>
-        </div>
-
 
         </body>
 
