@@ -9,7 +9,7 @@
     --primary-color: #1e91d0;
     --secondary-color: #00509d;
     --body-fonts: "Roboto Condensed", sans-serif;
-    --background-color: #F6F4EB;
+    --background-color: #E8F4F8;
     --select-text-color: #B4B4B8;
     --text-color: #272829;
     --error-message: #f02849;
@@ -166,12 +166,12 @@ body {
 
 .login-btn {
     position: absolute;
-    width: 92%;
+    width: 80%;
     height: 11%;
     padding: 15px;
     bottom: 110px;
     border-radius: 10px;
-    left: 5%;
+    left: 11%;
     cursor: pointer;
     background-color: #77B6EA;
     border-color: #77B6EA;

@@ -321,6 +321,7 @@
 				border-radius: 15px;
 				justify-content: space-evenly;
 				margin-top: 2rem;
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 			}
 
 			.department-graph {
