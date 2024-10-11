@@ -606,7 +606,7 @@
 							class="profile">ADMIN<img src="../images/caretdown.png" alt="" class="caretdown"></button>
 					<div class="adminProfile" id="adminProfile">
 						<a href="">Settings</a>
-						<a href="login">Signout</a>
+						<a href="logout">Signout</a>
 					</div>
 
 					<div class="menu-navbar">
@@ -665,11 +665,10 @@
 								class="add-account-icon"> Add Staff</button>
 						<h1>Staff List</h1>
 						<div class="search-container">
-							<form action="" method=""></form>
-							<input type="text" placeholder="Search.." name="search" class="search-bar">
+							<input type="text" placeholder="Search.." name="search" class="search-bar" id="searchInput"
+								onkeyup="searchTable()">
 							<button class="search-btn" type="submit"><img src="./images/search-icon.png" alt=""
-									class="search-icon"></button>
-							</form>
+									class="search-icon">
 						</div>
 
 						<div class="overlay"></div>
@@ -712,7 +711,7 @@
 						</div>
 
 
-						<table>
+						<table id="myTable">
 							<thead>
 								<tr>
 									<th>Id No.</th>
@@ -769,6 +768,7 @@
 						request.onload = function () {
 							var data = JSON.parse(request.responseText);
 							renderHTML(data);
+							searchTable();
 						}
 						request.send();
 					}
@@ -791,7 +791,7 @@
 								'</tr>';
 
 
-			
+
 
 							// htmlString += "<tr>";
 							// htmlString += "<td>" + data[i].staffID + "</td>";
@@ -1092,6 +1092,31 @@
 								}
 							}
 						});
+					}
+
+					//searchbutton
+					function searchTable() {
+						// Declare variables
+						var input, filter, table, tr, td, i, j, txtValue;
+						input = document.getElementById("searchInput");
+						filter = input.value.toLowerCase();
+						table = document.getElementById("myTable");
+						tr = table.getElementsByTagName("tr");
+
+						// Loop through all table rows, and hide those who don't match the search query
+						for (i = 1; i < tr.length; i++) {
+							tr[i].style.display = "none"; // Initially hide all rows
+							td = tr[i].getElementsByTagName("td");
+							for (j = 0; j < td.length; j++) {
+								if (td[j]) {
+									txtValue = td[j].textContent || td[j].innerText;
+									if (txtValue.toLowerCase().indexOf(filter) > -1) {
+										tr[i].style.display = ""; // Show the row if any column matches the search
+										break;
+									}
+								}
+							}
+						}
 					}
 				</script>
 

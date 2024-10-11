@@ -38,6 +38,7 @@
 						<div class="top-lnav">
 							<img src="./images/logo.png" class="cec">
                             <b class="title"><br>Cebu Eastern College</b>
+<<<<<<< HEAD
 						</div>
 						<!-- staff profile -->
 						<button class="button-profile"><img src="./images/profile.png" alt=""
@@ -137,6 +138,35 @@
                                 }
                             });
 
+=======
+                        </div>
+                        <!-- staff profile -->
+                        <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
+                        <div class="staffProfile" id="staffProfile">
+                            <a href="#">Settings</a>
+                            <a href="logout">Signout</a>
+                        </div>
+                        <div class="bottom-lnav">
+                            <b><a href="userwindow">User Window</a></b>
+                            <b><a href="counterwindow">Counter Window</a></b>
+                            <b><a href="staff/entertainment.jsp">Advertisement</a></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    var dropdownButton = document.querySelector(".button-profile");
+                    var staffProfile = document.getElementById("staffProfile");
+        
+                    staffProfile.style.display = "none";
+        
+                    dropdownButton.addEventListener("click", function () {
+                        if (staffProfile.style.display === "block") {
+                            staffProfile.style.display = "none";
+                        } else {
+                            staffProfile.style.display = "block";
+>>>>>>> origin
                         }
 			</script>
 

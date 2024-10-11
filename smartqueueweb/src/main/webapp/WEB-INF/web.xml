@@ -18,7 +18,7 @@
 		<cookie-config>
 			<path>/</path>
 			<http-only>true</http-only>
-			<secure>true</secure>
+			<!-- <secure>true</secure> -->
 			<max-age>86400</max-age>
 		</cookie-config>
 	</session-config>

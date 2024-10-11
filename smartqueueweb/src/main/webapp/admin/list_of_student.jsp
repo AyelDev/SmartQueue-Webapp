@@ -613,7 +613,7 @@
 								src="./images/caretdown.png" alt="" class="caretdown">
 						</button>
 						<div class="adminProfile" id="adminProfile">
-							<a href="">Settings</a> <a href="login">Signout</a>
+							<a href="">Settings</a> <a href="logout">Signout</a>
 						</div>
 
 						<div class="menu-navbar">
@@ -677,12 +677,11 @@
 							</button>
 							<h1>Student List</h1>
 							<div class="search-container">
-								<form action="" method=""></form>
-								<input type="text" placeholder="Search.." name="search" class="search-bar">
+								<input type="text" placeholder="Search.." name="search" class="search-bar" id="searchInput"
+								onkeyup="searchTable()">
 								<button class="search-btn" type="submit">
 									<img src="./images/search-icon.png" alt="" class="search-icon">
 								</button>
-								</form>
 							</div>
 
 							<div class="overlay"></div>
@@ -697,9 +696,8 @@
 												class="firstname-label">First name</label>
 										</div>
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-											<input class="middlename-input" type="text"
-												name="txtMiddlename"> <label for="middlename"
-												class="middlename-label">Middle name</label>
+											<input class="middlename-input" type="text" name="txtMiddlename"> <label
+												for="middlename" class="middlename-label">Middle name</label>
 										</div>
 
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
@@ -710,7 +708,8 @@
 
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
 
-											<select name="purpose" id="records-purpose" class="purpose" required="required">
+											<select name="purpose" id="records-purpose" class="purpose"
+												required="required">
 												<option value="" disabled selected hidden>Select course</option>
 												<option value="BEED">BEED</option>
 												<option value="BSHM">BSHM</option>
@@ -729,7 +728,7 @@
 									</form>
 								</div>
 							</div>
-							<table>
+							<table id="myTable">
 								<thead>
 									<tr>
 										<th>Student ID</th>
@@ -775,9 +774,10 @@
 							request.onload = function () {
 								var data = JSON.parse(request.responseText);
 								renderHTML(data);
+								searchTable();
 							}
 							request.send();
-						}
+						}	
 
 						function renderHTML(data) {
 							var htmlString = ``;
@@ -962,25 +962,25 @@
 									<form id="studentRegisterForm">
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
 											<input class="firstname-input" required="required" type="text"
-												name="txtFirstname" value="`+firstname+`"> <label for="firstname"
+												name="txtFirstname" value="`+ firstname + `"> <label for="firstname"
 												class="firstname-label">First name</label>
 										</div>
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
 											<input class="middlename-input" required="required" type="text"
-												name="txtMiddlename" value="`+middlename+`"> <label for="middlename"
+												name="txtMiddlename" value="`+ middlename + `"> <label for="middlename"
 												class="middlename-label">Middle name</label>
 										</div>
 
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
 											<input class="lastname-input" required="required" type="text"
-												name="txtLastname" value="`+lastname+`"> <label for="lastname" class="lastname-label">Last
+												name="txtLastname" value="`+ lastname + `"> <label for="lastname" class="lastname-label">Last
 												name</label>
 										</div>
 
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
 
 											<select name="purpose" class="purpose">
-												<option value="`+course+`" disabled selected hidden>`+course+`</option>
+												<option value="`+ course + `" disabled selected hidden>` + course + `</option>
 												<option value="BEED">BEED</option>
 												<option value="BSHM">BSHM</option>
 												<option value="BSIT">BSIT</option>
@@ -990,7 +990,7 @@
 										</div>
 										<div class="input-container" style="width: 40%; margin: 0 20px 5% 20px;">
 											<input id="id-input" class="lastname-input" required="required" type="text"
-												name="txtIdnumber" value="`+id+`"> <label for="lastname" class="lastname-label">Id
+												name="txtIdnumber" value="`+ id + `"> <label for="lastname" class="lastname-label">Id
 												number</label>
 										</div>
 
@@ -1001,13 +1001,13 @@
 										text: 'Update',
 										btnClass: 'btn-green',
 										action: function () {
-											
+
 											var studentId = this.$content.find('#id-input');
 											var firstname = this.$content.find('.firstname-input');
 											var middlename = this.$content.find('.middlename-input');
 											var lastname = this.$content.find('.lastname-input');
 											var courses = this.$content.find('.purpose');
-											
+
 											//no use line
 											// var errorText = this.$content.find('.text-danger');
 
@@ -1020,33 +1020,33 @@
 												});
 												return false;
 											} else {
-												var coursecheck = courses.val() == null ? course : courses.val() ;
+												var coursecheck = courses.val() == null ? course : courses.val();
 												$.ajax({
-													url: 'UpdateStudent_Servlet?idnum=' + id + 
-													'&inputidnum=' + studentId.val() +
-													'&firstname=' + firstname.val() +
-													'&middlename=' + middlename.val() +
-													'&lastname=' + lastname.val() +
-													'&course=' + coursecheck,
+													url: 'UpdateStudent_Servlet?idnum=' + id +
+														'&inputidnum=' + studentId.val() +
+														'&firstname=' + firstname.val() +
+														'&middlename=' + middlename.val() +
+														'&lastname=' + lastname.val() +
+														'&course=' + coursecheck,
 													type: 'PUT',
-													success: function (response){
+													success: function (response) {
 														var successContent = `<h3>Student Number : ` + studentId.val() + `<br>
 															Firstname : ` + firstname.val() + `<br>
 															Middle : ` + middlename.val() + `<br>
 															Lastname : ` + lastname.val() + `<br>
 															Course : ` + coursecheck + `</hr>`;
-													
-													updateData();
-													$.alert({
-														boxWidth: '30%',
-														useBootstrap: false,
-														typeAnimated: true,
-														type: 'green',
-														title: 'Response : ' + response,
-														content: successContent
-													});
+
+														updateData();
+														$.alert({
+															boxWidth: '30%',
+															useBootstrap: false,
+															typeAnimated: true,
+															type: 'green',
+															title: 'Response : ' + response,
+															content: successContent
+														});
 													},
-													error: function (xhr){
+													error: function (xhr) {
 														$.alert({
 															boxWidth: '30%',
 															useBootstrap: false,
@@ -1065,6 +1065,31 @@
 									}
 								}
 							});
+						}
+
+						//searchbutton
+						function searchTable() {
+							// Declare variables
+							var input, filter, table, tr, td, i, j, txtValue;
+							input = document.getElementById("searchInput");
+							filter = input.value.toLowerCase();
+							table = document.getElementById("myTable");
+							tr = table.getElementsByTagName("tr");
+
+							// Loop through all table rows, and hide those who don't match the search query
+							for (i = 1; i < tr.length; i++) {
+								tr[i].style.display = "none"; // Initially hide all rows
+								td = tr[i].getElementsByTagName("td");
+								for (j = 0; j < td.length; j++) {
+									if (td[j]) {
+										txtValue = td[j].textContent || td[j].innerText;
+										if (txtValue.toLowerCase().indexOf(filter) > -1) {
+											tr[i].style.display = ""; // Show the row if any column matches the search
+											break;
+										}
+									}
+								}
+							}
 						}
 					</script>
 

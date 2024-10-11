@@ -21,7 +21,8 @@ public class JwtValidator {
     long currentTimeMillis = System.currentTimeMillis();
     String jwtToken;
 
-    public String generatedAuthCode(int userId, String userName) {
+    public String generatedAuthCode(int userId, String userName, String userRole) {
+        long currentTimeMillis = System.currentTimeMillis();
         /*
          * issuer must change every month
          * allow changes in random nums and names
@@ -33,8 +34,9 @@ public class JwtValidator {
                 .withSubject(subject)
                 .withClaim("userId", userId)
                 .withClaim("userName", userName)
+                .withClaim("userRole", userRole)
                 .withIssuedAt(new Date(currentTimeMillis))
-                .withExpiresAt(new Date(currentTimeMillis + 60000L))
+                .withExpiresAt(new Date(currentTimeMillis + (300*1000L))) //2 mins
                 .withJWTId(UUID.randomUUID().toString())
                 .withNotBefore(new Date(currentTimeMillis))
                 .sign(algorithm);
