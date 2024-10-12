@@ -33,14 +33,21 @@ public class staffRegister_Servlet extends HttpServlet {
 		
 		// Call the service to register staff
 		try {
+			int isTrue = services.registerStaff(firstName, lastName, email, Double.parseDouble(contactNo), userName);
 			// Set character encoding for response
-			response.setContentType("text/plain");
-			response.setCharacterEncoding("UTF-8");
-			services.registerStaff(firstName, lastName, email, Double.parseDouble(contactNo), userName);
-			response.setStatus(HttpServletResponse.SC_OK);
-			response.getWriter().write("Registration successful.");
+			if(isTrue >= 1){
+				response.setContentType("text/plain");
+				response.setCharacterEncoding("UTF-8");
+				response.setStatus(HttpServletResponse.SC_OK);
+				response.getWriter().write("Registration successful.");
+			}else{
+				throw new Exception();
+			}
+			
 		} catch (Exception e) {
-			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Registration failed.");
+			response.setContentType("text/plain");
+			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+			response.getWriter().write("Registration failed.");
 		}
 	}
 

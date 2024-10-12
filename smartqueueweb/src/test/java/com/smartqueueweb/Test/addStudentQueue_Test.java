@@ -13,7 +13,7 @@ public class addStudentQueue_Test {
 	public void testIfAllSampleFilled() {
 
 		int expected = 1;
-		int actual = service.addToQueue("152G", 12313, "cindy labra", "enrollment");
+		int actual = service.addToQueue("152G", 12313, "cindy labra", "enrollment", "records");
 
 		assertEquals(expected, actual);
 
@@ -23,7 +23,7 @@ public class addStudentQueue_Test {
 	public void testIfSomeSampleNotFilled() {
 
 		int expected = 1;
-		int actual = service.addToQueue("223G", 3213, "", "enrollment");
+		int actual = service.addToQueue("223G", 3213, "", "enrollment", "records");
 
 		assertEquals(expected, actual);
 	}

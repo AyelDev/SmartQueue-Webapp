@@ -98,4 +98,25 @@ public class StudentDAO extends SQLConnection{
 		}
 		return 0;
 	}
+
+	public Integer addToQueue(String queueNumber, int idNumber, String fullname, String purpose, String servicetype) {
+		try{
+			ConnectDriver();
+			prs = conn.prepareStatement("INSERT INTO `student_queue_entries` (`queue_number`, `id_number`, `fullname`, `purpose`, `servicetype`, `window_number`, `date`)"+
+			" VALUES (?, ?, ?, ?, ?, '0', current_timestamp())");
+			prs.setString(1, queueNumber);
+			prs.setInt(2, idNumber);
+			prs.setString(3, fullname);
+			prs.setString(4, purpose);
+			prs.setString(5, servicetype);
+
+			return prs.executeUpdate();
+
+		}catch(Exception e){
+
+		}finally{
+			SQLClose();
+		}
+		return 0;
+	}
 }

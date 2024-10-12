@@ -12,4 +12,6 @@ public interface StudentServices{
 	Integer deleteStudent(long idnumber);
 
 	Integer updateStudent(long idNumber, long inputIdnumber, String inputfirstname, String inputMiddlename, String inputLastname, String inputCourse);
+
+	Integer addToQueue(String queueNumber, int idNumber, String fullname, String purpose, String servicetype);
 }

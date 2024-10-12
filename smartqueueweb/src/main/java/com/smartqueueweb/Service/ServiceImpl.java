@@ -125,7 +125,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	public String XMLERRORNAME(String errorName) {
 		try {
 		    // Specify the file path
-		    File xmlFile = new File("C:/Users/63966/git/SmartQueue-Webapp/smartqueueweb/src/main/webapp/WEB-INF/WebConfigErrors.xml");
+		    File xmlFile = new File("src/main/webapp/WEB-INF/WebConfigErrors.xml");
 
 		    // Check if file exists
 		    if (!xmlFile.exists()) {
@@ -168,4 +168,8 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 
 	}
 
+	@Override
+	public Integer addToQueue(String queueNumber, int idNumber, String fullname, String purpose, String servicetype) {
+		return studentdata.addToQueue(queueNumber, idNumber, fullname, purpose, servicetype);
+	}
 }

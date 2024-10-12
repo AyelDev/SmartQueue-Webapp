@@ -872,7 +872,7 @@
 											boxWidth: '30%',
 											useBootstrap: false,
 											title: 'Encountered an error!',
-											content: xhr.statusText,
+											content: xhr.responseText,
 											type: 'red',
 											typeAnimated: true,
 											buttons: {
