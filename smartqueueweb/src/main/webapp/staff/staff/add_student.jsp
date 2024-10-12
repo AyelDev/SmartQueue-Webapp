@@ -601,73 +601,29 @@
 			<body>
 
 				<div class="container">
-					<div class="navbar">
-						<div class="logoContainer">
-							<img src="./images/cec.png" alt="" class="logo">
-							<p class="title">Cebu Eastern College
-							<p>
-						</div>
-						<!-- admin profile -->
-						<button class="button-profile" id="button-profile">
-							<img src="./images/profile.png" alt="" class="profile">ADMIN<img
-								src="./images/caretdown.png" alt="" class="caretdown">
-						</button>
-						<div class="adminProfile" id="adminProfile">
-							<a href="">Settings</a> <a href="logout">Signout</a>
-						</div>
+					<div class="leftnav">
+                        <div class="ulnav">
+                            <img src="./images/logo.png" class="cec">
+                            <b class="title"><br>Cebu Eastern College</b>
+                
+                            <!-- staff profile -->
+                            <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img
+                                    src="./images/caretdown.png" alt="" class="caretdown"></button>
+                            <div class="staffProfile" id="staffProfile">
+                                <a href="#">Settings</a>
+                                <a href="login">Signout</a>
+                            </div>
+                        </div>
+                        
+                        <div class="bottom-lnav">
+                            <b><a href="user_window.jsp">User Window</a></b>
+                            <b><a href="counter_window.jsp">Counter Window</a></b>
+                            <b><a href="add_student.jsp">Add Student</a></b>
+                            <b><a href="staffpage.jsp">Back</a></b>
+                        </div>
+                    </div>
 
-						<div class="menu-navbar">
-							<div class="dropdown">
-								<button class="dropdown-btn">
-									<img src="./images/dashboard.png" alt="" class="dashboard-icon">Dashboard
-								</button>
-								<div class="dropdown-dashboard">
-									<a href="dashboard">Dashboard</a> <a href="">Total of Counter</a>
-									<a href="">Total of Students</a>
-								</div>
-							</div>
-
-							<div class="dropdown">
-								<button class="dropdown-btn">
-									<img src="./images/counter.png" alt="" class="counter-icon">Counter
-								</button>
-								<div class="dropdown-dashboard">
-									<a href="">Add Counter</a> <a href="listofcounter">List of
-										Counter</a>
-								</div>
-							</div>
-
-							<div class="dropdown">
-								<button class="dropdown-btn">
-									<img src="./images/users.png" alt="" class="users-icon">Users
-								</button>
-								<div class="dropdown-dashboard">
-									<a href="">Add Student</a> <a href="">Add Staff</a> <a href="studentlist">List of
-										Student</a> <a href="stafflist">List
-										of Staff</a>
-								</div>
-							</div>
-
-							<div class="dropdown">
-								<button class="dropdown-btn">
-									<img src="./images/entertainment.png" alt=""
-										class="entertainment-icon">Entertainment
-								</button>
-								<div class="dropdown-dashboard">
-									<a href="">Video advertisement</a>
-								</div>
-							</div>
-
-							<div class="dropdown">
-								<button class="dropdown-btn">
-									<img src="./images/display.png" alt="" class="display-icon">Display
-								</button>
-								<div class="dropdown-dashboard">
-									<a href="">User Inquiry</a> <a href="">User Window</a> <a href="">Counter
-										Window</a>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 					<div class="studentlist-section">
 						<div class="studentlist-content">
