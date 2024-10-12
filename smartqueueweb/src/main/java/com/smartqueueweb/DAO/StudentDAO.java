@@ -37,7 +37,7 @@ public class StudentDAO extends SQLConnection{
 	public List<StudentBean> listOfStudent(){
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("SELECT * FROM tbl_student_info");
+			prs = conn.prepareStatement("SELECT * FROM tbl_student_info WHERE isDeleted=0");
 			rs = prs.executeQuery();
 			listOfStudent = new ArrayList<StudentBean>();
 
@@ -57,5 +57,45 @@ public class StudentDAO extends SQLConnection{
 			SQLClose();
 		}
 		return listOfStudent;
+	}
+
+	public Integer removeStudent(long idNumber){
+		try{
+			ConnectDriver();
+			prs = conn.prepareStatement("UPDATE `tbl_student_info` SET `isDeleted` = '1' WHERE `tbl_student_info`.`id_number` = ?");
+			prs.setLong(1, idNumber);
+
+			return prs.executeUpdate();
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			SQLClose();
+		}
+		return 0;
+	}
+
+	
+	public Integer updateStudent(long idNumber, long inputIdnumber, String inputfirstname, String inputMiddlename, String inputLastname, String inputCourse){
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("UPDATE `tbl_student_info` SET `id_number` = ?, `first_name` = ?,"+
+			" `middle_name` = ?, `last_name` = ?, `course` = ? WHERE `tbl_student_info`.`id_number` = ?;");
+			prs.setLong(1, inputIdnumber);
+			prs.setString(2, inputfirstname);
+			prs.setString(3, inputMiddlename);
+			prs.setString(4, inputLastname);
+			prs.setString(5, inputCourse);
+			prs.setLong(6, idNumber);
+			
+			return prs.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			SQLClose();
+		}
+		return 0;
 	}
 }

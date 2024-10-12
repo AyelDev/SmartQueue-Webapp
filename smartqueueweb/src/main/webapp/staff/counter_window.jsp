@@ -501,7 +501,7 @@ background-color: #c82333;
                     class="caretdown"></button>
             <div class="staffProfile" id="staffProfile">
                 <a href="#">Settings</a>
-                <a href="login">Signout</a>
+                <a href="logout">Signout</a>
             </div>
             <div class="bottom-lnav">
                 <b><a href="userwindow">User Window</a></b>

@@ -6,25 +6,17 @@ import org.junit.Test;
 
 import com.smartqueueweb.Service.ServiceImpl;
 
-public class Login_Test {
+public class RemoveStudent_Test {
 
 	@Test
 	public void test() {
+		ServiceImpl service = new ServiceImpl();
 		
-		ServiceImpl services = new ServiceImpl();
-		String User = "cindylabss";
-		String Pass = "CEC24IB$#";
+		int expected = 1;
+		int actual = service.deleteStudent(132131);
 		
-		
-		boolean actual = services.loginStaff(User, Pass);
-		boolean expected = true;
 		assertEquals(expected, actual);
-	
 		
-		
-		
-		
-	
 	}
 
 }

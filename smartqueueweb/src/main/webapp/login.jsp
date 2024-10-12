@@ -39,18 +39,18 @@
 								
 								<p class="error-message"><c:out value="${errorLogin}"></c:out>
 								</p>
-								<br> <a href="forgotpass" class="forgotpass">Forgot password?</a>
+								<br> <a href="forgotpass" class="forgotpass">Request a new password.</a>
 								<br> <input class="login-btn" type="submit" value="Log in">
 							</form>
 						</div>
 						
 						<!-- <button class="signup-btn" type="button" value="signup-btn" onclick="document.location='signup.jsp'">Sign
 							Up</button> -->
-						<hr class="hr-left">
+						<!-- <hr class="hr-left">
 						<p>or</p>
 						<hr class="hr-right">
 						
-						<button class="userinquiry-btn" type="button" value="userinquiry-btn" onclick="document.location='user/userinquiry.jsp'">User Inquiry</button>
+						<button class="userinquiry-btn" type="button" value="userinquiry-btn" onclick="document.location='user/userinquiry.jsp'">User Inquiry</button> -->
 
 						<!-- <button class="userinquiry-btn" type="button" value="userinquiry-btn">User Inquiry</button> -->
 					</div>
@@ -72,4 +72,4 @@
 
 		</body>
 
-		</html>
+		</html>	

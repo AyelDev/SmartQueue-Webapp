@@ -18,11 +18,15 @@
 		<cookie-config>
 			<path>/</path>
 			<http-only>true</http-only>
-			<secure>true</secure>
+			<!-- <secure>true</secure> -->
 			<max-age>86400</max-age>
 		</cookie-config>
 	</session-config>
 
+	<error-page>
+		<error-code>503</error-code>
+		<location>/errors/error.jsp</location>
+	</error-page>
 	<error-page>
 		<error-code>500</error-code>
 		<location>/errors/error.jsp</location>

@@ -23,7 +23,7 @@
 				--body-fonts: "Roboto Condensed", sans-serif;
 				--background-color: #F6F4EB;
 				--select-text-color: #B4B4B8;
-				--text-color: #272829;
+				--text-color: #3D3C42;
 				font-optical-sizing: auto;
 				font-style: normal;
 			}
@@ -86,10 +86,10 @@
 			}
 
 			.adminProfile {
-				margin-left: 2.5rem;
+				margin-left: 1.5rem;
 				position: absolute;
 				background-color: var(--background-color);
-				width: 9.5vw;
+				width: 12vw;
 				align-items: center;
 				justify-content: center;
 				text-align: center;
@@ -98,13 +98,11 @@
 				border-radius: 7px;
 			}
 
-			.adminProfile a,
-			.dropdown-dashboard a {
+			.adminProfile a {
 				text-decoration: none;
-				color: var(--background-color);
+				color: var(--text-color);
 				overflow: hidden;
-				color: black;
-				width: 9.5vw;
+				width: 12vw;
 				height: 20%;
 				text-align: center;
 				align-items: center;
@@ -124,9 +122,9 @@
 				align-items: center;
 				justify-content: center;
 				display: flex;
-				width: 10vw;
+				width: 12vw;
 				margin-top: 30px;
-				margin-left: 36px;
+				margin-left: 23px;
 				border-radius: 10px;
 				padding: 15px 10px 15px 10px;
 				/*tlbr*/
@@ -170,24 +168,29 @@
 				z-index: 1;
 				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 				border-radius: 4px;
+				padding: 10px;
 			}
 
 			.dropdown-dashboard a {
 				display: flex;
 				text-decoration: none;
-				color: var(--text-color);
+				color: black;
 				text-align: center;
 				align-items: center;
 				justify-content: center;
 				font-size: 11px;
+				flex-direction: column;
+				padding: 10px;
 			}
 
 			.dropdown-dashboard a:hover {
 				background-color: var(--select-text-color);
 				border-radius: 4px;
-				padding: 3px;
-				margin-top: -7%;
-				width: 115px;
+				color: black;
+				border-radius: 4px;
+				padding: 10px;
+				width: 120px;
+				margin-left: -7.2%;
 			}
 
 			.dropdown-btn {
@@ -198,18 +201,44 @@
 				width: 20vw;
 				border: 0;
 				font-size: 15px;
-				color: #F6F4EB;
 				border-radius: 15px;
 				padding-right: 60px;
 				margin-left: 10px;
 				cursor: pointer;
 				position: relative;
+				color: #F6F4EB;
+			}
+
+			.dropdown-btn a {
+				text-decoration: none;
+				color: #F6F4EB;
+			}
+			.dropdown-btn a:hover{
+				color: black;
+				font-weight: bold;
 			}
 
 			.dropdown:hover .dropdown-dashboard {
 				display: block;
+				
 			}
 
+			.dropdown {
+				color: var(--background-color);
+			}
+
+			.dropdown:hover {
+				color: black;
+				font-weight: bold;
+			}
+
+			.dropdown-btn a:hover,
+			.dropdown-btn:hover, .active {
+				color: var(--text-color);
+				font-weight: bold;
+			}
+
+			.active,
 			.dropdown-btn:hover {
 				background-color: var(--background-color);
 				width: 18vw;
@@ -261,7 +290,7 @@
 			}
 
 			.dashboard-section h1 {
-				color: black;
+				color: var(--text-color);
 				font-size: 2rem;
 				margin-top: -40%;
 				margin-left: -60%;
@@ -272,8 +301,10 @@
 				font-size: .7rem;
 			}
 
-			.card-total p h3 {
-				margin: 10px;
+			.card-total p,
+			h3 {
+				margin-left: 30px;
+				color: var(--background-color);
 			}
 
 			.dashboard-content {
@@ -286,15 +317,16 @@
 			.card-total {
 				width: 20%;
 				height: 20%;
-				background-image: linear-gradient(to right, #1e91d0, #00509d);
+				background-image: linear-gradient(135deg, #1e91d0 15%, #00509d 100%);
 				border-radius: 15px;
 				justify-content: space-evenly;
 				margin-top: 2rem;
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 			}
 
 			.department-graph {
 				width: 30%;
-				height: 60%;
+				height: 62.5%;
 				background-color: #ffff;
 				border-radius: 15px;
 				margin-top: 2rem;
@@ -303,7 +335,7 @@
 			.total-graph {
 				width: 48%;
 				height: 30%;
-				margin-top: 11%;
+				margin-top: 12%;
 				margin-left: -24%;
 				background-color: #ffff;
 				position: fixed;
@@ -330,19 +362,14 @@
 					<div class="menu-navbar">
 						<div class="dropdown">
 							<button class="dropdown-btn"><img src="./images/dashboard.png" alt=""
-									class="dashboard-icon">Dashboard<img src="./images/caretright.png" alt=""
-									class="caretright"></button>
-							<div class="dropdown-dashboard">
-								<a href="dashboard">Dashboard</a>
-								<a href="">Total of Counter</a>
-								<a href="">Total of Students</a>
-							</div>
+									class="dashboard-icon"><a href="">Dashboard</a>
+							</button>
+
 						</div>
 
 						<div class="dropdown">
 							<button class="dropdown-btn"><img src="./images/counter.png" alt=""
-									class="counter-icon">Counter<img src="./images/caretright.png" alt=""
-									class="caretright"></button>
+									class="counter-icon">Counter</button>
 							<div class="dropdown-dashboard">
 								<a href="">Add Counter</a>
 								<a href="listofcounter">List of Counter</a>
@@ -351,8 +378,7 @@
 
 						<div class="dropdown">
 							<button class="dropdown-btn"><img src="./images/users.png" alt=""
-									class="users-icon">Users<img src="./images/caretright.png" alt=""
-									class="caretright"></button>
+									class="users-icon">Users</button>
 							<div class="dropdown-dashboard">
 								<a href="">Add Student</a>
 								<a href="">Add Staff</a>
@@ -363,17 +389,13 @@
 
 						<div class="dropdown">
 							<button class="dropdown-btn"><img src="./images/entertainment.png" alt=""
-									class="entertainment-icon">Entertainment<img src="./images/caretright.png" alt=""
-									class="caretright"></button>
-							<div class="dropdown-dashboard">
-								<a href="">Video advertisement</a>
-							</div>
+									class="entertainment-icon"><a href="">Entertainment</a>
+							</button>
 						</div>
 
 						<div class="dropdown">
 							<button class="dropdown-btn"><img src="./images/display.png" alt=""
-									class="display-icon">Display<img src="./images/caretright.png" alt=""
-									class="caretright"></button>
+									class="display-icon">Display</button>
 							<div class="dropdown-dashboard">
 								<a href="">User Inquiry</a>
 								<a href="">User Window</a>
@@ -383,14 +405,14 @@
 					</div>
 				</div>
 				<div class="dashboard-section">
-					<h1 class="title">Dashboard</h1>
+					<h1 class="dashboard-title">Dashboard</h1>
 					<div class="dashboard-content">
 						<div class="card-total"><br>
-							<p>Total counter</p>
+							<p>Total students</p>
 							<h3>100</h3>
 						</div>
 						<div class="card-total"><br>
-							<p>Total student</p>
+							<p>Total staff</p>
 							<h3>100</h3>
 						</div>
 						<div class="card-total"><br>
@@ -407,7 +429,7 @@
 				</div>
 			</div>
 
-			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+			<script src="./scripts/chart.min.js"></script>
 			<script>
 				var dropdown = document.getElementsByClassName("button-profile");
 				var i;
@@ -452,26 +474,26 @@
 						studentNum = data[1].length; // Student count
 						inquiryNum = 10; // Inquiry count
 
-						data[1].forEach(item => { 
-							if(item.course.includes('BSIT')){ 
+						data[1].forEach(item => {
+							if (item.course.includes('BSIT')) {
 								BSIT++;
 							}
-							if(item.course.includes('BEED')){ 
+							if (item.course.includes('BEED')) {
 								BEED++
 							}
-							if(item.course.includes('DEVCOM')){ 
+							if (item.course.includes('DEVCOM')) {
 								DEVCOM++
 							}
-							if(item.course.includes('BSTM')){ 
+							if (item.course.includes('BSTM')) {
 								BSTM++
 							}
-							if(item.course.includes('BSHM')){ 
+							if (item.course.includes('BSHM')) {
 								BSHM++
 							}
-						 });
-						
-					
-				
+						});
+
+
+
 						console.log(studentNum, staffNum, inquiryNum); // Use as needed
 						myChart(studentNum, staffNum, inquiryNum);
 						PieChart(BSIT, BEED, DEVCOM, BSTM, BSHM)
@@ -566,6 +588,48 @@
 						}
 					});
 				}
+
+				var btns = document.getElementsByClassName("dropdown-btn");
+				var dropdowns = document.getElementsByClassName("dropdown-dashboard");
+
+				for (var i = 0; i < btns.length; i++) {
+					btns[i].addEventListener("click", function () {
+						// Remove "active" class from all buttons
+						for (var j = 0; j < btns.length; j++) {
+							btns[j].classList.remove("active");
+						}
+
+						// Hide all dropdowns
+						for (var k = 0; k < dropdowns.length; k++) {
+							dropdowns[k].style.display = "none";
+						}
+
+						// Add "active" class to the clicked button
+						this.classList.add("active");
+
+						// Show the related dropdown
+						var dropdownContent = this.nextElementSibling;
+						if (dropdownContent && dropdownContent.classList.contains("dropdown-dashboard")) {
+							dropdownContent.style.display = "block";
+						}
+					});
+				}
+
+				// Optional: Hide dropdowns and remove active states when clicking outside the navbar
+				document.addEventListener("click", function (event) {
+					var isClickInsideNavbar = event.target.closest(".navbar");
+					if (!isClickInsideNavbar) {
+						// Remove active class from all buttons
+						for (var j = 0; j < btns.length; j++) {
+							btns[j].classList.remove("active");
+						}
+
+						// Hide all dropdowns
+						for (var k = 0; k < dropdowns.length; k++) {
+							dropdowns[k].style.display = "none";
+						}
+					}
+				});
 
 			</script>
 
