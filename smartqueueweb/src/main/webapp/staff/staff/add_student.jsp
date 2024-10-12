@@ -1,9 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-		<c:if test="${empty sessionScope.sessionAdmin.getUsername()}">
-			<c:redirect url="/" />
-		</c:if>
-		<!DOCTYPE html>
+<!DOCTYPE html>
 		<html lang="en">
 
 		<head>
@@ -209,7 +204,7 @@
 					color: #F6F4EB;
 					border-radius: 15px;
 					padding-right: 60px;
-					margin-left: 10px;
+					margin-left: 5px;
 					cursor: pointer;
 					position: relative;
 				}
@@ -218,11 +213,15 @@
 					display: block;
 				}
 
-				.dropdown-btn:hover {
-					background-color: var(--background-color);
-					width: 18vw;
+				.dropdown-btn:hover a{
+					background-color: white;
+					width: 50vw;
+					height: 8vh;
 					color: var(--text-color);
 					font-weight: bold;
+					text-align: center;
+					line-height: 46px;
+					border-radius: 10px;
 				}
 
 				.dropdown-btn:hover+.dropdown-dashboard {
@@ -260,9 +259,9 @@
 				.studentlist-section {
 					width: 85vw;
 					height: 100%;
-					background-color: var(--background-color);
+					background-color: transparent;
 					float: right;
-					margin-left: 15%;
+					margin-left: 30%;
 					align-items: center;
 					display: flex;
 					justify-content: center;
@@ -596,34 +595,64 @@
 				.register-form {
 					margin-top: 7%;
 				}
+				.dropdown-btn a{
+					text-decoration: none;
+					color: white;
+				}
+				/* .dropdown-btn a:hover{
+					color: var(--body-fonts);
+				} */
 			</style>
 
 			<body>
 
 				<div class="container">
-					<div class="leftnav">
-                        <div class="ulnav">
-                            <img src="./images/logo.png" class="cec">
-                            <b class="title"><br>Cebu Eastern College</b>
-                
-                            <!-- staff profile -->
-                            <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img
-                                    src="./images/caretdown.png" alt="" class="caretdown"></button>
-                            <div class="staffProfile" id="staffProfile">
-                                <a href="#">Settings</a>
-                                <a href="login">Signout</a>
-                            </div>
-                        </div>
-                        
-                        <div class="bottom-lnav">
-                            <b><a href="user_window.jsp">User Window</a></b>
-                            <b><a href="counter_window.jsp">Counter Window</a></b>
-                            <b><a href="add_student.jsp">Add Student</a></b>
-                            <b><a href="staffpage.jsp">Back</a></b>
-                        </div>
-                    </div>
+					<div class="navbar">
+						<div class="logoContainer">
+							<img src="./images/logo.png" alt="" class="logo">
+							<p class="title">Cebu Eastern College
+							<p>
+						</div>
+						<!-- admin profile -->
+						<button class="button-profile" id="button-profile">
+							<img src="./images/profile.png" alt="" class="profile">STAFF<img
+								src="./images/caretdown.png" alt="" class="caretdown">
+						</button>
+						<div class="adminProfile" id="adminProfile">
+							<a href="">Settings</a> <a href="logout">Signout</a>
+						</div>
 
-						
+						<div class="menu-navbar">
+							<div class="dropdown">
+								<button class="dropdown-btn">
+									<img src="./images/dashboard.png" alt="" class="dashboard-icon"><a href="">Dashboard</a>
+								</button>
+								
+							</div>
+
+							<div class="dropdown">
+								<button class="dropdown-btn">
+									<img src="./images/counter.png" alt="" class="counter-icon"><a href="">User Window</a>
+								</button>
+								
+							</div>
+
+							<div class="dropdown">
+								<button class="dropdown-btn">
+									<img src="./images/users.png" alt="" class="users-icon"><a href="">Counter Window</a>
+								</button>
+								
+							</div>
+
+							<div class="dropdown">
+								<button class="dropdown-btn">
+									<img src="./images/entertainment.png" alt=""
+										class="entertainment-icon"><a href="enter.html">Advertisement</a>
+								</button>
+								
+							</div>
+
+						</div>
 					</div>
 					<div class="studentlist-section">
 						<div class="studentlist-content">
