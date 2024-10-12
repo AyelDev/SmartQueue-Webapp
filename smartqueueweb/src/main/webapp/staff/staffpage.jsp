@@ -52,11 +52,13 @@
             background-color: transparent;
             display: flex;
             flex-direction: column;
+            margin-left: 20px;
+            overflow: hidden;
         }
 
         .dash {
             width: 20%;
-            height: 15%;
+            height: 20%;
             background-color: transparent;
             text-align: center;
             font-size: 1.5625rem;
@@ -82,7 +84,6 @@
             box-sizing: border-box;
             margin-top: 30px;
             border-radius: 10px;
-            border: none;
             box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
             text-align: center;
         }
@@ -112,7 +113,6 @@
             display: inline-block;
             margin-left: 60px;
             border-radius: 10px;
-            border: none;
             position: relative;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
         }
@@ -131,7 +131,7 @@
         .top-lnav {
             width: 100%;
             height: 20%;
-            background-color: #5CB3FF;
+            background-color: transparent;
             text-align: center;
             display: block;
             position: relative;
@@ -245,11 +245,12 @@
             height: 40vh;
             background-color: #F5F5F5;
             float: right;
-           margin-right: 10px;
-           margin-top: 15px;
-           box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            margin-right: 10px;
+            margin-top: 15px;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
             border-radius: 5px;
             padding: 20px;
+            
         }
 
         .calendar-header {
@@ -299,16 +300,9 @@
                             <h3>Current Queue</h3>
                             <p>Now Serving: </p>
                         </div>
-                        <!-- staff profile -->
-                        <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
-                        <div class="staffProfile" id="staffProfile">
-                            <a href="#">Settings</a>
-                            <a href="logout">Signout</a>
-                        </div>
-                        <div class="bottom-lnav">
-                            <b><a href="userwindow">User Window</a></b>
-                            <b><a href="counterwindow">Counter Window</a></b>
-                            <b><a href="staff/entertainment.jsp">Advertisement</a></b>
+                        <div class="card">
+                            <h3>Waiting Time </h3>
+                            <p>Average Waiting Time: </p>
                         </div>
                     </div>
                 </div>
@@ -316,14 +310,14 @@
                 <div class="b-container">
                     <div class="calendar"></div>
                     <div class="graph">
-                        <canvas id="queueTrendChart"></canvas> <!-- Line graph added -->
+                        <canvas id="queueTrendChart"></canvas> 
                     </div>
                 </div>
             </div>
 
             <div class="leftnav">
                 <div class="top-lnav">
-                    <img src="./images/logo.png" class="cec">
+                    <img src="logo.png" class="cec">
                     <b class="title"><br>Cebu Eastern College</b>
                 </div>
                 <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
@@ -332,11 +326,11 @@
                     <a href="login">Signout</a>
                 </div>
                 <div class="bottom-lnav">
-                    <b><a href="user_window.jsp">User Window</a></b>
-                    <b><a href="counter_window.jsp">Counter Window</a></b>
+                    <b><a href="userwindow">User Window</a></b>
+                    <b><a href="counterwindow">Counter Window</a></b>
                     <!-- <b><a href="#">Queue List</a></b> -->
-                    <b><a href="add student.jsp">Add Student</a></b>
-                    <b><a href="entertainment.jsp">Advertisement</a></b>
+                    <b><a href="add student.html">Add Student</a></b>
+                    <b><a href="entertainment.html">Advertisement</a></b>
                 </div>
             </div>
         </div>
@@ -361,10 +355,10 @@
             const queueTrendChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], // X-axis labels
+                    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], 
                     datasets: [{
                         label: 'Request Per Day', // Chart label
-                        data: [50, 75, 60, 90, 55, 40], // Replace with actual data
+                        data: [50, 75, 60, 90, 55, 40], 
                         borderColor: 'rgba(75, 192, 192, 1)',
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         fill: true,
@@ -405,12 +399,10 @@
 
                 let days = "";
 
-                // Display previous month's days
                 for (let i = firstDayOfMonth; i > 0; i--) {
                     days += `<div class="date">${lastDayOfPrevMonth - i + 1}</div>`;
                 }
 
-                // Display current month's days
                 for (let i = 1; i <= lastDateOfMonth; i++) {
                     const isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear();
                     days += `<div class="date ${isToday ? 'current-day' : ''}">${i}</div>`;
