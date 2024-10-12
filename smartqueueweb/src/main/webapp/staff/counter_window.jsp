@@ -504,9 +504,10 @@ background-color: #c82333;
                 <a href="logout">Signout</a>
             </div>
             <div class="bottom-lnav">
-                <b><a href="userwindow">User Window</a></b>
-                <b><a href="counterwindow">Counter Window</a></b>
-                <b><a href="staff/entertainment.jsp">Advertisement</a></b>
+                <b><a href="staffpage.jsp">Dashboard</a></b>
+                <b><a href="user_window.jsp">User Window</a></b>
+                <b><a href="add_student.jsp">Add Student</a></b>
+                <b><a href="entertainment.jsp">Advertisement</a></b>
             </div>
         </div>
 
