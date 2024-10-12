@@ -56,11 +56,11 @@
 			}
 
 
-
+			/*Navbar section*/
 			.navbar {
 				width: 15vw;
 				height: 100vh;
-				background-color: var(--primary-color);
+				background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
 				position: fixed;
 				justify-content: center;
 				align-items: center;
@@ -77,7 +77,7 @@
 				width: 50%;
 				max-width: 100%;
 				object-fit: contain;
-				margin-top: 15px;
+				margin-top: 50px;
 			}
 
 			.title {
@@ -85,70 +85,9 @@
 				font-size: 0.8em;
 			}
 
-			.adminProfile {
-				margin-left: 1.5rem;
-				position: absolute;
-				background-color: var(--background-color);
-				width: 12vw;
-				align-items: center;
-				justify-content: center;
-				text-align: center;
-				z-index: 1;
-				display: none;
-				border-radius: 7px;
-			}
-
-			.adminProfile a {
-				text-decoration: none;
-				color: var(--text-color);
-				overflow: hidden;
-				width: 12vw;
-				height: 20%;
-				text-align: center;
-				align-items: center;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				padding: .5rem 0 0 0;
-				height: 2rem;
-			}
-
-			.adminProfile a:hover {
-				background-color: var(--select-text-color);
-				border-radius: 7px;
-			}
-
-			.button-profile {
-				align-items: center;
-				justify-content: center;
-				display: flex;
-				width: 12vw;
-				margin-top: 30px;
-				margin-left: 23px;
-				border-radius: 10px;
-				padding: 15px 10px 15px 10px;
-				/*tlbr*/
-				overflow: hidden;
-				cursor: pointer;
-				border: none;
-			}
-
-			.profile {
-				width: 10%;
-				object-fit: scale-down;
-				margin-right: 20px;
-			}
-
-
-			.caretdown {
-				mix-blend-mode: multiply;
-				width: 10px;
-				margin-left: 20px;
-			}
-
-			/* navbar */
+			/* menu */
 			.menu-navbar {
-				margin-top: 2rem;
+				margin-top: 3rem;
 				display: flex;
 				flex-direction: column;
 			}
@@ -169,6 +108,7 @@
 				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 				border-radius: 4px;
 				padding: 10px;
+				overflow-x: hidden;
 			}
 
 			.dropdown-dashboard a {
@@ -201,26 +141,31 @@
 				width: 20vw;
 				border: 0;
 				font-size: 15px;
-				border-radius: 15px;
+				border-radius: 16px 0 0 16px;
 				padding-right: 60px;
 				margin-left: 10px;
 				cursor: pointer;
 				position: relative;
 				color: #F6F4EB;
 			}
+			.dropdown-btn::after{
+				content: '';
+				border-radius: 50%;
+			}
 
 			.dropdown-btn a {
 				text-decoration: none;
 				color: #F6F4EB;
 			}
-			.dropdown-btn a:hover{
+
+			.dropdown-btn a:hover {
 				color: black;
 				font-weight: bold;
 			}
 
 			.dropdown:hover .dropdown-dashboard {
 				display: block;
-				
+
 			}
 
 			.dropdown {
@@ -233,7 +178,8 @@
 			}
 
 			.dropdown-btn a:hover,
-			.dropdown-btn:hover, .active {
+			.dropdown-btn:hover,
+			.active {
 				color: var(--text-color);
 				font-weight: bold;
 			}
@@ -278,6 +224,9 @@
 				position: absolute;
 			}
 
+
+
+			/*Dashboard section*/
 			.dashboard-section {
 				width: 85vw;
 				height: 100vh;
@@ -287,16 +236,111 @@
 				align-items: center;
 				display: flex;
 				justify-content: center;
+
 			}
 
 			.dashboard-section h1 {
 				color: var(--text-color);
 				font-size: 2rem;
-				margin-top: -40%;
+				margin-top: -35%;
 				margin-left: -60%;
 				position: absolute;
 			}
+			.dashboard-head {
+				width: 85vw;
+				height: 10%;
+				background-color: #1477d4fb;
+				position: fixed;
+				margin-top: -45%;
+			}
+			.bell-icon {
+				object-fit: scale-down;
+				width: 20px;
+				margin-top: 2.5%;
+				margin-left: 67%;
+				cursor: pointer;
+			}
 
+			.chat-icon {
+				object-fit: scale-down;
+				width: 20px;
+				margin-left: 2%;
+				cursor: pointer;
+			}
+
+			.button-profile {
+				align-items: center;
+				justify-content: center;
+				display: flex;
+				width: 10vw;
+				margin-top: -3%;
+				margin-left: 84%;
+				border-radius: 10px;
+				padding: 15px 10px 15px 10px;
+				/*tlbr*/
+				overflow: hidden;
+				cursor: pointer;
+				border: none;
+				background: none;
+			}
+			.profile {
+				width: 10%;
+				object-fit: scale-down;
+				margin-right: 20px;
+			}
+			.caretdown {
+				mix-blend-mode: multiply;
+				width: 10px;
+				margin-left: 20px;
+			}
+			.adminProfile {
+				margin-left: 84%;
+				position: absolute;
+				background-color: white;
+				width: 10vw;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				z-index: 1;
+				display: none;
+				border-radius: 7px;
+			}
+
+			.adminProfile a {
+				text-decoration: none;
+				color: var(--text-color);
+				overflow: hidden;
+				width: 10vw;
+				height: 20%;
+				text-align: center;
+				align-items: center;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				padding: .5rem 0 0 0;
+				height: 2rem;
+			}
+
+			.adminProfile a:hover {
+				background-color: var(--select-text-color);
+				border-radius: 7px;
+			}
+			.dashboard-content {
+				width: 75vw;
+				height: 80vh;
+				justify-content: space-evenly;
+				display: flex;
+				margin-top: 5%;
+			}
+			.card-total {
+				width: 20%;
+				height: 20%;
+				background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
+				border-radius: 15px;
+				justify-content: space-evenly;
+				margin-top: 2rem;
+				box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
+			}
 			.card-total p {
 				font-size: .7rem;
 			}
@@ -306,30 +350,13 @@
 				margin-left: 30px;
 				color: var(--background-color);
 			}
-
-			.dashboard-content {
-				width: 75vw;
-				height: 80vh;
-				justify-content: space-evenly;
-				display: flex;
-			}
-
-			.card-total {
-				width: 20%;
-				height: 20%;
-				background-image: linear-gradient(135deg, #1e91d0 15%, #00509d 100%);
-				border-radius: 15px;
-				justify-content: space-evenly;
-				margin-top: 2rem;
-				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-			}
-
 			.department-graph {
 				width: 30%;
 				height: 62.5%;
 				background-color: #ffff;
 				border-radius: 15px;
 				margin-top: 2rem;
+				box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
 			}
 
 			.total-graph {
@@ -340,6 +367,7 @@
 				background-color: #ffff;
 				position: fixed;
 				border-radius: 15px;
+				box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
 			}
 		</style>
 
@@ -350,13 +378,6 @@
 						<img src="./images/logo.png" alt="" class="logo">
 						<p class="title">Cebu Eastern College
 						<p>
-					</div>
-					<!-- admin profile -->
-					<button class="button-profile" id="button-profile"><img src="./images/profile.png" alt=""
-							class="profile">ADMIN<img src="./images/caretdown.png" alt="" class="caretdown"></button>
-					<div class="adminProfile" id="adminProfile">
-						<a href="">Settings</a>
-						<a href="logout">Signout</a>
 					</div>
 
 					<div class="menu-navbar">
@@ -405,6 +426,18 @@
 					</div>
 				</div>
 				<div class="dashboard-section">
+					<div class="dashboard-head">
+						<img src="./images/bell.png" alt="" class="bell-icon">
+						<img src="./images/message.png" alt="" class="chat-icon">
+						<!-- admin profile -->
+						<button class="button-profile" id="button-profile"><img src="./images/profile.png" alt=""
+								class="profile">ADMIN<img src="./images/caretdown.png" alt=""
+								class="caretdown"></button>
+						<div class="adminProfile" id="adminProfile">
+							<a href="">Settings</a>
+							<a href="login">Signout</a>
+						</div>
+					</div>
 					<h1 class="dashboard-title">Dashboard</h1>
 					<div class="dashboard-content">
 						<div class="card-total"><br>
@@ -450,7 +483,7 @@
 				/* <summary>
 				CHARTJS.....	
 				</summary>*/
-				let staffNum, studentNum, inquiryNum;
+				let hsNum, shsNum, Num;
 				let BSIT = 0;
 				let BEED = 0;
 				let DEVCOM = 0;
@@ -532,8 +565,13 @@
 						data: {
 							labels: ['Students', 'Staff', 'Inquiry Today'],
 							datasets: [{
-								label: 'Total Number',
+								labels: ['Students', 'Staff', 'Inquiry'],
 								data: [studentNum, staffNum, inquiryNum],
+								backgroundColor: [
+									'#A0E9FF',
+									'#2f5f98',
+									'#2d8bba'
+								],
 								borderWidth: 2
 							}]
 						},
@@ -568,6 +606,13 @@
 							labels: ['BSIT', 'BEED', 'DEVCOM', 'BSTM', 'BSHM'],
 							datasets: [{
 								data: [BSIT, BEED, DEVCOM, BSTM, BSHM],
+								backgroundColor: [
+									'#31356e',
+									'#2f5f98',
+									'#2d8bba',
+									'#41b8d5',
+									'#6ce5e8'
+								]
 							}],
 
 

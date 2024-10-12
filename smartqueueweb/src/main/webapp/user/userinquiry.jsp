@@ -14,7 +14,7 @@
 
         <body>
             <style>
-                * {
+                * { 
                     margin: 0%;
                     padding: 0%;
                     font-family: arial black;
@@ -343,7 +343,7 @@
             <div class="container">
                 <div class="header">
                     <p>.</p>
-                    <img src="../images/logo.png" class="logo">
+                    <img src="./images/logo.png" class="logo">
                     <div class="head">
                         <h2 class="name">宿务东方学院</h2>
                         <h1 class="title">CEBU EASTERN COLLEGE, INC.</h1>
