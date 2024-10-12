@@ -6,15 +6,15 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
-            <script type="text/javascript" src="../scripts/fadetransition.js"></script>
-            <link rel="stylesheet" href="../css/loader.css">
+            <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
+            <script type="text/javascript" src="./scripts/fadetransition.js"></script>
+            <link rel="stylesheet" href="./css/loader.css">
             <title>User Inquiry</title>
         </head>
 
         <body>
             <style>
-                * { 
+                * {
                     margin: 0%;
                     padding: 0%;
                     font-family: arial black;
@@ -355,7 +355,8 @@
                 </div>
                 <!-- Scrolling Attention Text -->
                 <div class="slidetext">
-                    <span>ATTENTION! ONCE YOUR NUMBER IS CALLED AND YOU ARE NOT AROUND, YOU NEED TO GET ANOTHER PRIORITY NUMBER.
+                    <span>ATTENTION! ONCE YOUR NUMBER IS CALLED AND YOU ARE NOT AROUND, YOU NEED TO GET ANOTHER PRIORITY
+                        NUMBER.
                         &ensp;</span>
                 </div>
 
@@ -572,19 +573,23 @@
                     let studentName = '';
                     let studentId = '';
                     let purpose = '';
+                    let charQueue = '';
 
                     if (serviceType === 'General') {
                         studentName = document.getElementById('general-student-name');
                         studentId = document.getElementById('general-student-id');
                         purpose = document.getElementById('general-purpose');
+                        charQueue = 'G';
                     } else if (serviceType === 'Records') {
                         studentName = document.getElementById('records-student-name');
                         studentId = document.getElementById('records-student-id');
                         purpose = document.getElementById('records-purpose');
+                        charQueue = 'R';
                     } else if (serviceType === 'Archiving') {
                         studentName = document.getElementById('archiving-student-name');
                         studentId = document.getElementById('archiving-student-id');
                         purpose = document.getElementById('archiving-purpose');
+                        charQueue = 'A';
                     }
 
                     if (!studentId || !purpose) {
@@ -598,29 +603,50 @@
 
                     // Create the receipt content
                     var receiptContent = `
-        <center><h3>CEBU EASTERN COLLEGE</h3></center>
-        <center><h4>QUEUING NO.</h4></center>
-        <hr>
-        <h1>${queueNumber}</h1>
-        <hr>
-        <p><strong>Name:</strong> `+studentName.value+`</p>
-        <p><strong>Student ID:</strong> `+studentId.value+`</p>
-        <p><strong>Service Type:</strong> ` +serviceType+ ` Service</p>
-        <p><strong>Purpose:</strong> `+purpose.value+ `</p>
-        <p><strong>Date & Time:</strong> `+currentDateTime+`</p>
-    `;
+                    <center><h3>CEBU EASTERN COLLEGE</h3></center>
+                    <center><h4>QUEUING NO.</h4></center>
+                    <hr>
+                    <h1>`+ (charQueue + queueNumber) + `</h1>
+                    <hr>
+                    <p><strong>Name:</strong> `+ studentName.value + `</p>
+                    <p><strong>Student ID:</strong> `+ studentId.value + `</p>
+                    <p><strong>Service Type:</strong> ` + serviceType + ` Service</p>
+                    <p><strong>Purpose:</strong> `+ purpose.value + `</p>
+                    <p><strong>Date & Time:</strong> `+ currentDateTime + `</p>
+                    `;
+                    let servetype = serviceType;
+                    $.ajax({
+                        url: 'inquiry',
+                        type: 'POST',
+                        data: {
+                            queueNum: (charQueue + queueNumber),
+                            fullname: studentName.value,
+                            studentid: studentId.value,
+                            purpose: purpose.value,
+                            servicetype: servetype
+                        },
+                        success: function (response) {
+                            alert('Success: ' + response);
 
-                    // Inject the receipt content into the modal
-                    document.getElementById('printArea').innerHTML = receiptContent;
 
-                    // Show the modal
-                    var modal = document.getElementById('receiptModal');
-                    modal.style.display = "block";
+                            // Inject the receipt content into the modal
+                            document.getElementById('printArea').innerHTML = receiptContent;
 
-                    // Automatically print the receipt content
-                    setTimeout(function () {
-                        window.print();
-                    }, 500); // Optional delay before printing
+                            // Show the modal
+                            var modal = document.getElementById('receiptModal');
+                            modal.style.display = "block";
+
+                            // Automatically print the receipt content
+                            setTimeout(function () {
+                                window.print();
+                            }, 500); // Optional delay before printing
+                        },
+                        error: function (xhr, status, error) {
+                            alert(error + ' : ' + xhr.responseText);
+                        }
+                    });
+
+
                 }
 
                 // Close the modal when the user clicks the "close" button

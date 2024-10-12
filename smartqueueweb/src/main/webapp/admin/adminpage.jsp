@@ -435,7 +435,7 @@
 								class="caretdown"></button>
 						<div class="adminProfile" id="adminProfile">
 							<a href="">Settings</a>
-							<a href="login">Signout</a>
+							<a href="logout">Signout</a>
 						</div>
 					</div>
 					<h1 class="dashboard-title">Dashboard</h1>
