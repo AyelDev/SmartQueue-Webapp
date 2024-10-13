@@ -1,4 +1,4 @@
-package com.smartqueueweb.Controller.Admin;
+package com.smartqueueweb.Controller.API;
 
 import java.io.IOException;
 import java.io.PrintWriter;

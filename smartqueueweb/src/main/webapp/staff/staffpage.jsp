@@ -331,7 +331,7 @@
                     <b><a href="userwindow">User Window</a></b>
                     <b><a href="counterwindow">Counter Window</a></b>
                     <!-- <b><a href="#">Queue List</a></b> -->
-                    <b><a href="staff/addstudent">Add Student</a></b>
+                    <b><a href="addstudent">Add Student</a></b>
                     <b><a href="entertainment.jsp">Advertisement</a></b>
                 </div>
             </div>

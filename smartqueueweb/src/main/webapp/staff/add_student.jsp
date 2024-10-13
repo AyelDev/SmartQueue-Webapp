@@ -619,7 +619,7 @@
 								src="./images/caretdown.png" alt="" class="caretdown">
 						</button>
 						<div class="adminProfile" id="adminProfile">
-							<a href="">Settings</a> <a href="../logout">Signout</a>
+							<a href="">Settings</a> <a href="logout">Signout</a>
 						</div>
 
 						<div class="menu-navbar">

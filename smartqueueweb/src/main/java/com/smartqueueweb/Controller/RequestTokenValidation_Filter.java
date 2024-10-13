@@ -26,7 +26,9 @@ import com.smartqueueweb.Service.ServiceImpl;
 	"/UpdateStaff_Servlet",
 	"/UpdateStudent_Servlet",
 	"/userwindow", "/Userwindow_Servlet",
-	 })
+	"/addstudent", "/AddStudent_Servlet", 
+	"/counterwindow", "/CounterWindow_Servlet",
+	"/entertainment", "/EntertainmentStaff_Servlet",})
 public class RequestTokenValidation_Filter implements Filter {
 
 	public RequestTokenValidation_Filter() {
