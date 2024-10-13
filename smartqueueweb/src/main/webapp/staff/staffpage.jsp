@@ -86,6 +86,7 @@
             border-radius: 10px;
             box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
             text-align: center;
+            border: none;
         }
 
         .card:hover {
@@ -113,6 +114,7 @@
             display: inline-block;
             margin-left: 60px;
             border-radius: 10px;
+            border: none;
             position: relative;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
         }
@@ -250,7 +252,7 @@
             box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
             border-radius: 5px;
             padding: 20px;
-            
+
         }
 
         .calendar-header {
@@ -317,7 +319,7 @@
 
             <div class="leftnav">
                 <div class="top-lnav">
-                    <img src="logo.png" class="cec">
+                    <img src="./images/logo.png" class="cec">
                     <b class="title"><br>Cebu Eastern College</b>
                 </div>
                 <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
@@ -326,11 +328,11 @@
                     <a href="login">Signout</a>
                 </div>
                 <div class="bottom-lnav">
-                    <b><a href="userwindow">User Window</a></b>
-                    <b><a href="counterwindow">Counter Window</a></b>
+                    <b><a href="user_window.jsp">User Window</a></b>
+                    <b><a href="counter_window.jsp">Counter Window</a></b>
                     <!-- <b><a href="#">Queue List</a></b> -->
-                    <b><a href="add student.html">Add Student</a></b>
-                    <b><a href="entertainment.html">Advertisement</a></b>
+                    <b><a href="add student.jsp">Add Student</a></b>
+                    <b><a href="entertainment.jsp">Advertisement</a></b>
                 </div>
             </div>
         </div>
