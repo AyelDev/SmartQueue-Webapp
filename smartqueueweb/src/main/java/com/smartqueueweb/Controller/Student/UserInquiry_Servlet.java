@@ -1,4 +1,4 @@
-package com.smartqueueweb.Controller;
+package com.smartqueueweb.Controller.Student;
 
 import java.io.IOException;
 

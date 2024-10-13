@@ -1,4 +1,4 @@
-package com.smartqueueweb.Controller;
+package com.smartqueueweb.Controller.Staff;
 
 import java.io.IOException;
 
@@ -9,20 +9,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.smartqueueweb.Service.ServiceImpl;
 
-
-@WebServlet({"/userwindow", "/Userwindow_Servlet"})
-public class Userwindow_Servlet extends HttpServlet {
+@WebServlet({"/staff/addstudent", "/AddStudent_Servlet"})
+public class AddStudent_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	ServiceImpl services = new ServiceImpl();
+       
 	RequestDispatcher rd = null;	
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		rd = request.getRequestDispatcher("staff/user_window.jsp");
+	
+		rd = request.getRequestDispatcher("../staff/add_student.jsp");
 		rd.forward(request, response);
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

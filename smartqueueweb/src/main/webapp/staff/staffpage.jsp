@@ -325,13 +325,13 @@
                 <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
                 <div class="staffProfile" id="staffProfile">
                     <a href="#">Settings</a>
-                    <a href="login">Signout</a>
+                    <a href="logout">Signout</a>
                 </div>
                 <div class="bottom-lnav">
-                    <b><a href="user_window.jsp">User Window</a></b>
-                    <b><a href="counter_window.jsp">Counter Window</a></b>
+                    <b><a href="userwindow">User Window</a></b>
+                    <b><a href="counterwindow">Counter Window</a></b>
                     <!-- <b><a href="#">Queue List</a></b> -->
-                    <b><a href="add student.jsp">Add Student</a></b>
+                    <b><a href="staff/addstudent">Add Student</a></b>
                     <b><a href="entertainment.jsp">Advertisement</a></b>
                 </div>
             </div>
@@ -413,7 +413,6 @@
                 calendarElement.innerHTML = `
                     <div class="calendar-header">
                         <button id="prev-month">Prev</button>
-                        <div>${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}</div>
                         <button id="next-month">Next</button>
                     </div>
                     <div class="calendar-body">
