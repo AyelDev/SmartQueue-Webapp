@@ -64,12 +64,12 @@
 			.navbar {
 				width: 15vw;
 				height: 100vh;
-				background-color: var(--primary-color);
+				background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
 				position: fixed;
 				justify-content: center;
 				align-items: center;
 				left: 0;
-
+				float: left;
 			}
 
 			.logoContainer {
@@ -89,37 +89,19 @@
 				font-size: 0.8em;
 			}
 
-			.adminProfile {
-				margin-left: 2.5rem;
-				position: absolute;
-				background-color: var(--background-color);
-				width: 9.5vw;
-				align-items: center;
-				justify-content: center;
-				text-align: center;
-				z-index: 1;
-				display: none;
+			.bell-icon {
+				object-fit: scale-down;
+				width: 20px;
+				margin-top: 2.5%;
+				margin-left: 67%;
+				cursor: pointer;
 			}
 
-			.adminProfile a,
-			.dropdown-dashboard a {
-				text-decoration: none;
-				color: var(--background-color);
-				overflow: hidden;
-				color: black;
-				width: 9.5vw;
-				height: 20%;
-				text-align: center;
-				align-items: center;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				padding: .5rem 0 0 0;
-				height: 2rem;
-			}
-
-			.adminProfile a:hover {
-				background-color: var(--select-text-color);
+			.chat-icon {
+				object-fit: scale-down;
+				width: 20px;
+				margin-left: 2%;
+				cursor: pointer;
 			}
 
 			.button-profile {
@@ -127,13 +109,15 @@
 				justify-content: center;
 				display: flex;
 				width: 10vw;
-				margin-top: 30px;
-				margin-left: 36px;
+				margin-top: -3%;
+				margin-left: 84%;
 				border-radius: 10px;
 				padding: 15px 10px 15px 10px;
 				/*tlbr*/
 				overflow: hidden;
 				cursor: pointer;
+				border: none;
+				background: none;
 			}
 
 			.profile {
@@ -146,6 +130,39 @@
 				mix-blend-mode: multiply;
 				width: 10px;
 				margin-left: 20px;
+			}
+
+			.adminProfile {
+				margin-left: 84%;
+				position: absolute;
+				background-color: white;
+				width: 10vw;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				z-index: 1;
+				display: none;
+				border-radius: 7px;
+			}
+
+			.adminProfile a {
+				text-decoration: none;
+				color: var(--text-color);
+				overflow: hidden;
+				width: 10vw;
+				height: 20%;
+				text-align: center;
+				align-items: center;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				padding: .5rem 0 0 0;
+				height: 2rem;
+			}
+
+			.adminProfile a:hover {
+				background-color: var(--select-text-color);
+				border-radius: 7px;
 			}
 
 			/* navbar */
@@ -260,6 +277,14 @@
 				display: flex;
 				justify-content: center;
 				height: 100vh;
+			}
+
+			.dashboard-head {
+				width: 85vw;
+				height: 10%;
+				background-color: #1477d4fb;
+				position: fixed;
+				margin-top: -43.2%;
 			}
 
 			.title-page {
@@ -406,7 +431,7 @@
 				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 				overflow: hidden;
 				padding: 20px;
-				margin-top: -30%;
+				margin-top: -23%;
 			}
 
 			.add-account-icon {
@@ -601,14 +626,6 @@
 						<p class="title">Cebu Eastern College
 						<p>
 					</div>
-					<!-- admin profile -->
-					<button class="button-profile" id="button-profile"><img src="./images/profile.png" alt=""
-							class="profile">ADMIN<img src="../images/caretdown.png" alt="" class="caretdown"></button>
-					<div class="adminProfile" id="adminProfile">
-						<a href="">Settings</a>
-						<a href="logout">Signout</a>
-					</div>
-
 					<div class="menu-navbar">
 						<div class="dropdown">
 							<button class="dropdown-btn"><img src="./images/dashboard.png" alt=""
@@ -660,6 +677,18 @@
 					</div>
 				</div>
 				<div class="stafflist-section">
+					<div class="dashboard-head">
+						<img src="./images/bell.png" alt="" class="bell-icon">
+						<img src="./images/message.png" alt="" class="chat-icon">
+						<!-- admin profile -->
+						<button class="button-profile" id="button-profile"><img src="./images/profile.png" alt=""
+								class="profile">ADMIN<img src="./images/caretdown.png" alt=""
+								class="caretdown"></button>
+						<div class="adminProfile" id="adminProfile">
+							<a href="">Settings</a>
+							<a href="logout">Signout</a>
+						</div>
+					</div>
 					<div class="stafflist-content">
 						<button class="add-account-btn"> <img src="./images/add-account.png" alt=""
 								class="add-account-icon"> Add Staff</button>

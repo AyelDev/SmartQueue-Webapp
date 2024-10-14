@@ -65,15 +65,16 @@
             display: flex;
         }
 
+        /*Navbar section*/
         .navbar {
             width: 15vw;
             height: 100vh;
-            background-color: var(--primary-color);
+            background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
             position: fixed;
             justify-content: center;
             align-items: center;
             left: 0;
-
+            float: left;
         }
 
         .logoContainer {
@@ -85,7 +86,7 @@
             width: 50%;
             max-width: 100%;
             object-fit: contain;
-            margin-top: 15px;
+            margin-top: 50px;
         }
 
         .title {
@@ -93,68 +94,9 @@
             font-size: 0.8em;
         }
 
-        .adminProfile {
-            margin-left: 2.5rem;
-            position: absolute;
-            background-color: var(--background-color);
-            width: 9.5vw;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            z-index: 1;
-            display: none;
-        }
-
-        .adminProfile a,
-        .dropdown-dashboard a {
-            text-decoration: none;
-            color: var(--background-color);
-            overflow: hidden;
-            color: black;
-            width: 9.5vw;
-            height: 20%;
-            text-align: center;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: .5rem 0 0 0;
-            height: 2rem;
-        }
-
-        .adminProfile a:hover {
-            background-color: var(--select-text-color);
-        }
-
-        .button-profile {
-            align-items: center;
-            justify-content: center;
-            display: flex;
-            width: 10vw;
-            margin-top: 30px;
-            margin-left: 36px;
-            border-radius: 10px;
-            padding: 15px 10px 15px 10px;
-            /*tlbr*/
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .profile {
-            width: 10%;
-            object-fit: scale-down;
-            margin-right: 20px;
-        }
-
-        .caretdown {
-            mix-blend-mode: multiply;
-            width: 10px;
-            margin-left: 20px;
-        }
-
-        /* navbar */
+        /* menu */
         .menu-navbar {
-            margin-top: 2rem;
+            margin-top: 3rem;
             display: flex;
             flex-direction: column;
         }
@@ -168,24 +110,36 @@
             display: none;
             position: absolute;
             background-color: var(--background-color);
-            min-width: 160px;
+            width: 120px;
             top: 100%;
-            left: 80%;
+            left: 70%;
             z-index: 1;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             border-radius: 4px;
+            padding: 10px;
+            overflow-x: hidden;
         }
 
         .dropdown-dashboard a {
-            display: block;
+            display: flex;
             text-decoration: none;
-            color: var(--text-color);
-            padding: 12px 16px;
+            color: black;
             text-align: center;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            flex-direction: column;
+            padding: 10px;
         }
 
         .dropdown-dashboard a:hover {
             background-color: var(--select-text-color);
+            border-radius: 4px;
+            color: black;
+            border-radius: 4px;
+            padding: 10px;
+            width: 120px;
+            margin-left: -7.2%;
         }
 
         .dropdown-btn {
@@ -196,18 +150,51 @@
             width: 20vw;
             border: 0;
             font-size: 15px;
-            color: #F6F4EB;
-            border-radius: 15px;
+            border-radius: 16px 0 0 16px;
             padding-right: 60px;
             margin-left: 10px;
             cursor: pointer;
             position: relative;
+            color: #F6F4EB;
+        }
+
+        .dropdown-btn::after {
+            content: '';
+            border-radius: 50%;
+        }
+
+        .dropdown-btn a {
+            text-decoration: none;
+            color: #F6F4EB;
+        }
+
+        .dropdown-btn a:hover {
+            color: black;
+            font-weight: bold;
         }
 
         .dropdown:hover .dropdown-dashboard {
             display: block;
+
         }
 
+        .dropdown {
+            color: var(--background-color);
+        }
+
+        .dropdown:hover {
+            color: black;
+            font-weight: bold;
+        }
+
+        .dropdown-btn a:hover,
+        .dropdown-btn:hover,
+        .active {
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        .active,
         .dropdown-btn:hover {
             background-color: var(--background-color);
             width: 18vw;
@@ -240,14 +227,8 @@
             margin-left: 50px;
         }
 
-        .caretright {
-            object-fit: scale-down;
-            width: 5%;
-            right: 5.5rem;
-            position: absolute;
-        }
-
-        .studentlist-section {
+        /*Dashboard section*/
+        .counterlist-section {
             width: 85vw;
             height: 100vh;
             background-color: var(--background-color);
@@ -256,6 +237,91 @@
             align-items: center;
             display: flex;
             justify-content: center;
+        }
+
+
+        .dashboard-head {
+            width: 85vw;
+            height: 10%;
+            background-color: #1477d4fb;
+            position: fixed;
+            margin-top: -45%;
+        }
+
+        .bell-icon {
+            object-fit: scale-down;
+            width: 20px;
+            margin-top: 2.5%;
+            margin-left: 67%;
+            cursor: pointer;
+        }
+
+        .chat-icon {
+            object-fit: scale-down;
+            width: 20px;
+            margin-left: 2%;
+            cursor: pointer;
+        }
+
+        .button-profile {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            width: 10vw;
+            margin-top: -3%;
+            margin-left: 84%;
+            border-radius: 10px;
+            padding: 15px 10px 15px 10px;
+            /*tlbr*/
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .profile {
+            width: 10%;
+            object-fit: scale-down;
+            margin-right: 20px;
+        }
+
+        .caretdown {
+            mix-blend-mode: multiply;
+            width: 10px;
+            margin-left: 20px;
+        }
+
+        .adminProfile {
+            margin-left: 84%;
+            position: absolute;
+            background-color: white;
+            width: 10vw;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 1;
+            display: none;
+            border-radius: 7px;
+        }
+
+        .adminProfile a {
+            text-decoration: none;
+            color: var(--text-color);
+            overflow: hidden;
+            width: 10vw;
+            height: 20%;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: .5rem 0 0 0;
+            height: 2rem;
+        }
+
+        .adminProfile a:hover {
+            background-color: var(--select-text-color);
+            border-radius: 7px;
         }
 
         .title-page {
@@ -387,7 +453,7 @@
             }
         }
 
-        .studentlist-content {
+        .counterlist-content {
             width: 90%;
             max-width: 1000px;
             margin: 20px;
@@ -399,7 +465,7 @@
             margin-top: -20%;
         }
 
-    
+
 
         .add-account-icon {
             object-fit: scale-down;
@@ -428,7 +494,7 @@
             width: 80%;
             padding: 5px;
             border: 1px solid;
-            
+
         }
 
         .search-btn {
@@ -448,6 +514,7 @@
             background: none;
             margin-bottom: -10%;
         }
+
         .fillup-form-container {
             width: 40%;
             background-color: white;
@@ -516,11 +583,12 @@
             background-color: transparent;
             transition: outline-color 500ms;
         }
+
         .input-container input:focus {
             outline-color: var(--secondary-color);
         }
 
-        .input-container label{
+        .input-container label {
             position: absolute;
             top: 50%;
             left: 10px;
@@ -532,7 +600,7 @@
         }
 
         .input-container input:focus+label,
-        .input-container input:valid+label{
+        .input-container input:valid+label {
             top: -10px;
             transform: translateY(0);
             font-size: 0.8rem;
@@ -605,13 +673,7 @@
                     <p class="title">Cebu Eastern College
                     <p>
                 </div>
-                <!-- admin profile -->
-                <button class="button-profile" id="button-profile"><img src="../images/profile.png" alt=""
-                        class="profile">ADMIN<img src="../images/caretdown.png" alt="" class="caretdown"></button>
-                <div class="adminProfile" id="adminProfile">
-                    <a href="">Settings</a>
-                    <a href="logout">Signout</a>
-                </div>
+
 
                 <div class="menu-navbar">
                     <div class="dropdown">
@@ -634,7 +696,8 @@
                     </div>
 
                     <div class="dropdown">
-                        <button class="dropdown-btn"><img src="./images/users.png" alt="" class="users-icon">Users</button>
+                        <button class="dropdown-btn"><img src="./images/users.png" alt=""
+                                class="users-icon">Users</button>
                         <div class="dropdown-dashboard">
                             <a href="">Add Student</a>
                             <a href="">Add Staff</a>
@@ -662,8 +725,19 @@
                     </div>
                 </div>
             </div>
-            <div class="studentlist-section">
-                <div class="studentlist-content">
+            <div class="counterlist-section">
+                <div class="dashboard-head">
+                    <img src="./images/bell.png" alt="" class="bell-icon">
+                    <img src="./images/message.png" alt="" class="chat-icon">
+                    <!-- admin profile -->
+                    <button class="button-profile" id="button-profile"><img src="./images/profile.png" alt=""
+                            class="profile">ADMIN<img src="./images/caretdown.png" alt="" class="caretdown"></button>
+                    <div class="adminProfile" id="adminProfile">
+                        <a href="">Settings</a>
+                        <a href="logout">Signout</a>
+                    </div>
+                </div>
+                <div class="counterlist-content">
                     <button class="add-account-btn"> <img src="./images/add-account.png" alt=""
                             class="add-account-icon"> Add Counter</button>
                     <h1>Counter List</h1>
@@ -696,7 +770,7 @@
                                 </div>
 
                                 <div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-                                    
+
                                     <select name="purpose" id="records-purpose" class="purpose">
                                         <option value="">--</option>
                                         <option value="enrollment">BEED</option>

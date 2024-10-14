@@ -68,27 +68,29 @@
 					overflow: hidden;
 				}
 
+				/*Navbar section*/
 				.navbar {
 					width: 15vw;
 					height: 100vh;
-					background-color: var(--primary-color);
+					background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
 					position: fixed;
 					justify-content: center;
 					align-items: center;
 					left: 0;
+					float: left;
+					margin-top: -32%;
 				}
 
 				.logoContainer {
 					width: 100%;
 					text-align: center;
-					margin-top: 1rem;
 				}
 
 				.logo {
 					width: 50%;
 					max-width: 100%;
 					object-fit: contain;
-					margin-top: 15px;
+					margin-top: 50px;
 				}
 
 				.title {
@@ -96,167 +98,146 @@
 					font-size: 0.8em;
 				}
 
-				.adminProfile {
-					margin-left: 2.5rem;
-					position: absolute;
-					background-color: var(--background-color);
-					width: 9.5vw;
-					align-items: center;
-					justify-content: center;
-					text-align: center;
-					z-index: 1;
-					display: none;
-				}
-
-				.adminProfile a,
-				.dropdown-dashboard a {
-					text-decoration: none;
-					color: var(--background-color);
-					overflow: hidden;
-					color: black;
-					width: 9.5vw;
-					height: 20%;
-					text-align: center;
-					align-items: center;
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					padding: .5rem 0 0 0;
-					height: 2rem;
-				}
-
-				.adminProfile a:hover {
-					background-color: var(--select-text-color);
-				}
-
-				.button-profile {
-					align-items: center;
-					justify-content: center;
-					display: flex;
-					width: 10vw;
-					margin-top: 30px;
-					margin-left: 36px;
-					border-radius: 10px;
-					padding: 15px 10px 15px 10px;
-					/*tlbr*/
-					overflow: hidden;
-					cursor: pointer;
-				}
-
-				.profile {
-					width: 10%;
-					object-fit: scale-down;
-					margin-right: 20px;
-				}
-
-				.caretdown {
-					mix-blend-mode: multiply;
-					width: 10px;
-					margin-left: 20px;
-				}
-
-				/* navbar */
-				.navbar {
-					position: fixed;
-					z-index: 1;
-					top: 0;
-					left: 0;
-				}
-
+				/* menu */
 				.menu-navbar {
-					margin-top: 2rem;
-					display: flex;
-					flex-direction: column;
-				}
+				margin-top: 3rem;
+				display: flex;
+				flex-direction: column;
+			}
 
-				.dropdown {
-					position: relative;
-					display: inline-block;
-				}
+			.dropdown {
+				position: relative;
+				display: inline-block;
+			}
 
-				.dropdown-dashboard {
-					display: none;
-					position: absolute;
-					background-color: var(--background-color);
-					min-width: 160px;
-					top: 100%;
-					left: 80%;
-					z-index: 1;
-					box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-					border-radius: 4px;
-				}
+			.dropdown-dashboard {
+				display: none;
+				position: absolute;
+				background-color: var(--background-color);
+				width: 120px;
+				top: 100%;
+				left: 70%;
+				z-index: 1;
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+				border-radius: 4px;
+				padding: 10px;
+				overflow-x: hidden;
+			}
 
-				.dropdown-dashboard a {
-					display: block;
-					text-decoration: none;
-					color: var(--text-color);
-					padding: 12px 16px;
-					text-align: center;
-				}
+			.dropdown-dashboard a {
+				display: flex;
+				text-decoration: none;
+				color: black;
+				text-align: center;
+				align-items: center;
+				justify-content: center;
+				font-size: 11px;
+				flex-direction: column;
+				padding: 10px;
+			}
 
-				.dropdown-dashboard a:hover {
-					background-color: var(--select-text-color);
-				}
+			.dropdown-dashboard a:hover {
+				background-color: var(--select-text-color);
+				border-radius: 4px;
+				color: black;
+				border-radius: 4px;
+				padding: 10px;
+				width: 120px;
+				margin-left: -7.2%;
+			}
 
-				.dropdown-btn {
-					background: none;
-					padding: 20px;
-					display: flex;
-					align-items: center;
-					width: 20vw;
-					border: 0;
-					font-size: 15px;
-					color: #F6F4EB;
-					border-radius: 15px;
-					padding-right: 60px;
-					margin-left: 10px;
-					cursor: pointer;
-					position: relative;
-				}
+			.dropdown-btn {
+				background: none;
+				padding: 20px;
+				display: flex;
+				align-items: center;
+				width: 20vw;
+				border: 0;
+				font-size: 15px;
+				border-radius: 16px 0 0 16px;
+				padding-right: 60px;
+				margin-left: 10px;
+				cursor: pointer;
+				position: relative;
+				color: #F6F4EB;
+			}
+			.dropdown-btn::after{
+				content: '';
+				border-radius: 50%;
+			}
 
-				.dropdown:hover .dropdown-dashboard {
-					display: block;
-				}
+			.dropdown-btn a {
+				text-decoration: none;
+				color: #F6F4EB;
+			}
 
-				.dropdown-btn:hover {
-					background-color: var(--background-color);
-					width: 18vw;
-					color: var(--text-color);
-					font-weight: bold;
-				}
+			.dropdown-btn a:hover {
+				color: black;
+				font-weight: bold;
+			}
 
-				.dropdown-btn:hover+.dropdown-dashboard {
-					display: block;
-				}
+			.dropdown:hover .dropdown-dashboard {
+				display: block;
 
-				.dashboard-icon,
-				.users-icon,
-				.display-icon,
-				.entertainment-icon,
-				.counter-icon {
-					object-fit: scale-down;
-					width: 10%;
-				}
+			}
 
-				.dashboard-icon,
-				.users-icon,
-				.display-icon,
-				.entertainment-icon,
-				.counter-icon {
-					margin-right: 17px;
-				}
+			.dropdown {
+				color: var(--background-color);
+			}
 
-				.dashboard-caretright {
-					margin-left: 50px;
-				}
+			.dropdown:hover {
+				color: black;
+				font-weight: bold;
+			}
 
-				.caretright {
-					object-fit: scale-down;
-					width: 5%;
-					right: 5.5rem;
-					position: absolute;
-				}
+			.dropdown-btn a:hover,
+			.dropdown-btn:hover,
+			.active {
+				color: var(--text-color);
+				font-weight: bold;
+			}
 
+			.active,
+			.dropdown-btn:hover {
+				background-color: var(--background-color);
+				width: 18vw;
+				color: var(--text-color);
+				font-weight: bold;
+			}
+
+			.dropdown-btn:hover+.dropdown-dashboard {
+				display: block;
+			}
+
+			.dashboard-icon,
+			.users-icon,
+			.display-icon,
+			.entertainment-icon,
+			.counter-icon {
+				object-fit: scale-down;
+				width: 10%;
+			}
+
+			.dashboard-icon,
+			.users-icon,
+			.display-icon,
+			.entertainment-icon,
+			.counter-icon {
+				margin-right: 17px;
+			}
+
+			.dashboard-caretright {
+				margin-left: 50px;
+			}
+
+			.caretright {
+				object-fit: scale-down;
+				width: 5%;
+				right: 5.5rem;
+				position: absolute;
+			}
+
+				/*Studentlist section*/
 				.studentlist-section {
 					width: 85vw;
 					height: 100%;
@@ -266,6 +247,14 @@
 					align-items: center;
 					display: flex;
 					justify-content: center;
+				}
+
+				.dashboard-head {
+					width: 85vw;
+					height: 10%;
+					background-color: #1477d4fb;
+					position: fixed;
+					margin-top: -76%;
 				}
 
 				h1 {
@@ -402,6 +391,83 @@
 					box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 					overflow: hidden;
 					padding: 20px;
+					margin-top: 10%;
+				}
+
+				.bell-icon {
+					object-fit: scale-down;
+					width: 20px;
+					margin-top: 2.5%;
+					margin-left: 67%;
+					cursor: pointer;
+				}
+
+				.chat-icon {
+					object-fit: scale-down;
+					width: 20px;
+					margin-left: 2%;
+					cursor: pointer;
+				}
+
+				.button-profile {
+					align-items: center;
+					justify-content: center;
+					display: flex;
+					width: 10vw;
+					margin-top: -3%;
+					margin-left: 84%;
+					border-radius: 10px;
+					padding: 15px 10px 15px 10px;
+					/*tlbr*/
+					overflow: hidden;
+					cursor: pointer;
+					border: none;
+					background: none;
+				}
+
+				.profile {
+					width: 10%;
+					object-fit: scale-down;
+					margin-right: 20px;
+				}
+
+				.caretdown {
+					mix-blend-mode: multiply;
+					width: 10px;
+					margin-left: 20px;
+				}
+
+				.adminProfile {
+					margin-left: 84%;
+					position: absolute;
+					background-color: white;
+					width: 10vw;
+					align-items: center;
+					justify-content: center;
+					text-align: center;
+					z-index: 1;
+					display: none;
+					border-radius: 7px;
+				}
+
+				.adminProfile a {
+					text-decoration: none;
+					color: var(--text-color);
+					overflow: hidden;
+					width: 10vw;
+					height: 20%;
+					text-align: center;
+					align-items: center;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					padding: .5rem 0 0 0;
+					height: 2rem;
+				}
+
+				.adminProfile a:hover {
+					background-color: var(--select-text-color);
+					border-radius: 7px;
 				}
 
 				.add-account-icon {
@@ -607,14 +673,7 @@
 							<p class="title">Cebu Eastern College
 							<p>
 						</div>
-						<!-- admin profile -->
-						<button class="button-profile" id="button-profile">
-							<img src="./images/profile.png" alt="" class="profile">ADMIN<img
-								src="./images/caretdown.png" alt="" class="caretdown">
-						</button>
-						<div class="adminProfile" id="adminProfile">
-							<a href="">Settings</a> <a href="logout">Signout</a>
-						</div>
+
 
 						<div class="menu-navbar">
 							<div class="dropdown">
@@ -670,6 +729,18 @@
 						</div>
 					</div>
 					<div class="studentlist-section">
+						<div class="dashboard-head">
+							<img src="./images/bell.png" alt="" class="bell-icon">
+							<img src="./images/message.png" alt="" class="chat-icon">
+							<!-- admin profile -->
+							<button class="button-profile" id="button-profile"><img src="./images/profile.png" alt=""
+									class="profile">ADMIN<img src="./images/caretdown.png" alt=""
+									class="caretdown"></button>
+							<div class="adminProfile" id="adminProfile">
+								<a href="">Settings</a>
+								<a href="logout">Signout</a>
+							</div>
+						</div>
 						<div class="studentlist-content">
 							<button class="add-account-btn">
 								<img src="./images/add-account.png" alt="" class="add-account-icon">
@@ -677,8 +748,8 @@
 							</button>
 							<h1>Student List</h1>
 							<div class="search-container">
-								<input type="text" placeholder="Search.." name="search" class="search-bar" id="searchInput"
-								onkeyup="searchTable()">
+								<input type="text" placeholder="Search.." name="search" class="search-bar"
+									id="searchInput" onkeyup="searchTable()">
 								<button class="search-btn" type="submit">
 									<img src="./images/search-icon.png" alt="" class="search-icon">
 								</button>
@@ -777,7 +848,7 @@
 								searchTable();
 							}
 							request.send();
-						}	
+						}
 
 						function renderHTML(data) {
 							var htmlString = ``;
