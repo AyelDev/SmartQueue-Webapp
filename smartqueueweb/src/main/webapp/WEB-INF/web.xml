@@ -14,6 +14,40 @@
 		<welcome-file>default.htm</welcome-file>
 	</welcome-file-list>
 
+<!-- 
+	Staff Servlet Redirection
+ -->
+	<servlet>
+		<servlet-name>userwindow</servlet-name>
+		<jsp-file>/staff/user_window.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>userwindow</servlet-name>
+		<url-pattern>/userwindow</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>counterwindow</servlet-name>
+		<jsp-file>/staff/counter_window.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>counterwindow</servlet-name>
+		<url-pattern>/counterwindow</url-pattern>
+	</servlet-mapping>
+
+<!-- 
+	Admin Servlet Redirection
+ -->
+	<servlet>
+		<servlet-name>listofcounter</servlet-name>
+		<jsp-file>/admin/list_of_counter.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>listofcounter</servlet-name>
+		<url-pattern>/listofcounter</url-pattern>
+	</servlet-mapping>
+
+
 	<session-config>
 		<cookie-config>
 			<path>/</path>
