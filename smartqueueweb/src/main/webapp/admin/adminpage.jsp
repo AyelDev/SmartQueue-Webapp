@@ -203,6 +203,7 @@
 			.counter-icon {
 				object-fit: scale-down;
 				width: 10%;
+		
 			}
 
 			.dashboard-icon,
@@ -410,7 +411,7 @@
 
 						<div class="dropdown">
 							<button class="dropdown-btn"><img src="./images/entertainment.png" alt=""
-									class="entertainment-icon"><a href="">Entertainment</a>
+									class="entertainment-icon"><a href="video_ads.jsp">Entertainment</a>
 							</button>
 						</div>
 
