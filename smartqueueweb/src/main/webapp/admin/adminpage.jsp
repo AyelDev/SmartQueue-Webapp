@@ -393,7 +393,6 @@
 							<button class="dropdown-btn"><img src="./images/counter.png" alt=""
 									class="counter-icon">Counter</button>
 							<div class="dropdown-dashboard">
-								<a href="">Add Counter</a>
 								<a href="listofcounter">List of Counter</a>
 							</div>
 						</div>
@@ -402,8 +401,6 @@
 							<button class="dropdown-btn"><img src="./images/users.png" alt=""
 									class="users-icon">Users</button>
 							<div class="dropdown-dashboard">
-								<a href="">Add Student</a>
-								<a href="">Add Staff</a>
 								<a href="studentlist">List of Student</a>
 								<a href="stafflist">List of Staff</a>
 							</div>
@@ -411,7 +408,7 @@
 
 						<div class="dropdown">
 							<button class="dropdown-btn"><img src="./images/entertainment.png" alt=""
-									class="entertainment-icon"><a href="video_ads.jsp">Entertainment</a>
+									class="entertainment-icon"><a href="videoads">Entertainment</a>
 							</button>
 						</div>
 

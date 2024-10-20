@@ -47,6 +47,14 @@
 		<url-pattern>/listofcounter</url-pattern>
 	</servlet-mapping>
 
+<servlet>
+		<servlet-name>videoads</servlet-name>
+		<jsp-file>/admin/video_ads.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>videoads</servlet-name>
+		<url-pattern>/videoads</url-pattern>
+	</servlet-mapping>
 
 	<session-config>
 		<cookie-config>

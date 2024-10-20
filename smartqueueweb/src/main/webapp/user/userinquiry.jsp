@@ -151,7 +151,7 @@
                     padding: 20px;
                     border-radius: 10px;
                     width: 80%;
-                    max-width: 500px;
+                    max-width: 600px;
                     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
                     margin-left: 30%;
                     margin-top: 5%;
@@ -196,14 +196,33 @@
                 .student-name,
                 #yearLevel,
                 .purpose,
-                .program {
+                .program, .first-name, .middle-name, .last-name {
                     height: 5vh;
                     width: 60%;
                     text-indent: 10px;
-                    font-weight: normal;
                     text-transform: uppercase;
                 }
-
+                .generalfirst-name, .generalmiddle-name, .generallast-name{
+                    height: 5vh;
+                    width: 35%;
+                    text-indent: 10px;
+                    text-transform: uppercase;
+                    margin-top: 5%;
+                }
+                .student-name{
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .firstname-label, .middlename-label{
+                    margin-top: .4%;
+                    position: absolute;
+                }
+                .lastname-label{
+                    margin-top: 4.7%;
+                    margin-left: -25.5%;
+                    position: absolute;
+                }
+                
 
                 @media print {
 
@@ -272,7 +291,7 @@
                         height: auto;
                     }
 
-                    .name {
+                    .name, .first-name, .middle-name, .last-name {
                         letter-spacing: 40px;
                         font-size: 20px;
                     }
@@ -306,7 +325,7 @@
                         width: 25vw;
                     }
 
-                    .name {
+                    .name, .first-name, .middle-name, .last-name {
                         letter-spacing: 20px;
                         font-size: 15px;
                     }
@@ -394,8 +413,16 @@
                     <span class="close">&times;</span>
                     <h2>General Inquiry Form</h2>
                     <div class="form">
-                        <label for="studentName">Student Name</label>
-                        <input type="text" class="student-name" id="general-student-name">
+                        <div class="studename">
+                            <label for="studentName" class="firstname-label">First Name</label>
+                            <input type="text" class="generalfirst-name" id="general-student-name">
+                            <label for="studentName" class="middlename-label">Middle Name</label>
+                            <input type="text" class="generalmiddle-name" id="general-student-name">
+                            <label for="studentName" class="lastname-label">Last Name</label>
+                            <input type="text" class="generallast-name" id="general-student-name">
+                        </div>
+                        
+
                         <label for="studentIdNo">Student ID No.</label>
                         <input type="text" class="student-id" id="general-student-id">
                         <label for="yearLevel">Year Level</label>
@@ -456,8 +483,13 @@
                     <span class="close" onclick="closeModal('archivingModal')">&times;</span>
                     <h2>Archiving Form</h2>
                     <form id="form" class="form">
-                        <label for="name">Student Name</label>
-                        <input type="text" class="student-name" id="archiving-student-name" required>
+                        <label for="name">First Name</label>
+                        <input type="text" class="first-name" id="archiving-student-name" required>
+                        <label for="name">Middle Name</label>
+                        <input type="text" class="middle-name" id="archiving-student-name" required>
+                        <label for="name">Last Name</label>
+                        <input type="text" class="last-name" id="archiving-student-name" required>
+
                         <label for="studentIdNo">Student ID No.</label>
                         <input type="text" class="student-id" id="archiving-student-id" required>
                         <label for="options">Option</label>

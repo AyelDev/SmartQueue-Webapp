@@ -218,33 +218,74 @@
     }
 
     /*Video Entertainment*/
-    .video-entertainment{
+    .video-entertainment {
         width: 85vw;
         height: 100%;
         float: right;
-      
+        align-items: center;
+        display: flex;
+        justify-content: center;
     }
+    .video-entertainment-content{
+        width: 85vw;
+        height: 100%;
+        margin-left: 2%;
+        margin-top: 3%;
+    }
+    hr{
+        margin-left: -3%;
+    }
+     /* Custom file upload button */
+     .inputfile-container {
+        width: 50vw;
+        height: 20%;
+        background: none;
+        border: black solid 2px;
+        margin-top: 3%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        position: relative;
+    }
+
+
+
+    /* Custom label as button */
+    .custom-file-label {
+        background-color: #00509d;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        display: inline-block;
+        width: auto;
+    }
+
+    .custom-file-label:hover {
+        background-color: #1477d4fb;
+    }
+
 </style>
 
 <body>
     <div class="navbar">
         <div class="logoContainer">
-            <img src="../images/logo.png" alt="" class="logo">
+            <img src="./images/logo.png" alt="" class="logo">
             <p class="title">Cebu Eastern College
             <p>
         </div>
 
         <div class="menu-navbar">
             <div class="dropdown">
-                <button class="dropdown-btn"><img src="../images/dashboard.png" alt=""
-                    class="dashboard-icon"></i><a
+                <button class="dropdown-btn"><img src="./images/dashboard.png" alt="" class="dashboard-icon"></i><a
                         href="">Dashboard</a>
                 </button>
 
             </div>
 
             <div class="dropdown">
-                <button class="dropdown-btn"><img src="../images/counter.png" alt=""
+                <button class="dropdown-btn"><img src="./images/counter.png" alt=""
                         class="counter-icon">Counter</button>
                 <div class="dropdown-dashboard">
                     <a href="">Add Counter</a>
@@ -253,7 +294,7 @@
             </div>
 
             <div class="dropdown">
-                <button class="dropdown-btn"><img src="../images/users.png" alt="" class="users-icon">Users</button>
+                <button class="dropdown-btn"><img src="./images/users.png" alt="" class="users-icon">Users</button>
                 <div class="dropdown-dashboard">
                     <a href="">Add Student</a>
                     <a href="">Add Staff</a>
@@ -263,13 +304,13 @@
             </div>
 
             <div class="dropdown">
-                <button class="dropdown-btn"><img src="../images/entertainment.png" alt="" class="entertainment-icon"><a
+                <button class="dropdown-btn"><img src="./images/entertainment.png" alt="" class="entertainment-icon"><a
                         href="video_ads.jsp">Entertainment</a>
                 </button>
             </div>
 
             <div class="dropdown">
-                <button class="dropdown-btn"><img src="../images/display.png" alt=""
+                <button class="dropdown-btn"><img src="./images/display.png" alt=""
                         class="display-icon">Display</button>
                 <div class="dropdown-dashboard">
                     <a href="">User Inquiry</a>
@@ -280,8 +321,19 @@
         </div>
     </div>
     <div class="video-entertainment">
-        <h2>Video Entertainment - Admin</h2>
-        <hr>
+        <div class="video-entertainment-content">
+            <h2>Video Entertainment - Admin</h2>
+            <hr>
+
+            <form action="" class="fileuploadform">
+                <div class="inputfile-container">
+                    <label class="button" for="fileupload" class="custom-file-label">Choose file</label>
+                    <input type="file" name="fileupload" id="fileupload" multiple><br><br>
+                </div>
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+        
 
     </div>
 </body>
