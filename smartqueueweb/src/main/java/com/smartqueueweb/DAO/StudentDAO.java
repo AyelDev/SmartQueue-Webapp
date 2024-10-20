@@ -4,19 +4,19 @@ import java.util.List;
 import java.util.ArrayList;
 import com.smartqueueweb.Model.StudentBean;
 
-public class StudentDAO extends SQLConnection{
-	
+public class StudentDAO extends SQLConnection {
+
 	StudentBean studentbean = null;
 
 	public StudentDAO() {
-	super();	
+		super();
 	}
 
-
-	public Integer addStudent(long idNumber, String firstname, String middlename, String lastname, String course){
-		try{
+	public Integer addStudent(long idNumber, String firstname, String middlename, String lastname, String course) {
+		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("INSERT INTO tbl_student_info (id_number, first_name, middle_name, last_name, course) VALUES (?,?,?,?,?)");
+			prs = conn.prepareStatement(
+					"INSERT INTO tbl_student_info (id_number, first_name, middle_name, last_name, course) VALUES (?,?,?,?,?)");
 			prs.setLong(1, idNumber);
 			prs.setString(2, firstname);
 			prs.setString(3, middlename);
@@ -25,85 +25,85 @@ public class StudentDAO extends SQLConnection{
 
 			return prs.executeUpdate();
 
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			SQLClose();
 		}
 		return 0;
 	}
 
 	List<StudentBean> listOfStudent = null;
-	public List<StudentBean> listOfStudent(){
+
+	public List<StudentBean> listOfStudent() {
 		try {
 			ConnectDriver();
 			prs = conn.prepareStatement("SELECT * FROM tbl_student_info WHERE isDeleted=0");
 			rs = prs.executeQuery();
 			listOfStudent = new ArrayList<StudentBean>();
 
-			while(rs.next()){
-				studentbean = new StudentBean(rs.getInt("id_number"), 
-				rs.getString("first_name"), 
-				rs.getString("middle_name"), 
-				rs.getString("last_name"), 
-				rs.getString("course"));
+			while (rs.next()) {
+				studentbean = new StudentBean(rs.getInt("id_number"), rs.getString("first_name"),
+						rs.getString("middle_name"), rs.getString("last_name"), rs.getString("course"));
 				listOfStudent.add(studentbean);
 			}
 
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally{
+		} finally {
 			SQLClose();
 		}
 		return listOfStudent;
 	}
 
-	public Integer removeStudent(long idNumber){
-		try{
+	public Integer removeStudent(long idNumber) {
+		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("UPDATE `tbl_student_info` SET `isDeleted` = '1' WHERE `tbl_student_info`.`id_number` = ?");
+			prs = conn.prepareStatement(
+					"UPDATE `tbl_student_info` SET `isDeleted` = '1' WHERE `tbl_student_info`.`id_number` = ?");
 			prs.setLong(1, idNumber);
 
 			return prs.executeUpdate();
 
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			SQLClose();
 		}
 		return 0;
 	}
 
-	
-	public Integer updateStudent(long idNumber, long inputIdnumber, String inputfirstname, String inputMiddlename, String inputLastname, String inputCourse){
+	public Integer updateStudent(long idNumber, long inputIdnumber, String inputfirstname, String inputMiddlename,
+			String inputLastname, String inputCourse) {
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("UPDATE `tbl_student_info` SET `id_number` = ?, `first_name` = ?,"+
-			" `middle_name` = ?, `last_name` = ?, `course` = ? WHERE `tbl_student_info`.`id_number` = ?;");
+			prs = conn.prepareStatement("UPDATE `tbl_student_info` SET `id_number` = ?, `first_name` = ?,"
+					+ " `middle_name` = ?, `last_name` = ?, `course` = ? WHERE `tbl_student_info`.`id_number` = ?;");
 			prs.setLong(1, inputIdnumber);
 			prs.setString(2, inputfirstname);
 			prs.setString(3, inputMiddlename);
 			prs.setString(4, inputLastname);
 			prs.setString(5, inputCourse);
 			prs.setLong(6, idNumber);
-			
+
 			return prs.executeUpdate();
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally{
+		} finally {
 			SQLClose();
 		}
 		return 0;
 	}
 
 	public Integer addToQueue(String queueNumber, int idNumber, String fullname, String purpose, String servicetype) {
-		try{
+		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("INSERT INTO `student_queue_entries` (`queue_number`, `id_number`, `fullname`, `purpose`, `servicetype`, `window_number`, `date`)"+
-			" VALUES (?, ?, ?, ?, ?, '0', current_timestamp())");
+			prs = conn.prepareStatement(
+					"INSERT INTO `student_queue_entries` (`queue_number`, `id_number`, `fullname`, `purpose`, `servicetype`, `window_number`, `date`)"
+							+ " VALUES (?, ?, ?, ?, ?, '0', current_timestamp())");
 			prs.setString(1, queueNumber);
 			prs.setInt(2, idNumber);
 			prs.setString(3, fullname);
@@ -112,11 +112,46 @@ public class StudentDAO extends SQLConnection{
 
 			return prs.executeUpdate();
 
-		}catch(Exception e){
+		} catch (Exception e) {
 
-		}finally{
+		} finally {
 			SQLClose();
 		}
 		return 0;
+	}
+
+	public StudentBean searchStudentDetail(long idnumber, String firstname, String middlename, String lastname) {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("SELECT * " +
+			        "FROM tbl_student_info " +
+			        "WHERE (id_number LIKE ? " +
+			        "   OR (first_name LIKE ? " +
+			        "   AND middle_name LIKE ? " +
+			        "   AND last_name LIKE ?)) " +
+			        "   AND isDeleted = 0;");
+
+			prs.setString(1, "%" + idnumber + "%");
+			prs.setString(2, "%" + firstname + "%");
+			prs.setString(3, "%" + middlename + "%");
+			prs.setString(4, "%" + lastname + "%");
+
+			rs = prs.executeQuery();
+
+			studentbean = null;
+
+			while (rs.next()) {
+				studentbean = new StudentBean(rs.getInt("id_number"), rs.getString("first_name"),
+						rs.getString("middle_name"), rs.getString("last_name"), rs.getString("course"));
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return studentbean;
 	}
 }

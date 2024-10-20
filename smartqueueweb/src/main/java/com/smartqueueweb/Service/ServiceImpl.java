@@ -121,6 +121,16 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return studentdata.updateStudent(idNumber, inputIdnumber, inputfirstname, inputMiddlename, inputLastname,
 				inputCourse);
 	}
+	
+	@Override
+	public StudentBean searchStudentInquiry(long idnumber, String firstname, String middlename, String lastname) {
+		return studentdata.searchStudentDetail(idnumber, firstname, middlename, lastname);
+	}
+	
+	@Override
+	public Integer addToQueue(String queueNumber, int idNumber, String fullname, String purpose, String servicetype) {
+		return studentdata.addToQueue(queueNumber, idNumber, fullname, purpose, servicetype);
+	}
 
 	public String XMLERRORNAME(String errorName) {
 		try {
@@ -166,10 +176,5 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		}
 		return "";
 
-	}
-
-	@Override
-	public Integer addToQueue(String queueNumber, int idNumber, String fullname, String purpose, String servicetype) {
-		return studentdata.addToQueue(queueNumber, idNumber, fullname, purpose, servicetype);
 	}
 }

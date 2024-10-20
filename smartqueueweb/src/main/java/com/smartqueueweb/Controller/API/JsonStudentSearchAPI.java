@@ -2,7 +2,6 @@ package com.smartqueueweb.Controller.API;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.smartqueueweb.Model.StaffBean;
+import com.smartqueueweb.Model.StudentBean;
 import com.smartqueueweb.Service.ServiceImpl;
 
 @WebServlet("/JsonStudentSearchAPI")
@@ -23,16 +22,38 @@ public class JsonStudentSearchAPI extends HttpServlet {
 	RequestDispatcher rd = null;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
 		Gson gson = new Gson();
+		String studentid  =  request.getParameter("studentid").trim() == "" ? "9999999999" : request.getParameter("studentid").trim();
 
-		List<StaffBean> ss = services.listsOfStaff();
-		String userJson = gson.toJson(ss);
+		String firstname = request.getParameter("firstname").trim();
+		String middlename = request.getParameter("middlename");
+		String lastname = request.getParameter("lastname");
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-
-		PrintWriter out = response.getWriter();
-		out.print(userJson);
-		out.close();
+		if(studentid != "" && studentid.length() < 6) {
+			 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			    response.getWriter().write("{\"error\":\"Invalid student ID length.\"}");
+		}else {
+			StudentBean ss = services.searchStudentInquiry(Long.parseLong(studentid), firstname, middlename, lastname);
+			String userJson = gson.toJson(ss);
+			PrintWriter out = response.getWriter();
+			out.print(userJson);
+			out.flush();
+		}
+		
+		} catch (NullPointerException e) {
+		    // Handle possible null references
+		    response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		    response.getWriter().write("{\"error\":\"Required data is missing.\"}");
+		} catch (Exception e) {
+		    // Handle any other generic errors
+		    response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		    response.getWriter().write("{\"error\":\"An unexpected error occurred: " + e.getMessage() + "\"}");
+		} finally {
+		    if (response.getWriter() != null) {
+		        response.getWriter().close();  // Ensure the PrintWriter is closed even in case of an error
+		    }
+		}
 	}
-
 }
