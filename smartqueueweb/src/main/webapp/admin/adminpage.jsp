@@ -21,7 +21,7 @@
 				--primary-color: #1e91d0;
 				--secondary-color: #00509d;
 				--body-fonts: "Roboto Condensed", sans-serif;
-				--background-color: #F6F4EB;
+				--background-color: #f4f4f9;
 				--select-text-color: #B4B4B8;
 				--text-color: #3D3C42;
 				font-optical-sizing: auto;
@@ -36,23 +36,22 @@
 
 			body {
 				width: 100%;
-				height: 100%;
 				font-family: var(--body-fonts);
 				margin: 0;
 				padding: 0;
 				font-optical-sizing: auto;
 				font-style: normal;
+				height: auto;
+				background-color: #f4f4f9;
 			}
 
 			.container {
 				width: 100%;
-				height: 100%;
-				background-color: white;
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				height: auto;
+				background-color: var(--background-color);
 				align-items: center;
 				justify-content: center;
-
+				margin-top: 3%;
 			}
 
 
@@ -66,6 +65,7 @@
 				align-items: center;
 				left: 0;
 				float: left;
+				margin-top: -3%;
 			}
 
 			.logoContainer {
@@ -148,7 +148,8 @@
 				position: relative;
 				color: #F6F4EB;
 			}
-			.dropdown-btn::after{
+
+			.dropdown-btn::after {
 				content: '';
 				border-radius: 50%;
 			}
@@ -203,7 +204,7 @@
 			.counter-icon {
 				object-fit: scale-down;
 				width: 10%;
-		
+
 			}
 
 			.dashboard-icon,
@@ -230,13 +231,15 @@
 			/*Dashboard section*/
 			.dashboard-section {
 				width: 85vw;
-				height: 100vh;
+				height: auto;
 				background-color: var(--background-color);
 				float: right;
 				margin-left: 15%;
 				align-items: center;
 				display: flex;
 				justify-content: center;
+				padding: 20px;
+				padding: 20px;
 
 			}
 
@@ -246,14 +249,19 @@
 				margin-top: -35%;
 				margin-left: -60%;
 				position: absolute;
+
 			}
+
 			.dashboard-head {
-				width: 85vw;
+				width: 83vw;
+				margin-left: 3%;
 				height: 10%;
 				background-color: #1477d4fb;
 				position: fixed;
-				margin-top: -45%;
+				margin-top: -47.6%;
+				z-index: 1000;
 			}
+
 			.bell-icon {
 				object-fit: scale-down;
 				width: 20px;
@@ -284,16 +292,19 @@
 				border: none;
 				background: none;
 			}
+
 			.profile {
 				width: 10%;
 				object-fit: scale-down;
 				margin-right: 20px;
 			}
+
 			.caretdown {
 				mix-blend-mode: multiply;
 				width: 10px;
 				margin-left: 20px;
 			}
+
 			.adminProfile {
 				margin-left: 84%;
 				position: absolute;
@@ -326,6 +337,7 @@
 				background-color: var(--select-text-color);
 				border-radius: 7px;
 			}
+
 			.dashboard-content {
 				width: 75vw;
 				height: 80vh;
@@ -333,6 +345,7 @@
 				display: flex;
 				margin-top: 5%;
 			}
+
 			.card-total {
 				width: 20%;
 				height: 20%;
@@ -342,6 +355,7 @@
 				margin-top: 2rem;
 				box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
 			}
+
 			.card-total p {
 				font-size: .7rem;
 			}
@@ -351,6 +365,7 @@
 				margin-left: 30px;
 				color: var(--background-color);
 			}
+
 			.department-graph {
 				width: 30%;
 				height: 62.5%;
@@ -366,9 +381,165 @@
 				margin-top: 12%;
 				margin-left: -24%;
 				background-color: #ffff;
-				position: fixed;
+				position: absolute;
 				border-radius: 15px;
 				box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
+			}
+
+			/* table section */
+			.table-container {
+				padding: 20px;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+				width: 80vw;
+				height: 100%;
+				position: absolute;
+				background-color: var(--background-color);
+				margin-left: 3.9%;
+				margin-top: 27%;
+				justify-content: center;
+				align-items: center;
+				color: var(--text-color);
+			}
+
+			.table-content {
+				background-color: white;
+				padding: 15px;
+				border-radius: 5px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				width: 30vw;
+				height: auto;
+				color: var(--text-color);
+				margin-left: 8%;
+				scroll-behavior: smooth;
+			}
+			
+
+			.table-content::-webkit-scrollbar {
+				width: .8rem;
+			}
+
+			.table-content::-webkit-scrollbar-track {
+				background: transparent;
+			}
+
+			.table-content::-webkit-scrollbar-thumb {
+				background-color: var(--primary-color);
+				border-radius: 5rem;
+			}
+
+			.table-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 10px;
+				color: var(--text-color);
+			}
+
+			.table-header .table-title,
+			#modal-title {
+				margin: 0;
+				color: var(--text-color);
+			}
+
+			.add-btn-table {
+				background-color: #00509d;
+				color: white;
+				border: none;
+				padding: 10px 15px;
+				border-radius: 5px;
+				cursor: pointer;
+			}
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-bottom: 15px;
+			}
+
+			table th,
+			table td {
+				padding: 10px;
+				text-align: left;
+				border-bottom: 1px solid #ddd;
+			}
+
+			table th {
+				background-color: #1e91d0;
+				color: white;
+			}
+
+			table td button {
+				padding: 5px 10px;
+				margin: 2px;
+				border: none;
+				border-radius: 3px;
+				cursor: pointer;
+			}
+
+			.update-btn {
+				background-color: #ffc107;
+				color: white;
+			}
+
+			.delete-btn {
+				background-color: #dc3545;
+				color: white;
+			}
+
+			.modal {
+				display: none;
+				position: fixed;
+				z-index: 1;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				justify-content: center;
+				align-items: center;
+			}
+
+			.modal-content {
+				background-color: white;
+				padding: 20px;
+				border-radius: 5px;
+				width: 450px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			}
+
+			.modal-content h3 {
+				margin-top: 0;
+			}
+
+			.modal-content input[type="text"],
+			.modal-content input[type="email"] {
+				width: 100%;
+				padding: 10px;
+				margin-bottom: 10px;
+				border: 1px solid #ddd;
+				border-radius: 3px;
+			}
+
+			.modal-content button {
+				padding: 10px 15px;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+			}
+
+			.submit-btn {
+				background-color: #00509d;
+				color: white;
+			}
+
+			.cancel-btn {
+				background-color: #ccc;
+				margin-right: 10px;
+			}
+
+			.submit-btn:hover {
+				background-color: #1477d4fb;
 			}
 		</style>
 
@@ -427,6 +598,7 @@
 					<div class="dashboard-head">
 						<img src="./images/bell.png" alt="" class="bell-icon">
 						<img src="./images/message.png" alt="" class="chat-icon">
+
 						<!-- admin profile -->
 						<button class="button-profile" id="button-profile"><img src="./images/profile.png" alt=""
 								class="profile">ADMIN<img src="./images/caretdown.png" alt=""
@@ -436,6 +608,8 @@
 							<a href="logout">Signout</a>
 						</div>
 					</div>
+
+					<!-- dashboard section -->
 					<h1 class="dashboard-title">Dashboard</h1>
 					<div class="dashboard-content">
 						<div class="card-total"><br>
@@ -456,26 +630,184 @@
 						<div class="total-graph">
 							<canvas id="myChart"></canvas>
 						</div>
+
+						<!-- General - Program -->
+						<div class="table-container">
+							<div class="table-content">
+								<div class="table-header">
+									<h3 class="table-title">General - Program</h3>
+									<button class="add-btn-table" onclick="showModal ('Add Program for General')">+Add
+										Info</button>
+								</div>
+								<table>
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Course</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td></td>
+											<td></td>
+											<td><button class="update-btn"
+													onclick="showModal('Update Info')">Update</button>
+												<button class="delete-btn">Delete</button>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td><button class="update-btn">Update</button>
+												<button class="delete-btn">Delete</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<!-- General - Purpose -->
+
+							<div class="table-content">
+								<div class="table-header">
+									<h3 class="table-title">General - Purpose</h3>
+									<button class="add-btn-table" onclick="showModal ('Add Purpose for General')">+Add
+										Info</button>
+								</div>
+								<table>
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Purpose</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td></td>
+											<td></td>
+											<td><button class="update-btn">Update</button>
+												<button class="delete-btn">Delete</button>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td><button class="update-btn">Update</button>
+												<button class="delete-btn">Delete</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<!-- Records - Purpose -->
+							<div class="table-content">
+								<div class="table-header">
+									<h3 class="table-title">Records - Purpose</h3>
+									<button class="add-btn-table" onclick="showModal ('Add Document for Records')">+Add
+										Info</button>
+								</div>
+								<table>
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Documents</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td></td>
+											<td></td>
+											<td><button class="update-btn">Update</button>
+												<button class="delete-btn">Delete</button>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td><button class="update-btn">Update</button>
+												<button class="delete-btn">Delete</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<!-- Archiving - Purpose -->
+							<div class="table-content">
+								<div class="table-header">
+									<h3 class="table-title">Archiving - Purpose</h3>
+									<button class="add-btn-table" onclick="showModal ('Add Purpose for Archiving')">+Add
+										Info</button>
+								</div>
+								<table>
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Purpose</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td></td>
+											<td></td>
+											<td><button class="update-btn">Update</button>
+												<button class="delete-btn">Delete</button>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td><button class="update-btn">Update</button>
+												<button class="delete-btn">Delete</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
 					</div>
+				</div>
+			</div>
+
+			<!-- Modal for Add/Update Info -->
+			<div class="modal" id="modal">
+				<div class="modal-content">
+					<h3 id="modal-title"></h3>
+					<form>
+						<label for="name">Program</label>
+						<input type="text" id="name" name="name" placeholder="Enter name">
+
+						<label for="email">Purpose</label>
+						<input type="email" id="email" name="email" placeholder="Enter email">
+
+						<button type="button" class="cancel-btn" onclick="hideModal()">Cancel</button>
+						<button type="submit" class="submit-btn">Add</button>
+					</form>
 				</div>
 			</div>
 
 			<script src="./scripts/chart.min.js"></script>
 			<script>
-				 var dropdown = document.getElementsByClassName("button-profile");
-                var i;
+				var dropdown = document.getElementsByClassName("button-profile");
+				var i;
 
-                for (i = 0; i < dropdown.length; i++) {
-                    dropdown[i].addEventListener("click", function () {
+				for (i = 0; i < dropdown.length; i++) {
+					dropdown[i].addEventListener("click", function () {
 
-                        var dropdownContent = this.nextElementSibling;
-                        if (dropdownContent.style.display === "block") {
-                            dropdownContent.style.display = "none";
-                        } else {
-                            dropdownContent.style.display = "block";
-                        }
-                    });
-                }
+						var dropdownContent = this.nextElementSibling;
+						if (dropdownContent.style.display === "block") {
+							dropdownContent.style.display = "none";
+						} else {
+							dropdownContent.style.display = "block";
+						}
+					});
+				}
 
 
 
@@ -675,6 +1007,18 @@
 					}
 				});
 
+
+
+				// Show Modal
+				function showModal(title) {
+					document.getElementById('modal-title').textContent = title;
+					document.getElementById('modal').style.display = 'flex';
+				}
+
+				// Hide Modal
+				function hideModal() {
+					document.getElementById('modal').style.display = 'none';
+				}
 			</script>
 
 
