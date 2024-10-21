@@ -123,8 +123,14 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	}
 	
 	@Override
-	public StudentBean searchStudentInquiry(long idnumber, String firstname, String middlename, String lastname) {
-		return studentdata.searchStudentDetail(idnumber, firstname, middlename, lastname);
+	public StudentBean searchStudentIdInquiry(long idnumber) {
+		return studentdata.searchStudentIdDetail(idnumber);
+	}
+	
+	@Override
+	public StudentBean searchStudentFullnameInquiry(String firstname, String middlename, String lastname) {
+		// TODO Auto-generated method stub
+		return studentdata.searchStudentFullnameInquiry(firstname, middlename, lastname);
 	}
 	
 	@Override
@@ -177,4 +183,5 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return "";
 
 	}
+
 }

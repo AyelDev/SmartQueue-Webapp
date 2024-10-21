@@ -28,10 +28,13 @@ public class UserInquiry_Servlet extends HttpServlet {
 		String purpose = JwtValidator.fixGarbledCharacters(request.getParameter("purpose"));
 		String servicetype = JwtValidator.fixGarbledCharacters(request.getParameter("servicetype"));
 
-		System.out.println(queueNum + " " + fullname + " " + studentid + " " + purpose + " " + servicetype);
-		//
 		// Call the service to register staff
 		try {
+			
+			if(purpose.isEmpty() || servicetype.isEmpty() || fullname.isEmpty() || studentid.isEmpty()){
+				throw new Exception();
+			}
+
 			int ifTrue = services.addToQueue(queueNum, Integer.parseInt(studentid), fullname, purpose, servicetype);
 			
 			if(ifTrue >= 1){
@@ -43,8 +46,8 @@ public class UserInquiry_Servlet extends HttpServlet {
 			}
 		} catch (Exception e) {
 			response.setContentType("text/plain");
-			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-			response.getWriter().write("Inquiry failed.");
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			response.getWriter().write("Enquiry Failed please fill up the necessary form.");
 		}
 	}
 

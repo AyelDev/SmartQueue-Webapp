@@ -15,7 +15,7 @@ public class SearchStudentInquiry_Test {
 		ServiceImpl service = new ServiceImpl();
 		
 		StudentBean expected = null;
-		StudentBean actual = service.searchStudentInquiry(000, "ñÑ", "", "labra");
+		StudentBean actual = service.searchStudentIdInquiry(2110872);
 		System.out.println(actual);
 		assertNotEquals(expected, actual);
 	}

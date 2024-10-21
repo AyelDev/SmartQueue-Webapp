@@ -196,33 +196,43 @@
                 .student-name,
                 #yearLevel,
                 .purpose,
-                .program, .first-name, .middle-name, .last-name {
+                .program,
+                .first-name,
+                .middle-name,
+                .last-name {
                     height: 5vh;
                     width: 60%;
                     text-indent: 10px;
                     text-transform: uppercase;
                 }
-                .generalfirst-name, .generalmiddle-name, .generallast-name{
+
+                .generalfirst-name,
+                .generalmiddle-name,
+                .generallast-name {
                     height: 5vh;
                     width: 35%;
                     text-indent: 10px;
                     text-transform: uppercase;
                     margin-top: 5%;
                 }
-                .student-name{
+
+                .student-name {
                     display: flex;
                     justify-content: space-between;
                 }
-                .firstname-label, .middlename-label{
+
+                .firstname-label,
+                .middlename-label {
                     margin-top: .4%;
                     position: absolute;
                 }
-                .lastname-label{
+
+                .lastname-label {
                     margin-top: 4.7%;
                     margin-left: -25.5%;
                     position: absolute;
                 }
-                
+
 
                 @media print {
 
@@ -291,7 +301,10 @@
                         height: auto;
                     }
 
-                    .name, .first-name, .middle-name, .last-name {
+                    .name,
+                    .first-name,
+                    .middle-name,
+                    .last-name {
                         letter-spacing: 40px;
                         font-size: 20px;
                     }
@@ -325,7 +338,10 @@
                         width: 25vw;
                     }
 
-                    .name, .first-name, .middle-name, .last-name {
+                    .name,
+                    .first-name,
+                    .middle-name,
+                    .last-name {
                         letter-spacing: 20px;
                         font-size: 15px;
                     }
@@ -421,7 +437,7 @@
                             <label for="studentName" class="lastname-label">Last Name</label>
                             <input type="text" class="generallast-name" id="general-student-name">
                         </div>
-                        
+
 
                         <label for="studentIdNo">Student ID No.</label>
                         <input type="text" class="student-id" id="general-student-id">
@@ -472,7 +488,7 @@
 
                         <input type="hidden" id="serviceType">
 
-                        <input type="button" class="printbutton" value="Print" onclick="printQueue('Records')">
+                        <input type="button" id="recordsbutton" class="printbutton" value="Print" onclick="printQueue('Records')">
                     </form>
                 </div>
             </div>
@@ -598,10 +614,9 @@
                     return true;
                 }
 
-
-
                 // Function to print the queue and check if limit is reached
                 function printQueue(serviceType) {
+
                     let studentName = '';
                     let studentId = '';
                     let purpose = '';
@@ -624,11 +639,6 @@
                         charQueue = 'A';
                     }
 
-                    if (!studentId || !purpose) {
-                        alert('Please fill in all the details.');
-                        return;
-                    }
-
                     // Generate random queue number and current date
                     var queueNumber = Math.floor(Math.random() * 900) + 100;  // Random 3-digit number
                     var currentDateTime = new Date().toLocaleString();
@@ -647,6 +657,7 @@
                     <p><strong>Date & Time:</strong> `+ currentDateTime + `</p>
                     `;
                     let servetype = serviceType;
+
                     $.ajax({
                         url: 'inquiry',
                         type: 'POST',
@@ -686,8 +697,34 @@
                     var modal = document.getElementById('receiptModal');
                     modal.style.display = "none";
                 }
-
+                
+               const recordsButton = document.getElementById("recordsbutton");
+               recordsButton.addEventListener("mouseover" ,event =>{
+                //console.log("records-student-id");
+                studentId = document.getElementById('records-student-id');
+                let studentName = document.getElementById('records-student-name');
+                $.ajax({
+                        url: 'JsonStudentIDSearchAPI',
+                        type: 'GET',
+                        data: {
+                            studentid: studentId.value
+                        },
+                        success: function (response) {
+                            if(response == null){
+                                studentName.value = "";
+                            }
+                            studentName.value = response.firstname + " " +  response.middlename + " " +  response.lastname;
+                            console.log(response)
+                            alert('Success: ' + response.firstname + " " + response.middlename + " " + response.lastname + " " + response.course );
+                        },
+                        error: function (xhr, status, error) {
+                            studentName.value = "";
+                            //alert(error + ' : ' + xhr.responseText);
+                        }
+                    });
+               });
             </script>
+
 
         </body>
 

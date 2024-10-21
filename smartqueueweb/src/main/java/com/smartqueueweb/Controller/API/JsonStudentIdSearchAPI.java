@@ -14,8 +14,8 @@ import com.google.gson.Gson;
 import com.smartqueueweb.Model.StudentBean;
 import com.smartqueueweb.Service.ServiceImpl;
 
-@WebServlet("/JsonStudentSearchAPI")
-public class JsonStudentSearchAPI extends HttpServlet {
+@WebServlet("/JsonStudentIDSearchAPI")
+public class JsonStudentIdSearchAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	ServiceImpl services = new ServiceImpl();
@@ -24,18 +24,15 @@ public class JsonStudentSearchAPI extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 		Gson gson = new Gson();
-		String studentid  =  request.getParameter("studentid").trim() == "" ? "9999999999" : request.getParameter("studentid").trim();
+		String studentid  =  request.getParameter("studentid").trim();
 
-		String firstname = request.getParameter("firstname").trim();
-		String middlename = request.getParameter("middlename");
-		String lastname = request.getParameter("lastname");
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		if(studentid != "" && studentid.length() < 6) {
 			 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			    response.getWriter().write("{\"error\":\"Invalid student ID length.\"}");
 		}else {
-			StudentBean ss = services.searchStudentInquiry(Long.parseLong(studentid), firstname, middlename, lastname);
+			StudentBean ss = services.searchStudentIdInquiry(Long.parseLong(studentid));
 			String userJson = gson.toJson(ss);
 			PrintWriter out = response.getWriter();
 			out.print(userJson);

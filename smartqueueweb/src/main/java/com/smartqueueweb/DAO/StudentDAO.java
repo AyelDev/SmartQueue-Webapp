@@ -120,23 +120,13 @@ public class StudentDAO extends SQLConnection {
 		return 0;
 	}
 
-	public StudentBean searchStudentDetail(long idnumber, String firstname, String middlename, String lastname) {
+	public StudentBean searchStudentIdDetail(long idnumber) {
 		// TODO Auto-generated method stub
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("SELECT * " +
-			        "FROM tbl_student_info " +
-			        "WHERE (id_number LIKE ? " +
-			        "   OR (first_name LIKE ? " +
-			        "   AND middle_name LIKE ? " +
-			        "   AND last_name LIKE ?)) " +
-			        "   AND isDeleted = 0;");
+			prs = conn.prepareStatement("SELECT * from tbl_student_info WHERE id_number = ?;");
 
-			prs.setString(1, "%" + idnumber + "%");
-			prs.setString(2, "%" + firstname + "%");
-			prs.setString(3, "%" + middlename + "%");
-			prs.setString(4, "%" + lastname + "%");
-
+			prs.setLong(1, idnumber);
 			rs = prs.executeQuery();
 
 			studentbean = null;
@@ -153,5 +143,18 @@ public class StudentDAO extends SQLConnection {
 			SQLClose();
 		}
 		return studentbean;
+	}
+
+	public StudentBean searchStudentFullnameInquiry(String firstname, String middlename, String lastname) {
+		// TODO Auto-generated method stub
+		return null;
+		
+//		prs = conn.prepareStatement("SELECT * " +
+//		        "FROM tbl_student_info " +
+//		        "WHERE (id_number LIKE ? " +
+//		        "   OR (first_name LIKE ? " +
+//		        "   AND middle_name LIKE ? " +
+//		        "   AND last_name LIKE ?)) " +
+//		        "   AND isDeleted = 0;");
 	}
 }
