@@ -500,11 +500,11 @@
                     <h2>Archiving Form</h2>
                     <form id="form" class="form">
                         <label for="name">First Name</label>
-                        <input type="text" class="first-name" id="archiving-student-name" required>
+                        <input type="text" class="first-name" id="archiving-student-firstname" required>
                         <label for="name">Middle Name</label>
-                        <input type="text" class="middle-name" id="archiving-student-name" required>
+                        <input type="text" class="middle-name" id="archiving-student-middlename" required>
                         <label for="name">Last Name</label>
-                        <input type="text" class="last-name" id="archiving-student-name" required>
+                        <input type="text" class="last-name" id="archiving-student-lastname" required>
 
                         <label for="studentIdNo">Student ID No.</label>
                         <input type="text" class="student-id" id="archiving-student-id" required>
@@ -517,7 +517,7 @@
 
                         <input type="hidden" id="serviceType">
 
-                        <input type="button" class="printbutton" value="Print" onclick="printQueue('Archiving')">
+                        <input type="button" class="printbutton" id="archivingButton" value="Print" onclick="printQueue('Archiving')">
                     </form>
                 </div>
             </div>
@@ -698,6 +698,8 @@
                     modal.style.display = "none";
                 }
                 
+
+                // ---------------------records 
                const recordsButton = document.getElementById("recordsbutton");
                recordsButton.addEventListener("mouseover" ,event =>{
                 //console.log("records-student-id");
@@ -720,6 +722,42 @@
                         error: function (xhr, status, error) {
                             studentName.value = "";
                             //alert(error + ' : ' + xhr.responseText);
+                        }
+                    });
+               });
+
+               // ----------------- archiving
+               const archivingButton = document.getElementById("archivingButton");
+               archivingButton.addEventListener("mouseover", event =>{
+                archiveStudentId = document.getElementById('archiving-student-id');
+                let archivingStudentFirstName = document.getElementById('archiving-student-firstname');
+                let archivingStudentMiddleName = document.getElementById('archiving-student-middlename');
+                let archivingStudentLastName = document.getElementById('archiving-student-lastname');
+                $.ajax({
+                        url: 'JsonStudentIDSearchAPI',
+                        type: 'GET',
+                        data: {
+                            studentid: archiveStudentId.value
+                        },
+                        success: function (response) {
+                            if(response == null){
+                                archivingStudentFirstName.value = "Empty";
+                                archivingStudentMiddleName.value = "Empty";
+                                archivingStudentLastName.value = "Empty";
+                            }
+                            archivingStudentFirstName.value = response.firstname;
+                            archivingStudentMiddleName.value = response.middlename;
+                            archivingStudentLastName.value = response.lastname;
+                            // studentName.value = response.firstname + " " +  response.middlename + " " +  response.lastname;
+                            // console.log(response)
+                            alert('Success: ' + response.firstname + " " + response.middlename + " " + response.lastname + " " + response.course );
+                        },
+                        error: function (xhr, status, error) {
+                            //archivingStudentName.value = "";
+                            alert(error + ' : ' + xhr.responseText);
+                            archivingStudentFirstName.value = "";
+                                archivingStudentMiddleName.value = "";
+                                archivingStudentLastName.value = "";
                         }
                     });
                });
