@@ -488,7 +488,8 @@
 
                         <input type="hidden" id="serviceType">
 
-                        <input type="button" id="recordsbutton" class="printbutton" value="Print" onclick="printQueue('Records')">
+                        <input type="button" id="recordsbutton" class="printbutton" value="Print"
+                            onclick="printQueue('Records')">
                     </form>
                 </div>
             </div>
@@ -500,11 +501,11 @@
                     <h2>Archiving Form</h2>
                     <form id="form" class="form">
                         <label for="name">First Name</label>
-                        <input type="text" class="first-name" id="archiving-student-firstname" required>
+                        <input type="text" class="first-name" id="archiving-student-firstname" onclick="SetEmptyIdField()" required>
                         <label for="name">Middle Name</label>
-                        <input type="text" class="middle-name" id="archiving-student-middlename" required>
+                        <input type="text" class="middle-name" id="archiving-student-middlename" onclick="SetEmptyIdField()">
                         <label for="name">Last Name</label>
-                        <input type="text" class="last-name" id="archiving-student-lastname" required>
+                        <input type="text" class="last-name" id="archiving-student-lastname" onclick="SetEmptyIdField()" required>
 
                         <label for="studentIdNo">Student ID No.</label>
                         <input type="text" class="student-id" id="archiving-student-id" required>
@@ -517,7 +518,8 @@
 
                         <input type="hidden" id="serviceType">
 
-                        <input type="button" class="printbutton" id="archivingButton" value="Print" onclick="printQueue('Archiving')">
+                        <input type="button" class="printbutton" id="archivingButton" value="Print"
+                            onclick="printQueue('Archiving')">
                     </form>
                 </div>
             </div>
@@ -697,70 +699,118 @@
                     var modal = document.getElementById('receiptModal');
                     modal.style.display = "none";
                 }
-                
+
 
                 // ---------------------records 
-               const recordsButton = document.getElementById("recordsbutton");
-               recordsButton.addEventListener("mouseover" ,event =>{
-                //console.log("records-student-id");
-                studentId = document.getElementById('records-student-id');
-                let studentName = document.getElementById('records-student-name');
-                $.ajax({
+                const recordsButton = document.getElementById("recordsbutton");
+                recordsButton.addEventListener("mouseover", event => {
+                    //console.log("records-student-id");
+                    studentId = document.getElementById('records-student-id');
+                    let studentName = document.getElementById('records-student-name');
+                    $.ajax({
                         url: 'JsonStudentIDSearchAPI',
                         type: 'GET',
                         data: {
                             studentid: studentId.value
                         },
                         success: function (response) {
-                            if(response == null){
+                            if (response == null) {
                                 studentName.value = "";
                             }
-                            studentName.value = response.firstname + " " +  response.middlename + " " +  response.lastname;
+                            studentName.value = response.firstname + " " + response.middlename + " " + response.lastname;
                             console.log(response)
-                            alert('Success: ' + response.firstname + " " + response.middlename + " " + response.lastname + " " + response.course );
+                            //alert('Success: ' + response.firstname + " " + response.middlename + " " + response.lastname + " " + response.course);
                         },
                         error: function (xhr, status, error) {
                             studentName.value = "";
                             //alert(error + ' : ' + xhr.responseText);
                         }
                     });
-               });
+                });
 
-               // ----------------- archiving
-               const archivingButton = document.getElementById("archivingButton");
-               archivingButton.addEventListener("mouseover", event =>{
+                // ----------------- archiving
                 archiveStudentId = document.getElementById('archiving-student-id');
                 let archivingStudentFirstName = document.getElementById('archiving-student-firstname');
                 let archivingStudentMiddleName = document.getElementById('archiving-student-middlename');
                 let archivingStudentLastName = document.getElementById('archiving-student-lastname');
-                $.ajax({
-                        url: 'JsonStudentIDSearchAPI',
-                        type: 'GET',
-                        data: {
-                            studentid: archiveStudentId.value
-                        },
-                        success: function (response) {
-                            if(response == null){
-                                archivingStudentFirstName.value = "Empty";
-                                archivingStudentMiddleName.value = "Empty";
-                                archivingStudentLastName.value = "Empty";
+
+                const archivingButton = document.getElementById("archivingButton");
+            
+                archivingButton.addEventListener("mouseover", event => {
+                    if (archiveStudentId.value != "") {
+                        firstCall();
+                    } else if (archivingStudentFirstName.value != "" && archivingStudentLastName.value != "") {
+                        secondCall();
+                    }
+
+                    function firstCall() {
+                        $.ajax({
+                            url: 'JsonStudentIDSearchAPI',
+                            type: 'GET',
+                            data: {
+                                studentid: archiveStudentId.value
+                            },
+                            success: function (response) {
+                                if (response == null) {
+                                    SetEmptyNameFields();
+                                }
+                                archivingStudentFirstName.value = response.firstname;
+                                archivingStudentMiddleName.value = response.middlename;
+                                archivingStudentLastName.value = response.lastname;
+                                archiveStudentId.value = response.idnumber;
+                                // studentName.value = response.firstname + " " +  response.middlename + " " +  response.lastname;
+                                // console.log(response)
+                                //alert('Success: ' + response.idnumber + " " + response.firstname + " " + response.middlename + " " + response.lastname + " " + response.course);
+                            },
+                            error: function (xhr, status, error) {
+                                //archivingStudentName.value = "";
+                                alert(error + ' : ' + xhr.responseText);
+                                SetEmptyNameFields();
                             }
-                            archivingStudentFirstName.value = response.firstname;
-                            archivingStudentMiddleName.value = response.middlename;
-                            archivingStudentLastName.value = response.lastname;
-                            // studentName.value = response.firstname + " " +  response.middlename + " " +  response.lastname;
-                            // console.log(response)
-                            alert('Success: ' + response.firstname + " " + response.middlename + " " + response.lastname + " " + response.course );
-                        },
-                        error: function (xhr, status, error) {
-                            //archivingStudentName.value = "";
-                            alert(error + ' : ' + xhr.responseText);
-                            archivingStudentFirstName.value = "";
-                                archivingStudentMiddleName.value = "";
-                                archivingStudentLastName.value = "";
-                        }
-                    });
-               });
+                        });
+                    }
+
+                    function secondCall() {
+                        $.ajax({
+                            url: 'JsonFullnameSearchAPI',
+                            type: 'GET',
+                            data: {
+                                firstname: archivingStudentFirstName.value,
+                                middlename: archivingStudentMiddleName.value,
+                                lastname: archivingStudentLastName.value
+                            },
+                            success: function (response) {
+                                if (response == null) {
+                                    SetEmptyNameFields();
+                                }
+                                archivingStudentFirstName.value = response.firstname;
+                                archivingStudentMiddleName.value = response.middlename;
+                                archivingStudentLastName.value = response.lastname;
+                                archiveStudentId.value = response.idnumber;
+                                // studentName.value = response.firstname + " " +  response.middlename + " " +  response.lastname;
+                                // console.log(response)
+                                //alert('Success: ' + response.idnumber + " " + response.firstname + " " + response.middlename + " " + response.lastname + " " + response.course);
+                            },
+                            error: function (xhr, status, error) {
+                                //archivingStudentName.value = "";
+                                alert(error + ' : ' + xhr.responseText);
+                                SetEmptyNameFields();
+                            }
+                        });
+                    }
+
+                });
+
+                function SetEmptyNameFields() {
+                    archivingStudentFirstName.value = "";
+                    archivingStudentMiddleName.value = "";
+                    archivingStudentLastName.value = "";
+                }
+
+                function SetEmptyIdField(){
+                    archiveStudentId.value = "";
+                }
+
             </script>
 
 

@@ -99,6 +99,7 @@ public class StudentDAO extends SQLConnection {
 	}
 
 	public Integer addToQueue(String queueNumber, int idNumber, String fullname, String purpose, String servicetype) {
+
 		try {
 			ConnectDriver();
 			prs = conn.prepareStatement(
@@ -121,10 +122,10 @@ public class StudentDAO extends SQLConnection {
 	}
 
 	public StudentBean searchStudentIdDetail(long idnumber) {
-		// TODO Auto-generated method stub
+
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("SELECT * from tbl_student_info WHERE id_number = ?;");
+			prs = conn.prepareStatement("SELECT * from tbl_student_info WHERE id_number = ? AND isDeleted=0;");
 
 			prs.setLong(1, idnumber);
 			rs = prs.executeQuery();
@@ -146,15 +147,30 @@ public class StudentDAO extends SQLConnection {
 	}
 
 	public StudentBean searchStudentFullnameInquiry(String firstname, String middlename, String lastname) {
-		// TODO Auto-generated method stub
-		return null;
-		
-//		prs = conn.prepareStatement("SELECT * " +
-//		        "FROM tbl_student_info " +
-//		        "WHERE (id_number LIKE ? " +
-//		        "   OR (first_name LIKE ? " +
-//		        "   AND middle_name LIKE ? " +
-//		        "   AND last_name LIKE ?)) " +
-//		        "   AND isDeleted = 0;");
+
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement(
+					"select * from tbl_student_info where first_name = ? AND middle_name = ? AND last_name = ? AND isDeleted = 0;");
+
+			prs.setString(1, firstname);
+			prs.setString(2, middlename);
+			prs.setString(3, lastname);
+
+			rs = prs.executeQuery();
+
+			studentbean = null;
+
+			while (rs.next()) {
+				studentbean = new StudentBean(rs.getInt("id_number"), rs.getString("first_name"),
+						rs.getString("middle_name"), rs.getString("last_name"), rs.getString("course"));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return studentbean;
 	}
 }
