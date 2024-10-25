@@ -48,9 +48,10 @@ public class login_Servlet extends HttpServlet {
 			cookie.setMaxAge(7200); // Set the expiry time to 2 hour
 			cookie.setPath("/");
 			response.addCookie(cookie);
+			response.sendRedirect("admindashboard");
 			// services.GenerateStaffToken("admin", authcode);
-			rd = request.getRequestDispatcher("admin/adminpage.jsp");
-			rd.forward(request, response);
+			// rd = request.getRequestDispatcher("admin/adminpage.jsp");
+			// rd.forward(request, response);
 		}
 
 		if (isStaffLogTrue && !isStaffLocked) {
@@ -61,8 +62,9 @@ public class login_Servlet extends HttpServlet {
 			cookie.setMaxAge(7200); // Set the expiry time to 2 hour
 			cookie.setPath("/");
 			response.addCookie(cookie);
-			rd = request.getRequestDispatcher("staff/staffpage.jsp");
-			rd.forward(request, response);
+			response.sendRedirect("staffdashboard");
+			// rd = request.getRequestDispatcher("staff/staffpage.jsp");
+			// rd.forward(request, response);
 		}
 
 		if (!isStaffLogTrue && !isAdminLogTrue) {
@@ -82,12 +84,13 @@ public class login_Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// HttpSession session = request.getSession();
-		rd = request.getRequestDispatcher("admin/adminpage.jsp");
-		rd.forward(request, response);
+		// rd = request.getRequestDispatcher("admin/adminpage.jsp");
+		// rd.forward(request, response);
 		try {
 			validator.decode(validator.getCookieValue(request.getCookies(), "_auth"));
-			rd = request.getRequestDispatcher("admin/adminpage.jsp");
-			rd.forward(request, response);
+			response.sendRedirect("admindashboard");
+			// rd = request.getRequestDispatcher("admin/adminpage.jsp");
+			// rd.forward(request, response);
 		} catch (Exception e) {
 			// e.getMessage();
 			request.setAttribute("errorLogin", services.XMLERRORNAME("API.TOKENAUTHTENTICATIONFAILED"));

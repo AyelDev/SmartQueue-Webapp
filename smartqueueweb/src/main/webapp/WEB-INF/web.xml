@@ -15,8 +15,30 @@
 	</welcome-file-list>
 
 <!-- 
+	User Servlet Redirection
+ -->
+	<servlet>
+		<servlet-name>userinquiry</servlet-name>
+		<jsp-file>/user/userinquiry.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>userinquiry</servlet-name>
+		<url-pattern>/userinquiry</url-pattern>
+	</servlet-mapping>
+
+
+<!-- 
 	Staff Servlet Redirection
  -->
+	<servlet>
+		<servlet-name>staff</servlet-name>
+		<jsp-file>/staff/staffpage.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>staff</servlet-name>
+		<url-pattern>/staffdashboard</url-pattern>
+	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>userwindow</servlet-name>
 		<jsp-file>/staff/user_window.jsp</jsp-file>
@@ -35,19 +57,36 @@
 		<url-pattern>/counterwindow</url-pattern>
 	</servlet-mapping>
 
-<!-- 
-	Admin Servlet Redirection
- -->
 	<servlet>
-		<servlet-name>listofcounter</servlet-name>
+		<servlet-name>entertainment</servlet-name>
+		<jsp-file>/staff/entertainment.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>entertainment</servlet-name>
+		<url-pattern>/entertainment</url-pattern>
+	</servlet-mapping>
+
+<!-- Admin Servlet Redirection -->
+
+	<servlet>
+		<servlet-name>dashboard</servlet-name>
+		<jsp-file>/admin/adminpage.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dashboard</servlet-name>
+		<url-pattern>/admindashboard</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>counterlist</servlet-name>
 		<jsp-file>/admin/list_of_counter.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>listofcounter</servlet-name>
-		<url-pattern>/listofcounter</url-pattern>
+		<servlet-name>counterlist</servlet-name>
+		<url-pattern>/counterlist</url-pattern>
 	</servlet-mapping>
 
-<servlet>
+	<servlet>
 		<servlet-name>videoads</servlet-name>
 		<jsp-file>/admin/video_ads.jsp</jsp-file>
 	</servlet>
@@ -55,6 +94,10 @@
 		<servlet-name>videoads</servlet-name>
 		<url-pattern>/videoads</url-pattern>
 	</servlet-mapping>
+
+<!--
+	Counter Servlet Redirection
+-->
 
 	<session-config>
 		<cookie-config>

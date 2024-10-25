@@ -121,13 +121,16 @@ public class StudentDAO extends SQLConnection {
 		return 0;
 	}
 
-	public StudentBean searchStudentIdDetail(long idnumber) {
+	public StudentBean searchStudentDetail(long idnumber, String firstname, String middlename, String lastname) {
 
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("SELECT * from tbl_student_info WHERE id_number = ? AND isDeleted=0;");
+			prs = conn.prepareStatement("SELECT * from tbl_student_info WHERE id_number = ? OR (first_name = ? AND middle_name = ? AND last_name = ?) AND isDeleted=0;");
 
 			prs.setLong(1, idnumber);
+			prs.setString(2, firstname);
+			prs.setString(3, middlename);
+			prs.setString(4, lastname);
 			rs = prs.executeQuery();
 
 			studentbean = null;
@@ -139,34 +142,6 @@ public class StudentDAO extends SQLConnection {
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
-		} finally {
-			SQLClose();
-		}
-		return studentbean;
-	}
-
-	public StudentBean searchStudentFullnameInquiry(String firstname, String middlename, String lastname) {
-
-		try {
-			ConnectDriver();
-			prs = conn.prepareStatement(
-					"select * from tbl_student_info where first_name = ? AND middle_name = ? AND last_name = ? AND isDeleted = 0;");
-
-			prs.setString(1, firstname);
-			prs.setString(2, middlename);
-			prs.setString(3, lastname);
-
-			rs = prs.executeQuery();
-
-			studentbean = null;
-
-			while (rs.next()) {
-				studentbean = new StudentBean(rs.getInt("id_number"), rs.getString("first_name"),
-						rs.getString("middle_name"), rs.getString("last_name"), rs.getString("course"));
-			}
-
-		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			SQLClose();

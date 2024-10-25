@@ -44,6 +44,7 @@ public class UserInquiry_Servlet extends HttpServlet {
 			}else{
 				throw new Exception(); 
 			}
+			
 		} catch (Exception e) {
 			response.setContentType("text/plain");
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);

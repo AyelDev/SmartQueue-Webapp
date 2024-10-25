@@ -501,14 +501,17 @@
                     <h2>Archiving Form</h2>
                     <form id="form" class="form">
                         <label for="name">First Name</label>
-                        <input type="text" class="first-name" id="archiving-student-firstname" onclick="SetEmptyIdField()" required>
+                        <input type="text" class="first-name" id="archiving-student-firstname"
+                            onclick="SetEmptyIdField()" required>
                         <label for="name">Middle Name</label>
-                        <input type="text" class="middle-name" id="archiving-student-middlename" onclick="SetEmptyIdField()">
+                        <input type="text" class="middle-name" id="archiving-student-middlename"
+                            onclick="SetEmptyIdField()">
                         <label for="name">Last Name</label>
-                        <input type="text" class="last-name" id="archiving-student-lastname" onclick="SetEmptyIdField()" required>
+                        <input type="text" class="last-name" id="archiving-student-lastname" onclick="SetEmptyIdField()"
+                            required>
 
                         <label for="studentIdNo">Student ID No.</label>
-                        <input type="text" class="student-id" id="archiving-student-id" required>
+                        <input type="text" class="student-id" id="archiving-student-id" onclick="SetEmptyNameFields()" required>
                         <label for="options">Option</label>
                         <select name="purpose" id="archiving-purpose" class="purpose">
                             <option value="">--</option>
@@ -708,10 +711,13 @@
                     studentId = document.getElementById('records-student-id');
                     let studentName = document.getElementById('records-student-name');
                     $.ajax({
-                        url: 'JsonStudentIDSearchAPI',
+                        url: 'JsonStudentSearchAPI',
                         type: 'GET',
                         data: {
-                            studentid: studentId.value
+                            studentid: studentId.value,
+                            firstname: "none",
+                            middlename: "none",
+                            lastname: "none"
                         },
                         success: function (response) {
                             if (response == null) {
@@ -735,7 +741,7 @@
                 let archivingStudentLastName = document.getElementById('archiving-student-lastname');
 
                 const archivingButton = document.getElementById("archivingButton");
-            
+
                 archivingButton.addEventListener("mouseover", event => {
                     if (archiveStudentId.value != "") {
                         firstCall();
@@ -745,10 +751,13 @@
 
                     function firstCall() {
                         $.ajax({
-                            url: 'JsonStudentIDSearchAPI',
+                            url: 'JsonStudentSearchAPI',
                             type: 'GET',
                             data: {
-                                studentid: archiveStudentId.value
+                                studentid: archiveStudentId.value,
+                                firstname: "none",
+                                middlename: "none",
+                                lastname: "none"
                             },
                             success: function (response) {
                                 if (response == null) {
@@ -772,9 +781,10 @@
 
                     function secondCall() {
                         $.ajax({
-                            url: 'JsonFullnameSearchAPI',
+                            url: 'JsonStudentSearchAPI',
                             type: 'GET',
                             data: {
+                                studentid: 999999999,
                                 firstname: archivingStudentFirstName.value,
                                 middlename: archivingStudentMiddleName.value,
                                 lastname: archivingStudentLastName.value
@@ -783,10 +793,10 @@
                                 if (response == null) {
                                     SetEmptyNameFields();
                                 }
+                                archiveStudentId.value = response.idnumber;
                                 archivingStudentFirstName.value = response.firstname;
                                 archivingStudentMiddleName.value = response.middlename;
                                 archivingStudentLastName.value = response.lastname;
-                                archiveStudentId.value = response.idnumber;
                                 // studentName.value = response.firstname + " " +  response.middlename + " " +  response.lastname;
                                 // console.log(response)
                                 //alert('Success: ' + response.idnumber + " " + response.firstname + " " + response.middlename + " " + response.lastname + " " + response.course);
@@ -807,7 +817,7 @@
                     archivingStudentLastName.value = "";
                 }
 
-                function SetEmptyIdField(){
+                function SetEmptyIdField() {
                     archiveStudentId.value = "";
                 }
 

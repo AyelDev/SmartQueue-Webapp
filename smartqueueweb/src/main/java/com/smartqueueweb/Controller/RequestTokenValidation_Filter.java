@@ -15,21 +15,42 @@ import javax.servlet.http.HttpServletRequest;
 import com.smartqueueweb.Class.JwtValidator;
 import com.smartqueueweb.Service.ServiceImpl;
 
-@WebFilter({ "/listofcounter",
-	"/CounterWindow_Servlet","/counterwindow",
-	"/JsonStaffListAPI","/JsonStudentListAPI",
-	"/RemoveStaff_Servlet","/RemoveStudent_Servlet",
-	"/stafflist","/staffRegister_Servlet",
-	"/studentlist", "/StudentList_Servlet", 
-	"/studentRegister_Servlet",
-	"/listofcounter","/UpdateStaff_Servlet",
-	"/UpdateStaff_Servlet",
-	"/UpdateStudent_Servlet",
-	"/userwindow", "/Userwindow_Servlet",
-	"/addstudent", "/AddStudent_Servlet",
-	"/counterwindow",
-	"/entertainment", "/EntertainmentStaff_Servlet",
-	"/videoads"})
+@WebFilter({
+
+		// api
+		"/JsonStaffListAPI", "/JsonStudentListAPI",
+
+		// admin
+		"/RemoveStaff_Servlet",
+		"/RemoveStudent_Servlet",
+		"/stafflist",
+		"/staffRegister_Servlet",
+		"/studentlist", "/StudentList_Servlet",
+		"/studentRegister_Servlet",
+		"/UpdateStaff_Servlet",
+		"/UpdateStudent_Servlet",
+
+		// admin redirection
+		"/listofcounter",
+		"/CounterWindow_Servlet", "/counterwindow",
+		"/videoads",
+		"/admindashboard",
+		"/counterlist",
+		"/videoads",
+
+
+		// staff
+		"/addstudent", "/AddStudent_Servlet",
+		"/entertainment", "/EntertainmentStaff_Servlet",
+
+		// staff redirection
+		"/counterwindow",
+		"/staffdashboard",
+		"/userwindow",
+		"/counterwindow"
+
+})
+
 public class RequestTokenValidation_Filter implements Filter {
 
 	public RequestTokenValidation_Filter() {
@@ -49,16 +70,16 @@ public class RequestTokenValidation_Filter implements Filter {
 		RequestDispatcher rd = null;
 		ServiceImpl services = new ServiceImpl();
 
-//		if (path.contains("/login_Servlet") || path.contains("/dashboard")) {
-//			chain.doFilter(request, response); // Skip filtering for this path
-//		}
+		// if (path.contains("/login_Servlet") || path.contains("/dashboard")) {
+		// chain.doFilter(request, response); // Skip filtering for this path
+		// }
 
 		try {
 			validator.decode(validator.getCookieValue(httpRequest.getCookies(), "_auth"));
 			chain.doFilter(request, response);
 		} catch (Exception e) {
 			// e.getMessage();
-			// 
+			//
 			request.setAttribute("errorLogin", services.XMLERRORNAME("API.TOKENAUTHTENTICATIONFAILED"));
 			rd = request.getRequestDispatcher("/logout");
 			rd.forward(request, response);

@@ -56,7 +56,7 @@
             overflow: hidden;
         }
 
-        .dash {
+        .dashboard {
             width: 20%;
             height: 20%;
             background-color: transparent;
@@ -291,7 +291,7 @@
         <div class="cover">
             <div class="rightnav">
                 <div class="tp-rnav">
-                    <div class="dash"><b>DASHBOARD</b></div>
+                    <div class="dashboard"><b>DASHBOARD</b></div>
 
                     <div class="card-container">
                         <div class="card">
@@ -332,7 +332,7 @@
                     <b><a href="counterwindow">Counter Window</a></b>
                     <!-- <b><a href="#">Queue List</a></b> -->
                     <b><a href="addstudent">Add Student</a></b>
-                    <b><a href="entertainment.jsp">Advertisement</a></b>
+                    <b><a href="entertainment">Advertisement</a></b>
                 </div>
             </div>
         </div>

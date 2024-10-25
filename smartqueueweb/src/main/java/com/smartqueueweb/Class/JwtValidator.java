@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

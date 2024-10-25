@@ -245,11 +245,10 @@
         </div>
         
         <div class="bottom-lnav">
-            <b><a href="staffpage.jsp">Dashboard</a></b>
-            <b><a href="user_window.jsp">User Window</a></b>
-            <b><a href="counter_window.jsp">Counter Window</a></b>
+            <b><a href="staffdashboard">Dashboard</a></b>
+            <b><a href="userwindow">User Window</a></b>
+            <b><a href="counterwindow">Counter Window</a></b>
             <b><a href="add_student.jsp">Add Student</a></b>
-            <b><a href="staffpage.jsp">Back</a></b>
         </div>
     </div>
 

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <c:if test="${empty sessionScope.sessionStaff}">
-            <c:redirect url="/" />
-        </c:if>
-<!DOCTYPE html>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+		<c:if test="${empty sessionScope.sessionStaff}">
+			<c:redirect url="/" />
+		</c:if>
+		<!DOCTYPE html>
 		<html lang="en">
 
 		<head>
@@ -218,7 +218,7 @@
 					display: block;
 				}
 
-				.dropdown-btn:hover a{
+				.dropdown-btn:hover a {
 					background-color: white;
 					width: 50vw;
 					height: 8vh;
@@ -600,10 +600,12 @@
 				.register-form {
 					margin-top: 7%;
 				}
-				.dropdown-btn a{
+
+				.dropdown-btn a {
 					text-decoration: none;
 					color: white;
 				}
+
 				/* .dropdown-btn a:hover{
 					color: var(--body-fonts);
 				} */
@@ -630,31 +632,34 @@
 						<div class="menu-navbar">
 							<div class="dropdown">
 								<button class="dropdown-btn">
-									<img src="./images/dashboard.png" alt="" class="dashboard-icon"><a href="">Dashboard</a>
+									<img src="./images/dashboard.png" alt="" class="dashboard-icon"><a
+										href="staffdashboard">Dashboard</a>
 								</button>
-								
+
 							</div>
 
 							<div class="dropdown">
 								<button class="dropdown-btn">
-									<img src="./images/counter.png" alt="" class="counter-icon"><a href="">User Window</a>
+									<img src="./images/counter.png" alt="" class="counter-icon"><a
+										href="userwindow">User Window</a>
 								</button>
-								
+
 							</div>
 
 							<div class="dropdown">
 								<button class="dropdown-btn">
-									<img src="./images/users.png" alt="" class="users-icon"><a href="">Counter Window</a>
+									<img src="./images/users.png" alt="" class="users-icon"><a
+										href="counterwindow">Counter Window</a>
 								</button>
-								
+
 							</div>
 
 							<div class="dropdown">
 								<button class="dropdown-btn">
-									<img src="./images/entertainment.png" alt=""
-										class="entertainment-icon"><a href="enter.html">Advertisement</a>
+									<img src="./images/entertainment.png" alt="" class="entertainment-icon"><a
+										href="entertainment">Advertisement</a>
 								</button>
-								
+
 							</div>
 
 						</div>
@@ -667,8 +672,8 @@
 							</button>
 							<h1>Student List</h1>
 							<div class="search-container">
-								<input type="text" placeholder="Search.." name="search" class="search-bar" id="searchInput"
-								onkeyup="searchTable()">
+								<input type="text" placeholder="Search.." name="search" class="search-bar"
+									id="searchInput" onkeyup="searchTable()">
 								<button class="search-btn" type="submit">
 									<img src="./images/search-icon.png" alt="" class="search-icon">
 								</button>
@@ -700,7 +705,7 @@
 
 											<select name="purpose" id="records-purpose" class="purpose"
 												required="required">
-												<option value="" disabled selected hidden>Select course</option>
+												<option value="" disabled selected=hidden>Select course</option>
 												<option value="BEED">BEED</option>
 												<option value="BSHM">BSHM</option>
 												<option value="BSIT">BSIT</option>
@@ -767,7 +772,7 @@
 								searchTable();
 							}
 							request.send();
-						}	
+						}
 
 						function renderHTML(data) {
 							var htmlString = ``;

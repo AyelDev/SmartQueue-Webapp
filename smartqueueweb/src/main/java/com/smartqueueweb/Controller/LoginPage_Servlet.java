@@ -39,18 +39,18 @@ public class LoginPage_Servlet extends HttpServlet {
 			DecodedJWT decoded = validator.decode(cookieauth);
 			String userRole = decoded.getClaim("userRole").toString().replace("\"", "");
 
-			if (userRole.equals("admin")) {
-				rd = request.getRequestDispatcher("admin/adminpage.jsp");
-				rd.forward(request, response);
+			boolean adminLogged = userRole.equals("admin");
+			boolean staffLogged = userRole.equals("staff");
+
+			if (adminLogged) {
+				response.sendRedirect("admindashboard");
 			}
 
-			if (userRole.equals("staff")) {
-				rd = request.getRequestDispatcher("staff/staffpage.jsp");
-				rd.forward(request, response);
+			if (staffLogged) {
+				response.sendRedirect("staffdashboard");
 			}
 
 		} catch (Exception e) {
-
 			rd = request.getRequestDispatcher("logout");
 			rd.forward(request, response);
 		}

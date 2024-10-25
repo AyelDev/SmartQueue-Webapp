@@ -16,7 +16,6 @@ public interface StudentServices{
 
 	Integer addToQueue(String queueNumber, int idNumber, String fullname, String purpose, String servicetype);
 	
-	StudentBean searchStudentIdInquiry(long idnumber);
+	StudentBean searchStudentInquiry(long idnumber, String firstname, String middlename, String lastname);
 	
-	StudentBean searchStudentFullnameInquiry(String firstname, String middlename, String lastname);
 }

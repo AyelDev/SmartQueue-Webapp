@@ -10,7 +10,7 @@
 			<script type="text/javascript" src="scripts/fadetransition.js"></script>
 			<link rel="stylesheet" href="css/loginstyle.css">
 			<link rel="stylesheet" href="css/loader.css">
-			<title>login page</title>
+			<title>Login</title>
 		</head>
 
 		<body>
