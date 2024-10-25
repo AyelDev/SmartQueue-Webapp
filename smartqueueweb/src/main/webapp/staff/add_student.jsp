@@ -658,16 +658,16 @@
         <img src="./images/profile.png" alt="" class="profile">STAFF<img src="./images/caretdown.png" alt="" class="caretdown">
     </button>
     <div class="adminProfile" id="adminProfile">
-        <a href="">Settings</a> <a href="login">Signout</a>
+        <a href="">Settings</a> <a href="logout">Signout</a>
     </div>
 
     <div class="leftnav">
         <div class="bottom-lnav">
-            <b><a href="staffpage.html">Dashboard</a></b>
+            <b><a href="staffdashboard">Dashboard</a></b>
             <b><a href="userwindow">User Window</a></b>
             <b><a href="counterwindow">Counter Window</a></b>
 			<b><a href="addstudent">Add Student</a></b>
-            <b><a href="entertainment.jsp">Advertisement</a></b>
+            <b><a href="entertainment">Advertisement</a></b>
         </div>
     </div>
 </div>

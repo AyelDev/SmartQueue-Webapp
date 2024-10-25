@@ -260,7 +260,7 @@
                             src="./images/caretdown.png" alt="" class="caretdown"></button>
                     <div class="staffProfile" id="staffProfile">
                         <a href="#">Settings</a>
-                        <a href="login">Signout</a>
+                        <a href="logout">Signout</a>
                     </div>
                 </div>
                 
@@ -268,8 +268,8 @@
                     <b><a href="staffdashboard">Dashboard</a></b>
                     <b><a href="userwindow">User Window</a></b>
                     <b><a href="counterwindow">Counter Window</a></b>
-                    <b><a href="add_student.jsp">Add Student</a></b>
-                    <b><a href="#">Advertisement</a></b>
+                    <b><a href="addstudent">Add Student</a></b>
+                    <b><a href="entertainment">Advertisement</a></b>
                 </div>
             </div>
         
