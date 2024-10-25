@@ -431,11 +431,11 @@
                     <div class="form">
                         <div class="studename">
                             <label for="studentName" class="firstname-label">First Name</label>
-                            <input type="text" class="generalfirst-name" id="general-student-name">
+                            <input type="text" class="generalfirst-name" id="general-student-firstname">
                             <label for="studentName" class="middlename-label">Middle Name</label>
-                            <input type="text" class="generalmiddle-name" id="general-student-name">
+                            <input type="text" class="generalmiddle-name" id="general-student-middlename">
                             <label for="studentName" class="lastname-label">Last Name</label>
-                            <input type="text" class="generallast-name" id="general-student-name">
+                            <input type="text" class="generallast-name" id="general-student-lastname">
                         </div>
 
 
@@ -511,7 +511,8 @@
                             required>
 
                         <label for="studentIdNo">Student ID No.</label>
-                        <input type="text" class="student-id" id="archiving-student-id" onclick="SetEmptyNameFields()" required>
+                        <input type="text" class="student-id" id="archiving-student-id" onclick="SetEmptyNameFields()"
+                            required>
                         <label for="options">Option</label>
                         <select name="purpose" id="archiving-purpose" class="purpose">
                             <option value="">--</option>
@@ -631,7 +632,10 @@
                     let studentLastname = '';
 
                     if (serviceType === 'General') {
-                        studentName = document.getElementById('general-student-name');
+                        studentFirstname = document.getElementById('general-student-firstname');
+                        studentMiddlename = document.getElementById('general-student-middlename');
+                        studentLastname = document.getElementById('general-student-lastname');
+                        
                         studentId = document.getElementById('general-student-id');
                         purpose = document.getElementById('general-purpose');
                         charQueue = 'G';
@@ -654,6 +658,13 @@
                     var queueNumber = Math.floor(Math.random() * 900) + 100;  // Random 3-digit number
                     var currentDateTime = new Date().toLocaleString();
 
+                    studentName = studentFirstname.value + " " + studentMiddlename.value + " " + studentLastname.value;
+
+                    if (studentName.trim() === "undefined undefined undefined") {
+                        studentName = '';
+                        studentName = document.getElementById('records-student-name').value;
+                    }
+
                     // Create the receipt content
                     var receiptContent = `
                     <center><h3>CEBU EASTERN COLLEGE</h3></center>
@@ -661,14 +672,14 @@
                     <hr>
                     <h1>`+ (charQueue + queueNumber) + `</h1>
                     <hr>
-                    <p><strong>Name:</strong> `+ studentFirstname.value + " " + studentMiddlename.value + " "  + studentLastname.value + `</p>
+                    <p><strong>Name:</strong> `+ studentName + `</p>
                     <p><strong>Student ID:</strong> `+ studentId.value + `</p>
                     <p><strong>Service Type:</strong> ` + serviceType + ` Service</p>
                     <p><strong>Purpose:</strong> `+ purpose.value + `</p>
                     <p><strong>Date & Time:</strong> `+ currentDateTime + `</p>
                     `;
                     let servetype = serviceType;
-                    studentName = studentFirstname.value + " " + studentMiddlename.value + " "  + studentLastname.value;
+
                     $.ajax({
                         url: 'inquiry',
                         type: 'POST',
@@ -682,24 +693,24 @@
                         success: function (response) {
                             alert('Success: ' + response);
 
-
                             // Inject the receipt content into the modal
                             document.getElementById('printArea').innerHTML = receiptContent;
 
                             // Show the modal
                             var modal = document.getElementById('receiptModal');
                             modal.style.display = "block";
+                            
 
                             // Automatically print the receipt content
                             setTimeout(function () {
                                 window.print();
                             }, 500); // Optional delay before printing
+                         
                         },
                         error: function (xhr, status, error) {
                             alert(error + ' : ' + xhr.responseText);
                         }
                     });
-
 
                 }
 
@@ -708,7 +719,6 @@
                     var modal = document.getElementById('receiptModal');
                     modal.style.display = "none";
                 }
-
 
                 // ---------------------records 
                 const recordsButton = document.getElementById("recordsbutton");
