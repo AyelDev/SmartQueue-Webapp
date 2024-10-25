@@ -16,7 +16,7 @@
 			<link rel="stylesheet" type="text/css" href="./css/jquery-confirm.min.css" />
 			<script type="text/javascript" src="./scripts/jquery-confirm.min.js"></script>
 			<link rel="stylesheet" href="./css/loader.css">
-			<title>Admin | List of Student</title>
+			<title>Staff | List of Student</title>
 		</head>
 
 		<body>
@@ -69,13 +69,12 @@
 				}
 
 				.navbar {
-					width: 15vw;
-					height: 100vh;
-					background-color: var(--primary-color);
-					position: fixed;
-					justify-content: center;
-					align-items: center;
-					left: 0;
+					width: 15%;
+    				height: 100%;
+    				background-color: #00509d;
+    				padding: 10px;
+    				position: fixed;
+    				box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 				}
 
 				.logoContainer {
@@ -93,11 +92,11 @@
 
 				.title {
 					color: var(--background-color);
-					font-size: 0.8em;
+					font-size: 1rem;
 				}
 
 				.adminProfile {
-					margin-left: 2.5rem;
+					margin-left: 2.2rem;
 					position: absolute;
 					background-color: var(--background-color);
 					width: 9.5vw;
@@ -141,6 +140,7 @@
 					/*tlbr*/
 					overflow: hidden;
 					cursor: pointer;
+					border: 2px solid black;
 				}
 
 				.profile {
@@ -209,7 +209,7 @@
 					color: #F6F4EB;
 					border-radius: 15px;
 					padding-right: 60px;
-					margin-left: 5px;
+					margin-left: 10px;
 					cursor: pointer;
 					position: relative;
 				}
@@ -218,15 +218,11 @@
 					display: block;
 				}
 
-				.dropdown-btn:hover a {
-					background-color: white;
-					width: 50vw;
-					height: 8vh;
+				.dropdown-btn:hover {
+					background-color: var(--background-color);
+					width: 18vw;
 					color: var(--text-color);
 					font-weight: bold;
-					text-align: center;
-					line-height: 46px;
-					border-radius: 10px;
 				}
 
 				.dropdown-btn:hover+.dropdown-dashboard {
@@ -263,13 +259,15 @@
 
 				.studentlist-section {
 					width: 85vw;
-					height: 100%;
-					background-color: transparent;
+					height: 100vh;
+					background-color: var(--background-color);
 					float: right;
-					margin-left: 30%;
+					margin-left: 15%;
 					align-items: center;
 					display: flex;
 					justify-content: center;
+					
+					
 				}
 
 				h1 {
@@ -359,308 +357,320 @@
 				}
 
 				/* Responsive design for smaller screens */
-				@media (max-width : 768px) {
+		@media (max-width : 768px) {
 
-					table,
-					thead,
-					tbody,
-					th,
-					td,
-					tr {
-						display: block;
-						width: 100%;
-					}
+			table,
+			thead,
+			tbody,
+			th,
+			td,
+			tr {
+				display: block;
+				width: 100%;
+			}
 
-					th,
-					td {
-						position: relative;
-						padding-left: 50%;
-						text-align: right;
-					}
+			th,
+			td {
+				position: relative;
+				padding-left: 50%;
+				text-align: right;
+			}
 
-					th::before,
-					td::before {
-						content: attr(data-label);
-						position: absolute;
-						left: 0;
-						width: 50%;
-						padding-left: 10px;
-						font-weight: bold;
-						text-align: left;
-						background: #f7f9fc;
-						border-right: 1px solid #ddd;
-						white-space: nowrap;
-					}
+			th::before,
+			td::before {
+				content: attr(data-label);
+				position: absolute;
+				left: 0;
+				width: 50%;
+				padding-left: 10px;
+				font-weight: bold;
+				text-align: left;
+				background: #f7f9fc;
+				border-right: 1px solid #ddd;
+				white-space: nowrap;
+			}
 
-					td::before {
-						content: "";
-					}
-				}
+			td::before {
+				content: "";
+			}
+		}
 
-				.studentlist-content {
-					width: 90%;
-					max-width: 1000px;
-					margin: 20px;
-					background: #ffffff;
-					border-radius: 10px;
-					box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-					overflow: hidden;
-					padding: 20px;
-				}
+		.studentlist-content {
+			width: 90%;
+			max-width: 1000px;
+			margin: 20px;
+			background: #ffffff;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			overflow: hidden;
+			padding: 20px;
+			margin-top: -35%;
+		}
 
-				.add-account-icon {
-					object-fit: scale-down;
-					width: 10%;
-				}
+		.add-account-icon {
+			object-fit: scale-down;
+			width: 10%;
+		}
 
-				.add-account-btn {
-					width: 10%;
-					background-color: var(--primary-color);
-					margin-top: 1%;
-					position: absolute;
-				}
+		.add-account-btn {
+			width: 10%;
+			background-color: var(--primary-color);
+			margin-top: 1%;
+			position: absolute;
+		}
 
-				.add-account-btn:hover {
-					background-color: #2980b9;
-				}
+		.add-account-btn:hover {
+			background-color: #2980b9;
+		}
 
-				.search-container {
-					margin-top: -5.5%;
-					margin-left: 75%;
-					margin-bottom: 2%;
-				}
+		.search-container {
+			margin-top: -5.5%;
+			margin-left: 75%;
+			margin-bottom: 2%;
+		}
 
-				.search-bar {
-					border-radius: 15px;
-					width: 80%;
-					padding: 5px;
-					border: 1px solid;
-				}
+		.search-bar {
+			border-radius: 15px;
+			width: 80%;
+			padding: 5px;
+			border: 1px solid;
+		}
 
-				.search-btn {
-					border-radius: 15px;
-					border: none;
-					padding: 5px;
-					width: 50px;
-					margin-left: -20%;
-					background: none;
-					margin-bottom: -5%;
-				}
+		.search-btn {
+			border-radius: 15px;
+			border: none;
+			padding: 5px;
+			width: 50px;
+			margin-left: -20%;
+			background: none;
+			margin-bottom: -5%;
+		}
 
-				.search-icon {
-					object-fit: scale-down;
-					width: 14px;
-					height: 20px;
-					background: none;
-					margin-bottom: -10%;
-				}
+		.search-icon {
+			object-fit: scale-down;
+			width: 14px;
+			height: 20px;
+			background: none;
+			margin-bottom: -10%;
+		}
 
-				.fillup-form-container {
-					width: 40%;
-					background-color: white;
-					padding: 20px;
-					box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-					border-radius: 10px;
-					margin-left: 10%;
-					position: absolute;
-					z-index: 1;
-					display: none;
-					align-items: center;
-				}
+		.fillup-form-container {
+			width: 40%;
+			background-color: white;
+			padding: 20px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+			margin-left: 10%;
+			position: absolute;
+			z-index: 1;
+			display: none;
+			align-items: center;
+		}
 
-				.fillup-form-container h1 {
-					margin-top: 2%;
-				}
+		.fillup-form-container h1 {
+			margin-top: 2%;
+		}
 
-				.modal.active {
-					display: block;
-				}
+		.modal.active {
+			display: block;
+		}
 
-				h1 {
-					text-align: center;
-					margin-bottom: 20px;
-				}
+		h1 {
+			text-align: center;
+			margin-bottom: 20px;
+		}
 
-				.close-btn {
-					font-size: 2rem;
-					position: absolute;
-					right: 20px;
-					top: 10px;
-					cursor: pointer;
-				}
+		.close-btn {
+			font-size: 2rem;
+			position: absolute;
+			right: 20px;
+			top: 10px;
+			cursor: pointer;
+		}
 
-				form {
-					display: flex;
-					flex-wrap: wrap;
-					gap: 20px;
-				}
+		form {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 20px;
+		}
 
-				.input-container {
-					position: relative;
-					width: 48%;
-				}
+		.input-container {
+			position: relative;
+			width: 48%;
+		}
 
-				.input-container input {
-					width: 100%;
-					padding: 10px;
-					border-radius: 5px;
-					font-size: 15px;
-					border: none;
-					outline: 2px solid var(--primary-color);
-					background-color: transparent;
-					transition: outline-color 500ms;
-				}
+		.input-container input {
+			width: 100%;
+			padding: 10px;
+			border-radius: 5px;
+			font-size: 15px;
+			border: none;
+			outline: 2px solid var(--primary-color);
+			background-color: transparent;
+			transition: outline-color 500ms;
+		}
 
-				.input-container select {
-					width: 110%;
-					padding: 10px;
-					border-radius: 5px;
-					font-size: 15px;
-					border: none;
-					outline: 2px solid var(--primary-color);
-					background-color: transparent;
-					transition: outline-color 500ms;
-				}
+		.input-container select {
+			width: 110%;
+			padding: 10px;
+			border-radius: 5px;
+			font-size: 15px;
+			border: none;
+			outline: 2px solid var(--primary-color);
+			background-color: transparent;
+			transition: outline-color 500ms;
+		}
 
-				.input-container input:focus {
-					outline-color: var(--secondary-color);
-				}
+		.input-container input:focus {
+			outline-color: var(--secondary-color);
+		}
 
-				.input-container label {
-					position: absolute;
-					top: 50%;
-					left: 10px;
-					transform: translateY(-50%);
-					color: var(--text-color);
-					transition: 0.3s ease;
-					background-color: white;
-					padding-inline: 5px;
-				}
+		.input-container label {
+			position: absolute;
+			top: 50%;
+			left: 10px;
+			transform: translateY(-50%);
+			color: var(--text-color);
+			transition: 0.3s ease;
+			background-color: white;
+			padding-inline: 5px;
+		}
 
-				.input-container input:focus+label,
-				.input-container input:valid+label {
-					top: -10px;
-					transform: translateY(0);
-					font-size: 0.8rem;
-					color: var(--secondary-color);
-				}
+		.input-container input:focus+label,
+		.input-container input:valid+label {
+			top: -10px;
+			transform: translateY(0);
+			font-size: 0.8rem;
+			color: var(--secondary-color);
+		}
 
-				.full-width {
-					width: 100%;
-				}
+		.full-width {
+			width: 100%;
+		}
 
-				.sign-btn {
-					width: 95.2%;
-					margin-left: 3.2%;
-					padding: 10px;
-					background-color: var(--primary-color);
-					color: white;
-					border: none;
-					border-radius: 5px;
-					font-size: 16px;
-					cursor: pointer;
-					transition: background-color 300ms;
-				}
+		.sign-btn {
+			width: 95.2%;
+			margin-left: 3.2%;
+			padding: 10px;
+			background-color: var(--primary-color);
+			color: white;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+			transition: background-color 300ms;
+		}
 
-				.sign-btn:hover {
-					background-color: var(--secondary-color);
-				}
+		.sign-btn:hover {
+			background-color: var(--secondary-color);
+		}
 
-				.add-account {
-					padding: 10px 20px;
-					background-color: var(--primary-color);
-					color: white;
-					border: none;
-					border-radius: 5px;
-					font-size: 16px;
-					cursor: pointer;
-					transition: background-color 300ms;
-				}
+		.add-account {
+			padding: 10px 20px;
+			background-color: var(--primary-color);
+			color: white;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+			transition: background-color 300ms;
+		}
 
-				.add-account:hover {
-					background-color: var(--secondary-color);
-				}
+		.add-account:hover {
+			background-color: var(--secondary-color);
+		}
 
 				/* Overlay for background when modal is active */
-				.overlay {
-					display: none;
-					position: fixed;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					background-color: rgba(0, 0, 0, 0.5);
-					z-index: 1;
-				}
+		.overlay {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			z-index: 1;
+		}
 
-				.overlay.active {
-					display: block;
-				}
+		.overlay.active {
+			display: block;
+		}
 
-				.register-form {
-					margin-top: 7%;
-				}
+		.register-form {
+			margin-top: 7%;
+		}
+        .bottom-lnav {
+            width: 100%;
+            height: 80%;
+            background-color: transparent;
+            text-align: center;
+            padding-top: 4px;
+        }
 
-				.dropdown-btn a {
-					text-decoration: none;
-					color: white;
-				}
+        .bottom-lnav a {
+            display: block;
+            margin: 1rem 0;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            margin-top: 40px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
 
-				/* .dropdown-btn a:hover{
-					color: var(--body-fonts);
-				} */
+        .bottom-lnav a:hover {
+			padding: 15px 20px 15px 20px;
+            width: 11.5vw;
+            background-color: white;
+            position: relative;
+            left: 20px;
+            color: black;
+            border-radius: 20px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        }
+        .button-profile {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            width: 10vw;
+            text-align: center;
+            margin-top: 10px;
+            margin-left: 1.875rem;
+            border-radius: 0.625rem;
+            padding: 0.9375rem 0.625rem;
+        }
 			</style>
 
 			<body>
 
 				<div class="container">
 					<div class="navbar">
-						<div class="logoContainer">
-							<img src="./images/logo.png" alt="" class="logo">
-							<p class="title">Cebu Eastern College
-							<p>
-						</div>
-						<!-- admin profile -->
-						<button class="button-profile" id="button-profile">
-							<img src="./images/profile.png" alt="" class="profile">STAFF<img
-								src="./images/caretdown.png" alt="" class="caretdown">
-						</button>
-						<div class="adminProfile" id="adminProfile">
-							<a href="">Settings</a> <a href="logout">Signout</a>
-						</div>
+    <div class="logoContainer">
+        <img src="logo.png" alt="" class="logo">
+        <p class="title"><b>Cebu Eastern College</b></p>
+    </div>
+    <!-- staff profile -->
+    <button class="button-profile" id="button-profile">
+        <img src="./images/profile.png" alt="" class="profile">STAFF<img src="./images/caretdown.png" alt="" class="caretdown">
+    </button>
+    <div class="adminProfile" id="adminProfile">
+        <a href="">Settings</a> <a href="login">Signout</a>
+    </div>
 
-						<div class="menu-navbar">
-							<div class="dropdown">
-								<button class="dropdown-btn">
-									<img src="./images/dashboard.png" alt="" class="dashboard-icon"><a
-										href="staffdashboard">Dashboard</a>
-								</button>
-
-							</div>
-
-							<div class="dropdown">
-								<button class="dropdown-btn">
-									<img src="./images/counter.png" alt="" class="counter-icon"><a
-										href="userwindow">User Window</a>
-								</button>
-
-							</div>
-
-							<div class="dropdown">
-								<button class="dropdown-btn">
-									<img src="./images/users.png" alt="" class="users-icon"><a
-										href="counterwindow">Counter Window</a>
-								</button>
-
-							</div>
-
-							<div class="dropdown">
-								<button class="dropdown-btn">
-									<img src="./images/entertainment.png" alt="" class="entertainment-icon"><a
-										href="entertainment">Advertisement</a>
-								</button>
-
-							</div>
+    <div class="leftnav">
+        <div class="bottom-lnav">
+            <b><a href="staffpage.html">Dashboard</a></b>
+            <b><a href="userwindow">User Window</a></b>
+            <b><a href="counterwindow">Counter Window</a></b>
+			<b><a href="addstudent">Add Student</a></b>
+            <b><a href="entertainment.jsp">Advertisement</a></b>
+        </div>
+    </div>
+</div>
 
 						</div>
 					</div>
@@ -672,11 +682,12 @@
 							</button>
 							<h1>Student List</h1>
 							<div class="search-container">
-								<input type="text" placeholder="Search.." name="search" class="search-bar"
-									id="searchInput" onkeyup="searchTable()">
+								<form action="" method=""></form>
+								<input type="text" placeholder="Search.." name="search" class="search-bar">
 								<button class="search-btn" type="submit">
 									<img src="./images/search-icon.png" alt="" class="search-icon">
 								</button>
+								</form>
 							</div>
 
 							<div class="overlay"></div>
@@ -691,8 +702,9 @@
 												class="firstname-label">First name</label>
 										</div>
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-											<input class="middlename-input" type="text" name="txtMiddlename"> <label
-												for="middlename" class="middlename-label">Middle name</label>
+											<input class="middlename-input" type="text"
+												name="txtMiddlename"> <label for="middlename"
+												class="middlename-label">Middle name</label>
 										</div>
 
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
@@ -703,9 +715,8 @@
 
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
 
-											<select name="purpose" id="records-purpose" class="purpose"
-												required="required">
-												<option value="" disabled selected=hidden>Select course</option>
+											<select name="purpose" id="records-purpose" class="purpose" required="required">
+												<option value="" disabled selected hidden>Select course</option>
 												<option value="BEED">BEED</option>
 												<option value="BSHM">BSHM</option>
 												<option value="BSIT">BSIT</option>
@@ -723,7 +734,7 @@
 									</form>
 								</div>
 							</div>
-							<table id="myTable">
+							<table>
 								<thead>
 									<tr>
 										<th>Student ID</th>
@@ -769,7 +780,6 @@
 							request.onload = function () {
 								var data = JSON.parse(request.responseText);
 								renderHTML(data);
-								searchTable();
 							}
 							request.send();
 						}
@@ -957,25 +967,25 @@
 									<form id="studentRegisterForm">
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
 											<input class="firstname-input" required="required" type="text"
-												name="txtFirstname" value="`+ firstname + `"> <label for="firstname"
+												name="txtFirstname" value="`+firstname+`"> <label for="firstname"
 												class="firstname-label">First name</label>
 										</div>
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
 											<input class="middlename-input" required="required" type="text"
-												name="txtMiddlename" value="`+ middlename + `"> <label for="middlename"
+												name="txtMiddlename" value="`+middlename+`"> <label for="middlename"
 												class="middlename-label">Middle name</label>
 										</div>
 
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
 											<input class="lastname-input" required="required" type="text"
-												name="txtLastname" value="`+ lastname + `"> <label for="lastname" class="lastname-label">Last
+												name="txtLastname" value="`+lastname+`"> <label for="lastname" class="lastname-label">Last
 												name</label>
 										</div>
 
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
 
 											<select name="purpose" class="purpose">
-												<option value="`+ course + `" disabled selected hidden>` + course + `</option>
+												<option value="`+course+`" disabled selected hidden>`+course+`</option>
 												<option value="BEED">BEED</option>
 												<option value="BSHM">BSHM</option>
 												<option value="BSIT">BSIT</option>
@@ -985,7 +995,7 @@
 										</div>
 										<div class="input-container" style="width: 40%; margin: 0 20px 5% 20px;">
 											<input id="id-input" class="lastname-input" required="required" type="text"
-												name="txtIdnumber" value="`+ id + `"> <label for="lastname" class="lastname-label">Id
+												name="txtIdnumber" value="`+id+`"> <label for="lastname" class="lastname-label">Id
 												number</label>
 										</div>
 
@@ -996,13 +1006,13 @@
 										text: 'Update',
 										btnClass: 'btn-green',
 										action: function () {
-
+											
 											var studentId = this.$content.find('#id-input');
 											var firstname = this.$content.find('.firstname-input');
 											var middlename = this.$content.find('.middlename-input');
 											var lastname = this.$content.find('.lastname-input');
 											var courses = this.$content.find('.purpose');
-
+											
 											//no use line
 											// var errorText = this.$content.find('.text-danger');
 
@@ -1015,33 +1025,33 @@
 												});
 												return false;
 											} else {
-												var coursecheck = courses.val() == null ? course : courses.val();
+												var coursecheck = courses.val() == null ? course : courses.val() ;
 												$.ajax({
-													url: 'UpdateStudent_Servlet?idnum=' + id +
-														'&inputidnum=' + studentId.val() +
-														'&firstname=' + firstname.val() +
-														'&middlename=' + middlename.val() +
-														'&lastname=' + lastname.val() +
-														'&course=' + coursecheck,
+													url: 'UpdateStudent_Servlet?idnum=' + id + 
+													'&inputidnum=' + studentId.val() +
+													'&firstname=' + firstname.val() +
+													'&middlename=' + middlename.val() +
+													'&lastname=' + lastname.val() +
+													'&course=' + coursecheck,
 													type: 'PUT',
-													success: function (response) {
+													success: function (response){
 														var successContent = `<h3>Student Number : ` + studentId.val() + `<br>
 															Firstname : ` + firstname.val() + `<br>
 															Middle : ` + middlename.val() + `<br>
 															Lastname : ` + lastname.val() + `<br>
 															Course : ` + coursecheck + `</hr>`;
-
-														updateData();
-														$.alert({
-															boxWidth: '30%',
-															useBootstrap: false,
-															typeAnimated: true,
-															type: 'green',
-															title: 'Response : ' + response,
-															content: successContent
-														});
+													
+													updateData();
+													$.alert({
+														boxWidth: '30%',
+														useBootstrap: false,
+														typeAnimated: true,
+														type: 'green',
+														title: 'Response : ' + response,
+														content: successContent
+													});
 													},
-													error: function (xhr) {
+													error: function (xhr){
 														$.alert({
 															boxWidth: '30%',
 															useBootstrap: false,
@@ -1060,31 +1070,6 @@
 									}
 								}
 							});
-						}
-
-						//searchbutton
-						function searchTable() {
-							// Declare variables
-							var input, filter, table, tr, td, i, j, txtValue;
-							input = document.getElementById("searchInput");
-							filter = input.value.toLowerCase();
-							table = document.getElementById("myTable");
-							tr = table.getElementsByTagName("tr");
-
-							// Loop through all table rows, and hide those who don't match the search query
-							for (i = 1; i < tr.length; i++) {
-								tr[i].style.display = "none"; // Initially hide all rows
-								td = tr[i].getElementsByTagName("td");
-								for (j = 0; j < td.length; j++) {
-									if (td[j]) {
-										txtValue = td[j].textContent || td[j].innerText;
-										if (txtValue.toLowerCase().indexOf(filter) > -1) {
-											tr[i].style.display = ""; // Show the row if any column matches the search
-											break;
-										}
-									}
-								}
-							}
 						}
 					</script>
 

@@ -56,7 +56,7 @@
             overflow: hidden;
         }
 
-        .dashboard {
+        .dash {
             width: 20%;
             height: 20%;
             background-color: transparent;
@@ -84,9 +84,9 @@
             box-sizing: border-box;
             margin-top: 30px;
             border-radius: 10px;
+            border: none;
             box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
             text-align: center;
-            border: none;
         }
 
         .card:hover {
@@ -125,7 +125,7 @@
         .leftnav {
             width: 15%;
             height: 100%;
-            background-color: #79BAEC;
+            background-color: #00509d;
             padding: 10px;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
@@ -177,25 +177,31 @@
         }
 
         .bottom-lnav a:hover {
-            padding: 5px 10px;
+            padding: 15px 20px 15px 20px;
+            width: 11.5vw;
             background-color: white;
             position: relative;
             left: 20px;
             color: black;
-            border-radius: 30px;
+            border-radius: 20px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
             transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
         }
 
         .button-profile {
             align-items: center;
-            justify-content: center;
-            display: flex;
-            width: 10vw;
-            text-align: center;
-            margin-top: 10px;
-            margin-left: 1.875rem;
-            border-radius: 0.625rem;
-            padding: 0.9375rem 0.625rem;
+			justify-content: center;
+			display: flex;
+			width: 10vw;
+		    margin-top: 30px;
+			margin-left: 36px;
+			border-radius: 10px;
+			padding: 15px 10px 15px 10px;
+					/*tlbr*/
+			overflow: hidden;
+			cursor: pointer;
+			border: 2px solid black;
         }
 
         .profile {
@@ -209,10 +215,22 @@
             width: 0.625rem;
             margin-left: 1.25rem;
         }
+        .staffProfile {
+			margin-left: 2.3rem;
+			position: absolute;
+			background-color: none;
+			width: 9.5vw;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			z-index: 1;
+			display: none;
+		}
 
         .staffProfile a {
             text-decoration: none;
-            color: white;
+            background-color: white;
+            color: black;
             overflow: hidden;
             width: 10vw;
             height: 20%;
@@ -223,7 +241,7 @@
             justify-content: center;
             padding: .5rem 0 0 0;
             height: 2rem;
-            margin-left: 30px;
+            /* margin-left: 30px; */
         }
 
         .staffProfile a:hover {
@@ -247,12 +265,11 @@
             height: 40vh;
             background-color: #F5F5F5;
             float: right;
-            margin-right: 10px;
-            margin-top: 15px;
-            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+           margin-right: 10px;
+           margin-top: 15px;
+           box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
             border-radius: 5px;
             padding: 20px;
-
         }
 
         .calendar-header {
@@ -291,7 +308,7 @@
         <div class="cover">
             <div class="rightnav">
                 <div class="tp-rnav">
-                    <div class="dashboard"><b>DASHBOARD</b></div>
+                    <div class="dash"><b>DASHBOARD</b></div>
 
                     <div class="card-container">
                         <div class="card">
@@ -312,27 +329,27 @@
                 <div class="b-container">
                     <div class="calendar"></div>
                     <div class="graph">
-                        <canvas id="queueTrendChart"></canvas> 
+                        <canvas id="queueTrendChart"></canvas> <!-- Line graph added -->
                     </div>
                 </div>
             </div>
 
             <div class="leftnav">
                 <div class="top-lnav">
-                    <img src="./images/logo.png" class="cec">
+                    <img src="logo.png" class="cec">
                     <b class="title"><br>Cebu Eastern College</b>
                 </div>
                 <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
                 <div class="staffProfile" id="staffProfile">
                     <a href="#">Settings</a>
-                    <a href="logout">Signout</a>
+                    <a href="login">Signout</a>
                 </div>
                 <div class="bottom-lnav">
+                    <b><a href="">Dashboard</a></b>
                     <b><a href="userwindow">User Window</a></b>
                     <b><a href="counterwindow">Counter Window</a></b>
-                    <!-- <b><a href="#">Queue List</a></b> -->
-                    <b><a href="addstudent">Add Student</a></b>
-                    <b><a href="entertainment">Advertisement</a></b>
+                    <b><a href="add student.html">Add Student</a></b>
+                    <b><a href="entertainment.html">Advertisement</a></b>
                 </div>
             </div>
         </div>
@@ -357,10 +374,10 @@
             const queueTrendChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], 
+                    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], // X-axis labels
                     datasets: [{
                         label: 'Request Per Day', // Chart label
-                        data: [50, 75, 60, 90, 55, 40], 
+                        data: [50, 75, 60, 90, 55, 40], // Replace with actual data
                         borderColor: 'rgba(75, 192, 192, 1)',
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         fill: true,
@@ -401,10 +418,12 @@
 
                 let days = "";
 
+                // Display previous month's days
                 for (let i = firstDayOfMonth; i > 0; i--) {
                     days += `<div class="date">${lastDayOfPrevMonth - i + 1}</div>`;
                 }
 
+                // Display current month's days
                 for (let i = 1; i <= lastDateOfMonth; i++) {
                     const isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear();
                     days += `<div class="date ${isToday ? 'current-day' : ''}">${i}</div>`;
@@ -413,6 +432,7 @@
                 calendarElement.innerHTML = `
                     <div class="calendar-header">
                         <button id="prev-month">Prev</button>
+                        <div>${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}</div>
                         <button id="next-month">Next</button>
                     </div>
                     <div class="calendar-body">
