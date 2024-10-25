@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.smartqueueweb.Class.JwtValidator;
 import com.smartqueueweb.Model.StudentBean;
 import com.smartqueueweb.Service.ServiceImpl;
 
@@ -24,10 +25,10 @@ public class JsonStudentSearchAPI extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 		Gson gson = new Gson();
-		String studentid  =  request.getParameter("studentid").trim();
-		String studentfirstname  =  request.getParameter("firstname").trim();
-		String studentmiddlename  =  request.getParameter("middlename").trim();
-		String studentidstudentlastname  =  request.getParameter("lastname").trim();
+		String studentid  =  JwtValidator.fixGarbledCharacters(request.getParameter("studentid")); 
+		String studentfirstname  =  JwtValidator.fixGarbledCharacters(request.getParameter("firstname"));
+		String studentmiddlename  =  JwtValidator.fixGarbledCharacters(request.getParameter("middlename"));
+		String studentidstudentlastname  =  JwtValidator.fixGarbledCharacters(request.getParameter("lastname"));
 
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");

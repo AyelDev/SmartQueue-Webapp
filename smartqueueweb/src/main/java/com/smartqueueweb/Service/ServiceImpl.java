@@ -123,7 +123,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	}
 	
 	@Override
-	public Integer addToQueue(String queueNumber, int idNumber, String fullname, String purpose, String servicetype) {
+	public Integer addToQueue(String queueNumber, long idNumber, String fullname, String purpose, String servicetype) {
 		return studentdata.addToQueue(queueNumber, idNumber, fullname, purpose, servicetype);
 	}
 

@@ -22,20 +22,22 @@ public class UserInquiry_Servlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String queueNum = JwtValidator.fixGarbledCharacters(request.getParameter("queueNum"));
-		String fullname = JwtValidator.fixGarbledCharacters(request.getParameter("fullname"));
-		String studentid = JwtValidator.fixGarbledCharacters(request.getParameter("studentid"));
-		String purpose = JwtValidator.fixGarbledCharacters(request.getParameter("purpose"));
-		String servicetype = JwtValidator.fixGarbledCharacters(request.getParameter("servicetype"));
 
 		// Call the service to register staff
 		try {
-			
+
+			String queueNum = JwtValidator.fixGarbledCharacters(request.getParameter("queueNum"));
+			String fullname = JwtValidator.fixGarbledCharacters(request.getParameter("fullname"));
+			String studentid = JwtValidator.fixGarbledCharacters(request.getParameter("studentid"));
+			String purpose = JwtValidator.fixGarbledCharacters(request.getParameter("purpose"));
+			String servicetype = JwtValidator.fixGarbledCharacters(request.getParameter("servicetype"));
+
 			if(purpose.isEmpty() || servicetype.isEmpty() || fullname.isEmpty() || studentid.isEmpty()){
 				throw new Exception();
 			}
-
-			int ifTrue = services.addToQueue(queueNum, Integer.parseInt(studentid), fullname, purpose, servicetype);
+			long studentIdparsed = Long.parseLong(studentid);
+			
+			int ifTrue = services.addToQueue(queueNum, studentIdparsed, fullname, purpose, servicetype);
 			
 			if(ifTrue >= 1){
 				response.setContentType("text/plain");
@@ -46,6 +48,8 @@ public class UserInquiry_Servlet extends HttpServlet {
 			}
 			
 		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
 			response.setContentType("text/plain");
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			response.getWriter().write("Enquiry Failed please fill up the necessary form.");

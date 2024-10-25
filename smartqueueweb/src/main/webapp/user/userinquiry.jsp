@@ -626,6 +626,9 @@
                     let studentId = '';
                     let purpose = '';
                     let charQueue = '';
+                    let studentFirstname = '';
+                    let studentMiddlename = '';
+                    let studentLastname = '';
 
                     if (serviceType === 'General') {
                         studentName = document.getElementById('general-student-name');
@@ -638,7 +641,10 @@
                         purpose = document.getElementById('records-purpose');
                         charQueue = 'R';
                     } else if (serviceType === 'Archiving') {
-                        studentName = document.getElementById('archiving-student-name');
+                        studentFirstname = document.getElementById('archiving-student-firstname');
+                        studentMiddlename = document.getElementById('archiving-student-middlename');
+                        studentLastname = document.getElementById('archiving-student-lastname');
+
                         studentId = document.getElementById('archiving-student-id');
                         purpose = document.getElementById('archiving-purpose');
                         charQueue = 'A';
@@ -655,20 +661,20 @@
                     <hr>
                     <h1>`+ (charQueue + queueNumber) + `</h1>
                     <hr>
-                    <p><strong>Name:</strong> `+ studentName.value + `</p>
+                    <p><strong>Name:</strong> `+ studentFirstname.value + " " + studentMiddlename.value + " "  + studentLastname.value + `</p>
                     <p><strong>Student ID:</strong> `+ studentId.value + `</p>
                     <p><strong>Service Type:</strong> ` + serviceType + ` Service</p>
                     <p><strong>Purpose:</strong> `+ purpose.value + `</p>
                     <p><strong>Date & Time:</strong> `+ currentDateTime + `</p>
                     `;
                     let servetype = serviceType;
-
+                    studentName = studentFirstname.value + " " + studentMiddlename.value + " "  + studentLastname.value;
                     $.ajax({
                         url: 'inquiry',
                         type: 'POST',
                         data: {
                             queueNum: (charQueue + queueNumber),
-                            fullname: studentName.value,
+                            fullname: studentName,
                             studentid: studentId.value,
                             purpose: purpose.value,
                             servicetype: servetype
