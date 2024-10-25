@@ -336,7 +336,7 @@
 
             <div class="leftnav">
                 <div class="top-lnav">
-                    <img src="logo.png" class="cec">
+                    <img src="./images/logo.png" class="cec">
                     <b class="title"><br>Cebu Eastern College</b>
                 </div>
                 <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
@@ -345,11 +345,11 @@
                     <a href="login">Signout</a>
                 </div>
                 <div class="bottom-lnav">
-                    <b><a href="">Dashboard</a></b>
-                    <b><a href="userwindow">User Window</a></b>
-                    <b><a href="counterwindow">Counter Window</a></b>
-                    <b><a href="add student.html">Add Student</a></b>
-                    <b><a href="entertainment.html">Advertisement</a></b>
+                    <b><a href="#">Dashboard</a></b>
+                    <b><a href="user_window.jsp">User Window</a></b>
+                    <b><a href="counter_window.jsp">Counter Window</a></b>
+                    <b><a href="add student.jsp">Add Student</a></b>
+                    <b><a href="entertainment.jsp">Advertisement</a></b>
                 </div>
             </div>
         </div>
@@ -428,11 +428,11 @@
                     const isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear();
                     days += `<div class="date ${isToday ? 'current-day' : ''}">${i}</div>`;
                 }
-
+               
                 calendarElement.innerHTML = `
                     <div class="calendar-header">
                         <button id="prev-month">Prev</button>
-                        <div>${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}</div>
+                       
                         <button id="next-month">Next</button>
                     </div>
                     <div class="calendar-body">
