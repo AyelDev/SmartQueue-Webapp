@@ -404,7 +404,7 @@
 			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 			overflow: hidden;
 			padding: 20px;
-			margin-top: -35%;
+			margin-top: 10%;
 		}
 
 		.add-account-icon {
@@ -650,7 +650,7 @@
 				<div class="container">
 					<div class="navbar">
     <div class="logoContainer">
-        <img src="logo.png" alt="" class="logo">
+        <img src="./images/logo.png" alt="" class="logo">
         <p class="title"><b>Cebu Eastern College</b></p>
     </div>
     <!-- staff profile -->

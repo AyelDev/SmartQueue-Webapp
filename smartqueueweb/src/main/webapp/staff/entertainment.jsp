@@ -30,6 +30,7 @@
                     background-color: #00509d;
                     padding: 10px;
                     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+                    overflow-y: hidden;
                 }
         
                 .ulnav {
@@ -252,7 +253,7 @@
         
             <div class="leftnav">
                 <div class="ulnav">
-                    <img src="logo.png" class="cec">
+                    <img src="./images/logo.png" class="cec">
                     <b class="title"><br>Cebu Eastern College</b>
         
                     <!-- staff profile -->

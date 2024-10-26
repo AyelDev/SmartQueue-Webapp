@@ -515,7 +515,7 @@
                 </div>
                 <div class="leftnav">
                     <div class="top-lnav">
-                        <img src="logo.png" class="cec">
+                        <img src="./images/logo.png" class="cec">
                         <p class="title"><br><b>Cebu Eastern College</b></p>
                     </div>
                     <!-- staff profile -->
