@@ -1,5 +1,7 @@
 package com.smartqueueweb.Model;
 
+import java.sql.Date;
+
 public class StaffBean {
 	private int staffID;
 	private String username;
@@ -10,7 +12,21 @@ public class StaffBean {
 	private double contactNumber;
 	private int isLocked;
 	
-	public StaffBean() {};
+	private int requestId;
+	private Date requestedPassCreated;
+	
+	
+	public StaffBean() {}
+	
+	/*
+	 * Requested list of staff Constructor
+	 */
+	public StaffBean(String username, String email, int requestId, Date requestedPassCreated) {
+		this.username = username;
+		this.email = email;
+		this.requestId = requestId;
+		this.requestedPassCreated = requestedPassCreated;
+	}
 	
 	public StaffBean(int staffID, String username, String password, String firstname, String lastname, String email,
 			double contactNumber, int isLocked) {
@@ -88,13 +104,28 @@ public class StaffBean {
 		this.isLocked = isLocked;
 	}
 
+	public int getRequestId() {
+		return requestId;
+	}
+
+	public void setRequestId(int requestId) {
+		this.requestId = requestId;
+	}
+
+	public Date getRequestedPassCreated() {
+		return requestedPassCreated;
+	}
+
+	public void setRequestedPassCreated(Date requestedPassCreated) {
+		this.requestedPassCreated = requestedPassCreated;
+	}
+
 	@Override
 	public String toString() {
 		return "StaffBean [staffID=" + staffID + ", username=" + username + ", password=" + password + ", firstname="
 				+ firstname + ", lastname=" + lastname + ", email=" + email + ", contactNumber=" + contactNumber
-				+ ", isLocked=" + isLocked + "]";
+				+ ", isLocked=" + isLocked + ", requestId=" + requestId + ", requestedPassCreated="
+				+ requestedPassCreated + "]";
 	}
-	
-	
 	
 }

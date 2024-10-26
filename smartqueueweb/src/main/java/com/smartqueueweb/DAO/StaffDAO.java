@@ -138,7 +138,6 @@ public class StaffDAO extends SQLConnection {
 	}
 
 	List<StaffBean> listOfStaff = null;
-
 	public List<StaffBean> listOfStaff() {
 		try {
 			ConnectDriver();
@@ -235,6 +234,49 @@ public class StaffDAO extends SQLConnection {
 					SQLClose();
 				}
 
+		return 0;
+	}
+
+	public List<StaffBean> listOfStaffPasswordRequest(int isCompleted) {
+		try {
+		ConnectDriver();
+		prs = conn.prepareStatement("SELECT * FROM tbl_staff_request_password WHERE is_completed=?");
+		prs.setInt(1, isCompleted);
+		rs = prs.executeQuery();
+		listOfStaff = new ArrayList<StaffBean>();
+		while (rs.next()) {
+			staffbean = new StaffBean(
+					rs.getString("username"),
+					rs.getString("email"),
+					rs.getInt("request_id"),
+					rs.getDate("date_requested"));
+			listOfStaff.add(staffbean);
+		}
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	} finally {
+		SQLClose();
+	}
+	return listOfStaff;
+	}
+
+		public Integer requestStaffPassword(String username, String email) {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("INSERT INTO tbl_staff_request_password (`request_id`, `username`, `email`, "
+					+ "`date_requested`, `is_completed`) VALUES (NULL, ?, ?, current_timestamp(), '0');");
+			prs.setString(1, username);
+			prs.setString(2, email);
+			return prs.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
 		return 0;
 	}
 }

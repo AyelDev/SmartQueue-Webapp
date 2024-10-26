@@ -66,6 +66,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return staffdata.removeStaff(staffId);
 	}
+	
+	@Override
+	public List<StaffBean> listOfStaffPasswordRequests(int isCompleted) {
+		// TODO Auto-generated method stub
+		return staffdata.listOfStaffPasswordRequest(isCompleted);
+	}
 
 	@Override
 	public Integer updateStaff(long staffId, String inputFirstname, String inputLastname, String inputEmail,
@@ -73,6 +79,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return staffdata.updateStaff(staffId, inputFirstname, inputLastname, inputEmail, inputContactnumber,
 				inputUsername, inputPassword, inputStafflocked);
+	}
+
+	@Override
+	public Integer requestStaffPassword(String username, String email) {
+		// TODO Auto-generated method stub
+		return staffdata.requestStaffPassword(username, email);
 	}
 
 	//////////////////////////////////////////////////////////////////////// --------------------
@@ -172,5 +184,4 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return "";
 
 	}
-
 }

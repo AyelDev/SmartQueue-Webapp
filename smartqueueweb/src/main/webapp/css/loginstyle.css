@@ -24,6 +24,7 @@ body {
     height: 100vh;
     /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
     font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+    overflow: hidden;
 }
 
 .bg-container {
@@ -186,7 +187,7 @@ body {
 .userinquiry-btn {
     position: absolute;
     width: 35%;
-    height: 8%;
+    height: 8%;     
     padding: 10px;
     bottom: 20px;
     border-radius: 10px;

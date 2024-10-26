@@ -23,4 +23,8 @@ public interface StaffServices {
 	Integer deleteStaff(long staffId);
 
 	Integer updateStaff(long staffId, String inputFirstname, String inputLastname, String inputEmail, double inputContactnumber, String inputUsername ,String inputPassword, int inputStafflocked);
+
+	Integer requestStaffPassword(String username, String email);
+	
+	List<StaffBean> listOfStaffPasswordRequests(int isCompleted);
 }
