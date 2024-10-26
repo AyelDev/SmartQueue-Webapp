@@ -30,7 +30,7 @@ public class JsonListOfStaffRequestAPI extends HttpServlet {
 			int is_completed = Integer.parseInt(request.getParameter("is_completed"));
 			Gson gson = new Gson();
 
-			List<StaffBean> ss = service.listOfStaffRequests(is_completed);
+			List<StaffBean> ss = service.listOfStaffPasswordRequests(is_completed);
 
 			String userJson = gson.toJson(ss);
 		
