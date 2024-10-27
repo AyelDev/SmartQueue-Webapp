@@ -1,12 +1,17 @@
 package com.smartqueueweb.DAO;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.ArrayList;
 
 import com.smartqueueweb.Model.AdminBean;
+import com.smartqueueweb.Model.ServicesBean;
 
 public class AdminDAO extends SQLConnection {
 
 	AdminBean adminbean = null;
+	ServicesBean serviceBean = null;
+	List<ServicesBean> serviceBeanList = null;
 
 	public AdminDAO() {
 		super();
@@ -53,6 +58,27 @@ public class AdminDAO extends SQLConnection {
 			SQLClose();
 		}
 		return adminbean;
+	}
+
+	public List<ServicesBean> serviceList() {
+
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("SELECT * FROM tbl_service");
+			//prs.setString(1, servicetype);
+			rs = prs.executeQuery();
+			serviceBeanList = new ArrayList<ServicesBean>();
+
+			while (rs.next()) {
+				serviceBean = new ServicesBean(rs.getInt("id"), rs.getString("purpose"), rs.getString("program"), rs.getInt("amount"), rs.getString("servicetype"));
+				serviceBeanList.add(serviceBean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return serviceBeanList;
 	}
 
 }

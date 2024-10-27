@@ -1,10 +1,9 @@
 package com.smartqueueweb.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.smartqueueweb.Model.StudentBean;
 import com.smartqueueweb.Service.ServiceImpl;
 
 public class CreateInquiryStudent_Test {

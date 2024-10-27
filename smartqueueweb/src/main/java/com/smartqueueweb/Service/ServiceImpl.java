@@ -14,6 +14,7 @@ import com.smartqueueweb.DAO.AdminDAO;
 import com.smartqueueweb.DAO.StaffDAO;
 import com.smartqueueweb.DAO.StudentDAO;
 import com.smartqueueweb.Model.AdminBean;
+import com.smartqueueweb.Model.ServicesBean;
 import com.smartqueueweb.Model.StaffBean;
 import com.smartqueueweb.Model.StudentBean;
 
@@ -101,6 +102,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return admindata.adminDetail(username);
 	}
 
+	@Override
+	public List<ServicesBean> serviceList() {
+		// TODO Auto-generated method stub
+		return admindata.serviceList();
+	}
+
 	//////////////////////////////////////////////////////////////////////// -----------------------
 	//////////////////////////////////////////////////////////////////////// Student
 
@@ -184,4 +191,5 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return "";
 
 	}
+
 }

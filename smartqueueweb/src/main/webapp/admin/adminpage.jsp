@@ -16,255 +16,258 @@
 			<title>Admin | Dashboard</title>
 		</head>
 		<style>
-				@import url('./admin/fonts.css');
+			@import url('./admin/fonts.css');
 
-				:root {
-					--primary-color: #1e91d0;
-					--secondary-color: #00509d;
-					--body-fonts: "Roboto Condensed", sans-serif;
-					--background-color: #f4f4f9;
-					--select-text-color: #B4B4B8;
-					--text-color: #3D3C42;
-					font-optical-sizing: auto;
-					font-style: normal;
-				}
+			:root {
+				--primary-color: #1e91d0;
+				--secondary-color: #00509d;
+				--body-fonts: "Roboto Condensed", sans-serif;
+				--background-color: #f4f4f9;
+				--select-text-color: #B4B4B8;
+				--text-color: #3D3C42;
+				font-optical-sizing: auto;
+				font-style: normal;
+			}
 
-				html {
-					scroll-behavior: smooth;
-				}
+			html {
+				scroll-behavior: smooth;
+			}
 
-				html::-webkit-scrollbar {
-					width: .8rem;
-				}
+			html::-webkit-scrollbar {
+				width: .8rem;
+			}
 
-				html::-webkit-scrollbar-track {
-					background: transparent;
-				}
+			html::-webkit-scrollbar-track {
+				background: transparent;
+			}
 
-				html::-webkit-scrollbar-thumb {
-					background-color: var(--primary-color);
-					border-radius: 5rem;
-				}
+			html::-webkit-scrollbar-thumb {
+				background-color: var(--primary-color);
+				border-radius: 5rem;
+			}
 
-				* {
-					font-family: var(--body-fonts);
-					padding: 0;
-					margin: 0;
-				}
+			* {
+				font-family: var(--body-fonts);
+				padding: 0;
+				margin: 0;
+			}
 
-				body {
-					width: 100%;
-					font-family: var(--body-fonts);
-					margin: 0;
-					padding: 0;
-					font-optical-sizing: auto;
-					font-style: normal;
-					height: auto;
-					background-color: #f4f4f9;
-				}
+			body {
+				width: 100%;
+				font-family: var(--body-fonts);
+				margin: 0;
+				padding: 0;
+				font-optical-sizing: auto;
+				font-style: normal;
+				height: auto;
+				background-color: #f4f4f9;
+			}
 
-				.container {
-					width: 100%;
-					height: auto;
-					background-color: var(--background-color);
-					align-items: center;
-					justify-content: center;
-					margin-top: 3%;
-				}
+			.container {
+				width: 100%;
+				height: auto;
+				background-color: var(--background-color);
+				align-items: center;
+				justify-content: center;
+				margin-top: 3%;
+			}
 
 
-				/*Navbar section*/
-				.navbar {
-					width: 15vw;
-					height: 100vh;
-					background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
-					position: fixed;
-					justify-content: center;
-					align-items: center;
-					left: 0;
-					float: left;
-					margin-top: -3%;
-				}
+			/*Navbar section*/
+			.navbar {
+				width: 15vw;
+				height: 100vh;
+				background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
+				position: fixed;
+				justify-content: center;
+				align-items: center;
+				left: 0;
+				float: left;
+				margin-top: -3%;
+			}
 
-				.logoContainer {
-					width: 100%;
-					text-align: center;
-				}
+			.logoContainer {
+				width: 100%;
+				text-align: center;
+			}
 
-				.logo {
-					width: 50%;
-					max-width: 100%;
-					object-fit: contain;
-					margin-top: 50px;
-				}
+			.logo {
+				width: 50%;
+				max-width: 100%;
+				object-fit: contain;
+				margin-top: 50px;
+			}
 
-				.title {
-					color: var(--background-color);
-					font-size: 0.8em;
-				}
+			.title {
+				color: var(--background-color);
+				font-size: 0.8em;
+			}
 
-				/* menu */
-				.menu-navbar {
-					margin-top: 3rem;
-					display: flex;
-					flex-direction: column;
-				}
+			/* menu */
+			.menu-navbar {
+				margin-top: 3rem;
+				display: flex;
+				flex-direction: column;
+			}
 
-				.dropdown {
-					position: relative;
-					display: inline-block;
-				}
+			.dropdown {
+				position: relative;
+				display: inline-block;
+			}
 
-				.dropdown-dashboard {
-					display: none;
-					position: absolute;
-					background-color: var(--background-color);
-					width: 120px;
-					top: 100%;
-					left: 70%;
-					z-index: 3;
-					box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-					border-radius: 4px;
-					padding: 10px;
-					overflow-x: hidden;
-				}
+			.dropdown-dashboard {
+				display: none;
+				position: absolute;
+				background-color: var(--background-color);
+				width: 120px;
+				top: 100%;
+				left: 70%;
+				z-index: 3;
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+				border-radius: 4px;
+				padding: 10px;
+				overflow-x: hidden;
+			}
 
-				.dropdown-dashboard a {
-					display: flex;
-					text-decoration: none;
-					color: black;
-					text-align: center;
-					align-items: center;
-					justify-content: center;
-					font-size: 11px;
-					flex-direction: column;
-					padding: 10px;
-					position: relative;
-					z-index: 3;
-				}
+			.dropdown-dashboard a {
+				display: flex;
+				text-decoration: none;
+				color: black;
+				text-align: center;
+				align-items: center;
+				justify-content: center;
+				font-size: 11px;
+				flex-direction: column;
+				padding: 10px;
+				position: relative;
+				z-index: 3;
+			}
 
-				.dropdown-dashboard a:hover {
-					background-color: var(--select-text-color);
-					border-radius: 4px;
-					color: black;
-					border-radius: 4px;
-					padding: 10px;
-					width: 120px;
-					margin-left: -7.2%;
-				}
+			.dropdown-dashboard a:hover {
+				background-color: var(--select-text-color);
+				border-radius: 4px;
+				color: black;
+				border-radius: 4px;
+				padding: 10px;
+				width: 120px;
+				margin-left: -7.2%;
+			}
 
-				.dropdown-btn {
-					background: none;
-					display: flex;
-					align-items: center;
-					width: 14.3vw;
-					height: 8vh;
-					border: 0;
-					font-size: 15px;
-					border-radius: 16px 0 0 16px;
-					padding-right: 60px;
-					margin-left: 10px;
-					cursor: pointer;
-					position: relative;
-					color: #F6F4EB;
-					margin-top: 5%;
-				}
-				.dropdown-btn:hover{
-					height: 8vh;
-				}
+			.dropdown-btn {
+				background: none;
+				display: flex;
+				align-items: center;
+				width: 14.3vw;
+				height: 8vh;
+				border: 0;
+				font-size: 15px;
+				border-radius: 16px 0 0 16px;
+				padding-right: 60px;
+				margin-left: 10px;
+				cursor: pointer;
+				position: relative;
+				color: #F6F4EB;
+				margin-top: 5%;
+			}
 
-				.dropdown-btn:hover svg, .dropdown-btn.active svg {
-					fill: var(--text-color);
-					color: black;
-				}
+			.dropdown-btn:hover {
+				height: 8vh;
+			}
 
-				.dropdown-btn:hover .counter-icon,
-				.dropdown-btn:hover .entertainment-icon,
-				.dropdown-btn.active .counter-icon,
-				.dropdown-btn.active .entertainment-icon {
-					stroke: var(--text-color);
-				}
-				.dropdown-btn.active a{
-					color: var(--text-color);															
-				}
+			.dropdown-btn:hover svg,
+			.dropdown-btn.active svg {
+				fill: var(--text-color);
+				color: black;
+			}
 
-				.dropdown-btn::after {
-					content: '';
-					border-radius: 50%;
-				}
+			.dropdown-btn:hover .counter-icon,
+			.dropdown-btn:hover .entertainment-icon,
+			.dropdown-btn.active .counter-icon,
+			.dropdown-btn.active .entertainment-icon {
+				stroke: var(--text-color);
+			}
 
-				.dropdown-btn a {
-					text-decoration: none;
-					color: #F6F4EB;
-				}
+			.dropdown-btn.active a {
+				color: var(--text-color);
+			}
 
-				.dropdown-btn a:hover {
-					color: black;
-					font-weight: bold;
-				}
+			.dropdown-btn::after {
+				content: '';
+				border-radius: 50%;
+			}
 
-				.dropdown:hover .dropdown-dashboard {
-					display: block;
+			.dropdown-btn a {
+				text-decoration: none;
+				color: #F6F4EB;
+			}
 
-				}
+			.dropdown-btn a:hover {
+				color: black;
+				font-weight: bold;
+			}
 
-				.dropdown {
-					color: var(--background-color);
-				}
+			.dropdown:hover .dropdown-dashboard {
+				display: block;
 
-				.dropdown:hover,
-				.dropdown:hover a {
-					color: black;
-					font-weight: bold;
-				}
+			}
 
-				.dropdown-btn a:hover,
-				.dropdown-btn:hover,
-				.active {
-					color: var(--text-color);
-					font-weight: bold;
-				}
+			.dropdown {
+				color: var(--background-color);
+			}
 
-				.active,
-				.dropdown-btn:hover {
-					background-color: var(--background-color);
-					width: 18vw;
-					color: var(--text-color);
-					font-weight: bold;
-				}
+			.dropdown:hover,
+			.dropdown:hover a {
+				color: black;
+				font-weight: bold;
+			}
 
-				.dropdown-btn:hover+.dropdown-dashboard {
-					display: block;
-				}
+			.dropdown-btn a:hover,
+			.dropdown-btn:hover,
+			.active {
+				color: var(--text-color);
+				font-weight: bold;
+			}
 
-				.dashboard-icon,
-				.users-icon,
-				.display-icon,
-				.entertainment-icon,
-				.counter-icon {
-					object-fit: scale-down;
-					width: 20px;
+			.active,
+			.dropdown-btn:hover {
+				background-color: var(--background-color);
+				width: 18vw;
+				color: var(--text-color);
+				font-weight: bold;
+			}
 
-				}
+			.dropdown-btn:hover+.dropdown-dashboard {
+				display: block;
+			}
 
-				.dashboard-icon,
-				.users-icon,
-				.display-icon,
-				.entertainment-icon,
-				.counter-icon {
-					margin-right: 17px;
-				}
+			.dashboard-icon,
+			.users-icon,
+			.display-icon,
+			.entertainment-icon,
+			.counter-icon {
+				object-fit: scale-down;
+				width: 20px;
 
-				.dashboard-caretright {
-					margin-left: 50px;
-				}
+			}
 
-				.caretright {
-					object-fit: scale-down;
-					width: 5%;
-					right: 5.5rem;
-					position: absolute;
-				}
+			.dashboard-icon,
+			.users-icon,
+			.display-icon,
+			.entertainment-icon,
+			.counter-icon {
+				margin-right: 17px;
+			}
+
+			.dashboard-caretright {
+				margin-left: 50px;
+			}
+
+			.caretright {
+				object-fit: scale-down;
+				width: 5%;
+				right: 5.5rem;
+				position: absolute;
+			}
 
 
 
@@ -768,8 +771,8 @@
 
 
 						<!-- admin profile -->
-						<button class="button-profile" id="button-profile"><svg class="profile" width="64px" height="64px"
-								viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<button class="button-profile" id="button-profile"><svg class="profile" width="64px"
+								height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
 								<g id="SVGRepo_iconCarrier">
@@ -835,7 +838,7 @@
 											<th>Actions</th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody id="general-program-tablelist">
 										<tr>
 											<td></td>
 											<td></td>
@@ -871,7 +874,7 @@
 											<th>Actions</th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody id="general-purpose-tablelist">
 										<tr>
 											<td></td>
 											<td></td>
@@ -902,11 +905,13 @@
 										<tr>
 											<th>#</th>
 											<th>Documents</th>
+											<th>Amount</th>
 											<th>Actions</th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody id="records-purpose-tablelist">
 										<tr>
+											<td></td>
 											<td></td>
 											<td></td>
 											<td><button class="update-btn">Update</button>
@@ -914,6 +919,7 @@
 											</td>
 										</tr>
 										<tr>
+											<td></td>
 											<td></td>
 											<td></td>
 											<td><button class="update-btn">Update</button>
@@ -939,7 +945,7 @@
 											<th>Actions</th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody id="archiving-purpose-tablelist">
 										<tr>
 											<td></td>
 											<td></td>
@@ -1214,6 +1220,85 @@
 					this.classList.toggle('active');
 					document.getElementById('adminProfile').classList.toggle('show');
 				});
+
+
+				//fetch data for general records and archiving
+				function updateRecordsGeneralArchivingDatas(servicetype) {
+					generalitemId = 1;
+					recordsitemId = 1;
+					archivingItemId = 1;
+					$.ajax({
+						url: '/smartqueueweb/JsonServiceListAPI',
+						method: 'GET',
+						data: {},
+						dataType: 'json',
+						success: function (data) {
+							const tableGeneralProgramBody = $('#general-program-tablelist');
+							const tableGeneralPurposeBody = $('#general-purpose-tablelist');
+							const tableRecordsPurposeBody = $('#records-purpose-tablelist');
+							const tableArchivePurposeBody = $('#archiving-purpose-tablelist');
+
+							tableGeneralProgramBody.empty();
+							tableGeneralPurposeBody.empty();
+							tableRecordsPurposeBody.empty();
+							tableArchivePurposeBody.empty();
+
+							// Populate table with new data
+							data.forEach(item => {
+
+								if(item.course !== undefined && item.serviceType == 'GENERAL'){
+								tableGeneralProgramBody.append(`
+									<tr>
+											<td>`+(generalitemId++)+ `</td>
+											<td>`+item.course+ `</td>
+											<td><button class="update-btn"
+													onclick="showModal('Update Info')">Update</button>
+												<button class="delete-btn">Delete</button>
+											</td>
+										</tr>
+               					`);
+								}
+								else if(item.purpose !== undefined && item.serviceType == 'GENERAL'){
+								tableGeneralPurposeBody.append(`
+										<tr>
+											<td>`+(generalitemId++)+`</td>
+											<td>`+item.purpose+`</td>
+											<td><button class="update-btn">Update</button>
+												<button class="delete-btn">Delete</button>
+											</td>
+										</tr>
+								`);}
+								
+								if(item.purpose !== undefined && item.serviceType == 'RECORDS'){
+								tableRecordsPurposeBody.append(`
+									<tr>
+										<td>`+(recordsitemId++)+`</td>
+											<td>`+item.purpose+`</td>
+											<td><button class="update-btn">Update</button>
+												<button class="delete-btn">Delete</button>
+											</td>
+										</tr>
+								`);}
+								else if(item.program === undefined && item.serviceType == 'ARCHIVING'){
+								tableArchivePurposeBody.append(`
+									<tr>
+											<td>`+(archivingItemId++)+`</td>
+											<td>`+item.purpose+`</td>
+											<td><button class="update-btn">Update</button>
+												<button class="delete-btn">Delete</button>
+											</td>
+										</tr>
+								`);}
+
+							});
+						},
+						error: function (error) {
+							console.error('Error fetching data:', error);
+						}
+					});
+				}
+				updateRecordsGeneralArchivingDatas();
+
 			</script>
 
 
