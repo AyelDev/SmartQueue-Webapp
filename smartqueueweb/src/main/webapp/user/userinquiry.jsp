@@ -444,18 +444,12 @@
                         <label for="yearLevel">Year Level</label>
                         <input type="text" class="yearLevel" id="yearLevel">
                         <label for="options">Program</label>
-                        <select name="program" id="program" class="program">
+                        <select name="program" id="general-program" class="program">
                             <option value="">--</option>
-                            <option value="BEED">BEED</option>
-                            <option value="BSED">BSED</option>
-                            <option value="BSIT">BSIT</option>
-                            <option value="BSTM">BSTM</option>
-                            <option value="BSHM">BSHM</option>
                         </select>
                         <label for="options">Option</label>
                         <select name="purpose" id="general-purpose" class="purpose">
                             <option value="">--</option>
-                            <option value="enrollment">Enrollment</option>
                         </select>
                     </div>
                     <input type="button" class="printbutton" value="Print" onclick="printQueue('General')">
@@ -476,14 +470,6 @@
                         <label for="options">Option</label>
                         <select name="purpose" id="records-purpose" class="purpose">
                             <option value="">--</option>
-                            <option value="Cerifications">Cerifications (150php)</option>
-                            <option value="Good Moral">Good Moral (150php)</option>
-                            <option value="FORM 137">FORM 137 (150php)</option>
-                            <option value="TOR">Transcript of Records(TOR) (600php)</option>
-                            <option value="Diploma">Diploma (600php)</option>
-                            <option value="Grade Evaluation">Grade Evaluation (150php)</option>
-                            <option value="GWA">GWA (200php)</option>
-                            <option value="Application for Honors">Application for Honors (150php)</option>
                         </select>
 
                         <input type="hidden" id="serviceType">
@@ -516,8 +502,6 @@
                         <label for="options">Option</label>
                         <select name="purpose" id="archiving-purpose" class="purpose">
                             <option value="">--</option>
-                            <option value="enrollment">Enrollment</option>
-                            <option value="assesment">Assesment</option>
                         </select>
 
                         <input type="hidden" id="serviceType">
@@ -836,6 +820,61 @@
                 function SetEmptyIdField() {
                     archiveStudentId.value = "";
                 }
+                
+
+                //Selection
+                   //Selection
+                   function InquirySelection(){
+                    generalitemId = 1;
+					recordsitemId = 1;
+					archivingItemId = 1;
+					$.ajax({
+						url: '/smartqueueweb/JsonServiceListAPI',
+						method: 'GET',
+						data: {},
+						dataType: 'json',
+						success: function (data) {
+							const selectGeneralProgramBody = $('#general-program');
+							const tableGeneralPurposeBody = $('#general-purpose');
+							const tableRecordsPurposeBody = $('#records-purpose');
+							const tableArchivePurposeBody = $('#archiving-purpose');
+
+							//selectGeneralProgramBody.empty();
+							//tableGeneralPurposeBody.empty();
+							//tableRecordsPurposeBody.empty();
+							//tableArchivePurposeBody.empty();
+
+							// Populate table with new data
+							data.forEach(item => {
+
+								if(item.course !== undefined && item.serviceType == 'GENERAL'){
+                                    selectGeneralProgramBody.append(`
+                                     <option value="`+item.course+`">`+item.course+`</option>
+               					`);
+								}
+								else if(item.purpose !== undefined && item.serviceType == 'GENERAL'){
+								tableGeneralPurposeBody.append(`
+									      <option value="`+item.purpose+`">`+item.purpose+`</option>
+								`);}
+								
+								if(item.purpose !== undefined && item.serviceType == 'RECORDS'){
+								tableRecordsPurposeBody.append(`
+									        <option value="`+item.purpose+`">`+item.purpose+ ` [Php` +item.amount+`.00]</option>
+								`);}
+								else if(item.program === undefined && item.serviceType == 'ARCHIVING'){
+								tableArchivePurposeBody.append(`
+									 <option value="`+item.purpose+`">`+item.purpose+`</option>
+								`);}
+
+							});
+						},
+						error: function (error) {
+							console.error('Error fetching data:', error);
+						}
+					});
+                }
+
+                InquirySelection();
 
             </script>
 
