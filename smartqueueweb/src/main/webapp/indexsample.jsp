@@ -46,6 +46,16 @@
 
 				ws.onmessage = function (event) {
 					var mySpan = document.getElementById("chat");
+
+					if ('speechSynthesis' in window) {
+						const msg = new SpeechSynthesisUtterance();
+						msg.text = event.data;
+						msg.lang = 'en-PH'; // Specify Filipino (Philippines) language code 
+						window.speechSynthesis.speak(msg);
+					} else {
+						alert('Text-to-speech is not supported in this browser.');
+					}
+
 					mySpan.innerHTML += event.data + "<br/>";
 				};
 
@@ -67,14 +77,14 @@
 				<h1>Live Chat updates</h1>
 
 				<c:choose>
-			
+
 					<c:when test="${not empty sessionAdmin.username}">
 						<p id="welcome">
 							<c:out value="${sessionAdmin.username}" />
 						</p>
 					</c:when>
 
-				
+
 					<c:otherwise>
 						<p id="welcome">
 							<c:out value="${sessionStaff.username}" />

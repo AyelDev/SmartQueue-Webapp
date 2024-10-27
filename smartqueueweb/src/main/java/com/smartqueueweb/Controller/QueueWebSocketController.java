@@ -14,17 +14,18 @@ import javax.websocket.server.ServerEndpoint;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.smartqueueweb.Class.JwtValidator;
 
-@ServerEndpoint("/chat")
-public class ChatServlet {
+/**
+ * Servlet implementation class QueueWebSocketController
+ */
+@ServerEndpoint("/QueueWebSocketController")
+public class QueueWebSocketController {
+
 	private static Map<Integer, String> clients = new ConcurrentHashMap<>();
 
 	JwtValidator validator = new JwtValidator();
 
 	@OnMessage
 	public void onMessage(String message, Session session) throws IOException {
-
-		// System.out.println("Message from " + session.getId() + ": " + message + " " +
-		// session);
 
 		String username = "";
 		String[] parts = message.split(":");
@@ -44,8 +45,7 @@ public class ChatServlet {
 		// Broadcast the message to all connected clients
 		for (Session s : session.getOpenSessions()) {
 			if (s.isOpen()) {
-				// s.getBasicRemote().sendText(username + clients.values() + " : " +secondPart);
-				s.getBasicRemote().sendText(username + " : " + secondPart);
+				s.getBasicRemote().sendText(username + clients.values() + " : " + secondPart);
 			}
 		}
 	}
@@ -69,5 +69,4 @@ public class ChatServlet {
 
 		System.out.println("Error - " + t.getMessage());
 	}
-
 }
