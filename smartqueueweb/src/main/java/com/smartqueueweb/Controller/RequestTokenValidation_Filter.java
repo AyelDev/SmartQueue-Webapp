@@ -47,8 +47,10 @@ import com.smartqueueweb.Service.ServiceImpl;
 		"/counterwindow",
 		"/staffdashboard",
 		"/userwindow",
-		"/counterwindow"
+		"/counterwindow",
 
+		//ping
+		"/ping",
 })
 
 public class RequestTokenValidation_Filter implements Filter {
