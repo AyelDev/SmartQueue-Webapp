@@ -62,6 +62,7 @@
 				font-style: normal;
 				height: auto;
 				background-color: #f4f4f9;
+				overflow-x: hidden;
 			}
 
 			.container {
@@ -71,6 +72,7 @@
 				align-items: center;
 				justify-content: center;
 				margin-top: 3%;
+
 			}
 
 
@@ -177,7 +179,7 @@
 
 			.dropdown-btn:hover svg,
 			.dropdown-btn.active svg {
-				fill: var(--text-color);
+				fill: var(--secondary-color);
 				color: black;
 			}
 
@@ -185,7 +187,7 @@
 			.dropdown-btn:hover .entertainment-icon,
 			.dropdown-btn.active .counter-icon,
 			.dropdown-btn.active .entertainment-icon {
-				stroke: var(--text-color);
+				stroke: var(--secondary-color);
 			}
 
 			.dropdown-btn.active a {
@@ -232,7 +234,7 @@
 			.active,
 			.dropdown-btn:hover {
 				background-color: var(--background-color);
-				width: 18vw;
+				width: 14.3vw;
 				color: var(--text-color);
 				font-weight: bold;
 			}
@@ -275,7 +277,7 @@
 			/*Dashboard section*/
 			.dashboard-section {
 				width: 85vw;
-				height: auto;
+				height: 50vh;
 				background-color: var(--background-color);
 				float: right;
 				margin-left: 15%;
@@ -283,8 +285,7 @@
 				display: flex;
 				justify-content: center;
 				padding: 20px;
-				padding: 20px;
-
+				margin-top: 8%;
 			}
 
 			.dashboard-section h1 {
@@ -409,11 +410,12 @@
 			}
 
 			.dashboard-content {
-				width: 75vw;
-				height: 80vh;
+				width: 70vw;
+				height: 60vh;
 				justify-content: space-evenly;
 				display: flex;
-				margin-top: 5%;
+				margin-top: 2%;
+				margin-left: 50px;
 			}
 
 			.card-total {
@@ -435,10 +437,16 @@
 				margin-left: 30px;
 				color: var(--background-color);
 			}
-
+			hr{
+				width: 75%;
+				position: absolute;
+				margin-top: -30%;
+				margin-left: 4%;
+				border: 1px solid gray;
+			}
 			.department-graph {
 				width: 30%;
-				height: 62.5%;
+				height: 90%;
 				background-color: #ffff;
 				border-radius: 15px;
 				margin-top: 2rem;
@@ -447,7 +455,7 @@
 
 			.total-graph {
 				width: 48%;
-				height: 30%;
+				height: 35%;
 				margin-top: 12%;
 				margin-left: -24%;
 				background-color: #ffff;
@@ -467,11 +475,12 @@
 				position: absolute;
 				background-color: var(--background-color);
 				margin-left: 3.9%;
-				margin-top: 38%;
-				justify-content: center;
-				align-items: center;
+				margin-top: 32%;
+				justify-content: flex-start;
+				align-items: start;
 				color: var(--text-color);
-				z-index: -1;
+				scroll-behavior: smooth;
+				gap: 10px;
 			}
 
 			.table-content {
@@ -484,21 +493,19 @@
 				color: var(--text-color);
 				margin-left: 8%;
 				scroll-behavior: smooth;
+				overflow-y: auto;
 			}
-
-
-			.table-content::-webkit-scrollbar {
+			.table-content::-webkit-scrollbar{
 				width: .8rem;
 			}
-
-			.table-content::-webkit-scrollbar-track {
+			.table-content::-webkit-scrollbar-track{
 				background: transparent;
 			}
-
-			.table-content::-webkit-scrollbar-thumb {
+			.table-content::-webkit-scrollbar-thumb{
 				background-color: var(--primary-color);
 				border-radius: 5rem;
 			}
+
 
 			.table-header {
 				display: flex;
@@ -802,7 +809,7 @@
 					</div>
 
 					<!-- dashboard section -->
-					<h1 class="dashboard-title">Dashboard</h1>
+					<h1 class="dashboard-title">Dashboard</h1> <hr>
 					<div class="dashboard-content">
 						<div class="card-total"><br>
 							<p>Total students</p>
