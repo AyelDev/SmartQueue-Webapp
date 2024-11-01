@@ -11,6 +11,7 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
+			<script type="text/javascript" src="./scripts/ping.js"></script>
             <script type="text/javascript" src="./scripts/fadetransition.js"></script>
             <link rel="stylesheet" href="./css/loader.css">
             <title>SmartQueue</title>
@@ -489,11 +490,8 @@
 
                 <div class="rightnav">
                     <div class="scontainer">
-                        <select id="cars">
-                            <option value="counter1" selected>--</option>
-                            <option value="counter1">Counter 1</option>
-                            <option value="counter2">Counter 2</option>
-                            <option value="counter3">Counter 3</option>
+                        <select id="counter-list">
+                            <option value="counter1" selected>SELECT COUNTER LIST</option>
                         </select>
                         <section class="real-time">
                             <p><b>Time: <span id="time"></span></b></p>
@@ -504,11 +502,12 @@
                             <table id="priority-number-table" class="data-table">
                                 <thead>
                                     <tr>
-                                        <th class="thd">PRIORITY NO.</th>
-                                        <th>DATE</th>
-                                        <th>TIME</th>
-                                        <th>STATUS</th>
+                                        <th class="thd">QUEUE NO.</th>
                                         <th class="tsd">PURPOSE</th>
+                                        <th>NAME</th>
+                                        <th>ID NUMBER</th>
+                                        <th>DATE</th>
+                                        <th>STATUS</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -734,6 +733,28 @@
                         document.getElementById('cancel-button').disabled = true;
                     }
                 });
+
+                const counterList = document.getElementById("counter-list");
+                counterList.addEventListener("mousedown", event =>{
+                    $.ajax({
+                        url: '/smartqueueweb/JsonAvailableWindow',
+						method: 'GET',
+						data: {},
+						dataType: 'json',
+						success: function(data){
+                            const selectCounterListBody = $('#counter-list');
+                            selectCounterListBody.empty();
+                            selectCounterListBody.append(`
+                            <option value="0">Counter-Window : SELECT</option>`);
+                            data.forEach(item => {
+                                selectCounterListBody.append(`
+                                     <option value="`+item.window_number+`">Counter-Window : `+item.window_number+ ` - ` +item.serviceType+`</option>`);
+                            });
+                        }
+                        
+                    });
+                });
+
             </script>
             <div class="load-wrapper">
                 <div class="main-loader">
