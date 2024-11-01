@@ -9,11 +9,13 @@ import java.util.List;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
+import com.smartqueueweb.Model.ServicesBean;
 import com.smartqueueweb.Model.StaffBean;
 
 public class StaffDAO extends SQLConnection {
 
 	StaffBean staffbean = null;
+	ServicesBean servicesBean = null;
 
 	public StaffDAO() {
 		super();
@@ -279,4 +281,27 @@ public class StaffDAO extends SQLConnection {
 		}
 		return 0;
 	}
+
+	List<ServicesBean> listOfWindow = null;
+        public List<ServicesBean> windowList() {
+			try {
+				ConnectDriver();
+				prs = conn.prepareStatement("SELECT * FROM tbl_servicetype");
+				rs = prs.executeQuery();
+				listOfWindow = new ArrayList<ServicesBean>();
+				while (rs.next()) {
+					servicesBean = new ServicesBean(
+						rs.getInt("window_number"),
+						rs.getString("servicetype")
+					);
+					listOfWindow.add(servicesBean);
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} finally {
+				SQLClose();
+			}
+			return listOfWindow;
+        }
 }

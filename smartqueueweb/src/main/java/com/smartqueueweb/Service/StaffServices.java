@@ -2,6 +2,7 @@ package com.smartqueueweb.Service;
 
 import java.util.List;
 
+import com.smartqueueweb.Model.ServicesBean;
 import com.smartqueueweb.Model.StaffBean;
 
 public interface StaffServices {
@@ -27,4 +28,6 @@ public interface StaffServices {
 	Integer requestStaffPassword(String username, String email);
 	
 	List<StaffBean> listOfStaffPasswordRequests(int isCompleted);
+	
+	List<ServicesBean> windowList();
 }

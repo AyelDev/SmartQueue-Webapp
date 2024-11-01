@@ -109,13 +109,13 @@ public class StudentDAO extends SQLConnection {
 			ConnectDriver();
 			prs = conn.prepareStatement(
 					"INSERT INTO `student_queue_entries` (`queue_number`, `id_number`, `fullname`, `purpose`, `servicetype`, `window_number`, `date`)"
-							+ " VALUES (?, ?, ?, ?, ?, 0, current_timestamp())");
+							+ " VALUES (?, ?, ?, ?, ?, (SELECT `window_number` FROM `tbl_servicetype` WHERE `servicetype` = ?), current_timestamp())");
 			prs.setString(1, queueNumber);
 			prs.setLong(2, idNumber);
 			prs.setString(3, fullname);
 			prs.setString(4, purpose);
 			prs.setString(5, servicetype);
-
+			prs.setString(6, servicetype);
 			return prs.executeUpdate();
 
 		} catch (Exception e) {

@@ -7,7 +7,17 @@ public class ServicesBean {
     String course;
     int amount;
 	String serviceType;
-
+	int window_number;
+	
+	public ServicesBean() {
+		super();
+	}
+	
+	public ServicesBean(int window_number, String serviceType) {
+		this.window_number = window_number;
+		this.serviceType = serviceType;
+	}
+	
 	public ServicesBean(int id, String purpose, String course, int amount, String serviceType) {
 		this.id = id;
 		this.purpose = purpose;
@@ -59,7 +69,7 @@ public class ServicesBean {
 	@Override
 	public String toString() {
 		return "ServicesBean [id=" + id + ", purpose=" + purpose + ", course=" + course + ", amount=" + amount
-				+ ", serviceType=" + serviceType + "]";
+				+ ", window_number=" + window_number + ", serviceType=" + serviceType + "]";
 	}
     
 	

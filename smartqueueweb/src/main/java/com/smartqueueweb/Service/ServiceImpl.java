@@ -88,6 +88,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return staffdata.requestStaffPassword(username, email);
 	}
 
+	@Override
+	public List<ServicesBean> windowList() {
+		// TODO Auto-generated method stub
+		return staffdata.windowList();
+	}
+	
 	//////////////////////////////////////////////////////////////////////// --------------------
 	//////////////////////////////////////////////////////////////////////// Admin
 	@Override

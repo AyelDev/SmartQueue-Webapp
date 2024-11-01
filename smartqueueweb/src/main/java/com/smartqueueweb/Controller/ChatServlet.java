@@ -52,8 +52,9 @@ public class ChatServlet {
 
 	@OnOpen
 	public void onOpen(Session session) {
-
-		System.out.println("Connected: " + session.getId() + clients);
+		int sessionId = Integer.parseInt(session.getId()) == 0 ? 1 : Integer.parseInt(session.getId());
+		clients.put(sessionId, "ariel");
+		System.out.println("Connected: " + sessionId + clients );
 		// add session names for auto logout
 		// Retrieve the cookie from the session
 	}
