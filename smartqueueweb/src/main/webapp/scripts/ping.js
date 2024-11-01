@@ -3,8 +3,7 @@ function ping(){
         url: '/smartqueueweb/ping',
         method: 'GET',
         success: function(response) {
-            console.log(response); // Process the response here
-            
+            // console.log(response); Process the response here
             if(!response.response){
                 alert("Authentication Expired Please log in");
                 window.location.href = window.location.origin + "/smartqueueweb/"; 
@@ -19,5 +18,6 @@ function ping(){
         }
     });
 }
+
 
 const intervalId = setInterval(ping, 3000);
