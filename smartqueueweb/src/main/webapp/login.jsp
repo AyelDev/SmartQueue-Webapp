@@ -17,10 +17,13 @@
 
 		<body>
 
-			<div class="bg-container">
+			<div class="container">
 				<div class="login-container">
-					<div class="image-container"></div>
+					<h4 class="system-title">Optimizing School Records Management System</h4>
+					<div class="image-container"><img src="./images/image.png" class="cecbldg" alt=""></div>
+					<img src="./images/logo.png" class="logo" alt="">
 					<div class="loginform-container">
+						
 						<div class="title-container">
 							<label class="title" for="title">login</label>
 						</div>
