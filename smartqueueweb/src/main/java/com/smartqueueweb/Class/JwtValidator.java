@@ -34,7 +34,7 @@ public class JwtValidator {
                 .withClaim("userName", userName)
                 .withClaim("userRole", userRole)
                 .withIssuedAt(new Date(currentTimeMillis))
-                .withExpiresAt(new Date(currentTimeMillis + (300*1000L))) //2 mins
+                .withExpiresAt(new Date(currentTimeMillis + (1800*1000L))) //10 mins
                 .withJWTId(UUID.randomUUID().toString())
                 .withNotBefore(new Date(currentTimeMillis))
                 .sign(algorithm);
