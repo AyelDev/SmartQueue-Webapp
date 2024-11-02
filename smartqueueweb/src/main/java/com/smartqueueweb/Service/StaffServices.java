@@ -30,4 +30,6 @@ public interface StaffServices {
 	List<StaffBean> listOfStaffPasswordRequests(int isCompleted);
 	
 	List<ServicesBean> windowList();
+	
+	List<ServicesBean> studentQueueEntries(int window_number);
 }

@@ -812,13 +812,13 @@
                 });
 
                 function SetEmptyNameFields() {
-                    archivingStudentFirstName.value = "";
-                    archivingStudentMiddleName.value = "";
-                    archivingStudentLastName.value = "";
+                    //archivingStudentFirstName.value = "";
+                    //archivingStudentMiddleName.value = "";
+                    //archivingStudentLastName.value = "";
                 }
 
                 function SetEmptyIdField() {
-                    archiveStudentId.value = "";
+                    //archiveStudentId.value = "";
                 }
                 
 

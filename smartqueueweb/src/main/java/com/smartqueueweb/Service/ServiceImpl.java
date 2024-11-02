@@ -94,6 +94,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return staffdata.windowList();
 	}
 	
+	@Override
+	public List<ServicesBean> studentQueueEntries(int window_number) {
+		// TODO Auto-generated method stub
+		return staffdata.studentQueueEntries(window_number);
+	}
+	
 	//////////////////////////////////////////////////////////////////////// --------------------
 	//////////////////////////////////////////////////////////////////////// Admin
 	@Override
