@@ -304,4 +304,34 @@ public class StaffDAO extends SQLConnection {
 			}
 			return listOfWindow;
         }
+
+		List<ServicesBean> studentQueueEntries = null;
+		public List<ServicesBean> studentQueueEntries(int window_number) {
+			// TODO Auto-generated method stub
+			try {
+				ConnectDriver();
+				prs = conn.prepareStatement("SELECT * FROM student_queue_entries WHERE window_number = ?");
+				prs.setInt(1, window_number);
+				rs = prs.executeQuery();
+				studentQueueEntries = new ArrayList<ServicesBean>();
+				while (rs.next()) {
+					servicesBean = new ServicesBean(
+						rs.getInt("id"),
+						rs.getString("queue_number"),
+						rs.getString("purpose"),
+						rs.getString("fullname"),
+						rs.getLong("id_number"),
+						rs.getTimestamp("date"),
+						rs.getString("queue_status")
+					);
+					studentQueueEntries.add(servicesBean);
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} finally {
+				SQLClose();
+			}
+			return studentQueueEntries;
+		}
 }
