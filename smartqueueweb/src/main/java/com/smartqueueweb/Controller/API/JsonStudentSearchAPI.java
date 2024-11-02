@@ -32,7 +32,7 @@ public class JsonStudentSearchAPI extends HttpServlet {
 
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		if(studentid != "" && studentid.length() < 6) {
+		if(studentid != "" && studentid.length() < 4) {
 			 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			    response.getWriter().write("{\"error\":\"Invalid student ID length.\"}");
 		}else {
