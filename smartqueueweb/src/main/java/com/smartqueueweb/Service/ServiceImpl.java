@@ -95,9 +95,15 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	}
 	
 	@Override
-	public List<ServicesBean> studentQueueEntries(int window_number) {
+	public List<ServicesBean> studentQueueEntries(int window_number, String queue_status) {
 		// TODO Auto-generated method stub
-		return staffdata.studentQueueEntries(window_number);
+		return staffdata.studentQueueEntries(window_number, queue_status);
+	}
+	
+	@Override
+	public Integer updateQueueStatus(String QueueNumber, String queue_status) {
+		// TODO Auto-generated method stub
+		return staffdata.updateQueueStatus(QueueNumber, queue_status);
 	}
 	
 	//////////////////////////////////////////////////////////////////////// --------------------

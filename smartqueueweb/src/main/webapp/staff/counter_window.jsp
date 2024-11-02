@@ -11,7 +11,7 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
-			<script type="text/javascript" src="./scripts/ping.js"></script>
+            <script type="text/javascript" src="./scripts/ping.js"></script>
             <script type="text/javascript" src="./scripts/fadetransition.js"></script>
             <link rel="stylesheet" href="./css/loader.css">
             <title>SmartQueue</title>
@@ -252,13 +252,16 @@
                     margin-top: 1.875rem;
                     scroll-behavior: smooth;
                 }
-                .tables::-webkit-scrollbar{
+
+                .tables::-webkit-scrollbar {
                     width: .8rem;
                 }
-                .tables::-webkit-scrollbar-track{
+
+                .tables::-webkit-scrollbar-track {
                     background: transparent;
                 }
-                .tables::-webkit-scrollbar-thumb{
+
+                .tables::-webkit-scrollbar-thumb {
                     background-color: #00509d;
                     border-radius: 5rem;
                 }
@@ -490,7 +493,7 @@
 
                 <div class="rightnav">
                     <div class="scontainer">
-                        <select id="counter-list" onchange="OnChange()">
+                        <select id="counter-list" onchange="counterChangeListOnChange()">
                             <option value="0" selected>SELECT COUNTER LIST</option>
                         </select>
                         <section class="real-time">
@@ -533,11 +536,11 @@
                                     <thead>
                                         <tr>
                                             <th class="thd">QUEUE NO.</th>
-                                            <th>NAME</th>
-                                            <th>COUNTER NO.</th>
                                             <th>PURPOSE</th>
+                                            <th>NAME</th>
+                                            <th>ID NUMBER</th>
+                                            <th>DATE</th>
                                             <th>STATUS</th>
-                                            <th class="tsd">ANNOUNCE (Recall)</th>
                                         </tr>
                                     </thead>
                                     <tbody id="counter-access-table">
@@ -546,14 +549,12 @@
                                 </table>
                             </div>
 
-
-
                             <section class="actions">
-                                <button id="call-button" class="btn call" disabled><b>CALL</b></button>
-                                <button id="recall-button" class="btn recall" disabled><b>RECALL</b></button>
-                                <button id="done-button" class="btn done" disabled><b>DONE</b></button>
-                                <button id="cancel-button" class="btn cancel" disabled><b>CANCEL</b></button>
+                                <button id="call-button" onclick="transferRow()" class="btn call"><b>CALL</b></button>
+                                <button id="recall-button" class="btn recall"><b>RECALL</b></button>
+                                <button id="done-button" onclick="removeRow()" class="btn done"><b>DONE</b></button>
                             </section>
+                            
                     </div>
 
                 </div>
@@ -583,59 +584,105 @@
             <script>
 
                 let counterList = document.getElementById("counter-list");
-                counterList.addEventListener("mousedown", event =>{
+                counterList.addEventListener("mousedown", event => {
                     $.ajax({
                         url: '/smartqueueweb/JsonAvailableWindow',
-						method: 'GET',
-						data: {},
-						dataType: 'json',
-						success: function(data){
+                        method: 'GET',
+                        data: {},
+                        dataType: 'json',
+                        success: function (data) {
                             const selectCounterListBody = $('#counter-list');
                             selectCounterListBody.empty();
                             selectCounterListBody.append(`
                             <option value="0">Counter-Window : SELECT</option>`);
                             data.forEach(item => {
                                 selectCounterListBody.append(`
-                                     <option value="`+item.window_number+`">Counter-Window : `+item.window_number+ ` - ` +item.serviceType+`</option>`);
+                                     <option value="`+ item.window_number + `">Counter-Window : ` + item.window_number + ` - ` + item.serviceType + `</option>`);
                             });
                         }
-                        
+
                     });
-                   
+
                 });
 
-                function OnChange(){
-                    CounterList(counterList.value);
+                async function counterChangeListOnChange(){
+                    await CounterList(counterList.value, "QUEUE", '#priority-number-table');
+                    await CounterList(counterList.value, "SERVING", '#counter-access-table');
                 }
 
-                function CounterList(window_nunber){
-                    console.log("still pinging");
-                    $.ajax({
+                async function CounterList(window_nunber, queue_status, elementid) {
+                    await $.ajax({
                         url: '/smartqueueweb/JsonStudentQueueEntriesAPI',
-						method: 'GET',
-						data: {window_number : window_nunber},
-						dataType: 'json',
-						success: function(data){
-                            const prioriyNumberTable = $('#priority-number-table');
+                        method: 'GET',
+                        data: {
+                            window_number: window_nunber,
+                            queue_status: queue_status
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            let prioriyNumberTable = $(elementid);
                             prioriyNumberTable.empty();
                             data.forEach(item => {
                                 prioriyNumberTable.append(`
                                     <tr>
-                                        <td>`+item.queue_number+`</td>
-                                        <td>`+item.purpose+`</td>
-                                        <td>`+item.fullname+`</td>
-                                        <td>`+item.id_number+`</td>
-                                        <td>`+item.date+`</td>
-                                        <td>`+item.queue_status+`</td>
+                                        <td>`+ item.queue_number + `</td>
+                                        <td>`+ item.purpose + `</td>
+                                        <td>`+ item.fullname + `</td>
+                                        <td>`+ item.id_number + `</td>
+                                        <td>`+ item.date + `</td>
+                                        <td>`+ item.queue_status + `</td>
                                     </tr>
                                      `);
                             });
                         }
-                        
-                    }); 
+
+                    });
                 }
-              
-                setInterval(OnChange, 6000);
+
+                setInterval(counterChangeListOnChange, 6000);
+
+                let priorityNumberTableBody = document.getElementById("priority-number-table");
+                let counterAccessTableBody = document.getElementById("counter-access-table");
+
+                function transferRow() {
+                    if (counterAccessTableBody.rows.length > 0) {
+                        alert("Table 2 can only hold one row!");
+                        return;
+                    }
+
+                    if (priorityNumberTableBody.rows.length > 0) {
+                        let firstRow = priorityNumberTableBody.rows[0];
+                        counterAccessTableBody.appendChild(firstRow);
+                        let queueNumber = firstRow.cells[0].innerText;
+                        updateQueueStatus(queueNumber, 'SERVING');
+                    } else {
+                        alert("No more rows to transfer!");
+                    }
+                }
+
+                function removeRow() {
+                    if (counterAccessTableBody.rows.length > 0) {
+                        let secondRow = counterAccessTableBody.rows[0];
+                        let queueNumber = secondRow.cells[0].innerText;
+                        updateQueueStatus(queueNumber, 'DONE');
+                        counterAccessTableBody.deleteRow(0);
+                    } else {
+                        alert("No row to remove from Table 2!");
+                    }
+                }
+
+                //update queue status
+                function updateQueueStatus(queueNumber, queueStatus) {
+                    $.ajax({
+                        url: `/smartqueueweb/updateQueueStatus?queueNumber=` + queueNumber + `&queueStatus=` + queueStatus,
+                        type: 'PUT',
+                        success: function (response) {
+                            alert(response); 
+                        }, error: function (xhr, status, error) {
+                            alert("Error: " + xhr.responseText);
+                        }
+                    });
+                }
 
             </script>
             <div class="load-wrapper">

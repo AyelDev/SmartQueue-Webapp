@@ -306,12 +306,13 @@ public class StaffDAO extends SQLConnection {
         }
 
 		List<ServicesBean> studentQueueEntries = null;
-		public List<ServicesBean> studentQueueEntries(int window_number) {
+		public List<ServicesBean> studentQueueEntries(int window_number, String queue_status) {
 			// TODO Auto-generated method stub
 			try {
 				ConnectDriver();
-				prs = conn.prepareStatement("SELECT * FROM student_queue_entries WHERE window_number = ?");
+				prs = conn.prepareStatement("SELECT * FROM student_queue_entries WHERE window_number = ? AND queue_status = ? ");
 				prs.setInt(1, window_number);
+				prs.setString(2, queue_status);
 				rs = prs.executeQuery();
 				studentQueueEntries = new ArrayList<ServicesBean>();
 				while (rs.next()) {
@@ -333,5 +334,24 @@ public class StaffDAO extends SQLConnection {
 				SQLClose();
 			}
 			return studentQueueEntries;
+		}
+
+		public Integer updateQueueStatus(String queueNumber, String queue_status) {
+			// TODO Auto-generated method stub
+			try {
+				ConnectDriver();
+				prs = conn.prepareStatement("UPDATE `student_queue_entries` SET `queue_status` = ?"
+						+ " WHERE `student_queue_entries`.`queue_number` = ?");
+				prs.setString(1, queue_status);
+				prs.setString(2, queueNumber);
+				return prs.executeUpdate();
+
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} finally {
+				SQLClose();
+			}
+			return 0;
 		}
 }

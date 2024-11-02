@@ -17,7 +17,7 @@ public class ListStudentEntries_Test {
 	@Test
 	public void test() {
 		List<ServicesBean> expected = null;
-		List<ServicesBean> actual = services.studentQueueEntries(2);
+		List<ServicesBean> actual = services.studentQueueEntries(2, "SERVING");
 		
 		System.out.println(actual);
 		assertNotEquals(expected, actual);

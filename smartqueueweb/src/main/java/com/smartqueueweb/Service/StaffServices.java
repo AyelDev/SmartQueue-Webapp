@@ -31,5 +31,7 @@ public interface StaffServices {
 	
 	List<ServicesBean> windowList();
 	
-	List<ServicesBean> studentQueueEntries(int window_number);
+	List<ServicesBean> studentQueueEntries(int window_number, String queue_status);
+	
+	Integer updateQueueStatus(String QueueNumber, String queue_status);
 }

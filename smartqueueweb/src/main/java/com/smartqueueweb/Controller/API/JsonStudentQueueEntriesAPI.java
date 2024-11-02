@@ -29,9 +29,10 @@ public class JsonStudentQueueEntriesAPI extends HttpServlet {
 
 		try {
 			int window_number = Integer.parseInt(request.getParameter("window_number"));
+			String queue_status = request.getParameter("queue_status");
 			Gson gson = new Gson();
 
-			List<ServicesBean> ss = service.studentQueueEntries(window_number);
+			List<ServicesBean> ss = service.studentQueueEntries(window_number, queue_status);
 
 			String userJson = gson.toJson(ss);
 		
