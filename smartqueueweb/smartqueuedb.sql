@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.2:3307
--- Generation Time: Oct 27, 2024 at 01:36 PM
+-- Generation Time: Nov 02, 2024 at 02:38 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -35,6 +35,13 @@ CREATE TABLE `accesstokens` (
   `date_expired` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `accesstokens`
+--
+
+INSERT INTO `accesstokens` (`token_id`, `role`, `value`, `date_created`, `date_expired`) VALUES
+(285, 'admin', 'dsdadasdwe', '2024-11-02 07:05:50', '2024-11-02 17:05:50');
+
 -- --------------------------------------------------------
 
 --
@@ -44,11 +51,11 @@ CREATE TABLE `accesstokens` (
 CREATE TABLE `student_queue_entries` (
   `id` int(11) NOT NULL,
   `queue_number` varchar(11) NOT NULL,
-  `id_number` bigint(30) NOT NULL DEFAULT 0,
+  `id_number` bigint(30) NOT NULL,
   `fullname` varchar(200) NOT NULL,
   `purpose` varchar(20) NOT NULL,
-  `servicetype` varchar(20) NOT NULL,
-  `window_number` tinyint(4) NOT NULL DEFAULT 0,
+  `servicetype` varchar(100) NOT NULL,
+  `window_number` tinyint(4) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `queue_status` varchar(20) NOT NULL DEFAULT 'QUEUE'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -90,6 +97,14 @@ CREATE TABLE `tbl_login_staff` (
   `isDeleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tbl_login_staff`
+--
+
+INSERT INTO `tbl_login_staff` (`staff_id`, `firstname`, `lastname`, `email`, `contact_number`, `username`, `password`, `isLocked`, `isDeleted`) VALUES
+(190, 'ariel', 'abelgas', 'ariel@gmail.com', 9666170733, 'ariel', 'locks', 0, 0),
+(191, 'lol', 'loloÑÑññs', 'lolos@gmail.com', 9672919283, 'lolos', 'CEC24JH&@', 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -129,21 +144,21 @@ CREATE TABLE `tbl_service` (
 
 INSERT INTO `tbl_service` (`id`, `program`, `purpose`, `amount`, `servicetype`) VALUES
 (1, 'BSIT', NULL, 0, 'GENERAL'),
-(6, 'BEED', NULL, 0, 'GENERAL'),
-(7, 'BSED', NULL, 0, 'GENERAL'),
-(8, 'BSTM', NULL, 0, 'GENERAL'),
-(9, 'BSHM', NULL, 0, 'GENERAL'),
-(10, NULL, 'certification', 150, 'RECORDS'),
-(11, NULL, 'good moral', 150, 'RECORDS'),
-(12, NULL, 'form 137', 150, 'RECORDS'),
-(13, NULL, 'transcript or records (TOR)', 600, 'RECORDS'),
-(14, NULL, 'diploma', 600, 'RECORDS'),
-(15, NULL, 'grade evaluation', 150, 'RECORDS'),
-(16, NULL, 'gwa', 200, 'RECORDS'),
-(17, NULL, 'application of honors', 150, 'RECORDS'),
-(18, NULL, 'enrollment', 0, 'ARCHIVING'),
-(19, NULL, 'assessment', 0, 'ARCHIVING'),
-(20, NULL, 'enrollment', 0, 'GENERAL');
+(2, 'BEED', NULL, 0, 'GENERAL'),
+(3, 'BSED', NULL, 0, 'GENERAL'),
+(4, 'BSTM', NULL, 0, 'GENERAL'),
+(5, 'BSHM', NULL, 0, 'GENERAL'),
+(6, NULL, 'enrollment', 0, 'GENERAL'),
+(7, NULL, 'certification', 150, 'RECORDS'),
+(8, '', 'good moral', 150, 'RECORDS'),
+(9, NULL, 'form 137', 150, 'RECORDS'),
+(10, NULL, 'transcript of records (TOR)', 600, 'RECORDS'),
+(11, NULL, 'diploma', 600, 'RECORDS'),
+(12, NULL, 'grade evaluation', 150, 'RECORDS'),
+(13, NULL, 'gwa', 200, 'RECORDS'),
+(14, NULL, 'application of honors', 150, 'RECORDS'),
+(15, NULL, 'enrollment', 0, 'ARCHIVING'),
+(16, NULL, 'assessment', 0, 'ARCHIVING');
 
 -- --------------------------------------------------------
 
@@ -152,17 +167,19 @@ INSERT INTO `tbl_service` (`id`, `program`, `purpose`, `amount`, `servicetype`) 
 --
 
 CREATE TABLE `tbl_servicetype` (
-  `servicetype` varchar(50) NOT NULL
+  `window_number` tinyint(4) NOT NULL,
+  `servicetype` varchar(30) NOT NULL,
+  `is_occupied` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_servicetype`
 --
 
-INSERT INTO `tbl_servicetype` (`servicetype`) VALUES
-('ARCHIVING'),
-('GENERAL'),
-('RECORDS');
+INSERT INTO `tbl_servicetype` (`window_number`, `servicetype`, `is_occupied`) VALUES
+(1, 'GENERAL', 0),
+(2, 'RECORDS', 0),
+(3, 'ARCHIVING', 0);
 
 -- --------------------------------------------------------
 
@@ -198,7 +215,7 @@ CREATE TABLE `tbl_staff_windowhandlers` (
 --
 
 CREATE TABLE `tbl_student_info` (
-  `id_number` bigint(30) NOT NULL,
+  `id_number` bigint(220) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `middle_name` varchar(20) NOT NULL,
   `last_name` varchar(50) NOT NULL,
@@ -211,10 +228,12 @@ CREATE TABLE `tbl_student_info` (
 --
 
 INSERT INTO `tbl_student_info` (`id_number`, `first_name`, `middle_name`, `last_name`, `course`, `isDeleted`) VALUES
+(1231231, 'ariel', 'piodena', 'abelgas', 'BSIT', 0),
+(1231311, 'ariel', 'asdad', 'asda', 'BSHM', 1),
 (2110010, 'cindy mae', '', 'labra', 'BSIT', 0),
 (2110598, 'Tristan Rodd', 'Monist', 'Acompañado', 'BSIT', 0),
 (2110872, 'Merilyn', 'Geronda', 'Villamor', 'BEED', 1),
-(2210551, 'Rosemari', '', 'Obtina', 'BEED', 0),
+(2210551, 'RosemariasdadadaazÑó', '', 'Obtina', 'BEED', 0),
 (2210770, 'Cristel', 'Jayme', 'Navarro', 'BEED', 0),
 (2210820, 'Catherine', 'Jayme', 'Abaya', 'BEED', 0),
 (2410304, 'Rhealyn', 'Cadungog', 'Cabugwang', 'BSTM', 0),
@@ -238,10 +257,11 @@ ALTER TABLE `accesstokens`
 --
 ALTER TABLE `student_queue_entries`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_number` (`id_number`),
-  ADD KEY `id_number_2` (`id_number`),
   ADD KEY `queue_status` (`queue_status`),
-  ADD KEY `queue_status_2` (`queue_status`);
+  ADD KEY `queue_status_2` (`queue_status`),
+  ADD KEY `purpose` (`purpose`),
+  ADD KEY `window_number` (`window_number`),
+  ADD KEY `servicetype` (`servicetype`);
 
 --
 -- Indexes for table `tbl_login_admin`
@@ -274,7 +294,8 @@ ALTER TABLE `tbl_service`
 -- Indexes for table `tbl_servicetype`
 --
 ALTER TABLE `tbl_servicetype`
-  ADD PRIMARY KEY (`servicetype`);
+  ADD PRIMARY KEY (`window_number`),
+  ADD UNIQUE KEY `servicetype` (`servicetype`);
 
 --
 -- Indexes for table `tbl_staff_request_password`
@@ -288,7 +309,8 @@ ALTER TABLE `tbl_staff_request_password`
 -- Indexes for table `tbl_staff_windowhandlers`
 --
 ALTER TABLE `tbl_staff_windowhandlers`
-  ADD KEY `staff_id` (`staff_id`);
+  ADD KEY `staff_id` (`staff_id`),
+  ADD KEY `window_number` (`window_number`);
 
 --
 -- Indexes for table `tbl_student_info`
@@ -304,13 +326,13 @@ ALTER TABLE `tbl_student_info`
 -- AUTO_INCREMENT for table `accesstokens`
 --
 ALTER TABLE `accesstokens`
-  MODIFY `token_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=285;
+  MODIFY `token_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=286;
 
 --
 -- AUTO_INCREMENT for table `student_queue_entries`
 --
 ALTER TABLE `student_queue_entries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12406;
 
 --
 -- AUTO_INCREMENT for table `tbl_login_admin`
@@ -322,7 +344,7 @@ ALTER TABLE `tbl_login_admin`
 -- AUTO_INCREMENT for table `tbl_login_staff`
 --
 ALTER TABLE `tbl_login_staff`
-  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
+  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
 
 --
 -- AUTO_INCREMENT for table `tbl_service`
@@ -331,10 +353,16 @@ ALTER TABLE `tbl_service`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT for table `tbl_servicetype`
+--
+ALTER TABLE `tbl_servicetype`
+  MODIFY `window_number` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `tbl_staff_request_password`
 --
 ALTER TABLE `tbl_staff_request_password`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- Constraints for dumped tables
@@ -344,7 +372,9 @@ ALTER TABLE `tbl_staff_request_password`
 -- Constraints for table `student_queue_entries`
 --
 ALTER TABLE `student_queue_entries`
-  ADD CONSTRAINT `student_queue_entries_ibfk_2` FOREIGN KEY (`queue_status`) REFERENCES `tbl_queue_status` (`queue_status`);
+  ADD CONSTRAINT `student_queue_entries_ibfk_2` FOREIGN KEY (`queue_status`) REFERENCES `tbl_queue_status` (`queue_status`),
+  ADD CONSTRAINT `student_queue_entries_ibfk_3` FOREIGN KEY (`window_number`) REFERENCES `tbl_servicetype` (`window_number`),
+  ADD CONSTRAINT `student_queue_entries_ibfk_4` FOREIGN KEY (`servicetype`) REFERENCES `tbl_servicetype` (`servicetype`);
 
 --
 -- Constraints for table `tbl_service`
@@ -363,7 +393,8 @@ ALTER TABLE `tbl_staff_request_password`
 -- Constraints for table `tbl_staff_windowhandlers`
 --
 ALTER TABLE `tbl_staff_windowhandlers`
-  ADD CONSTRAINT `tbl_staff_windowhandlers_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `tbl_login_staff` (`staff_id`);
+  ADD CONSTRAINT `tbl_staff_windowhandlers_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `tbl_login_staff` (`staff_id`),
+  ADD CONSTRAINT `tbl_staff_windowhandlers_ibfk_2` FOREIGN KEY (`window_number`) REFERENCES `tbl_servicetype` (`window_number`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
