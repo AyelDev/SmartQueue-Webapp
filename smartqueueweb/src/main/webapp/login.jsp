@@ -9,6 +9,7 @@
 			<script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script>
 			<script type="text/javascript" src="scripts/fadetransition.js"></script>
 			<script type="text/javascript" src="scripts/jquery-confirm.min.js"></script>
+			<link rel="stylesheet" href="./css/bootstrap.css">
 			<link rel="stylesheet" type="text/css" href="css/jquery-confirm.min.css" />
 			<link rel="stylesheet" href="css/loginstyle.css">
 			<link rel="stylesheet" href="css/loader.css">
@@ -17,11 +18,12 @@
 
 		<body>
 
-			<div class="container">
+			<div class="container-fluid">
 				<div class="login-container">
-					<h4 class="system-title">Optimizing School Records Management System</h4>
-					<div class="image-container"><img src="./images/image.png" class="cecbldg" alt=""></div>
+					<img src="./images/image.png" class="cecbldg" alt="">
 					<img src="./images/logo.png" class="logo" alt="">
+					<h1 class="school-name">Cebu Eastern College</h1>
+					<p class="system-title">Optimizing School Records Management System</p>
 					<div class="loginform-container">
 						
 						<div class="title-container">
