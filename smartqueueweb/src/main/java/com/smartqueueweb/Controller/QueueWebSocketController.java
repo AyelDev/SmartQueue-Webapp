@@ -1,9 +1,11 @@
 package com.smartqueueweb.Controller;
 
 import java.io.IOException;
+import java.net.http.HttpRequest;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
@@ -26,28 +28,16 @@ public class QueueWebSocketController {
 
 	@OnMessage
 	public void onMessage(String message, Session session) throws IOException {
-
-		String username = "";
-		String[] parts = message.split(":");
-		String firstPart = parts[0].trim(); // the part before the colon
-		String secondPart = parts.length > 1 ? parts[1].trim() : ""; // the part after the colon, if it exists
-
-		DecodedJWT decoded = validator.decode(firstPart);
-
-		if (decoded != null) {
-			System.out.println("Subject: " + decoded.getClaim("userName"));
-			username = decoded.getClaim("userName").toString().replace("\"", "");
-			clients.put(Integer.parseInt(session.getId()), decoded.getClaim("userName").toString());
-		} else {
-			System.out.println("null");
-		}
+		System.out.println(message);
 
 		// Broadcast the message to all connected clients
 		for (Session s : session.getOpenSessions()) {
 			if (s.isOpen()) {
-				s.getBasicRemote().sendText(username + clients.values() + " : " + secondPart);
+				s.getBasicRemote().sendText(message);
 			}
 		}
+
+		
 	}
 
 	@OnOpen

@@ -101,10 +101,50 @@
         margin: 0;
         font-size: 1rem;
       }
+
+      .popup {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .popup-content {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        text-align: center;
+        position: relative;
+        width: 80%;
+        height: 80%;
+        margin-left: 11%;
+        margin-top: 5%;
+      }
+
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        cursor: pointer;
+        font-size: 20px;
+      }
+      h1{
+        font-size: 20rem;
+      }
+      p{
+        font-size: 5rem;
+        color: #fff;
+        background-color: #00509d;
+      }
     </style>
 
     <body>
-      <div class="container-xxl">
+      <div class="container-fluid">
         <div class="row">
           <div class="col-6-1">
             <video id="video-ads" controls autoplay loop>
@@ -161,23 +201,107 @@
           </div>
         </div>
       </div>
+
+      <div class="popup" id="popup">
+        <div class="popup-content">
+          <h1>G01</h1>
+          <span class="close" id="closeBtn">&times;</span>
+          <p>Window 1</p>
+        </div>
+      </div>
+
       <footer>
         <b>
           <p>&copy; 2024 Cebu Eastern College. All Rights Reserved.</p>
         </b>
       </footer>
+
       <script>
         function updateTime() {
           const now = new Date();
           document.getElementById('date').textContent = now.toLocaleDateString();
           document.getElementById('time').textContent = now.toLocaleTimeString();
         }
+
+
+        // updateQueue('counter1', 'queue1');
+        // updateQueue('counter2', 'queue2');
+        // updateQueue('counter3', 'queue3');
+        updateTime();
+
+        //websocket
+        var wsUrl;
+        if (window.location.protocol == 'http:') {
+          wsUrl = 'ws://';
+        } else {
+          wsUrl = 'wss://';
+        }
+        var ws = new WebSocket(wsUrl + window.location.host + "/smartqueueweb/QueueWebSocketController");
+
+        ws.onopen = function (event) {
+          console.log('WebSocket connection opened', event);
+        };
+
+        async function playDingdong() {
+          const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          const response = await fetch('./media/dingdong.mp3');
+          const arrayBuffer = await response.arrayBuffer();
+          const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+          const source = audioContext.createBufferSource();
+          source.buffer = audioBuffer;
+          await source.connect(audioContext.destination);
+          await source.start(0);
+          return new Promise(resolve => {
+            source.onended = resolve;
+          });
+        }
+
+        ws.addEventListener("message", async (message) => {
+
+          if ('speechSynthesis' in window) {
+            try {
+              const msg = new SpeechSynthesisUtterance();
+              msg.text = message.data;
+              msg.lang = 'en-AU'; // Specify language code
+
+              msg.volume = 1.0
+              window.speechSynthesis.speak(msg);
+
+              // Optional: Add event listeners
+              msg.onstart = async function () {
+                await showPopup();
+                await playDingdong();
+              };
+             
+            } catch (error) {
+              console.error('Error during speech synthesis:', error);
+            }
+          } else {
+            alert('Text-to-speech is not supported in this browser.');
+          }
+        });
+
         setInterval(updateTime, 1000);
 
-        updateQueue('counter1', 'queue1');
-        updateQueue('counter2', 'queue2');
-        updateQueue('counter3', 'queue3');
-        updateTime();
+        //pop up
+          function showPopup() {
+            $("#popup").fadeIn();
+
+            setTimeout(hidePopup, 8000);
+          }
+
+          function hidePopup() {
+            $("#popup").fadeOut();
+          }
+
+          $("#closeBtn").click(hidePopup);
+
+          $(window).click(function (event) {
+            if ($(event.target).is("#popup")) {
+              hidePopup();
+            }
+          });
+       
       </script>
       <div class="load-wrapper">
         <div class="main-loader">

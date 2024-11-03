@@ -21,7 +21,7 @@ public class ServicesBean {
 	}
 
 	public ServicesBean(int id, String queue_number, String purpose, String fullname, long id_number, Timestamp date,
-			String queue_status) {
+			String queue_status, int window_number) {
 		this.id = id;
 		this.purpose = purpose;
 		this.fullname = fullname;
@@ -29,6 +29,7 @@ public class ServicesBean {
 		this.date = date;
 		this.queue_number = queue_number;
 		this.queue_status = queue_status;
+		this.window_number = window_number;
 	}
 
 

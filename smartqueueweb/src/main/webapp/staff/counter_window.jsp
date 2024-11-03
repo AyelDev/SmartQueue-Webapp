@@ -494,7 +494,7 @@
                 <div class="rightnav">
                     <div class="scontainer">
                         <select id="counter-list" onchange="counterChangeListOnChange()">
-                            <option value="0" selected>SELECT COUNTER LIST</option>
+                            <option value="" selected>SELECT COUNTER LIST</option>
                         </select>
                         <section class="real-time">
                             <p><b>Time: <span id="time"></span></b></p>
@@ -511,17 +511,11 @@
                                         <th>ID NUMBER</th>
                                         <th>DATE</th>
                                         <th>STATUS</th>
+                                        <th>WINDOW NO.</th>
                                     </tr>
                                 </thead>
                                 <tbody id="priority-number-table">
-                                    <tr>
-                                        <td>loading...</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -541,6 +535,7 @@
                                             <th>ID NUMBER</th>
                                             <th>DATE</th>
                                             <th>STATUS</th>
+                                            <th>WINDOW NO.</th>
                                         </tr>
                                     </thead>
                                     <tbody id="counter-access-table">
@@ -551,10 +546,10 @@
 
                             <section class="actions">
                                 <button id="call-button" onclick="transferRow()" class="btn call"><b>CALL</b></button>
-                                <button id="recall-button" class="btn recall"><b>RECALL</b></button>
+                                <button id="recall-button" onclick="recall()" class="btn recall"><b>RECALL</b></button>
                                 <button id="done-button" onclick="removeRow()" class="btn done"><b>DONE</b></button>
                             </section>
-                            
+
                     </div>
 
                 </div>
@@ -594,7 +589,7 @@
                             const selectCounterListBody = $('#counter-list');
                             selectCounterListBody.empty();
                             selectCounterListBody.append(`
-                            <option value="0">Counter-Window : SELECT</option>`);
+                            <option value="0">CHOOSE COUNTER WINDOW</option>`);
                             data.forEach(item => {
                                 selectCounterListBody.append(`
                                      <option value="`+ item.window_number + `">Counter-Window : ` + item.window_number + ` - ` + item.serviceType + `</option>`);
@@ -605,7 +600,7 @@
 
                 });
 
-                async function counterChangeListOnChange(){
+                async function counterChangeListOnChange() {
                     await CounterList(counterList.value, "QUEUE", '#priority-number-table');
                     await CounterList(counterList.value, "SERVING", '#counter-access-table');
                 }
@@ -631,6 +626,7 @@
                                         <td>`+ item.id_number + `</td>
                                         <td>`+ item.date + `</td>
                                         <td>`+ item.queue_status + `</td>
+                                        <td>`+ item.window_number + `</td>
                                     </tr>
                                      `);
                             });
@@ -639,24 +635,25 @@
                     });
                 }
 
-                setInterval(counterChangeListOnChange, 6000);
+                setInterval(counterChangeListOnChange, 4000);
 
                 let priorityNumberTableBody = document.getElementById("priority-number-table");
                 let counterAccessTableBody = document.getElementById("counter-access-table");
 
-                function transferRow() {
+                async function transferRow() {
                     if (counterAccessTableBody.rows.length > 0) {
-                        alert("Table 2 can only hold one row!");
+                        await alert("Table 2 can only hold one row!");
                         return;
                     }
 
                     if (priorityNumberTableBody.rows.length > 0) {
                         let firstRow = priorityNumberTableBody.rows[0];
-                        counterAccessTableBody.appendChild(firstRow);
+                        await counterAccessTableBody.appendChild(firstRow);
                         let queueNumber = firstRow.cells[0].innerText;
-                        updateQueueStatus(queueNumber, 'SERVING');
+                        await sendMsg(queueNumber);
+                        await updateQueueStatus(queueNumber, 'SERVING');
                     } else {
-                        alert("No more rows to transfer!");
+                        await alert("No more rows to transfer!");
                     }
                 }
 
@@ -671,18 +668,51 @@
                     }
                 }
 
+                function recall() {
+                    if (counterAccessTableBody.rows.length > 0) {
+                        let secondRow = counterAccessTableBody.rows[0];
+                        let queueNumber = secondRow.cells[0].innerText;
+                        let window_number = secondRow.cells[6].innerText;
+                        sendMsg(queueNumber, window_number);
+                    } else {
+                        alert("No row to recall from Table 2!");
+                    }
+                }
+
                 //update queue status
                 function updateQueueStatus(queueNumber, queueStatus) {
                     $.ajax({
                         url: `/smartqueueweb/updateQueueStatus?queueNumber=` + queueNumber + `&queueStatus=` + queueStatus,
                         type: 'PUT',
                         success: function (response) {
-                            alert(response); 
+                            alert(response);
                         }, error: function (xhr, status, error) {
                             alert("Error: " + xhr.responseText);
                         }
                     });
                 }
+
+                //websocket
+                var wsUrl;
+                if (window.location.protocol == 'http:') {
+                    wsUrl = 'ws://';
+                } else {
+                    wsUrl = 'wss://';
+                }
+                var ws = new WebSocket(wsUrl + window.location.host + "/smartqueueweb/QueueWebSocketController");
+
+                ws.onopen = function (event) {
+                    console.log('WebSocket connection opened', event);
+                };
+
+                function sendMsg(queueNumber, window_number) {
+                    if (queueNumber) {
+                        ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
+                    }
+                }
+
+
+
 
             </script>
             <div class="load-wrapper">

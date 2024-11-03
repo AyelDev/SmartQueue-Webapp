@@ -323,7 +323,8 @@ public class StaffDAO extends SQLConnection {
 						rs.getString("fullname"),
 						rs.getLong("id_number"),
 						rs.getTimestamp("date"),
-						rs.getString("queue_status")
+						rs.getString("queue_status"),
+						rs.getInt("window_number")
 					);
 					studentQueueEntries.add(servicesBean);
 				}
