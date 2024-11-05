@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.smartqueueweb.Class.JwtValidator;
+import com.smartqueueweb.Service.ServiceImpl;
 
 @WebServlet("/login")
 public class LoginPage_Servlet extends HttpServlet {
@@ -25,7 +26,7 @@ public class LoginPage_Servlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		PrintWriter out = response.getWriter();
-		String cookieauth = validator.getCookieValue(request.getCookies(), "_auth");
+		ServiceImpl services = new ServiceImpl();
 
 		String scheme = request.getScheme(); // http or https
 		String serverName = request.getServerName(); // localhost or domain
@@ -36,6 +37,10 @@ public class LoginPage_Servlet extends HttpServlet {
 		// serverName, serverPort);
 
 		try {
+			String cookieauth = validator.getCookieValue(request.getCookies(), "_auth");
+
+			
+			
 			DecodedJWT decoded = validator.decode(cookieauth);
 			String userRole = decoded.getClaim("userRole").toString().replace("\"", "");
 
@@ -51,8 +56,9 @@ public class LoginPage_Servlet extends HttpServlet {
 			}
 
 		} catch (Exception e) {
-			rd = request.getRequestDispatcher("logout");
-			rd.forward(request, response);
+			request.setAttribute("errorLogin", services.XMLERRORNAME("API.TOKENAUTHTENTICATIONFAILED"));
+			rd = request.getRequestDispatcher("login.jsp");
+			rd.include(request, response);
 		}
 
 	}
