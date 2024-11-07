@@ -93,7 +93,7 @@ public class login_Servlet extends HttpServlet {
 			// rd.forward(request, response);
 		} catch (Exception e) {
 			// e.getMessage();
-			request.setAttribute("errorLogin", services.XMLERRORNAME("API.TOKENAUTHTENTICATIONFAILED"));
+			//request.setAttribute("errorLogin", services.XMLERRORNAME("API.TOKENAUTHTENTICATIONFAILED"));
 			rd = request.getRequestDispatcher("login.jsp");
 			rd.include(request, response);
 		}

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <c:if test="${empty sessionScope.sessionStaff}">
+    <c:if test="${empty sessionScope.sessionStaff && empty sessionScope.sessionAdmin.getUsername()}">
       <c:redirect url="/" />
-    </c:if>
+    </c:if> 
     <!DOCTYPE html>
     <html lang="en">
 

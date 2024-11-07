@@ -718,9 +718,9 @@
 									</g>
 								</svg>Display</button>
 							<div class="dropdown-dashboard">
-								<a href="">User Inquiry</a>
-								<a href="">User Window</a>
-								<a href="">Counter Window</a>
+								<a href="userinquiry">User Inquiry</a>
+								<a href="userwindow">User Window</a>
+								<a href="counterwindow">Counter Window</a>
 							</div>
 						</div>
 					</div>
