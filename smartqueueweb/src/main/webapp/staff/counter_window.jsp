@@ -485,6 +485,32 @@
                         width: 20%;
                     }
                 }
+
+
+                /*button loader */
+                #button-loader {
+                    border: 4px solid #f3f3f3;
+                    /* Light grey */
+                    border-top: 4px solid #3498db;
+                    /* Blue */
+                    border-radius: 50%;
+                    width: 16px;
+                    height: 16px;
+                    animation: spin 1s linear infinite;
+                    display: inline-block;
+                    margin-left: 10px;
+                    vertical-align: middle;
+                }
+
+                @keyframes spin {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
             </style>
         </head>
 
@@ -639,14 +665,27 @@
 
                 let priorityNumberTableBody = document.getElementById("priority-number-table");
                 let counterAccessTableBody = document.getElementById("counter-access-table");
+                const callButton = document.getElementById("call-button");
+                const recallButton = document.getElementById("recall-button");
+                const doneButton = document.getElementById("done-button");
 
                 async function transferRow() {
+
+                    callButton.disabled = true;
+                    callButton.innerHTML = `<b>LOADING</b> <span id="button-loader"></span>`;
+
+                    setTimeout(() => {
+                        callButton.disabled = false;
+                        callButton.innerHTML = `<b>CALL</b>`; 
+                    }, 1000); 
+
                     if (counterAccessTableBody.rows.length > 0) {
-                        await alert("Table 2 can only hold one row!");
+                        await console.log("Table 2 can only hold one row!");
                         return;
                     }
 
                     if (priorityNumberTableBody.rows.length > 0) {
+
                         let firstRow = priorityNumberTableBody.rows[0];
                         await counterAccessTableBody.appendChild(firstRow);
                         let queueNumber = firstRow.cells[0].innerText;
@@ -654,29 +693,46 @@
                         await sendMsg(queueNumber, window_number);
                         await updateQueueStatus(queueNumber, 'SERVING');
                     } else {
-                        await alert("No more rows to transfer!");
+                        await console.log("No more rows to transfer!");
                     }
                 }
 
                 function removeRow() {
+                    doneButton.disabled = true;
+                    doneButton.innerHTML = `<b>LOADING</b> <span id="button-loader"></span>`;
+
+                    setTimeout(() => {
+                        doneButton.disabled = false;
+                        doneButton.innerHTML = `<b>DONE</b>`; 
+                    }, 1000);
+
                     if (counterAccessTableBody.rows.length > 0) {
                         let secondRow = counterAccessTableBody.rows[0];
                         let queueNumber = secondRow.cells[0].innerText;
                         updateQueueStatus(queueNumber, 'DONE');
                         counterAccessTableBody.deleteRow(0);
                     } else {
-                        alert("No row to remove from Table 2!");
+                        console.log("No row to remove from Table 2!");
                     }
                 }
 
                 function recall() {
+
+                    recallButton.disabled = true;
+                    recallButton.innerHTML = `<b>LOADING</b> <span id="button-loader"></span>`;
+
+                    setTimeout(() => {
+                        recallButton.disabled = false;
+                        recallButton.innerHTML = `<b>RECALL</b>`; 
+                    }, 1000);
+
                     if (counterAccessTableBody.rows.length > 0) {
                         let secondRow = counterAccessTableBody.rows[0];
                         let queueNumber = secondRow.cells[0].innerText;
                         let window_number = secondRow.cells[6].innerText;
                         sendMsg(queueNumber, window_number);
                     } else {
-                        alert("No row to recall from Table 2!");
+                        console.log("No row to recall from Table 2!");
                     }
                 }
 
@@ -686,9 +742,9 @@
                         url: `/smartqueueweb/updateQueueStatus?queueNumber=` + queueNumber + `&queueStatus=` + queueStatus,
                         type: 'PUT',
                         success: function (response) {
-                            alert(response);
+                            console.log(response);
                         }, error: function (xhr, status, error) {
-                            alert("Error: " + xhr.responseText);
+                            console.log("Error: " + xhr.responseText);
                         }
                     });
                 }

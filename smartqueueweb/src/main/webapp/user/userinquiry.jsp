@@ -611,7 +611,7 @@
                     //need to polish
                     var queueNumber = '';
 
-                   await $.ajax({
+                    await $.ajax({
                         url: 'JsonQueueNumberAvailableAPI?availableNumber=1',
                         type: "GET",
                         success: function (response) {
@@ -629,14 +629,18 @@
                     let studentFirstname = '';
                     let studentMiddlename = '';
                     let studentLastname = '';
+                    let yearLevel = ''
+                    let program = '';
 
                     if (serviceType === 'General') {
                         studentFirstname = document.getElementById('general-student-firstname');
                         studentMiddlename = document.getElementById('general-student-middlename');
                         studentLastname = document.getElementById('general-student-lastname');
-
+                        yearLevel = document.getElementById('yearLevel');
                         studentId = document.getElementById('general-student-id');
                         purpose = document.getElementById('general-purpose');
+                        program = document.getElementById('general-program');
+                   
                         charQueue = 'G';
                     } else if (serviceType === 'Records') {
                         studentName = document.getElementById('records-student-name');
@@ -703,15 +707,38 @@
 
 
                             // Automatically print the receipt content
-                            setTimeout(function () {
+                            setTimeout(function await() {
                                 window.print();
                             }, 500); // Optional delay before printing
+
+                            if (serviceType === 'General') {
+                                studentFirstname.value = "";
+                                studentMiddlename.value = "";
+                                studentLastname.value = "";
+                                yearLevel.value = "";
+                                studentId.value = "";
+                                purpose.value = "";
+                                program.value = "";
+                            } else if (serviceType === 'Records') {
+                                studentName.value = "";
+                                studentId.value = "";
+                                purpose.value = "";
+                            } else if (serviceType === 'Archiving') {
+                                studentFirstname.value = "";
+                                studentMiddlename.value = "";
+                                studentLastname.value = "";
+                                studentId.value = "";
+                                purpose.value = "";
+                            }
 
                         },
                         error: function (xhr, status, error) {
                             alert(error + ' : ' + xhr.responseText);
+
                         }
                     });
+
+
 
                 }
 
@@ -829,13 +856,9 @@
                 });
 
                 function SetEmptyNameFields() {
-                    //archivingStudentFirstName.value = "";
-                    //archivingStudentMiddleName.value = "";
-                    //archivingStudentLastName.value = "";
-                }
-
-                function SetEmptyIdField() {
-                    //archiveStudentId.value = "";
+                    // archivingStudentFirstName.value = "";
+                    // archivingStudentMiddleName.value = "";
+                    // archivingStudentLastName.value = "";
                 }
 
 
