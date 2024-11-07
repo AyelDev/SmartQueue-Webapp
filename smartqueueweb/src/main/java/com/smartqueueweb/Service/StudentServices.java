@@ -18,4 +18,6 @@ public interface StudentServices{
 	
 	StudentBean searchStudentInquiry(long idnumber, String firstname, String middlename, String lastname);
 	
+	Long queueNumberAvailable(long id);
+	
 }

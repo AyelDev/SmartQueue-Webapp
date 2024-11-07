@@ -604,8 +604,23 @@
                     return true;
                 }
 
+
                 // Function to print the queue and check if limit is reached
-                function printQueue(serviceType) {
+                async function printQueue(serviceType) {
+
+                    //need to polish
+                    var queueNumber = '';
+
+                   await $.ajax({
+                        url: 'JsonQueueNumberAvailableAPI?availableNumber=1',
+                        type: "GET",
+                        success: function (response) {
+                            queueNumber = response.id;
+                        },
+                        error: function (xhr, status, error) {
+                            console.error("Error:", status, error);
+                        }
+                    });
 
                     let studentName = '';
                     let studentId = '';
@@ -619,7 +634,7 @@
                         studentFirstname = document.getElementById('general-student-firstname');
                         studentMiddlename = document.getElementById('general-student-middlename');
                         studentLastname = document.getElementById('general-student-lastname');
-                        
+
                         studentId = document.getElementById('general-student-id');
                         purpose = document.getElementById('general-purpose');
                         charQueue = 'G';
@@ -638,8 +653,10 @@
                         charQueue = 'A';
                     }
 
+
                     // Generate random queue number and current date
-                    var queueNumber = Math.floor(Math.random() * 900) + 100;  // Random 3-digit number
+
+
                     var currentDateTime = new Date().toLocaleString();
 
                     studentName = studentFirstname.value + " " + studentMiddlename.value + " " + studentLastname.value;
@@ -664,7 +681,7 @@
                     `;
                     let servetype = serviceType;
 
-                    $.ajax({
+                    await $.ajax({
                         url: 'inquiry',
                         type: 'POST',
                         data: {
@@ -683,13 +700,13 @@
                             // Show the modal
                             var modal = document.getElementById('receiptModal');
                             modal.style.display = "block";
-                            
+
 
                             // Automatically print the receipt content
                             setTimeout(function () {
                                 window.print();
                             }, 500); // Optional delay before printing
-                         
+
                         },
                         error: function (xhr, status, error) {
                             alert(error + ' : ' + xhr.responseText);
@@ -820,61 +837,66 @@
                 function SetEmptyIdField() {
                     //archiveStudentId.value = "";
                 }
-                
+
 
                 //Selection
-                   //Selection
-                   function InquirySelection(){
+                //Selection
+                function InquirySelection() {
                     generalitemId = 1;
-					recordsitemId = 1;
-					archivingItemId = 1;
-					$.ajax({
-						url: '/smartqueueweb/JsonServiceListAPI',
-						method: 'GET',
-						data: {},
-						dataType: 'json',
-						success: function (data) {
-							const selectGeneralProgramBody = $('#general-program');
-							const tableGeneralPurposeBody = $('#general-purpose');
-							const tableRecordsPurposeBody = $('#records-purpose');
-							const tableArchivePurposeBody = $('#archiving-purpose');
+                    recordsitemId = 1;
+                    archivingItemId = 1;
+                    $.ajax({
+                        url: '/smartqueueweb/JsonServiceListAPI',
+                        method: 'GET',
+                        data: {},
+                        dataType: 'json',
+                        success: function (data) {
+                            const selectGeneralProgramBody = $('#general-program');
+                            const tableGeneralPurposeBody = $('#general-purpose');
+                            const tableRecordsPurposeBody = $('#records-purpose');
+                            const tableArchivePurposeBody = $('#archiving-purpose');
 
-							//selectGeneralProgramBody.empty();
-							//tableGeneralPurposeBody.empty();
-							//tableRecordsPurposeBody.empty();
-							//tableArchivePurposeBody.empty();
+                            //selectGeneralProgramBody.empty();
+                            //tableGeneralPurposeBody.empty();
+                            //tableRecordsPurposeBody.empty();
+                            //tableArchivePurposeBody.empty();
 
-							// Populate table with new data
-							data.forEach(item => {
+                            // Populate table with new data
+                            data.forEach(item => {
 
-								if(item.course !== undefined && item.serviceType == 'GENERAL'){
+                                if (item.course !== undefined && item.serviceType == 'GENERAL') {
                                     selectGeneralProgramBody.append(`
-                                     <option value="`+item.course+`">`+item.course+`</option>
+                                     <option value="`+ item.course + `">` + item.course + `</option>
                					`);
-								}
-								else if(item.purpose !== undefined && item.serviceType == 'GENERAL'){
-								tableGeneralPurposeBody.append(`
-									      <option value="`+item.purpose+`">`+item.purpose+`</option>
-								`);}
-								
-								if(item.purpose !== undefined && item.serviceType == 'RECORDS'){
-								tableRecordsPurposeBody.append(`
-									        <option value="`+item.purpose+`">`+item.purpose+ ` [Php` +item.amount+`.00]</option>
-								`);}
-								else if(item.program === undefined && item.serviceType == 'ARCHIVING'){
-								tableArchivePurposeBody.append(`
-									 <option value="`+item.purpose+`">`+item.purpose+`</option>
-								`);}
+                                }
+                                else if (item.purpose !== undefined && item.serviceType == 'GENERAL') {
+                                    tableGeneralPurposeBody.append(`
+									      <option value="`+ item.purpose + `">` + item.purpose + `</option>
+								`);
+                                }
 
-							});
-						},
-						error: function (error) {
-							console.error('Error fetching data:', error);
-						}
-					});
+                                if (item.purpose !== undefined && item.serviceType == 'RECORDS') {
+                                    tableRecordsPurposeBody.append(`
+									        <option value="`+ item.purpose + `">` + item.purpose + ` [Php` + item.amount + `.00]</option>
+								`);
+                                }
+                                else if (item.program === undefined && item.serviceType == 'ARCHIVING') {
+                                    tableArchivePurposeBody.append(`
+									 <option value="`+ item.purpose + `">` + item.purpose + `</option>
+								`);
+                                }
+
+                            });
+                        },
+                        error: function (error) {
+                            console.error('Error fetching data:', error);
+                        }
+                    });
                 }
 
                 InquirySelection();
+
+
 
             </script>
 

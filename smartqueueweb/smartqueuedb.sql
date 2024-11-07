@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.2:3307
--- Generation Time: Nov 02, 2024 at 02:38 PM
+-- Generation Time: Nov 07, 2024 at 03:30 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -53,7 +53,7 @@ CREATE TABLE `student_queue_entries` (
   `queue_number` varchar(11) NOT NULL,
   `id_number` bigint(30) NOT NULL,
   `fullname` varchar(200) NOT NULL,
-  `purpose` varchar(20) NOT NULL,
+  `purpose` varchar(220) NOT NULL,
   `servicetype` varchar(100) NOT NULL,
   `window_number` tinyint(4) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -96,14 +96,6 @@ CREATE TABLE `tbl_login_staff` (
   `isLocked` tinyint(1) NOT NULL DEFAULT 0,
   `isDeleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_login_staff`
---
-
-INSERT INTO `tbl_login_staff` (`staff_id`, `firstname`, `lastname`, `email`, `contact_number`, `username`, `password`, `isLocked`, `isDeleted`) VALUES
-(190, 'ariel', 'abelgas', 'ariel@gmail.com', 9666170733, 'ariel', 'locks', 0, 0),
-(191, 'lol', 'loloÑÑññs', 'lolos@gmail.com', 9672919283, 'lolos', 'CEC24JH&@', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -224,25 +216,6 @@ CREATE TABLE `tbl_student_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_student_info`
---
-
-INSERT INTO `tbl_student_info` (`id_number`, `first_name`, `middle_name`, `last_name`, `course`, `isDeleted`) VALUES
-(1231231, 'ariel', 'piodena', 'abelgas', 'BSIT', 0),
-(1231311, 'ariel', 'asdad', 'asda', 'BSHM', 1),
-(2110010, 'cindy mae', '', 'labra', 'BSIT', 0),
-(2110598, 'Tristan Rodd', 'Monist', 'Acompañado', 'BSIT', 0),
-(2110872, 'Merilyn', 'Geronda', 'Villamor', 'BEED', 1),
-(2210551, 'RosemariasdadadaazÑó', '', 'Obtina', 'BEED', 0),
-(2210770, 'Cristel', 'Jayme', 'Navarro', 'BEED', 0),
-(2210820, 'Catherine', 'Jayme', 'Abaya', 'BEED', 0),
-(2410304, 'Rhealyn', 'Cadungog', 'Cabugwang', 'BSTM', 0),
-(2410691, 'JB', 'Cabunilas', 'Recaña', 'BSHM', 0),
-(2410929, 'Sheila Mae', 'Aniñon', 'Filipinas', 'BSHM', 0),
-(2411730, 'Daniel', 'Astillero', 'Labay', 'BSHM', 0),
-(2412282, 'Juvilla', 'Celebrado', 'Amance', 'BSHM', 0);
-
---
 -- Indexes for dumped tables
 --
 
@@ -332,7 +305,7 @@ ALTER TABLE `accesstokens`
 -- AUTO_INCREMENT for table `student_queue_entries`
 --
 ALTER TABLE `student_queue_entries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12406;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12632;
 
 --
 -- AUTO_INCREMENT for table `tbl_login_admin`
@@ -344,7 +317,7 @@ ALTER TABLE `tbl_login_admin`
 -- AUTO_INCREMENT for table `tbl_login_staff`
 --
 ALTER TABLE `tbl_login_staff`
-  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
+  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
 
 --
 -- AUTO_INCREMENT for table `tbl_service`

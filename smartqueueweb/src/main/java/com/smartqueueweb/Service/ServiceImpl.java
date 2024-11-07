@@ -164,6 +164,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return studentdata.addToQueue(queueNumber, idNumber, fullname, purpose, servicetype);
 	}
 
+	@Override
+	public Long queueNumberAvailable(long id) {
+		// TODO Auto-generated method stub
+		return studentdata.queueNumberAvailable(id);
+	}
+	
 	public String XMLERRORNAME(String errorName) {
 		try {
 		    // Specify the file path
@@ -209,5 +215,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return "";
 
 	}
+	
+	
 
 }

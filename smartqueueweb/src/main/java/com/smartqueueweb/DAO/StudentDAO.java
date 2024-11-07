@@ -153,4 +153,26 @@ public class StudentDAO extends SQLConnection {
 		}
 		return studentbean;
 	}
+
+	
+	public Long queueNumberAvailable(long id) {
+	    try {
+	        ConnectDriver();
+	        prs = conn.prepareStatement("SELECT queue_number FROM student_queue_entries WHERE queue_number LIKE ?;");
+	        prs.setString(1, "%"+id);
+	        
+	        rs = prs.executeQuery();
+	        if (rs.next()) {
+	            return queueNumberAvailable(id + 1);
+	        }
+	     
+	        return id;
+	        
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        SQLClose();
+	    }
+	    return id; 
+	}
 }

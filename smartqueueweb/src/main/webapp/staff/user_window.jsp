@@ -156,45 +156,45 @@
           </div>
           <div class="col-6-2">
             <table class="table table-info">
-              <tbody>
+              <tbody id="window-1-body">
                 <tr>
                   <td>Window 1</td>
-                  <td>02</td>
+                  <td>---</td>
                 </tr>
               </tbody>
 
-              <tbody>
+              <tbody id="window-2-body">
                 <tr>
                   <td>Window 2</td>
-                  <td>02</td>
+                  <td>---</td>
                 </tr>
               </tbody>
 
-              <tbody>
+              <tbody id="window-3-body">
                 <tr>
                   <td>Window 3</td>
-                  <td>02</td>
+                  <td>---</td>
                 </tr>
               </tbody>
 
-              <tbody>
+              <tbody id="window-4-body">
                 <tr>
                   <td>Window 4</td>
-                  <td>02</td>
+                  <td>---</td>
                 </tr>
               </tbody>
 
-              <tbody>
+              <tbody id="window-5-body">
                 <tr>
                   <td>Window 5</td>
-                  <td>02</td>
+                  <td>---</td>
                 </tr>
               </tbody>
 
-              <tbody>
+              <tbody id="window-6-body">
                 <tr>
                   <td>Window 6</td>
-                  <td>02</td>
+                  <td>---</td>
                 </tr>
               </tbody>
             </table>
@@ -204,9 +204,9 @@
 
       <div class="popup" id="popup">
         <div class="popup-content">
-          <h1>G01</h1>
+          <h1 id="popup-queue-number">G01</h1>
           <span class="close" id="closeBtn">&times;</span>
-          <p>Window 1</p>
+          <p id="popup-window-number">Window 1</p>
         </div>
       </div>
 
@@ -222,7 +222,6 @@
           document.getElementById('date').textContent = now.toLocaleDateString();
           document.getElementById('time').textContent = now.toLocaleTimeString();
         }
-
 
         // updateQueue('counter1', 'queue1');
         // updateQueue('counter2', 'queue2');
@@ -259,9 +258,13 @@
         ws.addEventListener("message", async (message) => {
 
           if ('speechSynthesis' in window) {
+
+            let messageParse = JSON.parse(message.data);
+
             try {
+
               const msg = new SpeechSynthesisUtterance();
-              msg.text = message.data;
+              msg.text = messageParse.message;
               msg.lang = 'en-AU'; // Specify language code
 
               msg.volume = 1.0
@@ -269,8 +272,11 @@
 
               // Optional: Add event listeners
               msg.onstart = async function () {
-                await showPopup();
+                await showPopup(messageParse.windowNumber, messageParse.queueNumber);
                 await playDingdong();
+                await CounterList(1, "SERVING", "#window-1-body");
+                await CounterList(2, "SERVING", "#window-2-body");
+                await CounterList(3, "SERVING", "#window-3-body");
               };
              
             } catch (error) {
@@ -283,10 +289,17 @@
 
         setInterval(updateTime, 1000);
 
+     
         //pop up
-          function showPopup() {
-            $("#popup").fadeIn();
+          function showPopup(popupwindownumber, popupqueuenumber) {
+            
+            let popqueue = document.getElementById("popup-queue-number");
+            let popwindow = document.getElementById("popup-window-number");
 
+            popqueue.textContent = popupqueuenumber;
+            popwindow.textContent = "Window " + popupwindownumber;
+
+            $("#popup").fadeIn();
             setTimeout(hidePopup, 8000);
           }
 
@@ -302,6 +315,44 @@
             }
           });
        
+
+        //counter windows
+    async function CounterList(window_number, queue_status, elementid) {
+                  await $.ajax({
+                        url: '/smartqueueweb/JsonStudentQueueEntriesAPI',
+                        method: 'GET',
+                        data: {
+                            window_number: window_number,
+                            queue_status: queue_status
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                          let NumberTable = $(elementid);
+                          NumberTable.empty();
+
+                          if(data.length === 0){
+                            NumberTable.append(`
+                                  <tr>
+                                      <td>Window `+window_number+`</td>
+                                      <td>---</td>
+                                  </tr>
+                                    `);
+                                    return;
+                          }
+                            data.forEach(item => {
+                              NumberTable.append(`
+                                  <tr>
+                                      <td> Window `+item.window_number+`</td>
+                                      <td>`+item.queue_number+`</td>
+                                  </tr>
+                                    `);
+                            });
+                        }
+
+                    });
+                }
+
+               
       </script>
       <div class="load-wrapper">
         <div class="main-loader">

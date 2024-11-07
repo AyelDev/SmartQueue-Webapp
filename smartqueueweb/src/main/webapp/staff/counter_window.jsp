@@ -650,7 +650,8 @@
                         let firstRow = priorityNumberTableBody.rows[0];
                         await counterAccessTableBody.appendChild(firstRow);
                         let queueNumber = firstRow.cells[0].innerText;
-                        await sendMsg(queueNumber);
+                        let window_number = firstRow.cells[6].innerText;
+                        await sendMsg(queueNumber, window_number);
                         await updateQueueStatus(queueNumber, 'SERVING');
                     } else {
                         await alert("No more rows to transfer!");
@@ -707,7 +708,13 @@
 
                 function sendMsg(queueNumber, window_number) {
                     if (queueNumber) {
-                        ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
+                        ws.send(JSON.stringify({
+                            message: "Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you",
+                            queueNumber: queueNumber,
+                            windowNumber: window_number,
+                            tostop: "none"
+                        }));
+                        //ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
                     }
                 }
 

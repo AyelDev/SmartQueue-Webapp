@@ -1,6 +1,8 @@
 package com.smartqueueweb.Class;
 
+import java.nio.charset.StandardCharsets;
 import java.sql.Date;
+import java.util.Arrays;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
@@ -58,10 +60,8 @@ public class JwtValidator {
     }
 
     public static String fixGarbledCharacters(String input) {
-        if (input != null) {
-            input = input.replace("Ã±", "ñ"); // Fix for ñ
-            input = input.replace("Ã", "Ñ"); // Fix for Ñ
-        }
-        return input.trim();
+        byte[] utf8Bytes = input.getBytes(StandardCharsets.UTF_8);
+        String decodedString = new String(utf8Bytes, StandardCharsets.UTF_8);
+        return decodedString.trim();
     }
 }
