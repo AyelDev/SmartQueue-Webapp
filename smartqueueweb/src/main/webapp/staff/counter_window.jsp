@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <c:if test="${empty sessionScope.sessionStaff && empty sessionScope.sessionAdmin.getUsername()}">
-        <c:redirect url="/" />
-      </c:if> 
+        <c:if test="${empty sessionScope.sessionStaff && empty sessionScope.sessionAdmin.getUsername()}">
+            <c:redirect url="/" />
+        </c:if>
 
         <!DOCTYPE html>
         <html lang="en">
@@ -13,7 +13,11 @@
             <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
             <script type="text/javascript" src="./scripts/ping.js"></script>
             <script type="text/javascript" src="./scripts/fadetransition.js"></script>
+            <script type="text/javascript" src="./scripts/notify.js"></script>
+            <script type="text/javascript" src="./scripts/prettify.js"></script>
             <link rel="stylesheet" href="./css/loader.css">
+            <link rel="stylesheet" href="./css/prettify.css">
+            <link rel="stylesheet" href="./css/notify.css">
             <title>SmartQueue</title>
             <style>
                 * {
@@ -676,11 +680,11 @@
 
                     setTimeout(() => {
                         callButton.disabled = false;
-                        callButton.innerHTML = `<b>CALL</b>`; 
-                    }, 1000); 
+                        callButton.innerHTML = `<b>CALL</b>`;
+                    }, 1000);
 
                     if (counterAccessTableBody.rows.length > 0) {
-                        await console.log("Table 2 can only hold one row!");
+                        await $.notify("Table 2 can only hold one row!", {color: "#fff", background: "#D44950", delay:1000})
                         return;
                     }
 
@@ -693,7 +697,7 @@
                         await sendMsg(queueNumber, window_number);
                         await updateQueueStatus(queueNumber, 'SERVING');
                     } else {
-                        await console.log("No more rows to transfer!");
+                        await $.notify("No more rows to transfer!", {color: "#fff", background: "#D44950", delay:1000});
                     }
                 }
 
@@ -703,7 +707,7 @@
 
                     setTimeout(() => {
                         doneButton.disabled = false;
-                        doneButton.innerHTML = `<b>DONE</b>`; 
+                        doneButton.innerHTML = `<b>DONE</b>`;
                     }, 1000);
 
                     if (counterAccessTableBody.rows.length > 0) {
@@ -712,7 +716,7 @@
                         updateQueueStatus(queueNumber, 'DONE');
                         counterAccessTableBody.deleteRow(0);
                     } else {
-                        console.log("No row to remove from Table 2!");
+                        $.notify("No row to remove from Table 2!", {color: "#fff", background: "#D44950", delay:1000})
                     }
                 }
 
@@ -723,7 +727,7 @@
 
                     setTimeout(() => {
                         recallButton.disabled = false;
-                        recallButton.innerHTML = `<b>RECALL</b>`; 
+                        recallButton.innerHTML = `<b>RECALL</b>`;
                     }, 1000);
 
                     if (counterAccessTableBody.rows.length > 0) {
@@ -732,7 +736,7 @@
                         let window_number = secondRow.cells[6].innerText;
                         sendMsg(queueNumber, window_number);
                     } else {
-                        console.log("No row to recall from Table 2!");
+                        $.notify("No row to recall from Table 2!", {color: "#fff", background: "#D44950", delay:1000})
                     }
                 }
 
@@ -742,9 +746,9 @@
                         url: `/smartqueueweb/updateQueueStatus?queueNumber=` + queueNumber + `&queueStatus=` + queueStatus,
                         type: 'PUT',
                         success: function (response) {
-                            console.log(response);
+                            $.notify(response, {color: "#fff", background: "#20D67B", delay:1000})
                         }, error: function (xhr, status, error) {
-                            console.log("Error: " + xhr.responseText);
+                            $.notify(xhr.responseText, {color: "#fff", background: "#D44950", delay:1000})
                         }
                     });
                 }
@@ -778,6 +782,7 @@
 
 
             </script>
+
             <div class="load-wrapper">
                 <div class="main-loader">
                     <div class="box-loader">

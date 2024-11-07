@@ -2,19 +2,23 @@
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <c:if test="${empty sessionScope.sessionStaff && empty sessionScope.sessionAdmin.getUsername()}">
       <c:redirect url="/" />
-    </c:if> 
+    </c:if>
     <!DOCTYPE html>
     <html lang="en">
 
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="./css/bootstrap.css">
       <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
       <script type="text/javascript" src="./scripts/ping.js"></script>
       <script type="text/javascript" src="./scripts/fadetransition.js"></script>
+      <script type="text/javascript" src="./scripts/notify.js"></script>
+      <script type="text/javascript" src="./scripts/prettify.js"></script>
+      <link rel="stylesheet" href="./css/bootstrap.css">
       <link rel="stylesheet" href="./css/loader.css">
       <link rel="stylesheet" href="./css/user_window.css">
+      <link rel="stylesheet" href="./css/notify.css">
+      <link rel="stylesheet" href="./css/prettify.css">
       <title>SmartQueue</title>
 
     </head>
@@ -133,10 +137,12 @@
         cursor: pointer;
         font-size: 20px;
       }
-      h1{
+
+      h1 {
         font-size: 20rem;
       }
-      p{
+
+      p {
         font-size: 5rem;
         color: #fff;
         background-color: #00509d;
@@ -147,8 +153,8 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-6-1">
-            <video id="video-ads" controls autoplay loop>
-              <source src="video-ad.mp4" type="video/mp4">
+            <video id="video-ads" autoplay muted controls>
+              <source id="videoSource" src="media/videosample3.mp4" type="video/mp4">
             </video>
             <div class="datetime">
               <span id="date"></span> | <span id="time"></span>
@@ -272,94 +278,125 @@
 
               // Optional: Add event listeners
               msg.onstart = async function () {
+                await videoSetVolume(.0);
                 await showPopup(messageParse.windowNumber, messageParse.queueNumber);
                 await playDingdong();
                 await CounterList(1, "SERVING", "#window-1-body");
                 await CounterList(2, "SERVING", "#window-2-body");
                 await CounterList(3, "SERVING", "#window-3-body");
               };
-             
+
+              msg.onend = async function(){
+                await videoSetVolume(.3);
+              }
+
             } catch (error) {
-              console.error('Error during speech synthesis:', error);
+              $.notify("Error during speech synthesis:"+error, {color: "#fff", background: "#D44950", delay:1000})
             }
           } else {
-            alert('Text-to-speech is not supported in this browser.');
+            $.notify("Text-to-speech is not supported in this browser.", {color: "#fff", background: "#D44950", delay:1000})
           }
         });
 
         setInterval(updateTime, 1000);
 
-     
+
         //pop up
-          function showPopup(popupwindownumber, popupqueuenumber) {
-            
-            let popqueue = document.getElementById("popup-queue-number");
-            let popwindow = document.getElementById("popup-window-number");
+        function showPopup(popupwindownumber, popupqueuenumber) {
 
-            popqueue.textContent = popupqueuenumber;
-            popwindow.textContent = "Window " + popupwindownumber;
+          let popqueue = document.getElementById("popup-queue-number");
+          let popwindow = document.getElementById("popup-window-number");
 
-            $("#popup").fadeIn();
-            setTimeout(hidePopup, 8000);
+          popqueue.textContent = popupqueuenumber;
+          popwindow.textContent = "Window " + popupwindownumber;
+
+          $("#popup").fadeIn();
+          setTimeout(hidePopup, 8000);
+        }
+
+        function hidePopup() {
+          $("#popup").fadeOut();
+        }
+
+        $("#closeBtn").click(hidePopup);
+
+        $(window).click(function (event) {
+          if ($(event.target).is("#popup")) {
+            hidePopup();
           }
+        });
 
-          function hidePopup() {
-            $("#popup").fadeOut();
-          }
-
-          $("#closeBtn").click(hidePopup);
-
-          $(window).click(function (event) {
-            if ($(event.target).is("#popup")) {
-              hidePopup();
-            }
-          });
-       
 
         //counter windows
-    async function CounterList(window_number, queue_status, elementid) {
-                  await $.ajax({
-                        url: '/smartqueueweb/JsonStudentQueueEntriesAPI',
-                        method: 'GET',
-                        data: {
-                            window_number: window_number,
-                            queue_status: queue_status
-                        },
-                        dataType: 'json',
-                        success: function (data) {
-                          let NumberTable = $(elementid);
-                          NumberTable.empty();
+        async function CounterList(window_number, queue_status, elementid) {
+          await $.ajax({
+            url: '/smartqueueweb/JsonStudentQueueEntriesAPI',
+            method: 'GET',
+            data: {
+              window_number: window_number,
+              queue_status: queue_status
+            },
+            dataType: 'json',
+            success: function (data) {
+              let NumberTable = $(elementid);
+              NumberTable.empty();
 
-                          if(data.length === 0){
-                            NumberTable.append(`
+              if (data.length === 0) {
+                NumberTable.append(`
                                   <tr>
-                                      <td>Window `+window_number+`</td>
+                                      <td>Window `+ window_number + `</td>
                                       <td>---</td>
                                   </tr>
                                     `);
-                                    return;
-                          }
-                            data.forEach(item => {
-                              NumberTable.append(`
+                return;
+              }
+              data.forEach(item => {
+                NumberTable.append(`
                                   <tr>
-                                      <td> Window `+item.window_number+`</td>
-                                      <td>`+item.queue_number+`</td>
+                                      <td> Window `+ item.window_number + `</td>
+                                      <td>`+ item.queue_number + `</td>
                                   </tr>
                                     `);
-                            });
-                        }
+              });
+            }
 
-                    });
-                }
+          });
+        }
 
-               
+        // Array of video files to play sequentially
+        const videoFiles = ["media/videosample.mp4", "media/videosample2.mp4"];
+        let currentVideoIndex = 0; // Track the current video index
+
+        // Get the video and source elements
+        const videoElement = document.getElementById('video-ads');
+        const videoSource = document.getElementById('videoSource');
+        
+        // Function to load the next video
+        function loadNextVideo() {
+          currentVideoIndex = (currentVideoIndex + 1) % videoFiles.length; // Cycle through videos
+          videoSource.src = videoFiles[currentVideoIndex]; // Update video source
+          videoElement.load(); // Reload video with new source
+          videoElement.play(); // Auto-play the next video
+        }
+
+        // Event listener for the `ended` event to load the next video
+        videoElement.addEventListener('ended', loadNextVideo);
+       
+        function videoSetVolume(volume){
+          videoElement.volume = volume;
+        }
+        
+        videoSetVolume(.3);
       </script>
+
       <div class="load-wrapper">
         <div class="main-loader">
           <div class="box-loader">
           </div>
         </div>
       </div>
+
+     
     </body>
 
     </html>

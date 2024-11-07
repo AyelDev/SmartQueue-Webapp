@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.mysql.cj.Session;
 import com.smartqueueweb.Class.JwtValidator;
 import com.smartqueueweb.Service.ServiceImpl;
 
@@ -38,15 +39,12 @@ public class LoginPage_Servlet extends HttpServlet {
 
 		try {
 			String cookieauth = validator.getCookieValue(request.getCookies(), "_auth");
-
-			
-			
 			DecodedJWT decoded = validator.decode(cookieauth);
 			String userRole = decoded.getClaim("userRole").toString().replace("\"", "");
 
 			boolean adminLogged = userRole.equals("admin");
 			boolean staffLogged = userRole.equals("staff");
-
+			
 			if (adminLogged) {
 				response.sendRedirect("admindashboard");
 			}
@@ -56,7 +54,7 @@ public class LoginPage_Servlet extends HttpServlet {
 			}
 
 		} catch (Exception e) {
-			request.setAttribute("errorLogin", services.XMLERRORNAME("API.TOKENAUTHTENTICATIONFAILED"));
+			//request.setAttribute("errorLogin", services.XMLERRORNAME("API.TOKENAUTHTENTICATIONFAILED"));
 			rd = request.getRequestDispatcher("login.jsp");
 			rd.include(request, response);
 		}

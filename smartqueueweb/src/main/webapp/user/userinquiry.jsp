@@ -7,8 +7,11 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
-            <script type="text/javascript" src="./scripts/fadetransition.js"></script>
+            <script type="text/javascript" src="./scripts/notify.js"></script>
+            <script type="text/javascript" src="./scripts/prettify.js"></script>
             <link rel="stylesheet" href="./css/loader.css">
+            <link rel="stylesheet" href="./css/prettify.css">
+            <link rel="stylesheet" href="./css/notify.css">
             <title>User Inquiry</title>
         </head>
 
@@ -598,7 +601,7 @@
                 function checkQueueLimit() {
                     const limit = localStorage.getItem('dailyQueueLimit') || 200;  // Default to 200 if not set
                     if (currentQueueCount >= limit) {
-                        alert('Sorry, the queue for today is full. Please come back tomorrow.');
+                        $.notify("Sorry, the queue for today is full. Please come back tomorrow.", { color: "#fff", background: "#D44950", delay: 1000 })
                         return false;
                     }
                     return true;
@@ -618,7 +621,7 @@
                             queueNumber = response.id;
                         },
                         error: function (xhr, status, error) {
-                            console.error("Error:", status, error);
+                            $.notify(xhr.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
                         }
                     });
 
@@ -640,7 +643,7 @@
                         studentId = document.getElementById('general-student-id');
                         purpose = document.getElementById('general-purpose');
                         program = document.getElementById('general-program');
-                   
+
                         charQueue = 'G';
                     } else if (serviceType === 'Records') {
                         studentName = document.getElementById('records-student-name');
@@ -696,7 +699,7 @@
                             servicetype: servetype
                         },
                         success: function (response) {
-                            alert('Success: ' + response);
+                            $.notify(response, { color: "#fff", background: "#20D67B", delay: 1000 })
 
                             // Inject the receipt content into the modal
                             document.getElementById('printArea').innerHTML = receiptContent;
@@ -733,7 +736,7 @@
 
                         },
                         error: function (xhr, status, error) {
-                            alert(error + ' : ' + xhr.responseText);
+                            $.notify(xhr.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
 
                         }
                     });
@@ -772,6 +775,7 @@
                             //alert('Success: ' + response.firstname + " " + response.middlename + " " + response.lastname + " " + response.course);
                         },
                         error: function (xhr, status, error) {
+                            $.notify(xhr.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
                             studentName.value = "";
                             //alert(error + ' : ' + xhr.responseText);
                         }
@@ -817,7 +821,7 @@
                             },
                             error: function (xhr, status, error) {
                                 //archivingStudentName.value = "";
-                                alert(error + ' : ' + xhr.responseText);
+                                $.notify(xhr.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
                                 SetEmptyNameFields();
                             }
                         });
@@ -847,7 +851,7 @@
                             },
                             error: function (xhr, status, error) {
                                 //archivingStudentName.value = "";
-                                alert(error + ' : ' + xhr.responseText);
+                                $.notify(xhr.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
                                 SetEmptyNameFields();
                             }
                         });
@@ -912,18 +916,13 @@
                             });
                         },
                         error: function (error) {
-                            console.error('Error fetching data:', error);
+                            $.notify("Error fetching data " + error, { color: "#fff", background: "#D44950", delay: 1000 })
                         }
                     });
                 }
 
                 InquirySelection();
-
-
-
             </script>
-
-
         </body>
 
         </html>
