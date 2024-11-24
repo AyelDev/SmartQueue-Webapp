@@ -51,10 +51,10 @@ body {
 
 .cecbldg{
     width: 55%;
-    height: 60%;
+    height: 57%;
     object-fit: fill;
     border-bottom-left-radius: 10px;
-    margin-top: 22.5%;
+    margin-top: 24.5%;
     margin-left: -45%;
     opacity: .5;
 }
@@ -149,7 +149,7 @@ body {
 .password-label{
     position: absolute;
     top: 47.5%;
-    margin-left: -38.5%;
+    margin-left: -32.5%;
     translate: 10px 10px;
     color: var(--text-color);
     transition: translate 500ms, scale 500ms;
@@ -173,7 +173,7 @@ body {
 
 .forgotpass {
     font-size: .7rem;
-    bottom: 20%;
+    bottom: 15%;
     right: 35%;
     position: absolute;
     cursor: pointer;
@@ -187,12 +187,12 @@ body {
 
 .login-btn {
     position: absolute;
-    width: 74%;
+    width: 63%;
     height: 11%;
     padding: 15px;
     bottom: 110px;
     border-radius: 10px;
-    left: 12%;
+    left: 17%;
     cursor: pointer;
     background-color: #77B6EA;
     border-color: #77B6EA;

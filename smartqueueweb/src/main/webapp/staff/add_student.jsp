@@ -403,9 +403,22 @@
 					background: #ffffff;
 					border-radius: 10px;
 					box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-					overflow: hidden;
 					padding: 20px;
-					margin-top: 10%;
+					margin-top: 5%;
+					scroll-behavior: smooth;
+				}
+
+				.studentlist-conte::-webkit-scrollbar {
+					width: .8rem;
+				}
+
+				.studentlist-conte::-webkit-scrollbar-track {
+					background: transparent;
+				}
+
+				.studentlist-conte::-webkit-scrollbar-thumb {
+					background-color: var(--primary-color);
+					border-radius: 5rem;
 				}
 
 				.add-account-icon {

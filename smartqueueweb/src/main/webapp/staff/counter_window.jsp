@@ -244,12 +244,10 @@
                     margin: 1.25rem 0;
                     width: 30%;
                     padding: none;
-                    background-color: #f0f6f6;
-                    border: 0.125rem solid black;
-                    border-radius: 1.25rem;
                     display: block;
                     margin-left: 35%;
                 }
+             
 
                 .tables {
                     margin-bottom: 1.25rem;
@@ -527,7 +525,7 @@
                             <option value="" selected>SELECT COUNTER LIST</option>
                         </select>
                         <section class="real-time">
-                            <p><b>Time: <span id="time"></span></b></p>
+                            <span id="date"></span> | <span id="time"></span>
                         </section>
 
                         <div class="table-container">
@@ -607,6 +605,13 @@
 
             </div>
             <script>
+                function updateTime() {
+                    const now = new Date();
+                    document.getElementById('date').textContent = now.toLocaleDateString();
+                    document.getElementById('time').textContent = now.toLocaleTimeString();
+                }
+                updateTime();
+                setInterval(updateTime, 1000);
 
                 let counterList = document.getElementById("counter-list");
                 counterList.addEventListener("mousedown", event => {
@@ -684,7 +689,7 @@
                     }, 1000);
 
                     if (counterAccessTableBody.rows.length > 0) {
-                        await $.notify("Table 2 can only hold one row!", {color: "#fff", background: "#D44950", delay:1000})
+                        await $.notify("Table 2 can only hold one row!", { color: "#fff", background: "#D44950", delay: 1000 })
                         return;
                     }
 
@@ -697,7 +702,7 @@
                         await sendMsg(queueNumber, window_number);
                         await updateQueueStatus(queueNumber, 'SERVING');
                     } else {
-                        await $.notify("No more rows to transfer!", {color: "#fff", background: "#D44950", delay:1000});
+                        await $.notify("No more rows to transfer!", { color: "#fff", background: "#D44950", delay: 1000 });
                     }
                 }
 
@@ -716,7 +721,7 @@
                         updateQueueStatus(queueNumber, 'DONE');
                         counterAccessTableBody.deleteRow(0);
                     } else {
-                        $.notify("No row to remove from Table 2!", {color: "#fff", background: "#D44950", delay:1000})
+                        $.notify("No row to remove from Table 2!", { color: "#fff", background: "#D44950", delay: 1000 })
                     }
                 }
 
@@ -736,7 +741,7 @@
                         let window_number = secondRow.cells[6].innerText;
                         sendMsg(queueNumber, window_number);
                     } else {
-                        $.notify("No row to recall from Table 2!", {color: "#fff", background: "#D44950", delay:1000})
+                        $.notify("No row to recall from Table 2!", { color: "#fff", background: "#D44950", delay: 1000 })
                     }
                 }
 
@@ -746,9 +751,9 @@
                         url: `/smartqueueweb/updateQueueStatus?queueNumber=` + queueNumber + `&queueStatus=` + queueStatus,
                         type: 'PUT',
                         success: function (response) {
-                            $.notify(response, {color: "#fff", background: "#20D67B", delay:1000})
+                            $.notify(response, { color: "#fff", background: "#20D67B", delay: 1000 })
                         }, error: function (xhr, status, error) {
-                            $.notify(xhr.responseText, {color: "#fff", background: "#D44950", delay:1000})
+                            $.notify(xhr.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
                         }
                     });
                 }

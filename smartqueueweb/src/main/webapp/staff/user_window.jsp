@@ -28,6 +28,7 @@
         margin: 0%;
         padding: 0%;
         overflow: hidden;
+        background-color: #F6F4EB;
       }
 
       .container-xxl {
@@ -59,7 +60,7 @@
       tr td {
         width: 70%;
         margin: 1%;
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-weight: bold;
         text-align: center;
         justify-content: center;
@@ -72,16 +73,15 @@
         width: 100%;
         height: 70%;
         margin-left: 3%;
+        background-color: #333;
       }
 
       .datetime {
-        background-color: #00509d;
-        color: #fff;
+        background: #F6F4EB;
+        color: #333;
         padding: 10px;
-        border-radius: 10px;
-        font-size: 1.5rem;
+        font-size: 3.5rem;
         text-transform: uppercase;
-        box-shadow: inset 0 -4px 10px rgba(0, 0, 0, 0.1);
         margin-top: -42%;
         width: 50%;
         height: 10%;
@@ -95,15 +95,8 @@
       footer {
         text-align: center;
         padding: 15px;
-        background-color: #333;
-        color: #fff;
+        color: #020000;
         margin-top: -4%;
-        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      footer p {
-        margin: 0;
-        font-size: 1rem;
       }
 
       .popup {
@@ -142,7 +135,7 @@
         font-size: 20rem;
       }
 
-      p {
+      #popup-window-number {
         font-size: 5rem;
         color: #fff;
         background-color: #00509d;
@@ -216,8 +209,11 @@
         </div>
       </div>
 
-      <footer>
-        <b>
+      <div>
+
+      </div>
+      <footer >
+        <b style="background-color: #020000;">
           <p>&copy; 2024 Cebu Eastern College. All Rights Reserved.</p>
         </b>
       </footer>
@@ -261,6 +257,10 @@
           });
         }
 
+
+
+
+
         ws.addEventListener("message", async (message) => {
 
           if ('speechSynthesis' in window) {
@@ -269,15 +269,26 @@
 
             try {
 
+              //IF ONLINE
               const msg = new SpeechSynthesisUtterance();
               msg.text = messageParse.message;
-              msg.lang = 'en-AU'; // Specify language code
+              msg.lang = 'en-US'; 
 
               msg.volume = 1.0
-              window.speechSynthesis.speak(msg);
+            
+
+              //IF OFFLINE
+              // const msg = new SpeechSynthesisUtterance();
+              // msg.text = messageParse.message;
+              // msg.lang = 'en-AU '; // Set language (optional)
+              // msg.rate = 1;
+              // msg.pitch = 1;
+              // msg.volume = 1;
+              // window.speechSynthesis.speak(msg);
+
 
               // Optional: Add event listeners
-              msg.onstart = async function () {
+               msg.onstart = async function () {
                 await videoSetVolume(.0);
                 await showPopup(messageParse.windowNumber, messageParse.queueNumber);
                 await playDingdong();
@@ -286,15 +297,18 @@
                 await CounterList(3, "SERVING", "#window-3-body");
               };
 
-              msg.onend = async function(){
+              msg.onend = async function () {
+                await hidePopup();
                 await videoSetVolume(.3);
               }
 
+              window.speechSynthesis.speak(msg);
+
             } catch (error) {
-              $.notify("Error during speech synthesis:"+error, {color: "#fff", background: "#D44950", delay:1000})
+              $.notify("Error during speech synthesis:" + error, { color: "#fff", background: "#D44950", delay: 1000 });
             }
           } else {
-            $.notify("Text-to-speech is not supported in this browser.", {color: "#fff", background: "#D44950", delay:1000})
+            $.notify("Text-to-speech is not supported in this browser.", { color: "#fff", background: "#D44950", delay: 1000 });
           }
         });
 
@@ -311,7 +325,7 @@
           popwindow.textContent = "Window " + popupwindownumber;
 
           $("#popup").fadeIn();
-          setTimeout(hidePopup, 8000);
+          //setTimeout(hidePopup, 8000);
         }
 
         function hidePopup() {
@@ -370,7 +384,7 @@
         // Get the video and source elements
         const videoElement = document.getElementById('video-ads');
         const videoSource = document.getElementById('videoSource');
-        
+
         // Function to load the next video
         function loadNextVideo() {
           currentVideoIndex = (currentVideoIndex + 1) % videoFiles.length; // Cycle through videos
@@ -381,11 +395,11 @@
 
         // Event listener for the `ended` event to load the next video
         videoElement.addEventListener('ended', loadNextVideo);
-       
-        function videoSetVolume(volume){
+
+        function videoSetVolume(volume) {
           videoElement.volume = volume;
         }
-        
+
         videoSetVolume(.3);
       </script>
 
@@ -396,7 +410,7 @@
         </div>
       </div>
 
-     
+
     </body>
 
     </html>
