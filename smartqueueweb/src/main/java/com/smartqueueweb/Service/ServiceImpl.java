@@ -170,6 +170,13 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return studentdata.queueNumberAvailable(id);
 	}
 	
+	@Override
+	public StudentBean registerStudentTemp(String idNumber, String firstname, String middlename, String lastname,
+			String course) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	public String XMLERRORNAME(String errorName) {
 		try {
 		    // Specify the file path
@@ -215,7 +222,5 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return "";
 
 	}
-	
-	
 
 }
