@@ -3,7 +3,7 @@
 
 A project developed by Cebu Eastern College students in queueing requests for students alumni or new
 
-[!cec image](https://github.com/AyelDev/SmartQueue-Webapp/blob/main/smartqueueweb/src/main/webapp/images/frontpage.png?raw=true)
+![cec image](https://github.com/AyelDev/SmartQueue-Webapp/blob/main/smartqueueweb/src/main/webapp/images/frontpage.png?raw=true)
 
 ## Environment Variables
 
