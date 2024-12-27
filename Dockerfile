@@ -1,12 +1,20 @@
 FROM maven:3.9.7-eclipse-temurin-21 AS build
 
-COPY . .
+WORKDIR /app
+
+COPY pom.xml .
+
+RUN mvn dependency:go-offline
+
+COPY src ./src
 
 RUN mvn clean package
 
 FROM tomcat:9.0
 
-COPY --from=build /target/smartqueueweb.war /usr/local/tomcat/webapps/smartqueueweb.war
+WORKDIR /usr/local/tomcat/webapps/
+
+COPY --from=build /app/target/smartqueueweb.war ./smartqueueweb.war
 
 EXPOSE 8080
 
