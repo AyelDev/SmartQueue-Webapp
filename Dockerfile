@@ -1,4 +1,4 @@
-FROM maven:3.9.7-eclipse-temurin-21 AS build
+FROM maven:3.9.7-eclipse-temurin-21
 
 WORKDIR /app
 
@@ -8,14 +8,6 @@ RUN mvn dependency:go-offline
 
 COPY src ./src
 
-RUN mvn clean package
-
-FROM tomcat:9.0
-
-WORKDIR /usr/local/tomcat/webapps/
-
-COPY --from=build /app/target/smartqueueweb.war ./smartqueueweb.war
-
 EXPOSE 8080
 
-CMD ["catalina.sh", "run"]
+CMD ["mvn", "tomcat7:run"]
