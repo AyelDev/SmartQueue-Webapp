@@ -13,7 +13,7 @@ public class RequestAStaffPassword_Test {
 		ServiceImpl service = new ServiceImpl();
 		
 		int expected = 1;
-		int actual = service.requestStaffPassword("ariel", "ariel@gmail.com");
+		int actual = service.requestStaffPassword("Ayeldev", "Ariel@gmail.com");
 		
 		assertEquals(expected, actual);
 	}
