@@ -1,4 +1,4 @@
-FROM maven:3.9.7-openjdk-21 AS build
+FROM maven:3.9.7-eclipse-temurin-21 AS build
 
 COPY . .
 
