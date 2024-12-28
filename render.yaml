@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: smartqueue-tomcat
+    env: docker
+    dockerfilePath: Dockerfile
+    buildCommand: |
+      # Build the application using Maven
+      mvn dependency:go-offline && mvn clean package
+    startCommand: catalina.sh run
+    envVars:
+      - key: PORT
+        value: "8080"
+      - key: CATALINA_OPTS
+        value: "-Djava.net.preferIPv4Stack=true"
+    plan: free  # Adjust this to match your Render plan
+    ports:
+      - port: 8080
+        protocol: tcp
