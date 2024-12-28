@@ -1,8 +1,6 @@
 FROM tomcat:9.0
 
-WORKDIR /usr/local/tomcat/webapps/
-
-COPY --from=build /app/target/smartqueueweb.war ./smartqueueweb.war
+COPY  target/smartqueueweb.war /usr/local/tomcat/webapps/smartqueueweb.war
 
 EXPOSE 8080
 
