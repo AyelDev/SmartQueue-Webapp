@@ -112,12 +112,7 @@
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>3.0.0</version>
-				<configuration>
-					<url>http://0.0.0.0:${PORT}</url>
-					<port>${PORT}</port>
-					<path>/</path>
-				</configuration>
+				<version>2.2</version>
 			</plugin>
 		</plugins>
 	</build>
