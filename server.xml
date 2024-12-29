@@ -14,7 +14,15 @@
 
             <!-- Host definition for default webapp -->
             <Host name="localhost" appBase="webapps"
-                  unpackWARs="true" autoDeploy="true">
+                  unpackWARs="true" autoDeploy="false" deployOnStartup="false">
+
+                 <Context path="" docBase="smartqueueweb" reloadable="true">
+ 
+                <!-- Default set of monitored resources -->
+                 <WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+                </Context>
+
             </Host>
 
         </Engine>
