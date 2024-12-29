@@ -616,7 +616,7 @@
                 let counterList = document.getElementById("counter-list");
                 counterList.addEventListener("mousedown", event => {
                     $.ajax({
-                        url: '/smartqueueweb/JsonAvailableWindow',
+                        url: '/JsonAvailableWindow',
                         method: 'GET',
                         data: {},
                         dataType: 'json',
@@ -642,7 +642,7 @@
 
                 async function CounterList(window_nunber, queue_status, elementid) {
                     await $.ajax({
-                        url: '/smartqueueweb/JsonStudentQueueEntriesAPI',
+                        url: '/JsonStudentQueueEntriesAPI',
                         method: 'GET',
                         data: {
                             window_number: window_nunber,
@@ -748,7 +748,7 @@
                 //update queue status
                 function updateQueueStatus(queueNumber, queueStatus) {
                     $.ajax({
-                        url: `/smartqueueweb/updateQueueStatus?queueNumber=` + queueNumber + `&queueStatus=` + queueStatus,
+                        url: `/updateQueueStatus?queueNumber=` + queueNumber + `&queueStatus=` + queueStatus,
                         type: 'PUT',
                         success: function (response) {
                             $.notify(response, { color: "#fff", background: "#20D67B", delay: 1000 })
@@ -765,7 +765,7 @@
                 } else {
                     wsUrl = 'wss://';
                 }
-                var ws = new WebSocket(wsUrl + window.location.host + "/smartqueueweb/QueueWebSocketController");
+                var ws = new WebSocket(wsUrl + window.location.host + "/QueueWebSocketController");
 
                 ws.onopen = function (event) {
                     console.log('WebSocket connection opened', event);
