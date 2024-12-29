@@ -20,7 +20,7 @@
  
                 <!-- Default set of monitored resources -->
                  <WatchedResource>WEB-INF/web.xml</WatchedResource>
-
+                 <WatchedResource>WEB-INF/WebConfigErrors.xml</WatchedResource>
                 </Context>
 
             </Host>
