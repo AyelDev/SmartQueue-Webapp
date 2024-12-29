@@ -5,7 +5,7 @@ services:
     dockerfilePath: Dockerfile
     envVars:
       - key: PORT
-        value: "8081"
+        value: "8085"
       - key: CATALINA_OPTS
         value: "-Djava.net.preferIPv4Stack=true"
       - key: HOST
