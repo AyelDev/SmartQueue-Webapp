@@ -1,0 +1,122 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F6F4EB;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #00509d;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+  
+  .datetime {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  
+  main {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+  }
+  
+  .counters {
+    display: flex;
+  
+  }
+  
+  .counter {
+    padding: 20px;
+    width: 250px;
+    height: 90%;
+    text-align: center;
+    background-color: #1e91d0;
+  }
+  
+  
+  .counter h2 {
+    background-color: #00509d;
+    color: #fff;
+    padding: 15px;
+    margin: 0;
+    border-radius: 15px 15px 0 0;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    box-shadow: inset 0 -4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .queue-numbers {
+    font-size: 1.8rem;
+    margin-top: 50px;
+    color: #444;
+    font-weight: bold;
+  }
+  
+  .queue-numbers p {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .advertisement {
+    width: 60%;
+    text-align: center;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .advertisement:hover {
+    transform: translateY(-10px);
+  }
+  
+  .datetime {
+    background-color: #1e91d0;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    box-shadow: inset 0 -4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  video {
+    width: 100%;
+    height: 70%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border: 5px solid #333;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #333;
+    color: #fff;
+    margin-top: 30px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+   
+  }
+  
+  footer p {
+    margin: 0;
+    font-size: 1rem;
+  }

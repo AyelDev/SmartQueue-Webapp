@@ -1,6 +1,7 @@
 package com.smartqueueweb.Service;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -179,12 +180,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	
 	public String XMLERRORNAME(String errorName) {
 		try {
-		    // Specify the file path
-		    File xmlFile = new File("src/main/webapp/WEB-INF/WebConfigErrors.xml");
+			
+			InputStream xmlFile = ServiceImpl.class.getClassLoader().getResourceAsStream("WEB-INF/WebConfigErrors.xml");
 
 		    // Check if file exists
-		    if (!xmlFile.exists()) {
-		        System.out.println("File not found: " + xmlFile.getAbsolutePath());
+		    if (xmlFile == null) {
+		        System.out.println("File not found: " + xmlFile);
 		        return "";
 		    }
 

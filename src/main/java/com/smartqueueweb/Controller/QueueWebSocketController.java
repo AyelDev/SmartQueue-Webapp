@@ -1,11 +1,9 @@
 package com.smartqueueweb.Controller;
 
 import java.io.IOException;
-import java.net.http.HttpRequest;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
@@ -13,7 +11,6 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-import com.auth0.jwt.interfaces.DecodedJWT;
 import com.smartqueueweb.Class.JwtValidator;
 
 /**

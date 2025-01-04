@@ -7,6 +7,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
+<properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>javax.websocket</groupId>
@@ -84,10 +88,11 @@
 			<artifactId>mockito-core</artifactId>
 			<version>5.5.0</version> <!-- Ensure it's the latest -->
 		</dependency>
-		
+
 	</dependencies>
 
 	<build>
+		<finalName>smartqueueweb</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/webapp</directory>
@@ -101,7 +106,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
-					<release>21</release>
+					<release>17</release>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -112,6 +117,9 @@
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version> <!-- Use appropriate version for Tomcat 7 -->
+				<configuration>
+        <path>/</path>
+    </configuration>
 			</plugin>
 		</plugins>
 	</build>
