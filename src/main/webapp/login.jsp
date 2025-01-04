@@ -47,7 +47,7 @@
 									<c:out value="${errorLogin}"></c:out>
 								</p>
 								<br> <a id="forgotpass" class="forgotpass">Request a new password.</a>
-								<br> <input id="login-botton" class="login-btn" type="submit" value="Log in">
+								<br> <input id="login-button" class="login-btn" type="submit" value="Log in">
 							</form>
 
 						</div>
@@ -76,7 +76,7 @@
 
 			<script>
 				const forgotPasswordButton = document.getElementById("forgotpass");
-				const loginButton = document.getElementById("login-botton");
+				const loginButton = document.getElementById("login-button");
 				forgotPasswordButton.addEventListener("click", event => {
 					$.confirm({
 						type: 'blue',
