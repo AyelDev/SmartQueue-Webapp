@@ -158,7 +158,7 @@
 							Servlet Name:
 							<c:out value="${requestScope['javax.servlet.error.servlet_name']}" default="N//A"></c:out>
 						</p>
-					<a href="/smartqueueweb/" class="btn" data-wipe="Take Me Home">Take Me Home</a>
+					<a href="/" class="btn" data-wipe="Take Me Home">Take Me Home</a>
 				</div>
 			</div>
 		</body>

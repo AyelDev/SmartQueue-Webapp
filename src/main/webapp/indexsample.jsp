@@ -42,7 +42,7 @@
 				} else {
 					wsUrl = 'wss://';
 				}
-				var ws = new WebSocket(wsUrl + window.location.host + "/smartqueueweb/chat");
+				var ws = new WebSocket(wsUrl + window.location.host + "/chat");
 
 				ws.onmessage = function (event) {
 					var mySpan = document.getElementById("chat");

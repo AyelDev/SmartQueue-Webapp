@@ -873,7 +873,7 @@
                     recordsitemId = 1;
                     archivingItemId = 1;
                     $.ajax({
-                        url: '/smartqueueweb/JsonServiceListAPI',
+                        url: '/JsonServiceListAPI',
                         method: 'GET',
                         data: {},
                         dataType: 'json',

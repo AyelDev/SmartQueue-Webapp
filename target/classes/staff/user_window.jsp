@@ -237,7 +237,7 @@
         } else {
           wsUrl = 'wss://';
         }
-        var ws = new WebSocket(wsUrl + window.location.host + "/smartqueueweb/QueueWebSocketController");
+        var ws = new WebSocket(wsUrl + window.location.host + "/QueueWebSocketController");
 
         ws.onopen = function (event) {
           console.log('WebSocket connection opened', event);
@@ -344,7 +344,7 @@
         //counter windows
         async function CounterList(window_number, queue_status, elementid) {
           await $.ajax({
-            url: '/smartqueueweb/JsonStudentQueueEntriesAPI',
+            url: '/JsonStudentQueueEntriesAPI',
             method: 'GET',
             data: {
               window_number: window_number,

@@ -84,10 +84,11 @@
 			<artifactId>mockito-core</artifactId>
 			<version>5.5.0</version> <!-- Ensure it's the latest -->
 		</dependency>
-		
+
 	</dependencies>
 
 	<build>
+		<finalName>smartqueueweb</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/webapp</directory>
@@ -101,7 +102,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
-					<release>21</release>
+					<release>17</release>
 				</configuration>
 			</plugin>
 			<plugin>

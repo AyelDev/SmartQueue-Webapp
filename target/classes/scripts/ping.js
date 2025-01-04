@@ -1,12 +1,12 @@
 function ping(){
     $.ajax({
-        url: '/smartqueueweb/ping',
+        url: '/ping',
         method: 'GET',
         success: function(response) {
             // console.log(response); Process the response here
             if(!response.response){
                 alert("Authentication Expired Please log in");
-                window.location.href = window.location.origin + "/smartqueueweb/"; 
+                window.location.href = window.location.origin + "/"; 
                 setTimeout(() => {
                     clearInterval(intervalId);
                     console.log('Ping interval cleared');

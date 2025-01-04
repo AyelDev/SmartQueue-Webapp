@@ -1023,8 +1023,8 @@
 				let BSTM = 0;
 				let BSHM = 0;
 				Promise.all([
-					fetch('/smartqueueweb/JsonStaffListAPI'),
-					fetch('/smartqueueweb/JsonStudentListAPI')
+					fetch('/JsonStaffListAPI'),
+					fetch('/JsonStudentListAPI')
 					// fetch('http://localhost:8080/smartqueueweb/JsonInquiryListAPI')
 				])
 					.then(responses => {
@@ -1236,7 +1236,7 @@
 					recordsitemId = 1;
 					archivingItemId = 1;
 					$.ajax({
-						url: '/smartqueueweb/JsonServiceListAPI',
+						url: '/JsonServiceListAPI',
 						method: 'GET',
 						data: {},
 						dataType: 'json',

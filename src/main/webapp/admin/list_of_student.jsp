@@ -1022,7 +1022,7 @@
 
 						function updateData() {
 							var request = new XMLHttpRequest();
-							request.open('GET', '/smartqueueweb/JsonStudentListAPI');
+							request.open('GET', '/JsonStudentListAPI');
 							request.onload = function () {
 								var data = JSON.parse(request.responseText);
 								renderHTML(data);

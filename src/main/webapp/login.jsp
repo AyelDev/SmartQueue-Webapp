@@ -121,7 +121,7 @@
 											content: function () {
 												var self = this;
 												return $.ajax({
-													url: '/smartqueueweb/StaffRequestPasswordAPI',
+													url: '/StaffRequestPasswordAPI',
 													method: 'post',
 													data: {
 														username: username,
