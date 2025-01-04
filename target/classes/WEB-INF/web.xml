@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>smartqueueweb</display-name>
+	<welcome-file-list>
+		<welcome-file>login</welcome-file>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+	</welcome-file-list>
+
+<!-- 
+	User Servlet Redirection
+ -->
+	<servlet>
+		<servlet-name>userinquiry</servlet-name>
+		<jsp-file>/user/userinquiry.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>userinquiry</servlet-name>
+		<url-pattern>/userinquiry</url-pattern>
+	</servlet-mapping>
+
+
+<!-- 
+	Staff Servlet Redirection
+ -->
+	<servlet>
+		<servlet-name>staff</servlet-name>
+		<jsp-file>/staff/staffpage.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>staff</servlet-name>
+		<url-pattern>/staffdashboard</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>userwindow</servlet-name>
+		<jsp-file>/staff/user_window.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>userwindow</servlet-name>
+		<url-pattern>/userwindow</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>counterwindow</servlet-name>
+		<jsp-file>/staff/counter_window.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>counterwindow</servlet-name>
+		<url-pattern>/counterwindow</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>entertainment</servlet-name>
+		<jsp-file>/staff/entertainment.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>entertainment</servlet-name>
+		<url-pattern>/entertainment</url-pattern>
+	</servlet-mapping>
+
+<!-- Admin Servlet Redirection -->
+
+	<servlet>
+		<servlet-name>dashboard</servlet-name>
+		<jsp-file>/admin/adminpage.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dashboard</servlet-name>
+		<url-pattern>/admindashboard</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>counterlist</servlet-name>
+		<jsp-file>/admin/list_of_counter.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>counterlist</servlet-name>
+		<url-pattern>/counterlist</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>videoads</servlet-name>
+		<jsp-file>/admin/video_ads.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>videoads</servlet-name>
+		<url-pattern>/videoads</url-pattern>
+	</servlet-mapping>
+
+<!--
+	Counter Servlet Redirection
+-->
+
+	<session-config>
+		<cookie-config>
+			<path>/</path>
+			<http-only>true</http-only>
+			<!-- <secure>true</secure> -->
+			<max-age>86400</max-age>
+		</cookie-config>
+	</session-config>
+
+	<error-page>
+		<error-code>503</error-code>
+		<location>/errors/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/errors/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/errors/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>405</error-code>
+		<location>/errors/error.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/errors/error.jsp</location>
+	</error-page>
+
+</web-app>

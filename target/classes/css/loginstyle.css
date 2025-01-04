@@ -1,0 +1,399 @@
+@charset "UTF-8";
+
+/*      superlightblue - #DFF5FF
+        light blue - 77B6EA
+        dark blue - 00296B
+        red - EE4E4E
+        white - FFFFFF */
+:root {
+    --primary-color: #1e91d0;
+    --secondary-color: #00509d;
+    --body-fonts: "Roboto Condensed", sans-serif;
+    --background-color: #E8F4F8;
+    --select-text-color: #B4B4B8;
+    --text-color: #272829;
+    --error-message: #f02849;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+    overflow: hidden;
+}
+
+.container-fluid {
+   background-color: var(--background-color);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-container {
+    width: 60%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 10px 1px #888888;
+    border-radius: 10px;
+    background-color: #012289;
+}
+
+
+.cecbldg{
+    width: 55%;
+    height: 57%;
+    object-fit: fill;
+    border-bottom-left-radius: 10px;
+    margin-top: 24.5%;
+    margin-left: -45%;
+    opacity: .5;
+}
+.logo{
+    position: absolute;
+    z-index: 3;
+    width: 15%;
+    margin-left: -28%;
+    margin-top: -30%;
+    filter: drop-shadow(5px 5px 10px #888888);
+}
+.school-name{
+    margin-bottom: 5px;
+    color: #ffff;
+    margin-left: -25%;
+    margin-top: -10%;
+    font-size: 30px;
+    font-weight: 600;
+    position: absolute;
+}
+.system-title{
+    font-size: 18px;
+    margin-left: -27%;
+    top: 5%;
+    color: #ffff;
+    opacity: .8;
+}
+.loginform-container {
+    background-color: #FFFFFF;
+    width: 28%;
+    height: 70vh;
+    display: flex;
+    position: absolute;
+    right: 19%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-left: -50%;
+    z-index: 1;
+}
+.title {    
+    font-size: 40px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.title-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 40px;
+    left: 31%;
+}
+
+.username-input,
+.password-input {
+    width: 125%;
+    height: 11%;
+    padding: 15px;
+    margin-left: -16%;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    outline: 2px solid var(--primary-color);
+    background-color: transparent;
+    transition: outline-color 500ms;
+}
+.username-container{
+    position: relative;
+    border-radius: 15px;
+}
+.username-input:is(:focus, :valid){
+	outline-color: var(--secondary-color);
+}
+.username-label{
+	position: absolute;
+    top: 8%;
+    left: -17%;
+    translate: 10px 10px;
+    color: var(--text-color);
+    transition: translate 500ms, scale 500ms;
+}
+.password-label{
+    position: absolute;
+    top: 47.5%;
+    margin-left: -32.5%;
+    translate: 10px 10px;
+    color: var(--text-color);
+    transition: translate 500ms, scale 500ms;
+}
+.username-input:focus + .username-label, .username-input:valid + .username-label{
+	padding-inline: 5px;
+    translate: 10px -14px;
+    scale: 0.8;
+    background-color: #ffff;
+}
+.password-input:focus + .password-label, .password-input:valid + .password-label{
+	padding-inline: 5px;
+    translate: 10px -14px;
+    scale: 0.8;
+    background-color: #ffff;
+}
+.password-input {
+    margin-top: 3%;
+    margin-bottom: 5%;
+}
+
+.forgotpass {
+    font-size: .7rem;
+    bottom: 15%;
+    right: 35%;
+    position: absolute;
+    cursor: pointer;
+    text-decoration: underline;
+    color: var(--primary-color);
+}
+.forgotpass:hover{
+    color: var(--secondary-color);
+}
+
+
+.login-btn {
+    position: absolute;
+    width: 63%;
+    height: 11%;
+    padding: 15px;
+    bottom: 110px;
+    border-radius: 10px;
+    left: 17%;
+    cursor: pointer;
+    background-color: #77B6EA;
+    border-color: #77B6EA;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.userinquiry-btn {
+    position: absolute;
+    width: 35%;
+    height: 8%;     
+    padding: 10px;
+    bottom: 20px;
+    border-radius: 10px;
+    left: 150px;
+    cursor: pointer;
+    background-color: #77B6EA;
+    border-color: #77B6EA;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.signup-btn:hover {
+    background-color: #40679E;
+    color: #FFFFFF;
+}
+
+.login-btn:hover {
+    background-color: #40679E;
+    color: #FFFFFF;
+}
+
+.userinquiry-btn:hover {
+    background-color: #40679E;
+    color: #FFFFFF;
+}
+
+.hr-left {
+    border-top: 1px solid black;
+    position: absolute;
+    width: 47%;
+    bottom: 14%;
+    left: 0;
+}
+
+p {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 11.5%;
+}
+
+.hr-right {
+    border-top: 1px solid black;
+    position: absolute;
+    width: 47%;
+    bottom: 14%;
+    right: 0;
+}
+
+.error-message {
+    top: 30%;
+    margin-left: -8%;
+    color: var(--error-message);
+    height: 2%;
+    width: 90%;
+    margin-top: 35%;
+    font-size: 10px;
+    justify-content: start;
+    display: flex;
+}
+
+
+/* media query
+/* For screens smaller than 1200px 
+@media (max-width: 1200px) {
+    .login-container {
+        width: 80%;
+        height: 65vh;
+    }
+
+    .loginform-container {
+        width: 35%;
+    }
+
+    .image-container {
+        margin-left: -30%;
+        padding: 25%;
+    }
+}
+
+/* For tablets and screens smaller than 992px 
+@media (max-width: 992px) {
+    .login-container {
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .loginform-container {
+        width: 80%;
+        position: relative;
+        right: 0;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .image-container {
+        margin-left: 0;
+        padding: 0;
+        background-size: cover;
+        height: 40vh;
+        width: 100%;
+    }
+
+    .username-input,
+    .password-input {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    .login-btn {
+        width: 100%;
+    }
+
+    .userinquiry-btn {
+        width: 45%;
+    }
+}
+
+/* For large phones and screens smaller than 768px 
+@media (max-width: 768px) {
+    .login-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .loginform-container {
+        width: 90%;
+    }
+
+    .image-container {
+        display: none;
+    }
+
+    .title {
+        font-size: 25px;
+    }
+
+    .username-input,
+    .password-input {
+        width: 100%;
+    }
+
+    .login-btn {
+        width: 100%;
+    }
+
+    .userinquiry-btn {
+        width: 50%;
+    }
+}
+
+/* For small phones and screens smaller than 576px 
+@media (max-width: 576px) {
+    .loginform-container {
+        width: 70%;
+    }
+
+    .title {
+        font-size: 10px;
+    }
+
+    .username-input,
+    .password-input {
+        width: 100%;
+    }
+
+    .login-btn {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .userinquiry-btn {
+        width: 60%;
+        font-size: 0.9rem;
+    }
+
+    .forgotpass {
+        font-size: 0.7rem;
+    }
+} */
