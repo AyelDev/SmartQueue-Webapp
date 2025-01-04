@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.smartqueueweb.Model.ServicesBean;
 import com.smartqueueweb.Model.StaffBean;
+import com.smartqueueweb.Model.StudentBean;
 
 public interface StaffServices {
 
@@ -34,4 +35,5 @@ public interface StaffServices {
 	List<ServicesBean> studentQueueEntries(int window_number, String queue_status);
 	
 	Integer updateQueueStatus(String QueueNumber, String queue_status);
+	
 }

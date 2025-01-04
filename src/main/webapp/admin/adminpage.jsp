@@ -326,7 +326,7 @@
 				width: 25px;
 				cursor: pointer;
 				margin-bottom: 25%;
-				margin-left: 10%;
+				margin-left: 23%;
 			}
 
 			.button-profile {
