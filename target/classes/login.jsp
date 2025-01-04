@@ -25,7 +25,7 @@
 					<h1 class="school-name">Cebu Eastern College</h1>
 					<p class="system-title">Optimizing School Records Management System</p>
 					<div class="loginform-container">
-						
+
 						<div class="title-container">
 							<label class="title" for="title">login</label>
 						</div>
@@ -47,7 +47,7 @@
 									<c:out value="${errorLogin}"></c:out>
 								</p>
 								<br> <a id="forgotpass" class="forgotpass">Request a new password.</a>
-								<br> <input class="login-btn" type="submit" value="Log in">
+								<br> <input id="login-botton" class="login-btn" type="submit" value="Log in">
 							</form>
 
 						</div>
@@ -76,6 +76,7 @@
 
 			<script>
 				const forgotPasswordButton = document.getElementById("forgotpass");
+				const loginButton = document.getElementById("login-botton");
 				forgotPasswordButton.addEventListener("click", event => {
 					$.confirm({
 						type: 'blue',
@@ -123,7 +124,7 @@
 													url: '/smartqueueweb/StaffRequestPasswordAPI',
 													method: 'post',
 													data: {
-														username: username,	
+														username: username,
 														email: email
 													}
 												}).done(function (response) {
@@ -153,6 +154,10 @@
 							});
 						}
 					});
+				});
+
+				loginButton.addEventListener("click", function () {
+					$(".load-wrapper").fadeIn("slow");
 				});
 			</script>
 		</body>
