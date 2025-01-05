@@ -522,7 +522,7 @@
                 <div class="rightnav">
                     <div class="scontainer">
                         <select id="counter-list" onchange="counterChangeListOnChange()">
-                            <option value="" selected>SELECT COUNTER LIST</option>
+                            <option value="" selected>LOADING PLEASE WAIT...</option>
                         </select>
                         <section class="real-time">
                             <span id="date"></span> | <span id="time"></span>
@@ -543,7 +543,24 @@
                                     </tr>
                                 </thead>
                                 <tbody id="priority-number-table">
-
+                                    <tr>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -567,7 +584,15 @@
                                         </tr>
                                     </thead>
                                     <tbody id="counter-access-table">
-
+                                        <tr>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -614,8 +639,8 @@
                 setInterval(updateTime, 1000);
 
                 let counterList = document.getElementById("counter-list");
-                counterList.addEventListener("mousedown", event => {
-                    $.ajax({
+                document.addEventListener("DOMContentLoaded", ()=>{
+                         $.ajax({
                         url: '/JsonAvailableWindow',
                         method: 'GET',
                         data: {},
@@ -634,6 +659,31 @@
                     });
 
                 });
+
+                /*
+                old function but poor optimization
+                */
+                // let counterList = document.getElementById("counter-list");
+                // counterList.addEventListener("mouseover", event => {
+                //     $.ajax({
+                //         url: '/JsonAvailableWindow',
+                //         method: 'GET',
+                //         data: {},
+                //         dataType: 'json',
+                //         success: function (data) {
+                //             const selectCounterListBody = $('#counter-list');
+                //             selectCounterListBody.empty();
+                //             selectCounterListBody.append(`
+                //             <option value="0">CHOOSE COUNTER WINDOW</option>`);
+                //             data.forEach(item => {
+                //                 selectCounterListBody.append(`
+                //                      <option value="`+ item.window_number + `">Counter-Window : ` + item.window_number + ` - ` + item.serviceType + `</option>`);
+                //             });
+                //         }
+
+                //     });
+
+                // });
 
                 async function counterChangeListOnChange() {
                     await CounterList(counterList.value, "QUEUE", '#priority-number-table');
@@ -670,7 +720,7 @@
                     });
                 }
 
-                setInterval(counterChangeListOnChange, 4000);
+                //setInterval(counterChangeListOnChange, 4000);
 
                 let priorityNumberTableBody = document.getElementById("priority-number-table");
                 let counterAccessTableBody = document.getElementById("counter-access-table");

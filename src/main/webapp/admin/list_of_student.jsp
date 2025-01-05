@@ -992,10 +992,34 @@
 								</thead>
 								<tbody id="tablelist">
 									<tr>
-										<td>Loading...</td>
-										<td></td>
-										<td></td>
-										<td></td>
+										<td><div class="tloader"></div></td>
+										<td><div class="tloader"></div></td>
+										<td><div class="tloader"></div></td>
+										<td><div class="tloader"></div></td>
+									</tr>
+									<tr>
+										<td><div class="tloader"></div></td>
+										<td><div class="tloader"></div></td>
+										<td><div class="tloader"></div></td>
+										<td><div class="tloader"></div></td>
+									</tr>
+									<tr>
+										<td><div class="tloader"></div></td>
+										<td><div class="tloader"></div></td>
+										<td><div class="tloader"></div></td>
+										<td><div class="tloader"></div></td>
+									</tr>
+									<tr>
+										<td><div class="tloader"></div></td>
+										<td><div class="tloader"></div></td>
+										<td><div class="tloader"></div></td>
+										<td><div class="tloader"></div></td>
+									</tr>
+									<tr>
+										<td><div class="tloader"></div></td>
+										<td><div class="tloader"></div></td>
+										<td><div class="tloader"></div></td>
+										<td><div class="tloader"></div></td>
 									</tr>
 								</tbody>
 							</table>
