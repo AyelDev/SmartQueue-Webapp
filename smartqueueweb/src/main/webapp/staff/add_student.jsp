@@ -71,11 +71,11 @@
 
 				.navbar {
 					width: 15%;
-					height: 100%;
-					background-color: #00509d;
-					padding: 10px;
-					position: fixed;
-					box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    				height: 100%;
+    				background-color: #1e91d0;
+    				padding: 10px;
+    				position: fixed;
+    				box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 				}
 
 				.logoContainer {
@@ -88,7 +88,7 @@
 					width: 50%;
 					max-width: 100%;
 					object-fit: contain;
-					margin-top: 15px;
+					margin-top: 6px;
 				}
 
 				.title {
@@ -96,65 +96,6 @@
 					font-size: 1rem;
 				}
 
-				.adminProfile {
-					margin-left: 2.2rem;
-					position: absolute;
-					background-color: var(--background-color);
-					width: 9.5vw;
-					align-items: center;
-					justify-content: center;
-					text-align: center;
-					z-index: 1;
-					display: none;
-				}
-
-				.adminProfile a,
-				.dropdown-dashboard a {
-					text-decoration: none;
-					color: var(--background-color);
-					overflow: hidden;
-					color: black;
-					width: 9.5vw;
-					height: 20%;
-					text-align: center;
-					align-items: center;
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					padding: .5rem 0 0 0;
-					height: 2rem;
-				}
-
-				.adminProfile a:hover {
-					background-color: var(--select-text-color);
-				}
-
-				.button-profile {
-					align-items: center;
-					justify-content: center;
-					display: flex;
-					width: 10vw;
-					margin-top: 30px;
-					margin-left: 36px;
-					border-radius: 10px;
-					padding: 15px 10px 15px 10px;
-					/*tlbr*/
-					overflow: hidden;
-					cursor: pointer;
-					border: 2px solid black;
-				}
-
-				.profile {
-					width: 10%;
-					object-fit: scale-down;
-					margin-right: 20px;
-				}
-
-				.caretdown {
-					mix-blend-mode: multiply;
-					width: 10px;
-					margin-left: 20px;
-				}
 
 				/* navbar */
 				.navbar {
@@ -170,105 +111,18 @@
 					flex-direction: column;
 				}
 
-				.dropdown {
-					position: relative;
-					display: inline-block;
-				}
-
-				.dropdown-dashboard {
-					display: none;
-					position: absolute;
-					background-color: var(--background-color);
-					min-width: 160px;
-					top: 100%;
-					left: 80%;
-					z-index: 1;
-					box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-					border-radius: 4px;
-				}
-
-				.dropdown-dashboard a {
-					display: block;
-					text-decoration: none;
-					color: var(--text-color);
-					padding: 12px 16px;
-					text-align: center;
-				}
-
-				.dropdown-dashboard a:hover {
-					background-color: var(--select-text-color);
-				}
-
-				.dropdown-btn {
-					background: none;
-					padding: 20px;
-					display: flex;
-					align-items: center;
-					width: 20vw;
-					border: 0;
-					font-size: 15px;
-					color: #F6F4EB;
-					border-radius: 15px;
-					padding-right: 60px;
-					margin-left: 10px;
-					cursor: pointer;
-					position: relative;
-				}
-
-				.dropdown:hover .dropdown-dashboard {
-					display: block;
-				}
-
-				.dropdown-btn:hover {
-					background-color: var(--background-color);
-					width: 18vw;
-					color: var(--text-color);
-					font-weight: bold;
-				}
-
-				.dropdown-btn:hover+.dropdown-dashboard {
-					display: block;
-				}
-
-				.dashboard-icon,
-				.users-icon,
-				.display-icon,
-				.entertainment-icon,
-				.counter-icon {
-					object-fit: scale-down;
-					width: 10%;
-				}
-
-				.dashboard-icon,
-				.users-icon,
-				.display-icon,
-				.entertainment-icon,
-				.counter-icon {
-					margin-right: 17px;
-				}
-
-				.dashboard-caretright {
-					margin-left: 50px;
-				}
-
-				.caretright {
-					object-fit: scale-down;
-					width: 5%;
-					right: 5.5rem;
-					position: absolute;
-				}
 
 				.studentlist-section {
-					width: 85vw;
-					height: 100vh;
-					background-color: var(--background-color);
+					width: 80vw;
+					height: 80vh;
+					background-color:white;
 					float: right;
 					margin-left: 15%;
 					align-items: center;
 					display: flex;
 					justify-content: center;
 
-
+					
 				}
 
 				h1 {
@@ -357,340 +211,478 @@
 					background-color: #c0392b;
 				}
 
-				/* Responsive design for smaller screens */
-				@media (max-width : 768px) {
+	@media (max-width: 768px) {
+    .navbar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
 
-					table,
-					thead,
-					tbody,
-					th,
-					td,
-					tr {
-						display: block;
-						width: 100%;
-					}
+    .studentlist-section {
+        width: 100%;
+        margin-left: 0;
+    }
 
-					th,
-					td {
-						position: relative;
-						padding-left: 50%;
-						text-align: right;
-					}
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+    }
 
-					th::before,
-					td::before {
-						content: attr(data-label);
-						position: absolute;
-						left: 0;
-						width: 50%;
-						padding-left: 10px;
-						font-weight: bold;
-						text-align: left;
-						background: #f7f9fc;
-						border-right: 1px solid #ddd;
-						white-space: nowrap;
-					}
+    th, td {
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
 
-					td::before {
-						content: "";
-					}
-				}
+    th::before, td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+        background: #f7f9fc;
+        border-right: 1px solid #ddd;
+        white-space: nowrap;
+    }
 
-				.studentlist-content {
-					width: 90%;
-					max-width: 1000px;
-					margin: 20px;
-					background: #ffffff;
-					border-radius: 10px;
-					box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-					padding: 20px;
-					margin-top: 5%;
-					scroll-behavior: smooth;
-				}
+    .add-account-icon, .search-icon {
+        width: 20%;
+    }
 
-				.studentlist-conte::-webkit-scrollbar {
-					width: .8rem;
-				}
+    .add-account-btn, .search-btn {
+        width: 80%;
+    }
 
-				.studentlist-conte::-webkit-scrollbar-track {
-					background: transparent;
-				}
+    .fillup-form-container {
+        width: 90%;
+        margin-left: 5%;
+        position: relative;
+    }
+}
 
-				.studentlist-conte::-webkit-scrollbar-thumb {
-					background-color: var(--primary-color);
-					border-radius: 5rem;
-				}
+		.studentlist-content {
+			width: 90%;
+			max-width: 1000px;
+			margin: 20px;
+			background: #ffffff;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			overflow: hidden;
+			padding: 20px;
+			margin-top: 14%;
+		}
 
-				.add-account-icon {
-					object-fit: scale-down;
-					width: 10%;
-				}
+		.add-account-icon {
+			object-fit: scale-down;
+			width: 10%;
+		}
 
-				.add-account-btn {
-					width: 10%;
-					background-color: var(--primary-color);
-					margin-top: 1%;
-					position: absolute;
-				}
+		.add-account-btn {
+			width: 10%;
+			background-color: var(--primary-color);
+			margin-top: 1%;
+			position: absolute;
+		}
 
-				.add-account-btn:hover {
-					background-color: #2980b9;
-				}
+		.add-account-btn:hover {
+			background-color: #2980b9;
+		}
 
-				.search-container {
-					margin-top: -5.5%;
-					margin-left: 75%;
-					margin-bottom: 2%;
-				}
+		.search-container {
+			margin-top: -5.5%;
+			margin-left: 75%;
+			margin-bottom: 2%;
+		}
 
-				.search-bar {
-					border-radius: 15px;
-					width: 80%;
-					padding: 5px;
-					border: 1px solid;
-				}
+		.search-bar {
+			border-radius: 15px;
+			width: 80%;
+			padding: 5px;
+			border: 1px solid;
+		}
 
-				.search-btn {
-					border-radius: 15px;
-					border: none;
-					padding: 5px;
-					width: 50px;
-					margin-left: -20%;
-					background: none;
-					margin-bottom: -5%;
-				}
+		.search-btn {
+			border-radius: 15px;
+			border: none;
+			padding: 5px;
+			width: 50px;
+			margin-left: -20%;
+			background: none;
+			margin-bottom: -5%;
+		}
 
-				.search-icon {
-					object-fit: scale-down;
-					width: 14px;
-					height: 20px;
-					background: none;
-					margin-bottom: -10%;
-				}
+		.search-icon {
+			object-fit: scale-down;
+			width: 14px;
+			height: 20px;
+			background: none;
+			margin-bottom: -10%;
+		}
 
-				.fillup-form-container {
-					width: 40%;
-					background-color: white;
-					padding: 20px;
-					box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-					border-radius: 10px;
-					margin-left: 10%;
-					position: absolute;
-					z-index: 1;
-					display: none;
-					align-items: center;
-				}
+		.fillup-form-container {
+			width: 40%;
+			background-color: white;
+			padding: 20px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+			margin-left: 10%;
+			position: absolute;
+			z-index: 1;
+			display: none;
+			align-items: center;
+		}
 
-				.fillup-form-container h1 {
-					margin-top: 2%;
-				}
+		.fillup-form-container h1 {
+			margin-top: 2%;
+		}
 
-				.modal.active {
-					display: block;
-				}
+		.modal.active {
+			display: block;
+		}
 
-				h1 {
-					text-align: center;
-					margin-bottom: 20px;
-				}
+		h1 {
+			text-align: center;
+			margin-bottom: 20px;
+		}
 
-				.close-btn {
-					font-size: 2rem;
-					position: absolute;
-					right: 20px;
-					top: 10px;
-					cursor: pointer;
-				}
+		.close-btn {
+			font-size: 2rem;
+			position: absolute;
+			right: 20px;
+			top: 10px;
+			cursor: pointer;
+		}
 
-				form {
-					display: flex;
-					flex-wrap: wrap;
-					gap: 20px;
-				}
+		form {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 20px;
+		}
 
-				.input-container {
-					position: relative;
-					width: 48%;
-				}
+		.input-container {
+			position: relative;
+			width: 48%;
+		}
 
-				.input-container input {
-					width: 100%;
-					padding: 10px;
-					border-radius: 5px;
-					font-size: 15px;
-					border: none;
-					outline: 2px solid var(--primary-color);
-					background-color: transparent;
-					transition: outline-color 500ms;
-				}
+		.input-container input {
+			width: 100%;
+			padding: 10px;
+			border-radius: 5px;
+			font-size: 15px;
+			border: none;
+			outline: 2px solid var(--primary-color);
+			background-color: transparent;
+			transition: outline-color 500ms;
+		}
 
-				.input-container select {
-					width: 110%;
-					padding: 10px;
-					border-radius: 5px;
-					font-size: 15px;
-					border: none;
-					outline: 2px solid var(--primary-color);
-					background-color: transparent;
-					transition: outline-color 500ms;
-				}
+		.input-container select {
+			width: 110%;
+			padding: 10px;
+			border-radius: 5px;
+			font-size: 15px;
+			border: none;
+			outline: 2px solid var(--primary-color);
+			background-color: transparent;
+			transition: outline-color 500ms;
+		}
 
-				.input-container input:focus {
-					outline-color: var(--secondary-color);
-				}
+		.input-container input:focus {
+			outline-color: var(--secondary-color);
+		}
 
-				.input-container label {
-					position: absolute;
-					top: 50%;
-					left: 10px;
-					transform: translateY(-50%);
-					color: var(--text-color);
-					transition: 0.3s ease;
-					background-color: white;
-					padding-inline: 5px;
-				}
+		.input-container label {
+			position: absolute;
+			top: 50%;
+			left: 10px;
+			transform: translateY(-50%);
+			color: var(--text-color);
+			transition: 0.3s ease;
+			background-color: white;
+			padding-inline: 5px;
+		}
 
-				.input-container input:focus+label,
-				.input-container input:valid+label {
-					top: -10px;
-					transform: translateY(0);
-					font-size: 0.8rem;
-					color: var(--secondary-color);
-				}
+		.input-container input:focus+label,
+		.input-container input:valid+label {
+			top: -10px;
+			transform: translateY(0);
+			font-size: 0.8rem;
+			color: var(--secondary-color);
+		}
 
-				.full-width {
-					width: 100%;
-				}
+		.full-width {
+			width: 100%;
+		}
 
-				.sign-btn {
-					width: 95.2%;
-					margin-left: 3.2%;
-					padding: 10px;
-					background-color: var(--primary-color);
-					color: white;
-					border: none;
-					border-radius: 5px;
-					font-size: 16px;
-					cursor: pointer;
-					transition: background-color 300ms;
-				}
+		.sign-btn {
+			width: 95.2%;
+			margin-left: 3.2%;
+			padding: 10px;
+			background-color: var(--primary-color);
+			color: white;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+			transition: background-color 300ms;
+		}
 
-				.sign-btn:hover {
-					background-color: var(--secondary-color);
-				}
+		.sign-btn:hover {
+			background-color: var(--secondary-color);
+		}
 
-				.add-account {
-					padding: 10px 20px;
-					background-color: var(--primary-color);
-					color: white;
-					border: none;
-					border-radius: 5px;
-					font-size: 16px;
-					cursor: pointer;
-					transition: background-color 300ms;
-				}
+		.add-account {
+			padding: 10px 20px;
+			background-color: var(--primary-color);
+			color: white;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+			transition: background-color 300ms;
+		}
 
-				.add-account:hover {
-					background-color: var(--secondary-color);
-				}
+		.add-account:hover {
+			background-color: var(--secondary-color);
+		}
 
-				/* Overlay for background when modal is active */
-				.overlay {
-					display: none;
-					position: fixed;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					background-color: rgba(0, 0, 0, 0.5);
-					z-index: 1;
-				}
+		.overlay {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			z-index: 1;
+		}
 
-				.overlay.active {
-					display: block;
-				}
+		.overlay.active {
+			display: block;
+		}
 
-				.register-form {
-					margin-top: 7%;
-				}
+		.register-form {
+			margin-top: 7%;
+		}
+        .bottom-lnav {
+            width: 100%;
+            height: 80%;
+            background-color: transparent;
+            text-align: center;
+            padding-top: 4px;
+        }
 
-				.bottom-lnav {
-					width: 100%;
-					height: 80%;
-					background-color: transparent;
-					text-align: center;
-					padding-top: 4px;
-				}
+        .bottom-lnav a {
+            display: block;
+            margin: 1rem 0;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            margin-top: 40px;
+			margin-left: 10%;
+            text-align: start;
+            justify-content: center;
+            align-items: center;
+        }
 
-				.bottom-lnav a {
-					display: block;
-					margin: 1rem 0;
-					color: white;
-					text-decoration: none;
-					font-size: 1.2rem;
-					transition: color 0.3s ease;
-					margin-top: 40px;
-					text-align: center;
-					justify-content: center;
-					align-items: center;
-				}
+        .bottom-lnav a:hover {
+			padding: 15px 20px 15px 20px;
+            width: 12.8vw;
+            background-color: white;
+            position: relative;
+            margin-left: 2px;
+            color: black;
+            border-radius: 20px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+			border-right: 8px solid #37AFE1;
+            transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        }
+        .dash {
+            width: 82%;
+            height: 6vh;
+            background-color: #1e91d0;
+            text-align: start;
+            font-size: 1.5625rem;
+            display: inline-block;
+            position: relative;
+            color: white;
+            /* margin-bottom: 1.25rem; */
+			margin-left: 14.8rem;
+            line-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 0 1rem;
+            /* gap: 1rem; */
+			z-index: 1;
 
-				.bottom-lnav a:hover {
-					padding: 15px 20px 15px 20px;
-					width: 11.5vw;
-					background-color: white;
-					position: relative;
-					left: 20px;
-					color: black;
-					border-radius: 20px;
-					border-top-right-radius: 5px;
-					border-bottom-right-radius: 5px;
-					transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-				}
+        }
+        .dash b{
+            margin-left: 5px;
+            flex-grow: 1;
+            
+        }
+		.button-profile {
+            align-items: center;
+			justify-content: center;
+			display: flex;
+			width: 10vw;
+		    margin-top: 1px;
+			margin-left: 36px;
+			border-radius: 10px;
+			padding: 5px 3px 5px 3px;
+					/*tlbr*/
+			overflow: hidden;
+			cursor: pointer;
+			border: none;
+            float: right;
+            margin-right: 1.5%;
+            background-color: white;
+        }
 
-				.button-profile {
-					align-items: center;
-					justify-content: center;
-					display: flex;
-					width: 10vw;
-					text-align: center;
-					margin-top: 10px;
-					margin-left: 1.875rem;
-					border-radius: 0.625rem;
-					padding: 0.9375rem 0.625rem;
-				}
+        .profile {
+            width: 10%;
+            object-fit: scale-down;
+            margin-right: 1.25rem;
+        }
+
+        .caretdown {
+            mix-blend-mode: multiply;
+            width: 0.625rem;
+            margin-left: 1.25rem;
+        }
+        .staffProfile {
+			/* margin-left: 2.3rem; */
+			position: absolute;
+			background-color: none;
+			width: 9.5vw;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			z-index: 1;
+			display: none;
+            /* float: right;
+            margin-right: 5%; */
+            top: 100%;
+            right: 5.6%;
+		}
+
+        .staffProfile a {
+            text-decoration: none;
+            background-color: white;
+            color: black;
+            overflow: hidden;
+            width: 10vw;
+            /* height: 20%; */
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: .5rem 0 0 0;
+            height: 1.5rem;
+            float: right;
+            margin-right: 5%;
+            font-size: 1rem;
+            
+        }
+
+        .staffProfile a:hover {
+            background-color: #EEEEEE;
+            border-radius: 7px;
+            color: black;
+        }
+		.dash img.picture{
+            width: 32px; 
+            height: 32px;
+            object-fit: contain;
+        }
+        .right-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-right: -15px;
+            margin-top: 17px;
+    }
+    .icon-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .icon-container .tooltip-text {
+            visibility: hidden;
+            width: 5vw;
+            height: 3vh;
+            background-color: #EEEEEE;
+            color: black;
+            text-align: center;
+            line-height: 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            padding: 5px 3px 5px 3px;
+            position: absolute;
+            z-index: 1;
+            top: 87%; 
+            left: 50%;
+            margin-left: -30px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .icon-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
 			</style>
 
 			<body>
 
 				<div class="container">
 					<div class="navbar">
-						<div class="logoContainer">
-							<img src="./images/logo.png" alt="" class="logo">
-							<p class="title"><b>Cebu Eastern College</b></p>
-						</div>
-						<!-- staff profile -->
-						<button class="button-profile" id="button-profile">
-							<img src="./images/profile.png" alt="" class="profile">STAFF<img
-								src="./images/caretdown.png" alt="" class="caretdown">
-						</button>
-						<div class="adminProfile" id="adminProfile">
-							<a href="">Settings</a> <a href="logout">Signout</a>
-						</div>
-
-						<div class="leftnav">
-							<div class="bottom-lnav">
-								<b><a href="staffdashboard">Dashboard</a></b>
-								<b><a href="userwindow">User Window</a></b>
-								<b><a href="counterwindow">Counter Window</a></b>
-								<b><a href="addstudent">Add Student</a></b>
-								<b><a href="entertainment">Advertisement</a></b>
-							</div>
+					<div class="logoContainer">
+						<img src="./images/logo.png" alt="" class="logo">
+						<p class="title"><b>Cebu Eastern College</b></p>
+					</div>
+				   
+					<div class="leftnav">
+						<div class="bottom-lnav">
+							<b><a href="staffpage">Dashboard</a></b>
+							<b><a href="user_window">User Window</a></b>
+							<b><a href="counter_window">Counter Window</a></b>
+							<b><a href="add_student">Add Student</a></b>
+							<b><a href="entertainment">Advertisement</a></b>
 						</div>
 					</div>
+				</div>				
 
 				</div>
 				</div>
+				<div class="dash"> <b>Dashboard</b>
+					<div class="right-icons">
+						<!-- <div class="icon-container">
+							<a href="staffpage.html">
+							<img src="./images/home.png" class="picture"/>
+							<span class="tooltip-text">Home</span>
+						</div> -->
+		
+						<!-- wmessenger icon with tooltip -->
+						<div class="icon-container">
+							<a href="#"></a>
+							<img src="./images/message.png" class="picture"/>
+							<span class="tooltip-text">Message</span>
+						</div>
+					</div>
+					
+					<button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
+			<div class="staffProfile" id="staffProfile">
+				<a href="#">Settings</a>
+				<a href="login">Signout</a>
+			</div>
+				</div>
+
 				<div class="studentlist-section">
 					<div class="studentlist-content">
 						<button class="add-account-btn">

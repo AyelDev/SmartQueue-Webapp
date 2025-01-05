@@ -30,7 +30,7 @@
         .container {
             width: 100%;
             height: 100vh;
-            background-color: white;
+            background-color: #F5F5F5;
             overflow: hidden;
         }
 
@@ -47,7 +47,7 @@
             float: right;
         }
 
-        .tp-rnav {
+        .card-section {
             width: 100%;
             height: 30%;
             background-color: transparent;
@@ -58,15 +58,25 @@
         }
 
         .dash {
-            width: 20%;
+            width: 100%;
             height: 20%;
-            background-color: transparent;
-            text-align: center;
+            background-color: #1e91d0;
+            text-align: start;
             font-size: 1.5625rem;
             display: inline-block;
             position: relative;
-            color: black;
+            color: white;
             margin-bottom: 1.25rem;
+            line-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 0 1rem;
+        }
+        .dash b{
+            margin-left: -5px;
+            flex-grow: 1;
+            
         }
 
         .card-container {
@@ -97,7 +107,7 @@
         .card h3,
         .card p {
             line-height: 40px;
-            text-decoration: underline;
+            text-decoration: none;
         }
 
         .card p {
@@ -106,7 +116,7 @@
             text-decoration: none;
         }
 
-        .b-container {
+        .graphcalendar-container {
             width: 90%;
             height: 50%;
             background-color: #EEEEEE;
@@ -117,16 +127,12 @@
             border-radius: 10px;
             border: none;
             position: relative;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-        }
-
-        .b-container:hover {
-            background-color: #E5E4E2;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
         }
         .leftnav {
             width: 15%;
             height: 100%;
-            background-color: #00509d;
+            background-color: #1e91d0;
             padding: 10px;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
@@ -154,6 +160,7 @@
         .title {
             color: #F6F4EB;
             font-size: 1.15em;
+            line-height: 3px;
         }
 
         .bottom-lnav {
@@ -172,21 +179,23 @@
             font-size: 1.2rem;
             transition: color 0.3s ease;
             margin-top: 40px;
-            text-align: center;
+            margin-left: 10%;
+            text-align: start;
             justify-content: center;
             align-items: center;
         }
 
         .bottom-lnav a:hover {
             padding: 15px 20px 15px 20px;
-            width: 11.5vw;
+            width: 12.8vw;
             background-color: white;
             position: relative;
-            left: 20px;
+            margin-left: -18px;
             color: black;
             border-radius: 20px;
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
+			border-right: 8px solid #37AFE1;
             transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
         }
 
@@ -195,14 +204,17 @@
 			justify-content: center;
 			display: flex;
 			width: 10vw;
-		    margin-top: 30px;
+		    margin-top: 1px;
 			margin-left: 36px;
 			border-radius: 10px;
-			padding: 15px 10px 15px 10px;
+			padding: 5px 3px 5px 3px;
 					/*tlbr*/
 			overflow: hidden;
 			cursor: pointer;
-			border: 2px solid black;
+			border: none;
+            float: right;
+            margin-right: 5%;
+            background-color: white;
         }
 
         .profile {
@@ -217,7 +229,7 @@
             margin-left: 1.25rem;
         }
         .staffProfile {
-			margin-left: 2.3rem;
+			/* margin-left: 2.3rem; */
 			position: absolute;
 			background-color: none;
 			width: 9.5vw;
@@ -226,6 +238,10 @@
 			text-align: center;
 			z-index: 1;
 			display: none;
+            /* float: right;
+            margin-right: 5%; */
+            top: 100%;
+            right: 5.6%;
 		}
 
         .staffProfile a {
@@ -234,19 +250,21 @@
             color: black;
             overflow: hidden;
             width: 10vw;
-            height: 20%;
             text-align: center;
             align-items: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding: .5rem 0 0 0;
-            height: 2rem;
-            /* margin-left: 30px; */
+            height: 1.5rem;
+            float: right;
+            margin-right: 5%;
+            font-size: 1rem;
+            
         }
 
         .staffProfile a:hover {
-            background-color: lightgrey;
+            background-color: #EEEEEE;
             border-radius: 7px;
             color: black;
         }
@@ -301,6 +319,100 @@
             background-color: #5CB3FF;
             color: white;
         }
+        
+        .dash img.picture{
+            width: 32px; 
+            height: 32px;
+            object-fit: contain;
+        }
+        .right-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-right: -15px;
+            margin-top: 17px;
+    }
+    .icon-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .icon-container .tooltip-text {
+            visibility: hidden;
+            width: 5vw;
+            height: 3vh;
+            background-color: #EEEEEE;
+            color: black;
+            text-align: center;
+            line-height: 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            padding: 5px 3px 5px 3px;
+            position: absolute;
+            z-index: 1;
+            top: 87%; 
+            left: 50%;
+            margin-left: -30px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .icon-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        @media (max-width: 1200px) {
+            .card {
+                width: 30%;
+            }
+
+            .graph, .calendar {
+                width: 45%;
+            }
+
+            .leftnav {
+                width: 20%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .graph, .calendar {
+                width: 100%;
+            }
+
+            .leftnav {
+                width: 30%;
+            }
+
+            .button-profile {
+                width: 40%;
+                margin: 0 auto;
+            }
+
+            .bottom-lnav a {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .button-profile {
+                width: 80%;
+            }
+
+            .dash {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .rightnav {
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 
@@ -308,8 +420,28 @@
     <div class="container">
         <div class="cover">
             <div class="rightnav">
-                <div class="tp-rnav">
-                    <div class="dash"><b>DASHBOARD</b></div>
+                <div class="card-section">
+                    <div class="dash"> <b>Dashboard</b>
+                        <div class="right-icons">
+                            <!-- <div class="icon-container">
+                                <a href="staffpage">
+                                <img src="./images/home.png" class="picture"/>
+                                <span class="tooltip-text">Home</span>
+                            </div> -->
+
+                            <div class="icon-container">
+                                <a href="#"></a>
+                                <img src="./images/message.png" class="picture"/>
+                                <span class="tooltip-text">Message</span>
+                            </div>
+                        </div>
+                        
+                        <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
+                <div class="staffProfile" id="staffProfile">
+                    <a href="#">Settings</a>
+                    <a href="login">Signout</a>
+                </div>
+                    </div>
 
                     <div class="card-container">
                         <div class="card">
@@ -327,10 +459,10 @@
                     </div>
                 </div>
 
-                <div class="b-container">
+                <div class="graphcalendar-container">
                     <div class="calendar"></div>
                     <div class="graph">
-                        <canvas id="queueTrendChart"></canvas> <!-- Line graph added -->
+                        <canvas id="queueTrendChart"></canvas> 
                     </div>
                 </div>
             </div>
@@ -338,23 +470,20 @@
             <div class="leftnav">
                 <div class="top-lnav">
                     <img src="./images/logo.png" class="cec">
-                    <b class="title"><br>Cebu Eastern College</b>
+                    <p class="title"><br><b>Cebu Eastern College</b></p>
                 </div>
-                <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
-                <div class="staffProfile" id="staffProfile">
-                    <a href="#">Settings</a>
-                    <a href="logout">Signout</a>
-                </div>
+                
                 <div class="bottom-lnav">
-                    <b><a href="staffdashboard">Dashboard</a></b>
-                    <b><a href="userwindow">User Window</a></b>
-                    <b><a href="counterwindow">Counter Window</a></b>
-                    <b><a href="addstudent">Add Student</a></b>
-                    <b><a href="entertainment">Advertisement</a></b>
+                    <b><a href="staffpage.jsp">Dashboard</a></b>
+                    <b><a href="user_window.jsp">User Window</a></b>
+                    <b><a href="counter_window.jsp">Counter Window</a></b>
+                    <b><a href="add_student.jsp">Add Student</a></b>
+                    <b><a href="entertainment.jsp">Advertisement</a></b>
                 </div>
             </div>
         </div>
     </div>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {

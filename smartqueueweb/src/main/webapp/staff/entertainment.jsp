@@ -16,237 +16,371 @@
             <link rel="stylesheet" href="./css/loader.css">
             <title>SmartQueuWeb</title>
             <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    margin: 0;
-                    display: flex;
-                    height: 100vh;
-                    background-color: #EEEEEE;
-                    overflow: hidden;
-                }
-        
-                .leftnav {
-                    width: 15%;
-                    height: 100%;
-                    background-color: #00509d;
-                    padding: 10px;
-                    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-                    overflow-y: hidden;
-                }
-        
-                .ulnav {
-                    height: 25%;
-                    width: 100%;
-                    background-color: transparent;
-                    margin-bottom: 3px;
-                    text-align: center;
-                    display: block;
-                    position: relative;
-                    line-height: 10px;
-                    font-size: 0.875rem;
-                    color: white;
-                }
-        
-                .top-lnav {
-                    background-color: transparent;
-                    height: 70%;
-                    overflow: auto;
-                    margin-bottom: 7px;
-                    margin-left: 120px;
-                }
-        
-                .bottom-lnav {
-                    width: 100%;
-                    height: 80%;
-                    background-color: transparent;
-                    text-align: center;
-                    padding-top: 30px;
-                }
-        
-                .bottom-lnav a {
-                    display: block;
-                    margin: 1rem 0;
-                    color: white;
-                    text-decoration: none;
-                    font-size: 1.2rem;
-                    transition: color 0.3s ease;
-                    margin-top: 50px;
-                    text-align: center;
-                    justify-content: center;
-                    align-items: center;
-                }
-        
-                .bottom-lnav a:hover {
-                    padding: 15px 20px 15px 20px;
-                    width: 11.5vw;
-                    background-color: white;
-                    position: relative;
-                    left: 20px;
-                    color: black;
-                    border-radius: 20px;
-                    border-top-right-radius: 5px;
-                    border-bottom-right-radius: 5px;
-                    transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-                }
-        
-                .video-container {
-                    width: 700px;
-                    position: absolute;
-                    top: 50px;
-                    left: 220px;
-                    display: none;
-                    border: 2px solid #333;
-                    border-radius: 10px;
-                    background-color: white;
-                    z-index: 1000;
-                }
-        
-                .video-header {
-                    display: flex;
-                    justify-content: space-between;
-                    background-color: #333;
-                    color: white;
-                    padding: 5px;
-                    cursor: move;
-                    border-top-left-radius: 10px;
-                    border-top-right-radius: 10px;
-                }
-        
-                .video-header button {
-                    background: none;
-                    border: none;
-                    color: white;
-                    cursor: pointer;
-                }
-        
-                video {
-                    width: 100%;
-                    border-bottom-left-radius: 10px;
-                    border-bottom-right-radius: 10px;
-                }
-        
-                table {
-                    margin: 0;
-                    border-collapse: collapse;
-                    width: 100%;
-                    text-align: center;
-                    list-style: none;
-                }
-        
-                th,
-                td {
-                    padding: 10px 30px;
-                    border: 1px solid #ccc;
-                    text-align: center;
-                    background-color: #306EFF;
-                    color: white;
-                    
-                }
-        
-                td {
-                    cursor: pointer;
-                    color: blue;
-                    text-decoration: none;
-                    background-color: #EEEEEE;
-                }
-        
-                .controls {
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 10px;
-                    margin-left: 550px;
-                    margin-top: 40px;
-                }
-        
-                input[type="file"] {
-                    width: 200px;
-                    margin-right: 10px;
-                    height: 40px;
-                }
-        
-                button {
-                    font-size: 15px;
-                    background-color: #306EFF;
-                    color: white;
-                    border-radius: 20px;
-                    cursor: pointer;
-                    padding: 10px 30px;
-                    text-align: center;
-                }
-                .cec {
-                    width: 50%;
-                    max-width: 100%;
-                    object-fit: contain;
-                    margin-top: 15px;
-                    margin-bottom: 5px;
-                }
-        
-                .title {
-                    color: #F6F4EB;
-                    font-size: 1.15em;
-                }
-        
-                .button-profile {
-                    align-items: center;
-                    justify-content: center;
-                    display: flex;
-                    width: 10vw;
-                    margin-top: 20px;
-                    margin-left: 36px;
-                    border-radius: 10px;
-                    padding: 15px 10px 15px 10px;
-                            /*tlbr*/
-                    overflow: hidden;
-                    cursor: pointer;
-                    border: 2px solid black;
-                    background-color: white;
-                    color: black;
-                }
-        
-                .profile {
-                    width: 10%;
-                    object-fit: scale-down;
-                    margin-right: 1.25rem;
-                }
-        
-                .caretdown {
-                    mix-blend-mode: multiply;
-                    width: 0.625rem;
-                    margin-left: 1.25rem;
-                }
-                .staffProfile {
-                    margin-left: 2.3rem;
-                    position: absolute;
-                    background-color: none;
-                    width: 9.5vw;
-                    align-items: center;
-                    justify-content: center;
-                    text-align: center;
-                    z-index: 1;
-                    display: none;
-                }
-        
-                .staffProfile a {
-                    text-decoration: none;
-                    background-color: white;
-                    color: black;
-                    overflow: hidden;
-                    width: 10vw;
-                    height: 20%;
-                    text-align: center;
-                    align-items: center;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    padding: .5rem 0 0 0;
-                    height: 2rem;
-                    /* margin-left: 30px; */
-                }
-                .staffProfile a:hover {
-                    background-color: lightgrey;
-                    border-radius: 7px;
-                    color: black;
-                }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            background-color: white;
+            overflow: hidden;
+            
+        }
+
+        .leftnav {
+            width: 15%;
+            min-width: 200px;
+            height: 100%;
+            background-color: #1e91d0;
+            padding: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .ulnav {
+            height: 25%;
+            width: 100%;
+            background-color: transparent;
+            margin-bottom: 3px;
+            text-align: center;
+            display: block;
+            position: relative;
+            line-height: 10px;
+            font-size: 0.875rem;
+            color: white;
+        }
+
+        .top-lnav {
+            background-color: transparent;
+            height: 70%;
+            overflow: auto;
+            margin-bottom: 7px;
+            margin-left: -100px;
+        }
+
+        .bottom-lnav {
+            width: 100%;
+            height: 80%;
+            background-color: transparent;
+            text-align: center;
+            padding-top: 4px;
+            display: block;
+            position: absolute;
+           
+        }
+
+        .bottom-lnav a {
+            display: block;
+            position: relative;
+            margin: 1rem 0;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            /* padding: 10px 0; */
+            margin-top: 40px;
+            margin-left: 2%;
+            text-align: start;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bottom-lnav a:hover {
+            padding: 15px 20px 15px 20px;
+            width: 12.5vw;
+            background-color: white;
+            position: relative;
+            margin-left: 2px;
+            color: black;
+            border-radius: 20px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+			border-right: 8px solid #37AFE1;
+            transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        }
+
+        .video-container {
+            width: 700px;
+            min-width: 70%;
+            position: absolute;
+            top: 50px;
+            left: 200px;
+            display: none;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: white;
+            z-index: 1000;
+        }
+
+        .video-header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #333;
+            color: white;
+            padding: 5px;
+            cursor: move;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .video-header button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        video {
+            width: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        table {
+            margin: 0;
+            border-collapse: collapse;
+            width: 100%;
+            text-align: center;
+            list-style: none;
+        }
+
+        th,
+        td {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            text-align: center;
+            background-color: #37AFE1; 
+            color: white;
+            
+        }
+
+        td {
+            cursor: pointer;
+            color: blue;
+            text-decoration: none;
+            background-color: #EEEEEE;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            margin-left: 300px;
+            margin-top: 40px;
+        }
+
+        input[type="file"] {
+            width: 200px;
+            margin-right: 10px;
+            height: 40px;
+        }
+
+        button {
+            font-size: 15px;
+            background-color: #37AFE1;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            padding: 10px 30px;
+            text-align: center;
+            border: none;
+        }
+        .cec {
+            width: 50%;
+            max-width: 100%;
+            object-fit: contain;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        .title {
+            color: #F6F4EB;
+            font-size: 1.15em;
+        }
+        .rightnav {
+            /* flex: 1; */
+            width: 85%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            /* padding: 60px; */
+        }
+        .dash {
+            width: 98%;
+            height: 7vh;
+            background-color: #1e91d0;
+            text-align: start;
+            font-size: 1.5625rem;
+            display: inline-block;
+            position: relative;
+            color: white;
+            /* margin-bottom: 1.25rem; */
+			margin-left: -.5rem;
+            line-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 0 1rem;
+            /* gap: 1rem; */
+
+        }
+        .dash b{
+            margin-left: 5px;
+            flex-grow: 1;
+            
+        }
+		.button-profile {
+            align-items: center;
+			justify-content: center;
+			display: flex;
+			width: 10vw;
+		    margin-top: 1px;
+			margin-left: 36px;
+			border-radius: 10px;
+			padding: 5px 3px 5px 3px;
+					/*tlbr*/
+			overflow: hidden;
+			cursor: pointer;
+			border: none;
+            float: right;
+            margin-right: 1.5%;
+            background-color: white;
+            color: black;
+        }
+
+        .profile {
+            width: 10%;
+            object-fit: scale-down;
+            margin-right: 1.25rem;
+            display: flex;
+        }
+
+        .caretdown {
+            mix-blend-mode: multiply;
+            width: 0.625rem;
+            margin-left: 1.25rem;
+        }
+        .staffProfile {
+			/* margin-left: 2.3rem; */
+			position: absolute;
+			background-color: none;
+			width: 9.5vw;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			z-index: 1;
+			display: none;
+            /* float: right;
+            margin-right: 5%; */
+            top: 100%;
+            right: 5.6%;
+		}
+
+        .staffProfile a {
+            text-decoration: none;
+            background-color: white;
+            color: black;
+            overflow: hidden;
+            width: 10vw;
+            /* height: 20%; */
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: .5rem 0 0 0;
+            height: 1.5rem;
+            float: right;
+            margin-right: 5%;
+            font-size: 1rem;
+            
+        }
+
+        .staffProfile a:hover {
+            background-color: #EEEEEE;
+            border-radius: 7px;
+            color: black;
+        }
+		.dash img.picture{
+            width: 32px; 
+            height: 32px;
+            object-fit: contain;
+        }
+        .right-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-right: -15px;
+            margin-top: 17px;
+    }
+    .icon-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .icon-container .tooltip-text {
+            visibility: hidden;
+            width: 5vw;
+            height: 3vh;
+            background-color: #EEEEEE;
+            color: black;
+            text-align: center;
+            line-height: 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            padding: 5px 3px 5px 3px;
+            position: absolute;
+            z-index: 1;
+            top: 87%; 
+            left: 50%;
+            margin-left: -30px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .icon-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        @media (max-width: 768px) {
+            .leftnav {
+                width: 20%;
+            }
+            .rightnav {
+                width: 80%;
+            }
+            .dash {
+                font-size: 1.2rem;
+                padding: 5px 0.5rem;
+            }
+            .bottom-lnav a {
+                font-size: 1rem;
+            }
+            button {
+                padding: 8px 20px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .leftnav {
+                width: 25%;
+            }
+            .rightnav {
+                width: 75%;
+            }
+            .button-profile {
+                width: 25vw;
+            }
+            .video-container {
+                width: 95%;
+                left: 2.5%;
+            }
+            .dash {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
             </style>
         </head>
         
@@ -258,23 +392,42 @@
                     <b class="title"><br>Cebu Eastern College</b>
         
                     <!-- staff profile -->
-                    <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img
-                            src="./images/caretdown.png" alt="" class="caretdown"></button>
-                    <div class="staffProfile" id="staffProfile">
-                        <a href="#">Settings</a>
-                        <a href="logout">Signout</a>
-                    </div>
                 </div>
                 
                 <div class="bottom-lnav">
-                    <b><a href="staffdashboard">Dashboard</a></b>
-                    <b><a href="userwindow">User Window</a></b>
-                    <b><a href="counterwindow">Counter Window</a></b>
-                    <b><a href="addstudent">Add Student</a></b>
+                    <b><a href="staffpage" style="margin-top: 1.3rem;">Dashboard</a></b>
+                    <b><a href="user_window">User Window</a></b>
+                    <b><a href="counter_window">Counter Window</a></b>
+                    <b><a href="add_student">Add Student</a></b>
                     <b><a href="entertainment">Advertisement</a></b>
                 </div>
             </div>
+            
+            <div class="rightnav">
+            <div class="dash"> <b>Dashboard</b>
+                <div class="right-icons">
+                    <!-- <div class="icon-container">
+                        <a href="staffpage.html">
+                        <img src="whome.png" class="picture"/>
+                        <span class="tooltip-text">Home</span>
+                    </div> -->
         
+                    <!-- wmessenger icon with tooltip -->
+                    <div class="icon-container">
+                        <a href="#"></a>
+                        <img src="./images/message.png" class="picture"/>
+                        <span class="tooltip-text">Message</span>
+                    </div>
+                </div>
+                
+                <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
+        <div class="staffProfile" id="staffProfile">
+            <a href="#">Settings</a>
+            <a href="login">Signout</a>
+        </div>
+            </div>
+            <hr>
+          
             <div>
                 <div class="controls">
                     <input type="file" id="videoUpload" accept="video/*">
@@ -305,7 +458,7 @@
                     <source id="videoSource" src="" type="video/mp4">
                 </video>
             </div>
-        
+        </div>
             <div class="load-wrapper">
                 <div class="main-loader">
                     <div class="box-loader">
