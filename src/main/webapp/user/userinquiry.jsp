@@ -7,6 +7,7 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
+            <script type="text/javascript" src="./scripts/fadetransition.js"></script>
             <script type="text/javascript" src="./scripts/notify.js"></script>
             <script type="text/javascript" src="./scripts/prettify.js"></script>
             <link rel="stylesheet" href="./css/loader.css">
@@ -532,6 +533,13 @@
                 </div>
             </div>
 
+            	<!-- loader please do not remove -->
+			<div class="load-wrapper">
+				<div class="main-loader">
+					<div class="box-loader">
+					</div>
+				</div>
+			</div>
 
             <script>
                 // Get all the modals
@@ -610,10 +618,9 @@
 
                 // Function to print the queue and check if limit is reached
                 async function printQueue(serviceType) {
-
+                    
                     //need to polish
                     var queueNumber = '';
-
                     await $.ajax({
                         url: 'JsonQueueNumberAvailableAPI?availableNumber=1',
                         type: "GET",

@@ -639,8 +639,8 @@
                 setInterval(updateTime, 1000);
 
                 let counterList = document.getElementById("counter-list");
-                document.addEventListener("DOMContentLoaded", ()=>{
-                         $.ajax({
+                document.addEventListener("DOMContentLoaded", event =>{
+           $.ajax({
                         url: '/JsonAvailableWindow',
                         method: 'GET',
                         data: {},
@@ -657,37 +657,35 @@
                         }
 
                     });
-
                 });
 
-                /*
-                old function but poor optimization
-                */
-                // let counterList = document.getElementById("counter-list");
-                // counterList.addEventListener("mouseover", event => {
-                //     $.ajax({
-                //         url: '/JsonAvailableWindow',
-                //         method: 'GET',
-                //         data: {},
-                //         dataType: 'json',
-                //         success: function (data) {
-                //             const selectCounterListBody = $('#counter-list');
-                //             selectCounterListBody.empty();
-                //             selectCounterListBody.append(`
-                //             <option value="0">CHOOSE COUNTER WINDOW</option>`);
-                //             data.forEach(item => {
-                //                 selectCounterListBody.append(`
-                //                      <option value="`+ item.window_number + `">Counter-Window : ` + item.window_number + ` - ` + item.serviceType + `</option>`);
-                //             });
-                //         }
-
-                //     });
-
-                // });
-
                 async function counterChangeListOnChange() {
-                    await CounterList(counterList.value, "QUEUE", '#priority-number-table');
-                    await CounterList(counterList.value, "SERVING", '#counter-access-table');
+
+                    document.getElementById("priority-number-table").innerHTML = `
+                       <tr>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                        </tr>
+                    `;
+
+                    document.getElementById("counter-access-table").innerHTML = `
+                       <tr>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                        </tr>
+                    `;
+
+                    await CounterList(counterList.value, "QUEUE", '#priority-number-table').then(await CounterList(counterList.value, "SERVING", '#counter-access-table'));
                 }
 
                 async function CounterList(window_nunber, queue_status, elementid) {
@@ -720,7 +718,7 @@
                     });
                 }
 
-                //setInterval(counterChangeListOnChange, 4000);
+                //setInterval(counterChangeListOnChange, 5000); change to websocket
 
                 let priorityNumberTableBody = document.getElementById("priority-number-table");
                 let counterAccessTableBody = document.getElementById("counter-access-table");
