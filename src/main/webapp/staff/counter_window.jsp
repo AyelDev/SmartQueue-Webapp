@@ -685,7 +685,8 @@
                                         </tr>
                     `;
 
-                    await CounterList(counterList.value, "QUEUE", '#priority-number-table').then(await CounterList(counterList.value, "SERVING", '#counter-access-table'));
+                    await CounterList(counterList.value, "QUEUE", '#priority-number-table');
+                    await CounterList(counterList.value, "SERVING", '#counter-access-table');
                 }
 
                 async function CounterList(window_nunber, queue_status, elementid) {
@@ -831,9 +832,11 @@
                     }
                 }
 
+                var ws2 = new WebSocket(wsUrl + window.location.host + "/queueupdate");
 
-
-
+                ws2.addEventListener("message", async (message)=>{
+                    await counterChangeListOnChange();
+                })
             </script>
 
             <div class="load-wrapper">
