@@ -7,6 +7,7 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
+            <script type="text/javascript" src="./scripts/fadetransition.js"></script>
             <script type="text/javascript" src="./scripts/notify.js"></script>
             <script type="text/javascript" src="./scripts/prettify.js"></script>
             <link rel="stylesheet" href="./css/loader.css">
@@ -532,6 +533,13 @@
                 </div>
             </div>
 
+            <!-- loader please do not remove -->
+            <div class="load-wrapper">
+                <div class="main-loader">
+                    <div class="box-loader">
+                    </div>
+                </div>
+            </div>
 
             <script>
                 // Get all the modals
@@ -613,12 +621,12 @@
 
                     //need to polish
                     var queueNumber = '';
-
                     await $.ajax({
                         url: 'JsonQueueNumberAvailableAPI?availableNumber=1',
                         type: "GET",
                         success: function (response) {
                             queueNumber = response.id;
+                            sendMsg("update queue");
                         },
                         error: function (xhr, status, error) {
                             $.notify(xhr.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
@@ -922,6 +930,28 @@
                 }
 
                 InquirySelection();
+
+                //websocket
+                var wsUrl;
+                if (window.location.protocol == 'http:') {
+                    wsUrl = 'ws://';
+                } else {
+                    wsUrl = 'wss://';
+                }
+                var ws = new WebSocket(wsUrl + window.location.host + "/queueupdate");
+
+                ws.onopen = function (event) {
+                    console.log('WebSocket connection opened', event);
+                };
+
+                function sendMsg(response) {
+                    if (response) {
+                        ws.send(JSON.stringify({
+                            message: response
+                        }));
+                        //ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
+                    }
+                }
             </script>
         </body>
 
