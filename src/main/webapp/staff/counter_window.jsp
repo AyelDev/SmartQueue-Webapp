@@ -834,7 +834,8 @@
 
                 var ws2 = new WebSocket(wsUrl + window.location.host + "/queueupdate");
 
-                ws2.addEventListener("message", async (message)=>{
+                ws2.addEventListener("message",async (message)=>{
+                    await $.notify("loading new requests...", { color: "#fff", background: "#20D67B", delay: 1000 })
                     await CounterList(counterList.value, "QUEUE", '#priority-number-table');
                 })
             </script>
