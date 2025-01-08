@@ -409,49 +409,129 @@ p {
     }
     .form-container{
         width: 80%;
-        margin-left: 10%;
+        margin-left: 2%;
+        margin-top: -40%;
     }
     .username-input{
-        width: 100%;
+        width: 80%;
+        height: 7vh;
         padding: 10px;
         font-size: 12px;
+        margin-top: 10%;
+        margin-left: -2%;
     }
     .password-input{
-        width: 100%;
+        width: 80%;
+        height: 7vh;
         padding: 10px;
         font-size: 12px;
+        margin-left: -2%;
     }
     .username-label{
-        margin-left: 10%;
+        margin-left: 27%;
         font-size: 13px;
-        margin-top: -2%;
+        margin-top: 8%;
     }
     .password-label{
-        margin-left: -79%;
+        margin-left: -63%;
         font-size: 13px;
-        margin-top: -2%;
+        margin-top: -16%;
     }
     .login-btn{
-        width: 80%;
-        height: 10%;
+        width: 64%;
+        height: 8%;
         font-size: .8rem;
         padding: 10px;
-        margin-left: -8%;
+        margin-left: 1%;
+        top: 48%;
+    }
+    .error-message{
+        font-size: .7rem;
+        margin-top: 18%;
+        margin-left: 8%;
     }
     .forgotpass{
-        font-size: .5rem;
-        margin-left: 10%;
+        font-size: .7rem;
+        top: 43.5%;
+        right: 18%;
     }
 }
 
 /* Large devices such as laptops (1024px and up) */
-@media only screen and (min-width: 1024px) {
-
+@media only screen and (max-width: 375px) {
+    .cecbldg{
+        margin-top: -30%;
+    }
+    .school-name{
+       margin-top: 10%;
+    }
+    .system-title{
+        opacity: 0;
+    }
+    .logo{
+        width: 25%;
+        margin-top: -20%;
+    }
+    .error-message{
+       margin-top: 22%;
+    }
+    .forgotpass{
+        margin-top: 22%;
+        left: 20%;
+    }
 }
 
 /* Largest devices such as desktops (1280px and up) */
-@media only screen and (min-width: 1280px) {
-
+@media only screen and (max-width: 320px) {
+    .login-container{
+        margin-top: -100%;
+    }
+    .cecbldg{
+        margin-top: -60%;
+    }
+    .title-container{
+        margin-left: -3%;
+    }
+    .school-name{
+       margin-top: -10%;
+    }
+    .system-title{
+        opacity: 0;
+    }
+    .logo{
+        width: 25%;
+        margin-top: -40%;
+    }
+    .title{
+       
+    }
+    .form-container{
+        margin-top: -50%;
+    }
+    .username-input{
+       width: 85%;
+    }
+    .password-input{
+       width: 85%;
+    }
+    .username-label{
+       margin-left: 23%;
+    }
+    .password-label{
+       margin-top: -21%;
+       margin-left: -68%;
+    }
+    .login-btn{
+       width: 69%;
+       margin-left: -1%;
+    }
+    .error-message{
+       margin-top: 24%;
+    }
+    .forgotpass{
+        margin-top: 25%;
+        left: 20%;
+    }
 }
 
 /* media query
