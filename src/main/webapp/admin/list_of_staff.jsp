@@ -1101,10 +1101,10 @@
 						staffListInfo.innerHTML = htmlString;
 					}
 
-					setInterval(updateData, 2000);
+					document.addEventListener("DOMContentLoaded", event =>{
+						updateData();
+					});
 
-				</script>
-				<script>
 					// Get elements
 					const addAccountButton = document.querySelector('.add-account-btn');
 					const closeModalButton = document.querySelector('.close-btn');
