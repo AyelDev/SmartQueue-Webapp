@@ -158,7 +158,7 @@
                     max-width: 600px;
                     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
                     margin-left: 30%;
-                    margin-top: 5%;
+                    margin-top: 3%;
                 }
 
 
@@ -247,6 +247,15 @@
                         margin: 0;
                         padding: 0;
                     }
+                    .close{
+                        display: none !important;
+                    }
+                    .modal-content{
+                        box-shadow: none;
+                        margin-left: 10%;
+                        margin-top: 10%;
+                        background-color: white;
+                    }
                 }
 
                 #printArea {
@@ -257,6 +266,7 @@
                     text-align: center;
                     margin: 0 auto;
                     background-color: #fff;
+                    
                 }
 
                 #printArea h3,
@@ -684,7 +694,7 @@
                     // Create the receipt content
                     var receiptContent = `
                     <center><h3>CEBU EASTERN COLLEGE</h3></center>
-                    <center><h4>QUEUING NO.</h4></center>
+                    <center><h4>QUEUEING NO.</h4></center>
                     <hr>
                     <h1>`+ (charQueue + queueNumber) + `</h1>
                     <hr>
@@ -707,7 +717,7 @@
                             servicetype: servetype
                         },
                         success: function (response) {
-                            $.notify(response, { color: "#fff", background: "#20D67B", delay: 1000 })
+                            $.notify(response, { color: "#fff", background: "#20D67B", delay: 500 })
 
                             // Inject the receipt content into the modal
                             document.getElementById('printArea').innerHTML = receiptContent;
