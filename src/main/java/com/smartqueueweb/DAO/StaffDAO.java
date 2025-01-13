@@ -64,7 +64,7 @@ public class StaffDAO extends SQLConnection {
 				staffbean.setFirstname(rs.getString("firstname"));
 				staffbean.setLastname(rs.getString("lastname"));
 				staffbean.setEmail(rs.getString("email"));
-				staffbean.setContactNumber(rs.getLong("contact_number"));
+				staffbean.setContactNumber(rs.getString("contact_number"));
 				staffbean.setIsLocked(rs.getInt("isLocked"));
 			}
 
@@ -77,7 +77,7 @@ public class StaffDAO extends SQLConnection {
 		return staffbean;
 	}
 
-	public Integer registerStaff(String firstname, String lastname, String email, double contactNumber,
+	public Integer registerStaff(String firstname, String lastname, String email, String contactNumber,
 			String username) {
 		try {
 			LocalDate currentDate = LocalDate.now();
@@ -99,7 +99,7 @@ public class StaffDAO extends SQLConnection {
 			prs.setString(1, firstname);
 			prs.setString(2, lastname);
 			prs.setString(3, email);
-			prs.setDouble(4, contactNumber);
+			prs.setString(4, contactNumber);
 			prs.setString(5, username);
 			prs.setString(6, GeneratedPassword.toUpperCase());
 
@@ -154,7 +154,7 @@ public class StaffDAO extends SQLConnection {
 						rs.getString("firstname"),
 						rs.getString("lastname"),
 						rs.getString("email"),
-						rs.getDouble("contact_number"),
+						rs.getString("contact_number"),
 						rs.getInt("isLocked"));
 				listOfStaff.add(staffbean);
 			}

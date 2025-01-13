@@ -33,7 +33,7 @@ public class staffRegister_Servlet extends HttpServlet {
 		
 		// Call the service to register staff
 		try {
-			int isTrue = services.registerStaff(firstName, lastName, email, Double.parseDouble(contactNo), userName);
+			int isTrue = services.registerStaff(firstName, lastName, email, contactNo, userName);
 			// Set character encoding for response
 			if(isTrue >= 1){
 				response.setContentType("text/plain");

@@ -8,6 +8,10 @@ public class StudentBean {
 	private String lastname;
 	private String course;
 
+	public StudentBean() {
+		super();
+	}
+	
 	public StudentBean(long idnumber, String firstname, String middlename, String lastname, String course) {
 		this.idnumber = idnumber;
 		this.firstname = firstname;
@@ -15,7 +19,7 @@ public class StudentBean {
 		this.lastname = lastname;
 		this.course = course;
 	}
-
+	
 	public long getIdnumber() {
 		return idnumber;
 	}
