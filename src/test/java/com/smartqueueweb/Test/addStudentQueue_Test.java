@@ -21,10 +21,10 @@ public class addStudentQueue_Test {
 	@Test
 	public void filledSampleShouldReturnProperly() {
 
-		when(mockServiceImpl.addToQueue("152G", 12313, "cindy labra", "enrollment", "records")).thenReturn(1);
+		when(mockServiceImpl.addToQueue("152G", "12313", "cindy labra", "enrollment", "records")).thenReturn(1);
 		
 		int expected = 1;
-		int actual = mockServiceImpl.addToQueue("152G", 12313, "cindy labra", "enrollment", "records");
+		int actual = mockServiceImpl.addToQueue("152G", "12313", "cindy labra", "enrollment", "records");
 		
 		assertEquals(expected, actual);
 		
@@ -33,10 +33,10 @@ public class addStudentQueue_Test {
 	@Test
 	public void nonFilledSampleShouldReturnProperly() {
 		
-		when(mockServiceImpl.addToQueue("223G", 000, "", "enrollment", "records")).thenReturn(1);
+		when(mockServiceImpl.addToQueue("223G", "000", "", "enrollment", "records")).thenReturn(1);
 		
 		int expected = 1;
-		int actual = mockServiceImpl.addToQueue("223G", 000, "", "enrollment", "records");
+		int actual = mockServiceImpl.addToQueue("223G", "000", "", "enrollment", "records");
 
 		assertEquals(expected, actual);
 	}

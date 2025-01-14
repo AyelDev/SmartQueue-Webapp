@@ -98,7 +98,7 @@ public class StudentDAO extends SQLConnection {
 		return 0;
 	}
 
-	public Integer addToQueue(String queueNumber, long idNumber, String fullname, String purpose, String servicetype) {
+	public Integer addToQueue(String queueNumber, String idNumber, String fullname, String purpose, String servicetype) {
 		System.out.println(queueNumber);
 		System.out.println(idNumber);
 		System.out.println(fullname);
@@ -111,7 +111,7 @@ public class StudentDAO extends SQLConnection {
 					"INSERT INTO `student_queue_entries` (`queue_number`, `id_number`, `fullname`, `purpose`, `servicetype`, `window_number`, `date`)"
 							+ " VALUES (?, ?, ?, ?, ?, (SELECT `window_number` FROM `tbl_servicetype` WHERE `servicetype` = ?), current_timestamp())");
 			prs.setString(1, queueNumber);
-			prs.setLong(2, idNumber);
+			prs.setString(2, idNumber);
 			prs.setString(3, fullname);
 			prs.setString(4, purpose);
 			prs.setString(5, servicetype);

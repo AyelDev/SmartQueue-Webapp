@@ -21,10 +21,10 @@ private ServiceImpl mockServiceImpl;
 	@Test
 	public void StudentCreateInquiryShouldReturn1() {
 		
-		when(mockServiceImpl.addToQueue("123a", 1231313112, "sample", "sample", "sample")).thenReturn(1);
+		when(mockServiceImpl.addToQueue("123a", "1231313112", "sample", "sample", "sample")).thenReturn(1);
 		
 		int expected = 1;
-		int actual = mockServiceImpl.addToQueue("123a", 1231313112, "sample", "sample", "sample");
+		int actual = mockServiceImpl.addToQueue("123a", "1231313112", "sample", "sample", "sample");
 		
 		assertEquals(expected, actual);
 		

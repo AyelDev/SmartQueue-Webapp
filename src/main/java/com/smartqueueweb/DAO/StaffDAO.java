@@ -321,7 +321,7 @@ public class StaffDAO extends SQLConnection {
 						rs.getString("queue_number"),
 						rs.getString("purpose"),
 						rs.getString("fullname"),
-						rs.getLong("id_number"),
+						rs.getString("id_number"),
 						rs.getTimestamp("date"),
 						rs.getString("queue_status"),
 						rs.getInt("window_number")

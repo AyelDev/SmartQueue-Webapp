@@ -11,7 +11,7 @@ public class ServicesBean {
 	String serviceType;
 	int window_number;
 	String fullname;
-	long id_number;
+	String id_number;
 	Timestamp date;
 	String queue_number;
 	String queue_status;
@@ -20,7 +20,7 @@ public class ServicesBean {
 		super();
 	}
 
-	public ServicesBean(int id, String queue_number, String purpose, String fullname, long id_number, Timestamp date,
+	public ServicesBean(int id, String queue_number, String purpose, String fullname, String id_number, Timestamp date,
 			String queue_status, int window_number) {
 		this.id = id;
 		this.purpose = purpose;
@@ -103,11 +103,11 @@ public class ServicesBean {
 		this.fullname = fullname;
 	}
 
-	public long getId_number() {
+	public String getId_number() {
 		return id_number;
 	}
 
-	public void setId_number(long id_number) {
+	public void setId_number(String id_number) {
 		this.id_number = id_number;
 	}
 

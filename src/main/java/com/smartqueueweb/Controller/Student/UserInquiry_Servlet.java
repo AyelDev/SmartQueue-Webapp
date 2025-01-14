@@ -35,9 +35,9 @@ public class UserInquiry_Servlet extends HttpServlet {
 			if(purpose.isEmpty() || servicetype.isEmpty() || fullname.isEmpty() || studentid.isEmpty()){
 				throw new Exception();
 			}
-			long studentIdparsed = Long.parseLong(studentid);
+			//long studentIdparsed = Long.parseLong(studentid);
 			
-			int ifTrue = services.addToQueue(queueNum, studentIdparsed, fullname, purpose, servicetype);
+			int ifTrue = services.addToQueue(queueNum, studentid, fullname, purpose, servicetype);
 			
 			if(ifTrue >= 1){
 				response.setContentType("text/plain");
