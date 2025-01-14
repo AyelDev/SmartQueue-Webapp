@@ -60,6 +60,8 @@ public class JwtValidator {
     }
 
     public static String fixGarbledCharacters(String input) {
+        if(input == null)
+        input = "null";
         byte[] utf8Bytes = input.getBytes(StandardCharsets.UTF_8);
         String decodedString = new String(utf8Bytes, StandardCharsets.UTF_8);
         return decodedString.trim();
