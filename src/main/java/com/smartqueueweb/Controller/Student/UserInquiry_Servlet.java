@@ -1,6 +1,7 @@
 package com.smartqueueweb.Controller.Student;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,6 +37,17 @@ public class UserInquiry_Servlet extends HttpServlet {
 				throw new Exception();
 			}
 			//long studentIdparsed = Long.parseLong(studentid);
+			
+			//String regexPattern = "^(000|[1-9][0-9]{4,})$";
+			String regexPattern = "	^000$";
+			boolean PatternMatches = Pattern.matches(studentid, regexPattern);
+			
+			if(!PatternMatches) {
+				response.setContentType("text/plain");
+				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+				response.getWriter().write("Student Id should be '000' for new student");
+				return;
+			}
 			
 			int ifTrue = services.addToQueue(queueNum, studentid, fullname, purpose, servicetype);
 			

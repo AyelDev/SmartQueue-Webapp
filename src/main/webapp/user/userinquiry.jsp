@@ -453,7 +453,7 @@
                         </div>
 
 
-                        <label for="studentIdNo">Student ID No.</label>
+                        <label for="studentIdNo" class="student-id-no-text">Student ID No.</label>
                         <input type="text" class="student-id" id="general-student-id">
                         <label for="yearLevel">Year Level</label>
                         <input type="text" class="yearLevel" id="yearLevel">
@@ -552,6 +552,27 @@
             </div>
 
             <script>
+
+                        /* 
+                        Summary: check studentinput if it is in correct pattern
+                        */
+                        let generalStudentInput = document.getElementById('general-student-id');
+                        const numberRegex = new RegExp("^000$");
+                        let generalStudentIdNoInput = document.querySelector(".student-id-no-text");
+                        generalStudentInput.addEventListener("input", checkInput);
+                        function checkInput(){
+                            if(generalStudentInput.value.match(numberRegex) == null){
+                                generalStudentIdNoInput.style.color = "red";
+                                generalStudentIdNoInput.innerHTML = "Type '000' for new student";
+                            }else{
+                                generalStudentIdNoInput.style.color = "black";
+                                generalStudentIdNoInput.innerHTML = "Student ID No.";
+                            }
+                        }
+                         
+                       
+                    
+
                 // Get all the modals
                 var generalModal = document.getElementById("general-modal");
                 var recordsModal = document.getElementById("records-modal");
@@ -624,7 +645,6 @@
                     }
                     return true;
                 }
-
 
                 // Function to print the queue and check if limit is reached
                 async function printQueue(serviceType) {
