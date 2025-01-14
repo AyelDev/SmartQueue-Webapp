@@ -456,7 +456,14 @@
                         <label for="studentIdNo" class="student-id-no-text">Student ID No.</label>
                         <input type="text" class="student-id" id="general-student-id">
                         <label for="yearLevel">Year Level</label>
-                        <input type="text" class="yearLevel" id="yearLevel">
+                        <!-- <input type="text" class="yearLevel" id="yearLevel"> -->
+                        <select name="program" id="yearLevel" class="yearLevel">
+                            <option value="1st Year">1st Year (Incoming)</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="1st Year">2nd Year</option>
+                            <option value="1st Year">3rd Year</option>
+                            <option value="1st Year">4th Year</option>
+                        </select>
                         <label for="options">Program</label>
                         <select name="program" id="general-program" class="program">
                             <option value="">--</option>
@@ -734,7 +741,8 @@
                             fullname: studentName,
                             studentid: studentId.value,
                             purpose: purpose.value,
-                            servicetype: servetype
+                            servicetype: servetype,
+                            program: program.value
                         },
                         success: function (response) {
                             $.notify(response, { color: "#fff", background: "#20D67B", delay: 500 })

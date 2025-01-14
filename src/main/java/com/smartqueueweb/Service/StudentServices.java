@@ -20,5 +20,5 @@ public interface StudentServices{
 	
 	Long queueNumberAvailable(long id);
 	
-	StudentBean registerStudentTemp(String idNumber, String firstname, String middlename, String lastname, String course);	
+	Integer tempRegisterStudent(String idNumber, String firstname, String middlename, String lastname, String course);
 }

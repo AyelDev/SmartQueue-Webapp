@@ -172,10 +172,10 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	}
 	
 	@Override
-	public StudentBean registerStudentTemp(String idNumber, String firstname, String middlename, String lastname,
+	public Integer tempRegisterStudent(String idNumber, String firstname, String middlename, String lastname,
 			String course) {
 		// TODO Auto-generated method stub
-		return null;
+		return studentdata.tempRegisterStudent(idNumber, firstname, middlename, lastname, course);
 	}
 	
 	public String XMLERRORNAME(String errorName) {

@@ -1,6 +1,10 @@
 package com.smartqueueweb.DAO;
 
 import java.util.List;
+
+import org.apache.commons.lang3.RandomStringUtils;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import com.smartqueueweb.Model.StudentBean;
 
@@ -98,13 +102,14 @@ public class StudentDAO extends SQLConnection {
 		return 0;
 	}
 
-	public Integer addToQueue(String queueNumber, String idNumber, String fullname, String purpose, String servicetype) {
+	public Integer addToQueue(String queueNumber, String idNumber, String fullname, String purpose,
+			String servicetype) {
 		System.out.println(queueNumber);
 		System.out.println(idNumber);
 		System.out.println(fullname);
 		System.out.println(purpose);
 		System.out.println(servicetype);
-		
+
 		try {
 			ConnectDriver();
 			prs = conn.prepareStatement(
@@ -130,7 +135,8 @@ public class StudentDAO extends SQLConnection {
 
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("SELECT * from tbl_student_info WHERE id_number = ? OR (first_name = ? AND middle_name = ? AND last_name = ?) AND isDeleted=0;");
+			prs = conn.prepareStatement(
+					"SELECT * from tbl_student_info WHERE id_number = ? OR (first_name = ? AND middle_name = ? AND last_name = ?) AND isDeleted=0;");
 
 			prs.setLong(1, idnumber);
 			prs.setString(2, firstname);
@@ -154,25 +160,48 @@ public class StudentDAO extends SQLConnection {
 		return studentbean;
 	}
 
-	
 	public Long queueNumberAvailable(long id) {
-	    try {
-	        ConnectDriver();
-	        prs = conn.prepareStatement("SELECT queue_number FROM student_queue_entries WHERE queue_number LIKE ?;");
-	        prs.setString(1, "%"+id);
-	        
-	        rs = prs.executeQuery();
-	        if (rs.next()) {
-	            return queueNumberAvailable(id + 1);
-	        }
-	     
-	        return id;
-	        
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    } finally {
-	        SQLClose();
-	    }
-	    return id; 
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("SELECT queue_number FROM student_queue_entries WHERE queue_number LIKE ?;");
+			prs.setString(1, "%" + id);
+
+			rs = prs.executeQuery();
+			if (rs.next()) {
+				return queueNumberAvailable(id + 1);
+			}
+
+			return id;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return id;
+	}
+
+	public Integer tempRegisterStudent(String idNumber, String firstname, String middlename, String lastname,
+			String course) {
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement(
+					"INSERT INTO tbl_student_info_temp (id_number, first_name, middle_name, last_name, course) "
+							+ " VALUES (?, ?, ?, ?, ?)");
+
+			prs.setString(1, idNumber);
+			prs.setString(2, firstname);
+			prs.setString(3, middlename);
+			prs.setString(4, lastname);
+			prs.setString(5, course);
+
+			return prs.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return 0;
 	}
 }
