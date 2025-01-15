@@ -19,7 +19,7 @@ public class studentRegister_Servlet extends HttpServlet {
   ServiceImpl services = new ServiceImpl();
   RequestDispatcher rd = null;
 
-  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     // TODO Auto-generated method stub
     // Retrieve the parameters from the request
     String firstName = JwtValidator.fixGarbledCharacters(request.getParameter("txtFirstname"));

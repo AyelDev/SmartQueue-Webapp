@@ -1106,12 +1106,12 @@
 								// Create a new AJAX request
 								var url = 'studentRegister_Servlet';
 
-								// Prepare the GET request with form data
+								// Prepare the POST request with form data
 								var params = $(this).serialize();
 
 								$.ajax({
 									url: url,
-									type: 'GET',
+									type: 'POST',
 									contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 									data: params,
 									success: function (response) {

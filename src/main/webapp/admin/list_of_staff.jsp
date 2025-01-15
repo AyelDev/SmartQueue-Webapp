@@ -1135,12 +1135,12 @@
 							// Create a new AJAX request
 							var url = 'staffRegister_Servlet';
 
-							// Prepare the GET request with form data
+							// Prepare the POST request with form data
 							var params = $(this).serialize();
 
 							$.ajax({
 								url: url,
-								type: 'GET',
+								type: 'POST',
 								data: params,
 								success: function (response) {
 									openModal()

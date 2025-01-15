@@ -20,7 +20,7 @@ public class staffRegister_Servlet extends HttpServlet {
 	ServiceImpl services = new ServiceImpl();
 	RequestDispatcher rd = null;
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
@@ -30,7 +30,7 @@ public class staffRegister_Servlet extends HttpServlet {
 		String userName = JwtValidator.fixGarbledCharacters(request.getParameter("txtUsername"));
 		String contactNo = JwtValidator.fixGarbledCharacters(request.getParameter("txtContactno"));
 		String email = JwtValidator.fixGarbledCharacters(request.getParameter("txtEmail"));
-		
+
 		// Call the service to register staff
 		try {
 			int isTrue = services.registerStaff(firstName, lastName, email, contactNo, userName);
