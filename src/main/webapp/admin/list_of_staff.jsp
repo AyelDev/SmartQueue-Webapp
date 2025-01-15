@@ -340,7 +340,7 @@
 			}
 
 			.adminProfile {
-				margin-left: 84%;
+				margin-left: 85%;
 				position: absolute;
 				background-color: white;
 				width: 8vw;
@@ -350,25 +350,7 @@
 				z-index: 1;
 				display: none;
 				border-radius: 7px;
-				margin-top: -.1%;
-			}
-
-			.button-profile.active {
-				background-color: #d5deef;
-				color: #333;
-				width: 9%;
-				height: 5%;
-				margin-top: -3%;
-			}
-
-			.button-profile.active svg {
-				fill: var(--text-color);
-				stroke: var(--text-color);
-			}
-
-			.adminProfile.show {
-				display: flex;
-				flex-direction: column;
+				margin-top: -2.5%;
 			}
 
 			.adminProfile a {

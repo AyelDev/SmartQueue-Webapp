@@ -11,7 +11,7 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<link rel="stylesheet"
 				href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-				<script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
+			<script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
 			<script type="text/javascript" src="./scripts/ping.js"></script>
 			<script type="text/javascript" src="./scripts/fadetransition.js"></script>
 			<link rel="stylesheet" type="text/css" href="./css/jquery-confirm.min.css" />
@@ -488,22 +488,42 @@
 					margin-left: 85%;
 					position: absolute;
 					background-color: white;
-					width: 8vw;
 					align-items: center;
 					justify-content: center;
 					text-align: center;
 					z-index: 1;
 					display: none;
 					border-radius: 7px;
-					margin-top: 1.3%;
+					margin-top: .1%;
+				}
+
+				.adminProfile a {
+					text-decoration: none;
+					color: var(--text-color);
+					overflow: hidden;
+					width: 8vw;
+					height: 2rem;
+					text-align: center;
+					align-items: center;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					padding: .5rem 0 0 0;
+					
+				}
+
+				.adminProfile a:hover {
+					background-color: var(--select-text-color);
+					border-radius: 7px;
 				}
 
 				.button-profile.active {
 					background-color: #d5deef;
 					color: #333;
-					width: 9%;
+					width: 8vw;
 					height: 5%;
 					margin-top: -3%;
+					margin-left: 85%;
 				}
 
 				.button-profile.active svg {
@@ -514,26 +534,6 @@
 				.adminProfile.show {
 					display: flex;
 					flex-direction: column;
-				}
-
-				.adminProfile a {
-					text-decoration: none;
-					color: var(--text-color);
-					overflow: hidden;
-					width: 8vw;
-					height: 20%;
-					text-align: center;
-					align-items: center;
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					padding: .5rem 0 0 0;
-					height: 2rem;
-				}
-
-				.adminProfile a:hover {
-					background-color: var(--select-text-color);
-					border-radius: 7px;
 				}
 
 				.add-account-icon {
@@ -962,7 +962,7 @@
 
 											<select name="purpose" id="records-purpose" class="purpose"
 												required="required">
-												<option value="" disabled selected = hidden>Select course</option>
+												<option value="" disabled selected=hidden>Select course</option>
 												<option value="BEED">BEED</option>
 												<option value="BSHM">BSHM</option>
 												<option value="BSIT">BSIT</option>
@@ -992,34 +992,74 @@
 								</thead>
 								<tbody id="tablelist">
 									<tr>
-										<td><div class="tloader"></div></td>
-										<td><div class="tloader"></div></td>
-										<td><div class="tloader"></div></td>
-										<td><div class="tloader"></div></td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
 									</tr>
 									<tr>
-										<td><div class="tloader"></div></td>
-										<td><div class="tloader"></div></td>
-										<td><div class="tloader"></div></td>
-										<td><div class="tloader"></div></td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
 									</tr>
 									<tr>
-										<td><div class="tloader"></div></td>
-										<td><div class="tloader"></div></td>
-										<td><div class="tloader"></div></td>
-										<td><div class="tloader"></div></td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
 									</tr>
 									<tr>
-										<td><div class="tloader"></div></td>
-										<td><div class="tloader"></div></td>
-										<td><div class="tloader"></div></td>
-										<td><div class="tloader"></div></td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
 									</tr>
 									<tr>
-										<td><div class="tloader"></div></td>
-										<td><div class="tloader"></div></td>
-										<td><div class="tloader"></div></td>
-										<td><div class="tloader"></div></td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -1072,9 +1112,9 @@
 							staffListInfo.innerHTML = htmlString;
 						}
 
-						document.addEventListener("DOMContentLoaded", event =>{
-						updateData();
-					});
+						document.addEventListener("DOMContentLoaded", event => {
+							updateData();
+						});
 
 						// Get elements
 						const addAccountButton = document.querySelector('.add-account-btn');
@@ -1365,6 +1405,13 @@
 								}
 							}
 						}
+
+
+						 //button-profile being active btn
+						 document.getElementById('button-profile').addEventListener('click', function () {
+                            this.classList.toggle('active');
+                            document.getElementById('adminProfile').classList.toggle('show');
+                        });
 					</script>
 
 					<div class="load-wrapper">

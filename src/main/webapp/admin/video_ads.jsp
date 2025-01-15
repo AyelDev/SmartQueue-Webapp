@@ -640,6 +640,14 @@
         </div>
     </div>
 
+    <script>
+           //button-profile being active btn
+				document.getElementById('button-profile').addEventListener('click', function () {
+					this.classList.toggle('active');
+					document.getElementById('adminProfile').classList.toggle('show');
+				});
+    </script>
 </body>
+
 
 </html>

@@ -9,8 +9,7 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
-			<script type="text/javascript" src="./scripts/ping.js"></script>
+            <script type="text/javascript" src="./scripts/ping.js"></script>
             <script type="text/javascript" src="./scripts/fadetransition.js"></script>
             <link rel="stylesheet" href="./css/loader.css">
             <title>Admin | List of Counter</title>
@@ -75,201 +74,201 @@
                 }
 
 
-               /*Navbar section*/
-				.navbar {
-					width: 15vw;
-					height: 100vh;
-					background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
-					position: fixed;
-					justify-content: center;
-					align-items: center;
-					left: 0;
-					float: left;
-					margin-top: -3%;
-				}
+                /*Navbar section*/
+                .navbar {
+                    width: 15vw;
+                    height: 100vh;
+                    background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
+                    position: fixed;
+                    justify-content: center;
+                    align-items: center;
+                    left: 0;
+                    float: left;
+                    margin-top: -3%;
+                }
 
-				.logoContainer {
-					width: 100%;
-					text-align: center;
-				}
+                .logoContainer {
+                    width: 100%;
+                    text-align: center;
+                }
 
-				.logo {
-					width: 50%;
-					max-width: 100%;
-					object-fit: contain;
-					margin-top: 50px;
-				}
+                .logo {
+                    width: 50%;
+                    max-width: 100%;
+                    object-fit: contain;
+                    margin-top: 50px;
+                }
 
-				.title {
-					color: var(--background-color);
-					font-size: 0.8em;
-				}
+                .title {
+                    color: var(--background-color);
+                    font-size: 0.8em;
+                }
 
-				/* menu */
-				.menu-navbar {
-					margin-top: 3rem;
-					display: flex;
-					flex-direction: column;
-				}
+                /* menu */
+                .menu-navbar {
+                    margin-top: 3rem;
+                    display: flex;
+                    flex-direction: column;
+                }
 
-				.dropdown {
-					position: relative;
-					display: inline-block;
-				}
+                .dropdown {
+                    position: relative;
+                    display: inline-block;
+                }
 
-				.dropdown-dashboard {
-					display: none;
-					position: absolute;
-					background-color: var(--background-color);
-					width: 120px;
-					top: 100%;
-					left: 70%;
-					z-index: 3;
-					box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-					border-radius: 4px;
-					padding: 10px;
-					overflow-x: hidden;
-				}
+                .dropdown-dashboard {
+                    display: none;
+                    position: absolute;
+                    background-color: var(--background-color);
+                    width: 120px;
+                    top: 100%;
+                    left: 70%;
+                    z-index: 3;
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                    border-radius: 4px;
+                    padding: 10px;
+                    overflow-x: hidden;
+                }
 
-				.dropdown-dashboard a {
-					display: flex;
-					text-decoration: none;
-					color: black;
-					text-align: center;
-					align-items: center;
-					justify-content: center;
-					font-size: 11px;
-					flex-direction: column;
-					padding: 10px;
-					position: relative;
-					z-index: 3;
-				}
+                .dropdown-dashboard a {
+                    display: flex;
+                    text-decoration: none;
+                    color: black;
+                    text-align: center;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 11px;
+                    flex-direction: column;
+                    padding: 10px;
+                    position: relative;
+                    z-index: 3;
+                }
 
-				.dropdown-dashboard a:hover {
-					background-color: var(--select-text-color);
-					border-radius: 4px;
-					color: black;
-					border-radius: 4px;
-					padding: 10px;
-					width: 120px;
-					margin-left: -7.2%;
-				}
+                .dropdown-dashboard a:hover {
+                    background-color: var(--select-text-color);
+                    border-radius: 4px;
+                    color: black;
+                    border-radius: 4px;
+                    padding: 10px;
+                    width: 120px;
+                    margin-left: -7.2%;
+                }
 
-				.dropdown-btn {
-					background: none;
-					display: flex;
-					align-items: center;
-					width: 14.3vw;
-					height: 8vh;
-					border: 0;
-					font-size: 15px;
-					border-radius: 16px 0 0 16px;
-					padding-right: 60px;
-					margin-left: 10px;
-					cursor: pointer;
-					position: relative;
-					color: #F6F4EB;
-					margin-top: 5%;
-				}
+                .dropdown-btn {
+                    background: none;
+                    display: flex;
+                    align-items: center;
+                    width: 14.3vw;
+                    height: 8vh;
+                    border: 0;
+                    font-size: 15px;
+                    border-radius: 16px 0 0 16px;
+                    padding-right: 60px;
+                    margin-left: 10px;
+                    cursor: pointer;
+                    position: relative;
+                    color: #F6F4EB;
+                    margin-top: 5%;
+                }
 
-				.dropdown-btn:hover {
-					height: 8vh;
-				}
+                .dropdown-btn:hover {
+                    height: 8vh;
+                }
 
-				.dropdown-btn:hover svg,
-				.dropdown-btn.active svg {
-					fill: var(--text-color);
-					color: black;
-				}
+                .dropdown-btn:hover svg,
+                .dropdown-btn.active svg {
+                    fill: var(--text-color);
+                    color: black;
+                }
 
-				.dropdown-btn:hover .counter-icon,
-				.dropdown-btn:hover .entertainment-icon,
-				.dropdown-btn.active .counter-icon,
-				.dropdown-btn.active .entertainment-icon {
-					stroke: var(--text-color);
-				}
+                .dropdown-btn:hover .counter-icon,
+                .dropdown-btn:hover .entertainment-icon,
+                .dropdown-btn.active .counter-icon,
+                .dropdown-btn.active .entertainment-icon {
+                    stroke: var(--text-color);
+                }
 
-				.dropdown-btn.active a {
-					color: var(--text-color);
-				}
+                .dropdown-btn.active a {
+                    color: var(--text-color);
+                }
 
-				.dropdown-btn::after {
-					content: '';
-					border-radius: 50%;
-				}
+                .dropdown-btn::after {
+                    content: '';
+                    border-radius: 50%;
+                }
 
-				.dropdown-btn a {
-					text-decoration: none;
-					color: #F6F4EB;
-				}
+                .dropdown-btn a {
+                    text-decoration: none;
+                    color: #F6F4EB;
+                }
 
-				.dropdown-btn a:hover {
-					color: black;
-					font-weight: bold;
-				}
+                .dropdown-btn a:hover {
+                    color: black;
+                    font-weight: bold;
+                }
 
-				.dropdown:hover .dropdown-dashboard {
-					display: block;
+                .dropdown:hover .dropdown-dashboard {
+                    display: block;
 
-				}
+                }
 
-				.dropdown {
-					color: var(--background-color);
-				}
+                .dropdown {
+                    color: var(--background-color);
+                }
 
-				.dropdown:hover,
-				.dropdown:hover a {
-					color: black;
-					font-weight: bold;
-				}
+                .dropdown:hover,
+                .dropdown:hover a {
+                    color: black;
+                    font-weight: bold;
+                }
 
-				.dropdown-btn a:hover,
-				.dropdown-btn:hover,
-				.active {
-					color: var(--text-color);
-					font-weight: bold;
-				}
+                .dropdown-btn a:hover,
+                .dropdown-btn:hover,
+                .active {
+                    color: var(--text-color);
+                    font-weight: bold;
+                }
 
-				.active,
-				.dropdown-btn:hover {
-					background-color: var(--background-color);
-					width: 18vw;
-					color: var(--text-color);
-					font-weight: bold;
-				}
+                .active,
+                .dropdown-btn:hover {
+                    background-color: var(--background-color);
+                    width: 18vw;
+                    color: var(--text-color);
+                    font-weight: bold;
+                }
 
-				.dropdown-btn:hover+.dropdown-dashboard {
-					display: block;
-				}
+                .dropdown-btn:hover+.dropdown-dashboard {
+                    display: block;
+                }
 
-				.dashboard-icon,
-				.users-icon,
-				.display-icon,
-				.entertainment-icon,
-				.counter-icon {
-					object-fit: scale-down;
-					width: 20px;
+                .dashboard-icon,
+                .users-icon,
+                .display-icon,
+                .entertainment-icon,
+                .counter-icon {
+                    object-fit: scale-down;
+                    width: 20px;
 
-				}
+                }
 
-				.dashboard-icon,
-				.users-icon,
-				.display-icon,
-				.entertainment-icon,
-				.counter-icon {
-					margin-right: 17px;
-				}
+                .dashboard-icon,
+                .users-icon,
+                .display-icon,
+                .entertainment-icon,
+                .counter-icon {
+                    margin-right: 17px;
+                }
 
-				.dashboard-caretright {
-					margin-left: 50px;
-				}
+                .dashboard-caretright {
+                    margin-left: 50px;
+                }
 
-				.caretright {
-					object-fit: scale-down;
-					width: 5%;
-					right: 5.5rem;
-					position: absolute;
-				}
+                .caretright {
+                    object-fit: scale-down;
+                    width: 5%;
+                    right: 5.5rem;
+                    position: absolute;
+                }
 
 
                 /*Dashboard section*/
@@ -306,108 +305,103 @@
                 }
 
                 .icon-container {
-					width: 5%;
-					height: 100%;
-					margin-left: 68%;
-				}
+                    width: 5%;
+                    height: 100%;
+                    margin-left: 68%;
+                }
 
-				.bell-icon {
-					object-fit: scale-down;
-					width: 20px;
-					margin-top: -7%;
-					cursor: pointer;
+                .bell-icon {
+                    object-fit: scale-down;
+                    width: 20px;
+                    margin-top: -7%;
+                    cursor: pointer;
 
-				}
+                }
 
-				.chat-icon {
-					object-fit: scale-down;
-					width: 25px;
-					cursor: pointer;
-					margin-bottom: 25%;
-					margin-left: 10%;
-				}
-
-
-				.button-profile {
-					align-items: center;
-					justify-content: center;
-					display: flex;
-					width: 10vw;
-					margin-top: -5.5%;
-					margin-left: 84%;
-					border-radius: 10px;
-					padding: 15px 10px 15px 10px;
-					/*tlbr*/
-					overflow: hidden;
-					cursor: pointer;
-					border: none;
-					background: none;
-					color: white;
-				}
-
-				.profile {
-					width: 20px;
-					object-fit: scale-down;
-					margin-right: 10px;
-				}
-
-				.caretdown {
-					width: 20px;
-					margin-left: 5px;
-				}
+                .chat-icon {
+                    object-fit: scale-down;
+                    width: 25px;
+                    cursor: pointer;
+                    margin-bottom: 25%;
+                    margin-left: 10%;
+                }
 
 
-				.adminProfile {
-					margin-left: 85%;
-					position: absolute;
-					background-color: white;
-					width: 8vw;
-					align-items: center;
-					justify-content: center;
-					text-align: center;
-					z-index: 1;
-					display: none;
-					border-radius: 7px;
-					margin-top: -2%;
-				}
+                .button-profile {
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+                    width: 10vw;
+                    margin-top: -5.5%;
+                    margin-left: 84%;
+                    border-radius: 10px;
+                    padding: 15px 10px 15px 10px;
+                    /*tlbr*/
+                    overflow: hidden;
+                    cursor: pointer;
+                    border: none;
+                    background: none;
+                    color: white;
+                }
 
-				.button-profile.active {
-					background-color: #d5deef;
-					color: #333;
-					width: 9%;
-					height: 5%;
-					margin-top: -3%;
-				}
+                .profile {
+                    width: 20px;
+                    object-fit: scale-down;
+                    margin-right: 10px;
+                }
 
-				.button-profile.active svg {
-					fill: var(--text-color);
-					stroke: var(--text-color);
-				}
+                .caretdown {
+                    width: 20px;
+                    margin-left: 5px;
+                }
 
-				.adminProfile.show {
-					display: flex;
-					flex-direction: column;
-				}
 
-				.adminProfile a {
-					text-decoration: none;
+                .adminProfile {
+                    margin-left: 85%;
+                    position: absolute;
+                    background-color: white;
+                    width: 8vw;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    z-index: 1;
+                    display: none;
+                    border-radius: 7px;
+                    margin-top: -2.5%;
+                }
+
+                .adminProfile a {
+                    text-decoration: none;
 					color: var(--text-color);
 					overflow: hidden;
 					width: 8vw;
-					height: 20%;
+					height: 2rem;
 					text-align: center;
 					align-items: center;
 					display: flex;
 					flex-direction: column;
 					justify-content: center;
 					padding: .5rem 0 0 0;
-					height: 2rem;
-				}
+                }
 
-				.adminProfile a:hover {
-					background-color: var(--select-text-color);
-					border-radius: 7px;
-				}
+                .button-profile.active {
+                    background-color: #d5deef;
+                    color: #333;
+                    width: 9%;
+                    height: 5%;
+                    margin-top: -3%;
+                    margin-left: 86%;
+                }
+
+                .button-profile.active svg {
+                    fill: var(--text-color);
+                    stroke: var(--text-color);
+                }
+
+                .adminProfile.show {
+                    display: flex;
+                    flex-direction: column;
+                }
 
                 .title-page {
                     margin-top: -50%;
@@ -553,20 +547,20 @@
 
 
                 .add-account-icon {
-					object-fit: scale-down;
-					width: 10%;
-				}
+                    object-fit: scale-down;
+                    width: 10%;
+                }
 
-				.add-account-btn {
-					width: 10%;
-					background-color: var(--primary-color);
-					margin-top: -.5%;
-					position: absolute;
-				}
+                .add-account-btn {
+                    width: 10%;
+                    background-color: var(--primary-color);
+                    margin-top: -.5%;
+                    position: absolute;
+                }
 
-				.add-account-btn:hover {
-					background-color: #2980b9;
-				}
+                .add-account-btn:hover {
+                    background-color: #2980b9;
+                }
 
                 .search-container {
                     margin-top: -5.5%;
@@ -1126,12 +1120,12 @@
 
 
                         //button-profile being active btn
-				document.getElementById('button-profile').addEventListener('click', function () {
-					this.classList.toggle('active');
-					document.getElementById('adminProfile').classList.toggle('show');
-				});
+                        document.getElementById('button-profile').addEventListener('click', function () {
+                            this.classList.toggle('active');
+                            document.getElementById('adminProfile').classList.toggle('show');
+                        });
 
-                     
+
                     </script>
 
                     <div class="load-wrapper">
