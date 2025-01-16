@@ -11,6 +11,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.smartqueueweb.Class.JwtValidator;
 import com.smartqueueweb.Service.ServiceImpl;
@@ -19,6 +20,7 @@ import com.smartqueueweb.Service.ServiceImpl;
 
 		// api
 		"/JsonStaffListAPI", "/JsonStudentListAPI",
+		"/JsonServiceListAPI",
 
 		// admin
 		"/RemoveStaff_Servlet",
@@ -55,12 +57,20 @@ import com.smartqueueweb.Service.ServiceImpl;
 
 public class RequestTokenValidation_Filter implements Filter {
 
+	JwtValidator validator;
+	RequestDispatcher rd;
+	ServiceImpl services;
+	
 	public RequestTokenValidation_Filter() {
 		// TODO Auto-generated constructor stub
+		 validator = new JwtValidator();
+		 rd = null;
+		 services = new ServiceImpl();
 	}
 
 	public void destroy() {
 		// TODO Auto-generated method stub
+		System.out.println("destroy");
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -68,14 +78,10 @@ public class RequestTokenValidation_Filter implements Filter {
 
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		String path = httpRequest.getRequestURI();
-		JwtValidator validator = new JwtValidator();
-		RequestDispatcher rd = null;
-		ServiceImpl services = new ServiceImpl();
 
 		// if (path.contains("/login_Servlet") || path.contains("/dashboard")) {
 		// chain.doFilter(request, response); // Skip filtering for this path
 		// }
-
 		try {
 			validator.decode(validator.getCookieValue(httpRequest.getCookies(), "_auth"));
 			chain.doFilter(request, response);
@@ -93,6 +99,7 @@ public class RequestTokenValidation_Filter implements Filter {
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
+		System.out.println("start app...");
 	}
 
 }

@@ -12,5 +12,9 @@ public interface AdminServices {
 	AdminBean adminDetails(String username);
 	
 	List<ServicesBean> serviceList();
+	
+	//Integer addService
+	
+	
 
 }

@@ -1379,6 +1379,7 @@
 										}
 									}
 								},
+								btnClass: 'btn-red',
 								Close: function () {
 									// do nothing.
 								}

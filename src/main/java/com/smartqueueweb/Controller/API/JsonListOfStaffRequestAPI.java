@@ -22,6 +22,7 @@ public class JsonListOfStaffRequestAPI extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		// TODO Auto-generated method stub

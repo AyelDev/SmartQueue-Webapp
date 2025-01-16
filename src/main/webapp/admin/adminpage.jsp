@@ -11,9 +11,13 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<script src="https://cdn.lordicon.com/lordicon.js"></script>
 			<script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
+			<script type="text/javascript" src="./scripts/jquery-confirm.min.js"></script>
+			<script type="text/javascript" src="./scripts/notify.js"></script>
+      		<script type="text/javascript" src="./scripts/prettify.js"></script>
 			<script type="text/javascript" src="./scripts/ping.js"></script>
 			<script type="text/javascript" src="./scripts/fadetransition.js"></script>
 			<link rel="stylesheet" href="./css/loader.css">
+			<link rel="stylesheet" type="text/css" href="./css/jquery-confirm.min.css" />
 			<title>Admin | Dashboard</title>
 		</head>
 		<style>
@@ -620,6 +624,9 @@
 			.submit-btn:hover {
 				background-color: #1477d4fb;
 			}
+			#program{
+				width: 70%;
+			}
 		</style>
 
 		<body>
@@ -813,15 +820,15 @@
 					<div class="dashboard-content">
 						<div class="card-total"><br>
 							<p>Total students</p>
-							<h3>100</h3>
+							<h3 id="total-student" class="total-count">---</h3>
 						</div>
 						<div class="card-total"><br>
 							<p>Total staff</p>
-							<h3>100</h3>
+							<h3  id="total-staff" class="total-count">---</h3>
 						</div>
 						<div class="card-total"><br>
 							<p>Total transaction</p>
-							<h3>100</h3>
+							<h3  id="total-transaction"  class="total-count">---</h3>
 						</div>
 						<div class="department-graph">
 							<canvas id="myPie"></canvas>
@@ -835,7 +842,7 @@
 							<div class="table-content">
 								<div class="table-header">
 									<h3 class="table-title">General - Program</h3>
-									<button class="add-btn-table" onclick="showModal ('Add Program for General')">+Add
+									<button class="add-btn-table" onclick="showModal ('Add Program for General', 'Course')">+Add
 										Info</button>
 								</div>
 								<table>
@@ -851,7 +858,7 @@
 											<td></td>
 											<td></td>
 											<td><button class="update-btn"
-													onclick="showModal('Update Info')">Update</button>
+													onclick="showModal('Update Info', 'Course')">Update</button>
 												<button class="delete-btn">Delete</button>
 											</td>
 										</tr>
@@ -871,7 +878,7 @@
 							<div class="table-content">
 								<div class="table-header">
 									<h3 class="table-title">General - Purpose</h3>
-									<button class="add-btn-table" onclick="showModal ('Add Purpose for General')">+Add
+									<button class="add-btn-table" onclick="showModal ('Add Purpose for General', 'Purpose')">+Add
 										Info</button>
 								</div>
 								<table>
@@ -905,7 +912,7 @@
 							<div class="table-content">
 								<div class="table-header">
 									<h3 class="table-title">Records - Purpose</h3>
-									<button class="add-btn-table" onclick="showModal ('Add Document for Records')">+Add
+									<button class="add-btn-table" onclick="showModal ('Add Document for Records', 'Document')">+Add
 										Info</button>
 								</div>
 								<table>
@@ -942,7 +949,7 @@
 							<div class="table-content">
 								<div class="table-header">
 									<h3 class="table-title">Archiving - Purpose</h3>
-									<button class="add-btn-table" onclick="showModal ('Add Purpose for Archiving')">+Add
+									<button class="add-btn-table" onclick="showModal ('Add Purpose for Archiving', 'Purpose')">+Add
 										Info</button>
 								</div>
 								<table>
@@ -978,24 +985,25 @@
 			</div>
 
 			<!-- Modal for Add/Update Info -->
-			<div class="modal" id="modal">
+			<!-- <div class="modal" id="modal">
 				<div class="modal-content">
 					<h3 id="modal-title"></h3>
 					<form>
 						<label for="name">Program</label>
-						<input type="text" id="program" name="program" placeholder="Enter program">
+						<input type="text" id="program" name="program" placeholder="Enter program"> -->
 
-						<label for="email">Purpose</label>
-						<input type="email" id="purpose" name="purpose" placeholder="Enter purpose">
+						<!-- <label for="email">Purpose</label>
+						<input type="email" id="purpose" name="purpose" placeholder="Enter purpose"> -->
 
-						<button type="button" class="cancel-btn" onclick="hideModal()">Cancel</button>
+						<!-- <button type="button" class="cancel-btn" onclick="hideModal()">Cancel</button>
 						<button type="submit" class="submit-btn">Add</button>
 					</form>
 				</div>
-			</div>
+			</div> -->
 
 			<script src="./scripts/chart.min.js"></script>
 			<script>
+
 				var dropdown = document.getElementsByClassName("button-profile");
 				var i;
 
@@ -1058,17 +1066,32 @@
 							}
 						});
 
+						document.getElementById("total-student").innerHTML = studentNum;
+						document.getElementById("total-staff").innerHTML = staffNum;
+						document.getElementById("total-transaction").innerHTML = inquiryNum;
 
+
+						//count 0 to n animation
+						$('.total-count').each(function () {
+   				 		$(this).prop('Counter',0).animate({
+        				Counter: $(this).text()
+    					}, {
+        				duration: 2000,
+        				easing: 'swing',
+        				step: function (now) {
+            			$(this).text(Math.ceil(now));
+        				}
+    					});
+						});
 
 						console.log(studentNum, staffNum, inquiryNum); // Use as needed
+
 						myChart(studentNum, staffNum, inquiryNum);
 						PieChart(BSIT, BEED, DEVCOM, BSTM, BSHM)
 					})
 					.catch(error => {
 						console.error('There was a problem with the fetch operation:', error);
 					});
-
-
 
 				// fetch('http://localhost:8080/smartqueueweb/JsonStaffListAPI')
 				// 	.then(response => {
@@ -1086,7 +1109,6 @@
 				// 	.catch(error => {
 				// 		console.error('There was a problem with the fetch operation:', error);
 				// 	});
-
 
 				let delayed;
 				function myChart(studentNum, staffNum, inquiryNum) {
@@ -1209,12 +1231,64 @@
 					}
 				});
 
-
-
 				// Show Modal
-				function showModal(title) {
-					document.getElementById('modal-title').textContent = title;
-					document.getElementById('modal').style.display = 'flex';
+				function showModal(title, context) {
+
+					let recordContent =  ``;
+
+					if(title == 'Add Document for Records'){
+						recordContent = `
+						<label for="name">Ammount</label>
+ 						<input type="text" id="amount" name="amount" placeholder="Enter amount">
+					`;
+					}
+
+					$.confirm({
+						type: 'blue',
+						boxWidth: '30%',
+						useBootstrap: false,
+						title: title,
+						content: 
+						`
+						<form>
+						<label for="name">`+context+`</label>
+ 						<input type="text" id="program" name="program" placeholder="Enter program">
+						`+recordContent+`
+						</form>
+						`,
+						buttons: {
+							sayMyName: {
+								text: 'Add',
+								btnClass: 'btn-green',
+								action: function(){
+
+								}
+							},
+							Close: function(){
+								//do nothing.
+							}
+						}
+					});
+
+// <!-- Modal for Add/Update Info -->
+// 			<!-- <div class="modal" id="modal">
+// 				<div class="modal-content">
+// 					<h3 id="modal-title"></h3>
+// 					<form>
+// 						<label for="name">Program</label>
+// 						<input type="text" id="program" name="program" placeholder="Enter program"> -->
+
+// 						<!-- <label for="email">Purpose</label>
+// 						<input type="email" id="purpose" name="purpose" placeholder="Enter purpose"> -->
+
+// 						<!-- <button type="button" class="cancel-btn" onclick="hideModal()">Cancel</button>
+// 						<button type="submit" class="submit-btn">Add</button>
+// 					</form>
+// 				</div>
+// 			</div> -->
+
+					//document.getElementById('modal-title').textContent = title;
+					// document.getElementById('modal').style.display = 'flex';
 				}
 
 				// Hide Modal
@@ -1233,6 +1307,7 @@
 				//fetch data for general records and archiving
 				function updateRecordsGeneralArchivingDatas(servicetype) {
 					generalitemId = 1;
+					generalitempurposeId = 1;
 					recordsitemId = 1;
 					archivingItemId = 1;
 					$.ajax({
@@ -1269,7 +1344,7 @@
 								else if(item.purpose !== undefined && item.serviceType == 'GENERAL'){
 								tableGeneralPurposeBody.append(`
 										<tr>
-											<td>`+(generalitemId++)+`</td>
+											<td>`+(generalitempurposeId++)+`</td>
 											<td>`+item.purpose+`</td>
 											<td><button class="update-btn">Update</button>
 												<button class="delete-btn">Delete</button>

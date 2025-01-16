@@ -20,4 +20,4 @@ function ping(){
 }
 
 
-const intervalId = setInterval(ping, 3000);
+const intervalId = setInterval(ping, 50000);
