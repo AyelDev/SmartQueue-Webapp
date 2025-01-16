@@ -10,7 +10,6 @@
             <script type="text/javascript" src="./scripts/fadetransition.js"></script>
             <script type="text/javascript" src="./scripts/notify.js"></script>
             <script type="text/javascript" src="./scripts/prettify.js"></script>
-            <link rel="stylesheet" href="./css/userinquiry.css">
             <link rel="stylesheet" href="./css/loader.css">
             <link rel="stylesheet" href="./css/prettify.css">
             <link rel="stylesheet" href="./css/notify.css">

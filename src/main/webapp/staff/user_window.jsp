@@ -16,7 +16,6 @@
       <script type="text/javascript" src="./scripts/prettify.js"></script>
       <link rel="stylesheet" href="./css/bootstrap.css">
       <link rel="stylesheet" href="./css/loader.css">
-      <link rel="stylesheet" href="./css/user_window.css">
       <link rel="stylesheet" href="./css/notify.css">
       <link rel="stylesheet" href="./css/prettify.css">
       <title>SmartQueue</title>
