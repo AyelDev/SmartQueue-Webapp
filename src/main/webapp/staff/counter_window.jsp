@@ -29,7 +29,7 @@
                 <div class="rightnav">
                     <div class="scontainer">
                         <select id="counter-list" onchange="counterChangeListOnChange()">
-                            <option value="" selected>SELECT COUNTER LIST</option>
+                            <option value="" selected>LOADING PLEASE WAIT...</option>
                         </select>
                         <section class="real-time">
                             <span id="date"></span> | <span id="time"></span>
@@ -50,7 +50,24 @@
                                     </tr>
                                 </thead>
                                 <tbody id="priority-number-table">
-
+                                    <tr>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                        <td><div class="tloader"></div></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -74,7 +91,15 @@
                                         </tr>
                                     </thead>
                                     <tbody id="counter-access-table">
-
+                                        <tr>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -121,8 +146,8 @@
                 setInterval(updateTime, 1000);
 
                 let counterList = document.getElementById("counter-list");
-                counterList.addEventListener("mousedown", event => {
-                    $.ajax({
+                document.addEventListener("DOMContentLoaded", event =>{
+           $.ajax({
                         url: '/JsonAvailableWindow',
                         method: 'GET',
                         data: {},
@@ -139,10 +164,34 @@
                         }
 
                     });
-
                 });
 
                 async function counterChangeListOnChange() {
+
+                    document.getElementById("priority-number-table").innerHTML = `
+                       <tr>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                        </tr>
+                    `;
+
+                    document.getElementById("counter-access-table").innerHTML = `
+                       <tr>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                            <td><div class="tloader"></div></td>
+                                        </tr>
+                    `;
+
                     await CounterList(counterList.value, "QUEUE", '#priority-number-table');
                     await CounterList(counterList.value, "SERVING", '#counter-access-table');
                 }
@@ -177,7 +226,7 @@
                     });
                 }
 
-                setInterval(counterChangeListOnChange, 4000);
+                //setInterval(counterChangeListOnChange, 5000); change to websocket
 
                 let priorityNumberTableBody = document.getElementById("priority-number-table");
                 let counterAccessTableBody = document.getElementById("counter-access-table");
@@ -290,9 +339,12 @@
                     }
                 }
 
+                var ws2 = new WebSocket(wsUrl + window.location.host + "/queueupdate");
 
-
-
+                ws2.addEventListener("message",async (message)=>{
+                    await $.notify("loading new requests...", { color: "#fff", background: "#20D67B", delay: 1000 })
+                    await CounterList(counterList.value, "QUEUE", '#priority-number-table');
+                })
             </script>
 
             <div class="load-wrapper">

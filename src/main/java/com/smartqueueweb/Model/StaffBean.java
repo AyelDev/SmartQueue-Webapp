@@ -9,7 +9,7 @@ public class StaffBean {
 	private String firstname;
 	private String lastname;
 	private String email;
-	private double contactNumber;
+	private String contactNumber;
 	private int isLocked;
 	
 	private int requestId;
@@ -29,7 +29,7 @@ public class StaffBean {
 	}
 	
 	public StaffBean(int staffID, String username, String password, String firstname, String lastname, String email,
-			double contactNumber, int isLocked) {
+			String contactNumber, int isLocked) {
 		this.staffID = staffID;
 		this.username = username;
 		this.password = password;
@@ -88,11 +88,11 @@ public class StaffBean {
 		this.email = email;
 	}
 
-	public double getContactNumber() {
+	public String getContactNumber() {
 		return contactNumber;
 	}
 
-	public void setContactNumber(double contactNumber) {
+	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 

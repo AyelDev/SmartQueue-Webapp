@@ -33,7 +33,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	}
 
 	@Override
-	public Integer registerStaff(String firstname, String lastname, String email, double contactNumber,
+	public Integer registerStaff(String firstname, String lastname, String email, String contactNumber,
 			String username) {
 		// TODO Auto-generated method stub
 		return staffdata.registerStaff(firstname, lastname, email, contactNumber, username);
@@ -161,7 +161,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	}
 	
 	@Override
-	public Integer addToQueue(String queueNumber, long idNumber, String fullname, String purpose, String servicetype) {
+	public Integer addToQueue(String queueNumber, String idNumber, String fullname, String purpose, String servicetype) {
 		return studentdata.addToQueue(queueNumber, idNumber, fullname, purpose, servicetype);
 	}
 
@@ -172,10 +172,10 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	}
 	
 	@Override
-	public StudentBean registerStudentTemp(String idNumber, String firstname, String middlename, String lastname,
+	public Integer tempRegisterStudent(String idNumber, String firstname, String middlename, String lastname,
 			String course) {
 		// TODO Auto-generated method stub
-		return null;
+		return studentdata.tempRegisterStudent(idNumber, firstname, middlename, lastname, course);
 	}
 	
 	public String XMLERRORNAME(String errorName) {

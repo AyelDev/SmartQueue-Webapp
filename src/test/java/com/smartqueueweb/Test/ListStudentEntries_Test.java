@@ -15,9 +15,27 @@ public class ListStudentEntries_Test {
 	ServiceImpl services = new ServiceImpl();
 	
 	@Test
-	public void test() {
+	public void servingShouldNotAppearNull() {
 		List<ServicesBean> expected = null;
-		List<ServicesBean> actual = services.studentQueueEntries(2, "SERVING");
+		List<ServicesBean> actual = services.studentQueueEntries(0, "SERVING");
+		
+		System.out.println(actual);
+		assertNotEquals(expected, actual);
+	}
+	
+	@Test
+	public void queueShouldNotAppearNull() {
+		List<ServicesBean> expected = null;
+		List<ServicesBean> actual = services.studentQueueEntries(1, "QUEUE");
+		
+		System.out.println(actual);
+		assertNotEquals(expected, actual);
+	}
+	
+	@Test
+	public void doneShouldNotAppearNull() {
+		List<ServicesBean> expected = null;
+		List<ServicesBean> actual = services.studentQueueEntries(2, "DONE");
 		
 		System.out.println(actual);
 		assertNotEquals(expected, actual);

@@ -7,6 +7,7 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
+            <script type="text/javascript" src="./scripts/fadetransition.js"></script>
             <script type="text/javascript" src="./scripts/notify.js"></script>
             <script type="text/javascript" src="./scripts/prettify.js"></script>
             <link rel="stylesheet" href="./css/loader.css">
@@ -16,372 +17,6 @@
         </head>
 
         <body>
-            <style>
-                * {
-                    margin: 0%;
-                    padding: 0%;
-                    font-family: arial black;
-                    overflow: hidden;
-                }
-
-                .container {
-                    margin: 0%;
-                    padding: 0%;
-                    width: 100vw;
-                    height: 100vh;
-                    background-color: #fff;
-                    overflow: hidden;
-                }
-
-                .header {
-                    width: 100%;
-                    height: 18vh;
-                    background-color: #00296b;
-                }
-
-                .head {
-                    background-color: #fff;
-                    width: 100%;
-                    height: 11vh;
-                    align-items: center;
-                    display: flex;
-                    justify-content: center;
-                }
-
-                .logo {
-                    margin-left: 2%;
-                    width: 10vw;
-                    height: 18vh;
-                    display: flex;
-                    position: absolute;
-                    z-index: 1;
-                    top: .1%;
-                }
-
-                .name {
-                    position: absolute;
-                    top: 3%;
-                    z-index: 2;
-                    color: red;
-                    letter-spacing: 80px;
-                    text-align: center;
-                    font-size: 26px;
-                }
-
-                .title {
-                    text-align: center;
-                    font-size: 47px;
-                    top: 6%;
-                    position: absolute;
-                }
-
-                .address {
-                    margin-left: 21%;
-                    color: #fff;
-                    font-family: tahoma;
-                    top: 15%;
-                    position: absolute;
-                    font-size: 13px;
-                }
-
-                .info {
-                    margin-left: 55%;
-                    font-family: tahoma;
-                    top: 14.5%;
-                    position: absolute;
-                    color: #fff;
-                    font-size: 10px;
-                }
-
-                /* Main Section */
-                .main {
-                    width: 100%;
-                    height: 82vh;
-                    display: flex;
-                    justify-content: space-evenly;
-                    align-items: center;
-                    background-color: #77b6ea;
-                }
-
-                .card {
-                    width: 22vw;
-                    height: 45vh;
-                    background-color: #f2f2f2;
-                    box-shadow: -10px 25px 50px rgba(0, 0, 0, 0.3);
-                    border-radius: 15px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                    transition: all 0.3s ease-in-out;
-                    cursor: pointer;
-                }
-
-                .card:hover {
-                    transform: scale(1.05);
-                    background: #1e91d0;
-                    background: linear-gradient(135deg, #1e91d0 15%, #00509d 100%);
-                    color: white;
-                }
-
-                .card p {
-                    font-size: .7rem;
-                }
-
-                .card h2 {
-                    font-size: 1.5rem;
-                    margin-top: 10px;
-                }
-
-                /* Modal Container */
-                .modal {
-                    display: none;
-                    position: fixed;
-                    z-index: 1000;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: rgba(0, 0, 0, 0.5);
-                    justify-content: center;
-                    align-items: center;
-
-                }
-
-                .modal-content {
-                    /* background-color: #1e91d0; */
-                    background-color: #fff;
-                    background: rgb(72.5%, 85.5%, 95.7%);
-                    padding: 20px;
-                    border-radius: 10px;
-                    width: 80%;
-                    max-width: 600px;
-                    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-                    margin-left: 30%;
-                    margin-top: 5%;
-                }
-
-
-                .close {
-                    color: #aaa;
-                    float: right;
-                    font-size: 28px;
-                    font-weight: bold;
-                }
-
-                .close:hover,
-                .close:focus {
-                    color: black;
-                    text-decoration: none;
-                    cursor: pointer;
-                }
-
-                .form {
-                    margin: 30px;
-                    flex-direction: column;
-                    display: flex;
-                    color: black;
-                }
-
-                label {
-                    color: black;
-                    position: relative;
-                    margin-top: 20px;
-                }
-
-                .printbutton {
-                    width: 6rem;
-                    height: 2rem;
-                    margin-top: 5%;
-                    margin-left: 70%;
-                }
-
-                .student-id,
-                .student-name,
-                #yearLevel,
-                .purpose,
-                .program,
-                .first-name,
-                .middle-name,
-                .last-name {
-                    height: 5vh;
-                    width: 60%;
-                    text-indent: 10px;
-                    text-transform: uppercase;
-                }
-
-                .generalfirst-name,
-                .generalmiddle-name,
-                .generallast-name {
-                    height: 5vh;
-                    width: 35%;
-                    text-indent: 10px;
-                    text-transform: uppercase;
-                    margin-top: 5%;
-                }
-
-                .student-name {
-                    display: flex;
-                    justify-content: space-between;
-                }
-
-                .firstname-label,
-                .middlename-label {
-                    margin-top: .4%;
-                    position: absolute;
-                }
-
-                .lastname-label {
-                    margin-top: 4.7%;
-                    margin-left: -25.5%;
-                    position: absolute;
-                }
-
-
-                @media print {
-
-                    /* Set the size for 58mm wide thermal printer */
-                    body,
-                    html {
-                        width: 58mm;
-                        margin: 0;
-                        padding: 0;
-                    }
-                    
-                    
-                }
-
-                #printArea {
-                    width: 300px;
-                    /* Small width for the receipt */
-                    padding: 10px;
-                    border: 1px solid #000;
-                    text-align: center;
-                    margin: 0 auto;
-                    background-color: #fff;
-                    display: block;
-                }
-
-                #printArea h3,
-                #printArea h4 {
-                    margin: 5px 0;
-                }
-
-                #printArea p {
-                    margin: 5px 0;
-                    font-size: 14px;
-                }
-
-                #printArea #queueNumberPrint {
-                    font-size: 24px;
-                    /* Emphasize the queue number */
-                    color: #d9534f;
-                }
-
-
-
-                .slidetext {
-                    display: inline-block;
-                    width: 120%;
-                    white-space: nowrap;
-                    animation: slide 20s linear infinite;
-                    margin: 0 24px;
-                    position: absolute;
-                    font-size: 24px;
-                    color: red;
-                }
-
-                @keyframes slide {
-                    from {
-                        transform: translate3d(100%, 0, 0);
-                    }
-
-                    to {
-                        transform: translate3d(-100%, 0, 0);
-                    }
-                }
-
-                /* Media Queries for responsiveness */
-                @media (max-width: 768px) {
-                    .logo {
-                        width: 20vw;
-                        height: auto;
-                    }
-
-                    .name,
-                    .first-name,
-                    .middle-name,
-                    .last-name {
-                        letter-spacing: 40px;
-                        font-size: 20px;
-                    }
-
-                    .title {
-                        font-size: 30px;
-                    }
-
-                    .address,
-                    .info {
-                        font-size: 10px;
-                        margin-left: 10%;
-                    }
-
-                    .main .box {
-                        width: 35vw;
-                        height: 35vh;
-                    }
-
-                    .main .box p {
-                        font-size: 1rem;
-                    }
-
-                    .main .box h2 {
-                        font-size: 1.2rem;
-                    }
-                }
-
-                @media (max-width: 480px) {
-                    .logo {
-                        width: 25vw;
-                    }
-
-                    .name,
-                    .first-name,
-                    .middle-name,
-                    .last-name {
-                        letter-spacing: 20px;
-                        font-size: 15px;
-                    }
-
-                    .title {
-                        font-size: 24px;
-                    }
-
-                    .address,
-                    .info {
-                        font-size: 8px;
-                        margin-left: 5%;
-                    }
-
-                    .main {
-                        flex-direction: column;
-                    }
-
-                    .main .box {
-                        width: 70vw;
-                        height: 30vh;
-                        margin-left: 0;
-                    }
-
-                    .main .box p {
-                        font-size: 0.9rem;
-                    }
-
-                    .main .box h2 {
-                        font-size: 1rem;
-                    }
-                }
-            </style>
             <div class="container">
                 <div class="header">
                     <p>.</p>
@@ -446,10 +81,17 @@
                         </div>
 
 
-                        <label for="studentIdNo">Student ID No.</label>
+                        <label for="studentIdNo" class="student-id-no-text">Student ID No.</label>
                         <input type="text" class="student-id" id="general-student-id">
                         <label for="yearLevel">Year Level</label>
-                        <input type="text" class="yearLevel" id="yearLevel">
+                        <!-- <input type="text" class="yearLevel" id="yearLevel"> -->
+                        <select name="program" id="yearLevel" class="yearLevel">
+                            <option value="1st Year">1st Year (Incoming)</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="1st Year">2nd Year</option>
+                            <option value="1st Year">3rd Year</option>
+                            <option value="1st Year">4th Year</option>
+                        </select>
                         <label for="options">Program</label>
                         <select name="program" id="general-program" class="program">
                             <option value="">--</option>
@@ -536,8 +178,36 @@
                 </div>
             </div>
 
+            <!-- loader please do not remove -->
+            <div class="load-wrapper">
+                <div class="main-loader">
+                    <div class="box-loader">
+                    </div>
+                </div>
+            </div>
 
             <script>
+
+                        /* 
+                        Summary: check studentinput if it is in correct pattern
+                        */
+                        let generalStudentInput = document.getElementById('general-student-id');
+                        const numberRegex = new RegExp("^000$");
+                        let generalStudentIdNoInput = document.querySelector(".student-id-no-text");
+                        generalStudentInput.addEventListener("input", checkInput);
+                        function checkInput(){
+                            if(generalStudentInput.value.match(numberRegex) == null){
+                                generalStudentIdNoInput.style.color = "red";
+                                generalStudentIdNoInput.innerHTML = "Type '000' for new student";
+                            }else{
+                                generalStudentIdNoInput.style.color = "black";
+                                generalStudentIdNoInput.innerHTML = "Student ID No.";
+                            }
+                        }
+                         
+                       
+                    
+
                 // Get all the modals
                 var generalModal = document.getElementById("general-modal");
                 var recordsModal = document.getElementById("records-modal");
@@ -611,18 +281,17 @@
                     return true;
                 }
 
-
                 // Function to print the queue and check if limit is reached
                 async function printQueue(serviceType) {
 
                     //need to polish
                     var queueNumber = '';
-
                     await $.ajax({
                         url: 'JsonQueueNumberAvailableAPI?availableNumber=1',
                         type: "GET",
                         success: function (response) {
                             queueNumber = response.id;
+                            sendMsg("update queue");
                         },
                         error: function (xhr, status, error) {
                             $.notify(xhr.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
@@ -680,7 +349,7 @@
                     // Create the receipt content
                     var receiptContent = `
                     <center><h3>CEBU EASTERN COLLEGE</h3></center>
-                    <center><h4>QUEUING NO.</h4></center>
+                    <center><h4>QUEUEING NO.</h4></center>
                     <hr>
                     <h1>`+ (charQueue + queueNumber) + `</h1>
                     <hr>
@@ -700,10 +369,11 @@
                             fullname: studentName,
                             studentid: studentId.value,
                             purpose: purpose.value,
-                            servicetype: servetype
+                            servicetype: servetype,
+                            program: program.value
                         },
                         success: function (response) {
-                            $.notify(response, { color: "#fff", background: "#20D67B", delay: 1000 })
+                            $.notify(response, { color: "#fff", background: "#20D67B", delay: 500 })
 
                             // Inject the receipt content into the modal
                             document.getElementById('printArea').innerHTML = receiptContent;
@@ -926,6 +596,28 @@
                 }
 
                 InquirySelection();
+
+                //websocket
+                var wsUrl;
+                if (window.location.protocol == 'http:') {
+                    wsUrl = 'ws://';
+                } else {
+                    wsUrl = 'wss://';
+                }
+                var ws = new WebSocket(wsUrl + window.location.host + "/queueupdate");
+
+                ws.onopen = function (event) {
+                    console.log('WebSocket connection opened', event);
+                };
+
+                function sendMsg(response) {
+                    if (response) {
+                        ws.send(JSON.stringify({
+                            message: response
+                        }));
+                        //ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
+                    }
+                }
             </script>
         </body>
 

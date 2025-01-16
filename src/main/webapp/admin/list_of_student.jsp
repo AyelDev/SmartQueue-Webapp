@@ -223,49 +223,58 @@
 							<button class="search-btn" type="submit">
 								<img src="./images/search-icon.png" alt="" class="search-icon">
 							</button>
-						</div>
+							<h1>Student List</h1>
+							<div class="search-container">
+								<input type="text" placeholder="Search.." name="search" class="search-bar"
+									id="searchInput" onkeyup="searchTable()">
+								<button class="search-btn" type="submit">
+									<img src="./images/search-icon.png" alt="" class="search-icon">
+								</button>
+							</div>
 
-						<div class="overlay"></div>
-						<div class="fillup-form-container modal">
-							<h1>Student Registration</h1>
-							<span class="close-btn">&times;</span>
-							<div class="register-form">
-								<form id="studentRegisterForm">
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="firstname-input" required="required" type="text"
-											name="txtFirstname"> <label for="firstname" class="firstname-label">First
-											name</label>
-									</div>
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="middlename-input" type="text" name="txtMiddlename"> <label
-											for="middlename" class="middlename-label">Middle name</label>
-									</div>
+							<div class="overlay"></div>
+							<div class="fillup-form-container modal">
+								<h1>Student Registration</h1>
+								<span class="close-btn">&times;</span>
+								<div class="register-form">
+									<form id="studentRegisterForm">
+										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+											<input class="firstname-input" required="required" type="text"
+												name="txtFirstname"> <label for="firstname"
+												class="firstname-label">First name</label>
+										</div>
+										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+											<input class="middlename-input" type="text" name="txtMiddlename"> <label
+												for="middlename" class="middlename-label">Middle name</label>
+										</div>
 
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="lastname-input" required="required" type="text"
-											name="txtLastname"> <label for="lastname" class="lastname-label">Last
-											name</label>
-									</div>
+										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+											<input class="lastname-input" required="required" type="text"
+												name="txtLastname"> <label for="lastname" class="lastname-label">Last
+												name</label>
+										</div>
 
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
 
-										<select name="purpose" id="records-purpose" class="purpose" required="required">
-											<option value="" disabled selected=hidden>Select course</option>
-											<option value="BEED">BEED</option>
-											<option value="BSHM">BSHM</option>
-											<option value="BSIT">BSIT</option>
-											<option value="BSTM">BSTM</option>
-											<option value="BSED">BSED</option>
-										</select>
-									</div>
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="lastname-input" required="required" type="text"
-											name="txtIdnumber"> <label for="lastname" class="lastname-label">Id
-											number</label>
-									</div>
+											<select name="purpose" id="records-purpose" class="purpose"
+												required="required">
+												<option value="" disabled selected=hidden>Select course</option>
+												<option value="BEED">BEED</option>
+												<option value="BSHM">BSHM</option>
+												<option value="BSIT">BSIT</option>
+												<option value="BSTM">BSTM</option>
+												<option value="BSED">BSED</option>
+											</select>
+										</div>
+										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+											<input class="lastname-input" required="required" type="text"
+												name="txtIdnumber"> <label for="lastname" class="lastname-label">Id
+												number</label>
+										</div>
 
-									<input class="sign-btn" type="submit" value="Signup">
-								</form>
+										<input class="sign-btn" type="submit" value="Signup">
+									</form>
+								</div>
 							</div>
 						</div>
 						<div class="table-container">
