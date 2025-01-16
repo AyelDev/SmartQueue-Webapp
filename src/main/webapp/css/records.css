@@ -1,0 +1,98 @@
+* {
+    padding: 0%;
+    margin: 0%;
+    font-family: arial black;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    background-color: antiquewhite;
+}
+
+.header {
+    height: 18vh;
+    width: 100%;
+    background-color: #00296b;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.head {
+    height: 11vh;
+    width: 100%;
+    background-color: #fff;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+    font-size: 40px;
+}
+
+.back-arrow {
+    position: absolute;
+    margin-left: -40%;
+    margin-top: -.9%;
+}
+
+.main {
+    background-color: #77B6EA;
+    width: 100%;
+    height: 82vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.view-general {
+    height: 68vh;
+    width: 65%;
+    background-color: #fff;
+    background: rgb(72.5%, 85.5%, 95.7%);
+}
+
+.fillupform {
+    margin: 30px;
+    margin-top: -1%;
+    flex-direction: column;
+    display: flex;
+    position: absolute;
+    color: black;
+}
+
+label {
+    color: black;
+    position: relative;
+    margin-top: 40px;
+}
+
+.printbutton {
+    width: 6rem;
+    height: 2rem;
+    margin-top: 40%;
+    margin-left: 82%;
+}
+
+.student-id,
+.student-name,
+#yearLevel,
+#purpose {
+    height: 40px;
+}
+
+.notebox {
+    margin-left: 30%;
+    margin-top: 10%;
+    width: 20%;
+    height: 15vh;
+    position: absolute;
+}
+
+.note {
+    font-family: calibri;
+
+}

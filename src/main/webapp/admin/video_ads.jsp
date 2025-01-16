@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +11,7 @@
     <title>Video Entertainment</title>
 </head>
 <style>
-    @import url('./admin/fonts.css');
+    @import url('./css/fonts.css');
 
     :root {
         --primary-color: #1e91d0;
@@ -638,6 +640,14 @@
         </div>
     </div>
 
+    <script>
+           //button-profile being active btn
+				document.getElementById('button-profile').addEventListener('click', function () {
+					this.classList.toggle('active');
+					document.getElementById('adminProfile').classList.toggle('show');
+				});
+    </script>
 </body>
+
 
 </html>

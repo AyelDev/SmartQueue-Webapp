@@ -1,3 +1,4 @@
+@import url('../css/fonts.css');
 :root {
     font-size: 16px;
 }
@@ -5,7 +6,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
 }
 
 .container {
@@ -30,15 +31,17 @@
 
 .tp-rnav {
     width: 100%;
-    height: 40%;
+    height: 30%;
     background-color: transparent;
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
+    overflow: hidden;
 }
 
 .dash {
     width: 20%;
-    height: 15%;
+    height: 20%;
     background-color: transparent;
     text-align: center;
     font-size: 1.5625rem;
@@ -50,7 +53,7 @@
 
 .card-container {
     width: 100%;
-    height: 73%;
+    height: 75%;
     background-color: transparent;
     display: flex;
     justify-content: space-evenly;
@@ -58,49 +61,62 @@
 }
 
 .card {
-    width: 20%;
-    height: 95%;
-    background-color: #ADDFFF;
+    width: 25%;
+    height: 65%;
+    background-color: #EEEEEE;
     box-sizing: border-box;
-    margin-top: 0.3125rem;
-    border: 0.125rem solid blue;
-    border-radius: 1.875rem;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    text-align: center;
 }
 
 .card:hover {
-    background-color: #00BFFF;
+    background-color: #E5E4E2;
+}
+
+.card h3,
+.card p {
+    line-height: 40px;
+    text-decoration: underline;
+}
+
+.card p {
+    text-align: start;
+    margin-left: 30px;
+    text-decoration: none;
 }
 
 .b-container {
-    width: 80%;
+    width: 90%;
     height: 50%;
-    background-color: #ADDFFF;
+    background-color: #EEEEEE;
     justify-content: center;
     align-items: center;
-    display: flex;
-    margin-top: 1.875rem;
-    margin-left: 7.5rem;
-    border-radius: 1.875rem;
-    border: 0.125rem solid blue;
+    display: inline-block;
+    margin-left: 60px;
+    border-radius: 10px;
+    border: none;
+    position: relative;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .b-container:hover {
-    background-color: #00BFFF;
+    background-color: #E5E4E2;
 }
-
 .leftnav {
     width: 15%;
     height: 100%;
-    background-color: #5CB3FF;
-    color: white;
+    background-color: #00509d;
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .top-lnav {
     width: 100%;
     height: 20%;
-    background-color: #5CB3FF;
+    background-color: transparent;
     text-align: center;
     display: block;
     position: relative;
@@ -110,7 +126,7 @@
 }
 
 .cec {
-    width: 100%;
+    width: 50%;
     max-width: 100%;
     object-fit: contain;
     margin-top: 15px;
@@ -127,7 +143,7 @@
     height: 80%;
     background-color: transparent;
     text-align: center;
-    padding-top: 2rem; 
+    padding-top: 4px;
 }
 
 .bottom-lnav a {
@@ -137,20 +153,23 @@
     text-decoration: none;
     font-size: 1.2rem;
     transition: color 0.3s ease;
-    /* line-height: 60px; */
-    margin-top: 60px;
+    margin-top: 40px;
     text-align: center;
     justify-content: center;
     align-items: center;
 }
 
 .bottom-lnav a:hover {
-    padding: 5px 10px;
+    padding: 15px 20px 15px 20px;
+    width: 11.5vw;
     background-color: white;
     position: relative;
     left: 20px;
-    color: black; 
-    border-radius: 30px;
+    color: black;
+    border-radius: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 .button-profile {
@@ -158,11 +177,14 @@
     justify-content: center;
     display: flex;
     width: 10vw;
-    text-align: center;
-    margin-top: auto;
-    margin-left: 1.875rem;
-    border-radius: 0.625rem;
-    padding: 0.9375rem 0.625rem;
+    margin-top: 30px;
+    margin-left: 36px;
+    border-radius: 10px;
+    padding: 15px 10px 15px 10px;
+            /*tlbr*/
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid black;
 }
 
 .profile {
@@ -176,37 +198,88 @@
     width: 0.625rem;
     margin-left: 1.25rem;
 }
-
-@media (max-width: 1200px) {
-    :root {
-        font-size: 15px;
-    }
+.staffProfile {
+    margin-left: 2.3rem;
+    position: absolute;
+    background-color: none;
+    width: 9.5vw;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 1;
+    display: none;
 }
 
-@media (max-width: 768px) {
-    :root {
-        font-size: 14px;
-    }
+.staffProfile a {
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    overflow: hidden;
+    width: 10vw;
+    height: 20%;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: .5rem 0 0 0;
+    height: 2rem;
+    /* margin-left: 30px; */
 }
 
-@media (max-width: 480px) {
-    :root {
-        font-size: 13px;
-    }
+.staffProfile a:hover {
+    background-color: lightgrey;
+    border-radius: 7px;
+    color: black;
+}
 
-    .button-profile {
-        width: 50vw;
-    }
+.graph {
+    width: 50%;
+    height: 45vh;
+    background-color: #F5F5F5;
+    margin-top: 15px;
+    margin-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 3px;
+}
 
-    .card {
-        width: 90%;
-    }
+.calendar {
+    width: 43%;
+    height: 40vh;
+    background-color: #F5F5F5;
+    float: right;
+   margin-right: 10px;
+   margin-top: 15px;
+   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 5px;
+    padding: 20px;
+}
 
-    .dash {
-        font-size: 1.2rem;
-    }
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
 
-    .bottom-lnav a {
-        font-size: 1rem; 
-    }
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 5px;
+    text-align: center;
+}
+
+.day, .date {
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.date:hover {
+    background-color: lightgrey;
+}
+
+.current-day {
+    background-color: #5CB3FF;
+    color: white;
 }

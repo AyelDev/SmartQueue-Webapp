@@ -14,713 +14,9 @@
 			<script type="text/javascript" src="./scripts/jquery-confirm.min.js"></script>
 			<script type="text/javascript" src="./scripts/fadetransition.js"></script>
 			<link rel="stylesheet" href="./css/loader.css">
+			<link rel="stylesheet" href="../css/stafflist.css">
 			<title>Admin | List of Staff</title>
 		</head>
-		<style>
-			@import url('./admin/fonts.css');
-
-			:root {
-				--primary-color: #1e91d0;
-				--secondary-color: #00509d;
-				--body-fonts: "Roboto Condensed", sans-serif;
-				--background-color: #f4f4f9;
-				--select-text-color: #B4B4B8;
-				--text-color: #3D3C42;
-				font-optical-sizing: auto;
-				font-style: normal;
-			}
-
-			/* custom scroll bar */
-			html::-webkit-scrollbar {
-				width: .8rem;
-			}
-
-			html::-webkit-scrollbar-track {
-				background: transparent;
-			}
-
-			html::-webkit-scrollbar-thumb {
-				background-color: var(--darkblue);
-				border-radius: 5rem;
-			}
-
-			body {
-				width: 100%;
-				height: 100%;
-				font-family: Arial, Helvetica black;
-				margin: 0;
-				padding: 0;
-			}
-
-			.container {
-				width: 100%;
-				height: auto;
-				background-color: var(--background-color);
-				align-items: center;
-				justify-content: center;
-				margin-top: 3%;
-			}
-
-
-			/*Navbar section*/
-			.navbar {
-				width: 15vw;
-				height: 100vh;
-				background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
-				position: fixed;
-				justify-content: center;
-				align-items: center;
-				left: 0;
-				float: left;
-				margin-top: -3%;
-			}
-
-			.logoContainer {
-				width: 100%;
-				text-align: center;
-			}
-
-			.logo {
-				width: 50%;
-				max-width: 100%;
-				object-fit: contain;
-				margin-top: 50px;
-			}
-
-			.title {
-				color: var(--background-color);
-				font-size: 0.8em;
-			}
-
-			/* menu */
-			.menu-navbar {
-				margin-top: 3rem;
-				display: flex;
-				flex-direction: column;
-			}
-
-			.dropdown {
-				position: relative;
-				display: inline-block;
-			}
-
-			.dropdown-dashboard {
-				display: none;
-				position: absolute;
-				background-color: var(--background-color);
-				width: 120px;
-				top: 100%;
-				left: 70%;
-				z-index: 3;
-				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-				border-radius: 4px;
-				padding: 10px;
-				overflow-x: hidden;
-			}
-
-			.dropdown-dashboard a {
-				display: flex;
-				text-decoration: none;
-				color: black;
-				text-align: center;
-				align-items: center;
-				justify-content: center;
-				font-size: 11px;
-				flex-direction: column;
-				padding: 10px;
-				position: relative;
-				z-index: 3;
-			}
-
-			.dropdown-dashboard a:hover {
-				background-color: var(--select-text-color);
-				border-radius: 4px;
-				color: black;
-				border-radius: 4px;
-				padding: 10px;
-				width: 120px;
-				margin-left: -7.2%;
-			}
-
-			.dropdown-btn {
-				background: none;
-				display: flex;
-				align-items: center;
-				width: 14.3vw;
-				height: 8vh;
-				border: 0;
-				font-size: 15px;
-				border-radius: 16px 0 0 16px;
-				padding-right: 60px;
-				margin-left: 10px;
-				cursor: pointer;
-				position: relative;
-				color: #F6F4EB;
-				margin-top: 5%;
-			}
-
-			.dropdown-btn:hover {
-				height: 8vh;
-			}
-
-			.dropdown-btn:hover svg,
-			.dropdown-btn.active svg {
-				fill: var(--text-color);
-				color: black;
-			}
-
-			.dropdown-btn:hover .counter-icon,
-			.dropdown-btn:hover .entertainment-icon,
-			.dropdown-btn.active .counter-icon,
-			.dropdown-btn.active .entertainment-icon {
-				stroke: var(--text-color);
-			}
-
-			.dropdown-btn.active a {
-				color: var(--text-color);
-			}
-
-			.dropdown-btn::after {
-				content: '';
-				border-radius: 50%;
-			}
-
-			.dropdown-btn a {
-				text-decoration: none;
-				color: #F6F4EB;
-			}
-
-			.dropdown-btn a:hover {
-				color: black;
-				font-weight: bold;
-			}
-
-			.dropdown:hover .dropdown-dashboard {
-				display: block;
-
-			}
-
-			.dropdown {
-				color: var(--background-color);
-			}
-
-			.dropdown:hover,
-			.dropdown:hover a {
-				color: black;
-				font-weight: bold;
-			}
-
-			.dropdown-btn a:hover,
-			.dropdown-btn:hover,
-			.active {
-				color: var(--text-color);
-				font-weight: bold;
-			}
-
-			.active,
-			.dropdown-btn:hover {
-				background-color: var(--background-color);
-				width: 18vw;
-				color: var(--text-color);
-				font-weight: bold;
-			}
-
-			.dropdown-btn:hover+.dropdown-dashboard {
-				display: block;
-			}
-
-			.dashboard-icon,
-			.users-icon,
-			.display-icon,
-			.entertainment-icon,
-			.counter-icon {
-				object-fit: scale-down;
-				width: 20px;
-
-			}
-
-			.dashboard-icon,
-			.users-icon,
-			.display-icon,
-			.entertainment-icon,
-			.counter-icon {
-				margin-right: 17px;
-			}
-
-			.dashboard-caretright {
-				margin-left: 50px;
-			}
-
-			.caretright {
-				object-fit: scale-down;
-				width: 5%;
-				right: 5.5rem;
-				position: absolute;
-			}
-
-			/* Dashboard */
-			.stafflist-section {
-				width: 85vw;
-				background-color: var(--background-color);
-				float: right;
-				margin-left: 15%;
-				align-items: center;
-				display: flex;
-				justify-content: center;
-				height: 100vh;
-			}
-
-			.dashboard-section h1 {
-				color: var(--text-color);
-				font-size: 2rem;
-				margin-top: -35%;
-				margin-left: -60%;
-				position: absolute;
-
-			}
-
-			.dashboard-head {
-				width: 86vw;
-				margin-left: 2.2%;
-				height: 7%;
-				background-color: #1477d4fb;
-				position: fixed;
-				top: 0;
-				z-index: 1000;
-			}
-
-			.icon-container {
-				width: 5%;
-				height: 100%;
-				margin-left: 68%;
-			}
-
-			.bell-icon {
-				object-fit: scale-down;
-				width: 20px;
-				margin-top: -7%;
-				cursor: pointer;
-
-			}
-
-			.chat-icon {
-				object-fit: scale-down;
-				width: 25px;
-				cursor: pointer;
-				margin-bottom: 25%;
-				margin-left: 10%;
-			}
-
-			.button-profile {
-				align-items: center;
-				justify-content: center;
-				display: flex;
-				width: 10vw;
-				margin-top: -5.5%;
-				margin-left: 84%;
-				border-radius: 10px;
-				padding: 15px 10px 15px 10px;
-				/*tlbr*/
-				overflow: hidden;
-				cursor: pointer;
-				border: none;
-				background: none;
-				color: white;
-			}
-
-			.profile {
-				width: 20px;
-				object-fit: scale-down;
-				margin-right: 10px;
-			}
-
-			.caretdown {
-				width: 20px;
-				margin-left: 5px;
-			}
-
-			.adminProfile {
-				margin-left: 84%;
-				position: absolute;
-				background-color: white;
-				width: 8vw;
-				align-items: center;
-				justify-content: center;
-				text-align: center;
-				z-index: 1;
-				display: none;
-				border-radius: 7px;
-				margin-top: -.1%;
-			}
-
-			.button-profile.active {
-				background-color: #d5deef;
-				color: #333;
-				width: 9%;
-				height: 5%;
-				margin-top: -3%;
-			}
-
-			.button-profile.active svg {
-				fill: var(--text-color);
-				stroke: var(--text-color);
-			}
-
-			.adminProfile.show {
-				display: flex;
-				flex-direction: column;
-			}
-
-			.adminProfile a {
-				text-decoration: none;
-				color: var(--text-color);
-				overflow: hidden;
-				width: 8vw;
-				height: 20%;
-				text-align: center;
-				align-items: center;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				padding: .5rem 0 0 0;
-				height: 2rem;
-			}
-
-			.adminProfile a:hover {
-				background-color: var(--select-text-color);
-				border-radius: 7px;
-			}
-
-			.title-page {
-				margin-top: -50%;
-			}
-
-			h1 {
-				font-size: 24px;
-				margin-bottom: 20px;
-				text-align: center;
-				color: #2c3e50;
-				margin-top: -3%;
-
-			}
-
-			table {
-				width: 100%;
-				height: auto;
-				border-collapse: separate;
-				border-spacing: 0;
-				border-radius: 10px;
-				overflow: hidden;
-				/* Ensures the border radius applies to the table */
-			}
-
-			thead {
-				background-color: #3498db;
-				color: #ffffff;
-				width: 20%;
-
-			}
-
-			th {
-				padding: 12px 5px;
-				text-align: left;
-				font-size: 16px;
-				font-weight: 600;
-
-				border-bottom: 3px solid #2980b9;
-			}
-
-			tbody tr {
-				transition: background-color 0.3s, transform 0.3s;
-			}
-
-			tbody tr:hover {
-				background-color: #ecf0f1;
-				transform: translateY(-2px);
-			}
-
-			td {
-				padding: 12px 15px;
-				border-bottom: 1px solid #e1e5ea;
-				font-size: 14px;
-				color: #555;
-				text-align: center;
-				/* Center-align text in cells */
-			}
-
-			tr:first-child td {
-				border-top-left-radius: 10px;
-				border-top-right-radius: 10px;
-			}
-
-			tr:last-child td {
-				border-bottom-left-radius: 10px;
-				border-bottom-right-radius: 10px;
-			}
-
-			button {
-				border: none;
-				padding: 8px 12px;
-				font-size: 14px;
-				font-weight: bold;
-				border-radius: 5px;
-				cursor: pointer;
-				margin: 0 5px;
-				transition: background-color 0.3s, color 0.3s;
-			}
-
-			.btn.update {
-				background-color: #3498db;
-				color: #ffffff;
-			}
-
-			.btn.update:hover {
-				background-color: #2980b9;
-			}
-
-			.btn.delete {
-				background-color: #e74c3c;
-				color: #ffffff;
-			}
-
-			.btn.delete:hover {
-				background-color: #c0392b;
-			}
-
-			/* Responsive design for smaller screens */
-			@media (max-width: 768px) {
-
-				table,
-				thead,
-				tbody,
-				th,
-				td,
-				tr {
-					display: block;
-					width: 100%;
-				}
-
-				th,
-				td {
-					position: relative;
-					padding-left: 50%;
-					text-align: right;
-				}
-
-				th::before,
-				td::before {
-					content: attr(data-label);
-					position: absolute;
-					left: 0;
-					width: 50%;
-					padding-left: 10px;
-					font-weight: bold;
-					text-align: left;
-					background: #f7f9fc;
-					border-right: 1px solid #ddd;
-					white-space: nowrap;
-				}
-
-				td::before {
-					content: "";
-				}
-			}
-
-			.stafflist-content {
-				width: 90%;
-				max-width: 1000px;
-				margin: 20px;
-				background: #ffffff;
-				border-radius: 10px;
-				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-				overflow: hidden;
-				padding: 20px;
-				margin-top: -23%;
-			}
-
-			.add-account-icon {
-				object-fit: scale-down;
-				width: 10%;
-			}
-
-			.add-account-btn {
-				width: 15%;
-				background-color: var(--primary-color);
-			}
-
-			.add-account-btn:hover {
-				background-color: #2980b9;
-			}
-
-			.search-container {
-				margin-top: -5.5%;
-				margin-left: 75%;
-				margin-bottom: 2%;
-			}
-
-			.search-bar {
-				border-radius: 15px;
-				width: 80%;
-				padding: 5px;
-				border: 1px solid;
-			}
-
-			.search-btn {
-				border-radius: 15px;
-				border: none;
-				padding: 5px;
-				width: 50px;
-				margin-left: -20%;
-				background: none;
-				margin-bottom: -5%;
-			}
-
-			.search-icon {
-				object-fit: scale-down;
-				width: 14px;
-				height: 20px;
-				background: none;
-				margin-bottom: -10%;
-			}
-
-			.fillup-form-container {
-				width: 40%;
-				background-color: white;
-				padding: 20px;
-				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-				border-radius: 10px;
-				margin-left: 10%;
-				position: absolute;
-				z-index: 1;
-				display: none;
-				align-items: center;
-			}
-
-			.fillup-form-container h1 {
-				margin-top: 2%;
-			}
-
-			.modal.active {
-				display: block;
-			}
-
-			h1 {
-				text-align: center;
-				margin-bottom: 20px;
-			}
-
-			.close-btn {
-				font-size: 2rem;
-				position: absolute;
-				right: 20px;
-				top: 10px;
-				cursor: pointer;
-
-			}
-
-			form {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 20px;
-			}
-
-			.input-container {
-				position: relative;
-				width: 48%;
-
-			}
-
-			.input-container input {
-				width: 100%;
-				padding: 10px;
-				border-radius: 5px;
-				font-size: 15px;
-
-				border: none;
-				outline: 2px solid var(--primary-color);
-				background-color: transparent;
-				transition: outline-color 500ms;
-			}
-
-			.input-container input:focus {
-				outline-color: var(--secondary-color);
-			}
-
-			.input-container label {
-				position: absolute;
-				top: 50%;
-				left: 10px;
-				transform: translateY(-50%);
-				color: var(--text-color);
-				transition: 0.3s ease;
-				background-color: white;
-				padding-inline: 5px;
-			}
-
-			.input-container input:focus+label,
-			.input-container input:valid+label {
-				top: -10px;
-				transform: translateY(0);
-				font-size: 0.8rem;
-				color: var(--secondary-color);
-			}
-
-			.full-width {
-				width: 100%;
-			}
-
-			.sign-btn {
-				width: 95%;
-				padding: 10px;
-				background-color: var(--primary-color);
-				color: white;
-				border: none;
-				border-radius: 5px;
-				margin-left: 3.5%;
-				font-size: 16px;
-				cursor: pointer;
-				transition: background-color 300ms;
-			}
-
-			.sign-btn:hover {
-				background-color: var(--secondary-color);
-			}
-
-			.add-account {
-				padding: 10px 20px;
-				background-color: var(--primary-color);
-				color: white;
-				border: none;
-				border-radius: 5px;
-				font-size: 16px;
-				cursor: pointer;
-				transition: background-color 300ms;
-			}
-
-			.add-account:hover {
-				background-color: var(--secondary-color);
-			}
-
-			/* Overlay for background when modal is active */
-			.overlay {
-				display: none;
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background-color: rgba(0, 0, 0, 0.5);
-				z-index: 1;
-			}
-
-			.overlay.active {
-				display: block;
-			}
-
-			.register-form {
-				margin-top: 7%;
-			}
-		</style>
 
 		<body>
 			<div class="container">
@@ -962,263 +258,383 @@
 							</div>
 						</div>
 
-
-						<table id="myTable">
-							<thead>
-								<tr>
-									<th>Id No.</th>
-									<th>Name</th>
-									<th>Contact no.</th>
-									<th>Email</th>
-									<th>Username</th>
-									<th>Password</th>
-									<th>Restriction</th>
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody id="tablelist">
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td>Loading data please wait...</td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</tbody>
-						</table>
+						<div class="table container">
+							<table id="myTable">
+								<thead>
+									<tr>
+										<th>Id No.</th>
+										<th>Name</th>
+										<th>Contact no.</th>
+										<th>Email</th>
+										<th>Username</th>
+										<th>Password</th>
+										<th>Restriction</th>
+										<th>Actions</th>
+									</tr>
+								</thead>
+								<tbody id="tablelist">
+									<tr>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
-				</div>
 
-				<script>
-					var dropdown = document.getElementsByClassName("button-profile");
-					var i;
+					<script>
+						var dropdown = document.getElementsByClassName("button-profile");
+						var i;
 
-					for (i = 0; i < dropdown.length; i++) {
-						dropdown[i].addEventListener("click", function () {
+						for (i = 0; i < dropdown.length; i++) {
+							dropdown[i].addEventListener("click", function () {
 
-							var dropdownContent = this.nextElementSibling;
-							if (dropdownContent.style.display === "block") {
-								dropdownContent.style.display = "none";
-							} else {
-								dropdownContent.style.display = "block";
-							}
-						});
-					}
-
-
-				</script>
-				<script>
-					var staffListInfo = document.getElementById("tablelist");
-
-
-					function updateData() {
-						var request = new XMLHttpRequest();
-						request.open('GET', '/JsonStaffListAPI');
-						request.onload = function () {
-							var data = JSON.parse(request.responseText);
-							renderHTML(data);
-							searchTable();
-						}
-						request.send();
-					}
-
-					function renderHTML(data) {
-						var htmlString = ``;
-
-						for (var i = 0; i < data.length; i++) {
-
-							htmlString += '<tr>' +
-								'<td>' + data[i].staffID + '</td>' +
-								'<td>' + data[i].firstname + ' ' + data[i].lastname + '</td>' +
-								'<td>' + data[i].contactNumber + '</td>' +
-								'<td>' + data[i].email + '</td>' +
-								'<td>' + data[i].username + '</td>' +
-								'<td>' + data[i].password + '</td>' +
-								'<td>' + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + '</td>' +
-								'<td><button onclick="updateStaff(' + data[i].staffID + ', \'' + data[i].firstname + '\', \'' + data[i].lastname + '\', \'' + data[i].username + '\', \'' + data[i].contactNumber + '\', \'' + data[i].email + '\', \'' + data[i].password + '\', \'' + data[i].isLocked + '\')" class="update" style="background-color: #97BE5A; font-size: .7em;">Update</button>' +
-								'<button onclick="removeStaff(' + data[i].staffID + ')" class="delete" style="background-color: #EE4E4E; font-size: .7em;">Delete</button></td>' +
-								'</tr>';
-
-
-
-
-							// htmlString += "<tr>";
-							// htmlString += "<td>" + data[i].staffID + "</td>";
-							// htmlString += "<td>" + data[i].firstname + " " + data[i].lastname + "</td>";
-							// htmlString += "<td>+63" + data[i].contactNumber + "</td>";
-							// htmlString += "<td>" + data[i].email + "</td>";
-							// htmlString += "<td>" + data[i].username + "</td>";
-							// htmlString += "<td>" + data[i].password + "</td>";
-							// htmlString += "<td>" + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + "</td>";
-							// htmlString += '<td><button onclick="updateStaff(' + data[i].staffID + ', \'' + data[i].firstname + '\')" class="update" style="background-color: #97BE5A; font-size: .7em;">Update</button></td>';
-							// htmlString += '<button onclick="removeStaff(' + data[i].staffID + ')" class="delete" style="background-color: #EE4E4E; font-size: .7em;">Delete</button>';
-							// htmlString += "</tr>";
-						}
-
-						staffListInfo.innerHTML = htmlString;
-					}
-
-					setInterval(updateData, 2000);
-
-				</script>
-				<script>
-					// Get elements
-					const addAccountButton = document.querySelector('.add-account-btn');
-					const closeModalButton = document.querySelector('.close-btn');
-					const modal = document.querySelector('.modal');
-					const overlay = document.querySelector('.overlay');
-
-					// Function to open the modal
-					function openModal() {
-						modal.classList.add('active');
-						overlay.classList.add('active');
-					}
-
-					// Function to close the modal
-					function closeModal() {
-						modal.classList.remove('active');
-						overlay.classList.remove('active');
-					}
-
-					// Event listeners
-					addAccountButton.addEventListener('click', openModal);
-					closeModalButton.addEventListener('click', closeModal);
-					overlay.addEventListener('click', closeModal);
-
-					$(document).ready(function () {
-						$('#staffRegisterForm').on('submit', function (event) {
-							event.preventDefault(); // Prevent the default form submission
-
-							// Create a new AJAX request
-							var url = 'staffRegister_Servlet';
-
-							// Prepare the GET request with form data
-							var params = $(this).serialize();
-
-							$.ajax({
-								url: url,
-								type: 'GET',
-								data: params,
-								success: function (response) {
-									openModal()
-									$.confirm({
-										boxWidth: '30%',
-										useBootstrap: false,
-										title: 'Registration Successful',
-										content: response,
-										type: 'green',
-										typeAnimated: true,
-										buttons: {
-											tryAgain: {
-												text: 'add more',
-												btnClass: 'btn-green',
-												action: function () {
-													openModal()
-												}
-											},
-											ok: {
-												text: 'ok',
-												action: function () {
-													closeModal()
-												}
-											}
-										}
-									});
-								},
-								error: function (xhr) {
-									openModal()
-									$.confirm({
-										boxWidth: '30%',
-										useBootstrap: false,
-										title: 'Encountered an error!',
-										content: xhr.responseText,
-										type: 'red',
-										typeAnimated: true,
-										buttons: {
-											tryAgain: {
-												text: 'Try again',
-												btnClass: 'btn-red',
-												action: function () {
-													closeModal()
-
-												}
-											},
-										}
-									});
+								var dropdownContent = this.nextElementSibling;
+								if (dropdownContent.style.display === "block") {
+									dropdownContent.style.display = "none";
+								} else {
+									dropdownContent.style.display = "block";
 								}
 							});
-						});
-					});
+						}
 
-					//delete staff
-					function removeStaff(id) {
-						$.confirm({
-							boxWidth: '30%',
-							useBootstrap: false,
-							type: 'blue',
-							typeAnimated: true,
-							title: 'Delete staff : ' + id + '?',
-							content: 'This dialog will automatically trigger \'cancel\' in 10 seconds if you don\'t respond.',
-							autoClose: 'cancel|10000',
-							buttons: {
-								deleteUser: {
-									text: 'delete',
-									btnClass: 'btn-red',
-									action: function () {
-										// Create the AJAX request
-										$.ajax({
-											url: 'RemoveStaff_Servlet?idNo=' + id, // Replace with your endpoint
-											type: 'DELETE', // Send the ID as data
-											success: function (response) {
-												$.alert({
-													boxWidth: '30%',
-													useBootstrap: false,
-													typeAnimated: true,
-													type: 'green',
-													title: 'Response',
-													content: response
-												});
-												updateData();
-											},
-											error: function (xhr) {
-												$.alert({
-													boxWidth: '30%',
-													useBootstrap: false,
-													type: 'red',
-													typeAnimated: true,
-													title: 'error',
-													content: xhr.statusText
-												});
+
+					</script>
+					<script>
+						var staffListInfo = document.getElementById("tablelist");
+
+
+						function updateData() {
+							var request = new XMLHttpRequest();
+							request.open('GET', '/JsonStaffListAPI');
+							request.onload = function () {
+								var data = JSON.parse(request.responseText);
+								renderHTML(data);
+								searchTable();
+							}
+							request.send();
+						}
+
+						function renderHTML(data) {
+							var htmlString = ``;
+
+							for (var i = 0; i < data.length; i++) {
+
+								htmlString += '<tr>' +
+									'<td>' + data[i].staffID + '</td>' +
+									'<td>' + data[i].firstname + ' ' + data[i].lastname + '</td>' +
+									'<td>' + data[i].contactNumber + '</td>' +
+									'<td>' + data[i].email + '</td>' +
+									'<td>' + data[i].username + '</td>' +
+									'<td>' + data[i].password + '</td>' +
+									'<td>' + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + '</td>' +
+									'<td><button onclick="updateStaff(' + data[i].staffID + ', \'' + data[i].firstname + '\', \'' + data[i].lastname + '\', \'' + data[i].username + '\', \'' + data[i].contactNumber + '\', \'' + data[i].email + '\', \'' + data[i].password + '\', \'' + data[i].isLocked + '\')" class="update" style="background-color: #97BE5A; font-size: .7em;">Update</button>' +
+									'<button onclick="removeStaff(' + data[i].staffID + ')" class="delete" style="background-color: #EE4E4E; font-size: .7em;">Delete</button></td>' +
+									'</tr>';
+
+
+
+
+								// htmlString += "<tr>";
+								// htmlString += "<td>" + data[i].staffID + "</td>";
+								// htmlString += "<td>" + data[i].firstname + " " + data[i].lastname + "</td>";
+								// htmlString += "<td>+63" + data[i].contactNumber + "</td>";
+								// htmlString += "<td>" + data[i].email + "</td>";
+								// htmlString += "<td>" + data[i].username + "</td>";
+								// htmlString += "<td>" + data[i].password + "</td>";
+								// htmlString += "<td>" + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + "</td>";
+								// htmlString += '<td><button onclick="updateStaff(' + data[i].staffID + ', \'' + data[i].firstname + '\')" class="update" style="background-color: #97BE5A; font-size: .7em;">Update</button></td>';
+								// htmlString += '<button onclick="removeStaff(' + data[i].staffID + ')" class="delete" style="background-color: #EE4E4E; font-size: .7em;">Delete</button>';
+								// htmlString += "</tr>";
+							}
+
+							staffListInfo.innerHTML = htmlString;
+						}
+
+						document.addEventListener("DOMContentLoaded", event => {
+							updateData();
+						});
+
+						// Get elements
+						const addAccountButton = document.querySelector('.add-account-btn');
+						const closeModalButton = document.querySelector('.close-btn');
+						const modal = document.querySelector('.modal');
+						const overlay = document.querySelector('.overlay');
+
+						// Function to open the modal
+						function openModal() {
+							modal.classList.add('active');
+							overlay.classList.add('active');
+						}
+
+						// Function to close the modal
+						function closeModal() {
+							modal.classList.remove('active');
+							overlay.classList.remove('active');
+						}
+
+						// Event listeners
+						addAccountButton.addEventListener('click', openModal);
+						closeModalButton.addEventListener('click', closeModal);
+						overlay.addEventListener('click', closeModal);
+
+						$(document).ready(function () {
+							$('#staffRegisterForm').on('submit', function (event) {
+								event.preventDefault(); // Prevent the default form submission
+
+								// Create a new AJAX request
+								var url = 'staffRegister_Servlet';
+
+								// Prepare the GET request with form data
+								var params = $(this).serialize();
+
+								$.ajax({
+									url: url,
+									type: 'GET',
+									data: params,
+									success: function (response) {
+										openModal()
+										$.confirm({
+											boxWidth: '30%',
+											useBootstrap: false,
+											title: 'Registration Successful',
+											content: response,
+											type: 'green',
+											typeAnimated: true,
+											buttons: {
+												tryAgain: {
+													text: 'add more',
+													btnClass: 'btn-green',
+													action: function () {
+														openModal()
+													}
+												},
+												ok: {
+													text: 'ok',
+													action: function () {
+														closeModal()
+													}
+												}
+											}
+										});
+									},
+									error: function (xhr) {
+										openModal()
+										$.confirm({
+											boxWidth: '30%',
+											useBootstrap: false,
+											title: 'Encountered an error!',
+											content: xhr.responseText,
+											type: 'red',
+											typeAnimated: true,
+											buttons: {
+												tryAgain: {
+													text: 'Try again',
+													btnClass: 'btn-red',
+													action: function () {
+														closeModal()
+
+													}
+												},
 											}
 										});
 									}
-								},
-								cancel: function () {
-									$.alert({
-										boxWidth: '30%',
-										useBootstrap: false,
-										typeAnimated: true,
-										type: 'red',
-										title: 'Canceled',
-										content: 'action is canceled'
-									});
-								}
-							}
+								});
+							});
 						});
 
-					}
+						//delete staff
+						function removeStaff(id) {
+							$.confirm({
+								boxWidth: '30%',
+								useBootstrap: false,
+								type: 'blue',
+								typeAnimated: true,
+								title: 'Delete staff : ' + id + '?',
+								content: 'This dialog will automatically trigger \'cancel\' in 10 seconds if you don\'t respond.',
+								autoClose: 'cancel|10000',
+								buttons: {
+									deleteUser: {
+										text: 'delete',
+										btnClass: 'btn-red',
+										action: function () {
+											// Create the AJAX request
+											$.ajax({
+												url: 'RemoveStaff_Servlet?idNo=' + id, // Replace with your endpoint
+												type: 'DELETE', // Send the ID as data
+												success: function (response) {
+													$.alert({
+														boxWidth: '30%',
+														useBootstrap: false,
+														typeAnimated: true,
+														type: 'green',
+														title: 'Response',
+														content: response
+													});
+													updateData();
+												},
+												error: function (xhr) {
+													$.alert({
+														boxWidth: '30%',
+														useBootstrap: false,
+														type: 'red',
+														typeAnimated: true,
+														title: 'error',
+														content: xhr.statusText
+													});
+												}
+											});
+										}
+									},
+									cancel: function () {
+										$.alert({
+											boxWidth: '30%',
+											useBootstrap: false,
+											typeAnimated: true,
+											type: 'red',
+											title: 'Canceled',
+											content: 'action is canceled'
+										});
+									}
+								}
+							});
+
+						}
 
 
-					function updateStaff(id, firstname, lastname, username, contactnumber, email, password, islocked) {
-						$.confirm({
-							type: 'blue',
-							boxWidth: '50%',
-							useBootstrap: false,
-							title: 'Update Staff : ' + id,
-							content: `
+						function updateStaff(id, firstname, lastname, username, contactnumber, email, password, islocked) {
+							$.confirm({
+								type: 'blue',
+								boxWidth: '50%',
+								useBootstrap: false,
+								title: 'Update Staff : ' + id,
+								content: `
 								<div class="register-form">
 								<form id="staffRegisterForm">
 									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
@@ -1267,46 +683,46 @@
 								</form>
 							</div>
 								`,
-							buttons: {
-								sayMyName: {
-									text: 'Update',
-									btnClass: 'btn-green',
-									action: function () {
+								buttons: {
+									sayMyName: {
+										text: 'Update',
+										btnClass: 'btn-green',
+										action: function () {
 
-										var firstname = this.$content.find('.firstname-input');
-										var lastname = this.$content.find('.lastname-input');
-										var email = this.$content.find('.email-input');
-										var contactno = this.$content.find('.contactno-input');
-										var username = this.$content.find('.username-input');
-										var password = this.$content.find('.password-input');
-										var confirmpassword = this.$content.find('.confirmpassword-input');
-										var checkbox = this.$content.find('.checkbox-input').is(':checked') ? 1 : 0;
-										if (!firstname.val().trim() || !lastname.val().trim() || !email.val().trim() || !contactno.val().trim() || !username.val().trim() || !password.val().trim() || !confirmpassword.val().trim()) {
-											$.alert({
-												boxWidth: '30%',
-												useBootstrap: false,
-												content: "Please don't keep the field empty.",
-												type: 'red'
-											});
-											return false;
-										} else {
-
-											if (password.val() != confirmpassword.val()) {
+											var firstname = this.$content.find('.firstname-input');
+											var lastname = this.$content.find('.lastname-input');
+											var email = this.$content.find('.email-input');
+											var contactno = this.$content.find('.contactno-input');
+											var username = this.$content.find('.username-input');
+											var password = this.$content.find('.password-input');
+											var confirmpassword = this.$content.find('.confirmpassword-input');
+											var checkbox = this.$content.find('.checkbox-input').is(':checked') ? 1 : 0;
+											if (!firstname.val().trim() || !lastname.val().trim() || !email.val().trim() || !contactno.val().trim() || !username.val().trim() || !password.val().trim() || !confirmpassword.val().trim()) {
 												$.alert({
 													boxWidth: '30%',
 													useBootstrap: false,
-													content: "password and confirm password does not match.",
+													content: "Please don't keep the field empty.",
 													type: 'red'
 												});
 												return false;
 											} else {
 
-												$.ajax({
-													url: 'UpdateStaff_Servlet?idNo=' + id + '&firstname=' + firstname.val() + '&lastname=' + lastname.val() + '&email=' + email.val() + '&contactno=' + contactno.val() + '&username=' + username.val() + '&password=' + password.val() + '&islocked=' + checkbox, // Replace with your endpoint
-													type: 'PUT', // Send the ID as data
-													success: function (response) {
-														var ischecked = checkbox == 1 ? "Locked" : "Not Locked";
-														var successContent = `<h3>Name: ` + firstname.val() + `<br>
+												if (password.val() != confirmpassword.val()) {
+													$.alert({
+														boxWidth: '30%',
+														useBootstrap: false,
+														content: "password and confirm password does not match.",
+														type: 'red'
+													});
+													return false;
+												} else {
+
+													$.ajax({
+														url: 'UpdateStaff_Servlet?idNo=' + id + '&firstname=' + firstname.val() + '&lastname=' + lastname.val() + '&email=' + email.val() + '&contactno=' + contactno.val() + '&username=' + username.val() + '&password=' + password.val() + '&islocked=' + checkbox, // Replace with your endpoint
+														type: 'PUT', // Send the ID as data
+														success: function (response) {
+															var ischecked = checkbox == 1 ? "Locked" : "Not Locked";
+															var successContent = `<h3>Name: ` + firstname.val() + `<br>
 																Lastname: ` + lastname.val() + `<br>
 																Username: ` + username.val() + `<br>
 																Contact Number: ` + contactno.val() + `<br>
@@ -1314,71 +730,71 @@
 																Password: `+ password.val() + `<br>
 																Restriction: `+ ischecked + `</h3>`;
 
-														updateData();
-														$.alert({
-															boxWidth: '30%',
-															useBootstrap: false,
-															typeAnimated: true,
-															type: 'green',
-															title: 'Response : ' + response,
-															content: successContent
-														});
-													},
-													error: function (xhr) {
-														$.alert({
-															boxWidth: '30%',
-															useBootstrap: false,
-															type: 'red',
-															typeAnimated: true,
-															title: 'error',
-															content: xhr.statusText
-														});
-													}
-												});
+															updateData();
+															$.alert({
+																boxWidth: '30%',
+																useBootstrap: false,
+																typeAnimated: true,
+																type: 'green',
+																title: 'Response : ' + response,
+																content: successContent
+															});
+														},
+														error: function (xhr) {
+															$.alert({
+																boxWidth: '30%',
+																useBootstrap: false,
+																type: 'red',
+																typeAnimated: true,
+																title: 'error',
+																content: xhr.statusText
+															});
+														}
+													});
+												}
 											}
 										}
+									},
+									Close: function () {
+										// do nothing.
 									}
-								},
-								Close: function () {
-									// do nothing.
 								}
-							}
-						});
-					}
+							});
+						}
 
-					//searchbutton
-					function searchTable() {
-						// Declare variables
-						var input, filter, table, tr, td, i, j, txtValue;
-						input = document.getElementById("searchInput");
-						filter = input.value.toLowerCase();
-						table = document.getElementById("myTable");
-						tr = table.getElementsByTagName("tr");
+						//searchbutton
+						function searchTable() {
+							// Declare variables
+							var input, filter, table, tr, td, i, j, txtValue;
+							input = document.getElementById("searchInput");
+							filter = input.value.toLowerCase();
+							table = document.getElementById("myTable");
+							tr = table.getElementsByTagName("tr");
 
-						// Loop through all table rows, and hide those who don't match the search query
-						for (i = 1; i < tr.length; i++) {
-							tr[i].style.display = "none"; // Initially hide all rows
-							td = tr[i].getElementsByTagName("td");
-							for (j = 0; j < td.length; j++) {
-								if (td[j]) {
-									txtValue = td[j].textContent || td[j].innerText;
-									if (txtValue.toLowerCase().indexOf(filter) > -1) {
-										tr[i].style.display = ""; // Show the row if any column matches the search
-										break;
+							// Loop through all table rows, and hide those who don't match the search query
+							for (i = 1; i < tr.length; i++) {
+								tr[i].style.display = "none"; // Initially hide all rows
+								td = tr[i].getElementsByTagName("td");
+								for (j = 0; j < td.length; j++) {
+									if (td[j]) {
+										txtValue = td[j].textContent || td[j].innerText;
+										if (txtValue.toLowerCase().indexOf(filter) > -1) {
+											tr[i].style.display = ""; // Show the row if any column matches the search
+											break;
+										}
 									}
 								}
 							}
 						}
-					}
-				</script>
+					</script>
 
 
-				<div class="load-wrapper">
-					<div class="main-loader">
-						<div class="box-loader">
+					<div class="load-wrapper">
+						<div class="main-loader">
+							<div class="box-loader">
+							</div>
 						</div>
 					</div>
-				</div>
 		</body>
 
 		</html>

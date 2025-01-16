@@ -149,7 +149,8 @@
                 }
 
                 .modal-content {
-                    background-color: #1e91d0;
+                    /* background-color: #1e91d0; */
+                    background-color: #fff;
                     background: rgb(72.5%, 85.5%, 95.7%);
                     padding: 20px;
                     border-radius: 10px;
@@ -246,6 +247,8 @@
                         margin: 0;
                         padding: 0;
                     }
+                    
+                    
                 }
 
                 #printArea {
@@ -256,6 +259,7 @@
                     text-align: center;
                     margin: 0 auto;
                     background-color: #fff;
+                    display: block;
                 }
 
                 #printArea h3,
