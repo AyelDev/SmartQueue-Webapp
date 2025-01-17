@@ -223,14 +223,7 @@
 							<button class="search-btn" type="submit">
 								<img src="./images/search-icon.png" alt="" class="search-icon">
 							</button>
-							<h1>Student List</h1>
-							<div class="search-container">
-								<input type="text" placeholder="Search.." name="search" class="search-bar"
-									id="searchInput" onkeyup="searchTable()">
-								<button class="search-btn" type="submit">
-									<img src="./images/search-icon.png" alt="" class="search-icon">
-								</button>
-							</div>
+							
 
 							<div class="overlay"></div>
 							<div class="fillup-form-container modal">

@@ -16,6 +16,7 @@
       		<script type="text/javascript" src="./scripts/prettify.js"></script>
 			<script type="text/javascript" src="./scripts/ping.js"></script>
 			<script type="text/javascript" src="./scripts/fadetransition.js"></script>
+			<link rel="stylesheet" href="./css/jquery-confirm.min.css">
 			<link rel="stylesheet" href="./css/loader.css">
 			<link rel="stylesheet" href="../css/adminpage.css">
 			<title>Admin | Dashboard</title>

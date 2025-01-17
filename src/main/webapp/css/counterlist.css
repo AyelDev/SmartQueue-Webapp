@@ -282,7 +282,7 @@ body {
     background-color: #1477d4fb;
     position: fixed;
     top: 0;
-    z-index: 1000;
+    z-index: 0;
 }
 
 .icon-container {
@@ -294,17 +294,18 @@ body {
 .bell-icon {
     object-fit: scale-down;
     width: 20px;
-    margin-top: -7%;
+    margin-top: -9%;
     cursor: pointer;
-
+    margin-left: 5%;
 }
 
 .chat-icon {
     object-fit: scale-down;
     width: 25px;
     cursor: pointer;
-    margin-bottom: 25%;
-    margin-left: 10%;
+    margin-left: 2%;
+    margin-top: 1%;
+    position: absolute;
 }
 
 
@@ -522,7 +523,7 @@ button {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     padding: 20px;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 
@@ -550,7 +551,7 @@ button {
 }
 
 .search-bar {
-    border-radius: 15px;
+    border-radius: 10px;
     width: 80%;
     padding: 5px;
     border: 1px solid;
@@ -572,7 +573,8 @@ button {
     width: 14px;
     height: 20px;
     background: none;
-    margin-bottom: -10%;
+    margin-bottom: 20%;
+    margin-left: -30%;
 }
 
 .fillup-form-container {
