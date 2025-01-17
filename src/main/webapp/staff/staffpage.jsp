@@ -16,15 +16,443 @@
     <link rel="stylesheet" href="./css/loader.css">
     <link rel="stylesheet" href="../css/staffpage.css">
     <title>Staff Page</title>
+<<<<<<< HEAD
     
+=======
+    <style>
+        :root {
+            font-size: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            background-color: #F5F5F5;
+            overflow: hidden;
+        }
+
+        .cover {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+        }
+
+        .rightnav {
+            width: 85%;
+            height: 100%;
+            background-color: transparent;
+            float: right;
+        }
+
+        .card-section {
+            width: 100%;
+            height: 30%;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+            overflow: hidden;
+        }
+
+        .dash {
+            width: 100%;
+            height: 20%;
+            background-color: #1e91d0;
+            text-align: start;
+            font-size: 1.5625rem;
+            display: inline-block;
+            position: relative;
+            color: white;
+            margin-bottom: 1.25rem;
+            line-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 0 1rem;
+        }
+        .dash b{
+            margin-left: -5px;
+            flex-grow: 1;
+            font-weight: normal;
+        }
+
+        .card-container {
+            width: 100%;
+            height: 75%;
+            background-color: transparent;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 25%;
+            height: 65%;
+            background-color: #EEEEEE;
+            box-sizing: border-box;
+            margin-top: 30px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            text-align: center;
+        }
+
+        .card:hover {
+            background-color: #E5E4E2;
+        }
+
+        .card h3,
+        .card p {
+            line-height: 40px;
+            text-decoration: none;
+            font-weight: normal;
+        }
+
+        .card p {
+            text-align: start;
+            margin-left: 30px;
+            text-decoration: none;
+        }
+
+        .graphcalendar-container {
+            width: 90%;
+            height: 50%;
+            background-color: #EEEEEE;
+            justify-content: center;
+            align-items: center;
+            display: inline-block;
+            margin-left: 60px;
+            border-radius: 10px;
+            border: none;
+            position: relative;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        }
+        .leftnav {
+            width: 15%;
+            height: 100%;
+            background-color: #1e91d0;
+            padding: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-lnav {
+            width: 100%;
+            height: 20%;
+            background-color: transparent;
+            text-align: center;
+            display: block;
+            position: relative;
+            line-height: 10px;
+            font-size: 0.875rem;
+            color: white;
+        }
+
+        .cec {
+            width: 50%;
+            max-width: 100%;
+            object-fit: contain;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        .title {
+            color: #F6F4EB;
+            font-size: 1.15em;
+            line-height: 3px;
+        }
+
+        .bottom-lnav {
+            width: 100%;
+            height: 80%;
+            background-color: transparent;
+            text-align: center;
+            padding-top: 4px;
+        }
+
+        .bottom-lnav a {
+            display: block;
+            margin: 1rem 0;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            margin-top: 40px;
+            margin-left: 10%;
+            text-align: start;
+            justify-content: center;
+            align-items: center;
+            font-weight: normal;
+        }
+
+        .bottom-lnav a:hover {
+            padding: 15px 20px 15px 20px;
+            width: 12.8vw;
+            background-color: white;
+            position: relative;
+            margin-left: -18px;
+            color: black;
+            border-radius: 20px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+			border-right: 8px solid #37AFE1;
+            transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        }
+
+        .button-profile {
+            align-items: center;
+			justify-content: center;
+			display: flex;
+			width: 10vw;
+		    margin-top: 1px;
+			margin-left: 36px;
+			border-radius: 10px;
+			padding: 5px 3px 5px 3px;
+					/*tlbr*/
+			overflow: hidden;
+			cursor: pointer;
+			border: none;
+            float: right;
+            margin-right: 5%;
+            background-color: white;
+        }
+
+        .profile {
+            width: 10%;
+            object-fit: scale-down;
+            margin-right: 1.25rem;
+        }
+
+        .caretdown {
+            mix-blend-mode: multiply;
+            width: 0.625rem;
+            margin-left: 1.25rem;
+        }
+        .staffProfile {
+			/* margin-left: 2.3rem; */
+			position: absolute;
+			background-color: none;
+			width: 9.5vw;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			z-index: 1;
+			display: none;
+            /* float: right;
+            margin-right: 5%; */
+            top: 100%;
+            right: 5.8%;
+		}
+
+        .staffProfile a {
+            text-decoration: none;
+            background-color: white;
+            color: black;
+            overflow: hidden;
+            width: 10vw;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: .5rem 0 0 0;
+            height: 1.5rem;
+            float: right;
+            margin-right: 3%;
+            font-size: 1rem;
+        }
+
+        .staffProfile a:hover {
+            background-color: #EEEEEE;
+            border-radius: 7px;
+            color: black;
+        }
+
+        .graph {
+            width: 50%;
+            height: 45vh;
+            background-color: #F5F5F5;
+            margin-top: 15px;
+            margin-left: 10px;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            border-radius: 3px;
+        }
+
+        .calendar {
+            width: 43%;
+            height: 40vh;
+            background-color: #F5F5F5;
+            float: right;
+           margin-right: 10px;
+           margin-top: 15px;
+           box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            margin-bottom: 10px;
+        }
+
+        .calendar-body {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-gap: 5px;
+            text-align: center;
+        }
+
+        .day, .date {
+            padding: 5px;
+            border-radius: 50%;
+        }
+
+        .date:hover {
+            background-color: lightgrey;
+        }
+
+        .current-day {
+            background-color: #5CB3FF;
+            color: white;
+        }
+        
+        .dash img.picture{
+            width: 30px; 
+            height: 30px;
+            object-fit: contain;
+            filter: invert(1);
+        }
+        .right-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-right: -15px;
+            margin-top: 14px;
+    }
+    .icon-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .icon-container .tooltip-text {
+            visibility: hidden;
+            width: 5vw;
+            height: 3vh;
+            background-color: #EEEEEE;
+            color: black;
+            text-align: center;
+            line-height: 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            padding: 5px 3px 5px 3px;
+            position: absolute;
+            z-index: 1;
+            top: 87%; 
+            left: 50%;
+            margin-left: -30px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .icon-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        @media (max-width: 1200px) {
+            .card {
+                width: 30%;
+            }
+
+            .graph, .calendar {
+                width: 45%;
+            }
+
+            .leftnav {
+                width: 20%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .graph, .calendar {
+                width: 100%;
+            }
+
+            .leftnav {
+                width: 30%;
+            }
+
+            .button-profile {
+                width: 40%;
+                margin: 0 auto;
+            }
+
+            .bottom-lnav a {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .button-profile {
+                width: 80%;
+            }
+
+            .dash {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .rightnav {
+                padding: 10px;
+            }
+        }
+        .bottom-lnav img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            filter: invert(1);
+        }
+        .bottom-lnav a:hover img {
+            filter: brightness(0) saturate(100%) hue-rotate(200deg); /*blue color*/
+            transform: scale(1.2);
+        }
+    </style>
+>>>>>>> origin/IrishV4
 </head>
 
 <body>
     <div class="container">
         <div class="cover">
             <div class="rightnav">
-                <div class="tp-rnav">
-                    <div class="dash"><b>DASHBOARD</b></div>
+                <div class="card-section">
+                    <div class="dash"> <b>Dashboard</b>
+                        <div class="right-icons">
+
+                            <div class="icon-container">
+                                <a href="#"></a>
+                                <img src="./images/message.png" class="picture"/>
+                                <span class="tooltip-text">Message</span>
+                            </div>
+                        </div>
+                        
+                        <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
+                <div class="staffProfile" id="staffProfile">
+                    <a href="#">Settings</a>
+                    <a href="login">Signout</a>
+                </div>
+                    </div>
 
                     <div class="card-container">
                         <div class="card">
@@ -42,10 +470,10 @@
                     </div>
                 </div>
 
-                <div class="b-container">
+                <div class="graphcalendar-container">
                     <div class="calendar"></div>
                     <div class="graph">
-                        <canvas id="queueTrendChart"></canvas> <!-- Line graph added -->
+                        <canvas id="queueTrendChart"></canvas> 
                     </div>
                 </div>
             </div>
@@ -53,23 +481,20 @@
             <div class="leftnav">
                 <div class="top-lnav">
                     <img src="./images/logo.png" class="cec">
-                    <b class="title"><br>Cebu Eastern College</b>
+                    <p class="title"><br><b>Cebu Eastern College</b></p>
                 </div>
-                <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
-                <div class="staffProfile" id="staffProfile">
-                    <a href="#">Settings</a>
-                    <a href="logout">Signout</a>
-                </div>
+                
                 <div class="bottom-lnav">
-                    <b><a href="staffdashboard">Dashboard</a></b>
-                    <b><a href="userwindow">User Window</a></b>
-                    <b><a href="counterwindow">Counter Window</a></b>
-                    <b><a href="addstudent">Add Student</a></b>
-                    <b><a href="entertainment">Advertisement</a></b>
+                    <b><a href="staffpage"><img src="./images/dashboard.png" alt="Dashboard Icon">Dashboard</a></b>
+                    <b><a href="userwindow"><img src="./images/display.png" alt="UserWindow Icon">User Window</a></b>
+                    <b><a href="counterwindow"><img src="./images/counter.png" alt="CounterWindow Icon">Counter Window</a></b>
+                    <b><a href="addstudent"><img src="./images/studentlist.png" alt="StudentList Icon">Student List</a></b>
+                    <b><a href="entertainment"><img src="./images/entertainment.png" alt="Entertainment Icon">Entertainment</a></b>
                 </div>
             </div>
         </div>
     </div>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {

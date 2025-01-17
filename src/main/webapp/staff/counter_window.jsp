@@ -20,16 +20,568 @@
             <link rel="stylesheet" href="./css/notify.css">
             <link rel="stylesheet" href="../css/counter_window.css">
             <title>SmartQueue</title>
+<<<<<<< HEAD
 
+=======
+            <style>
+                 *{
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+}
+body{
+    background-color: white; 
+}
+.container{
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.leftnav {
+    width: 15%;
+    height: 100%;
+    background-color: #1e91d0;
+    padding: 10px;
+    position: fixed;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+.top-lnav {
+    width: 100%;
+    height: 20%;
+    background-color: transparent;
+    text-align: center;
+    display: block;
+    position: relative;
+    line-height: 10px;
+    font-size: 0.875rem;
+    color: white;
+    }
+        
+.cec {
+    width: 50%;
+    max-width: 100%;
+    object-fit: contain;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+        
+.title {
+    color: #F6F4EB;
+    font-size: 1.15em;
+    line-height: 3px;
+}
+        
+.bottom-lnav {
+    width: 100%;
+    height: 80%;
+    background-color: transparent;
+    text-align: center;
+    padding-top: 4px;
+ }
+        
+.bottom-lnav a {
+    display: block;
+    margin: 1rem 0;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+    margin-top: 40px;
+    margin-left: 10%;
+    text-align: start;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+}
+        
+.bottom-lnav a:hover {
+    padding: 15px 20px 15px 20px;
+    width: 12.8vw;
+    background-color: white;
+    position: relative;
+    margin-left: 2px;
+    color: black;
+    border-radius: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-right: 8px solid #37AFE1;
+    transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+.bottom-lnav img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    filter: invert(1);
+}
+.bottom-lnav a:hover img {
+    filter: brightness(0) saturate(100%) hue-rotate(200deg); /*blue color*/
+    transform: scale(1.2);
+}
+
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: white;
+    min-width: 11.25rem; 
+    box-shadow: 0px 0.5rem 1rem 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    left: 95%;
+    top: 0;
+    margin-left: 0.625rem;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; 
+}
+
+.sign{
+    text-decoration: none;
+    color: black;
+    font-size: 1.25rem;
+    display: inline-block;
+    margin-top: 5.625rem;
+}
+.sign:hover{
+    background-color: #95B9C7;
+    border-radius: 3.125rem;
+    width: 90%;
+}
+.rightnav{
+    width: 85%;
+    height: 100%;
+    background-color: #f4f4f4;
+    float: right;
+}
+.counter-container {
+width: 70%;
+margin: 0 auto;
+padding: 1.25rem;
+background: #fff;
+border-radius: 0.625rem;
+box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+margin-top: 1.875rem;
+}
+
+.real-time {
+text-align: center;
+font-size: 1.25rem;
+margin: 1.25rem 0;
+width: 30%;
+padding: none ;
+background-color: #f0f6f6;
+border: 0.125rem solid black;
+border-radius: 1.25rem;
+display: block;
+margin-left: 35%;
+}
+.tables {
+margin-bottom: 1.25rem;
+margin-top: 1.875rem;
+scroll-behavior: smooth;
+}
+.tables::-webkit-scrollbar {
+    width: .8rem;
+}
+
+.tables::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.tables::-webkit-scrollbar-thumb {
+    background-color: #00509d;
+    border-radius: 5rem;
+}
+.table-container {
+margin-bottom: 1.25rem;
+}
+.table-container h2 {
+font-size: 1.25rem;
+margin-bottom: 0.625rem;
+text-align: center;
+line-height: 0.625rem;
+}
+.data-table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 1.875rem;
+}
+.data-table th, .data-table td {
+padding: 0.625rem;
+text-align: center;
+border-bottom: 1px solid #ddd;
+}
+.thd{
+border-left: 0.125rem solid blue;
+
+}
+.tsd{
+border-right: 0.125rem solid blue;
+}
+.data-table tr:hover {
+background-color: #eff7f6;
+border-left: 0.125rem solid blue;
+border-right: 0.125rem solid blue;
+}
+.data-table .selected {
+background-color: #d1e7dd;
+}
+.data-table th {
+background-color: #3090C7;
+color: white;
+}
+.actions {
+text-align: center;
+margin-top: 1.25rem;
+}
+.actions .btn {
+border: none;
+padding: 0.625rem 1.25rem;
+color: #fff;
+border-radius: 0.3125rem;
+cursor: pointer;
+transition: background-color 0.3s;
+margin: 0 0.3125rem;
+color: black;
+}
+.actions .btn.call {
+background-color: #7dcfb6;
+border: 0.125rem solid #7dcfb6;
+border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
+}
+.actions .btn.call:hover{
+color: white;
+border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
+}
+.actions .btn.recall {
+background-color: #00b2ca;
+border: 0.125rem solid #00b2ca;
+border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
+}
+.actions .btn.recall:hover {
+color: white;
+border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
+}
+.actions .btn.done {
+background-color: #fbd1a2;
+border: 0.125rem solid #fbd1a2;
+border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
+}
+.actions .btn.done:hover {
+color: white;
+border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
+}
+.actions .btn.cancel {
+background-color: #f79256;
+border: 0.125rem solid #f79256;
+border-radius: 0.625rem 0.125rem 0.625rem 0.125rem;
+}
+.actions .btn.cancel:hover {
+color: white;
+border-radius: 0.125rem 0.625rem 0.125rem 0.625rem;
+}
+.actions .btn.call:hover {
+background-color: #218838;
+}
+.actions .btn.recall:hover {
+background-color: #0056b3;
+}
+.actions .btn.done:hover {
+background-color: #e0a800;
+}
+.actions .btn.cancel:hover {
+background-color: #c82333;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: black;
+    padding: 10px 20px; 
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 20px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+.dropdown1 {
+    position: relative;
+    display: inline-block;
+    margin: 1rem 0;
+    margin-left: 650px;
+}
+
+.dropdown-content1 {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 165px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transition: visibility 0s, opacity 0.5s linear; 
+    opacity: 0;
+    visibility: hidden; 
+}
+
+.dropdown-content1 a {
+    color: black;
+    padding: 12px 16px; 
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s; 
+}
+
+.dropdown-content1 a:hover {
+    background-color: #ddd; 
+}
+
+.dropdown1:hover .dropdown-content1 {
+    display: block; 
+    opacity: 1; 
+    visibility: visible; 
+}
+
+.dropdown1:hover .dropbtn {
+    background-color: #E5E4E2; 
+}
+        .dash {
+            width: 97.8%;
+            height: 6%;
+            background-color: #1e91d0;
+            text-align: start;
+            font-size: 1.5625rem;
+            display: inline-block;
+            position: relative;
+            color: white;
+            /* margin-bottom: 1.25rem; */
+            margin-left: -.5rem;
+            line-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 0 1rem;
+
+        }
+        .dash b{
+            margin-left: 2%;
+            flex-grow: 1;
+            font-weight: normal;
+            
+        }
+		.button-profile {
+            align-items: center;
+			justify-content: center;
+			display: flex;
+			width: 10vw;
+		    margin-top: 1px;
+			margin-left: 36px;
+            margin-right: 10px;
+			border-radius: 10px;
+			padding: 5px 3px 5px 3px;
+					/*tlbr*/
+			overflow: hidden;
+			cursor: pointer;
+			border: none;
+            float: right;
+            margin-right: 1.5%;
+            background-color: white;
+        }
+
+        .profile {
+            width: 10%;
+            object-fit: scale-down;
+            margin-right: 1.25rem;
+        }
+
+        .caretdown {
+            mix-blend-mode: multiply;
+            width: 0.625rem;
+            margin-left: 1.25rem;
+        }
+        .staffProfile {
+			/* margin-left: 2.3rem; */
+			position: absolute;
+			background-color: none;
+			width: 9.5vw;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			z-index: 1;
+			display: none;
+            /* float: right;
+            margin-right: 5%; */
+            top: 100%;
+            right: 2.2%;
+		}
+
+        .staffProfile a {
+            text-decoration: none;
+            background-color: white;
+            color: black;
+            overflow: hidden;
+            width: 10vw;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: .5rem 0 0 0;
+            height: 1.5rem;
+            float: right;
+            margin-right: 5%;
+            font-size: 1rem;
+            
+        }
+
+        .staffProfile a:hover {
+            background-color: #EEEEEE;
+            border-radius: 7px;
+            color: black;
+        }
+		.dash img.picture{
+            width: 30px; 
+            height: 30px;
+            object-fit: contain;
+            filter: invert(1);
+        }
+        .right-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-right: -15px;
+            margin-top: 14px;
+    }
+    .icon-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .icon-container .tooltip-text {
+            visibility: hidden;
+            width: 5vw;
+            height: 3vh;
+            background-color: #EEEEEE;
+            color: black;
+            text-align: center;
+            line-height: 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            padding: 5px 3px 5px 3px;
+            position: absolute;
+            z-index: 1;
+            top: 87%; 
+            left: 50%;
+            margin-left: -30px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .icon-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        .select{
+            width: 24%;
+            height: 5vh;
+            background-color: white;
+            border-radius: 10px;
+            float: right;
+        }
+        @media (max-width: 1200px) {
+            .leftnav {
+                width: 20%;
+            }
+            .rightnav {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .leftnav {
+                width: 25%;
+            }
+            .rightnav {
+                width: 75%;
+            }
+            .counter-container {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .leftnav {
+                width: 30%;
+            }
+            .rightnav {
+                width: 70%;
+            }
+            .counter-container {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .leftnav {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .rightnav {
+                width: 100%;
+                margin-left: 0;
+            }
+            .dash {
+                font-size: 1.25rem;
+                justify-content: center;
+            }
+        }
+            </style>
+>>>>>>> origin/IrishV4
         </head>
 
         <body>
             <div class="container">
 
                 <div class="rightnav">
-                    <div class="scontainer">
-                        <select id="counter-list" onchange="counterChangeListOnChange()">
-                            <option value="" selected>LOADING PLEASE WAIT...</option>
+                    <div class="dash"> <b></b>
+                        <div class="right-icons">
+            
+                            <div class="icon-container">
+                                <a href="#"></a>
+                                <img src="./images/message.png" class="picture">
+                                <span class="tooltip-text">Message</span>
+                            </div>
+                        </div>
+                        
+                        <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
+                <div class="staffProfile" id="staffProfile">
+                    <a href="#">Settings</a>
+                    <a href="login">Signout</a>
+                </div>
+                    </div>
+
+                    <div class="counter-container">
+                        <select id="counter-list" onchange="counterChangeListOnChange()" class="select">
+                            <option value="" selected>SELECT COUNTER LIST</option>
                         </select>
                         <section class="real-time">
                             <span id="date"></span> | <span id="time"></span>
@@ -119,24 +671,32 @@
                         <p class="title"><br><b>Cebu Eastern College</b></p>
                     </div>
                     <!-- staff profile -->
-                    <button class="button-profile"><img src="./images/profile.png" alt=""
-                            class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt=""
-                            class="caretdown"></button>
-                    <div class="staffProfile" id="staffProfile">
-                        <a href="#">Settings</a>
-                        <a href="logout">Signout</a>
-                    </div>
+                    
                     <div class="bottom-lnav">
-                        <b><a href="staffdashboard">Dashboard</a></b>
-                        <b><a href="userwindow">User Window</a></b>
-                        <b><a href="counterwindow">Counter Window</a></b>
-                        <b><a href="addstudent">Add Student</a></b>
-                        <b><a href="entertainment">Advertisement</a></b>
+                        <b><a href="staffpage"><img src="./images/dashboard.png" alt="Dashboard Icon">Dashboard</a></b>
+                        <b><a href="userwindow"><img src="./images/display.png" alt="UserWindow Icon">User Window</a></b>
+                        <b><a href="counterwindow"><img src="./images/counter.png" alt="CounterWindow Icon">Counter Window</a></b>
+                        <b><a href="addstudent"><img src="./images/studentlist.png" alt="StudentList Icon">Student List</a></b>
+                        <b><a href="entertainment"><img src="./images/entertainment.png" alt="Entertainment Icon">Entertainment</a></b>
                     </div>
                 </div>
 
             </div>
             <script>
+                document.addEventListener("DOMContentLoaded", function () {
+            var dropdownButton = document.querySelector(".button-profile");
+            var staffProfile = document.getElementById("staffProfile");
+
+            staffProfile.style.display = "none";
+
+            dropdownButton.addEventListener("click", function () {
+                if (staffProfile.style.display === "block") {
+                    staffProfile.style.display = "none";
+                } else {
+                    staffProfile.style.display = "block";
+                }
+            });
+        });
                 function updateTime() {
                     const now = new Date();
                     document.getElementById('date').textContent = now.toLocaleDateString();
