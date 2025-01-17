@@ -17,18 +17,11 @@
 			<link rel="stylesheet" type="text/css" href="./css/jquery-confirm.min.css" />
 			<script type="text/javascript" src="./scripts/jquery-confirm.min.js"></script>
 			<link rel="stylesheet" href="./css/loader.css">
-<<<<<<< HEAD
 			<link rel="stylesheet" href="../css/studentlist.css">
 			<title>Staff | List of Student</title>
 		</head>
 
 		<body>
-=======
-			<link rel="stylesheet" href="../css/add_student.css">
-			<title>Staff | List of Student</title>
-		</head>
-			
->>>>>>> IrishV4
 			<body>
 				<div class="container">
 					<div class="navbar">
