@@ -6,7 +6,6 @@
 
         <!DOCTYPE html>
         <html lang="en">
-
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,16 +19,31 @@
             <link rel="stylesheet" href="./css/notify.css">
             <link rel="stylesheet" href="../css/counter_window.css">
             <title>SmartQueue</title>
-
+           
         </head>
-
         <body>
             <div class="container">
-
                 <div class="rightnav">
-                    <div class="scontainer">
-                        <select id="counter-list" onchange="counterChangeListOnChange()">
-                            <option value="" selected>LOADING PLEASE WAIT...</option>
+                    <div class="dash"> <b></b>
+                        <div class="right-icons">
+            
+                            <div class="icon-container">
+                                <a href="#"></a>
+                                <img src="./images/message.png" class="picture">
+                                <span class="tooltip-text">Message</span>
+                            </div>
+                        </div>
+                        
+                        <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
+                <div class="staffProfile" id="staffProfile">
+                    <a href="#">Settings</a>
+                    <a href="login">Signout</a>
+                </div>
+                    </div>
+
+                    <div class="counter-container">
+                        <select id="counter-list" onchange="counterChangeListOnChange()" class="select">
+                            <option value="" selected>SELECT COUNTER LIST</option>
                         </select>
                         <section class="real-time">
                             <span id="date"></span> | <span id="time"></span>
@@ -119,24 +133,32 @@
                         <p class="title"><br><b>Cebu Eastern College</b></p>
                     </div>
                     <!-- staff profile -->
-                    <button class="button-profile"><img src="./images/profile.png" alt=""
-                            class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt=""
-                            class="caretdown"></button>
-                    <div class="staffProfile" id="staffProfile">
-                        <a href="#">Settings</a>
-                        <a href="logout">Signout</a>
-                    </div>
+                    
                     <div class="bottom-lnav">
-                        <b><a href="staffdashboard">Dashboard</a></b>
-                        <b><a href="userwindow">User Window</a></b>
-                        <b><a href="counterwindow">Counter Window</a></b>
-                        <b><a href="addstudent">Add Student</a></b>
-                        <b><a href="entertainment">Advertisement</a></b>
+                        <b><a href="staffpage"><img src="./images/dashboard.png" alt="Dashboard Icon">Dashboard</a></b>
+                        <b><a href="userwindow"><img src="./images/display.png" alt="UserWindow Icon">User Window</a></b>
+                        <b><a href="counterwindow"><img src="./images/counter.png" alt="CounterWindow Icon">Counter Window</a></b>
+                        <b><a href="addstudent"><img src="./images/studentlist.png" alt="StudentList Icon">Student List</a></b>
+                        <b><a href="entertainment"><img src="./images/entertainment.png" alt="Entertainment Icon">Entertainment</a></b>
                     </div>
                 </div>
 
             </div>
             <script>
+                document.addEventListener("DOMContentLoaded", function () {
+            var dropdownButton = document.querySelector(".button-profile");
+            var staffProfile = document.getElementById("staffProfile");
+
+            staffProfile.style.display = "none";
+
+            dropdownButton.addEventListener("click", function () {
+                if (staffProfile.style.display === "block") {
+                    staffProfile.style.display = "none";
+                } else {
+                    staffProfile.style.display = "block";
+                }
+            });
+        });
                 function updateTime() {
                     const now = new Date();
                     document.getElementById('date').textContent = now.toLocaleDateString();

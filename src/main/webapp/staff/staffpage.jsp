@@ -14,17 +14,40 @@
     <script type="text/javascript" src="./scripts/fadetransition.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="./css/loader.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="../css/staffpage.css">
     <title>Staff Page</title>
     
+=======
+    <link rel="stylesheet" href="./css/staffpage.css">
+    <link rel="stylesheet" href="..//css/staffpage.css">
+    <title>Staff Page</title>
+   
+>>>>>>> IrishV4
 </head>
 
 <body>
     <div class="container">
         <div class="cover">
             <div class="rightnav">
-                <div class="tp-rnav">
-                    <div class="dash"><b>DASHBOARD</b></div>
+                <div class="card-section">
+                    <div class="dash"> <b>Dashboard</b>
+                        <div class="right-icons">
+
+                            <div class="icon-container">
+                                <a href="#"></a>
+                                <img src="./images/message.png" class="picture"/>
+                                <span class="tooltip-text">Message</span>
+                            </div>
+                        </div>
+                        
+                        <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
+                <div class="staffProfile" id="staffProfile">
+                    <a href="#">Settings</a>
+                    <a href="login">Signout</a>
+                </div>
+
+                    </div>
 
                     <div class="card-container">
                         <div class="card">
@@ -42,10 +65,10 @@
                     </div>
                 </div>
 
-                <div class="b-container">
+                <div class="graphcalendar-container">
                     <div class="calendar"></div>
                     <div class="graph">
-                        <canvas id="queueTrendChart"></canvas> <!-- Line graph added -->
+                        <canvas id="queueTrendChart"></canvas> 
                     </div>
                 </div>
             </div>
@@ -53,23 +76,20 @@
             <div class="leftnav">
                 <div class="top-lnav">
                     <img src="./images/logo.png" class="cec">
-                    <b class="title"><br>Cebu Eastern College</b>
+                    <p class="title"><br><b>Cebu Eastern College</b></p>
                 </div>
-                <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
-                <div class="staffProfile" id="staffProfile">
-                    <a href="#">Settings</a>
-                    <a href="logout">Signout</a>
-                </div>
+                
                 <div class="bottom-lnav">
-                    <b><a href="staffdashboard">Dashboard</a></b>
-                    <b><a href="userwindow">User Window</a></b>
-                    <b><a href="counterwindow">Counter Window</a></b>
-                    <b><a href="addstudent">Add Student</a></b>
-                    <b><a href="entertainment">Advertisement</a></b>
+                    <b><a href="staffpage"><img src="./images/dashboard.png" alt="Dashboard Icon">Dashboard</a></b>
+                    <b><a href="userwindow"><img src="./images/display.png" alt="UserWindow Icon">User Window</a></b>
+                    <b><a href="counterwindow"><img src="./images/counter.png" alt="CounterWindow Icon">Counter Window</a></b>
+                    <b><a href="addstudent"><img src="./images/studentlist.png" alt="StudentList Icon">Student List</a></b>
+                    <b><a href="entertainment"><img src="./images/entertainment.png" alt="Entertainment Icon">Entertainment</a></b>
                 </div>
             </div>
         </div>
     </div>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -119,7 +139,7 @@
                     }
                 }
             });
-
+            
             // Calendar cd
             const calendarElement = document.querySelector('.calendar');
             let currentDate = new Date();
