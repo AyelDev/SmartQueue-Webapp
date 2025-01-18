@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
 
+import com.smartqueueweb.Class.ServiceType;
 import com.smartqueueweb.Model.AdminBean;
 import com.smartqueueweb.Model.ServicesBean;
 
@@ -79,6 +80,27 @@ public class AdminDAO extends SQLConnection {
 			SQLClose();
 		}
 		return serviceBeanList;
+	}
+
+	public Integer addService(String program, String purpose, int amount, ServiceType serviceType) {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("INSERT INTO tbl_service (program, purpose, amount, servicetype) VALUES (?, ?, ?, ?);");
+			prs.setString(1, program);
+			prs.setString(2, purpose);
+			prs.setInt(3, amount);
+			prs.setString(4, serviceType.toString());
+
+			return prs.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		
+		return 0;
 	}
 
 }

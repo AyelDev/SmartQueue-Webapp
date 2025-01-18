@@ -1,5 +1,6 @@
 package com.smartqueueweb.Service;
 
+import com.smartqueueweb.Class.ServiceType;
 import com.smartqueueweb.Model.AdminBean;
 import com.smartqueueweb.Model.ServicesBean;
 
@@ -13,7 +14,7 @@ public interface AdminServices {
 	
 	List<ServicesBean> serviceList();
 	
-	//Integer addService
+	Integer addService(String program, String purpose, int amount, ServiceType serviceType);
 	
 	
 

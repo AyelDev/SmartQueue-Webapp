@@ -11,6 +11,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.smartqueueweb.Class.ServiceType;
 import com.smartqueueweb.DAO.AdminDAO;
 import com.smartqueueweb.DAO.StaffDAO;
 import com.smartqueueweb.DAO.StudentDAO;
@@ -125,6 +126,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	public List<ServicesBean> serviceList() {
 		// TODO Auto-generated method stub
 		return admindata.serviceList();
+	}
+	
+	@Override
+	public Integer addService(String program, String purpose, int amount, ServiceType serviceType) {
+		// TODO Auto-generated method stub
+		return admindata.addService(program, purpose, amount, serviceType);
 	}
 
 	//////////////////////////////////////////////////////////////////////// -----------------------

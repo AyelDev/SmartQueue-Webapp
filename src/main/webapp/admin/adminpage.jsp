@@ -10,17 +10,20 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<script src="https://cdn.lordicon.com/lordicon.js"></script>
-			<script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
-			<script type="text/javascript" src="./scripts/jquery-confirm.min.js"></script>
-			<script type="text/javascript" src="./scripts/notify.js"></script>
-      		<script type="text/javascript" src="./scripts/prettify.js"></script>
-			<script type="text/javascript" src="./scripts/ping.js"></script>
-			<script type="text/javascript" src="./scripts/fadetransition.js"></script>
-			<link rel="stylesheet" href="./css/jquery-confirm.min.css">
-			<link rel="stylesheet" href="./css/loader.css">
+			<script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+			<script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
+			<script type="text/javascript" src="../scripts/notify.js"></script>
+			<script type="text/javascript" src="../scripts/prettify.js"></script>
+			<script type="text/javascript" src="../scripts/ping.js"></script>
+			<script type="text/javascript" src="../scripts/fadetransition.js"></script>
+			<link rel="stylesheet" href="../css/prettify.css">
+            <link rel="stylesheet" href="../css/notify.css"> 	
+			<link rel="stylesheet" href="../css/jquery-confirm.min.css">
+			<link rel="stylesheet" href="../css/loader.css">
 			<link rel="stylesheet" href="../css/adminpage.css">
 			<title>Admin | Dashboard</title>
 		</head>
+
 		<body>
 			<div class="container">
 				<div class="navbar">
@@ -42,7 +45,7 @@
 											d="M13.55 15.256H1.45a.554.554 0 0 1-.553-.554V3.168a.554.554 0 1 1 1.108 0v10.98h11.544a.554.554 0 0 1 0 1.108zM3.121 13.02V6.888a.476.476 0 0 1 .475-.475h.786a.476.476 0 0 1 .475.475v6.132zm2.785 0V3.507a.476.476 0 0 1 .475-.475h.786a.476.476 0 0 1 .475.475v9.513zm2.785 0V6.888a.476.476 0 0 1 .475-.475h.786a.476.476 0 0 1 .475.475v6.132zm2.786 0v-2.753a.476.476 0 0 1 .475-.475h.785a.476.476 0 0 1 .475.475v2.753z">
 										</path>
 									</g>
-								</svg><a href="dashboard">Dashboard</a>
+								</svg><a href="/">Dashboard</a>
 							</button>
 
 						</div>
@@ -208,7 +211,8 @@
 					</div>
 
 					<!-- dashboard section -->
-					<h1 class="dashboard-title">Dashboard</h1> <hr>
+					<h1 class="dashboard-title">Dashboard</h1>
+					<hr>
 					<div class="dashboard-content">
 						<div class="card-total"><br>
 							<p>Total students</p>
@@ -216,11 +220,11 @@
 						</div>
 						<div class="card-total"><br>
 							<p>Total staff</p>
-							<h3  id="total-staff" class="total-count">---</h3>
+							<h3 id="total-staff" class="total-count">---</h3>
 						</div>
 						<div class="card-total"><br>
 							<p>Total transaction</p>
-							<h3  id="total-transaction"  class="total-count">---</h3>
+							<h3 id="total-transaction" class="total-count">---</h3>
 						</div>
 						<div class="department-graph">
 							<canvas id="myPie"></canvas>
@@ -234,7 +238,8 @@
 							<div class="table-content">
 								<div class="table-header">
 									<h3 class="table-title">General - Program</h3>
-									<button class="add-btn-table" onclick="showModal ('Add Program for General', 'Course')">+Add
+									<button class="add-btn-table"
+										onclick="AddInfo('Add Program for General', 'Program', 'GeneralProgramForm', 'general')">+Add
 										Info</button>
 								</div>
 								<table>
@@ -249,8 +254,7 @@
 										<tr>
 											<td></td>
 											<td></td>
-											<td><button class="update-btn"
-													onclick="showModal('Update Info', 'Course')">Update</button>
+											<td><button class="update-btn" onclick="">Update</button>
 												<button class="delete-btn">Delete</button>
 											</td>
 										</tr>
@@ -270,7 +274,8 @@
 							<div class="table-content">
 								<div class="table-header">
 									<h3 class="table-title">General - Purpose</h3>
-									<button class="add-btn-table" onclick="showModal ('Add Purpose for General', 'Purpose')">+Add
+									<button class="add-btn-table"
+										onclick="AddInfo('Add Purpose for General', 'Purpose', 'GeneralPurposeForm', 'general')">+Add
 										Info</button>
 								</div>
 								<table>
@@ -304,7 +309,8 @@
 							<div class="table-content">
 								<div class="table-header">
 									<h3 class="table-title">Records - Purpose</h3>
-									<button class="add-btn-table" onclick="showModal ('Add Document for Records', 'Document')">+Add
+									<button class="add-btn-table"
+										onclick="AddInfo('Add Document for Records', 'Document', 'RecordsPurposeForm', 'records')">+Add
 										Info</button>
 								</div>
 								<table>
@@ -341,7 +347,8 @@
 							<div class="table-content">
 								<div class="table-header">
 									<h3 class="table-title">Archiving - Purpose</h3>
-									<button class="add-btn-table" onclick="showModal ('Add Purpose for Archiving', 'Purpose')">+Add
+									<button class="add-btn-table"
+										onclick="AddInfo('Add Purpose for Archiving', 'Purpose', 'ArchivingPurposeForm', 'archiving')">+Add
 										Info</button>
 								</div>
 								<table>
@@ -384,10 +391,10 @@
 						<label for="name">Program</label>
 						<input type="text" id="program" name="program" placeholder="Enter program"> -->
 
-						<!-- <label for="email">Purpose</label>
+			<!-- <label for="email">Purpose</label>
 						<input type="email" id="purpose" name="purpose" placeholder="Enter purpose"> -->
 
-						<!-- <button type="button" class="cancel-btn" onclick="hideModal()">Cancel</button>
+			<!-- <button type="button" class="cancel-btn" onclick="hideModal()">Cancel</button>
 						<button type="submit" class="submit-btn">Add</button>
 					</form>
 				</div>
@@ -465,15 +472,15 @@
 
 						//count 0 to n animation
 						$('.total-count').each(function () {
-   				 		$(this).prop('Counter',0).animate({
-        				Counter: $(this).text()
-    					}, {
-        				duration: 2000,
-        				easing: 'swing',
-        				step: function (now) {
-            			$(this).text(Math.ceil(now));
-        				}
-    					});
+							$(this).prop('Counter', 0).animate({
+								Counter: $(this).text()
+							}, {
+								duration: 2000,
+								easing: 'swing',
+								step: function (now) {
+									$(this).text(Math.ceil(now));
+								}
+							});
 						});
 
 						console.log(studentNum, staffNum, inquiryNum); // Use as needed
@@ -624,14 +631,14 @@
 				});
 
 				// Show Modal
-				function showModal(title, context) {
+				function AddInfo(title, context, formId, serviceType) {
 
-					let recordContent =  ``;
+					let recordContent = ``;
 
-					if(title == 'Add Document for Records'){
+					if (title == 'Add Document for Records') {
 						recordContent = `
-						<label for="name">Ammount</label>
- 						<input type="text" id="amount" name="amount" placeholder="Enter amount">
+						<label for="Amount">Amount</label>
+ 						<input type="number" id="amount" name="Amount" placeholder="Enter amount">
 					`;
 					}
 
@@ -640,44 +647,106 @@
 						boxWidth: '30%',
 						useBootstrap: false,
 						title: title,
-						content: 
+						content:
 						`
-						<form>
-						<label for="name">`+context+`</label>
- 						<input type="text" id="program" name="program" placeholder="Enter program">
-						`+recordContent+`
+						<form id="`+formId+`">
+						<label for="servicetype">Service Type</label>
+						<input type="text" id="servicetype" name="servicetype" value="`+serviceType+`" disabled>
+						<label for="`+context+`">`+context+`</label>
+ 						<input type="text" id="program" name="`+context+`" placeholder="Enter program"><br>
+						`+ recordContent + `
 						</form>
 						`,
 						buttons: {
-							sayMyName: {
+							formField: {
 								text: 'Add',
 								btnClass: 'btn-green',
-								action: function(){
+								action: async function () {
+									let form = $('#' + formId);
+
+									if(title == 'Add Document for Records' && $('#program').val().trim() === '' && $('#amount').val().trim() === ''){
+										await $.notify("Please fill out the required field/fields", { color: "#fff", background: "#D44950", delay: 1000 })
+										return false;
+									}
+									var url = 'AddServices_Servlet';
+									
+									//set disable to true before sending request
+									$('#servicetype').prop('disabled', false);
+
+									 	await $.ajax({
+										url: url,
+										method: 'POST',
+										data: form.serialize(),
+										beforeSend: function(){
+											$.notify('processing request', { color: "#fff", background: "#20D67B", delay: 1000})
+										},
+										success: function(response){
+											$.notify(response, { color: "#fff", background: "#20D67B", delay: 1000 })
+										},
+										 error: function(xhr, status, error){
+											$.notify("an error occured " + error,{ color: "#fff", background: "#D44950", delay: 1000 })
+										}
+									});
+
+									// form.on("submit", function (event) {
+									// 	event.preventDefault();
+
+									// 	var url = 'AddServices_Servlet';
+
+									// 	let params = $(this).serialize();
+
+										// $.ajax({
+										// 	url: url,
+										// 	type: 'POST',
+										// 	data: params,
+										// 	success: function (response) {
+										// 		$.confirm({
+										// 			boxWidth: '30%',
+										// 			useBootstrap: false,
+										// 			title: 'Successful',
+										// 			content: response,
+										// 			type: 'green',
+										// 			typeAnimated: true,
+										// 		})
+										// 	},
+										// 	error: function (xhr) {
+										// 		$.confirm({
+										// 			boxWidth: '30%',
+										// 			useBootstrap: false,
+										// 			title: 'Encountered an error!',
+										// 			content: xhr.responseText,
+										// 			type: 'red',
+										// 			typeAnimated: true,
+										// 		})
+										// 	}
+										// });
+
+									// });
 
 								}
 							},
-							Close: function(){
+							Close: function () {
 								//do nothing.
 							}
 						}
 					});
 
-// <!-- Modal for Add/Update Info -->
-// 			<!-- <div class="modal" id="modal">
-// 				<div class="modal-content">
-// 					<h3 id="modal-title"></h3>
-// 					<form>
-// 						<label for="name">Program</label>
-// 						<input type="text" id="program" name="program" placeholder="Enter program"> -->
+					// <!-- Modal for Add/Update Info -->
+					// 			<!-- <div class="modal" id="modal">
+					// 				<div class="modal-content">
+					// 					<h3 id="modal-title"></h3>
+					// 					<form>
+					// 						<label for="name">Program</label>
+					// 						<input type="text" id="program" name="program" placeholder="Enter program"> -->
 
-// 						<!-- <label for="email">Purpose</label>
-// 						<input type="email" id="purpose" name="purpose" placeholder="Enter purpose"> -->
+					// 						<!-- <label for="email">Purpose</label>
+					// 						<input type="email" id="purpose" name="purpose" placeholder="Enter purpose"> -->
 
-// 						<!-- <button type="button" class="cancel-btn" onclick="hideModal()">Cancel</button>
-// 						<button type="submit" class="submit-btn">Add</button>
-// 					</form>
-// 				</div>
-// 			</div> -->
+					// 						<!-- <button type="button" class="cancel-btn" onclick="hideModal()">Cancel</button>
+					// 						<button type="submit" class="submit-btn">Add</button>
+					// 					</form>
+					// 				</div>
+					// 			</div> -->
 
 					//document.getElementById('modal-title').textContent = title;
 					// document.getElementById('modal').style.display = 'flex';
@@ -721,49 +790,52 @@
 							// Populate table with new data
 							data.forEach(item => {
 
-								if(item.course !== undefined && item.serviceType == 'GENERAL'){
-								tableGeneralProgramBody.append(`
+								if (item.course !== undefined && item.serviceType == 'GENERAL') {
+									tableGeneralProgramBody.append(`
 									<tr>
-											<td>`+(generalitemId++)+ `</td>
-											<td>`+item.course+ `</td>
+											<td>`+ (generalitemId++) + `</td>
+											<td>`+ item.course + `</td>
 											<td><button class="update-btn"
-													onclick="showModal('Update Info')">Update</button>
+													onclick="">Update</button>
 												<button class="delete-btn">Delete</button>
 											</td>
 										</tr>
                					`);
 								}
-								else if(item.purpose !== undefined && item.serviceType == 'GENERAL'){
-								tableGeneralPurposeBody.append(`
+								else if (item.purpose !== undefined && item.serviceType == 'GENERAL') {
+									tableGeneralPurposeBody.append(`
 										<tr>
-											<td>`+(generalitempurposeId++)+`</td>
-											<td>`+item.purpose+`</td>
+											<td>`+ (generalitempurposeId++) + `</td>
+											<td>`+ item.purpose + `</td>
 											<td><button class="update-btn">Update</button>
 												<button class="delete-btn">Delete</button>
 											</td>
 										</tr>
-								`);}
-								
-								if(item.purpose !== undefined && item.serviceType == 'RECORDS'){
-								tableRecordsPurposeBody.append(`
+								`);
+								}
+
+								if (item.purpose !== undefined && item.serviceType == 'RECORDS') {
+									tableRecordsPurposeBody.append(`
 									<tr>
-										<td>`+(recordsitemId++)+`</td>
-											<td>`+item.purpose+`</td>
+										<td>`+ (recordsitemId++) + `</td>
+											<td>`+ item.purpose + `</td>
 											<td><button class="update-btn">Update</button>
 												<button class="delete-btn">Delete</button>
 											</td>
 										</tr>
-								`);}
-								else if(item.program === undefined && item.serviceType == 'ARCHIVING'){
-								tableArchivePurposeBody.append(`
+								`);
+								}
+								else if (item.program === undefined && item.serviceType == 'ARCHIVING') {
+									tableArchivePurposeBody.append(`
 									<tr>
-											<td>`+(archivingItemId++)+`</td>
-											<td>`+item.purpose+`</td>
+											<td>`+ (archivingItemId++) + `</td>
+											<td>`+ item.purpose + `</td>
 											<td><button class="update-btn">Update</button>
 												<button class="delete-btn">Delete</button>
 											</td>
 										</tr>
-								`);}
+								`);
+								}
 
 							});
 						},
@@ -774,9 +846,9 @@
 				}
 				updateRecordsGeneralArchivingDatas();
 
-				
 
-				
+
+
 			</script>
 
 
