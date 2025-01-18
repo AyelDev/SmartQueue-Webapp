@@ -11,7 +11,7 @@
 .container {
     width: 100%;
     height: 100vh;
-    background-color: white;
+    background-color: #F5F5F5;
     overflow: hidden;
 }
 
@@ -28,29 +28,41 @@
     float: right;
 }
 
-.tp-rnav {
+.card-section {
     width: 100%;
-    height: 40%;
+    height: 30%;
     background-color: transparent;
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
+    overflow: hidden;
 }
 
 .dash {
-    width: 20%;
-    height: 15%;
-    background-color: transparent;
-    text-align: center;
+    width: 100%;
+    height: 20%;
+    background-color: #1e91d0;
+    text-align: start;
     font-size: 1.5625rem;
     display: inline-block;
     position: relative;
-    color: black;
+    color: white;
     margin-bottom: 1.25rem;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0 1rem;
+}
+.dash b{
+    margin-left: -5px;
+    flex-grow: 1;
+    font-weight: normal;
 }
 
 .card-container {
     width: 100%;
-    height: 73%;
+    height: 75%;
     background-color: transparent;
     display: flex;
     justify-content: space-evenly;
@@ -58,49 +70,59 @@
 }
 
 .card {
-    width: 20%;
-    height: 95%;
-    background-color: #ADDFFF;
+    width: 25%;
+    height: 65%;
+    background-color: #EEEEEE;
     box-sizing: border-box;
-    margin-top: 0.3125rem;
-    border: 0.125rem solid blue;
-    border-radius: 1.875rem;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    text-align: center;
 }
 
 .card:hover {
-    background-color: #00BFFF;
+    background-color: #E5E4E2;
 }
 
-.b-container {
-    width: 80%;
+.card h3,
+.card p {
+    line-height: 40px;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.card p {
+    text-align: start;
+    margin-left: 30px;
+    text-decoration: none;
+}
+
+.graphcalendar-container {
+    width: 90%;
     height: 50%;
-    background-color: #ADDFFF;
+    background-color: #EEEEEE;
     justify-content: center;
     align-items: center;
-    display: flex;
-    margin-top: 1.875rem;
-    margin-left: 7.5rem;
-    border-radius: 1.875rem;
-    border: 0.125rem solid blue;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    display: inline-block;
+    margin-left: 60px;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
-
-.b-container:hover {
-    background-color: #00BFFF;
-}
-
 .leftnav {
     width: 15%;
     height: 100%;
-    background-color: #5CB3FF;
-    color: white;
+    background-color: #1e91d0;
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .top-lnav {
     width: 100%;
     height: 20%;
-    background-color: #5CB3FF;
+    background-color: transparent;
     text-align: center;
     display: block;
     position: relative;
@@ -110,7 +132,7 @@
 }
 
 .cec {
-    width: 100%;
+    width: 50%;
     max-width: 100%;
     object-fit: contain;
     margin-top: 15px;
@@ -120,6 +142,7 @@
 .title {
     color: #F6F4EB;
     font-size: 1.15em;
+    line-height: 3px;
 }
 
 .bottom-lnav {
@@ -127,7 +150,7 @@
     height: 80%;
     background-color: transparent;
     text-align: center;
-    padding-top: 2rem; 
+    padding-top: 4px;
 }
 
 .bottom-lnav a {
@@ -137,20 +160,37 @@
     text-decoration: none;
     font-size: 1.2rem;
     transition: color 0.3s ease;
-    /* line-height: 60px; */
-    margin-top: 60px;
-    text-align: center;
+    margin-top: 40px;
+    margin-left: 10%;
+    text-align: start;
     justify-content: center;
     align-items: center;
+    font-weight: normal;
 }
 
 .bottom-lnav a:hover {
-    padding: 5px 10px;
+    padding: 15px 20px 15px 20px;
+    width: 12.8vw;
     background-color: white;
     position: relative;
-    left: 20px;
-    color: black; 
-    border-radius: 30px;
+    margin-left: 2px;
+    color: black;
+    border-radius: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-right: 8px solid #37AFE1;
+    transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+.bottom-lnav img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    margin-right: 10px;
+    filter: invert(1);
+}
+.bottom-lnav a:hover img {
+    filter: brightness(0) saturate(100%) hue-rotate(200deg); /*blue color*/
+    transform: scale(1.2);
 }
 
 .button-profile {
@@ -158,11 +198,17 @@
     justify-content: center;
     display: flex;
     width: 10vw;
-    text-align: center;
-    margin-top: auto;
-    margin-left: 1.875rem;
-    border-radius: 0.625rem;
-    padding: 0.9375rem 0.625rem;
+    margin-top: 1px;
+    margin-left: 36px;
+    border-radius: 10px;
+    padding: 5px 3px 5px 3px;
+            /*tlbr*/
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    float: right;
+    margin-right: 5%;
+    background-color: white;
 }
 
 .profile {
@@ -176,37 +222,323 @@
     width: 0.625rem;
     margin-left: 1.25rem;
 }
+.staffProfile {
+    /* margin-left: 2.3rem; */
+    position: absolute;
+    background-color: none;
+    width: 9.5vw;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 1;
+    display: none;
+    /* float: right;
+    margin-right: 5%; */
+    top: 100%;
+    right: 5.8%;
+}
 
+.staffProfile a {
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    overflow: hidden;
+    width: 10vw;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: .5rem 0 0 0;
+    height: 1.5rem;
+    float: right;
+    margin-right: 3%;
+    font-size: 1rem;
+}
+
+.staffProfile a:hover {
+    background-color: #EEEEEE;
+    border-radius: 7px;
+    color: black;
+}
+
+.graph {
+    width: 50%;
+    height: 45vh;
+    background-color: #F5F5F5;
+    margin-top: 15px;
+    margin-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 3px;
+}
+
+.calendar {
+    width: 43%;
+    height: 40vh;
+    background-color: #F5F5F5;
+    float: right;
+   margin-right: 10px;
+   margin-top: 15px;
+   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 5px;
+    text-align: center;
+}
+
+.day, .date {
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.date:hover {
+    background-color: lightgrey;
+}
+
+.current-day {
+    background-color: #5CB3FF;
+    color: white;
+}
+
+.dash img.picture{
+    width: 30px; 
+    height: 30px;
+    object-fit: contain;
+    filter: invert(1);
+}
+.right-icons {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-right: -15px;
+    margin-top: 14px;
+}
+.icon-container {
+    position: relative;
+    display: inline-block;
+}
+
+.icon-container .tooltip-text {
+    visibility: hidden;
+    width: 5vw;
+    height: 3vh;
+    background-color: #EEEEEE;
+    color: black;
+    text-align: center;
+    line-height: 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    padding: 5px 3px 5px 3px;
+    position: absolute;
+    z-index: 1;
+    top: 87%; 
+    left: 50%;
+    margin-left: -30px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.icon-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
 @media (max-width: 1200px) {
-    :root {
-        font-size: 15px;
+    .card {
+        width: 30%;
+    }
+
+    .graph, .calendar {
+        width: 45%;
+    }
+
+    .leftnav {
+        width: 20%;
+    }
+   .bottom-lnav a:hover {
+    padding: 15px 20px 15px 20px;
+    width: 13vw;
+    background-color: white;
+    position: relative;
+    margin-left: 2px;
+    color: black;
+    border-radius: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-right: 8px solid #37AFE1;
+    transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+}
+
+ @media (max-width: 1025px) {
+    .card {
+        width: 30%;
+    }
+
+    .graph, .calendar {
+        width: 45%;
+    }
+
+    .leftnav {
+        width: 20%;
+    }
+}
+
+ @media (max-width: 1024px) {
+    .card {
+        width: 30%;
+    }
+
+    .graph, .calendar {
+        width: 45%;
+    }
+
+    .leftnav {
+        width: 20%;
+    }
+}
+
+@media (max-width: 481px) {
+    .card {
+        width: 40%;
+        margin: 10px 0;
+    }
+
+    .graph, .calendar {
+        width: 40%;
+    }
+
+    .leftnav {
+        width: 25%;
+    }
+
+    .bottom-lnav a {
+        font-size: 1rem;
+    }
+
+    .button-profile {
+        width: 50%;
+        margin-top: 10px;
+    }
+    .bottom-lnav a, .title {
+        font-size: .5rem;
     }
 }
 
 @media (max-width: 768px) {
-    :root {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    :root {
-        font-size: 13px;
-    }
-
-    .button-profile {
-        width: 50vw;
-    }
-
     .card {
-        width: 90%;
+        width: 48%;
+        margin: 10px 0;
     }
 
-    .dash {
-        font-size: 1.2rem;
+    .graph, .calendar {
+        width: 48%;
+    }
+
+    .leftnav {
+        width: 30%;
     }
 
     .bottom-lnav a {
-        font-size: 1rem; 
+        font-size: 1rem;
     }
+
+    .button-profile {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .bottom-lnav a, .title {
+        font-size: .5rem;
+    }
+}
+
+/* For small devices (max-width: 320px) */
+@media (max-width: 320px) {
+    .card {
+        width: 10%;
+        margin: 10px 0;
+    }
+    .graphcalendar-container{
+    	width: 30%;
+        height: auto;
+    }
+
+    .graph {
+        width: 20%;
+        margin: auto;
+    }
+   .calendar {
+        width: 20%;
+        margin: auto;
+    } 
+
+    .leftnav {
+        width: 20%;
+        height: auto;
+        padding: 15px;
+    }
+
+    .button-profile {
+        width: 20%;
+        margin: 0 auto;
+    }
+
+    .dash {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .bottom-lnav a, .title {
+        font-size: .5rem;
+    }
+}
+	@media (max-width: 480px) {
+    .card {
+        width: 10%;
+        margin: 10px 0;
+    }
+    .graphcalendar-container{
+    	width: 30%;
+        height: auto;
+    }
+
+    .graph {
+        width: 20%;
+        margin: auto;
+    }
+   .calendar {
+        width: 20%;
+        margin: auto;
+    } 
+
+    .leftnav {
+        width: 20%;
+        height: auto;
+        padding: 15px;
+    }
+
+    .button-profile {
+        width: 20%;
+        margin: 0 auto;
+    }
+
+    .dash {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .bottom-lnav a, .title {
+        font-size: .5rem;
+    }
+
 }

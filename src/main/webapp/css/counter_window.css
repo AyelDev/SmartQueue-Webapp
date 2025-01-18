@@ -19,113 +19,88 @@ body{
     top: 0;
     left: 0;
 }
-.leftnav{
+.leftnav {
     width: 15%;
     height: 100%;
-    background-color: #5CB3FF;
-    color: white;
+    background-color: #1e91d0;
+    padding: 10px;
+    position: fixed;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
-.top-lnav{
+.top-lnav {
     width: 100%;
-    height: 25%;
-    background-color: #5CB3FF;
+    height: 20%;
+    background-color: transparent;
     text-align: center;
     display: block;
     position: relative;
     line-height: 10px;
     font-size: 0.875rem;
     color: white;
-}
-.cec{
+    }
+        
+.cec {
     width: 50%;
     max-width: 100%;
     object-fit: contain;
     margin-top: 15px;
-    margin-left: 2px;
     margin-bottom: 5px;
 }
+        
 .title {
     color: #F6F4EB;
-    font-size: 1em;
-    
+    font-size: 1.15em;
+    line-height: 3px;
 }
-.bottom-lnav{
+        
+.bottom-lnav {
     width: 100%;
     height: 80%;
     background-color: transparent;
     text-align: center;
+    padding-top: 4px;
+ }
+        
+.bottom-lnav a {
+    display: block;
+    margin: 1rem 0;
     color: white;
-}
-.dropdown {
-    position: relative;
-    display: inline-block;
-    margin-top: 4.375rem;
-    width: 100%; 
-}
-.dropdown h3 {
-    cursor: pointer;
-    margin: 1.25rem 0; 
-    color: white;
-    transition: transform 0.3s ease;
-}
-.dropdown h3:hover{
-    background-color: white;
-    height: 1.875rem;
-    width: 100%;
-    border-radius: 3.125rem;
-    transform: translateX(1.25rem);
-    color: black;
-}
-.staffProfile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.staffProfile a {
     text-decoration: none;
-    color: white;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+    margin-top: 40px;
+    margin-left: 10%;
+    text-align: start;
     justify-content: center;
-    padding: 0.5rem; 
-    box-sizing: border-box;
+    align-items: center;
+    font-weight: normal;
+}
+        
+.bottom-lnav a:hover {
+    padding: 15px 20px 15px 20px;
+    width: 12.8vw;
+    background-color: white;
+    position: relative;
+    margin-left: 2px;
+    color: black;
+    border-radius: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-right: 8px solid #37AFE1;
+    transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+.bottom-lnav img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    margin-right: 10px;
+    filter: invert(1);
+}
+.bottom-lnav a:hover img {
+    filter: brightness(0) saturate(100%) hue-rotate(200deg); /*blue color*/
+    transform: scale(1.2);
 }
 
-.staffProfile a:hover {
-    background-color: #F6F4EB;
-    width: 65%; 
-    border-radius: 0.625rem; 
-    border: 0.0625rem solid black;
-    margin-left: 1.875rem;
-    margin-top: 0.125rem;
-    color: black;
-}
-.button-profile {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    width: 10vw;
-    text-align: center;
-    margin-top: 1.875rem;
-    margin-left: 1.875rem;
-    border-radius: 0.625rem;
-    padding: 0.9375rem 0.625rem 0.9375rem 0.625rem; /* tlbr */
-    overflow: hidden;
-}
-.profile{
-    width: 10%;
-    object-fit: scale-down;
-    margin-right: 1.25rem;
-}
-.caretdown{
-    mix-blend-mode: multiply;
-    width: 0.625rem;
-    margin-left: 1.25rem;
-}
 .dropdown-content {
     display: none; 
     position: absolute;
@@ -172,7 +147,7 @@ body{
     background-color: #f4f4f4;
     float: right;
 }
-.scontainer {
+.counter-container {
 width: 70%;
 margin: 0 auto;
 padding: 1.25rem;
@@ -197,6 +172,19 @@ margin-left: 35%;
 .tables {
 margin-bottom: 1.25rem;
 margin-top: 1.875rem;
+scroll-behavior: smooth;
+}
+.tables::-webkit-scrollbar {
+    width: .8rem;
+}
+
+.tables::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.tables::-webkit-scrollbar-thumb {
+    background-color: #00509d;
+    border-radius: 5rem;
 }
 .table-container {
 margin-bottom: 1.25rem;
@@ -207,11 +195,14 @@ margin-bottom: 0.625rem;
 text-align: center;
 line-height: 0.625rem;
 }
+
 .data-table {
 width: 100%;
 border-collapse: collapse;
 margin-top: 1.875rem;
+
 }
+
 .data-table th, .data-table td {
 padding: 0.625rem;
 text-align: center;
@@ -298,38 +289,245 @@ background-color: #e0a800;
 .actions .btn.cancel:hover {
 background-color: #c82333;
 }
-@media (max-width: 1200px) {
-    .leftnav {
-        width: 20%;
-    }
-    .rightnav {
-        width: 80%;
-    }
+
+.dropbtn {
+    background-color: transparent;
+    color: black;
+    padding: 10px 20px; 
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 20px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
 }
-@media (max-width: 992px) {
-    .leftnav {
-        width: 25%;
-    }
-    .rightnav {
-        width: 75%;
-    }
-    .scontainer {
-        width: 90%;
-    }
+
+.dropdown1 {
+    position: relative;
+    display: inline-block;
+    margin: 1rem 0;
+    margin-left: 650px;
 }
-@media (max-width: 768px) {
-    .leftnav {
-        width: 30%;
-    }
-    .rightnav {
-        width: 70%;
-    }
-    .scontainer {
-        width: 95%; 
-    }
+
+.dropdown-content1 {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 165px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transition: visibility 0s, opacity 0.5s linear; 
+    opacity: 0;
+    visibility: hidden; 
 }
-@media (max-width: 480px) {
-    .leftnav {
-        width: 20%;
-    }
+
+.dropdown-content1 a {
+    color: black;
+    padding: 12px 16px; 
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s; 
 }
+
+.dropdown-content1 a:hover {
+    background-color: #ddd; 
+}
+
+.dropdown1:hover .dropdown-content1 {
+    display: block; 
+    opacity: 1; 
+    visibility: visible; 
+}
+
+.dropdown1:hover .dropbtn {
+    background-color: #E5E4E2; 
+}
+        .dash {
+            width: 97.8%;
+            height: 6%;
+            background-color: #1e91d0;
+            text-align: start;
+            font-size: 1.5625rem;
+            display: inline-block;
+            position: relative;
+            color: white;
+            /* margin-bottom: 1.25rem; */
+            margin-left: -.5rem;
+            line-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 0 1rem;
+
+        }
+        .dash b{
+            margin-left: 2%;
+            flex-grow: 1;
+            font-weight: normal;
+            
+        }
+		.button-profile {
+            align-items: center;
+			justify-content: center;
+			display: flex;
+			width: 10vw;
+		    margin-top: 1px;
+			margin-left: 36px;
+            margin-right: 10px;
+			border-radius: 10px;
+			padding: 5px 3px 5px 3px;
+					/*tlbr*/
+			overflow: hidden;
+			cursor: pointer;
+			border: none;
+            float: right;
+            margin-right: 1.5%;
+            background-color: white;
+        }
+
+        .profile {
+            width: 10%;
+            object-fit: scale-down;
+            margin-right: 1.25rem;
+        }
+
+        .caretdown {
+            mix-blend-mode: multiply;
+            width: 0.625rem;
+            margin-left: 1.25rem;
+        }
+        .staffProfile {
+			/* margin-left: 2.3rem; */
+			position: absolute;
+			background-color: none;
+			width: 9.5vw;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			z-index: 1;
+			display: none;
+            /* float: right;
+            margin-right: 5%; */
+            top: 100%;
+            right: 2.2%;
+		}
+
+        .staffProfile a {
+            text-decoration: none;
+            background-color: white;
+            color: black;
+            overflow: hidden;
+            width: 10vw;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: .5rem 0 0 0;
+            height: 1.5rem;
+            float: right;
+            margin-right: 5%;
+            font-size: 1rem;
+            
+        }
+
+        .staffProfile a:hover {
+            background-color: #EEEEEE;
+            border-radius: 7px;
+            color: black;
+        }
+		.dash img.picture{
+            width: 30px; 
+            height: 30px;
+            object-fit: contain;
+            filter: invert(1);
+        }
+        .right-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-right: -15px;
+            margin-top: 14px;
+    }
+    .icon-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .icon-container .tooltip-text {
+            visibility: hidden;
+            width: 5vw;
+            height: 3vh;
+            background-color: #EEEEEE;
+            color: black;
+            text-align: center;
+            line-height: 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            padding: 5px 3px 5px 3px;
+            position: absolute;
+            z-index: 1;
+            top: 87%; 
+            left: 50%;
+            margin-left: -30px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .icon-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        .select{
+            width: 24%;
+            height: 5vh;
+            background-color: white;
+            border-radius: 10px;
+            float: right;
+        }
+        @media (max-width: 1200px) {
+            .leftnav {
+                width: 20%;
+            }
+            .rightnav {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .leftnav {
+                width: 25%;
+            }
+            .rightnav {
+                width: 75%;
+            }
+            .counter-container {
+                width: 90%;
+            }
+        }
+        @media (max-width: 768px) {
+            .leftnav {
+                width: 30%;
+            }
+            .rightnav {
+                width: 70%;
+            }
+            .counter-container {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .leftnav {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .rightnav {
+                width: 100%;
+                margin-left: 0;
+            }
+            .dash {
+                font-size: 1.25rem;
+                justify-content: center;
+            }
+        }
