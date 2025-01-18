@@ -206,7 +206,7 @@
                                             stroke-linejoin="round"></path>
                                     </g>
                                 </svg></button>
-                            <div class="adminProfile" id="adminProfile">
+                            <div class="adminProfile" id="adminProfile" >
                                 <a href="">Settings</a>
                                 <a href="logout">Signout</a>
                             </div>
