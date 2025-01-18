@@ -297,7 +297,7 @@
 			.bell-icon {
 				object-fit: scale-down;
 				width: 20px;
-				margin-top: -7%;
+				margin-top: -8%;
 				cursor: pointer;
 
 			}
@@ -306,8 +306,9 @@
 				object-fit: scale-down;
 				width: 25px;
 				cursor: pointer;
-				margin-bottom: 25%;
-				margin-left: 23%;
+				margin-top: 1%;
+				margin-left: 2%;
+				position: absolute;
 			}
 
 			.button-profile {
@@ -383,6 +384,7 @@
 				justify-content: center;
 				padding: .5rem 0 0 0;
 				height: 2rem;
+				
 			}
 
 			.adminProfile a:hover {
