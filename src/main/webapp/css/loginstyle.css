@@ -188,12 +188,12 @@ body {
 
 .login-btn {
     position: absolute;
-    width: 69%;
+    width: 80%;
     height: 11%;
     padding: 15px;
     bottom: 110px;
     border-radius: 10px;
-    left: 17%;
+    left: 12%;
     cursor: pointer;
     background-color: #77B6EA;
     border-color: #77B6EA;
