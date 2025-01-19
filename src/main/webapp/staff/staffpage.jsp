@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="./css/staffpage.css">
     <link rel="stylesheet" href="..//css/staffpage.css">
     <title>Staff Page</title>
-   
 </head>
 
 <body>

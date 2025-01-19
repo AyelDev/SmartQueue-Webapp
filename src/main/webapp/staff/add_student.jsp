@@ -42,7 +42,7 @@
 
 				</div>
 				</div>
-				<div class="dash"> <b></b>
+				<div class="dash">
 					<div class="right-icons">
 						
 						<div class="icon-container">
@@ -52,11 +52,11 @@
 						</div>
 					</div>
 					
-					<button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
-			<div class="staffProfile" id="staffProfile">
-				<a href="#">Settings</a>
-				<a href="login">Signout</a>
-			</div>
+					<button class="button-profile"><img src="./images/profile.png" alt="" class="profile">STAFF<img src="./images/caretdown.png" alt="" class="caretdown"></button>
+						<div class="staffProfile" id="staffProfile">
+							<a href="#">Settings</a>
+							<a href="login">Signout</a>
+						</div>
 				</div>
 
 				<div class="studentlist-content">
@@ -117,7 +117,8 @@
 							</form>
 						</div>
 					</div>
-					<table id="myTable">
+					<div class="table-container">
+					<table>
 						<thead>
 							<tr>
 								<th>Student ID</th>
@@ -160,6 +161,7 @@
 							</tr>
 						</tbody>
 					</table>
+				</div>
 				</div>
 			</div>
 

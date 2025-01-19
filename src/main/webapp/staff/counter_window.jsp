@@ -48,19 +48,19 @@
                         <section class="real-time">
                             <span id="date"></span> | <span id="time"></span>
                         </section>
-
+                        <h2 class="table-title">PRIORITY NUMBER</h2>
                         <div class="table-container">
-                            <h2>PRIORITY NUMBER</h2>
+                            
                             <table class="data-table">
-                                <thead>
+                                <thead class="priority-number">
                                     <tr>
                                         <th class="thd">QUEUE NO.</th>
-                                        <th>PURPOSE</th>
-                                        <th>NAME</th>
-                                        <th>ID NUMBER</th>
-                                        <th>DATE</th>
-                                        <th>STATUS</th>
-                                        <th>WINDOW NO.</th>
+                                        <th class="priority-number">PURPOSE</th>
+                                        <th class="priority-number">NAME</th>
+                                        <th class="priority-number">ID NUMBER</th>
+                                        <th class="priority-number">DATE</th>
+                                        <th class="priority-number">STATUS</th>
+                                        <th class="priority-number">WINDOW NO.</th>
                                     </tr>
                                 </thead>
                                 <tbody id="priority-number-table">
@@ -87,11 +87,8 @@
                         </div>
                         </section>
                         <section class="tables">
-
+                            <h2 class="table-title">COUNTER ACCESS</h2>
                             <div class="table-container">
-                                <h2>COUNTER ACCESS</h2>
-
-
                                 <table class="data-table">
                                     <thead>
                                         <tr>
