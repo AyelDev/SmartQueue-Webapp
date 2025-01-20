@@ -206,8 +206,12 @@ document.addEventListener("click", function (event) {
     }
 });
 
+async function AddInfoError(){
+    await $.notify("Please fill out the required field/fields", { color: "#fff", background: "#D44950", delay: 1000 })
+}
+
 // Show Modal
-function AddInfo(title, context, formId, serviceType) {
+function AddInfo(title, context, formId, serviceType, method) {
 
     let recordContent = ``;
 
@@ -240,10 +244,30 @@ function AddInfo(title, context, formId, serviceType) {
                 action: async function () {
                     let form = $('#' + formId);
 
-                    if(title == 'Add Document for Records' && $('#program').val().trim() === '' && $('#amount').val().trim() === ''){
-                        await $.notify("Please fill out the required field/fields", { color: "#fff", background: "#D44950", delay: 1000 })
+                    //empty fields in General - Program
+                    if(title == 'Add Program for General' && $('#program').val().trim() === ''){
+                        AddInfoError();
                         return false;
                     }
+                    
+                    //empty fields in General - Purpose
+                    if(title == 'Add Purpose for General' && $('#program').val().trim() === ''){
+                        AddInfoError();
+                        return false;
+                    }
+
+                    //empty fields in Records - Purpose
+                    if(title == 'Add Document for Records' && ($('#program').val().trim() === '' || $('#amount').val().trim() === '')){
+                        AddInfoError();
+                        return false;
+                    }
+
+                    //empty fields in Archiving - Purpose
+                    if(title == 'Add Purpose for Archiving' && $('#program').val().trim() === ''){
+                        AddInfoError();
+                        return false;
+                    }
+
                     var url = 'AddServices_Servlet';
                     
                     //set disable to true before sending request
@@ -251,7 +275,7 @@ function AddInfo(title, context, formId, serviceType) {
 
                          await $.ajax({
                         url: url,
-                        method: 'POST',
+                        method: method,
                         data: form.serialize(),
                         beforeSend: function(){
                             $.notify('processing request', { color: "#fff", background: "#20D67B", delay: 1000})
@@ -273,6 +297,15 @@ function AddInfo(title, context, formId, serviceType) {
 }
 
 function UpdateInfo(idNumber){
+
+    let recordContent = ``;
+
+    if (title == 'Add Document for Records') {
+        recordContent = `
+        <label for="Amount">Amount</label>
+         <input type="number" id="amount" name="Amount" placeholder="Enter amount">
+    `;
+    }
     $.alert({
         title: 'id no.' + idNumber,
         content: 'Simple alert!',

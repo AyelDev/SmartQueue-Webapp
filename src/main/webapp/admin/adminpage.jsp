@@ -233,7 +233,7 @@
 								<div class="table-header">
 									<h3 class="table-title">General - Program</h3>
 									<button class="add-btn-table"
-										onclick="AddInfo('Add Program for General', 'Program', 'GeneralProgramForm', 'general')">+Add
+										onclick="AddInfo('Add Program for General', 'Program', 'GeneralProgramForm', 'general', 'POST')">+Add
 										Info</button>
 								</div>
 								<table>
@@ -269,7 +269,7 @@
 								<div class="table-header">
 									<h3 class="table-title">General - Purpose</h3>
 									<button class="add-btn-table"
-										onclick="AddInfo('Add Purpose for General', 'Purpose', 'GeneralPurposeForm', 'general')">+Add
+										onclick="AddInfo('Add Purpose for General', 'Purpose', 'GeneralPurposeForm', 'general', 'POST')">+Add
 										Info</button>
 								</div>
 								<table>
@@ -304,7 +304,7 @@
 								<div class="table-header">
 									<h3 class="table-title">Records - Purpose</h3>
 									<button class="add-btn-table"
-										onclick="AddInfo('Add Document for Records', 'Document', 'RecordsPurposeForm', 'records')">+Add
+										onclick="AddInfo('Add Document for Records', 'Document', 'RecordsPurposeForm', 'records', 'POST')">+Add
 										Info</button>
 								</div>
 								<table>
@@ -342,7 +342,7 @@
 								<div class="table-header">
 									<h3 class="table-title">Archiving - Purpose</h3>
 									<button class="add-btn-table"
-										onclick="AddInfo('Add Purpose for Archiving', 'Purpose', 'ArchivingPurposeForm', 'archiving')">+Add
+										onclick="AddInfo('Add Purpose for Archiving', 'Purpose', 'ArchivingPurposeForm', 'archiving', 'POST')">+Add
 										Info</button>
 								</div>
 								<table>
