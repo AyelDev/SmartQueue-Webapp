@@ -196,7 +196,7 @@ body {
 .active,
 .dropdown-btn:hover {
     background-color: var(--background-color);
-    width: 18vw;
+    width: 14.3vw;
     color: var(--text-color);
     font-weight: bold;
 }
@@ -536,18 +536,18 @@ button {
 .search-bar {
     border-radius: 10px;
     width: 80%;
-    padding: 8px;
+    padding: 6px;
     border: 1px solid;
 }
 
 .search-btn {
-    border-radius: 15px;
+    border-radius: 0 10px 10px 0;
     border: none;
     padding: 5px;
-    width: 50px;
-    margin-left: -20%;
-    background: none;
-    margin-bottom: -5%;
+    width: 35px;
+    margin-left: -15%;
+    background-color: #1e91d0;
+    
 }
 
 .search-icon {
@@ -555,7 +555,7 @@ button {
     width: 14px;
     height: 20px;
     background: none;
-    margin-bottom: -10%;
+    margin-bottom: -20%;
 }
 
 .fillup-form-container {

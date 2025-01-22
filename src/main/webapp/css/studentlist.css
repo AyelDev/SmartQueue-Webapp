@@ -198,7 +198,7 @@ body {
 .active,
 .dropdown-btn:hover {
     background-color: var(--background-color);
-    width: 18vw;
+    width: 14.3vw;
     color: var(--text-color);
     font-weight: bold;
 }
@@ -273,6 +273,22 @@ h1 {
     max-height: 450px;
     width: 100%;
     
+}
+.table-container {
+    scroll-behavior: smooth;
+}
+
+.table-container::-webkit-scrollbar {
+    width: .8rem;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 5rem;
 }
 
 #myTable {
@@ -551,21 +567,21 @@ button {
 }
 
 .search-btn {
-    border-radius: 15px;
+    border-radius: 0 10px 10px 0;
     border: none;
-    padding: 10px;
-    width: 50px;
-    margin-left: -20%;
-    background: none;
-    margin-bottom: -5%;
+    padding: 4px;
+    width: 35px;
+    margin-left: -15%;
+    background-color: #1e91d0;
+    margin-bottom: -4.9%;
 }
 
 .search-icon {
     object-fit: scale-down;
-    width: 14px;
+    width: 15px;
     height: 20px;
-    background: none;
-    margin-bottom: -10%;
+    margin-bottom: -20%;
+    color: var(--background-color);
 }
 
 .fillup-form-container {

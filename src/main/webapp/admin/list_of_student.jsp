@@ -32,7 +32,7 @@
 
 					<div class="menu-navbar">
 						<div class="dropdown">
-							<button class="dropdown-btn"><svg class="dashboard-icon" fill="#ffffff" width="64px"
+							<button class="dropdown-btn" onclick="window.location.href = 'dashboard';"><svg class="dashboard-icon" fill="#ffffff" width="64px"
 									height="64px" viewBox="-2 0 19 19" xmlns="http://www.w3.org/2000/svg"
 									class="cf-icon-svg">
 									<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -43,13 +43,14 @@
 											d="M13.55 15.256H1.45a.554.554 0 0 1-.553-.554V3.168a.554.554 0 1 1 1.108 0v10.98h11.544a.554.554 0 0 1 0 1.108zM3.121 13.02V6.888a.476.476 0 0 1 .475-.475h.786a.476.476 0 0 1 .475.475v6.132zm2.785 0V3.507a.476.476 0 0 1 .475-.475h.786a.476.476 0 0 1 .475.475v9.513zm2.785 0V6.888a.476.476 0 0 1 .475-.475h.786a.476.476 0 0 1 .475.475v6.132zm2.786 0v-2.753a.476.476 0 0 1 .475-.475h.785a.476.476 0 0 1 .475.475v2.753z">
 										</path>
 									</g>
-								</svg><a href="dashboard">Dashboard</a>
+								</svg>
+								Dashboard
 							</button>
 
 						</div>
 
 						<div class="dropdown">
-							<button class="dropdown-btn"><svg class="counter-icon" width="64px" height="64px"
+							<button class="dropdown-btn" onclick="window.location.href='counterlist';"><svg class="counter-icon" width="64px" height="64px"
 									viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
 									transform="rotate(90)">
 									<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -71,9 +72,6 @@
 											fill="#ffffff"></path>
 									</g>
 								</svg>Counter</button>
-							<div class="dropdown-dashboard">
-								<a href="counterlist">List of Counter</a>
-							</div>
 						</div>
 
 						<div class="dropdown">
@@ -95,7 +93,7 @@
 						</div>
 
 						<div class="dropdown">
-							<button class="dropdown-btn"><svg class="entertainment-icon" width="64px" height="64px"
+							<button class="dropdown-btn" onclick="window.location.href = 'videoads';"><svg class="entertainment-icon" width="64px" height="64px"
 									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
 									<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 									<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
@@ -105,7 +103,7 @@
 											d="M5 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1.586l2.293 2.293A1 1 0 0 0 22 16V8a1 1 0 0 0-1.707-.707L18 9.586V8a3 3 0 0 0-3-3H5z"
 											clip-rule="evenodd"></path>
 									</g>
-								</svg><a href="videoads">Entertainment</a>
+								</svg>Entertainment
 							</button>
 						</div>
 
