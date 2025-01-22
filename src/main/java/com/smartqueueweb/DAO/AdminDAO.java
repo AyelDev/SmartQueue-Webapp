@@ -82,7 +82,7 @@ public class AdminDAO extends SQLConnection {
 		return serviceBeanList;
 	}
 
-	public Integer addService(String program, String purpose, int amount, ServiceType serviceType) {
+	public Integer AddService(String program, String purpose, int amount, ServiceType serviceType) {
 		// TODO Auto-generated method stub
 		try {
 			ConnectDriver();
@@ -99,8 +99,46 @@ public class AdminDAO extends SQLConnection {
 		} finally {
 			SQLClose();
 		}
-		
 		return 0;
+	}
+
+	public Boolean UpdateService(Integer id, String program, String purpose, int amount) {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("UPDATE tbl_service SET program = ?, purpose = ?, amount = ? WHERE tbl_service.id = ?;");
+			prs.setString(1, program);
+			prs.setString(2, purpose);
+			prs.setInt(3, amount);
+			prs.setInt(4, id);
+			
+			if(prs.executeUpdate() == 1)
+				return true;
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			SQLClose();
+		}
+		return false;
+	}
+
+	public Boolean DeleteService(Integer id) {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("DELETE FROM tbl_service WHERE tbl_service.id = ?");
+			prs.setInt(1, id);
+			
+			if(prs.executeUpdate() == 1) 
+				return true;
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			SQLClose();
+		}
+		return false;
 	}
 
 }
