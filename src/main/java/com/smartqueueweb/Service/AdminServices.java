@@ -16,6 +16,8 @@ public interface AdminServices {
 	
 	Integer addService(String program, String purpose, int amount, ServiceType serviceType);
 	
+	Boolean updateService(Integer id, String program, String purpose, int amount);
 	
+	Boolean deleteService(Integer id);
 
 }

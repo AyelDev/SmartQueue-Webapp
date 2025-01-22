@@ -210,8 +210,38 @@ async function AddInfoError(){
     await $.notify("Please fill out the required field/fields", { color: "#fff", background: "#D44950", delay: 1000 })
 }
 
+function emptyFieldError(title, addOrDelete){
+     //empty fields in General - Program
+     if(title == (addOrDelete +' Program for General') && $('#program').val().trim() === ''){
+        AddInfoError();
+        return true;
+    }
+    
+    //empty fields in General - Purpose
+    if(title == (addOrDelete + ' Purpose for General') && $('#program').val().trim() === ''){
+        AddInfoError();
+        return true;
+    }
+
+    //empty fields in Records - Purpose
+    if(title == (addOrDelete + ' Document for Records') && ($('#program').val().trim() === '' || $('#amount').val().trim() === '')){
+        AddInfoError();
+        return true;
+    }
+
+    //empty fields in Archiving - Purpose
+    if(title == (addOrDelete + ' Purpose for Archiving') && $('#program').val().trim() === ''){
+        AddInfoError();
+        return true;
+    }
+}
+
+function updateAttribute(id, programPurpose, amount){
+    return [id, programPurpose, amount];
+}
+
 // Show Modal
-function AddInfo(title, context, formId, serviceType, method) {
+function ModalInfo(title, context, formId, serviceType, method, updateAttribute) {
 
     let recordContent = ``;
 
@@ -222,58 +252,96 @@ function AddInfo(title, context, formId, serviceType, method) {
     `;
     }
 
-    $.confirm({
-        type: 'blue',
-        boxWidth: '30%',
-        useBootstrap: false,
-        title: title,
-        content:
+    if(title == 'Update Document for Records'){
+        recordContent = `
+        <label for="Amount">Amount</label>
+         <input type="number" id="amount" name="Amount" value="`+updateAttribute[2]+`" placeholder="Enter amount">
+    `;
+    }
+    if(title == 'Delete Document for Records'){
+        recordContent = `
+        <label for="Amount">Amount</label>
+         <input type="number" id="amount" name="Amount" value="`+updateAttribute[2]+`" placeholder="Enter amount" disabled>
+    `;
+    }
+
+
+        //add contents
+        let addContents = 
         `
         <form id="`+formId+`">
         <label for="servicetype">Service Type</label>
         <input type="text" id="servicetype" name="servicetype" value="`+serviceType+`" disabled>
         <label for="`+context+`">`+context+`</label>
-         <input type="text" id="program" name="`+context+`" placeholder="Enter program"><br>
+        <input type="text" id="program" name="`+context+`" placeholder="Enter `+context+`">
         `+ recordContent + `
         </form>
-        `,
+        `;
+
+        //update contents
+        let updatecontents = 
+        `
+        <form id="`+formId+`">
+        <label for="servicetype">Id No.</label>
+        <input type="text" id="servicetype" name="idNo" value="`+updateAttribute[0]+`" disabled>
+        <label for="`+context+`">`+context+`</label>
+        <input type="text" id="program" name="`+context+`" value="`+updateAttribute[1]+`" placeholder="Enter `+context+`">
+        `+ recordContent + `
+        </form>
+        `;
+
+         //delete contents
+         let deletecontents = 
+         `
+         <form id="`+formId+`">
+         <label for="servicetype">Id No.</label>
+         <input type="text" id="servicetype" name="idNo" value="`+updateAttribute[0]+`" disabled>
+         <label for="`+context+`">`+context+`</label>
+         <input type="text" id="program" name="`+context+`" value="`+updateAttribute[1]+`" placeholder="Enter `+context+`" disabled>
+         `+ recordContent + `
+         </form>
+         `;
+
+        if(title.includes('Add'))
+        HttpRequest(addContents, title, formId, method, 'btn-green', 'Add', 'AddServices_Servlet');
+        
+        if(title.includes('Update'))
+        HttpRequest(updatecontents, title, formId, method, 'btn-blue', 'Update', 'UpdateService_Servlet');
+        
+        if(title.includes('Delete')){
+        HttpRequest(deletecontents, title, formId, method, 'btn-red', 'Delete', 'DeleteServices_Servlet');
+        }
+
+    }
+function HttpRequest(contents, title, formId, method, btnClass, text, url){
+    $.confirm({
+        type: 'blue',
+        boxWidth: '30%',
+        useBootstrap: false,
+        title: title,
+        content: contents,
         buttons: {
             formField: {
-                text: 'Add',
-                btnClass: 'btn-green',
+                text: text,
+                btnClass: btnClass,
                 action: async function () {
                     let form = $('#' + formId);
 
-                    //empty fields in General - Program
-                    if(title == 'Add Program for General' && $('#program').val().trim() === ''){
-                        AddInfoError();
-                        return false;
-                    }
-                    
-                    //empty fields in General - Purpose
-                    if(title == 'Add Purpose for General' && $('#program').val().trim() === ''){
-                        AddInfoError();
-                        return false;
-                    }
+                 if(emptyFieldError(title, 'Add'))
+                    return false;   
 
-                    //empty fields in Records - Purpose
-                    if(title == 'Add Document for Records' && ($('#program').val().trim() === '' || $('#amount').val().trim() === '')){
-                        AddInfoError();
-                        return false;
-                    }
+                 if(emptyFieldError(title, 'Update'))
+                    return false;
 
-                    //empty fields in Archiving - Purpose
-                    if(title == 'Add Purpose for Archiving' && $('#program').val().trim() === ''){
-                        AddInfoError();
-                        return false;
-                    }
+                 if(emptyFieldError(title, 'Delete'))
+                    return false;
 
-                    var url = 'AddServices_Servlet';
-                    
+
                     //set disable to true before sending request
                     $('#servicetype').prop('disabled', false);
 
-                         await $.ajax({
+
+                        await $.ajax({
                         url: url,
                         method: method,
                         data: form.serialize(),
@@ -282,6 +350,7 @@ function AddInfo(title, context, formId, serviceType, method) {
                         },
                         success: function(response){
                             $.notify(response, { color: "#fff", background: "#20D67B", delay: 1000 })
+                            updateRecordsGeneralArchivingDatas()
                         },
                          error: function(xhr, status, error){
                             $.notify("an error occured " + error,{ color: "#fff", background: "#D44950", delay: 1000 })
@@ -293,22 +362,6 @@ function AddInfo(title, context, formId, serviceType, method) {
                 //do nothing.
             }
         }
-    });
-}
-
-function UpdateInfo(idNumber){
-
-    let recordContent = ``;
-
-    if (title == 'Add Document for Records') {
-        recordContent = `
-        <label for="Amount">Amount</label>
-         <input type="number" id="amount" name="Amount" placeholder="Enter amount">
-    `;
-    }
-    $.alert({
-        title: 'id no.' + idNumber,
-        content: 'Simple alert!',
     });
 }
 
@@ -339,11 +392,12 @@ document.getElementById('button-profile').addEventListener('click', function () 
 
 
 //fetch data for general records and archiving
-function updateRecordsGeneralArchivingDatas(servicetype) {
+function updateRecordsGeneralArchivingDatas() {
     generalitemId = 1;
     generalitempurposeId = 1;
     recordsitemId = 1;
     archivingItemId = 1;
+    
     $.ajax({
         url: '/JsonServiceListAPI',
         method: 'GET',
@@ -368,9 +422,9 @@ function updateRecordsGeneralArchivingDatas(servicetype) {
                     <tr>
                             <td>`+ (generalitemId++) + `</td>
                             <td>`+ item.course + `</td>
-                            <td><button class="update-btn"
-                                    onclick="UpdateInfo(`+item.id+`)">Update</button>
-                                <button class="delete-btn" onclick="DeleteInfo(`+item.id+`)">Delete</button>
+                            <td>
+                            <button class="update-btn"onclick="ModalInfo('Update Program for General', 'Program', 'GeneralProgramForm', 'general', 'GET', updateAttribute(`+item.id+`, '`+item.course+`', `+item.amount+`))">Update</button>
+                            <button class="delete-btn" onclick="ModalInfo('Delete Program for General', 'Program', 'GeneralProgramForm', 'general', 'GET', updateAttribute(`+item.id+`, '`+item.course+`', `+item.amount+`))">Delete</button>
                             </td>
                         </tr>
                    `);
@@ -380,8 +434,8 @@ function updateRecordsGeneralArchivingDatas(servicetype) {
                         <tr>
                             <td>`+ (generalitempurposeId++) + `</td>
                             <td>`+ item.purpose + `</td>
-                            <td><button class="update-btn" onclick="UpdateInfo(`+item.id+`)">Update</button>
-                                <button class="delete-btn" onclick="DeleteInfo(`+item.id+`)">Delete</button>
+                            <td><button class="update-btn" onclick="ModalInfo('Update Purpose for General', 'Purpose', 'GeneralPurposeForm', 'general', 'GET', updateAttribute(`+item.id+`, '`+item.purpose+`', `+item.amount+`))">Update</button>
+                                <button class="delete-btn" onclick="ModalInfo('Delete Purpose for General', 'Purpose', 'GeneralPurposeForm', 'general', 'GET', updateAttribute(`+item.id+`, '`+item.purpose+`', `+item.amount+`))">Delete</button>
                             </td>
                         </tr>
                 `);
@@ -392,8 +446,8 @@ function updateRecordsGeneralArchivingDatas(servicetype) {
                     <tr>
                         <td>`+ (recordsitemId++) + `</td>
                             <td>`+ item.purpose + `</td>
-                            <td><button class="update-btn" onclick="UpdateInfo(`+item.id+`)">Update</button>
-                                <button class="delete-btn" onclick="DeleteInfo(`+item.id+`)">Delete</button>
+                            <td><button class="update-btn" onclick="ModalInfo('Update Document for Records', 'Document', 'RecordsPurposeForm', 'records', 'GET', updateAttribute(`+item.id+`, '`+item.purpose+`', `+item.amount+`))">Update</button>
+                                <button class="delete-btn" onclick="ModalInfo('Delete Document for Records', 'Document', 'RecordsPurposeForm', 'records', 'GET', updateAttribute(`+item.id+`, '`+item.purpose+`', `+item.amount+`))">Delete</button>
                             </td>
                         </tr>
                 `);
@@ -403,8 +457,8 @@ function updateRecordsGeneralArchivingDatas(servicetype) {
                     <tr>
                             <td>`+ (archivingItemId++) + `</td>
                             <td>`+ item.purpose + `</td>
-                            <td><button class="update-btn" onclick="UpdateInfo(`+item.id+`)">Update</button>
-                                <button class="delete-btn" onclick="DeleteInfo(`+item.id+`)">Delete</button>
+                            <td><button class="update-btn" onclick="ModalInfo('Update Purpose for Archiving', 'Purpose', 'ArchivingPurposeForm', 'archiving', 'GET', updateAttribute(`+item.id+`, '`+item.purpose+`', `+item.amount+`))">Update</button>
+                                <button class="delete-btn" onclick="ModalInfo('Delete Purpose for Archiving', 'Purpose', 'ArchivingPurposeForm', 'archiving', 'GET', updateAttribute(`+item.id+`, '`+item.purpose+`', `+item.amount+`))">Delete</button>
                             </td>
                         </tr>
                 `);
