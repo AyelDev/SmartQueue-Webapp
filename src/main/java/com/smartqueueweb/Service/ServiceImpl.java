@@ -131,7 +131,19 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	@Override
 	public Integer addService(String program, String purpose, int amount, ServiceType serviceType) {
 		// TODO Auto-generated method stub
-		return admindata.addService(program, purpose, amount, serviceType);
+		return admindata.AddService(program, purpose, amount, serviceType);
+	}
+	
+	@Override
+	public Boolean updateService(Integer id, String program, String purpose, int amount) {
+		// TODO Auto-generated method stub
+		return admindata.UpdateService(id, program, purpose, amount);
+	}
+
+	@Override
+	public Boolean deleteService(Integer id) {
+		// TODO Auto-generated method stub
+		return admindata.DeleteService(id);
 	}
 
 	//////////////////////////////////////////////////////////////////////// -----------------------
@@ -230,5 +242,4 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return "";
 
 	}
-
 }
