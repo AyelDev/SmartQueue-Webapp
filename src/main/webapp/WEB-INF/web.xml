@@ -95,6 +95,16 @@
 		<url-pattern>/videoads</url-pattern>
 	</servlet-mapping>
 
+
+	<servlet>
+		<servlet-name>adminsettings</servlet-name>
+		<jsp-file>/admin/adminsettings.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>adminsettings</servlet-name>
+		<url-pattern>/adminsettings</url-pattern>
+	</servlet-mapping>
+
 <!--
 	Counter Servlet Redirection
 -->

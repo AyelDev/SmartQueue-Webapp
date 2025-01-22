@@ -17,7 +17,7 @@
 			<script type="text/javascript" src="../scripts/ping.js"></script>
 			<script type="text/javascript" src="../scripts/fadetransition.js"></script>
 			<link rel="stylesheet" href="../css/prettify.css">
-            <link rel="stylesheet" href="../css/notify.css"> 	
+			<link rel="stylesheet" href="../css/notify.css">
 			<link rel="stylesheet" href="../css/jquery-confirm.min.css">
 			<link rel="stylesheet" href="../css/loader.css">
 			<link rel="stylesheet" href="../css/adminpage.css">
@@ -35,9 +35,9 @@
 
 					<div class="menu-navbar">
 						<div class="dropdown">
-							<button class="dropdown-btn"><svg class="dashboard-icon" fill="#ffffff" width="64px"
-									height="64px" viewBox="-2 0 19 19" xmlns="http://www.w3.org/2000/svg"
-									class="cf-icon-svg">
+							<button class="dropdown-btn" onlcick="window.location.href='dashboard';"><svg
+									class="dashboard-icon" fill="#ffffff" width="64px" height="64px"
+									viewBox="-2 0 19 19" xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg">
 									<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 									<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
 									<g id="SVGRepo_iconCarrier">
@@ -45,13 +45,14 @@
 											d="M13.55 15.256H1.45a.554.554 0 0 1-.553-.554V3.168a.554.554 0 1 1 1.108 0v10.98h11.544a.554.554 0 0 1 0 1.108zM3.121 13.02V6.888a.476.476 0 0 1 .475-.475h.786a.476.476 0 0 1 .475.475v6.132zm2.785 0V3.507a.476.476 0 0 1 .475-.475h.786a.476.476 0 0 1 .475.475v9.513zm2.785 0V6.888a.476.476 0 0 1 .475-.475h.786a.476.476 0 0 1 .475.475v6.132zm2.786 0v-2.753a.476.476 0 0 1 .475-.475h.785a.476.476 0 0 1 .475.475v2.753z">
 										</path>
 									</g>
-								</svg><a href="/">Dashboard</a>
+								</svg>
+								Dashboard
 							</button>
 
 						</div>
 
 						<div class="dropdown">
-							<button class="dropdown-btn"><svg class="counter-icon" width="64px" height="64px"
+							<button class="dropdown-btn" onclick="window.location.href='counterlist';"><svg class="counter-icon" width="64px" height="64px"
 									viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
 									transform="rotate(90)">
 									<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -72,9 +73,6 @@
 											fill="#ffffff"></path>
 									</g>
 								</svg>Counter</button>
-							<div class="dropdown-dashboard">
-								<a href="counterlist">List of Counter</a>
-							</div>
 						</div>
 
 						<div class="dropdown">
@@ -95,8 +93,9 @@
 						</div>
 
 						<div class="dropdown">
-							<button class="dropdown-btn"><svg class="entertainment-icon" width="64px" height="64px"
-									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+							<button class="dropdown-btn" onclick="window.location.href = 'videoads';"><svg
+									class="entertainment-icon" width="64px" height="64px" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg" fill="none">
 									<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 									<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
 									<g id="SVGRepo_iconCarrier">
@@ -104,7 +103,8 @@
 											d="M5 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1.586l2.293 2.293A1 1 0 0 0 22 16V8a1 1 0 0 0-1.707-.707L18 9.586V8a3 3 0 0 0-3-3H5z"
 											clip-rule="evenodd"></path>
 									</g>
-								</svg><a href="videoads">Entertainment</a>
+								</svg>
+								Entertainment
 							</button>
 						</div>
 
@@ -205,180 +205,181 @@
 								</g>
 							</svg></button>
 						<div class="adminProfile" id="adminProfile">
-							<a href="">Settings</a>
+							<a href="adminsettings">Settings</a>
 							<a href="logout">Signout</a>
 						</div>
 					</div>
 
-					<!-- dashboard section -->
-					<h1 class="dashboard-title">Dashboard</h1>
-					<hr>
-					<div class="dashboard-content">
-						<div class="card-total"><br>
-							<p>Total students</p>
-							<h3 id="total-student" class="total-count">---</h3>
-						</div>
-						<div class="card-total"><br>
-							<p>Total staff</p>
-							<h3 id="total-staff" class="total-count">---</h3>
-						</div>
-						<div class="card-total"><br>
-							<p>Total transaction</p>
-							<h3 id="total-transaction" class="total-count">---</h3>
-						</div>
-						<div class="department-graph">
-							<canvas id="myPie"></canvas>
-						</div>
-						<div class="total-graph">
-							<canvas id="myChart"></canvas>
-						</div>
-
-						<!-- General - Program -->
-						<div class="table-container">
-							<div class="table-content">
-								<div class="table-header">
-									<h3 class="table-title">General - Program</h3>
-									<button class="add-btn-table"
-										onclick="AddInfo('Add Program for General', 'Program', 'GeneralProgramForm', 'general')">+Add
-										Info</button>
-								</div>
-								<table>
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>Course</th>
-											<th>Actions</th>
-										</tr>
-									</thead>
-									<tbody id="general-program-tablelist">
-										<tr>
-											<td></td>
-											<td></td>
-											<td><button class="update-btn" onclick="">Update</button>
-												<button class="delete-btn">Delete</button>
-											</td>
-										</tr>
-										<tr>
-											<td></td>
-											<td></td>
-											<td><button class="update-btn">Update</button>
-												<button class="delete-btn">Delete</button>
-											</td>
-										</tr>
-									</tbody>
-								</table>
+					<!-- dashboard section/main section -->
+					<div class="main-container">
+						<h1 class="dashboard-title">Dashboard</h1>
+						<hr>
+						<div class="dashboard-content">
+							<div class="card-total"><br>
+								<p>Total students</p>
+								<h3 id="total-student" class="total-count">---</h3>
+							</div>
+							<div class="card-total"><br>
+								<p>Total staff</p>
+								<h3 id="total-staff" class="total-count">---</h3>
+							</div>
+							<div class="card-total"><br>
+								<p>Total transaction</p>
+								<h3 id="total-transaction" class="total-count">---</h3>
+							</div>
+							<div class="department-graph">
+								<canvas id="myPie"></canvas>
+							</div>
+							<div class="total-graph">
+								<canvas id="myChart"></canvas>
 							</div>
 
-							<!-- General - Purpose -->
-
-							<div class="table-content">
-								<div class="table-header">
-									<h3 class="table-title">General - Purpose</h3>
-									<button class="add-btn-table"
-										onclick="AddInfo('Add Purpose for General', 'Purpose', 'GeneralPurposeForm', 'general')">+Add
-										Info</button>
+							<!-- General - Program -->
+							<div class="table-container">
+								<div class="table-content">
+									<div class="table-header">
+										<h3 class="table-title">General - Program</h3>
+										<button class="add-btn-table"
+											onclick="AddInfo('Add Program for General', 'Program', 'GeneralProgramForm', 'general')">+Add
+											Info</button>
+									</div>
+									<table>
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Course</th>
+												<th>Actions</th>
+											</tr>
+										</thead>
+										<tbody id="general-program-tablelist">
+											<tr>
+												<td></td>
+												<td></td>
+												<td><button class="update-btn" onclick="">Update</button>
+													<button class="delete-btn">Delete</button>
+												</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td><button class="update-btn">Update</button>
+													<button class="delete-btn">Delete</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
-								<table>
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>Purpose</th>
-											<th>Actions</th>
-										</tr>
-									</thead>
-									<tbody id="general-purpose-tablelist">
-										<tr>
-											<td></td>
-											<td></td>
-											<td><button class="update-btn">Update</button>
-												<button class="delete-btn">Delete</button>
-											</td>
-										</tr>
-										<tr>
-											<td></td>
-											<td></td>
-											<td><button class="update-btn">Update</button>
-												<button class="delete-btn">Delete</button>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
 
-							<!-- Records - Purpose -->
-							<div class="table-content">
-								<div class="table-header">
-									<h3 class="table-title">Records - Purpose</h3>
-									<button class="add-btn-table"
-										onclick="AddInfo('Add Document for Records', 'Document', 'RecordsPurposeForm', 'records')">+Add
-										Info</button>
-								</div>
-								<table>
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>Documents</th>
-											<th>Amount</th>
-											<th>Actions</th>
-										</tr>
-									</thead>
-									<tbody id="records-purpose-tablelist">
-										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td><button class="update-btn">Update</button>
-												<button class="delete-btn">Delete</button>
-											</td>
-										</tr>
-										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td><button class="update-btn">Update</button>
-												<button class="delete-btn">Delete</button>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+								<!-- General - Purpose -->
 
-							<!-- Archiving - Purpose -->
-							<div class="table-content">
-								<div class="table-header">
-									<h3 class="table-title">Archiving - Purpose</h3>
-									<button class="add-btn-table"
-										onclick="AddInfo('Add Purpose for Archiving', 'Purpose', 'ArchivingPurposeForm', 'archiving')">+Add
-										Info</button>
+								<div class="table-content">
+									<div class="table-header">
+										<h3 class="table-title">General - Purpose</h3>
+										<button class="add-btn-table"
+											onclick="AddInfo('Add Purpose for General', 'Purpose', 'GeneralPurposeForm', 'general')">+Add
+											Info</button>
+									</div>
+									<table>
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Purpose</th>
+												<th>Actions</th>
+											</tr>
+										</thead>
+										<tbody id="general-purpose-tablelist">
+											<tr>
+												<td></td>
+												<td></td>
+												<td><button class="update-btn">Update</button>
+													<button class="delete-btn">Delete</button>
+												</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td><button class="update-btn">Update</button>
+													<button class="delete-btn">Delete</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
-								<table>
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>Purpose</th>
-											<th>Actions</th>
-										</tr>
-									</thead>
-									<tbody id="archiving-purpose-tablelist">
-										<tr>
-											<td></td>
-											<td></td>
-											<td><button class="update-btn">Update</button>
-												<button class="delete-btn">Delete</button>
-											</td>
-										</tr>
-										<tr>
-											<td></td>
-											<td></td>
-											<td><button class="update-btn">Update</button>
-												<button class="delete-btn">Delete</button>
-											</td>
-										</tr>
-									</tbody>
-								</table>
+
+								<!-- Records - Purpose -->
+								<div class="table-content">
+									<div class="table-header">
+										<h3 class="table-title">Records - Purpose</h3>
+										<button class="add-btn-table"
+											onclick="AddInfo('Add Document for Records', 'Document', 'RecordsPurposeForm', 'records')">+Add
+											Info</button>
+									</div>
+									<table>
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Documents</th>
+												<th>Amount</th>
+												<th>Actions</th>
+											</tr>
+										</thead>
+										<tbody id="records-purpose-tablelist">
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td><button class="update-btn">Update</button>
+													<button class="delete-btn">Delete</button>
+												</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td><button class="update-btn">Update</button>
+													<button class="delete-btn">Delete</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+								<!-- Archiving - Purpose -->
+								<div class="table-content">
+									<div class="table-header">
+										<h3 class="table-title">Archiving - Purpose</h3>
+										<button class="add-btn-table"
+											onclick="AddInfo('Add Purpose for Archiving', 'Purpose', 'ArchivingPurposeForm', 'archiving')">+Add
+											Info</button>
+									</div>
+									<table>
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Purpose</th>
+												<th>Actions</th>
+											</tr>
+										</thead>
+										<tbody id="archiving-purpose-tablelist">
+											<tr>
+												<td></td>
+												<td></td>
+												<td><button class="update-btn">Update</button>
+													<button class="delete-btn">Delete</button>
+												</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td><button class="update-btn">Update</button>
+													<button class="delete-btn">Delete</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
@@ -648,12 +649,12 @@
 						useBootstrap: false,
 						title: title,
 						content:
-						`
-						<form id="`+formId+`">
+							`
+						<form id="`+ formId + `">
 						<label for="servicetype">Service Type</label>
-						<input type="text" id="servicetype" name="servicetype" value="`+serviceType+`" disabled>
-						<label for="`+context+`">`+context+`</label>
- 						<input type="text" id="program" name="`+context+`" placeholder="Enter program"><br>
+						<input type="text" id="servicetype" name="servicetype" value="`+ serviceType + `" disabled>
+						<label for="`+ context + `">` + context + `</label>
+ 						<input type="text" id="program" name="`+ context + `" placeholder="Enter program"><br>
 						`+ recordContent + `
 						</form>
 						`,
@@ -664,27 +665,27 @@
 								action: async function () {
 									let form = $('#' + formId);
 
-									if(title == 'Add Document for Records' && $('#program').val().trim() === '' && $('#amount').val().trim() === ''){
+									if (title == 'Add Document for Records' && $('#program').val().trim() === '' && $('#amount').val().trim() === '') {
 										await $.notify("Please fill out the required field/fields", { color: "#fff", background: "#D44950", delay: 1000 })
 										return false;
 									}
 									var url = 'AddServices_Servlet';
-									
+
 									//set disable to true before sending request
 									$('#servicetype').prop('disabled', false);
 
-									 	await $.ajax({
+									await $.ajax({
 										url: url,
 										method: 'POST',
 										data: form.serialize(),
-										beforeSend: function(){
-											$.notify('processing request', { color: "#fff", background: "#20D67B", delay: 1000})
+										beforeSend: function () {
+											$.notify('processing request', { color: "#fff", background: "#20D67B", delay: 1000 })
 										},
-										success: function(response){
+										success: function (response) {
 											$.notify(response, { color: "#fff", background: "#20D67B", delay: 1000 })
 										},
-										 error: function(xhr, status, error){
-											$.notify("an error occured " + error,{ color: "#fff", background: "#D44950", delay: 1000 })
+										error: function (xhr, status, error) {
+											$.notify("an error occured " + error, { color: "#fff", background: "#D44950", delay: 1000 })
 										}
 									});
 
@@ -695,31 +696,31 @@
 
 									// 	let params = $(this).serialize();
 
-										// $.ajax({
-										// 	url: url,
-										// 	type: 'POST',
-										// 	data: params,
-										// 	success: function (response) {
-										// 		$.confirm({
-										// 			boxWidth: '30%',
-										// 			useBootstrap: false,
-										// 			title: 'Successful',
-										// 			content: response,
-										// 			type: 'green',
-										// 			typeAnimated: true,
-										// 		})
-										// 	},
-										// 	error: function (xhr) {
-										// 		$.confirm({
-										// 			boxWidth: '30%',
-										// 			useBootstrap: false,
-										// 			title: 'Encountered an error!',
-										// 			content: xhr.responseText,
-										// 			type: 'red',
-										// 			typeAnimated: true,
-										// 		})
-										// 	}
-										// });
+									// $.ajax({
+									// 	url: url,
+									// 	type: 'POST',
+									// 	data: params,
+									// 	success: function (response) {
+									// 		$.confirm({
+									// 			boxWidth: '30%',
+									// 			useBootstrap: false,
+									// 			title: 'Successful',
+									// 			content: response,
+									// 			type: 'green',
+									// 			typeAnimated: true,
+									// 		})
+									// 	},
+									// 	error: function (xhr) {
+									// 		$.confirm({
+									// 			boxWidth: '30%',
+									// 			useBootstrap: false,
+									// 			title: 'Encountered an error!',
+									// 			content: xhr.responseText,
+									// 			type: 'red',
+									// 			typeAnimated: true,
+									// 		})
+									// 	}
+									// });
 
 									// });
 
@@ -850,7 +851,7 @@
 
 
 			</script>
-
+			
 
 			<div class="load-wrapper">
 				<div class="main-loader">
