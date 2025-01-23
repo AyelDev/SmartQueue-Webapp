@@ -31,7 +31,7 @@
 				   
 					<div class="leftnav">
 						<div class="bottom-lnav">
-							<b><a href="staffpage"><img src="./images/dashboard.png" alt="Dashboard Icon">Dashboard</a></b>
+							<b><a href="staffdashboard"><img src="./images/dashboard.png" alt="Dashboard Icon">Dashboard</a></b>
 							<b><a href="userwindow"><img src="./images/display.png" alt="UserWindow Icon">User Window</a></b>
 							<b><a href="counterwindow"><img src="./images/counter.png" alt="CounterWindow Icon">Counter Window</a></b>
 							<b><a href="addstudent"><img src="./images/studentlist.png" alt="StudentList Icon">Student List</a></b>
@@ -55,7 +55,7 @@
 					<button class="button-profile"><img src="./images/profile.png" alt="" class="profile">STAFF<img src="./images/caretdown.png" alt="" class="caretdown"></button>
 						<div class="staffProfile" id="staffProfile">
 							<a href="setting">Settings</a>
-							<a href="login">Signout</a>
+							<a href="logout">Signout</a>
 						</div>
 				</div>
 

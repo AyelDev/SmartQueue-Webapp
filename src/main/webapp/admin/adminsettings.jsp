@@ -10,7 +10,7 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="../css/loader.css">
-            <title>Document</title>
+            <title>Settings</title>
         </head>
 
         <body>
@@ -505,7 +505,7 @@
                             <div class="dropdown-dashboard">
                                 <a href="userinquiry">User Inquiry</a>
                                 <a href="userwindow">User Window</a>
-                                <a href="counterwindow">Counter Window</a>
+                                <a href="admincounterwindow">Counter Window</a>
                             </div>
                         </div>
                     </div>

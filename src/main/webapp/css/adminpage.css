@@ -219,7 +219,7 @@
 			.active,
 			.dropdown-btn:hover {
 				background-color: var(--background-color);
-				width: 14.3vw;
+				width: 15vw;
 				color: var(--text-color);
 				font-weight: bold;
 			}

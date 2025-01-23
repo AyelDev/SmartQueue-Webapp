@@ -105,6 +105,16 @@
 		<url-pattern>/adminsettings</url-pattern>
 	</servlet-mapping>
 
+
+	<servlet>
+		<servlet-name>admincounterwindow</servlet-name>
+		<jsp-file>/admin/admincounterwindow.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>admincounterwindow</servlet-name>
+		<url-pattern>/admincounterwindow</url-pattern>
+	</servlet-mapping>
+
 <!--
 	Counter Servlet Redirection
 -->

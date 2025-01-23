@@ -611,13 +611,14 @@
                     console.log('WebSocket connection opened', event);
                 };
 
-                function sendMsg(response) {
-                    if (response) {
-                        ws.send(JSON.stringify({
-                            message: response
-                        }));
-                        //ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
-                    }
+                //bug problem - mo undefined inig inquire sa userinquiry
+                 function sendMsg(response) {
+                     if (response) {
+                       ws.send(JSON.stringify({
+                             message: response
+                         }));
+                         //ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
+                     }
                 }
             </script>
         </body>

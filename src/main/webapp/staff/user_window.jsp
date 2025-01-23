@@ -138,15 +138,12 @@
           });
         }
 
-
-
-
-
         ws.addEventListener("message", async (message) => {
 
           if ('speechSynthesis' in window) {
 
             let messageParse = JSON.parse(message.data);
+
 
             try {
 
@@ -183,6 +180,10 @@
                 await videoSetVolume(.3);
               }
 
+              //check if message is from the counter-staff
+              if(messageParse.queueNumber == undefined)
+              return false;
+              else
               window.speechSynthesis.speak(msg);
 
             } catch (error) {

@@ -115,7 +115,7 @@
                             <div class="dropdown-dashboard">
                                 <a href="userinquiry">User Inquiry</a>
                                 <a href="userwindow">User Window</a>
-                                <a href="counterwindow">Counter Window</a>
+                                <a href="admincounterwindow">Counter Window</a>
                             </div>
                         </div>
                     </div>
