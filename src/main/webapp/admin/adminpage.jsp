@@ -403,7 +403,7 @@
 			<script type="text/javascript" src="../scripts/ping.js"></script>
 			<script type="text/javascript" src="../scripts/fadetransition.js"></script>
 			<script type="text/javascript" src="../scripts/chart.min.js"></script>
-			<script type="text/javascript" src="../scripts/adminpage.js"></script>
+			<script type="text/javascript" src="../scripts/admin/adminpage.js"></script>
 
 			<div class="load-wrapper">
 				<div class="main-loader">
