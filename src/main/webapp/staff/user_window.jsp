@@ -16,131 +16,13 @@
       <script type="text/javascript" src="./scripts/prettify.js"></script>
       <link rel="stylesheet" href="./css/bootstrap.css">
       <link rel="stylesheet" href="./css/loader.css">
+      <link rel="stylesheet" href="./css/user_window.css">
       <link rel="stylesheet" href="./css/notify.css">
       <link rel="stylesheet" href="./css/prettify.css">
+      <link rel="stylesheet" href="..//css/user_window.css">
       <title>SmartQueue</title>
 
     </head>
-    <style>
-      *,
-      body {
-        margin: 0%;
-        padding: 0%;
-        overflow: hidden;
-        background-color: #F6F4EB;
-      }
-
-      .container-xxl {
-        display: grid;
-        margin: 0%;
-        padding: 0%;
-        overflow: hidden;
-      }
-
-      .col-6-1 {
-        height: 100vh;
-        width: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .col-6-2 {
-        height: 100vh;
-        width: 50%;
-      }
-
-      tr {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-      }
-
-      tr td {
-        width: 70%;
-        margin: 1%;
-        font-size: 3rem;
-        font-weight: bold;
-        text-align: center;
-        justify-content: center;
-        display: flex;
-        border-radius: 10px;
-        background-color: #00509d;
-      }
-
-      #video-ads {
-        width: 100%;
-        height: 70%;
-        margin-left: 3%;
-        background-color: #333;
-      }
-
-      .datetime {
-        background: #F6F4EB;
-        color: #333;
-        padding: 10px;
-        font-size: 3.5rem;
-        text-transform: uppercase;
-        margin-top: -42%;
-        width: 50%;
-        height: 10%;
-        margin-left: 2%;
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      footer {
-        text-align: center;
-        padding: 15px;
-        color: #020000;
-        margin-top: -4%;
-      }
-
-      .popup {
-        display: none;
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        justify-content: center;
-        align-items: center;
-      }
-
-      .popup-content {
-        background-color: white;
-        padding: 40px;
-        border-radius: 10px;
-        text-align: center;
-        position: relative;
-        width: 80%;
-        height: 80%;
-        margin-left: 11%;
-        margin-top: 5%;
-      }
-
-      .close {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        cursor: pointer;
-        font-size: 20px;
-      }
-
-      h1 {
-        font-size: 20rem;
-      }
-
-      #popup-window-number {
-        font-size: 5rem;
-        color: #fff;
-        background-color: #00509d;
-      }
-    </style>
-
     <body>
       <div class="container-fluid">
         <div class="row">
@@ -408,8 +290,6 @@
           </div>
         </div>
       </div>
-
-
     </body>
 
     </html>
