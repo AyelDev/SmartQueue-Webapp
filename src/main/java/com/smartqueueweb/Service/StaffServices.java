@@ -2,6 +2,7 @@ package com.smartqueueweb.Service;
 
 import java.util.List;
 
+import com.mysql.cj.jdbc.Blob;
 import com.smartqueueweb.Model.ServicesBean;
 import com.smartqueueweb.Model.StaffBean;
 import com.smartqueueweb.Model.StudentBean;
@@ -36,4 +37,5 @@ public interface StaffServices {
 	
 	Integer updateQueueStatus(String QueueNumber, String queue_status);
 	
+	Integer addVideo(String fileName, Blob path, String type);
 }

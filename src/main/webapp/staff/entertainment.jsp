@@ -415,9 +415,10 @@
           
             <div>
                 <div class="controls">
-                    <form action="" enctype="multipart/form-data">
-                        <input type="file" id="videoUpload" accept="video/*" multiple>
-                        <button id="uploadBtn"><b>Upload Video</b></button>
+                    <form action="MediaUpload" method="post" enctype="multipart/form-data">
+                        <input type="file" name="file" id="videoUpload" accept="video/*" multiple>
+                        <input type="submit" id="uploadBtn" value="upload">
+                        <!-- <button id="uploadBtn"><b>Upload Video</b></button> -->
                     </form>
                 </div>
                 <div class="top-lnav">

@@ -11,6 +11,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.mysql.cj.jdbc.Blob;
 import com.smartqueueweb.Class.ServiceType;
 import com.smartqueueweb.DAO.AdminDAO;
 import com.smartqueueweb.DAO.StaffDAO;
@@ -106,6 +107,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	public Integer updateQueueStatus(String QueueNumber, String queue_status) {
 		// TODO Auto-generated method stub
 		return staffdata.updateQueueStatus(QueueNumber, queue_status);
+	}
+	
+	@Override
+	public Integer addVideo(String fileName, Blob path, String type) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	//////////////////////////////////////////////////////////////////////// --------------------
