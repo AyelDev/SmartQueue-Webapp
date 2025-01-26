@@ -40,7 +40,7 @@
 
                 <!-- Main Inquiry Cards -->
                 <div class="main">
-                    <!-- <img src="./images/image.png" alt="" class="cecbldg"> -->
+                
                     <!-- Card for General -->
                     <div class="card" id="general-card">
                         <div class="box">
@@ -188,6 +188,7 @@
                     </div>
                 </div>
             </div>
+            <div class="footer">© 2024 Cebu Eastern College. All Rights Reserved.</div>
 
             <script>
 
