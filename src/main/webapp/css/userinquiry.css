@@ -1,4 +1,4 @@
-@import url('./css/fonts.css');
+@import url('../css/fonts.css');
  * {
      margin: 0%;
     padding: 0%;
@@ -41,12 +41,12 @@
 
 .name {
     position: absolute;
-    top: 3%;
+    top: 2%;
     z-index: 2;
     color: red;
     letter-spacing: 80px;
-    text-align: center;
     font-size: 26px;
+    margin-left: 5%;
 }
 
 .title {
@@ -83,6 +83,14 @@
     align-items: center;
     background-color: #77b6ea;
 }
+/* .cecbldg{
+    opacity: .5;
+    object-fit: cover;
+    width: 50%;
+    position: absolute;
+    z-index: -1;
+
+} */
 
 .card {
     width: 22vw;
@@ -131,7 +139,7 @@
 
 .modal-content {
     /* background-color: #1e91d0; */
-    background-color: #fff;
+    /* background-color: #fff; */
     background: rgb(72.5%, 85.5%, 95.7%);
     padding: 20px;
     border-radius: 10px;
@@ -139,7 +147,7 @@
     max-width: 600px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
     margin-left: 30%;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 
@@ -213,8 +221,8 @@ label {
 }
 
 .lastname-label {
-    margin-top: 4.7%;
-    margin-left: -25.5%;
+    margin-top: 5%;
+    margin-left: -28.5%;
     position: absolute;
 }
 
@@ -270,6 +278,7 @@ label {
     position: absolute;
     font-size: 24px;
     color: red;
+    font-weight: bold;
 }
 
 @keyframes slide {
