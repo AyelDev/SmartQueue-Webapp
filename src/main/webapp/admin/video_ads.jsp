@@ -223,7 +223,7 @@
                                 <h1>Video Upload</h1>
                             </header>
                             <main>
-                                <form class="upload-form" id="VideoUploadForm">
+                                <form class="upload-form" id="VideoUploadForm" enctype="multipart/form-data">
                                     <label for="videoFiles" class="label">Choose Video Files:</label>
                                     <input type="file" id="videoFiles" name="videoFiles" multiple accept="video/*"
                                         class="file-input" required>

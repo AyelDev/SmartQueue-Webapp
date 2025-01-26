@@ -2,6 +2,8 @@ package com.smartqueueweb.Controller.Staff;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -49,7 +51,7 @@ public class MediaUpload extends HttpServlet {
 			        		
 			        	if(file.getSize() > MAX_FILE_SIZE) {
 			        		response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE);
-			        		response.getWriter().write("Must be 100 mb per file");
+			        		response.getWriter().write("Must be 100 mb per file.");
 			        		return;
 			        	}
 			        	
@@ -71,29 +73,31 @@ public class MediaUpload extends HttpServlet {
 			            if (!mediaDir.exists()) {
 			                mediaDir.mkdirs();
 			            }
-			            
-			            file.write(uploadedFile);
 						
-			           isVideoAdded = service.addVideo(file.getName(), realPath, file.getContentType());
-			           
-			           if(isVideoAdded > 1)
-			        	   throw new Exception();
-			           
+						isVideoAdded = service.addVideo(file.getName(), realPath, file.getContentType());
+
+			           if(isVideoAdded < 1)
+						throw new SQLIntegrityConstraintViolationException();
+				
+			        	
+						file.write(uploadedFile);
 			            System.out.println("Uploaded file to: " + uploadedFile.getAbsolutePath());
 			        }
 			        
 			    }
 			    response.setStatus(HttpServletResponse.SC_CREATED);
-				response.getWriter().write("Upload Success.");
+				response.getWriter().write("Upload successful.");
 				
 		} catch (FileUploadException e) {
 			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-			response.getWriter().write(e.getMessage());
+			response.getWriter().write("The file may be corrupted; please try again.");
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (SQLIntegrityConstraintViolationException e){
 			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-			response.getWriter().write(e.getMessage());
+			response.getWriter().write("This file has already been uploaded.");
+		}catch (Exception e) {
+			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+			response.getWriter().write("The server encountered an issue.");
 			e.printStackTrace();
 		}
 	}

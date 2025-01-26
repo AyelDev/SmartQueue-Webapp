@@ -53,12 +53,10 @@ $(document).ready(function(){
                 $.notify('processing request', { color: "#fff", background: "#20D67B", delay: 1000})
             },
             success: function(response){
-                $.notify(response, { color: "#fff", background: "#20D67B", delay: 1000})
-                videoListPreview();
+                $.notify(response, { color: "#fff", background: "#20D67B", delay: 2000})
             },
             error: function(xhr, status, error){
-                $.notify('error : ' + xhr.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
-                videoListPreview();
+                $.notify('error : ' + xhr.responseText, { color: "#fff", background: "#D44950", delay: 2000 })
             }
         });
 
