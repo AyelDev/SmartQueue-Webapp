@@ -297,7 +297,7 @@ body {
 }
 
 
-.button-profile {
+.profilebutton {
     align-items: center;
     justify-content: center;
     display: flex;
@@ -710,4 +710,69 @@ form {
 
 .register-form {
     margin-top: 7%;
+}
+
+/*notification dropdown*/
+.notificationdropdown {
+    display: none;
+    position: absolute;
+    top: 45px;
+    margin-right: -15%;
+    width: 350px;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 10;
+}
+.notificationdropdown.active {
+    display: block;
+}
+.notificationdropdown-header {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #f4f4f9;
+}
+.notificationdropdown-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+.notificationdropdown-item:last-child {
+    border-bottom: none;
+}
+.notificationdropdown-item:hover {
+    background-color: #f4f4f9;
+}
+.notificationdropdown-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.notification-text {
+    font-size: 14px;
+}
+.notification-time {
+    font-size: 12px;
+    color: gray;
+}
+.notification-badge {
+    position: absolute;
+    top: 5px;
+    margin-left: 1%;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 }

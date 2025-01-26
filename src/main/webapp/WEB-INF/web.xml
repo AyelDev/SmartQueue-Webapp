@@ -27,6 +27,14 @@
 	</servlet-mapping>
 
 
+	<servlet>
+		<servlet-name>userinquirytesting</servlet-name>
+		<jsp-file>/user/userinquiry-testing.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>userinquirytesting</servlet-name>
+		<url-pattern>/userinquirytesting</url-pattern>
+	</servlet-mapping>
 <!-- 
 	Staff Servlet Redirection
  -->
