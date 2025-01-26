@@ -37,5 +37,5 @@ public interface StaffServices {
 	
 	Integer updateQueueStatus(String QueueNumber, String queue_status);
 	
-	Integer addVideo(String fileName, Blob path, String type);
+	Integer addVideo(String fileName, String path, String type);
 }

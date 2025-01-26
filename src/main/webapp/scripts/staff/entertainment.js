@@ -1,5 +1,5 @@
 
-const videoUpload = document.getElementById('videoUpload');
+    const videoUpload = document.getElementById('videoUpload');
     const uploadBtn = document.getElementById('uploadBtn');
     const videoList = document.getElementById('videoList');
     const videoPlayer = document.getElementById('videoPlayer');
@@ -12,16 +12,39 @@ const videoUpload = document.getElementById('videoUpload');
     let isMaximized = false;
     let videos = [];
 
-    // Upload button functionality
-    uploadBtn.onclick = function () {
-        const file = videoUpload.files[0];
-        if (file) {
-            const url = URL.createObjectURL(file);
-            videos.push({ name: file.name, url: url });
-            updateVideoList();
-            videoUpload.value = '';
-        }
-    };
+    $(document).ready(function(){   
+        $('#VideoUploadForm').on('submit', function(event){
+            event.preventDefault();
+            let formData = new FormData($(this)[0]);
+
+            $.ajax({
+                url:'MediaUpload',
+                type:'POST',
+                data: formData,
+                contentType: false,
+                enctype: false,
+                processData: false,
+                beforeSend: function(){
+                    $.notify('processing request', { color: "#fff", background: "#20D67B", delay: 1000})
+                },
+                success: function(response){
+                    $.notify(response, { color: "#fff", background: "#20D67B", delay: 1000})
+                    const file = videoUpload.files[0];
+                        const url = URL.createObjectURL(file);
+                        videos.push({ name: file.name, url: url });
+                        updateVideoList();
+                        videoUpload.value = '';
+                },
+                error: function(xhr, status, error){
+                    $.notify('error : ' + xhr.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
+                    videoUpload.value = null;
+                }
+            });
+
+          
+        });
+     
+    });
 
     function updateVideoList() {
         videoList.innerHTML = '';

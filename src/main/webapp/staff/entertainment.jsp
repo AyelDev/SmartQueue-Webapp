@@ -9,15 +9,16 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        	<link rel="stylesheet" href="../css/prettify.css">
+        	 <!-- default css imports -->
+            <link rel="stylesheet" href="../css/prettify.css">
 			<link rel="stylesheet" href="../css/notify.css">
 			<link rel="stylesheet" href="../css/jquery-confirm.min.css">
-			<link rel="stylesheet" href="../css/adminpage.css">
 			<link rel="stylesheet" href="../css/loader.css">
+            <!-- page css import-->
             <link rel="stylesheet" href="../css/entertainment.css">
             <title>SmartQueuWeb</title>
             <style>
-                @import url('../css/fonts.css'); 
+                @import url('css/fonts.css'); 
             
                 body {
                 font-family: "Roboto Condensed", sans-serif;
@@ -381,17 +382,17 @@
         
             <div class="leftnav">
                 <div class="ulnav">
-                    <img src="./images/logo.png" class="cec">
+                    <img src="../images/logo.png" class="cec">
                     <b class="title"><br>Cebu Eastern College</b>
                     <!-- staff profile -->
                 </div>
                 
                 <div class="bottom-lnav">
                     <b><a href="staffdashboard" style="margin-top: 1.3rem;"><img src="./images/dashboard.png" alt="Dashboard Icon">Dashboard</a></b>
-                    <b><a href="userwindow"><img src="./images/display.png" alt="UserWindow Icon">User Window</a></b>
-                    <b><a href="counterwindow"><img src="./images/counter.png" alt="CounterWindow Icon">Counter Window</a></b>
-                    <b><a href="addstudent"><img src="./images/studentlist.png" alt="StudentList Icon">Student List</a></b>
-                    <b><a href="entertainment"><img src="./images/entertainment.png" alt="Entertainment Icon">Entertainment</a></b>
+                    <b><a href="userwindow"><img src="../images/display.png" alt="UserWindow Icon">User Window</a></b>
+                    <b><a href="counterwindow"><img src="../images/counter.png" alt="CounterWindow Icon">Counter Window</a></b>
+                    <b><a href="addstudent"><img src="../images/studentlist.png" alt="StudentList Icon">Student List</a></b>
+                    <b><a href="entertainment"><img src="../images/entertainment.png" alt="Entertainment Icon">Entertainment</a></b>
                 </div>
             </div>
             
@@ -400,12 +401,12 @@
                 <div class="right-icons">
                     <div class="icon-container">
                         <a href="#"></a>
-                        <img src="./images/message.png" class="picture"/>
+                        <img src="../images/message.png" class="picture"/>
                         <span class="tooltip-text">Message</span>
                     </div>
                 </div>
                 
-                <button class="button-profile"><img src="./images/profile.png" alt="" class="profile">STAFF<img src="./images/caretdown.png" alt="" class="caretdown"></button>
+                <button class="button-profile"><img src="../images/profile.png" alt="" class="profile">STAFF<img src="./images/caretdown.png" alt="" class="caretdown"></button>
         <div class="staffProfile" id="staffProfile">
             <a href="setting">Settings</a>
             <a href="logout">Signout</a>
@@ -415,10 +416,9 @@
           
             <div>
                 <div class="controls">
-                    <form action="MediaUpload" method="post" enctype="multipart/form-data">
-                        <input type="file" name="file" id="videoUpload" accept="video/*" multiple>
-                        <input type="submit" id="uploadBtn" value="upload">
-                        <!-- <button id="uploadBtn"><b>Upload Video</b></button> -->
+                    <form id="VideoUploadForm" enctype="multipart/form-data">
+                        <input type="file" name="file" id="videoUpload" accept="video/*" multiple="multiple" required>
+                        <button id="uploadBtn"><b>Upload Video</b></button>
                     </form>
                 </div>
                 <div class="top-lnav">
@@ -454,6 +454,7 @@
                 </div>
             </div>
 
+            <!-- default js imports -->
             <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
 			<script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
 			<script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
@@ -462,6 +463,7 @@
 			<script type="text/javascript" src="../scripts/ping.js"></script>
 			<script type="text/javascript" src="../scripts/fadetransition.js"></script>
 			<script type="text/javascript" src="../scripts/chart.min.js"></script>
+            <!-- page js import -->
             <script type="text/javascript" src="../scripts/staff/entertainment.js"></script>
         </body>
         </html>

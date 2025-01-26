@@ -110,9 +110,9 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	}
 	
 	@Override
-	public Integer addVideo(String fileName, Blob path, String type) {
+	public Integer addVideo(String fileName, String path, String type) {
 		// TODO Auto-generated method stub
-		return null;
+		return staffdata.addVideo(fileName, path, type);
 	}
 	
 	//////////////////////////////////////////////////////////////////////// --------------------

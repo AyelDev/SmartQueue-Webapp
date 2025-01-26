@@ -355,4 +355,24 @@ public class StaffDAO extends SQLConnection {
 			}
 			return 0;
 		}
+		
+		public Integer addVideo(String fileName, String path, String fileType) {
+			try {
+				ConnectDriver();
+				prs = conn.prepareStatement(
+						"INSERT INTO tbl_media (fileName, path, type) VALUES (?, ?, ?);");
+
+				prs.setString(1, fileName);
+				prs.setString(2, path);
+				prs.setString(3, fileType);
+
+				return prs.executeUpdate();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				SQLClose();
+			}
+			return 0;
+		}
 }
