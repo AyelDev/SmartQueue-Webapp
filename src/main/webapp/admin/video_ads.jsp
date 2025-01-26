@@ -1,13 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <c:if test="${empty sessionScope.sessionAdmin.getUsername()}">
+        <c:redirect url="/" />
+        </c:if>
+        
         <!DOCTYPE html>
         <html lang="en">
 
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
-            <script type="text/javascript" src="./scripts/ping.js"></script>
+            <!-- default css imports -->
+            <link rel="stylesheet" href="../css/prettify.css">
+			<link rel="stylesheet" href="../css/notify.css">
+			<link rel="stylesheet" href="../css/jquery-confirm.min.css">
+			<link rel="stylesheet" href="../css/loader.css">
+            <!-- page css import-->
             <link rel="stylesheet" href="../css/videoads.css">
             <title>Video Entertainment</title>
         </head>
@@ -215,10 +223,10 @@
                                 <h1>Video Upload</h1>
                             </header>
                             <main>
-                                <form class="upload-form">
+                                <form class="upload-form" id="VideoUploadForm">
                                     <label for="videoFiles" class="label">Choose Video Files:</label>
                                     <input type="file" id="videoFiles" name="videoFiles" multiple accept="video/*"
-                                        class="file-input">
+                                        class="file-input" required>
                                     <button type="button" class="upload-btn" id="uploadButton">Upload Videos</button>
                                 </form>
 
@@ -238,48 +246,24 @@
 
                 </div>
             </div>
+        <!-- default js imports -->
+        <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
+        <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+        <script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
+        <script type="text/javascript" src="../scripts/notify.js"></script>
+        <script type="text/javascript" src="../scripts/prettify.js"></script>
+        <script type="text/javascript" src="../scripts/ping.js"></script>
+        <script type="text/javascript" src="../scripts/fadetransition.js"></script>
+        <script type="text/javascript" src="../scripts/chart.min.js"></script>
+        <!-- page js import -->
+        <script type="text/javascript" src="../scripts/admin/video_ads.js"></script>
 
-            <script>
-                //button-profile being active btn
-                document.getElementById('button-profile').addEventListener('click', function () {
-                    this.classList.toggle('active');
-                    document.getElementById('adminProfile').classList.toggle('show');
-                });
-
-
-
-
-                document.getElementById('uploadButton').addEventListener('click', function () {
-                    const videoFiles = document.getElementById('videoFiles').files;
-                    const previewContainer = document.getElementById('videoPreview');
-                    const videoList = document.getElementById('videoList');
-
-                    previewContainer.innerHTML = ''; // Clear previous previews
-                    videoList.innerHTML = ''; // Clear the sidebar list
-
-                    if (videoFiles.length > 0) {
-                        for (const file of videoFiles) {
-                            const videoURL = URL.createObjectURL(file);
-
-                            // Create a video element
-                            const videoElement = document.createElement('video');
-                            videoElement.src = videoURL;
-                            videoElement.controls = true;
-                            previewContainer.appendChild(videoElement);
-
-                            // Add file name to the sidebar list
-                            const listItem = document.createElement('li');
-                            listItem.textContent = file.name;
-                            videoList.appendChild(listItem);
-                        }
-                    } else {
-                        previewContainer.innerHTML = '<p>No video files selected.</p>';
-                        videoList.innerHTML = '<li>No files uploaded.</li>';
-                    }
-                });
-
-
-            </script>
+        <div class="load-wrapper">
+            <div class="main-loader">
+                <div class="box-loader">
+                </div>
+            </div>
+        </div>
         </body>
 
 
