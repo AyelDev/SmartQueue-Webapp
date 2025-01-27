@@ -1,13 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <c:if test="${empty sessionScope.sessionAdmin.getUsername()}">
+        <c:redirect url="/" />
+        </c:if>
+        
         <!DOCTYPE html>
         <html lang="en">
 
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
-            <script type="text/javascript" src="./scripts/ping.js"></script>
+            <!-- default css imports -->
+            <link rel="stylesheet" href="../css/prettify.css">
+			<link rel="stylesheet" href="../css/notify.css">
+			<link rel="stylesheet" href="../css/jquery-confirm.min.css">
+			<link rel="stylesheet" href="../css/loader.css">
+            <!-- page css import-->
             <link rel="stylesheet" href="../css/videoads.css">
             <title>Video Entertainment</title>
         </head>
@@ -115,7 +123,7 @@
                             <div class="dropdown-dashboard">
                                 <a href="userinquiry">User Inquiry</a>
                                 <a href="userwindow">User Window</a>
-                                <a href="counterwindow">Counter Window</a>
+                                <a href="admincounterwindow">Counter Window</a>
                             </div>
                         </div>
                     </div>
@@ -123,8 +131,8 @@
                 <div class="video-entertainment">
                     <div class="dashboard-head">
                         <div class="icon-container">
-                            <svg class="bell-icon" id="notifications" width="30px" height="64px"
-                                viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="bell-icon" width="30px" height="64px" viewBox="0 0 24.00 24.00" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
                                     stroke="#CCCCCC" stroke-width="0.048"></g>
@@ -136,7 +144,6 @@
                                     </path>
                                 </g>
                             </svg>
-                            <div class="notification-badge" id="notificationBadge">3</div>
                             <svg class="chat-icon" width="64px" height="30px" viewBox="-2.4 -2.4 28.80 28.80"
                                 fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -216,10 +223,10 @@
                                 <h1>Video Upload</h1>
                             </header>
                             <main>
-                                <form class="upload-form">
+                                <form class="upload-form" id="VideoUploadForm" enctype="multipart/form-data">
                                     <label for="videoFiles" class="label">Choose Video Files:</label>
                                     <input type="file" id="videoFiles" name="videoFiles" multiple accept="video/*"
-                                        class="file-input">
+                                        class="file-input" required>
                                     <button type="button" class="upload-btn" id="uploadButton">Upload Videos</button>
                                 </form>
 
@@ -234,130 +241,29 @@
                                 <p>&copy; 2025 Cebu Eastern College</p>
                             </footer>
                         </div>
-
-                    </div>
-
-
-                    <!--notification dropdown-->
-                    <div class="notificationdropdown" id="notificationDropdown">
-                        <div class="notificationdropdown-header">
-                            <span>Notifications</span>
-                            <button id="markAllRead" class="text-blue-600 text-sm">Mark all as read</button>
-                        </div>
-                        <div class="notificationdropdown-item unread" data-id="1">
-                            <img src="https://via.placeholder.com/40" alt="Profile">
-                            <div>
-                                <div class="notification-text">You have a new message.</div>
-                                <div class="notification-time">2h ago</div>
-                            </div>
-                        </div>
-                        <div class="notificationdropdown-item unread" data-id="2">
-                            <img src="https://via.placeholder.com/40" alt="Profile">
-                            <div>
-                                <div class="notification-text">Your document has been approved.</div>
-                                <div class="notification-time">6h ago</div>
-                            </div>
-                        </div>
-                        <div class="notificationdropdown-item" data-id="3">
-                            <img src="https://via.placeholder.com/40" alt="Profile">
-                            <div>
-                                <div class="notification-text">Your password has been reset.</div>
-                                <div class="notification-time">1d ago</div>
-                            </div>
-                        </div>
+                        
                     </div>
 
                 </div>
             </div>
+        <!-- default js imports -->
+        <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
+        <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+        <script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
+        <script type="text/javascript" src="../scripts/notify.js"></script>
+        <script type="text/javascript" src="../scripts/prettify.js"></script>
+        <script type="text/javascript" src="../scripts/ping.js"></script>
+        <script type="text/javascript" src="../scripts/fadetransition.js"></script>
+        <script type="text/javascript" src="../scripts/chart.min.js"></script>
+        <!-- page js import -->
+        <script type="text/javascript" src="../scripts/admin/video_ads.js"></script>
 
-            <script>
-                var dropdown = document.getElementsByClassName("button-profile");
-                var i;
-
-                for (i = 0; i < dropdown.length; i++) {
-                    dropdown[i].addEventListener("click", function () {
-
-                        var dropdownContent = this.nextElementSibling;
-                        if (dropdownContent.style.display === "block") {
-                            dropdownContent.style.display = "none";
-                        } else {
-                            dropdownContent.style.display = "block";
-                        }
-                    });
-                }
-
-
-
-
-
-                document.getElementById('uploadButton').addEventListener('click', function () {
-                    const videoFiles = document.getElementById('videoFiles').files;
-                    const previewContainer = document.getElementById('videoPreview');
-                    const videoList = document.getElementById('videoList');
-
-                    previewContainer.innerHTML = ''; // Clear previous previews
-                    videoList.innerHTML = ''; // Clear the sidebar list
-
-                    if (videoFiles.length > 0) {
-                        for (const file of videoFiles) {
-                            const videoURL = URL.createObjectURL(file);
-
-                            // Create a video element
-                            const videoElement = document.createElement('video');
-                            videoElement.src = videoURL;
-                            videoElement.controls = true;
-                            previewContainer.appendChild(videoElement);
-
-                            // Add file name to the sidebar list
-                            const listItem = document.createElement('li');
-                            listItem.textContent = file.name;
-                            videoList.appendChild(listItem);
-                        }
-                    } else {
-                        previewContainer.innerHTML = '<p>No video files selected.</p>';
-                        videoList.innerHTML = '<li>No files uploaded.</li>';
-                    }
-                });
-
-
-
-
-
-                //notification
-                const notificationIcon = document.getElementById('notifications');
-                const notificationDropdown = document.getElementById('notificationDropdown');
-                const notificationBadge = document.getElementById('notificationBadge');
-                const markAllRead = document.getElementById('markAllRead');
-                const unreadItems = document.querySelectorAll('.dropdown-item.unread');
-
-                // Toggle dropdown visibility
-                notifications.addEventListener('click', () => {
-                    notificationDropdown.classList.toggle('active');
-                });
-
-                // Close dropdown when clicking outside
-                document.addEventListener('click', (event) => {
-                    if (!notifications.contains(event.target) && !notificationDropdown.contains(event.target)) {
-                        notificationDropdown.classList.remove('active');
-                    }
-                });
-
-                // Update badge count
-                const updateBadgeCount = () => {
-                    const unreadCount = document.querySelectorAll('.dropdown-item.unread').length;
-                    notificationBadge.textContent = unreadCount;
-                    notificationBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
-                };
-
-                // Mark all notifications as read
-                markAllRead.addEventListener('click', () => {
-                    unreadItems.forEach(item => item.classList.remove('unread'));
-                    updateBadgeCount();
-                });
-
-                // Initialize badge count
-                updateBadgeCount();
-            </script>
+        <div class="load-wrapper">
+            <div class="main-loader">
+                <div class="box-loader">
+                </div>
+            </div>
+        </div>
         </body>
 
 
