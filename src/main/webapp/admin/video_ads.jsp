@@ -123,8 +123,8 @@
                 <div class="video-entertainment">
                     <div class="dashboard-head">
                         <div class="icon-container">
-                            <svg class="bell-icon" width="30px" height="64px" viewBox="0 0 24.00 24.00" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                            <svg class="bell-icon" id="notifications" width="30px" height="64px"
+                                viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
                                     stroke="#CCCCCC" stroke-width="0.048"></g>
@@ -136,6 +136,7 @@
                                     </path>
                                 </g>
                             </svg>
+                            <div class="notification-badge" id="notificationBadge">3</div>
                             <svg class="chat-icon" width="64px" height="30px" viewBox="-2.4 -2.4 28.80 28.80"
                                 fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -233,18 +234,58 @@
                                 <p>&copy; 2025 Cebu Eastern College</p>
                             </footer>
                         </div>
-                        
+
+                    </div>
+
+
+                    <!--notification dropdown-->
+                    <div class="notificationdropdown" id="notificationDropdown">
+                        <div class="notificationdropdown-header">
+                            <span>Notifications</span>
+                            <button id="markAllRead" class="text-blue-600 text-sm">Mark all as read</button>
+                        </div>
+                        <div class="notificationdropdown-item unread" data-id="1">
+                            <img src="https://via.placeholder.com/40" alt="Profile">
+                            <div>
+                                <div class="notification-text">You have a new message.</div>
+                                <div class="notification-time">2h ago</div>
+                            </div>
+                        </div>
+                        <div class="notificationdropdown-item unread" data-id="2">
+                            <img src="https://via.placeholder.com/40" alt="Profile">
+                            <div>
+                                <div class="notification-text">Your document has been approved.</div>
+                                <div class="notification-time">6h ago</div>
+                            </div>
+                        </div>
+                        <div class="notificationdropdown-item" data-id="3">
+                            <img src="https://via.placeholder.com/40" alt="Profile">
+                            <div>
+                                <div class="notification-text">Your password has been reset.</div>
+                                <div class="notification-time">1d ago</div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
             </div>
 
             <script>
-                //button-profile being active btn
-                document.getElementById('button-profile').addEventListener('click', function () {
-                    this.classList.toggle('active');
-                    document.getElementById('adminProfile').classList.toggle('show');
-                });
+                var dropdown = document.getElementsByClassName("button-profile");
+                var i;
+
+                for (i = 0; i < dropdown.length; i++) {
+                    dropdown[i].addEventListener("click", function () {
+
+                        var dropdownContent = this.nextElementSibling;
+                        if (dropdownContent.style.display === "block") {
+                            dropdownContent.style.display = "none";
+                        } else {
+                            dropdownContent.style.display = "block";
+                        }
+                    });
+                }
+
 
 
 
@@ -279,6 +320,43 @@
                 });
 
 
+
+
+
+                //notification
+                const notificationIcon = document.getElementById('notifications');
+                const notificationDropdown = document.getElementById('notificationDropdown');
+                const notificationBadge = document.getElementById('notificationBadge');
+                const markAllRead = document.getElementById('markAllRead');
+                const unreadItems = document.querySelectorAll('.dropdown-item.unread');
+
+                // Toggle dropdown visibility
+                notifications.addEventListener('click', () => {
+                    notificationDropdown.classList.toggle('active');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (event) => {
+                    if (!notifications.contains(event.target) && !notificationDropdown.contains(event.target)) {
+                        notificationDropdown.classList.remove('active');
+                    }
+                });
+
+                // Update badge count
+                const updateBadgeCount = () => {
+                    const unreadCount = document.querySelectorAll('.dropdown-item.unread').length;
+                    notificationBadge.textContent = unreadCount;
+                    notificationBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
+                };
+
+                // Mark all notifications as read
+                markAllRead.addEventListener('click', () => {
+                    unreadItems.forEach(item => item.classList.remove('unread'));
+                    updateBadgeCount();
+                });
+
+                // Initialize badge count
+                updateBadgeCount();
             </script>
         </body>
 

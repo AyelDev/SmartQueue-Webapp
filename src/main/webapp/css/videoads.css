@@ -50,16 +50,20 @@ body {
 }
 
 .icon-container {
-    width: 5%;
+    width: 7%;
     height: 100%;
-    margin-left: 68%;
+    margin-left: 75%;
+    justify-content: space-evenly;
+    align-items: center;
+    display: flex;
 }
 
 .bell-icon {
     object-fit: scale-down;
     width: 20px;
-    margin-top: -8%;
+    height: 4vh;
     cursor: pointer;
+    padding: 5px;
 
 }
 
@@ -67,9 +71,7 @@ body {
     object-fit: scale-down;
     width: 25px;
     cursor: pointer;
-    margin-top: 1%;
-    margin-left: 2%;
-    position: absolute;
+    margin-top: .8%;
 }
 
 .button-profile {
@@ -101,7 +103,7 @@ body {
 }
 
 .adminProfile {
-    margin-left: 84%;
+    margin-left: 85%;
     position: absolute;
     background-color: white;
     width: 8vw;
@@ -111,10 +113,10 @@ body {
     z-index: 1;
     display: none;
     border-radius: 7px;
-    margin-top: -.1%;
+    margin-top: -2%;
 }
 
-.button-profile.active {
+/* .button-profile.active {
     background-color: #d5deef;
     color: #333;
     width: 9%;
@@ -125,7 +127,7 @@ body {
 .button-profile.active svg {
     fill: var(--text-color);
     stroke: var(--text-color);
-}
+} */
 
 .adminProfile.show {
     display: flex;
@@ -145,13 +147,14 @@ body {
     justify-content: center;
     padding: .5rem 0 0 0;
     height: 2rem;
-    
+
 }
 
 .adminProfile a:hover {
     background-color: var(--select-text-color);
     border-radius: 7px;
 }
+
 /*Navbar section*/
 .navbar {
     width: 15vw;
@@ -354,7 +357,8 @@ body {
     margin-top: -5%;
     margin-left: 20%;
 }
-hr{
+
+hr {
     width: 50%;
     margin-top: 1%;
     margin-left: 4%;
@@ -431,6 +435,7 @@ main {
 .upload-btn:hover {
     background-color: #003580;
 }
+
 /* Video Previews */
 .video-preview-container {
     margin-top: 30px;
@@ -452,6 +457,7 @@ main {
     border: 2px solid #004aad;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 /* Sidebar */
 .sidebar {
     width: 250px;
@@ -498,4 +504,71 @@ main {
     padding: 10px 0;
     font-size: 0.9rem;
     color: #666;
+}
+
+
+
+/*notification dropdown*/
+.notificationdropdown {
+    display: none;
+    position: absolute;
+    top: 45px;
+    margin-left: 59%;
+    width: 350px;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 10;
+}
+.notificationdropdown.active {
+    display: block;
+}
+.notificationdropdown-header {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #f4f4f9;
+}
+.notificationdropdown-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+.notificationdropdown-item:last-child {
+    border-bottom: none;
+}
+.notificationdropdown-item:hover {
+    background-color: #f4f4f9;
+}
+.notificationdropdown-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.notification-text {
+    font-size: 14px;
+}
+.notification-time {
+    font-size: 12px;
+    color: gray;
+}
+.notification-badge {
+    position: absolute;
+    top: 5px;
+    margin-left: 1%;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 }

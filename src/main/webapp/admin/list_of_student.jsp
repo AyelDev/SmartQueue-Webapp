@@ -9,7 +9,7 @@
 		<head>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<link rel="stylesheet" href="../css/fontawesome.css">
+			<link rel="stylesheet" href="../css/fontawesome.css">
 			<script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
 			<script type="text/javascript" src="./scripts/ping.js"></script>
 			<script type="text/javascript" src="./scripts/fadetransition.js"></script>
@@ -32,9 +32,9 @@
 
 					<div class="menu-navbar">
 						<div class="dropdown">
-							<button class="dropdown-btn" onclick="window.location.href = 'dashboard';"><svg class="dashboard-icon" fill="#ffffff" width="64px"
-									height="64px" viewBox="-2 0 19 19" xmlns="http://www.w3.org/2000/svg"
-									class="cf-icon-svg">
+							<button class="dropdown-btn" onclick="window.location.href = 'dashboard';"><svg
+									class="dashboard-icon" fill="#ffffff" width="64px" height="64px"
+									viewBox="-2 0 19 19" xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg">
 									<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 									<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
 									</g>
@@ -50,9 +50,9 @@
 						</div>
 
 						<div class="dropdown">
-							<button class="dropdown-btn" onclick="window.location.href='counterlist';"><svg class="counter-icon" width="64px" height="64px"
-									viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-									transform="rotate(90)">
+							<button class="dropdown-btn" onclick="window.location.href='counterlist';"><svg
+									class="counter-icon" width="64px" height="64px" viewBox="0 0 24 24" fill="none"
+									xmlns="http://www.w3.org/2000/svg" transform="rotate(90)">
 									<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 									<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
 									</g>
@@ -93,8 +93,9 @@
 						</div>
 
 						<div class="dropdown">
-							<button class="dropdown-btn" onclick="window.location.href = 'videoads';"><svg class="entertainment-icon" width="64px" height="64px"
-									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+							<button class="dropdown-btn" onclick="window.location.href = 'videoads';"><svg
+									class="entertainment-icon" width="64px" height="64px" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg" fill="none">
 									<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 									<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
 									</g>
@@ -130,8 +131,8 @@
 				<div class="studentlist-section">
 					<div class="dashboard-head">
 						<div class="icon-container">
-							<svg class="bell-icon" width="30px" height="64px" viewBox="0 0 24.00 24.00" fill="none"
-								xmlns="http://www.w3.org/2000/svg">
+							<svg class="bell-icon" id="notifications" width="30px" height="64px"
+								viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
 									stroke="#CCCCCC" stroke-width="0.048"></g>
@@ -143,6 +144,7 @@
 									</path>
 								</g>
 							</svg>
+							<div class="notification-badge" id="notificationBadge">3</div>
 							<svg class="chat-icon" width="64px" height="30px" viewBox="-2.4 -2.4 28.80 28.80"
 								fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
 								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -179,8 +181,8 @@
 						</div>
 
 						<!-- admin profile -->
-						<button class="button-profile" id="button-profile"><svg class="profile" width="64px"
-								height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<button class="profilebutton" id="profilebutton"><svg class="profile" width="64px" height="64px"
+								viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
 								<g id="SVGRepo_iconCarrier">
@@ -221,7 +223,7 @@
 							<button class="search-btn" type="submit">
 								<img src="./images/search-icon.png" alt="" class="search-icon">
 							</button>
-							
+
 
 							<div class="overlay"></div>
 							<div class="fillup-form-container modal">
@@ -356,8 +358,41 @@
 					</div>
 				</div>
 
+
+				<!--notification dropdown-->
+				<div class="notificationdropdown" id="notificationDropdown">
+					<div class="notificationdropdown-header">
+						<span>Notifications</span>
+						<button id="markAllRead" class="text-blue-600 text-sm">Mark all as read</button>
+					</div>
+					<div class="notificationdropdown-item unread" data-id="1">
+						<img src="https://via.placeholder.com/40" alt="Profile">
+						<div>
+							<div class="notification-text">You have a new message.</div>
+							<div class="notification-time">2h ago</div>
+						</div>
+					</div>
+					<div class="notificationdropdown-item unread" data-id="2">
+						<img src="https://via.placeholder.com/40" alt="Profile">
+						<div>
+							<div class="notification-text">Your document has been approved.</div>
+							<div class="notification-time">6h ago</div>
+						</div>
+					</div>
+					<div class="notificationdropdown-item" data-id="3">
+						<img src="https://via.placeholder.com/40" alt="Profile">
+						<div>
+							<div class="notification-text">Your password has been reset.</div>
+							<div class="notification-time">1d ago</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
 				<script>
-					var dropdown = document.getElementsByClassName("button-profile");
+					var dropdown = document.getElementsByClassName("profilebutton");
 					var i;
 
 					for (i = 0; i < dropdown.length; i++) {
@@ -412,17 +447,7 @@
 					const modal = document.querySelector('.modal');
 					const overlay = document.querySelector('.overlay');
 
-					// Function to open the modal
-					function openModal() {
-						modal.classList.add('active');
-						overlay.classList.add('active');
-					}
 
-					// Function to close the modal
-					function closeModal() {
-						modal.classList.remove('active');
-						overlay.classList.remove('active');
-					}
 
 					// Event listeners
 					addAccountButton.addEventListener('click', openModal);
@@ -695,13 +720,56 @@
 							}
 						}
 					}
+					// Function to open the modal
+					function openModal() {
+						modal.classList.add('active');
+						overlay.classList.add('active');
+					}
+
+					// Function to close the modal
+					function closeModal() {
+						modal.classList.remove('active');
+						overlay.classList.remove('active');
+					}
 
 
-					//button-profile being active btn
-					document.getElementById('button-profile').addEventListener('click', function () {
-						this.classList.toggle('active');
-						document.getElementById('adminProfile').classList.toggle('show');
+
+
+
+					//notification
+					const notificationIcon = document.getElementById('notifications');
+					const notificationDropdown = document.getElementById('notificationDropdown');
+					const notificationBadge = document.getElementById('notificationBadge');
+					const markAllRead = document.getElementById('markAllRead');
+					const unreadItems = document.querySelectorAll('.dropdown-item.unread');
+
+					// Toggle dropdown visibility
+					notifications.addEventListener('click', () => {
+						notificationDropdown.classList.toggle('active');
 					});
+
+					// Close dropdown when clicking outside
+					document.addEventListener('click', (event) => {
+						if (!notifications.contains(event.target) && !notificationDropdown.contains(event.target)) {
+							notificationDropdown.classList.remove('active');
+						}
+					});
+
+					// Update badge count
+					const updateBadgeCount = () => {
+						const unreadCount = document.querySelectorAll('.dropdown-item.unread').length;
+						notificationBadge.textContent = unreadCount;
+						notificationBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
+					};
+
+					// Mark all notifications as read
+					markAllRead.addEventListener('click', () => {
+						unreadItems.forEach(item => item.classList.remove('unread'));
+						updateBadgeCount();
+					});
+
+					// Initialize badge count
+					updateBadgeCount();
 				</script>
 
 				<div class="load-wrapper">
