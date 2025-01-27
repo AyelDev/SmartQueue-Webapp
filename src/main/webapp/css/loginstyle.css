@@ -150,7 +150,7 @@ body {
 .password-label{
     position: absolute;
     top: 47.5%;
-    margin-left: -36%;
+    margin-left: -31%;
     translate: 10px 10px;
     color: var(--text-color);
     transition: translate 500ms, scale 500ms;

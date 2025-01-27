@@ -15,6 +15,7 @@
 			<link rel="stylesheet" href="../css/adminpage.css">
 			<link rel="stylesheet" href="../css/loader.css">
 			<link rel="stylesheet" href="../css/adminpage.css">
+			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 			<title>Admin | Dashboard</title>
 		</head>
 
@@ -124,7 +125,7 @@
 				<div class="dashboard-section">
 					<div class="dashboard-head">
 						<div class="icon-container">
-							<svg class="bell-icon" width="30px" height="64px" viewBox="0 0 24.00 24.00" fill="none"
+							<svg class="bell-icon" id="notifications" width="30px" height="64px" viewBox="0 0 24.00 24.00" fill="none"
 								xmlns="http://www.w3.org/2000/svg">
 								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
@@ -137,6 +138,7 @@
 									</path>
 								</g>
 							</svg>
+							<div class="notification-badge" id="notificationBadge">3</div>
 							<svg class="chat-icon" width="64px" height="30px" viewBox="-2.4 -2.4 28.80 28.80"
 								fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
 								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -175,7 +177,7 @@
 
 
 						<!-- admin profile -->
-						<button class="button-profile" id="button-profile"><svg class="profile" width="64px"
+						<button class="profilebutton" id="button-profile"><svg class="profile" width="64px"
 								height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -209,24 +211,7 @@
 						<h1 class="dashboard-title">Dashboard</h1>
 						<hr>
 						<div class="dashboard-content">
-							<div class="card-total"><br>
-								<p>Total students</p>
-								<h3 id="total-student" class="total-count">---</h3>
-							</div>
-							<div class="card-total"><br>
-								<p>Total staff</p>
-								<h3 id="total-staff" class="total-count">---</h3>
-							</div>
-							<div class="card-total"><br>
-								<p>Total transaction</p>
-								<h3 id="total-transaction" class="total-count">---</h3>
-							</div>
-							<div class="department-graph">
-								<canvas id="myPie"></canvas>
-							</div>
-							<div class="total-graph">
-								<canvas id="myChart"></canvas>
-							</div>
+							<canvas id="barGraph"></canvas>
 
 							<!-- General - Program -->
 							<div class="table-container">
@@ -376,6 +361,37 @@
 						</div>
 					</div>
 				</div>
+
+
+
+				<!--notification dropdown-->
+				<div class="notificationdropdown" id="notificationDropdown">
+					<div class="notificationdropdown-header">
+						<span>Notifications</span>
+						<button id="markAllRead" class="text-blue-600 text-sm">Mark all as read</button>
+					</div>
+					<div class="notificationdropdown-item unread" data-id="1">
+						<img src="https://via.placeholder.com/40" alt="Profile">
+						<div>
+							<div class="notification-text">You have a new message.</div>
+							<div class="notification-time">2h ago</div>
+						</div>
+					</div>
+					<div class="notificationdropdown-item unread" data-id="2">
+						<img src="https://via.placeholder.com/40" alt="Profile">
+						<div>
+							<div class="notification-text">Your document has been approved.</div>
+							<div class="notification-time">6h ago</div>
+						</div>
+					</div>
+					<div class="notificationdropdown-item" data-id="3">
+						<img src="https://via.placeholder.com/40" alt="Profile">
+						<div>
+							<div class="notification-text">Your password has been reset.</div>
+							<div class="notification-time">1d ago</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<!-- Modal for Add/Update Info -->
@@ -394,6 +410,93 @@
 					</form>
 				</div>
 			</div> -->
+			<script>
+ // Sample data: Replace this with actual data from your system
+ const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Inquiries',
+                    data: [50, 60, 70, 65, 80, 90, 100, 95, 85, 75, 70, 60], // Replace with real data
+                    backgroundColor: 'rgba(0, 0, 139, 1)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                },
+                {
+                    label: 'Basic Education',
+                    data: [40, 50, 60, 55, 70, 80, 85, 80, 70, 60, 55, 50], // Replace with real data
+                    backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                },
+                {
+                    label: 'BEED',
+                    data: [30, 40, 50, 45, 60, 70, 75, 70, 60, 50, 45, 40], // Replace with real data
+                    backgroundColor: 'rgba(255, 206, 86, 0.7)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 1,
+                },
+                {
+                    label: 'BSTM',
+                    data: [20, 30, 40, 35, 50, 60, 65, 60, 50, 40, 35, 30], // Replace with real data
+                    backgroundColor: 'rgba(255, 0, 0, 1)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1,
+                }
+				,
+                {
+                    label: 'BSHM',
+                    data: [20, 30, 40, 35, 50, 60, 65, 60, 50, 40, 35, 30], // Replace with real data
+                    backgroundColor: 'rgba(153, 102, 255, 0.7)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1,
+                },
+                {
+                    label: 'BSIT',
+                    data: [20, 30, 40, 35, 50, 60, 65, 60, 50, 40, 35, 30], // Replace with real data
+                    backgroundColor: 'rgba(128, 0, 0, 1)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1,
+                },
+                {
+                    label: 'CRIM',
+                    data: [20, 30, 40, 35, 50, 60, 65, 60, 50, 40, 35, 30], // Replace with real data
+                    backgroundColor: 'rgba(0, 153, 255, 1)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1,
+                }
+            ]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Monthly Queue Summary by Department'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            },
+        };
+
+        const barGraph = new Chart(
+            document.getElementById('barGraph'),
+            config
+        );
+
+			</script>
 
 			<script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
 			<script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>

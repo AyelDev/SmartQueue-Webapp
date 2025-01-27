@@ -433,26 +433,13 @@ h3 {
 	color: var(--background-color);
 }
 
-.department-graph {
-	width: 30%;
-	height: 90%;
+canvas{
+	width: 50%;
+	margin-top: 1%;
+	margin-left: -1%;
 	background-color: #ffff;
-	border-radius: 15px;
-	margin-top: 2rem;
-	box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
-
-}
-
-.total-graph {
-	width: 48.5%;
-	height: 35%;
-	margin-top: 11.7%;
-	margin-left: -24%;
-	background-color: #ffff;
-	position: absolute;
-	border-radius: 15px;
-	box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
-	z-index: 1;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* table section */
