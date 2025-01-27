@@ -9,10 +9,10 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
-            <script type="text/javascript" src="./scripts/ping.js"></script>
-            <script type="text/javascript" src="./scripts/fadetransition.js"></script>
-            <link rel="stylesheet" href="./css/loader.css">
+            <link rel="stylesheet" href="../css/prettify.css">
+			<link rel="stylesheet" href="../css/notify.css">
+			<link rel="stylesheet" href="../css/jquery-confirm.min.css">
+			<link rel="stylesheet" href="../css/loader.css">
             <link rel="stylesheet" href="../css/counterlist.css">
             <title>Admin | List of Counter</title>
         </head>
@@ -227,9 +227,9 @@
                                 <h1>Add Counter</h1>
                                 <span class="close-btn">&times;</span>
                                 <div class="register-form">
-                                    <form action="" method="post">
+                                    <form id="counterRegisterForm">
                                         <div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-                                            <input class="counterno-input" required="required" type="text"
+                                            <input class="counterno-input" required="required" type="number"
                                                 name="txtCounterno">
                                             <label for="counterno" class="counterno-label">Counter No.</label>
                                         </div>
@@ -239,25 +239,7 @@
                                             <label for="description" class="description-label">Description</label>
                                         </div>
 
-                                        <div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-                                            <input class="lastname-input" required="required" type="text"
-                                                name="txtLastname">
-                                            <label for="lastname" class="lastname-label">Last name</label>
-                                        </div>
-
-                                        <div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-
-                                            <select name="purpose" id="records-purpose" class="purpose">
-                                                <option value="">--</option>
-                                                <option value="enrollment">BEED</option>
-                                                <option value="assesment">BSHM</option>
-                                                <option value="assesment">BSIT</option>
-                                                <option value="assesment">BSTM</option>
-                                                <option value="assesment">BSED</option>
-                                            </select>
-                                        </div>
-
-                                        <input class="sign-btn" type="submit" value="Signup">
+                                        <input class="sign-btn" type="button" id="counterSubmitBtn" value="Signup">
                                     </form>
                                 </div>
                             </div>
@@ -271,37 +253,7 @@
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Enrollment</td>
-                                        <td>15/09/2024</td>
-                                        <td>Active</td>
-                                        <td>
-                                            <button class="btn update">Update</button>
-                                            <button class="btn delete">Delete</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Request Document</td>
-                                        <td>15/09/2024</td>
-                                        <td>Active</td>
-                                        <td>
-                                            <button class="btn update">Update</button>
-                                            <button class="btn delete">Delete</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Archiving</td>
-                                        <td>15/09/2024</td>
-                                        <td>Active</td>
-                                        <td>
-                                            <button class="btn update">Update</button>
-                                            <button class="btn delete">Delete</button>
-                                        </td>
-                                    </tr>
+                                <tbody id="counterListBody">
                                 </tbody>
                             </table>
                         </div>
@@ -337,145 +289,15 @@
                             </div>
                         </div>
                     </div>
-
-                    <script>
-                        var dropdown = document.getElementsByClassName("button-profile");
-                        var i;
-
-                        for (i = 0; i < dropdown.length; i++) {
-                            dropdown[i].addEventListener("click", function () {
-
-                                var dropdownContent = this.nextElementSibling;
-                                if (dropdownContent.style.display === "block") {
-                                    dropdownContent.style.display = "none";
-                                } else {
-                                    dropdownContent.style.display = "block";
-                                }
-                            });
-                        }
-
-
-                    </script>
-                    <script>
-                        // Get elements
-                        const addAccountButton = document.querySelector('.add-account-btn');
-                        const closeModalButton = document.querySelector('.close-btn');
-                        const modal = document.querySelector('.modal');
-                        const overlay = document.querySelector('.overlay');
-
-                        // Function to open the modal
-                        function openModal() {
-                            modal.classList.add('active');
-                            overlay.classList.add('active');
-                        }
-
-                        // Function to close the modal
-                        function closeModal() {
-                            modal.classList.remove('active');
-                            overlay.classList.remove('active');
-                        }
-
-                        // Event listeners
-                        addAccountButton.addEventListener('click', openModal);
-                        closeModalButton.addEventListener('click', closeModal);
-                        overlay.addEventListener('click', closeModal);
-                    </script>
-                    <script>
-                        var dropdown = document.getElementsByClassName("button-profile");
-                        var i;
-
-                        for (i = 0; i < dropdown.length; i++) {
-                            dropdown[i].addEventListener("click", function () {
-
-                                var dropdownContent = this.nextElementSibling;
-                                if (dropdownContent.style.display === "block") {
-                                    dropdownContent.style.display = "none";
-                                } else {
-                                    dropdownContent.style.display = "block";
-                                }
-                            });
-                        }
-
-                        var staffListInfo = document.getElementById("tablelist");
-
-                        //need to update this function
-                        function updateData() {
-                            var request = new XMLHttpRequest();
-                            request.open('GET', '/JsonStudentListAPI');
-                            request.onload = function () {
-                                var data = JSON.parse(request.responseText);
-                                renderHTML(data);
-                            }
-                            request.send();
-                        }
-
-                        //What is this function?
-                        function renderHTML(data) {
-                            // var htmlString = ``;
-
-                            // for (var i = 0; i < data.length; i++) {
-
-                            //     htmlString += "<tr>";
-                            //     htmlString += "<td>" + data[i].idnumber + "</td>";
-                            //     htmlString += "<td>" + data[i].firstname + " " + data[i].middlename + " " + data[i].lastname + " </td>";
-                            //     htmlString += "<td>" + data[i].course + "</td>";
-                            //     htmlString += '<td><a href="update?staffId=' + data[i].staffID + '"><button class="update" style="background-color: #97BE5A;">Update</button></a> ';
-                            //     htmlString += '<a href="delete?staffId=' + data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E;">Delete</button></a>';
-                            //     htmlString += "</tr>";
-                            // }
-
-                            //     staffListInfo.innerHTML = htmlString;
-
-                        }
-
-                        setInterval(updateData, 10000);
-
-
-                        //button-profile being active btn
-                        document.getElementById('button-profile').addEventListener('click', function () {
-                            this.classList.toggle('active');
-                            document.getElementById('adminProfile').classList.toggle('show');
-                        });
-
-
-
-                        //notification
-                        const notificationIcon = document.getElementById('notifications');
-                        const notificationDropdown = document.getElementById('notificationDropdown');
-                        const notificationBadge = document.getElementById('notificationBadge');
-                        const markAllRead = document.getElementById('markAllRead');
-                        const unreadItems = document.querySelectorAll('.dropdown-item.unread');
-
-                        // Toggle dropdown visibility
-                        notifications.addEventListener('click', () => {
-                            notificationDropdown.classList.toggle('active');
-                        });
-
-                        // Close dropdown when clicking outside
-                        document.addEventListener('click', (event) => {
-                            if (!notifications.contains(event.target) && !notificationDropdown.contains(event.target)) {
-                                notificationDropdown.classList.remove('active');
-                            }
-                        });
-
-                        // Update badge count
-                        const updateBadgeCount = () => {
-                            const unreadCount = document.querySelectorAll('.dropdown-item.unread').length;
-                            notificationBadge.textContent = unreadCount;
-                            notificationBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
-                        };
-
-                        // Mark all notifications as read
-                        markAllRead.addEventListener('click', () => {
-                            unreadItems.forEach(item => item.classList.remove('unread'));
-                            updateBadgeCount();
-                        });
-
-                        // Initialize badge count
-                        updateBadgeCount();
-                    </script>
-
-
+                    <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
+                    <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+                    <script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
+                    <script type="text/javascript" src="../scripts/notify.js"></script>
+                    <script type="text/javascript" src="../scripts/prettify.js"></script>
+                    <script type="text/javascript" src="../scripts/ping.js"></script>
+                    <script type="text/javascript" src="../scripts/fadetransition.js"></script>
+                    <script type="text/javascript" src="../scripts/admin/list_of_counter.js"></script>
+                  
                     <div class="load-wrapper">
                         <div class="main-loader">
                             <div class="box-loader">

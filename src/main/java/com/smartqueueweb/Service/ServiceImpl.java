@@ -17,6 +17,7 @@ import com.smartqueueweb.DAO.AdminDAO;
 import com.smartqueueweb.DAO.StaffDAO;
 import com.smartqueueweb.DAO.StudentDAO;
 import com.smartqueueweb.Model.AdminBean;
+import com.smartqueueweb.Model.CountersBean;
 import com.smartqueueweb.Model.ServicesBean;
 import com.smartqueueweb.Model.StaffBean;
 import com.smartqueueweb.Model.StudentBean;
@@ -25,7 +26,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	StaffDAO staffdata = new StaffDAO();
 	AdminDAO admindata = new AdminDAO();
 	StudentDAO studentdata = new StudentDAO();
-
+	
 	//////////////////////////////////////////////////////////////////////// ------------------
 	//////////////////////////////////////////////////////////////////////// Staff
 	@Override
@@ -151,6 +152,30 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	public Boolean deleteService(Integer id) {
 		// TODO Auto-generated method stub
 		return admindata.DeleteService(id);
+	} 
+	
+	@Override
+	public Integer addCounters(Integer counterNumber, String description) {
+		// TODO Auto-generated method stub
+		return admindata.AddCounters(counterNumber, description);
+	}
+	
+	@Override
+	public List<CountersBean> counterList() {
+		// TODO Auto-generated method stub
+		return admindata.CounterList();
+	}
+
+	@Override
+	public Boolean updateCounters(Integer id, Integer counterNumber, String description, String status) {
+		// TODO Auto-generated method stub
+		return admindata.UpdateCounters(id, counterNumber, description, status);
+	}
+
+	@Override
+	public Boolean deleteCounters(Integer id) {
+		// TODO Auto-generated method stub
+		return admindata.DeleteCounters(id);
 	}
 
 	//////////////////////////////////////////////////////////////////////// -----------------------
