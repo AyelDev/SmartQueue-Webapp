@@ -3,6 +3,7 @@ package com.smartqueueweb.Service;
 import com.smartqueueweb.Class.ServiceType;
 import com.smartqueueweb.Model.AdminBean;
 import com.smartqueueweb.Model.CountersBean;
+import com.smartqueueweb.Model.MediaBean;
 import com.smartqueueweb.Model.ServicesBean;
 
 import java.util.List;
@@ -29,5 +30,6 @@ public interface AdminServices {
 	
 	Boolean deleteCounters(Integer id);
 	
+	List<MediaBean> videoList();
 
 }
