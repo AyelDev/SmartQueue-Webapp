@@ -20,7 +20,6 @@ import com.smartqueueweb.Service.ServiceImpl;
 
 		// api
 		"/JsonStaffListAPI", "/JsonStudentListAPI",
-		"/JsonServiceListAPI",
 		"/CounterlistApi",
 
 		// admin
