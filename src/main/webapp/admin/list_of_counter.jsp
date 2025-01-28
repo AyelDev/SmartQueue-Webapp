@@ -217,9 +217,8 @@
                             <h1>Counter List</h1>
                             <div class="search-container">
                                 <form action="" method="">
-                                    <input type="text" placeholder="Search.." name="search" class="search-bar">
-                                    <button class="search-btn" type="submit"><img src="../images/search-icon.png" alt=""
-                                            class="search-icon"></button>
+                                    <input type="text" placeholder="Search.." name="search" class="search-bar" id="searchInput" onkeyup="searchTable()">
+                                    <button class="search-btn" type="submit"><img src="../images/search-icon.png" alt=""class="search-icon"></button>
                                 </form>
                             </div>
                             <div class="overlay"></div>
@@ -243,7 +242,7 @@
                                     </form>
                                 </div>
                             </div>
-                            <table>
+                            <table id="counterlist-table">
                                 <thead>
                                     <tr>
                                         <th>Counter no.</th>

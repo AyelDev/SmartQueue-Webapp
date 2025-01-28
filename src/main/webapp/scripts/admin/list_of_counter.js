@@ -76,6 +76,8 @@ function UpdateDeleteCounterList(id, counterNumber, description, status, method,
 
     let contents = ``;
 
+    let selectTagStatus = status == 'active' ? 'inactive' : 'active'; 
+
     if(method == 'PUT'){
         contents = 
         `
@@ -95,7 +97,7 @@ function UpdateDeleteCounterList(id, counterNumber, description, status, method,
 
         <select class="name form-control" id="status" required>
         <option value="`+status+`">`+status+`</option>
-        <option value="inactive">inactive</option>
+        <option value="`+selectTagStatus+`">`+selectTagStatus+`</option>
         </select>
         </div>
         </form>
@@ -170,6 +172,36 @@ function UpdateDeleteCounterList(id, counterNumber, description, status, method,
 }
 
 //------------------------------------------------------------------------------------  END OF FUNCTION
+
+//------------------------------------------------------------------------------------  SEARCH FUNCTION
+
+function searchTable() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toLowerCase();
+    table = document.getElementById("counterlist-table");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 1; i < tr.length; i++) {
+        tr[i].style.display = "none"; // Initially hide all rows
+        td = tr[i].getElementsByTagName("td");
+        for (j = 0; j < td.length; j++) {
+            if (td[j]) {
+                txtValue = td[j].textContent || td[j].innerText;
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                    tr[i].style.display = ""; // Show the row if any column matches the search
+                    break;
+                }
+            }
+        }
+    }
+}
+
+//------------------------------------------------------------------------------------  END OF FUNCTION
+
+
 
 var dropdown = document.getElementsByClassName("button-profile");
 var i;
