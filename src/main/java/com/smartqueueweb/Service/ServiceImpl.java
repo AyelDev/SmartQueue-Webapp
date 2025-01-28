@@ -1,6 +1,5 @@
 package com.smartqueueweb.Service;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.List;
 
@@ -11,13 +10,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import com.mysql.cj.jdbc.Blob;
 import com.smartqueueweb.Class.ServiceType;
 import com.smartqueueweb.DAO.AdminDAO;
 import com.smartqueueweb.DAO.StaffDAO;
 import com.smartqueueweb.DAO.StudentDAO;
 import com.smartqueueweb.Model.AdminBean;
 import com.smartqueueweb.Model.CountersBean;
+import com.smartqueueweb.Model.MediaBean;
 import com.smartqueueweb.Model.ServicesBean;
 import com.smartqueueweb.Model.StaffBean;
 import com.smartqueueweb.Model.StudentBean;
@@ -176,6 +175,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	public Boolean deleteCounters(Integer id) {
 		// TODO Auto-generated method stub
 		return admindata.DeleteCounters(id);
+	}
+	
+	@Override
+	public List<MediaBean> videoList() {
+		// TODO Auto-generated method stub
+		return admindata.VideoList();
 	}
 
 	//////////////////////////////////////////////////////////////////////// -----------------------

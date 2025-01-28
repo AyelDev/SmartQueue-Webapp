@@ -7,6 +7,7 @@ import java.util.List;
 import com.smartqueueweb.Class.ServiceType;
 import com.smartqueueweb.Model.AdminBean;
 import com.smartqueueweb.Model.CountersBean;
+import com.smartqueueweb.Model.MediaBean;
 import com.smartqueueweb.Model.ServicesBean;
 
 public class AdminDAO extends SQLConnection {
@@ -14,8 +15,11 @@ public class AdminDAO extends SQLConnection {
 	AdminBean adminbean = null;
 	ServicesBean serviceBean = null;
 	CountersBean countersBean = null;
+	MediaBean mediaBean = null;
+	
 	List<ServicesBean> serviceBeanList = null;
 	List<CountersBean> countersBeanList = null;
+	List<MediaBean> mediaBeanList = null;
 
 	public AdminDAO() {
 		super();
@@ -224,5 +228,30 @@ public class AdminDAO extends SQLConnection {
 			SQLClose();
 		}
 		return false;
+	}
+
+	public List<MediaBean> VideoList() {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("SELECT * from tbl_media ORDER BY fileName");
+			rs = prs.executeQuery();
+			mediaBeanList = new ArrayList<MediaBean>();
+
+			while (rs.next()) {
+				mediaBean = new MediaBean(
+						rs.getInt("id"), 
+						rs.getString("filename"),
+						rs.getString("path"), 
+						rs.getString("type")
+						);
+				mediaBeanList.add(mediaBean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return mediaBeanList;
 	}
 }
