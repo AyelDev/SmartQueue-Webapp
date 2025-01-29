@@ -274,36 +274,52 @@ body{
 
 .calendar {
     width: 43%;
-    height: 40vh;
+    height: 45vh;
     background-color: #F5F5F5;
     float: right;
-   margin-right: 10px;
-   margin-top: 15px;
-   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    margin-right: 20px;
+    margin-top: 6px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
 }
-
-.calendar-header {
+.calendar header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10px;
-    margin-bottom: 10px;
 }
-
-.calendar-body {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-gap: 5px;
+.calendar header button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+.calendar table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.calendar th, .calendar td {
     text-align: center;
+    width: 14%;
+    height: 40px;
+}
+.calendar td {
+    cursor: pointer;
+    border-radius: 5px;
+}
+.calendar td:hover {
+    background: #e0e0e0;
+}
+.calendar .today {
+    background: #4285f4;
+    color: white;
+    border-radius: 10%;
 }
 
 .day, .date {
     padding: 5px;
     border-radius: 50%;
 }
-
 .date:hover {
     background-color: lightgrey;
 }
@@ -534,7 +550,6 @@ body{
         height: auto;
         padding: 15px;
     }
-
     .button-profile {
         width: 20%;
         margin: 0 auto;

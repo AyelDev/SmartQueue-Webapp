@@ -3,7 +3,6 @@
 <c:if test="${empty sessionScope.sessionStaff}">
     <c:redirect url="/" />
 </c:if>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +16,8 @@
     <link rel="stylesheet" href="./css/staffpage.css">
     <link rel="stylesheet" href="..//css/staffpage.css">
     <title>Staff Page</title>
+   
 </head>
-
 <body>
     <div class="container">
         <div class="cover">
@@ -28,7 +27,7 @@
                         <div class="right-icons">
 
                             <div class="icon-container">
-                                <a href="#"></a>
+                                <a href="message"></a>
                                 <img src="./images/message.png" class="picture"/>
                                 <span class="tooltip-text">Message</span>
                             </div>
@@ -37,9 +36,8 @@
                         <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
                 <div class="staffProfile" id="staffProfile">
                     <a href="setting">Settings</a>
-                    <a href="login">Signout</a>
+                    <a href="logout">Signout</a>
                 </div>
-
                     </div>
 
                     <div class="card-container">
@@ -59,7 +57,21 @@
                 </div>
 
                 <div class="graphcalendar-container">
-                    <div class="calendar"></div>
+                    <div class="calendar">
+                        <header>
+                            <button onclick="changeMonth(-1)">&lt;</button>
+                            <h2 id="monthYear"></h2>
+                            <button onclick="changeMonth(1)">&gt;</button>
+                        </header>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th>
+                                </tr>
+                            </thead>
+                            <tbody id="calendarBody"></tbody>
+                        </table>
+                    </div>
                     <div class="graph">
                         <canvas id="queueTrendChart"></canvas> 
                     </div>
@@ -134,60 +146,72 @@
             });
             
             // Calendar cd
-            const calendarElement = document.querySelector('.calendar');
-            let currentDate = new Date();
+          let currentDate = new Date();
 
-            function renderCalendar() {
-                const year = currentDate.getFullYear();
-                const month = currentDate.getMonth();
+        function renderCalendar() {
+            const monthYear = document.getElementById("monthYear");
+            const calendarBody = document.getElementById("calendarBody");
 
-                const firstDayOfMonth = new Date(year, month, 1).getDay();
-                const lastDateOfMonth = new Date(year, month + 1, 0).getDate();
-                const lastDayOfPrevMonth = new Date(year, month, 0).getDate();
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
 
-                let days = "";
+            // Set the month and year title
+            monthYear.textContent = currentDate.toLocaleString('default', { month: 'long', year: 'numeric' });
 
-                // Display previous month's days
-                for (let i = firstDayOfMonth; i > 0; i--) {
-                    days += `<div class="date">${lastDayOfPrevMonth - i + 1}</div>`;
-                }
+            // Get the first day of the month and the number of days in the month
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-                // Display current month's days
-                for (let i = 1; i <= lastDateOfMonth; i++) {
-                    const isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear();
-                    days += `<div class="date ${isToday ? 'current-day' : ''}">${i}</div>`;
-                }
-               
-                calendarElement.innerHTML = `
-                    <div class="calendar-header">
-                        <button id="prev-month">Prev</button>
-                        <button id="next-month">Next</button>
-                    </div>
-                    <div class="calendar-body">
-                        <div class="day">Sun</div>
-                        <div class="day">Mon</div>
-                        <div class="day">Tue</div>
-                        <div class="day">Wed</div>
-                        <div class="day">Thu</div>
-                        <div class="day">Fri</div>
-                        <div class="day">Sat</div>
-                        ${days}
-                    </div>
-                `;
+            // Clear the calendar body
+            calendarBody.innerHTML = "";
+            let row = document.createElement("tr");
 
-                document.getElementById('prev-month').addEventListener('click', function () {
-                    currentDate.setMonth(currentDate.getMonth() - 1);
-                    renderCalendar();
-                });
-
-                document.getElementById('next-month').addEventListener('click', function () {
-                    currentDate.setMonth(currentDate.getMonth() + 1);
-                    renderCalendar();
-                });
+            // Create empty cells before the first day of the month
+            for (let i = 0; i < firstDay; i++) {
+                row.appendChild(document.createElement("td"));
             }
 
+            // Fill in the days of the month
+            for (let day = 1; day <= daysInMonth; day++) {
+                if (row.children.length === 7) {
+                    calendarBody.appendChild(row);
+                    row = document.createElement("tr");
+                }
+
+                const cell = document.createElement("td");
+                cell.textContent = day;
+
+                const today = new Date();
+                if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                    cell.classList.add("today");
+                }
+
+                cell.onclick = () => {
+                    document.querySelectorAll(".selected").forEach(el => el.classList.remove("selected"));
+                    cell.classList.add("selected");
+                };
+
+                row.appendChild(cell);
+            }
+
+            calendarBody.appendChild(row);
+        }
+
+        function changeMonth(offset) {
+            currentDate.setMonth(currentDate.getMonth() + offset);
             renderCalendar();
-        });
+        }
+        //for previous and next button
+        document.querySelector("button[onclick='changeMonth(-1)']").addEventListener('click', function() {
+        changeMonth(-1); // Go to previous month
+    });
+    document.querySelector("button[onclick='changeMonth(1)']").addEventListener('click', function() {
+        changeMonth(1); // Go to next month
+    });
+
+        // Render the initial calendar
+        renderCalendar();
+    });
     </script>
 
     <div class="load-wrapper">
