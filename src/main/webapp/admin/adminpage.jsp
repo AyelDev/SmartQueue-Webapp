@@ -211,7 +211,22 @@
 						<h1 class="dashboard-title">Dashboard</h1>
 						<hr>
 						<div class="dashboard-content">
-							<canvas id="barGraph"></canvas>
+							<div class="graph-container">
+								<canvas id="barGraph"></canvas>
+								<div class="total-summary">
+									<h2><br>Total Students:</h2>
+									<hr>
+									<p><br>BEED:</p>
+									<P><br>BSED:</P>
+									<P><br>BSTM:</P>
+									<P><br>BSHM:</P>
+									<P><br>BSIT:</P>
+									<P><br>CRIM:</P>
+									<hr>
+									<h2><br>Daily transaction:</h2>
+								</div>
+							</div>
+							
 
 							<!-- General - Program -->
 							<div class="table-container">
@@ -420,50 +435,50 @@
                     label: 'Inquiries',
                     data: [50, 60, 70, 65, 80, 90, 100, 95, 85, 75, 70, 60], // Replace with real data
                     backgroundColor: 'rgba(0, 0, 139, 1)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderColor: 'rgba(0, 0, 139, 1)',
                     borderWidth: 1,
                 },
                 {
-                    label: 'Basic Education',
+                    label: 'BSED',
                     data: [40, 50, 60, 55, 70, 80, 85, 80, 70, 60, 55, 50], // Replace with real data
-                    backgroundColor: 'rgba(75, 192, 192, 0.7)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(3, 4, 94, 1)',
+                    borderColor: 'rgba(3, 4, 94, 1)',
                     borderWidth: 1,
                 },
                 {
                     label: 'BEED',
                     data: [30, 40, 50, 45, 60, 70, 75, 70, 60, 50, 45, 40], // Replace with real data
-                    backgroundColor: 'rgba(255, 206, 86, 0.7)',
-                    borderColor: 'rgba(255, 206, 86, 1)',
+                    backgroundColor: 'rgba(0, 116, 228, 1)',
+                    borderColor: 'rgba(0, 116, 228, 1)',
                     borderWidth: 1,
                 },
                 {
                     label: 'BSTM',
                     data: [20, 30, 40, 35, 50, 60, 65, 60, 50, 40, 35, 30], // Replace with real data
-                    backgroundColor: 'rgba(255, 0, 0, 1)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
+                    backgroundColor: 'rgba(0, 169, 255, 1)',
+                    borderColor: 'rgba(0, 169, 255, 1)',
                     borderWidth: 1,
                 }
 				,
                 {
                     label: 'BSHM',
                     data: [20, 30, 40, 35, 50, 60, 65, 60, 50, 40, 35, 30], // Replace with real data
-                    backgroundColor: 'rgba(153, 102, 255, 0.7)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
+                    backgroundColor: 'rgba(0, 180, 216, 1)',
+                    borderColor: 'rgba(0, 180, 216, 1)',
                     borderWidth: 1,
                 },
                 {
                     label: 'BSIT',
                     data: [20, 30, 40, 35, 50, 60, 65, 60, 50, 40, 35, 30], // Replace with real data
-                    backgroundColor: 'rgba(128, 0, 0, 1)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
+                    backgroundColor: 'rgba(144, 224, 239, 1)',
+                    borderColor: 'rgba(144, 224, 239, 1)',
                     borderWidth: 1,
                 },
                 {
                     label: 'CRIM',
                     data: [20, 30, 40, 35, 50, 60, 65, 60, 50, 40, 35, 30], // Replace with real data
-                    backgroundColor: 'rgba(0, 153, 255, 1)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
+                    backgroundColor: 'rgba(127, 181, 255, 1)',
+                    borderColor: 'rgba(127, 181, 255, 1)',
                     borderWidth: 1,
                 }
             ]
