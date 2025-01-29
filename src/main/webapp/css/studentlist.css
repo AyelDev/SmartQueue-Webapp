@@ -595,7 +595,7 @@ button {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    margin-left: 10%;
+    margin-left: -45%;
     position: absolute;
     z-index: 1;
     display: none;

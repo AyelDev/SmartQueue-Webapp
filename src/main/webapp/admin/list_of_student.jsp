@@ -205,7 +205,7 @@
 								</g>
 							</svg></button>
 						<div class="adminProfile" id="adminProfile">
-							<a href="">Settings</a>
+							<a href="adminsettings">Settings</a>
 							<a href="logout">Signout</a>
 						</div>
 					</div>
