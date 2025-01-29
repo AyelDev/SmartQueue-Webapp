@@ -1,5 +1,45 @@
+$(document).ready(function () {
+    updateCounterName();
+});
 
-/* 
+function updateCounterName() {
+    fetch(window.location.origin + '/CounterlistApi')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            renderCounterListBody(data);
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+}
+
+function renderCounterListBody(data) {
+    var box1 = `
+            <p>-Enrollment </p>
+            <h2>`+data[0].description+`</h2>
+            `
+    var box2 =`
+            <p>-Certifications <br>-Study Load <br>-TOR</p>
+            <h2>`+data[1].description+`</h2>
+             `
+
+    var box3 =`
+            <p>-Submit documents</p>
+            <h2>`+data[2].description+`</h2>
+            `
+
+    $('#box1').html(box1);
+    $('#box2').html(box2);
+    $('#box3').html(box3);
+}
+//---------------------------------------- END OF COUNTERLIST
+
+/*
 Summary: check studentinput if it is in correct pattern
 */
 let generalStudentInput = document.getElementById('general-student-id');
@@ -15,9 +55,6 @@ function checkInput() {
         generalStudentIdNoInput.innerHTML = "Student ID No.";
     }
 }
-
-
-
 
 // Get all the modals
 var generalModal = document.getElementById("general-modal");
@@ -246,7 +283,7 @@ recordsButton.addEventListener("mouseover", event => {
     studentId = document.getElementById('records-student-id');
     let studentName = document.getElementById('records-student-name');
 
-        $.ajax({
+    $.ajax({
         url: 'JsonStudentSearchAPI',
         type: 'GET',
         data: {
@@ -268,7 +305,7 @@ recordsButton.addEventListener("mouseover", event => {
             studentName.value = "";
             //alert(error + ' : ' + xhr.responseText);
         }
-        });
+    });
 });
 
 // ----------------- archiving

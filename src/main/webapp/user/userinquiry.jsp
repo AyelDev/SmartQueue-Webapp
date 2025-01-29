@@ -36,18 +36,17 @@
 
                 <!-- Main Inquiry Cards -->
                 <div class="main">
-                
                     <!-- Card for General -->
                     <div class="card" id="general-card">
-                        <div class="box">
+                        <div class="box" id="box1">
                             <p>-Enrollment </p>
-                            <h2>Admission</h2>
+                            <h2>Admissions</h2>
                         </div>
                     </div>
 
                     <!-- Card for Records -->
                     <div class="card" id="records-card">
-                        <div class="box">
+                        <div class="box" id="box2">
                             <p>-Certifications <br>-Study Load <br>-TOR</p>
                             <h2>Records</h2>
                         </div>
@@ -55,7 +54,7 @@
 
                     <!-- Card for Archiving -->
                     <div class="card" id="archiving-card">
-                        <div class="box">
+                        <div class="box" id="box3">
                             <p>-Submit documents</p>
                             <h2>Archiving</h2>
                         </div>
