@@ -27,7 +27,7 @@ body {
     font-style: normal;
     height: auto;
     background-color: #f4f4f9;
-    
+    overflow-y: hidden;
 }
 
 .container {
@@ -124,7 +124,7 @@ body {
     background: none;
     display: flex;
     align-items: center;
-    width: 14.3vw;
+    width: 15vw;
     height: 8vh;
     border: 0;
     font-size: 15px;
@@ -198,7 +198,7 @@ body {
 .active,
 .dropdown-btn:hover {
     background-color: var(--background-color);
-    width: 14.3vw;
+    width: 15vw;
     color: var(--text-color);
     font-weight: bold;
 }
@@ -270,10 +270,11 @@ h1 {
     margin-top: 20px;
     border-radius: 10px;
     overflow-y: auto;
-    max-height: 450px;
+    max-height: 500px;
     width: 100%;
-    
+
 }
+
 .table-container {
     scroll-behavior: smooth;
 }
@@ -306,11 +307,14 @@ thead {
     position: sticky;
     top: 0;
 }
-thead th, thead tr{
+
+thead th,
+thead tr {
     position: sticky;
     top: 0;
 }
-.titlepage{
+
+.titlepage {
     position: sticky;
 }
 
@@ -429,20 +433,24 @@ button {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-top: 2%;
-    
+
 }
 
 .icon-container {
-    width: 5%;
+    width: 7%;
     height: 100%;
-    margin-left: 68%;
+    margin-left: 75%;
+    justify-content: space-evenly;
+    align-items: center;
+    display: flex;
 }
 
 .bell-icon {
     object-fit: scale-down;
     width: 20px;
-    margin-top: -9%;
+    height: 4vh;
     cursor: pointer;
+    padding: 5px;
 
 }
 
@@ -450,13 +458,10 @@ button {
     object-fit: scale-down;
     width: 25px;
     cursor: pointer;
-    margin-top: 1%;
-    margin-left: 2%;
-    position: absolute;
+    margin-top: .8%;
 }
 
-
-.button-profile {
+.profilebutton {
     align-items: center;
     justify-content: center;
     display: flex;
@@ -495,7 +500,7 @@ button {
     z-index: 1;
     display: none;
     border-radius: 7px;
-    margin-top: .1%;
+    margin-top: -2%;
 }
 
 .adminProfile a {
@@ -562,26 +567,26 @@ button {
 .search-bar {
     border-radius: 10px;
     width: 80%;
-    padding: 5px;
+    padding: 6px;
     border: 1px solid;
 }
 
 .search-btn {
     border-radius: 0 10px 10px 0;
     border: none;
-    padding: 4px;
-    width: 35px;
-    margin-left: -15%;
+    padding: 6px;
+    width: 36px;
+    margin-left: -13%;
     background-color: #1e91d0;
-    margin-bottom: -4.9%;
+
 }
 
 .search-icon {
     object-fit: scale-down;
-    width: 15px;
-    height: 20px;
-    margin-bottom: -20%;
-    color: var(--background-color);
+    width: 14px;
+    height: 15px;
+    background: none;
+
 }
 
 .fillup-form-container {
@@ -728,4 +733,81 @@ form {
 
 .register-form {
     margin-top: 7%;
+}
+
+
+
+
+/*notification dropdown*/
+.notificationdropdown {
+    display: none;
+    position: absolute;
+    top: 45px;
+    margin-left: 58%;
+    width: 350px;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 10;
+}
+
+.notificationdropdown.active {
+    display: block;
+}
+
+.notificationdropdown-header {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #f4f4f9;
+}
+
+.notificationdropdown-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.notificationdropdown-item:last-child {
+    border-bottom: none;
+}
+
+.notificationdropdown-item:hover {
+    background-color: #f4f4f9;
+}
+
+.notificationdropdown-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.notification-text {
+    font-size: 14px;
+}
+
+.notification-time {
+    font-size: 12px;
+    color: gray;
+}
+
+.notification-badge {
+    position: absolute;
+    top: 5px;
+    margin-left: 1%;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 }

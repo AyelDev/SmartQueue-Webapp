@@ -9,16 +9,16 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
-            <script type="text/javascript" src="./scripts/ping.js"></script>
-            <script type="text/javascript" src="./scripts/fadetransition.js"></script>
-            <link rel="stylesheet" href="./css/loader.css">
+            <link rel="stylesheet" href="../css/prettify.css">
+			<link rel="stylesheet" href="../css/notify.css">
+			<link rel="stylesheet" href="../css/jquery-confirm.min.css">
+			<link rel="stylesheet" href="../css/loader.css">
             <link rel="stylesheet" href="../css/counterlist.css">
             <title>Admin | List of Counter</title>
         </head>
 
         <body>
-   
+
 
             <body>
                 <div class="container">
@@ -31,9 +31,9 @@
 
                         <div class="menu-navbar">
                             <div class="dropdown">
-                                <button class="dropdown-btn" onclick="window.location.href = 'dashboard';"><svg class="dashboard-icon" fill="#ffffff" width="64px"
-                                        height="64px" viewBox="-2 0 19 19" xmlns="http://www.w3.org/2000/svg"
-                                        class="cf-icon-svg">
+                                <button class="dropdown-btn" onclick="window.location.href = 'dashboard';"><svg
+                                        class="dashboard-icon" fill="#ffffff" width="64px" height="64px"
+                                        viewBox="-2 0 19 19" xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
                                         </g>
@@ -48,9 +48,9 @@
                             </div>
 
                             <div class="dropdown">
-                                <button class="dropdown-btn" onclick="window.location.href='counterlist';"><svg class="counter-icon" width="64px" height="64px"
-                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                        transform="rotate(90)">
+                                <button class="dropdown-btn" onclick="window.location.href='counterlist';"><svg
+                                        class="counter-icon" width="64px" height="64px" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" transform="rotate(90)">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
                                         </g>
@@ -91,8 +91,9 @@
                             </div>
 
                             <div class="dropdown">
-                                <button class="dropdown-btn" onclick="window.location.href = 'videoads';"><svg class="entertainment-icon" width="64px" height="64px"
-                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                                <button class="dropdown-btn" onclick="window.location.href = 'videoads';"><svg
+                                        class="entertainment-icon" width="64px" height="64px" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
                                         </g>
@@ -122,7 +123,7 @@
                                 <div class="dropdown-dashboard">
                                     <a href="userinquiry">User Inquiry</a>
                                     <a href="userwindow">User Window</a>
-                                    <a href="counterwindow">Counter Window</a>
+                                    <a href="admincounterwindow">Counter Window</a>
                                 </div>
                             </div>
                         </div>
@@ -130,8 +131,8 @@
                     <div class="counterlist-section">
                         <div class="dashboard-head">
                             <div class="icon-container">
-                                <svg class="bell-icon" width="30px" height="64px" viewBox="0 0 24.00 24.00" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
+                                <svg class="bell-icon" id="notifications" width="30px" height="64px"
+                                    viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
                                         stroke="#CCCCCC" stroke-width="0.048"></g>
@@ -143,6 +144,7 @@
                                         </path>
                                     </g>
                                 </svg>
+                                <div class="notification-badge" id="notificationBadge">3</div>
                                 <svg class="chat-icon" width="64px" height="30px" viewBox="-2.4 -2.4 28.80 28.80"
                                     fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -181,7 +183,7 @@
 
 
                             <!-- admin profile -->
-                            <button class="button-profile" id="button-profile"><svg class="profile" width="64px"
+                            <button class="profilebutton" id="button-profile"><svg class="profile" width="64px"
                                     height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -204,7 +206,7 @@
                                             stroke-linejoin="round"></path>
                                     </g>
                                 </svg></button>
-                            <div class="adminProfile" id="adminProfile" >
+                            <div class="adminProfile" id="adminProfile">
                                 <a href="">Settings</a>
                                 <a href="logout">Signout</a>
                             </div>
@@ -215,9 +217,8 @@
                             <h1>Counter List</h1>
                             <div class="search-container">
                                 <form action="" method="">
-                                    <input type="text" placeholder="Search.." name="search" class="search-bar">
-                                    <button class="search-btn" type="submit"><img src="../images/search-icon.png" alt=""
-                                            class="search-icon"></button>
+                                    <input type="text" placeholder="Search.." name="search" class="search-bar" id="searchInput" onkeyup="searchTable()">
+                                    <button class="search-btn" type="submit"><img src="../images/search-icon.png" alt=""class="search-icon"></button>
                                 </form>
                             </div>
                             <div class="overlay"></div>
@@ -225,9 +226,9 @@
                                 <h1>Add Counter</h1>
                                 <span class="close-btn">&times;</span>
                                 <div class="register-form">
-                                    <form action="" method="post">
+                                    <form id="counterRegisterForm">
                                         <div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-                                            <input class="counterno-input" required="required" type="text"
+                                            <input class="counterno-input" required="required" type="number"
                                                 name="txtCounterno">
                                             <label for="counterno" class="counterno-label">Counter No.</label>
                                         </div>
@@ -237,29 +238,11 @@
                                             <label for="description" class="description-label">Description</label>
                                         </div>
 
-                                        <div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-                                            <input class="lastname-input" required="required" type="text"
-                                                name="txtLastname">
-                                            <label for="lastname" class="lastname-label">Last name</label>
-                                        </div>
-
-                                        <div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-
-                                            <select name="purpose" id="records-purpose" class="purpose">
-                                                <option value="">--</option>
-                                                <option value="enrollment">BEED</option>
-                                                <option value="assesment">BSHM</option>
-                                                <option value="assesment">BSIT</option>
-                                                <option value="assesment">BSTM</option>
-                                                <option value="assesment">BSED</option>
-                                            </select>
-                                        </div>
-
-                                        <input class="sign-btn" type="submit" value="Signup">
+                                        <input class="sign-btn" type="button" id="counterSubmitBtn" value="Signup">
                                     </form>
                                 </div>
                             </div>
-                            <table>
+                            <table id="counterlist-table">
                                 <thead>
                                     <tr>
                                         <th>Counter no.</th>
@@ -269,145 +252,51 @@
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Enrollment</td>
-                                        <td>15/09/2024</td>
-                                        <td>Active</td>
-                                        <td>
-                                            <button class="btn update">Update</button>
-                                            <button class="btn delete">Delete</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Request Document</td>
-                                        <td>15/09/2024</td>
-                                        <td>Active</td>
-                                        <td>
-                                            <button class="btn update">Update</button>
-                                            <button class="btn delete">Delete</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Archiving</td>
-                                        <td>15/09/2024</td>
-                                        <td>Active</td>
-                                        <td>
-                                            <button class="btn update">Update</button>
-                                            <button class="btn delete">Delete</button>
-                                        </td>
-                                    </tr>
+                                <tbody id="counterListBody">
                                 </tbody>
                             </table>
                         </div>
+
+
+
+                        <!--notification dropdown-->
+                        <div class="notificationdropdown" id="notificationDropdown">
+                            <div class="notificationdropdown-header">
+                                <span>Notifications</span>
+                                <button id="markAllRead" class="text-blue-600 text-sm">Mark all as read</button>
+                            </div>
+                            <div class="notificationdropdown-item unread" data-id="1">
+                                <img src="https://via.placeholder.com/40" alt="Profile">
+                                <div>
+                                    <div class="notification-text">You have a new message.</div>
+                                    <div class="notification-time">2h ago</div>
+                                </div>
+                            </div>
+                            <div class="notificationdropdown-item unread" data-id="2">
+                                <img src="https://via.placeholder.com/40" alt="Profile">
+                                <div>
+                                    <div class="notification-text">Your document has been approved.</div>
+                                    <div class="notification-time">6h ago</div>
+                                </div>
+                            </div>
+                            <div class="notificationdropdown-item" data-id="3">
+                                <img src="https://via.placeholder.com/40" alt="Profile">
+                                <div>
+                                    <div class="notification-text">Your password has been reset.</div>
+                                    <div class="notification-time">1d ago</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <script>
-                        var dropdown = document.getElementsByClassName("button-profile");
-                        var i;
-
-                        for (i = 0; i < dropdown.length; i++) {
-                            dropdown[i].addEventListener("click", function () {
-
-                                var dropdownContent = this.nextElementSibling;
-                                if (dropdownContent.style.display === "block") {
-                                    dropdownContent.style.display = "none";
-                                } else {
-                                    dropdownContent.style.display = "block";
-                                }
-                            });
-                        }
-
-
-                    </script>
-                    <script>
-                        // Get elements
-                        const addAccountButton = document.querySelector('.add-account-btn');
-                        const closeModalButton = document.querySelector('.close-btn');
-                        const modal = document.querySelector('.modal');
-                        const overlay = document.querySelector('.overlay');
-
-                        // Function to open the modal
-                        function openModal() {
-                            modal.classList.add('active');
-                            overlay.classList.add('active');
-                        }
-
-                        // Function to close the modal
-                        function closeModal() {
-                            modal.classList.remove('active');
-                            overlay.classList.remove('active');
-                        }
-
-                        // Event listeners
-                        addAccountButton.addEventListener('click', openModal);
-                        closeModalButton.addEventListener('click', closeModal);
-                        overlay.addEventListener('click', closeModal);
-                    </script>
-                    <script>
-                        var dropdown = document.getElementsByClassName("button-profile");
-                        var i;
-
-                        for (i = 0; i < dropdown.length; i++) {
-                            dropdown[i].addEventListener("click", function () {
-
-                                var dropdownContent = this.nextElementSibling;
-                                if (dropdownContent.style.display === "block") {
-                                    dropdownContent.style.display = "none";
-                                } else {
-                                    dropdownContent.style.display = "block";
-                                }
-                            });
-                        }
-
-                        var staffListInfo = document.getElementById("tablelist");
-                        
-                        //need to update this function
-                        function updateData() {
-                            var request = new XMLHttpRequest();
-                            request.open('GET', '/JsonStudentListAPI');
-                            request.onload = function () {
-                                var data = JSON.parse(request.responseText);
-                                renderHTML(data);
-                            }
-                            request.send();
-                        }
-
-                        //What is this function?
-                        function renderHTML(data) {
-                            // var htmlString = ``;
-
-                            // for (var i = 0; i < data.length; i++) {
-
-                            //     htmlString += "<tr>";
-                            //     htmlString += "<td>" + data[i].idnumber + "</td>";
-                            //     htmlString += "<td>" + data[i].firstname + " " + data[i].middlename + " " + data[i].lastname + " </td>";
-                            //     htmlString += "<td>" + data[i].course + "</td>";
-                            //     htmlString += '<td><a href="update?staffId=' + data[i].staffID + '"><button class="update" style="background-color: #97BE5A;">Update</button></a> ';
-                            //     htmlString += '<a href="delete?staffId=' + data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E;">Delete</button></a>';
-                            //     htmlString += "</tr>";
-                            // }
-
-                            //     staffListInfo.innerHTML = htmlString;
-                          
-                        }
-
-                        setInterval(updateData, 10000);
-
-
-                        //button-profile being active btn
-                        document.getElementById('button-profile').addEventListener('click', function () {
-                            this.classList.toggle('active');
-                            document.getElementById('adminProfile').classList.toggle('show');
-                        });
-
-                        
-                    </script>
-                    
-
+                    <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
+                    <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+                    <script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
+                    <script type="text/javascript" src="../scripts/notify.js"></script>
+                    <script type="text/javascript" src="../scripts/prettify.js"></script>
+                    <script type="text/javascript" src="../scripts/ping.js"></script>
+                    <script type="text/javascript" src="../scripts/fadetransition.js"></script>
+                    <script type="text/javascript" src="../scripts/admin/list_of_counter.js"></script>
+                  
                     <div class="load-wrapper">
                         <div class="main-loader">
                             <div class="box-loader">

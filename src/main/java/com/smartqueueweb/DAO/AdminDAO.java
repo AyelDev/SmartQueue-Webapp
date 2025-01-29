@@ -1,18 +1,25 @@
 package com.smartqueueweb.DAO;
 
 import java.sql.SQLException;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.smartqueueweb.Class.ServiceType;
 import com.smartqueueweb.Model.AdminBean;
+import com.smartqueueweb.Model.CountersBean;
+import com.smartqueueweb.Model.MediaBean;
 import com.smartqueueweb.Model.ServicesBean;
 
 public class AdminDAO extends SQLConnection {
 
 	AdminBean adminbean = null;
 	ServicesBean serviceBean = null;
+	CountersBean countersBean = null;
+	MediaBean mediaBean = null;
+	
 	List<ServicesBean> serviceBeanList = null;
+	List<CountersBean> countersBeanList = null;
+	List<MediaBean> mediaBeanList = null;
 
 	public AdminDAO() {
 		super();
@@ -140,5 +147,111 @@ public class AdminDAO extends SQLConnection {
 		}
 		return false;
 	}
+	
+	public Integer AddCounters(int counterNumber, String description) {
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("INSERT INTO `tbl_counters` (counter_number, description) VALUES (?, ?);");
+			prs.setInt(1, counterNumber);
+			prs.setString(2, description);
+			return prs.executeUpdate();
+			
+		}catch (Exception e) {
+			
+		}finally {
+			SQLClose();
+		}
+		return null;
+	}
 
+	public List<CountersBean> CounterList() {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("SELECT * from tbl_counters ORDER BY counter_number");
+			rs = prs.executeQuery();
+			countersBeanList = new ArrayList<CountersBean>();
+
+			while (rs.next()) {
+				countersBean = new CountersBean(
+								rs.getInt("id"), 
+								rs.getInt("counter_number"),
+								rs.getString("description"), 
+								rs.getDate("date_created"), 
+								rs.getString("status"));
+				countersBeanList.add(countersBean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return countersBeanList;
+	}
+
+	public Boolean UpdateCounters(Integer id, Integer counterNumber, String description, String status) {
+		
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("UPDATE tbl_counters SET counter_number = ?, description = ?, status = ? WHERE tbl_counters.id = ?");
+			prs.setInt(1, counterNumber);
+			prs.setString(2, description);
+			prs.setString(3, status);
+			prs.setInt(4, id);
+			
+			if(prs.executeUpdate() == 1)
+				return true;
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			SQLClose();
+		}
+		return false;
+	}
+
+	public Boolean DeleteCounters(int id) {
+		
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("DELETE FROM tbl_counters WHERE tbl_counters.id = ?");
+			prs.setInt(1, id);
+			
+			int rowsAffected = prs.executeUpdate();
+			
+			if(rowsAffected > 0)
+				return true;
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			SQLClose();
+		}
+		return false;
+	}
+
+	public List<MediaBean> VideoList() {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("SELECT * from tbl_media ORDER BY fileName");
+			rs = prs.executeQuery();
+			mediaBeanList = new ArrayList<MediaBean>();
+
+			while (rs.next()) {
+				mediaBean = new MediaBean(
+						rs.getInt("id"), 
+						rs.getString("filename"),
+						rs.getString("path"), 
+						rs.getString("type")
+						);
+				mediaBeanList.add(mediaBean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return mediaBeanList;
+	}
 }

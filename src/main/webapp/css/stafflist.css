@@ -1,3 +1,4 @@
+
 @import url('../css/fonts.css');
 
 :root {
@@ -15,7 +16,7 @@
 
 * {
     font-family: var(--body-fonts);
-   
+
 }
 
 body {
@@ -34,7 +35,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-top: 3%;
-    
+
 }
 
 
@@ -122,7 +123,7 @@ body {
     background: none;
     display: flex;
     align-items: center;
-    width: 14.3vw;
+    width: 15vw;
     height: 8vh;
     border: 0;
     font-size: 15px;
@@ -196,7 +197,7 @@ body {
 .active,
 .dropdown-btn:hover {
     background-color: var(--background-color);
-    width: 14.3vw;
+    width: 15vw;
     color: var(--text-color);
     font-weight: bold;
 }
@@ -266,16 +267,20 @@ body {
 }
 
 .icon-container {
-    width: 5%;
+    width: 7%;
     height: 100%;
-    margin-left: 68%;
+    margin-left: 75%;
+    justify-content: space-evenly;
+    align-items: center;
+    display: flex;
 }
 
 .bell-icon {
     object-fit: scale-down;
     width: 20px;
-    margin-top: -7%;
+    height: 4vh;
     cursor: pointer;
+    padding: 5px;
 
 }
 
@@ -283,11 +288,10 @@ body {
     object-fit: scale-down;
     width: 25px;
     cursor: pointer;
-    margin-bottom: 25%;
-    margin-left: 10%;
+    margin-top: .8%;
 }
 
-.button-profile {
+.profilebutton {
     align-items: center;
     justify-content: center;
     display: flex;
@@ -365,19 +369,34 @@ h1 {
 .table-container {
     margin-top: 20px;
     border-radius: 10px;
-    overflow-y: auto;
     max-height: 500px;
-    width: 110%;
+    width: 100%;
+    overflow-y: auto;
 }
 
-table {
+#myTable {
     width: 100%;
-    max-height: auto;
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 10px;
-    overflow: hidden;
-    /* Ensures the border radius applies to the table */
+    overflow-y: auto;
+}
+
+.table-container {
+    scroll-behavior: smooth;
+}
+
+.table-container::-webkit-scrollbar {
+    width: .8rem;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 5rem;
 }
 
 thead {
@@ -508,9 +527,10 @@ button {
     background: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
     padding: 20px;
-    margin-top: -15%;
+    margin-top: -5%;
+    max-height: 500px;
+    overflow-y: hidden;
 }
 
 .add-account-icon {
@@ -543,9 +563,9 @@ button {
 .search-btn {
     border-radius: 0 10px 10px 0;
     border: none;
-    padding: 5px;
-    width: 35px;
-    margin-left: -15%;
+    padding: 6px;
+    width: 36px;
+    margin-left: -13%;
     background-color: #1e91d0;
     
 }
@@ -553,9 +573,9 @@ button {
 .search-icon {
     object-fit: scale-down;
     width: 14px;
-    height: 20px;
+    height: 15px;
     background: none;
-    margin-bottom: -20%;
+    
 }
 
 .fillup-form-container {
@@ -564,7 +584,7 @@ button {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    margin-left: 10%;
+    margin-left: 15%;
     position: absolute;
     z-index: 1;
     display: none;
@@ -694,4 +714,72 @@ form {
 
 .register-form {
     margin-top: 7%;
+}
+
+
+
+
+/*notification dropdown*/
+.notificationdropdown {
+    display: none;
+    position: absolute;
+    top: 45px;
+    margin-left: 27%;
+    width: 350px;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 10;
+}
+.notificationdropdown.active {
+    display: block;
+}
+.notificationdropdown-header {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #f4f4f9;
+}
+.notificationdropdown-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+.notificationdropdown-item:last-child {
+    border-bottom: none;
+}
+.notificationdropdown-item:hover {
+    background-color: #f4f4f9;
+}
+.notificationdropdown-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.notification-text {
+    font-size: 14px;
+}
+.notification-time {
+    font-size: 12px;
+    color: gray;
+}
+.notificationBadge {
+    position: absolute;
+    top: 5px;
+    margin-left: -2%;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 }

@@ -7,17 +7,18 @@
         <html lang="en">
         
         <head>
-            <link rel="stylesheet" href="css/entertainment.css">
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
-			<script type="text/javascript" src="./scripts/ping.js"></script>
-            <script type="text/javascript" src="./scripts/fadetransition.js"></script>
-            <link rel="stylesheet" href="./css/loader.css">
+        	 <!-- default css imports -->
+            <link rel="stylesheet" href="../css/prettify.css">
+			<link rel="stylesheet" href="../css/notify.css">
+			<link rel="stylesheet" href="../css/jquery-confirm.min.css">
+			<link rel="stylesheet" href="../css/loader.css">
+            <!-- page css import-->
             <link rel="stylesheet" href="../css/entertainment.css">
             <title>SmartQueuWeb</title>
             <style>
-                @import url('../css/fonts.css'); 
+                @import url('css/fonts.css'); 
             
                 body {
                 font-family: "Roboto Condensed", sans-serif;
@@ -381,17 +382,17 @@
         
             <div class="leftnav">
                 <div class="ulnav">
-                    <img src="./images/logo.png" class="cec">
+                    <img src="../images/logo.png" class="cec">
                     <b class="title"><br>Cebu Eastern College</b>
                     <!-- staff profile -->
                 </div>
                 
                 <div class="bottom-lnav">
-                    <b><a href="staffpage" style="margin-top: 1.3rem;"><img src="./images/dashboard.png" alt="Dashboard Icon">Dashboard</a></b>
-                    <b><a href="userwindow"><img src="./images/display.png" alt="UserWindow Icon">User Window</a></b>
-                    <b><a href="counterwindow"><img src="./images/counter.png" alt="CounterWindow Icon">Counter Window</a></b>
-                    <b><a href="addstudent"><img src="./images/studentlist.png" alt="StudentList Icon">Student List</a></b>
-                    <b><a href="entertainment"><img src="./images/entertainment.png" alt="Entertainment Icon">Entertainment</a></b>
+                    <b><a href="staffdashboard" style="margin-top: 1.3rem;"><img src="./images/dashboard.png" alt="Dashboard Icon">Dashboard</a></b>
+                    <b><a href="userwindow"><img src="../images/display.png" alt="UserWindow Icon">User Window</a></b>
+                    <b><a href="counterwindow"><img src="../images/counter.png" alt="CounterWindow Icon">Counter Window</a></b>
+                    <b><a href="addstudent"><img src="../images/studentlist.png" alt="StudentList Icon">Student List</a></b>
+                    <b><a href="entertainment"><img src="../images/entertainment.png" alt="Entertainment Icon">Entertainment</a></b>
                 </div>
             </div>
             
@@ -400,23 +401,25 @@
                 <div class="right-icons">
                     <div class="icon-container">
                         <a href="#"></a>
-                        <img src="./images/message.png" class="picture"/>
+                        <img src="../images/message.png" class="picture"/>
                         <span class="tooltip-text">Message</span>
                     </div>
                 </div>
                 
-                <button class="button-profile"><img src="./images/profile.png" alt="" class="profile">STAFF<img src="./images/caretdown.png" alt="" class="caretdown"></button>
+                <button class="button-profile"><img src="../images/profile.png" alt="" class="profile">STAFF<img src="./images/caretdown.png" alt="" class="caretdown"></button>
         <div class="staffProfile" id="staffProfile">
             <a href="setting">Settings</a>
-            <a href="login">Signout</a>
+            <a href="logout">Signout</a>
         </div>
             </div>
             <hr>
           
             <div>
                 <div class="controls">
-                    <input type="file" id="videoUpload" accept="video/*">
-                    <button id="uploadBtn"><b>Upload Video</b></button>
+                    <form id="VideoUploadForm" enctype="multipart/form-data">
+                        <input type="file" name="file" id="videoUpload" accept="video/*" multiple="multiple" required>
+                        <button id="uploadBtn"><b>Upload Video</b></button>
+                    </form>
                 </div>
                 <div class="top-lnav">
                     <table id="videoTable">
@@ -450,133 +453,17 @@
                     </div>
                 </div>
             </div>
-        
-        <script>
 
-const videoUpload = document.getElementById('videoUpload');
-    const uploadBtn = document.getElementById('uploadBtn');
-    const videoList = document.getElementById('videoList');
-    const videoPlayer = document.getElementById('videoPlayer');
-    const videoSource = document.getElementById('videoSource');
-    const videoContainer = document.getElementById('videoContainer');
-    const minimizeBtn = document.getElementById('minimizeBtn');
-    const maximizeBtn = document.getElementById('maximizeBtn');
-    const closeBtn = document.getElementById('closeBtn');
-
-    let isMaximized = false;
-    let videos = [];
-
-    // Upload button functionality
-    uploadBtn.onclick = function () {
-        const file = videoUpload.files[0];
-        if (file) {
-            const url = URL.createObjectURL(file);
-            videos.push({ name: file.name, url: url });
-            updateVideoList();
-            videoUpload.value = '';
-        }
-    };
-
-    function updateVideoList() {
-        videoList.innerHTML = '';
-        videos.forEach((video) => {
-            const row = document.createElement('tr');
-            const cell = document.createElement('td');
-            cell.textContent = video.name;
-            cell.onclick = function () {
-                playVideo(video.url);
-            };
-            row.appendChild(cell);
-            videoList.appendChild(row);
-        });
-    }
-
-    function playVideo(url) {
-        videoSource.src = url;
-        videoContainer.style.display = 'block';
-        videoPlayer.style.width = `${videoContainer.clientWidth}px`;
-        videoPlayer.style.height = `${videoContainer.clientHeight - 50}px`; // Adjust height for header space
-        videoPlayer.load();
-        videoPlayer.play();
-    }
-
-    // Close button functionality
-    closeBtn.onclick = function () {
-        videoContainer.style.display = 'none';
-        videoPlayer.pause();
-    };
-
-    // Minimize button functionality
-    minimizeBtn.onclick = function () {
-        videoPlayer.style.display = 'none';
-    };
-
-    // Maximize button functionality
-    maximizeBtn.onclick = function () {
-        if (isMaximized) {
-            videoContainer.style.width = '700px';
-            videoContainer.style.height = 'auto';
-        } else {
-            videoContainer.style.width = '100%';
-            videoContainer.style.height = '100%';
-        }
-        isMaximized = !isMaximized;
-    };
-
-    // Make the video player draggable
-    dragElement(videoContainer);
-
-    function dragElement(elmnt) {
-        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        const header = elmnt.querySelector(".video-header");
-
-        if (header) {
-            header.onmousedown = dragMouseDown;
-        }
-
-        function dragMouseDown(e) {
-            e = e || window.event;
-            e.preventDefault();
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            document.onmouseup = closeDragElement;
-            document.onmousemove = elementDrag;
-        }
-
-        function elementDrag(e) {
-            e = e || window.event;
-            e.preventDefault();
-            pos1 = pos3 - e.clientX;
-            pos2 = pos4 - e.clientY;
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-        }
-
-        function closeDragElement() {
-            document.onmouseup = null;
-            document.onmousemove = null;
-        }
-    }
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var dropdownButton = document.querySelector(".button-profile");
-            var staffProfile = document.getElementById("staffProfile");
-
-            staffProfile.style.display = "none";
-
-            dropdownButton.addEventListener("click", function () {
-                if (staffProfile.style.display === "block") {
-                    staffProfile.style.display = "none";
-                } else {
-                    staffProfile.style.display = "block";
-                }
-            });
-        });
-    </script>
-
+            <!-- default js imports -->
+            <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
+			<script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+			<script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
+			<script type="text/javascript" src="../scripts/notify.js"></script>
+			<script type="text/javascript" src="../scripts/prettify.js"></script>
+			<script type="text/javascript" src="../scripts/ping.js"></script>
+			<script type="text/javascript" src="../scripts/fadetransition.js"></script>
+			<script type="text/javascript" src="../scripts/chart.min.js"></script>
+            <!-- page js import -->
+            <script type="text/javascript" src="../scripts/staff/entertainment.js"></script>
         </body>
         </html>
