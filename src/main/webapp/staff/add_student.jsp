@@ -105,6 +105,7 @@
 										<option value="BSIT">BSIT</option>
 										<option value="BSTM">BSTM</option>
 										<option value="BSED">BSED</option>
+										<option value="BSCRIM">BSCRIM</option>
 									</select>
 								</div>
 								<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
@@ -118,7 +119,7 @@
 						</div>
 					</div>
 					<div class="table-container">
-					<table>
+					<table id="myTable">
 						<thead>
 							<tr>
 								<th>Student ID</th>
@@ -250,7 +251,7 @@
 
 						$.ajax({
 							url: url,
-							type: 'GET',
+							type: 'POST',
 							contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 							data: params,
 							success: function (response) {
@@ -399,6 +400,7 @@
 										<option value="BSIT">BSIT</option>
 										<option value="BSTM">BSTM</option>
 										<option value="BSED">BSED</option>
+										<option value="BSCRIM">BSCRIM</option>
 									</select>
 								</div>
 								<div class="input-container" style="width: 40%; margin: 0 20px 5% 20px;">

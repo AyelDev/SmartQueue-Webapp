@@ -205,7 +205,7 @@
 								</g>
 							</svg></button>
 						<div class="adminProfile" id="adminProfile">
-							<a href="">Settings</a>
+							<a href="adminsettings">Settings</a>
 							<a href="logout">Signout</a>
 						</div>
 					</div>
@@ -257,6 +257,7 @@
 												<option value="BSIT">BSIT</option>
 												<option value="BSTM">BSTM</option>
 												<option value="BSED">BSED</option>
+												<option value="BSCRIM">BSCRIM</option>
 											</select>
 										</div>
 										<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
@@ -615,6 +616,7 @@
 												<option value="BSIT">BSIT</option>
 												<option value="BSTM">BSTM</option>
 												<option value="BSED">BSED</option>
+												<option value="BSCRIM">BSCRIM</option>
 											</select>
 										</div>
 										<div class="input-container" style="width: 40%; margin: 0 20px 5% 20px;">

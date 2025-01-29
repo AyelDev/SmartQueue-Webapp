@@ -214,16 +214,16 @@
 							<div class="graph-container">
 								<canvas id="barGraph"></canvas>
 								<div class="total-summary">
-									<h2><br>Total Students:</h2>
+									<h2><br>Total Students: <span class="counts" id="total-student">---</span></h2>
 									<hr>
-									<p><br>BEED:</p>
-									<P><br>BSED:</P>
-									<P><br>BSTM:</P>
-									<P><br>BSHM:</P>
-									<P><br>BSIT:</P>
-									<P><br>CRIM:</P>
+									<p><br>BEED: <span class="counts" id="total-beed-student">loading...</span></p>
+									<P><br>BSED: <span class="counts" id="total-bsed-student">loading...</span></P>
+									<P><br>BSTM: <span class="counts" id="total-bstm-student">loading...</span></P>
+									<P><br>BSHM: <span class="counts" id="total-bshm-student">loading...</span></P>
+									<P><br>BSIT: <span class="counts" id="total-bsit-student">loading...</span></P>
+									<P><br>BSCRIM: <span class="counts" id="total-crim-student">loading...</span></P>
 									<hr>
-									<h2><br>Daily transaction:</h2>
+									<h2><br>Daily transaction: <span class="counts" id="total-transaction">loading...</span></h2>
 								</div>
 							</div>
 							
@@ -427,90 +427,7 @@
 			</div> -->
 			<script>
  // Sample data: Replace this with actual data from your system
- const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        const data = {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Inquiries',
-                    data: [50, 60, 70, 65, 80, 90, 100, 95, 85, 75, 70, 60], // Replace with real data
-                    backgroundColor: 'rgba(0, 0, 139, 1)',
-                    borderColor: 'rgba(0, 0, 139, 1)',
-                    borderWidth: 1,
-                },
-                {
-                    label: 'BSED',
-                    data: [40, 50, 60, 55, 70, 80, 85, 80, 70, 60, 55, 50], // Replace with real data
-                    backgroundColor: 'rgba(3, 4, 94, 1)',
-                    borderColor: 'rgba(3, 4, 94, 1)',
-                    borderWidth: 1,
-                },
-                {
-                    label: 'BEED',
-                    data: [30, 40, 50, 45, 60, 70, 75, 70, 60, 50, 45, 40], // Replace with real data
-                    backgroundColor: 'rgba(0, 116, 228, 1)',
-                    borderColor: 'rgba(0, 116, 228, 1)',
-                    borderWidth: 1,
-                },
-                {
-                    label: 'BSTM',
-                    data: [20, 30, 40, 35, 50, 60, 65, 60, 50, 40, 35, 30], // Replace with real data
-                    backgroundColor: 'rgba(0, 169, 255, 1)',
-                    borderColor: 'rgba(0, 169, 255, 1)',
-                    borderWidth: 1,
-                }
-				,
-                {
-                    label: 'BSHM',
-                    data: [20, 30, 40, 35, 50, 60, 65, 60, 50, 40, 35, 30], // Replace with real data
-                    backgroundColor: 'rgba(0, 180, 216, 1)',
-                    borderColor: 'rgba(0, 180, 216, 1)',
-                    borderWidth: 1,
-                },
-                {
-                    label: 'BSIT',
-                    data: [20, 30, 40, 35, 50, 60, 65, 60, 50, 40, 35, 30], // Replace with real data
-                    backgroundColor: 'rgba(144, 224, 239, 1)',
-                    borderColor: 'rgba(144, 224, 239, 1)',
-                    borderWidth: 1,
-                },
-                {
-                    label: 'CRIM',
-                    data: [20, 30, 40, 35, 50, 60, 65, 60, 50, 40, 35, 30], // Replace with real data
-                    backgroundColor: 'rgba(127, 181, 255, 1)',
-                    borderColor: 'rgba(127, 181, 255, 1)',
-                    borderWidth: 1,
-                }
-            ]
-        };
-
-        const config = {
-            type: 'bar',
-            data: data,
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Monthly Queue Summary by Department'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            },
-        };
-
-        const barGraph = new Chart(
-            document.getElementById('barGraph'),
-            config
-        );
-
+ 
 			</script>
 
 			<script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>

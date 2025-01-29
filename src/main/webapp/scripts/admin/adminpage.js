@@ -19,9 +19,10 @@ CHARTJS.....
 let hsNum, shsNum, Num;
 let BSIT = 0;
 let BEED = 0;
-let DEVCOM = 0;
 let BSTM = 0;
 let BSHM = 0;
+let BSCRIM = 0;
+let BSED = 0;
 Promise.all([
     fetch('/JsonStaffListAPI'),
     fetch('/JsonStudentListAPI')
@@ -42,13 +43,13 @@ Promise.all([
 
         data[1].forEach(item => {
             if (item.course.includes('BSIT')) {
-                BSIT++;
+                BSIT++
             }
             if (item.course.includes('BEED')) {
                 BEED++
             }
-            if (item.course.includes('DEVCOM')) {
-                DEVCOM++
+            if (item.course.includes('BEED')) {
+                BSED++
             }
             if (item.course.includes('BSTM')) {
                 BSTM++
@@ -56,16 +57,25 @@ Promise.all([
             if (item.course.includes('BSHM')) {
                 BSHM++
             }
+            if (item.course.includes('BSCRIM')) {
+                BSCRIM++
+            }
         });
 
         document.getElementById("total-student").innerHTML = studentNum;
-        document.getElementById("total-staff").innerHTML = staffNum;
+        document.getElementById("total-bsit-student").innerHTML = BSIT;
+        document.getElementById("total-beed-student").innerHTML = BEED;
+        document.getElementById("total-bsed-student").innerHTML = BSED;
+        document.getElementById("total-bstm-student").innerHTML = BSTM;
+        document.getElementById("total-bshm-student").innerHTML = BSHM;
+        document.getElementById("total-crim-student").innerHTML = BSCRIM;   
+
+        // document.getElementById("total-staff").innerHTML = staffNum;
         document.getElementById("total-transaction").innerHTML = inquiryNum;
 
-
         //count 0 to n animation
-        $('.total-count').each(function () {
-            $(this).prop('Counter', 0).animate({
+        $('.counts').each(function () {
+            $(this).prop('Counter', -1).animate({
                 Counter: $(this).text()
             }, {
                 duration: 2000,
@@ -514,3 +524,45 @@ updateRecordsGeneralArchivingDatas();
 
  // Initialize badge count
  updateBadgeCount();
+
+ //----------------------------------- NEW GRAPH
+ const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Inquiries',
+                    data: [50, 60, 70, 65, 80, 90, 100, 95, 85, 75, 70, 60], // Replace with real data
+                    backgroundColor: 'rgba(0, 0, 139, 1)',
+                    borderColor: 'rgba(0, 0, 139, 1)',
+                    borderWidth: 1,
+                }
+            ]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Monthly Queue Summary by Department'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            },
+        };
+
+        const barGraph = new Chart(
+            document.getElementById('barGraph'),
+            config
+        );
