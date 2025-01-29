@@ -62,6 +62,7 @@ body {
 	width: 15vw;
 	height: 100vh;
 	background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
+	/* background: linear-gradient(135deg, #007bff, #00bfff); */
 	position: fixed;
 	justify-content: center;
 	align-items: center;
@@ -433,13 +434,26 @@ h3 {
 	color: var(--background-color);
 }
 
-canvas{
-	width: 50%;
+.graph-container{
+	width: 100%;
 	margin-top: 1%;
 	margin-left: -1%;
 	background-color: #ffff;
 	border-radius: 8px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+canvas{
+	width: 70%;
+}
+.total-summary{
+	width: 20%;
+	height: 58vh;
+	margin-top: -37%;
+	margin-left: 78%;
+	color: grey;
+}
+hr{
+	margin-left: -5%;
 }
 
 /* table section */
