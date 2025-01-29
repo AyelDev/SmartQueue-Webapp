@@ -607,7 +607,6 @@
                                 <aside class="sidebar">
                                     <ul>
                                         <li><a href="#profile">Profile</a></li>
-                                        <li><a href="#addresses">Addresses</a></li>
                                         <li><a href="#password">Change Password</a></li>
 
                                     </ul>
