@@ -8,6 +8,8 @@ import com.smartqueueweb.Class.ServiceType;
 import com.smartqueueweb.Model.AdminBean;
 import com.smartqueueweb.Model.CountersBean;
 import com.smartqueueweb.Model.MediaBean;
+import com.smartqueueweb.Model.MonthQueueSummaryBean;
+import com.smartqueueweb.Model.QueueEntryBean;
 import com.smartqueueweb.Model.ServicesBean;
 
 public class AdminDAO extends SQLConnection {
@@ -16,10 +18,14 @@ public class AdminDAO extends SQLConnection {
 	ServicesBean serviceBean = null;
 	CountersBean countersBean = null;
 	MediaBean mediaBean = null;
+	QueueEntryBean queueEntryBean = null;
+	
 	
 	List<ServicesBean> serviceBeanList = null;
 	List<CountersBean> countersBeanList = null;
 	List<MediaBean> mediaBeanList = null;
+	List<QueueEntryBean> queueEntryBeanList = null;
+
 
 	public AdminDAO() {
 		super();
@@ -254,4 +260,50 @@ public class AdminDAO extends SQLConnection {
 		}
 		return mediaBeanList;
 	}
+
+    public List<QueueEntryBean> ListOfEnquiries() {
+
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("SELECT * FROM student_queue_entries ORDER BY id");
+			rs = prs.executeQuery();
+			queueEntryBeanList = new ArrayList<QueueEntryBean>();
+
+			while (rs.next()) {
+				queueEntryBean = new QueueEntryBean(
+						rs.getInt("id"), 
+						rs.getString("queue_number"),
+						rs.getString("id_number"), 
+						rs.getString("fullname"), 
+						rs.getString("purpose"), 
+						rs.getString("serviceType"), 
+						rs.getInt("window_number"), 
+						rs.getDate("date"), 
+						rs.getString("queue_status")
+						);
+				queueEntryBeanList.add(queueEntryBean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return queueEntryBeanList;
+        
+    }
+
+    public List<MonthQueueSummaryBean> ListOfMonthlyQueues() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'ListOfMonthlyQueues'");
+    }
+
+    public Integer AddMonthlyEnquiry() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'AddMonthlyEnquiry'");
+    }
+
+    public Boolean ClearAllQueueEntries() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'ClearAllQueueEntries'");
+    }
 }

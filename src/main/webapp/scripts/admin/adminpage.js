@@ -23,9 +23,20 @@ let BSTM = 0;
 let BSHM = 0;
 let BSCRIM = 0;
 let BSED = 0;
+
+let inquiryToday = 0;
+
+//fetch according to todays time, date, year
+//--current date
+const date = new Date();
+
+const options = { year: 'numeric', month: 'short', day: 'numeric' };
+const formattedDate = date.toLocaleDateString('en-PH', options);
+
 Promise.all([
     fetch('/JsonStaffListAPI'),
-    fetch('/JsonStudentListAPI')
+    fetch('/JsonStudentListAPI'),
+	fetch('/getallentries')
     // fetch('http://localhost:8080/smartqueueweb/JsonInquiryListAPI')
 ])
     .then(responses => {
@@ -39,7 +50,8 @@ Promise.all([
     .then(data => {
         staffNum = data[0].length; // Staff count
         studentNum = data[1].length; // Student count
-        inquiryNum = 10; // Inquiry count
+        inquiryNum = data[2].length; // Inquiry count
+		
 
         data[1].forEach(item => {
             if (item.course.includes('BSIT')) {
@@ -48,7 +60,7 @@ Promise.all([
             if (item.course.includes('BEED')) {
                 BEED++
             }
-            if (item.course.includes('BEED')) {
+            if (item.course.includes('BSED')) {
                 BSED++
             }
             if (item.course.includes('BSTM')) {
@@ -61,6 +73,13 @@ Promise.all([
                 BSCRIM++
             }
         });
+		
+		data[2].forEach(item => {
+			//TOTAL QUEUE FOR TODAY
+			if (item.DateInquired.includes(formattedDate)){
+				inquiryToday++;		
+			}
+		});
 
         document.getElementById("total-student").innerHTML = studentNum;
         document.getElementById("total-bsit-student").innerHTML = BSIT;
@@ -71,7 +90,7 @@ Promise.all([
         document.getElementById("total-crim-student").innerHTML = BSCRIM;   
 
         // document.getElementById("total-staff").innerHTML = staffNum;
-        document.getElementById("total-transaction").innerHTML = inquiryNum;
+        document.getElementById("total-transaction").innerHTML = inquiryToday;
 
         //count 0 to n animation
         $('.counts').each(function () {

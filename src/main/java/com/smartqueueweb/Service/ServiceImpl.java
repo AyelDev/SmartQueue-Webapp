@@ -17,6 +17,8 @@ import com.smartqueueweb.DAO.StudentDAO;
 import com.smartqueueweb.Model.AdminBean;
 import com.smartqueueweb.Model.CountersBean;
 import com.smartqueueweb.Model.MediaBean;
+import com.smartqueueweb.Model.MonthQueueSummaryBean;
+import com.smartqueueweb.Model.QueueEntryBean;
 import com.smartqueueweb.Model.ServicesBean;
 import com.smartqueueweb.Model.StaffBean;
 import com.smartqueueweb.Model.StudentBean;
@@ -183,6 +185,30 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return admindata.VideoList();
 	}
 
+	@Override
+	public List<QueueEntryBean> listOfEnquiries() {
+		// TODO Auto-generated method stub
+		return admindata.ListOfEnquiries();
+	}
+
+	@Override
+	public List<MonthQueueSummaryBean> listOfMonthlyQueues() {
+		// TODO Auto-generated method stub
+		return admindata.ListOfMonthlyQueues();
+	}
+
+	@Override
+	public Integer addMonthlyEnquiry(Integer[] addToMonth) {
+		// TODO Auto-generated method stub
+		return admindata.AddMonthlyEnquiry();
+	}
+
+	@Override
+	public Boolean clearAllQueueEntries() {
+		// TODO Auto-generated method stub
+		return admindata.ClearAllQueueEntries();
+	}
+
 	//////////////////////////////////////////////////////////////////////// -----------------------
 	//////////////////////////////////////////////////////////////////////// Student
 
@@ -279,4 +305,5 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return "";
 
 	}
+
 }

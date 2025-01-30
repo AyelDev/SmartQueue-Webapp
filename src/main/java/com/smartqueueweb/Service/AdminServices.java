@@ -5,6 +5,8 @@ import com.smartqueueweb.Model.AdminBean;
 import com.smartqueueweb.Model.CountersBean;
 import com.smartqueueweb.Model.MediaBean;
 import com.smartqueueweb.Model.ServicesBean;
+import com.smartqueueweb.Model.QueueEntryBean;
+import com.smartqueueweb.Model.MonthQueueSummaryBean;
 
 import java.util.List;
 
@@ -31,5 +33,13 @@ public interface AdminServices {
 	Boolean deleteCounters(Integer id);
 	
 	List<MediaBean> videoList();
+	
+	List<QueueEntryBean> listOfEnquiries();
+
+	List<MonthQueueSummaryBean> listOfMonthlyQueues();
+
+	Integer addMonthlyEnquiry(Integer[] addToMonth);
+
+	Boolean clearAllQueueEntries();
 
 }
