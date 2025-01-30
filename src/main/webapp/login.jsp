@@ -20,10 +20,11 @@
 
 			<div class="container-fluid">
 				<div class="login-container">
-					<img src="./images/image.png" class="cecbldg" alt="">
+					<img src="./images/cecbldg.png" class="cecbldg" alt="">
 					<img src="./images/logo.png" class="logo" alt="">
+					<img src="./images/clouds.png" class="clouds" alt="">
 					<h1 class="school-name">Cebu Eastern College</h1>
-					<p class="system-title">Optimizing School Records Management System</p>
+					<p class="system-title">Smart Queue System</p>
 					<div class="loginform-container">
 
 						<div class="title-container">

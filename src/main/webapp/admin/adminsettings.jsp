@@ -317,13 +317,19 @@
                     color: #cce5ff;
                 }
 
-                /* Profile Content */
+                /* Profile Content Default */
                 .profile-content {
                     flex: 1;
                     background-color: #ffffff;
                     border-radius: 10px;
                     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
                     padding: 20px;
+                    position: relative;
+                }
+                #profile-default{
+                    display: block;
+                    position: relative;
+                    z-index: 1;
                 }
 
                 .profile-header {
@@ -356,7 +362,7 @@
                     background-color: #003580;
                 }
 
-                .form-group {
+                #profileForm {
                     margin-bottom: 20px;
                 }
 
@@ -385,17 +391,64 @@
                 .save-btn {
                     background-color: #0056b3;
                     color: #ffffff;
-                    padding: 10px 20px;
+                    padding: 10px 50px;
                     border: none;
                     border-radius: 5px;
                     font-size: 1rem;
                     cursor: pointer;
                     transition: background-color 0.3s ease;
+                    margin-left: 40%;
+                    margin-top: 5%;
                 }
 
                 .save-btn:hover {
                     background-color: #003580;
                 }
+
+
+                /* Navigate to change pass */
+                .content-section {
+                    display: none;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    background: white;
+                }
+                .content-section-password {
+                    display: none;
+                    position: absolute;
+                    margin-left: 17.2%;
+                }
+                .content-section:target, .content-section-password:target{
+                    display: block;
+                    z-index: 2;
+                }
+
+                #passwordForm {
+                    margin-bottom: 50px;
+                    width: 50vw;
+                    height: 61vh;
+                    flex: 1;
+                    background-color: #ffffff;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                    padding: 20px;
+                    position: relative;
+                }
+                
+
+
+                input[type="password"] {
+                    width: 85%;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    font-size: 1rem;
+                    transition: border-color 0.3s ease;
+                }
+
+
 
                 /* Footer */
                 .footer {
@@ -606,39 +659,62 @@
                             <div class="profile-container">
                                 <aside class="sidebar">
                                     <ul>
-                                        <li><a href="#profile">Profile</a></li>
-                                        <li><a href="#password">Change Password</a></li>
+                                        <li><a href="#profile-default">Profile</a></li>
+                                        <li><a href="#changepassword">Change Password</a></li>
 
                                     </ul>
                                 </aside>
 
+                                <!--default main-->
                                 <main class="profile-content">
-                                    <div class="profile-header">
-                                        <img id="profileImage" src="default-profile.png" alt="Profile Picture">
-                                        <input type="file" id="profilePicInput" accept="image/*" hidden>
-                                        <button id="changePhotoBtn">Change Photo</button>
-                                    </div>
+                                    <div class="content-section" id="profile-default">
+                                        <div class="profile-header">
+                                            <img id="profileImage" src="default-profile.png" alt="Profile Picture">
+                                            <input type="file" id="profilePicInput" accept="image/*" hidden>
+                                            <button id="changePhotoBtn">Change Photo</button>
+                                        </div>
 
-                                    <form id="profileForm">
+                                        <form id="profileForm">
+                                            <div class="form-group">
+                                                <label for="name">Name:</label>
+                                                <input type="text" id="name" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="username">Username:</label>
+                                                <input type="text" id="username" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Email:</label>
+                                                <input type="email" id="email" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="phone">Phone Number:</label>
+                                                <input type="text" id="phone" value="" required>
+                                            </div>
+                                            <button type="submit" class="save-btn">Save</button>
+                                        </form>
+                                    </div>
+                                </main>
+
+                                <!--navigate to change pass-->
+                                <div class="content-section-password" id="changepassword">
+                                    <form id="passwordForm">
                                         <div class="form-group">
-                                            <label for="username">Username:</label>
-                                            <input type="text" id="username" value="Admin" required>
+                                            <label for="old-password">Old Password:</label>
+                                            <input type="password" id="old-password" value="" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="name">Name:</label>
-                                            <input type="text" id="name" value="Juan De la Cruz" required>
+                                            <label for="new-password">New Password:</label>
+                                            <input type="password" id="old-password" value="" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="email">Email:</label>
-                                            <input type="email" id="email" value="admin@gmail.com" required>
+                                            <label for="confirm-password">Confirm Password:</label>
+                                            <input type="password" id="confirm-password" value="" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="phone">Phone Number:</label>
-                                            <input type="text" id="phone" value="09232343435" required>
-                                        </div>
+
                                         <button type="submit" class="save-btn">Save</button>
                                     </form>
-                                </main>
+                                </div>
                             </div>
                             <script>
                                 document.getElementById('changePhotoBtn').addEventListener('click', function () {
