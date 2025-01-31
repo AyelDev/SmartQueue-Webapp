@@ -19,12 +19,13 @@ public class AdminDAO extends SQLConnection {
 	CountersBean countersBean = null;
 	MediaBean mediaBean = null;
 	QueueEntryBean queueEntryBean = null;
-	
-	
+	MonthQueueSummaryBean monthQueueSummaryBean = null;
+ 	
 	List<ServicesBean> serviceBeanList = null;
 	List<CountersBean> countersBeanList = null;
 	List<MediaBean> mediaBeanList = null;
 	List<QueueEntryBean> queueEntryBeanList = null;
+	List<MonthQueueSummaryBean> monthQueueSummaryBeanList = null;
 
 
 	public AdminDAO() {
@@ -293,13 +294,51 @@ public class AdminDAO extends SQLConnection {
     }
 
     public List<MonthQueueSummaryBean> ListOfMonthlyQueues() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ListOfMonthlyQueues'");
+       
+    	try {
+			ConnectDriver();
+			prs = conn.prepareStatement("SELECT * FROM tbl_month_queue_summary ORDER BY id");
+			rs = prs.executeQuery();
+			monthQueueSummaryBeanList = new ArrayList<MonthQueueSummaryBean>();
+
+			while (rs.next()) {
+				monthQueueSummaryBean = new MonthQueueSummaryBean(
+						rs.getInt("id"), 
+						rs.getDate("month"),
+						rs.getInt("inquiries"), 
+						rs.getDate("date_modified")
+						);
+				monthQueueSummaryBeanList.add(monthQueueSummaryBean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return monthQueueSummaryBeanList;
+        
     }
 
     public Integer AddMonthlyEnquiry() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'AddMonthlyEnquiry'");
+        // not add nor delete if there is still on inquiry
+		// otherwise if inquiry has been yesterday or on last day
+        //NOT DONE
+		try {
+			ConnectDriver();
+			// prs = conn.prepareStatement("INSERT INTO tbl_service (program, purpose, amount, servicetype) VALUES (?, ?, ?, ?);");
+			// prs.setString(1, program);
+			// prs.setString(2, purpose);
+			// prs.setInt(3, amount);
+			// prs.setString(4, serviceType.toString());
+
+			return prs.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return 0;
     }
 
     public Boolean ClearAllQueueEntries() {

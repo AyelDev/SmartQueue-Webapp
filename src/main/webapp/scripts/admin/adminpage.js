@@ -26,6 +26,8 @@ let BSED = 0;
 
 let inquiryToday = 0;
 
+let months = [0,0,0,0,0,0,0,0,0,0,0,0];
+
 //fetch according to todays time, date, year
 //--current date
 const date = new Date();
@@ -36,7 +38,9 @@ const formattedDate = date.toLocaleDateString('en-PH', options);
 Promise.all([
     fetch('/JsonStaffListAPI'),
     fetch('/JsonStudentListAPI'),
-	fetch('/getallentries')
+	fetch('/getallentries'),
+	fetch('/JsonListMonthlyQueueEntries'),
+	
     // fetch('http://localhost:8080/smartqueueweb/JsonInquiryListAPI')
 ])
     .then(responses => {
@@ -54,24 +58,26 @@ Promise.all([
 		
 
         data[1].forEach(item => {
-            if (item.course.includes('BSIT')) {
-                BSIT++
-            }
-            if (item.course.includes('BEED')) {
-                BEED++
-            }
-            if (item.course.includes('BSED')) {
-                BSED++
-            }
-            if (item.course.includes('BSTM')) {
-                BSTM++
-            }
-            if (item.course.includes('BSHM')) {
-                BSHM++
-            }
-            if (item.course.includes('BSCRIM')) {
-                BSCRIM++
-            }
+			switch (true) {
+			    case item.course.includes('BSIT'):
+			        BSIT++;
+			        break;
+			    case item.course.includes('BEED'):
+			        BEED++;
+			        break;
+			    case item.course.includes('BSED'):
+			        BSED++;
+			        break;
+			    case item.course.includes('BSTM'):
+			        BSTM++;
+			        break;
+			    case item.course.includes('BSHM'):
+			        BSHM++;
+			        break;
+			    case item.course.includes('BSCRIM'):
+			        BSCRIM++;
+			        break;
+				}
         });
 		
 		data[2].forEach(item => {
@@ -91,7 +97,7 @@ Promise.all([
 
         // document.getElementById("total-staff").innerHTML = staffNum;
         document.getElementById("total-transaction").innerHTML = inquiryToday;
-
+		
         //count 0 to n animation
         $('.counts').each(function () {
             $(this).prop('Counter', -1).animate({
@@ -104,11 +110,23 @@ Promise.all([
                 }
             });
         });
-
+        BarGraph(
+            data[3][0].inquiries,
+            data[3][1].inquiries,
+            data[3][2].inquiries,
+            data[3][3].inquiries,
+            data[3][4].inquiries,
+            data[3][5].inquiries,
+            data[3][6].inquiries,
+            data[3][7].inquiries,
+            data[3][8].inquiries,
+            data[3][9].inquiries,
+            data[3][10].inquiries,
+            data[3][11].inquiries);
         console.log(studentNum, staffNum, inquiryNum); // Use as needed
-
-        myChart(studentNum, staffNum, inquiryNum);
-        PieChart(BSIT, BEED, DEVCOM, BSTM, BSHM)
+       // BarGraph(months[0], months[1], months[2], months[3], months[4], months[5], months[6], months[7], months[8], months[9], months[10], months[11]);
+    /*    myChart(studentNum, staffNum, inquiryNum);
+        PieChart(BSIT, BEED, DEVCOM, BSTM, BSHM)*/
     })
     .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
@@ -545,13 +563,15 @@ updateRecordsGeneralArchivingDatas();
  updateBadgeCount();
 
  //----------------------------------- NEW GRAPH
+ function BarGraph(jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec){
+	
  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         const data = {
             labels: labels,
             datasets: [
                 {
                     label: 'Inquiries',
-                    data: [50, 60, 70, 65, 80, 90, 100, 95, 85, 75, 70, 60], // Replace with real data
+                    data: [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec], // Replace with real data
                     backgroundColor: 'rgba(0, 0, 139, 1)',
                     borderColor: 'rgba(0, 0, 139, 1)',
                     borderWidth: 1,
@@ -585,3 +605,5 @@ updateRecordsGeneralArchivingDatas();
             document.getElementById('barGraph'),
             config
         );
+		
+}
