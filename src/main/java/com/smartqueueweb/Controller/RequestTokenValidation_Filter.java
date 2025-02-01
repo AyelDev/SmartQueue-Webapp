@@ -59,7 +59,7 @@ public class RequestTokenValidation_Filter implements Filter {
 	JwtValidator validator;
 	RequestDispatcher rd;
 	ServiceImpl services;
-	
+
 	public RequestTokenValidation_Filter() {
 		// TODO Auto-generated constructor stub
 		 validator = new JwtValidator();
@@ -97,6 +97,11 @@ public class RequestTokenValidation_Filter implements Filter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
+		
+		if(services.clearAllQueueEntries())
+		System.out.println("last queue entries deleted");
+		else
+		System.out.println("somethings wrong deleting queue entries in the past transactions...");
 		// TODO Auto-generated method stub
 		System.out.println("start app...");
 	}

@@ -320,17 +320,9 @@ public class AdminDAO extends SQLConnection {
     }
 
     public Integer AddMonthlyEnquiry() {
-        // not add nor delete if there is still on inquiry
-		// otherwise if inquiry has been yesterday or on last day
-        //NOT DONE
 		try {
 			ConnectDriver();
-			// prs = conn.prepareStatement("INSERT INTO tbl_service (program, purpose, amount, servicetype) VALUES (?, ?, ?, ?);");
-			// prs.setString(1, program);
-			// prs.setString(2, purpose);
-			// prs.setInt(3, amount);
-			// prs.setString(4, serviceType.toString());
-
+			prs = conn.prepareStatement("UPDATE tbl_month_queue_summary SET inquiries = inquiries + 1 WHERE month = CURDATE();");
 			return prs.executeUpdate();
 			
 		}catch (Exception e) {
@@ -343,6 +335,18 @@ public class AdminDAO extends SQLConnection {
 
     public Boolean ClearAllQueueEntries() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ClearAllQueueEntries'");
-    }
+			try {
+				ConnectDriver();
+				prs = conn.prepareStatement("DELETE from student_queue_entries WHERE date < CURDATE();");
+				
+				if(prs.executeUpdate() > 0);
+				return true;
+			
+			}catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				SQLClose();
+			}
+		return false;
+	}
 }

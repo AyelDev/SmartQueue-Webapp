@@ -198,7 +198,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	}
 
 	@Override
-	public Integer addMonthlyEnquiry(Integer[] addToMonth) {
+	public Integer addMonthlyEnquiry() {
 		// TODO Auto-generated method stub
 		return admindata.AddMonthlyEnquiry();
 	}

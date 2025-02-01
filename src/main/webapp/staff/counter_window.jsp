@@ -356,6 +356,9 @@
                         }));
                         //ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
                     }
+
+                      //update lists after change partial fix kay naglelebog na ako HAHAHA
+                      counterChangeListOnChange();
                 }
 
                 var ws2 = new WebSocket(wsUrl + window.location.host + "/queueupdate");

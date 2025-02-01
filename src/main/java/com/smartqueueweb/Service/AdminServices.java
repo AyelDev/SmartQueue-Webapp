@@ -38,7 +38,7 @@ public interface AdminServices {
 
 	List<MonthQueueSummaryBean> listOfMonthlyQueues();
 
-	Integer addMonthlyEnquiry(Integer[] addToMonth);
+	Integer addMonthlyEnquiry();
 
 	Boolean clearAllQueueEntries();
 
