@@ -52,10 +52,9 @@ body {
 
 .cecbldg{
     width: 55%;
-    height: 57%;
     object-fit: fill;
     border-bottom-left-radius: 10px;
-    margin-top: 24.5%;
+    margin-top: 36.5%;
     margin-left: -45%;
     opacity: .5;
 }
@@ -67,10 +66,18 @@ body {
     margin-top: -30%;
     filter: drop-shadow(5px 5px 10px #888888);
 }
+.clouds{
+    margin-left: -26.6%;
+    position: absolute;
+    opacity: .4;
+    margin-top: 11.8%;
+    object-fit: fill;
+    width: 32.5%;
+}
 .school-name{
     margin-bottom: 5px;
     color: #ffff;
-    margin-left: -25%;
+    margin-left: -27%;
     margin-top: -10%;
     font-size: 30px;
     font-weight: 600;
@@ -79,9 +86,9 @@ body {
 .system-title{
     font-size: 18px;
     margin-left: -27%;
-    top: 5%;
+    top: -28%;
     color: #ffff;
-    opacity: .8;
+    margin-top: 15%;
 }
 .loginform-container {
     background-color: #FFFFFF;
@@ -188,12 +195,12 @@ body {
 
 .login-btn {
     position: absolute;
-    width: 80%;
+    width: 69%;
     height: 11%;
     padding: 15px;
     bottom: 110px;
     border-radius: 10px;
-    left: 12%;
+    left: 17%;
     cursor: pointer;
     background-color: #77B6EA;
     border-color: #77B6EA;
