@@ -1,4 +1,4 @@
-var dropdown = document.getElementsByClassName("button-profile");
+var dropdown = document.getElementsByClassName("profilebutton");
 var i;
 
 for (i = 0; i < dropdown.length; i++) {
@@ -294,8 +294,8 @@ function ModalInfo(title, context, formId, serviceType, method, updateAttribute)
 
     if (title == 'Add Document for Records') {
         recordContent = `
-        <label for="Amount">Amount</label>
-         <input type="number" id="amount" name="Amount" placeholder="Enter amount">
+        <br><br><label for="Amount">Amount</label><br>
+         <input type="number" id="amount" style="width: 60vh; height: 5vh; "  name="Amount" placeholder="Enter amount">
     `;
     }
 
@@ -317,10 +317,10 @@ function ModalInfo(title, context, formId, serviceType, method, updateAttribute)
         let addContents = 
         `
         <form id="`+formId+`">
-        <label for="servicetype">Service Type</label>
-        <input type="text" id="servicetype" name="servicetype" value="`+serviceType+`" disabled>
-        <label for="`+context+`">`+context+`</label>
-        <input type="text" id="program" name="`+context+`" placeholder="Enter `+context+`">
+        <label for="servicetype">Service Type</label><br>
+        <input type="text" id="servicetype" style="width: 60vh; height: 5vh;" name="servicetype" value="`+serviceType+`" disabled><br><br>
+        <label for="`+context+`">`+context+`</label><br>
+        <input type="text" id="program" style="width: 60vh; height: 5vh; " name="`+context+`" placeholder="Enter `+context+`">
         `+ recordContent + `
         </form>
         `;
@@ -431,11 +431,6 @@ function DeleteInfo(idNumber){
     });
 }
 
-//button-profile being active btn
-document.getElementById('button-profile').addEventListener('click', function () {
-    this.classList.toggle('active');
-    document.getElementById('adminProfile').classList.toggle('show');
-});
 
 
 //fetch data for general records and archiving

@@ -10,6 +10,7 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<link rel="stylesheet" href="../css/fontawesome.css">
+			<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 			<script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
 			<script type="text/javascript" src="./scripts/ping.js"></script>
 			<script type="text/javascript" src="./scripts/fadetransition.js"></script>
@@ -145,39 +146,6 @@
 								</g>
 							</svg>
 							<div class="notification-badge" id="notificationBadge">3</div>
-							<svg class="chat-icon" width="64px" height="30px" viewBox="-2.4 -2.4 28.80 28.80"
-								fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
-								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
-									stroke="#ffffff030303" stroke-width="0.336">
-									<path
-										d="M7 4C4.79086 4 3 5.79073 3 7.9997V13.2642C3 15.4732 4.79086 17.2639 7 17.2639L7 19.8998C7 19.9834 7.09639 20.0301 7.16197 19.9783L10.6 17.2639H17C19.2091 17.2639 21 15.4732 21 13.2642V7.99971C21 5.79073 19.2091 4 17 4H7Z"
-										stroke="#ffffff" stroke-width="0.552" stroke-linecap="round"></path>
-									<path
-										d="M9 11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11C7 10.4477 7.44772 10 8 10C8.55228 10 9 10.4477 9 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M13 11C13 11.5523 12.5523 12 12 12C11.4477 12 11 11.5523 11 11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M17 11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11Z"
-										fill="#ffffff"></path>
-								</g>
-								<g id="SVGRepo_iconCarrier">
-									<path
-										d="M7 4C4.79086 4 3 5.79073 3 7.9997V13.2642C3 15.4732 4.79086 17.2639 7 17.2639L7 19.8998C7 19.9834 7.09639 20.0301 7.16197 19.9783L10.6 17.2639H17C19.2091 17.2639 21 15.4732 21 13.2642V7.99971C21 5.79073 19.2091 4 17 4H7Z"
-										stroke="#ffffff" stroke-width="1.608" stroke-linecap="round"></path>
-									<path
-										d="M9 11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11C7 10.4477 7.44772 10 8 10C8.55228 10 9 10.4477 9 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M13 11C13 11.5523 12.5523 12 12 12C11.4477 12 11 11.5523 11 11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M17 11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11Z"
-										fill="#ffffff"></path>
-								</g>
-							</svg>
 						</div>
 
 						<!-- admin profile -->
@@ -213,16 +181,17 @@
 
 					<div class="studentlist-content">
 						<button class="add-account-btn">
-							<img src="./images/add-account.png" alt="" class="add-account-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" height="10" width="12.5"
+								viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+								<path fill="#ffffff"
+									d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
+							</svg>
 							Add Student
 						</button>
 						<h1>Student List</h1>
 						<div class="search-container">
 							<input type="text" placeholder="Search.." name="search" class="search-bar" id="searchInput"
 								onkeyup="searchTable()">
-							<button class="search-btn" type="submit">
-								<img src="./images/search-icon.png" alt="" class="search-icon">
-							</button>
 
 
 							<div class="overlay"></div>
@@ -430,8 +399,8 @@
 							htmlString += "<td>" + data[i].idnumber + "</td>";
 							htmlString += "<td>" + data[i].firstname + " " + data[i].middlename + " " + data[i].lastname + " </td>";
 							htmlString += "<td>" + data[i].course + "</td>";
-							htmlString += '<td><button onclick="updateStudent(' + data[i].idnumber + ', \'' + data[i].firstname + '\', \'' + data[i].middlename + '\', \'' + data[i].lastname + '\', \'' + data[i].course + '\')" class="update" style="background-color: #97BE5A;">Update</button> ';
-							htmlString += '<button onclick="removeStudent(' + data[i].idnumber + ')" button class="delete" style="background-color: #EE4E4E;">Delete</button>';
+							htmlString += '<td><button onclick="updateStudent(' + data[i].idnumber + ', \'' + data[i].firstname + '\', \'' + data[i].middlename + '\', \'' + data[i].lastname + '\', \'' + data[i].course + '\')" class="update" style="background-color: #0056b3; color: white;">Update</button> ';
+							htmlString += '<button onclick="removeStudent(' + data[i].idnumber + ')" button class="delete" style="background-color: #EE4E4E; color: white;">Delete</button>';
 							htmlString += "</tr>";
 						}
 

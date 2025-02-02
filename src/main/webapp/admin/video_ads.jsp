@@ -131,7 +131,7 @@
                 <div class="video-entertainment">
                     <div class="dashboard-head">
                         <div class="icon-container">
-                            <svg class="bell-icon" width="30px" height="64px" viewBox="0 0 24.00 24.00" fill="none"
+                            <svg class="bell-icon" id="notifications" width="30px" height="64px" viewBox="0 0 24.00 24.00" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
@@ -144,45 +144,13 @@
                                     </path>
                                 </g>
                             </svg>
-                            <svg class="chat-icon" width="64px" height="30px" viewBox="-2.4 -2.4 28.80 28.80"
-                                fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
-                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke="#ffffff030303" stroke-width="0.336">
-                                    <path
-                                        d="M7 4C4.79086 4 3 5.79073 3 7.9997V13.2642C3 15.4732 4.79086 17.2639 7 17.2639L7 19.8998C7 19.9834 7.09639 20.0301 7.16197 19.9783L10.6 17.2639H17C19.2091 17.2639 21 15.4732 21 13.2642V7.99971C21 5.79073 19.2091 4 17 4H7Z"
-                                        stroke="#ffffff" stroke-width="0.552" stroke-linecap="round"></path>
-                                    <path
-                                        d="M9 11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11C7 10.4477 7.44772 10 8 10C8.55228 10 9 10.4477 9 11Z"
-                                        fill="#ffffff"></path>
-                                    <path
-                                        d="M13 11C13 11.5523 12.5523 12 12 12C11.4477 12 11 11.5523 11 11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11Z"
-                                        fill="#ffffff"></path>
-                                    <path
-                                        d="M17 11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11Z"
-                                        fill="#ffffff"></path>
-                                </g>
-                                <g id="SVGRepo_iconCarrier">
-                                    <path
-                                        d="M7 4C4.79086 4 3 5.79073 3 7.9997V13.2642C3 15.4732 4.79086 17.2639 7 17.2639L7 19.8998C7 19.9834 7.09639 20.0301 7.16197 19.9783L10.6 17.2639H17C19.2091 17.2639 21 15.4732 21 13.2642V7.99971C21 5.79073 19.2091 4 17 4H7Z"
-                                        stroke="#ffffff" stroke-width="1.608" stroke-linecap="round"></path>
-                                    <path
-                                        d="M9 11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11C7 10.4477 7.44772 10 8 10C8.55228 10 9 10.4477 9 11Z"
-                                        fill="#ffffff"></path>
-                                    <path
-                                        d="M13 11C13 11.5523 12.5523 12 12 12C11.4477 12 11 11.5523 11 11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11Z"
-                                        fill="#ffffff"></path>
-                                    <path
-                                        d="M17 11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11Z"
-                                        fill="#ffffff"></path>
-                                </g>
-                            </svg>
+                            <div class="notification-badge" id="notificationBadge">3</div>
                         </div>
 
 
 
                         <!-- admin profile -->
-                        <button class="button-profile" id="button-profile"><svg class="profile" width="64px"
+                        <button class="profilebutton" id="profilebutton"><svg class="profile" width="64px"
                                 height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -245,6 +213,35 @@
                     </div>
 
                 </div>
+                <!--notification dropdown-->
+				<div class="notificationdropdown" id="notificationDropdown">
+					<div class="notificationdropdown-header">
+						<span>Notifications</span>
+						<button id="markAllRead" class="text-blue-600 text-sm">Mark all as read</button>
+					</div>
+					<div class="notificationdropdown-item unread" data-id="1">
+						<img src="https://via.placeholder.com/40" alt="Profile">
+						<div>
+							<div class="notification-text">You have a new message.</div>
+							<div class="notification-time">2h ago</div>
+						</div>
+					</div>
+					<div class="notificationdropdown-item unread" data-id="2">
+						<img src="https://via.placeholder.com/40" alt="Profile">
+						<div>
+							<div class="notification-text">Your document has been approved.</div>
+							<div class="notification-time">6h ago</div>
+						</div>
+					</div>
+					<div class="notificationdropdown-item" data-id="3">
+						<img src="https://via.placeholder.com/40" alt="Profile">
+						<div>
+							<div class="notification-text">Your password has been reset.</div>
+							<div class="notification-time">1d ago</div>
+						</div>
+					</div>
+				</div>
+			</div>
             </div>
         <!-- default js imports -->
         <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>

@@ -1,7 +1,18 @@
-document.getElementById('button-profile').addEventListener('click', function () {
-    this.classList.toggle('active');
-    document.getElementById('adminProfile').classList.toggle('show');
-});
+var dropdown = document.getElementsByClassName("profilebutton");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function () {
+
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+    });
+}
+
 
 document.getElementById('uploadButton').addEventListener('click', async function () {
     const videoFiles = document.getElementById('videoFiles').files;
@@ -63,4 +74,40 @@ $(document).ready(function(){
       
     });
 });
+
+//notification
+const notificationIcon = document.getElementById('notifications');
+const notificationDropdown = document.getElementById('notificationDropdown');
+const notificationBadge = document.getElementById('notificationBadge');
+const markAllRead = document.getElementById('markAllRead');
+const unreadItems = document.querySelectorAll('.dropdown-item.unread');
+
+// Toggle dropdown visibility
+notifications.addEventListener('click', () => {
+    notificationDropdown.classList.toggle('active');
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (event) => {
+    if (!notifications.contains(event.target) && !notificationDropdown.contains(event.target)) {
+        notificationDropdown.classList.remove('active');
+    }
+});
+
+// Update badge count
+const updateBadgeCount = () => {
+    const unreadCount = document.querySelectorAll('.dropdown-item.unread').length;
+    notificationBadge.textContent = unreadCount;
+    notificationBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
+};
+
+// Mark all notifications as read
+markAllRead.addEventListener('click', () => {
+    unreadItems.forEach(item => item.classList.remove('unread'));
+    updateBadgeCount();
+});
+
+// Initialize badge count
+updateBadgeCount();
+
 

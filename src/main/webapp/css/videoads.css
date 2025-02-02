@@ -52,7 +52,7 @@ body {
 .icon-container {
     width: 7%;
     height: 100%;
-    margin-left: 75%;
+    margin-left: 78%;
     justify-content: space-evenly;
     align-items: center;
     display: flex;
@@ -67,19 +67,12 @@ body {
 
 }
 
-.chat-icon {
-    object-fit: scale-down;
-    width: 25px;
-    cursor: pointer;
-    margin-top: .8%;
-}
-
-.button-profile {
+.profilebutton {
     align-items: center;
     justify-content: center;
     display: flex;
     width: 10vw;
-    margin-top: -5.5%;
+    margin-top: -6%;
     margin-left: 84%;
     border-radius: 10px;
     padding: 15px 10px 15px 10px;
@@ -106,32 +99,13 @@ body {
     margin-left: 85%;
     position: absolute;
     background-color: white;
-    width: 8vw;
     align-items: center;
     justify-content: center;
     text-align: center;
-    z-index: 1;
+    z-index: 1000;
     display: none;
     border-radius: 7px;
-    margin-top: -2%;
-}
-
-/* .button-profile.active {
-    background-color: #d5deef;
-    color: #333;
-    width: 9%;
-    height: 5%;
-    margin-top: -3%;
-}
-
-.button-profile.active svg {
-    fill: var(--text-color);
-    stroke: var(--text-color);
-} */
-
-.adminProfile.show {
-    display: flex;
-    flex-direction: column;
+    margin-top: -2.5%;
 }
 
 .adminProfile a {
@@ -139,14 +113,13 @@ body {
     color: var(--text-color);
     overflow: hidden;
     width: 8vw;
-    height: 20%;
+    height: 2rem;
     text-align: center;
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: .5rem 0 0 0;
-    height: 2rem;
 
 }
 
@@ -154,6 +127,7 @@ body {
     background-color: var(--select-text-color);
     border-radius: 7px;
 }
+
 
 /*Navbar section*/
 .navbar {

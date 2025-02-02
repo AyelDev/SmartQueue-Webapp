@@ -121,7 +121,7 @@
         <div class="dashboard-section">
             <div class="dashboard-head">
                 <div class="icon-container">
-                    <svg class="bell-icon" width="30px" height="64px" viewBox="0 0 24.00 24.00" fill="none"
+                    <svg class="bell-icon" id="notifications" width="30px" height="64px" viewBox="0 0 24.00 24.00" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
@@ -133,6 +133,7 @@
                             </path>
                         </g>
                     </svg>
+                    <div class="notification-badge" id="notificationBadge">3</div>
                     <!-- <svg class="chat-icon" width="64px" height="30px" viewBox="-2.4 -2.4 28.80 28.80" fill="none"
                         xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -171,29 +172,29 @@
 
 
                 <!-- admin profile -->
-                <button class="button-profile" id="button-profile"><svg class="profile" width="64px" height="64px"
-                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <path
-                                d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.19C2 19 3.29 20.93 5.56 21.66C6.22 21.89 6.98 22 7.81 22H16.19C17.02 22 17.78 21.89 18.44 21.66C20.71 20.93 22 19 22 16.19V7.81C22 4.17 19.83 2 16.19 2ZM20.5 16.19C20.5 18.33 19.66 19.68 17.97 20.24C17 18.33 14.7 16.97 12 16.97C9.3 16.97 7.01 18.32 6.03 20.24H6.02C4.35 19.7 3.5 18.34 3.5 16.2V7.81C3.5 4.99 4.99 3.5 7.81 3.5H16.19C19.01 3.5 20.5 4.99 20.5 7.81V16.19Z"
-                                fill="#ffffff"></path>
-                            <path
-                                d="M12.0019 8C10.0219 8 8.42188 9.6 8.42188 11.58C8.42188 13.56 10.0219 15.17 12.0019 15.17C13.9819 15.17 15.5819 13.56 15.5819 11.58C15.5819 9.6 13.9819 8 12.0019 8Z"
-                                fill="#ffffff"></path>
-                        </g>
-                    </svg>ADMIN<svg class="caretdown" width="64px" height="64px" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <path
-                                d="M19 9L14 14.1599C13.7429 14.4323 13.4329 14.6493 13.089 14.7976C12.7451 14.9459 12.3745 15.0225 12 15.0225C11.6255 15.0225 11.2549 14.9459 10.9109 14.7976C10.567 14.6493 10.2571 14.4323 10 14.1599L5 9"
-                                stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            </path>
-                        </g>
-                    </svg></button>
+                <button class="profilebutton" id="profilebutton"><svg class="profile" width="64px" height="64px"
+                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path
+                            d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.19C2 19 3.29 20.93 5.56 21.66C6.22 21.89 6.98 22 7.81 22H16.19C17.02 22 17.78 21.89 18.44 21.66C20.71 20.93 22 19 22 16.19V7.81C22 4.17 19.83 2 16.19 2ZM20.5 16.19C20.5 18.33 19.66 19.68 17.97 20.24C17 18.33 14.7 16.97 12 16.97C9.3 16.97 7.01 18.32 6.03 20.24H6.02C4.35 19.7 3.5 18.34 3.5 16.2V7.81C3.5 4.99 4.99 3.5 7.81 3.5H16.19C19.01 3.5 20.5 4.99 20.5 7.81V16.19Z"
+                            fill="#ffffff"></path>
+                        <path
+                            d="M12.0019 8C10.0219 8 8.42188 9.6 8.42188 11.58C8.42188 13.56 10.0219 15.17 12.0019 15.17C13.9819 15.17 15.5819 13.56 15.5819 11.58C15.5819 9.6 13.9819 8 12.0019 8Z"
+                            fill="#ffffff"></path>
+                    </g>
+                </svg>ADMIN<svg class="caretdown" width="64px" height="64px" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path
+                            d="M19 9L14 14.1599C13.7429 14.4323 13.4329 14.6493 13.089 14.7976C12.7451 14.9459 12.3745 15.0225 12 15.0225C11.6255 15.0225 11.2549 14.9459 10.9109 14.7976C10.567 14.6493 10.2571 14.4323 10 14.1599L5 9"
+                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </g>
+                </svg></button>
                 <div class="adminProfile" id="adminProfile">
                     <a href="adminsettings">Settings</a>
                     <a href="logout">Signout</a>
@@ -203,6 +204,7 @@
 
 
                 <div class="counter-container">
+                    
                     <select id="counter-list" onchange="counterChangeListOnChange()" class="select">
                         <option value="" selected>SELECT COUNTER LIST</option>
                     </select>
@@ -317,6 +319,9 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="namecall">
+                            <input type="text" class="custom-call" placeholder="Enter name to queue">
+                        </div>
 
                         <section class="actions">
                             <button id="call-button" onclick="transferRow()" class="btn call"><b>CALL</b></button>
@@ -326,6 +331,34 @@
 
                 </div>
 
+                <!--notification dropdown-->
+				<div class="notificationdropdown" id="notificationDropdown">
+					<div class="notificationdropdown-header">
+						<span>Notifications</span>
+						<button id="markAllRead" class="text-blue-600 text-sm">Mark all as read</button>
+					</div>
+					<div class="notificationdropdown-item unread" data-id="1">
+						<img src="https://via.placeholder.com/40" alt="Profile">
+						<div>
+							<div class="notification-text">You have a new message.</div>
+							<div class="notification-time">2h ago</div>
+						</div>
+					</div>
+					<div class="notificationdropdown-item unread" data-id="2">
+						<img src="https://via.placeholder.com/40" alt="Profile">
+						<div>
+							<div class="notification-text">Your document has been approved.</div>
+							<div class="notification-time">6h ago</div>
+						</div>
+					</div>
+					<div class="notificationdropdown-item" data-id="3">
+						<img src="https://via.placeholder.com/40" alt="Profile">
+						<div>
+							<div class="notification-text">Your password has been reset.</div>
+							<div class="notification-time">1d ago</div>
+						</div>
+					</div>
+				</div>
 
                 <script>
                     // document.addEventListener("DOMContentLoaded", function () {
@@ -554,7 +587,20 @@
                     })
 
 
+                    var dropdown = document.getElementsByClassName("profilebutton");
+var i;
 
+for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function () {
+
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+    });
+}
 
 
 
@@ -574,6 +620,44 @@
                             }
                         });
                     }
+
+
+
+ //notification
+ const notificationIcon = document.getElementById('notifications');
+ const notificationDropdown = document.getElementById('notificationDropdown');
+ const notificationBadge = document.getElementById('notificationBadge');
+ const markAllRead = document.getElementById('markAllRead');
+ const unreadItems = document.querySelectorAll('.dropdown-item.unread');
+
+ // Toggle dropdown visibility
+ notifications.addEventListener('click', () => {
+     notificationDropdown.classList.toggle('active');
+ });
+
+ // Close dropdown when clicking outside
+ document.addEventListener('click', (event) => {
+     if (!notifications.contains(event.target) && !notificationDropdown.contains(event.target)) {
+         notificationDropdown.classList.remove('active');
+     }
+ });
+
+ // Update badge count
+ const updateBadgeCount = () => {
+     const unreadCount = document.querySelectorAll('.dropdown-item.unread').length;
+     notificationBadge.textContent = unreadCount;
+     notificationBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
+ };
+
+ // Mark all notifications as read
+ markAllRead.addEventListener('click', () => {
+     unreadItems.forEach(item => item.classList.remove('unread'));
+     updateBadgeCount();
+ });
+
+ // Initialize badge count
+ updateBadgeCount();
+
 
     //                 /* <summary>
     //                 CHARTJS.....	
@@ -946,11 +1030,7 @@
     //                     });
     //                 }
 
-                    //button-profile being active btn
-                    document.getElementById('button-profile').addEventListener('click', function () {
-                        this.classList.toggle('active');
-                        document.getElementById('adminProfile').classList.toggle('show');
-                    });
+                   
 
 
     //                 //fetch data for general records and archiving

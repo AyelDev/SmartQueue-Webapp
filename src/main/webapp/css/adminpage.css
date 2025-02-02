@@ -302,7 +302,7 @@ hr {
 .icon-container {
 	width: 7%;
 	height: 100%;
-	margin-left: 75%;
+	margin-left: 78%;
 	justify-content: space-evenly;
 	align-items: center;
 	display: flex;
@@ -318,12 +318,7 @@ hr {
 	
 }
 
-.chat-icon {
-	object-fit: scale-down;
-	width: 25px;
-	cursor: pointer;
-	margin-top: .8%;
-}
+
 
 .profilebutton {
 	align-items: center;
@@ -364,7 +359,7 @@ hr {
 	z-index: 1;
 	display: none;
 	border-radius: 7px;
-	margin-top: -2%;
+	margin-top: -2.5%;
 }
 
 .button-profile.active {
@@ -453,8 +448,9 @@ canvas{
 	margin-left: 78%;
 	color: grey;
 }
-hr{
-	margin-left: 4%;
+.hr-graph{
+	margin-left: -4%;
+
 }
 
 /* table section */
@@ -484,12 +480,12 @@ hr{
 	border-radius: 5px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	width: 35vw;
-	height: 40vh;
+	height: 45vh;
 	color: var(--text-color);
 	margin-left: 8%;
 	scroll-behavior: smooth;
 	overflow-y: auto;
-	text-align: center;
+
 }
 
 .table-content::-webkit-scrollbar {
@@ -515,7 +511,7 @@ hr{
 	top: 0;
 	overflow: hidden;
 	background-color: white;
-	text-align: center;
+	
 }
 .table-title{
 	height: 50px;
@@ -552,8 +548,8 @@ thead{
 
 table th,
 table td {
-	padding: 10px;
-	text-align: left;
+	padding: 5px;
+	text-align: center;
 	border-bottom: 1px solid #ddd;
 }
 
@@ -571,8 +567,9 @@ table td button {
 }
 
 .update-btn {
-	background-color: #ffc107;
+	background-color: #0056b3;
 	color: white;
+	width: 4vw;
 }
 
 .delete-btn {
@@ -646,7 +643,7 @@ table td button {
 	display: none;
 	position: absolute;
 	top: 45px;
-	margin-left: 59%;
+	margin-left: 61%;
 	width: 350px;
 	background: white;
 	border: 1px solid #ccc;

@@ -8,6 +8,7 @@
 		<head>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 			<script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
 			<script type="text/javascript" src="./scripts/ping.js"></script>
 			<link rel="stylesheet" type="text/css" href="./css/jquery-confirm.min.css" />
@@ -128,8 +129,8 @@
 				<div class="stafflist-section">
 					<div class="dashboard-head">
 						<div class="icon-container">
-							<svg class="bell-icon" id="notifications" width="30px" height="64px" viewBox="0 0 24.00 24.00" fill="none"
-								xmlns="http://www.w3.org/2000/svg">
+							<svg class="bell-icon" id="notifications" width="30px" height="64px"
+								viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
 									stroke="#CCCCCC" stroke-width="0.048"></g>
@@ -142,46 +143,14 @@
 								</g>
 							</svg>
 							<div class="notificationBadge" id="notificationBadge">3</div>
-							<svg class="chat-icon" width="64px" height="30px" viewBox="-2.4 -2.4 28.80 28.80"
-								fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
-								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
-									stroke="#ffffff030303" stroke-width="0.336">
-									<path
-										d="M7 4C4.79086 4 3 5.79073 3 7.9997V13.2642C3 15.4732 4.79086 17.2639 7 17.2639L7 19.8998C7 19.9834 7.09639 20.0301 7.16197 19.9783L10.6 17.2639H17C19.2091 17.2639 21 15.4732 21 13.2642V7.99971C21 5.79073 19.2091 4 17 4H7Z"
-										stroke="#ffffff" stroke-width="0.552" stroke-linecap="round"></path>
-									<path
-										d="M9 11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11C7 10.4477 7.44772 10 8 10C8.55228 10 9 10.4477 9 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M13 11C13 11.5523 12.5523 12 12 12C11.4477 12 11 11.5523 11 11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M17 11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11Z"
-										fill="#ffffff"></path>
-								</g>
-								<g id="SVGRepo_iconCarrier">
-									<path
-										d="M7 4C4.79086 4 3 5.79073 3 7.9997V13.2642C3 15.4732 4.79086 17.2639 7 17.2639L7 19.8998C7 19.9834 7.09639 20.0301 7.16197 19.9783L10.6 17.2639H17C19.2091 17.2639 21 15.4732 21 13.2642V7.99971C21 5.79073 19.2091 4 17 4H7Z"
-										stroke="#ffffff" stroke-width="1.608" stroke-linecap="round"></path>
-									<path
-										d="M9 11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11C7 10.4477 7.44772 10 8 10C8.55228 10 9 10.4477 9 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M13 11C13 11.5523 12.5523 12 12 12C11.4477 12 11 11.5523 11 11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M17 11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11Z"
-										fill="#ffffff"></path>
-								</g>
-							</svg>
+							
 						</div>
 
 
 
 						<!-- admin profile -->
-						<button class="profilebutton" id="profilebutton"><svg class="profile" width="64px"
-								height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<button class="profilebutton" id="profilebutton"><svg class="profile" width="64px" height="64px"
+								viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
 								<g id="SVGRepo_iconCarrier">
@@ -209,17 +178,19 @@
 						</div>
 					</div>
 					<div class="stafflist-content">
-						<button class="add-account-btn"> <img src="./images/add-account.png" alt=""
-								class="add-account-icon"> Add Staff</button>
+						<button class="add-account-btn"> <svg xmlns="http://www.w3.org/2000/svg" height="10"
+								width="12.5"
+								viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+								<path fill="#ffffff"
+									d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
+							</svg> Add Staff</button>
 						<h1>Staff List</h1>
 						<div class="search-container">
 							<input type="text" placeholder="Search.." name="search" class="search-bar" id="searchInput"
 								onkeyup="searchTable()">
-							<button class="search-btn" type="submit"><img src="./images/search-icon.png" alt=""
-									class="search-icon">
 						</div>
 
-						
+
 
 						<div class="table-container">
 							<table id="myTable">
@@ -374,43 +345,40 @@
 
 					<!--overlay form-->
 					<div class="overlay"></div>
-						<div class="fillup-form-container modal">
-							<h1>Staff Registration</h1>
-							<span class="close-btn">&times;</span>
-							<div class="register-form">
-								<form id="staffRegisterForm">
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="firstname-input" required="required" type="text"
-											name="txtFirstname">
-										<label for="firstname" class="firstname-label">First name</label>
-									</div>
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="lastname-input" required="required" type="text"
-											name="txtLastname">
-										<label for="lastname" class="lastname-label">Last name</label>
-									</div>
+					<div class="fillup-form-container modal">
+						<h1>Staff Registration</h1>
+						<span class="close-btn">&times;</span>
+						<div class="register-form">
+							<form id="staffRegisterForm">
+								<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+									<input class="firstname-input" required="required" type="text" name="txtFirstname">
+									<label for="firstname" class="firstname-label">First name</label>
+								</div>
+								<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+									<input class="lastname-input" required="required" type="text" name="txtLastname">
+									<label for="lastname" class="lastname-label">Last name</label>
+								</div>
 
-									<div class="input-container full-width" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="username-input" required="required" type="text"
-											name="txtUsername">
-										<label for="username" class="username-label">Username</label>
-									</div>
+								<div class="input-container full-width" style="width: 40%; margin: 0 20px 0 20px;">
+									<input class="username-input" required="required" type="text" name="txtUsername">
+									<label for="username" class="username-label">Username</label>
+								</div>
 
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="contactno-input" required="required" type="text"
-											name="txtContactno" maxlength="11">
-										<label for="contactno" class="contactno-label">Contact no.</label>
-									</div>
+								<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+									<input class="contactno-input" required="required" type="text" name="txtContactno"
+										maxlength="11">
+									<label for="contactno" class="contactno-label">Contact no.</label>
+								</div>
 
-									<div class="input-container" style="width: 91%; margin-left: 20px;">
-										<input class="email-input" required="required" type="text" name="txtEmail">
-										<label for="email" class="email-label">Email</label>
-									</div>
+								<div class="input-container" style="width: 91%; margin-left: 20px;">
+									<input class="email-input" required="required" type="text" name="txtEmail">
+									<label for="email" class="email-label">Email</label>
+								</div>
 
-									<input class="sign-btn" type="submit" value="Signup">
-								</form>
-							</div>
+								<input class="sign-btn" type="submit" value="Signup">
+							</form>
 						</div>
+					</div>
 
 					<!--notification dropdown-->
 					<div class="notificationdropdown" id="notificationDropdown">
@@ -489,8 +457,8 @@
 									'<td>' + data[i].username + '</td>' +
 									'<td>' + data[i].password + '</td>' +
 									'<td>' + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + '</td>' +
-									'<td><button onclick="updateStaff(' + data[i].staffID + ', \'' + data[i].firstname + '\', \'' + data[i].lastname + '\', \'' + data[i].username + '\', \'' + data[i].contactNumber + '\', \'' + data[i].email + '\', \'' + data[i].password + '\', \'' + data[i].isLocked + '\')" class="update" style="background-color: #97BE5A; font-size: .7em;">Update</button>' +
-									'<button onclick="removeStaff(' + data[i].staffID + ')" class="delete" style="background-color: #EE4E4E; font-size: .7em;">Delete</button></td>' +
+									'<td><button onclick="updateStaff(' + data[i].staffID + ', \'' + data[i].firstname + '\', \'' + data[i].lastname + '\', \'' + data[i].username + '\', \'' + data[i].contactNumber + '\', \'' + data[i].email + '\', \'' + data[i].password + '\', \'' + data[i].isLocked + '\')" class="update" style="background-color: #0056b3;color: white; font-size: .7em;">Update</button>' +
+									'<button onclick="removeStaff(' + data[i].staffID + ')" class="delete" style="background-color: #EE4E4E; font-size: .7em; color: white;">Delete</button></td>' +
 									'</tr>';
 
 
@@ -833,39 +801,39 @@
 
 
 						//notification
-                        const notificationIcon = document.getElementById('notifications');
-                        const notificationDropdown = document.getElementById('notificationDropdown');
-                        const notificationBadge = document.getElementById('notificationBadge');
-                        const markAllRead = document.getElementById('markAllRead');
-                        const unreadItems = document.querySelectorAll('.dropdown-item.unread');
+						const notificationIcon = document.getElementById('notifications');
+						const notificationDropdown = document.getElementById('notificationDropdown');
+						const notificationBadge = document.getElementById('notificationBadge');
+						const markAllRead = document.getElementById('markAllRead');
+						const unreadItems = document.querySelectorAll('.dropdown-item.unread');
 
-                        // Toggle dropdown visibility
-                        notifications.addEventListener('click', () => {
-                            notificationDropdown.classList.toggle('active');
-                        });
+						// Toggle dropdown visibility
+						notifications.addEventListener('click', () => {
+							notificationDropdown.classList.toggle('active');
+						});
 
-                        // Close dropdown when clicking outside
-                        document.addEventListener('click', (event) => {
-                            if (!notifications.contains(event.target) && !notificationDropdown.contains(event.target)) {
-                                notificationDropdown.classList.remove('active');
-                            }
-                        });
+						// Close dropdown when clicking outside
+						document.addEventListener('click', (event) => {
+							if (!notifications.contains(event.target) && !notificationDropdown.contains(event.target)) {
+								notificationDropdown.classList.remove('active');
+							}
+						});
 
-                        // Update badge count
-                        const updateBadgeCount = () => {
-                            const unreadCount = document.querySelectorAll('.dropdown-item.unread').length;
-                            notificationBadge.textContent = unreadCount;
-                            notificationBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
-                        };
+						// Update badge count
+						const updateBadgeCount = () => {
+							const unreadCount = document.querySelectorAll('.dropdown-item.unread').length;
+							notificationBadge.textContent = unreadCount;
+							notificationBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
+						};
 
-                        // Mark all notifications as read
-                        markAllRead.addEventListener('click', () => {
-                            unreadItems.forEach(item => item.classList.remove('unread'));
-                            updateBadgeCount();
-                        });
+						// Mark all notifications as read
+						markAllRead.addEventListener('click', () => {
+							unreadItems.forEach(item => item.classList.remove('unread'));
+							updateBadgeCount();
+						});
 
-                        // Initialize badge count
-                        updateBadgeCount();
+						// Initialize badge count
+						updateBadgeCount();
 					</script>
 
 

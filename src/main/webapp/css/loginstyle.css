@@ -157,7 +157,7 @@ body {
 .password-label{
     position: absolute;
     top: 47.5%;
-    margin-left: -31%;
+    margin-left: -36%;
     translate: 10px 10px;
     color: var(--text-color);
     transition: translate 500ms, scale 500ms;
@@ -195,12 +195,12 @@ body {
 
 .login-btn {
     position: absolute;
-    width: 69%;
+    width: 80%;
     height: 11%;
     padding: 15px;
     bottom: 110px;
     border-radius: 10px;
-    left: 17%;
+    left: 11%;
     cursor: pointer;
     background-color: #77B6EA;
     border-color: #77B6EA;

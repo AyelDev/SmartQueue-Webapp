@@ -44,7 +44,7 @@ body {
 .navbar {
     width: 15vw;
     height: 100vh;
-    background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
+    background-color: #0056b3;
     position: fixed;
     justify-content: center;
     align-items: center;
@@ -249,7 +249,7 @@ body {
     width: 85vw;
     margin-left: -.2%;
     height: 7%;
-    background-color: #1477d4fb;
+    background-color: #0056b3;
     position: fixed;
     top: 0;
     z-index: 0;
@@ -297,7 +297,7 @@ h1 {
 
 
 thead {
-    background-color: #3498db;
+    background-color: #0056b3;
     color: #ffffff;
     text-align: center;
     position: sticky;
@@ -365,7 +365,7 @@ button {
 }
 
 .btn.update {
-    background-color: #3498db;
+    background-color: #0056b3;
     color: #ffffff;
 }
 
@@ -435,7 +435,7 @@ button {
 .icon-container {
     width: 7%;
     height: 100%;
-    margin-left: 75%;
+    margin-left: 78%;
     justify-content: space-evenly;
     align-items: center;
     display: flex;
@@ -450,19 +450,14 @@ button {
 
 }
 
-.chat-icon {
-    object-fit: scale-down;
-    width: 25px;
-    cursor: pointer;
-    margin-top: .8%;
-}
+
 
 .profilebutton {
     align-items: center;
     justify-content: center;
     display: flex;
     width: 10vw;
-    margin-top: -5.5%;
+    margin-top: -6%;
     margin-left: 84%;
     border-radius: 10px;
     padding: 15px 10px 15px 10px;
@@ -493,10 +488,10 @@ button {
     align-items: center;
     justify-content: center;
     text-align: center;
-    z-index: 1;
+    z-index: 1000;
     display: none;
     border-radius: 7px;
-    margin-top: -2%;
+    margin-top: -2.5%;
 }
 
 .adminProfile a {
@@ -541,17 +536,19 @@ button {
 .add-account-icon {
     object-fit: scale-down;
     width: 10%;
+    color: white;
 }
 
 .add-account-btn {
     width: 10%;
-    background-color: var(--primary-color);
+    background-color: #0056b3;
     margin-top: -.5%;
     position: absolute;
+    color: white;
 }
 
 .add-account-btn:hover {
-    background-color: #2980b9;
+    background-color: #003580;
 }
 
 .search-container {
@@ -561,21 +558,12 @@ button {
 }
 
 .search-bar {
-    border-radius: 10px;
+    border-radius: 5px;
     width: 80%;
     padding: 6px;
     border: 1px solid;
 }
 
-.search-btn {
-    border-radius: 0 10px 10px 0;
-    border: none;
-    padding: 5px;
-    width: 36px;
-    margin-left: -2.5%;
-    background-color: #1e91d0;
-    position: absolute;
-}
 
 .search-icon {
     object-fit: scale-down;
@@ -738,7 +726,7 @@ form {
     display: none;
     position: absolute;
     top: 45px;
-    margin-left: 58%;
+    margin-left: 60%;
     width: 350px;
     background: white;
     border: 1px solid #ccc;
