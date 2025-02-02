@@ -44,7 +44,8 @@ body {
 .navbar {
     width: 15vw;
     height: 100vh;
-    background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
+    background-color: #0056b3;
+    /* background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%); */
     position: fixed;
     justify-content: center;
     align-items: center;
@@ -126,7 +127,7 @@ body {
     background: none;
     display: flex;
     align-items: center;
-    width: 15vw;
+    width: 16vw;
     height: 8vh;
     border: 0;
     font-size: 15px;
@@ -201,7 +202,7 @@ body {
 .active,
 .dropdown-btn:hover {
     background-color: var(--background-color);
-    width: 15vw;
+    width: 16vw;
     color: var(--text-color);
     font-weight: bold;
 }
@@ -267,7 +268,7 @@ body {
     width: 85vw;
     margin-left: 2.5%;
     height: 7%;
-    background-color: #1477d4fb;
+    background-color: #0056b3;
     position: fixed;
     top: 0;
     z-index: 0;
@@ -276,7 +277,7 @@ body {
 .icon-container {
     width: 5%;
     height: 100%;
-    margin-left: 68%;
+    margin-left: 75%;
 }
 
 .bell-icon {
@@ -394,16 +395,16 @@ table {
 }
 
 thead {
-    background-color: #3498db;
+    background-color: #0056b3;
     color: #ffffff;
 }
 
 th {
     padding: 12px 15px;
-    text-align: left;
+    text-align: center;
     font-size: 16px;
     font-weight: 600;
-    border-bottom: 3px solid #2980b9;
+    border-bottom: 3px solid #0056b3;
 }
 
 tbody tr {
@@ -446,7 +447,7 @@ button {
 }
 
 .btn.update {
-    background-color: #3498db;
+    background-color: #0056b3;
     color: #ffffff;
 }
 
@@ -552,7 +553,7 @@ button {
     height: 28px;
     width: 40px;
     margin-left: -24%;
-    background-color: #1e91d0;
+    background-color: #0056b3;
 }
 
 

@@ -219,44 +219,7 @@
 									class="search-icon">
 						</div>
 
-						<div class="overlay"></div>
-						<div class="fillup-form-container modal">
-							<h1>Staff Registration</h1>
-							<span class="close-btn">&times;</span>
-							<div class="register-form">
-								<form id="staffRegisterForm">
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="firstname-input" required="required" type="text"
-											name="txtFirstname">
-										<label for="firstname" class="firstname-label">First name</label>
-									</div>
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="lastname-input" required="required" type="text"
-											name="txtLastname">
-										<label for="lastname" class="lastname-label">Last name</label>
-									</div>
-
-									<div class="input-container full-width" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="username-input" required="required" type="text"
-											name="txtUsername">
-										<label for="username" class="username-label">Username</label>
-									</div>
-
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="contactno-input" required="required" type="text"
-											name="txtContactno" maxlength="11">
-										<label for="contactno" class="contactno-label">Contact no.</label>
-									</div>
-
-									<div class="input-container" style="width: 91%; margin-left: 20px;">
-										<input class="email-input" required="required" type="text" name="txtEmail">
-										<label for="email" class="email-label">Email</label>
-									</div>
-
-									<input class="sign-btn" type="submit" value="Signup">
-								</form>
-							</div>
-						</div>
+						
 
 						<div class="table-container">
 							<table id="myTable">
@@ -408,6 +371,46 @@
 						</div>
 					</div>
 
+
+					<!--overlay form-->
+					<div class="overlay"></div>
+						<div class="fillup-form-container modal">
+							<h1>Staff Registration</h1>
+							<span class="close-btn">&times;</span>
+							<div class="register-form">
+								<form id="staffRegisterForm">
+									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+										<input class="firstname-input" required="required" type="text"
+											name="txtFirstname">
+										<label for="firstname" class="firstname-label">First name</label>
+									</div>
+									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+										<input class="lastname-input" required="required" type="text"
+											name="txtLastname">
+										<label for="lastname" class="lastname-label">Last name</label>
+									</div>
+
+									<div class="input-container full-width" style="width: 40%; margin: 0 20px 0 20px;">
+										<input class="username-input" required="required" type="text"
+											name="txtUsername">
+										<label for="username" class="username-label">Username</label>
+									</div>
+
+									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+										<input class="contactno-input" required="required" type="text"
+											name="txtContactno" maxlength="11">
+										<label for="contactno" class="contactno-label">Contact no.</label>
+									</div>
+
+									<div class="input-container" style="width: 91%; margin-left: 20px;">
+										<input class="email-input" required="required" type="text" name="txtEmail">
+										<label for="email" class="email-label">Email</label>
+									</div>
+
+									<input class="sign-btn" type="submit" value="Signup">
+								</form>
+							</div>
+						</div>
 
 					<!--notification dropdown-->
 					<div class="notificationdropdown" id="notificationDropdown">

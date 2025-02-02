@@ -237,31 +237,32 @@
 										onclick="ModalInfo('Add Program for General', 'Program', 'GeneralProgramForm', 'general', 'POST', updateAttribute(null, null, null))">+Add
 											Info</button>
 									</div>
-									<table>
-										<thead>
-											<tr>
-												<th>#</th>
-												<th>Course</th>
-												<th>Actions</th>
-											</tr>
-										</thead>
-										<tbody id="general-program-tablelist">
-											<tr>
-												<td></td>
-												<td></td>
-												<td><button class="update-btn" onclick="">Update</button>
-													<button class="delete-btn">Delete</button>
-												</td>
-											</tr>
-											<tr>
-												<td></td>
-												<td></td>
-												<td><button class="update-btn">Update</button>
-													<button class="delete-btn">Delete</button>
-												</td>
-											</tr>
-										</tbody>
-									</table>
+									
+										<table>
+											<thead>
+												<tr>
+													<th>#</th>
+													<th>Course</th>
+													<th>Actions</th>
+												</tr>
+											</thead>
+											<tbody id="general-program-tablelist">
+												<tr>
+													<td></td>
+													<td></td>
+													<td><button class="update-btn" onclick="">Update</button>
+														<button class="delete-btn">Delete</button>
+													</td>
+												</tr>
+												<tr>
+													<td></td>
+													<td></td>
+													<td><button class="update-btn">Update</button>
+														<button class="delete-btn">Delete</button>
+													</td>
+												</tr>
+											</tbody>
+										</table>
 								</div>
 
 								<!-- General - Purpose -->
@@ -273,6 +274,7 @@
 										onclick="ModalInfo('Add Purpose for General', 'Purpose', 'GeneralPurposeForm', 'general', 'POST', updateAttribute(null, null, null))">+Add
 											Info</button>
 									</div>
+
 									<table>
 										<thead>
 											<tr>
