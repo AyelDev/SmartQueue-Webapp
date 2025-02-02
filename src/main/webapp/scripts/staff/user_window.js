@@ -3,10 +3,12 @@ $(document).ready(function () {
     getAllVideos();
   });
 
+
+
   function updateTime() {
     const now = new Date();
-    document.getElementById('date').textContent = now.toLocaleDateString();
-    document.getElementById('time').textContent = now.toLocaleTimeString();
+    document.getElementById('date').textContent = now.toLocaleDateString('en-PH',{month: 'short', day: 'numeric', year: 'numeric'});
+    document.getElementById('time').textContent = now.toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit' });
   }
 
   // updateQueue('counter1', 'queue1');
