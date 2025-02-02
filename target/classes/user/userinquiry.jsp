@@ -40,11 +40,12 @@
 
                 <!-- Main Inquiry Cards -->
                 <div class="main">
+                
                     <!-- Card for General -->
                     <div class="card" id="general-card">
                         <div class="box">
                             <p>-Enrollment </p>
-                            <h2>General</h2>
+                            <h2>Admission</h2>
                         </div>
                     </div>
 
@@ -70,7 +71,7 @@
             <div id="general-modal" class="modal">
                 <div class="modal-content" id="modal-content">
                     <span class="close">&times;</span>
-                    <h2>General Inquiry Form</h2>
+                    <h2>Admission Inquiry Form</h2>
                     <div class="form">
                         <div class="studename">
                             <label for="studentName" class="firstname-label">First Name</label>
@@ -82,7 +83,8 @@
                         </div>
 
 
-                        <label for="studentIdNo" class="student-id-no-text">Student ID No.</label>
+                        <label for="studentIdNo" class="student-id-no-text">Student ID No. Type '000' for new
+                            student</label>
                         <input type="text" class="student-id" id="general-student-id">
                         <label for="yearLevel">Year Level</label>
                         <!-- <input type="text" class="yearLevel" id="yearLevel"> -->
@@ -146,7 +148,7 @@
                         <input type="text" class="last-name" id="archiving-student-lastname" onclick="SetEmptyIdField()"
                             required>
 
-                        <label for="studentIdNo">Student ID No.</label>
+                        <label for="studentIdNo">Student ID No. </label>
                         <input type="text" class="student-id" id="archiving-student-id" onclick="SetEmptyNameFields()"
                             required>
                         <label for="options">Option</label>
@@ -186,28 +188,29 @@
                     </div>
                 </div>
             </div>
+            <div class="footer">© 2024 Cebu Eastern College. All Rights Reserved.</div>
 
             <script>
 
-                        /* 
-                        Summary: check studentinput if it is in correct pattern
-                        */
-                        let generalStudentInput = document.getElementById('general-student-id');
-                        const numberRegex = new RegExp("^000$");
-                        let generalStudentIdNoInput = document.querySelector(".student-id-no-text");
-                        generalStudentInput.addEventListener("input", checkInput);
-                        function checkInput(){
-                            if(generalStudentInput.value.match(numberRegex) == null){
-                                generalStudentIdNoInput.style.color = "red";
-                                generalStudentIdNoInput.innerHTML = "Type '000' for new student";
-                            }else{
-                                generalStudentIdNoInput.style.color = "black";
-                                generalStudentIdNoInput.innerHTML = "Student ID No.";
-                            }
-                        }
-                         
-                       
-                    
+                /* 
+                Summary: check studentinput if it is in correct pattern
+                */
+                let generalStudentInput = document.getElementById('general-student-id');
+                const numberRegex = new RegExp("^000$");
+                let generalStudentIdNoInput = document.querySelector(".student-id-no-text");
+                generalStudentInput.addEventListener("input", checkInput);
+                function checkInput() {
+                    if (generalStudentInput.value.match(numberRegex) == null) {
+                        generalStudentIdNoInput.style.color = "red";
+                        generalStudentIdNoInput.innerHTML = "Type '000' for new student";
+                    } else {
+                        generalStudentIdNoInput.style.color = "black";
+                        generalStudentIdNoInput.innerHTML = "Student ID No.";
+                    }
+                }
+
+
+
 
                 // Get all the modals
                 var generalModal = document.getElementById("general-modal");
@@ -620,6 +623,15 @@
                          //ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
                      }
                 }
+
+
+
+                //On-screen keyboard
+                document.querySelectorAll('input').forEach(input => {
+                    input.addEventListener('focus', () => {
+                        input.click(); // Ensures compatibility with certain touch systems
+                    });
+                });
             </script>
         </body>
 

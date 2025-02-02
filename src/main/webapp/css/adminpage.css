@@ -1,8 +1,8 @@
 @import url('../css/fonts.css');
 
 :root {
-	--primary-color: #1e91d0;
-	--secondary-color: #00509d;
+	--primary-color: #0056b3;
+	--secondary-color: #0056b3;
 	--body-fonts: "Roboto Condensed", sans-serif;
 	--background-color: #f4f4f9;
 	--select-text-color: #B4B4B8;
@@ -61,7 +61,8 @@ body {
 .navbar {
 	width: 15vw;
 	height: 100vh;
-	background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
+	background-color: #0056b3;
+	/* background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%); */
 	/* background: linear-gradient(135deg, #007bff, #00bfff); */
 	position: fixed;
 	justify-content: center;
@@ -289,10 +290,10 @@ hr {
 }
 
 .dashboard-head {
-	width: 85vw;
+	width: 84.5vw;
 	margin-left: 4%;
 	height: 7%;
-	background-color: #1477d4fb;
+	background-color: #0056b3;
 	position: fixed;
 	top: 0;
 	z-index: 1000;
@@ -329,7 +330,7 @@ hr {
 	justify-content: center;
 	display: flex;
 	width: 10vw;
-	margin-top: -5.5%;
+	margin-top: -6%;
 	margin-left: 84%;
 	border-radius: 10px;
 	padding: 15px 10px 15px 10px;
@@ -453,7 +454,7 @@ canvas{
 	color: grey;
 }
 hr{
-	margin-left: -5%;
+	margin-left: 4%;
 }
 
 /* table section */
@@ -461,30 +462,34 @@ hr{
 	padding: 20px;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-	width: 80vw;
+	width: 75vw;
 	height: 100%;
 	position: absolute;
 	/* background-color: var(--background-color); */
-	margin-left: 3.9%;
+	margin-left: -6.5%;
 	margin-top: 32%;
 	justify-content: flex-start;
 	align-items: start;
 	color: var(--text-color);
 	scroll-behavior: smooth;
 	gap: 10px;
+	z-index: -3;
+	
 }
 
 .table-content {
 	background-color: white;
-	padding: 15px;
+	padding-right: 10px;
+	padding-left: 10px;
 	border-radius: 5px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	width: 30vw;
+	width: 35vw;
 	height: 40vh;
 	color: var(--text-color);
 	margin-left: 8%;
 	scroll-behavior: smooth;
 	overflow-y: auto;
+	text-align: center;
 }
 
 .table-content::-webkit-scrollbar {
@@ -505,10 +510,17 @@ hr{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 10px;
 	color: var(--text-color);
 	position: sticky;
 	top: 0;
+	overflow: hidden;
+	background-color: white;
+	text-align: center;
+}
+.table-title{
+	height: 50px;
+	width: 82%;
+	padding-top: 10px;
 }
 
 .table-header .table-title,
@@ -518,7 +530,7 @@ hr{
 }
 
 .add-btn-table {
-	background-color: #00509d;
+	background-color: #0056b3;
 	color: white;
 	border: none;
 	padding: 10px 15px;
@@ -531,6 +543,12 @@ table {
 	border-collapse: collapse;
 	margin-bottom: 15px;
 }
+thead{
+	position: sticky;
+	top: 20%;
+	overflow: hidden;
+	text-align: center;
+}
 
 table th,
 table td {
@@ -540,7 +558,7 @@ table td {
 }
 
 table th {
-	background-color: #1e91d0;
+	background-color: #0056b3;
 	color: white;
 }
 

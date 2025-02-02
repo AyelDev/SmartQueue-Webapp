@@ -522,15 +522,15 @@ button {
 }
 
 .stafflist-content {
-    width: 100%;
-    margin: 20px;
+    width: 75vw;
+    height: auto;
     background: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-top: -5%;
-    max-height: 500px;
+    margin-top: -20%;
     overflow-y: hidden;
+    padding: 20px;
+    position: fixed;
 }
 
 .add-account-icon {
@@ -584,11 +584,11 @@ button {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    margin-left: 15%;
     position: absolute;
     z-index: 1;
     display: none;
     align-items: center;
+    margin-top: -10%;
 }
 
 .fillup-form-container h1 {

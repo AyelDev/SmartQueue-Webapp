@@ -212,8 +212,8 @@
                             </div>
                         </div>
                         <div class="counterlist-content">
-                            <button class="add-account-btn"> <img src="./images/add-account.png" alt=""
-                                    class="add-account-icon"> Add Counter</button>
+                            <!-- <button class="add-account-btn"> <img src="./images/add-account.png" alt=""
+                                    class="add-account-icon"> Add Counter</button> -->
                             <h1>Counter List</h1>
                             <div class="search-container">
                                 <form action="" method="">
