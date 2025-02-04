@@ -129,21 +129,7 @@
 				<div class="stafflist-section">
 					<div class="dashboard-head">
 						<div class="icon-container">
-							<svg class="bell-icon" id="notifications" width="30px" height="64px"
-								viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
-									stroke="#CCCCCC" stroke-width="0.048"></g>
-								<g id="SVGRepo_iconCarrier">
-									<path
-										d="M9.00195 17H5.60636C4.34793 17 3.71872 17 3.58633 16.9023C3.4376 16.7925 3.40126 16.7277 3.38515 16.5436C3.37082 16.3797 3.75646 15.7486 4.52776 14.4866C5.32411 13.1835 6.00031 11.2862 6.00031 8.6C6.00031 7.11479 6.63245 5.69041 7.75766 4.6402C8.88288 3.59 10.409 3 12.0003 3C13.5916 3 15.1177 3.59 16.2429 4.6402C17.3682 5.69041 18.0003 7.11479 18.0003 8.6C18.0003 11.2862 18.6765 13.1835 19.4729 14.4866C20.2441 15.7486 20.6298 16.3797 20.6155 16.5436C20.5994 16.7277 20.563 16.7925 20.4143 16.9023C20.2819 17 19.6527 17 18.3943 17H15.0003M9.00195 17L9.00031 18C9.00031 19.6569 10.3435 21 12.0003 21C13.6572 21 15.0003 19.6569 15.0003 18V17M9.00195 17H15.0003"
-										stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-										stroke-linejoin="round">
-									</path>
-								</g>
-							</svg>
-							<div class="notificationBadge" id="notificationBadge">3</div>
-							
+
 						</div>
 
 
@@ -161,7 +147,9 @@
 										d="M12.0019 8C10.0219 8 8.42188 9.6 8.42188 11.58C8.42188 13.56 10.0219 15.17 12.0019 15.17C13.9819 15.17 15.5819 13.56 15.5819 11.58C15.5819 9.6 13.9819 8 12.0019 8Z"
 										fill="#ffffff"></path>
 								</g>
-							</svg><c:out value="${sessionScope.sessionAdmin.username}"></c:out><svg class="caretdown" width="64px" height="64px" viewBox="0 0 24 24" fill="none"
+							</svg>
+							<c:out value="${sessionScope.sessionAdmin.username}"></c:out><svg class="caretdown"
+								width="64px" height="64px" viewBox="0 0 24 24" fill="none"
 								xmlns="http://www.w3.org/2000/svg">
 								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -171,7 +159,8 @@
 										stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
 										stroke-linejoin="round"></path>
 								</g>
-							</svg></button>
+							</svg>
+						</button>
 						<div class="adminProfile" id="adminProfile">
 							<a href="adminsettings">Settings</a>
 							<a href="logout">Signout</a>
@@ -380,34 +369,6 @@
 						</div>
 					</div>
 
-					<!--notification dropdown-->
-					<div class="notificationdropdown" id="notificationDropdown">
-						<div class="notificationdropdown-header">
-							<span>Notifications</span>
-							<button id="markAllRead" class="text-blue-600 text-sm">Mark all as read</button>
-						</div>
-						<div class="notificationdropdown-item unread" data-id="1">
-							<img src="https://via.placeholder.com/40" alt="Profile">
-							<div>
-								<div class="notification-text">You have a new message.</div>
-								<div class="notification-time">2h ago</div>
-							</div>
-						</div>
-						<div class="notificationdropdown-item unread" data-id="2">
-							<img src="https://via.placeholder.com/40" alt="Profile">
-							<div>
-								<div class="notification-text">Your document has been approved.</div>
-								<div class="notification-time">6h ago</div>
-							</div>
-						</div>
-						<div class="notificationdropdown-item" data-id="3">
-							<img src="https://via.placeholder.com/40" alt="Profile">
-							<div>
-								<div class="notification-text">Your password has been reset.</div>
-								<div class="notification-time">1d ago</div>
-							</div>
-						</div>
-					</div>
 
 
 
@@ -678,11 +639,12 @@
 										<input class="confirmpassword-input" required="required" type="password" name="txtConfirmpassword" value="`+ password + `">
 										<label for="confirmpassword" class="confirmpassword-label">Confirm Password</label>
 									</div>	
-
-									<div class="input-container" style="width: 91%; margin: 0 20px 5% 20px;">
-										<input class="checkbox-input" required="required" type="checkbox" name="txtConfirmpassword" `+ (islocked == 1 ? "checked" : "") + `>
-										<label for="confirmpassword" class="confirmpassword-label">Lock Staff</label>
-									</div>	
+									
+									<label class="checkbox-container">
+										<input type="checkbox"required="required" type="checkbox" name="txtConfirmpassword" `+ (islocked == 1 ? "checked" : "") + `>
+										<div class="checkbox-custom"></div>
+										<span class="checkbox-label">Lock profile</span>
+									</label>
 								</form>
 							</div>
 								`,
@@ -800,40 +762,7 @@
 
 
 
-						//notification
-						const notificationIcon = document.getElementById('notifications');
-						const notificationDropdown = document.getElementById('notificationDropdown');
-						const notificationBadge = document.getElementById('notificationBadge');
-						const markAllRead = document.getElementById('markAllRead');
-						const unreadItems = document.querySelectorAll('.dropdown-item.unread');
 
-						// Toggle dropdown visibility
-						notifications.addEventListener('click', () => {
-							notificationDropdown.classList.toggle('active');
-						});
-
-						// Close dropdown when clicking outside
-						document.addEventListener('click', (event) => {
-							if (!notifications.contains(event.target) && !notificationDropdown.contains(event.target)) {
-								notificationDropdown.classList.remove('active');
-							}
-						});
-
-						// Update badge count
-						const updateBadgeCount = () => {
-							const unreadCount = document.querySelectorAll('.dropdown-item.unread').length;
-							notificationBadge.textContent = unreadCount;
-							notificationBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
-						};
-
-						// Mark all notifications as read
-						markAllRead.addEventListener('click', () => {
-							unreadItems.forEach(item => item.classList.remove('unread'));
-							updateBadgeCount();
-						});
-
-						// Initialize badge count
-						updateBadgeCount();
 					</script>
 
 
