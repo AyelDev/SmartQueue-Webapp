@@ -2,8 +2,8 @@
 @import url('../css/fonts.css');
 
 :root {
-    --primary-color: #1e91d0;
-    --secondary-color: #00509d;
+    --primary-color: #0056b3;
+    --secondary-color: #0056b3;
     --body-fonts: "Roboto Condensed", sans-serif;
     --background-color: #f4f4f9;
     --select-text-color: #B4B4B8;
@@ -355,7 +355,7 @@ h1 {
     font-size: 24px;
     margin-bottom: 20px;
     text-align: center;
-    color: #2c3e50;
+    color: #0056b3;
     margin-top: -3%;
 
 }
@@ -407,7 +407,7 @@ th {
     text-align: left;
     font-size: 16px;
     font-weight: 600;
-    border-bottom: 3px solid #2980b9;
+    border-bottom: 3px solid #0056b3;
     text-align: center;
     position: sticky;
     z-index: 2;
@@ -459,12 +459,12 @@ button {
 }
 
 .btn.update {
-    background-color: #3498db;
+    background-color: #0056b3;
     color: #ffffff;
 }
 
 .btn.update:hover {
-    background-color: #2980b9;
+    background-color: #0056b3;
 }
 
 .btn.delete {
@@ -559,7 +559,7 @@ button {
     padding: 6px;
     width: 36px;
     margin-left: -13%;
-    background-color: #1e91d0;
+    background-color: #0056b3;
     
 }
 
@@ -709,70 +709,48 @@ form {
     margin-top: 7%;
 }
 
-
-
-
-/*notification dropdown*/
-.notificationdropdown {
-    display: none;
-    position: absolute;
-    top: 45px;
-    margin-left: 33%;
-    width: 350px;
-    background: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    z-index: 10;
-}
-.notificationdropdown.active {
-    display: block;
-}
-.notificationdropdown-header {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    font-weight: bold;
-    font-size: 14px;
-    background-color: #f4f4f9;
-}
-.notificationdropdown-item {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
+.checkbox-container {
     display: flex;
     align-items: center;
-    gap: 10px;
     cursor: pointer;
+    font-size: 18px;
+    color: #0056b3;
+    margin-left: 3%;
+    margin-top: -5%;
 }
-.notificationdropdown-item:last-child {
-    border-bottom: none;
+
+.checkbox-container input {
+    display: none;
 }
-.notificationdropdown-item:hover {
-    background-color: #f4f4f9;
-}
-.notificationdropdown-item img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-.notification-text {
-    font-size: 14px;
-}
-.notification-time {
-    font-size: 12px;
-    color: gray;
-}
-.notificationBadge {
-    position: absolute;
-    top: 5px;
-    margin-left: -2%;
-    background-color: red;
-    color: white;
-    font-size: 12px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+
+.checkbox-custom {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #0056b3;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
+    transition: 0.3s;
+}
+
+.checkbox-container input:checked + .checkbox-custom {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.checkbox-custom::after {
+    content: "\2713";
+    color: white;
+    font-size: 16px;
+    display: none;
+}
+
+.checkbox-container input:checked + .checkbox-custom::after {
+    display: block;
+}
+
+.checkbox-label {
+    margin-left: 10px;
+ 
 }

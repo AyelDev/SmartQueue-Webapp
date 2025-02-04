@@ -287,8 +287,8 @@ body {
 	justify-content: center;
 	display: flex;
 	width: 10vw;
-	margin-top: -7.3%;
-	margin-left: 84%;
+	margin-top: -6.5%;
+	margin-left: 83%;
 	border-radius: 10px;
 	padding: 15px 10px 15px 10px;
 	/*tlbr*/
@@ -372,7 +372,7 @@ body {
     background: #fff;
     border-radius: 0.625rem;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
-    margin-top: 2rem;
+    margin-top: -.1rem;
     max-height: 600px;
 }
 
@@ -831,4 +831,13 @@ body {
     margin-top: .5%;
     position: absolute;
     font-size: 1rem;
+}
+.add-name{
+    margin-top: 5%;
+    width: 5vw;
+    padding: 5px;
+    background-color: #00509d;
+    color: white;
+    border-radius: 5px;
+    border: none;
 }
