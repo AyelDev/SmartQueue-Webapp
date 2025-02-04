@@ -25,7 +25,7 @@
 
   <div class="header">
     <button class="menu-btn" id="menu-btn" style="margin-left: .5%; font-size: 1.4rem;">&#9776;</button>
-    <button class="button-profile" style="background-color: #fff; color: black;"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
+    <button class="button-profile" style="background-color: #fff; color: black;"><img src="./images/profile.png" alt="" class="profile"><b><c:out value="${sessionScope.sessionStaff.firstname}"></c:out></b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
     <div class="staffProfile" id="staffProfile">
       <a href="setting">Settings</a>
       <a href="login">Signout</a>

@@ -36,7 +36,7 @@
                                 </div>
 
                                 <button class="button-profile"><img src="./images/profile.png" alt=""
-                                        class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt=""
+                                        class="profile"><b><c:out value="${sessionScope.sessionStaff.firstname}"></c:out></b><img src="./images/caretdown.png" alt=""
                                         class="caretdown"></button>
                                 <div class="staffProfile" id="staffProfile">
                                     <a href="setting">Settings</a>
