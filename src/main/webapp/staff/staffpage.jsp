@@ -13,6 +13,8 @@
             <script type="text/javascript" src="./scripts/ping.js"></script>
             <script type="text/javascript" src="./scripts/fadetransition.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <link rel="stylesheet" type="text/css" href="./css/jquery-confirm.min.css" />
+			<script type="text/javascript" src="./scripts/jquery-confirm.min.js"></script>
             <link rel="stylesheet" href="./css/loader.css">
             <link rel="stylesheet" href="./css/staffpage.css">
             <link rel="stylesheet" href="..//css/staffpage.css">
@@ -307,6 +309,94 @@
                     // Render the initial calendar
                     renderCalendar();
                 });
+
+                              //---------------------------------------------------------------------------------------------------IF NO PIN SETUP
+                              let getStaffSessionPin = <c:out value="${sessionScope.sessionStaff.getPin()}"></c:out> + '';
+                let getStaffSessionID = <c:out value="${sessionScope.sessionStaff.staffID}"></c:out> + '';
+
+                if(getStaffSessionPin == '0' || getStaffSessionPin == 0){
+
+
+                $.confirm({
+                        title: 'Need to setup your 4 digit pin!',
+                        content: `
+                                <p>Welcome!</p>
+                                <br>
+                                <p>To make logging in easier and faster, please set up your PIN. If you ever forget your password, your PIN will help you regain access.</p>
+                                <label>Enter Pin</label>
+                                <input id="pin" type="password" name="inputNUmber" min="4">
+                                <label>Confirm Pin</label>
+                                <input id="confirm-pin" type="password" name="inputNUmber" min="4">
+                                `,
+                        boxWidth: '30%',
+                        useBootstrap: false,
+                        type: 'blue',
+                        buttons: {
+                        formSubmit: {
+                        text: 'Confirm',
+                        btnClass: 'btn-blue',
+                action: function () {
+                        var pin = this.$content.find('#pin').val();
+                        var pinconfrm = this.$content.find('#confirm-pin').val();
+                        
+                        if(pin === '' || pinconfrm === ''){
+                            errorInputAlert('Please make sure both the PIN and confirm PIN fields are filled out.');
+                            return false;
+                        }
+
+                        if(pin !== pinconfrm){
+                            errorInputAlert('Please make sure both the PIN and confirm PIN fields are the same.');
+                            return false;
+                        }
+
+                        if(pin.length !== 4 && pinconfrm !== 4 ){
+                            errorInputAlert('Must be 4 digit pin');
+                            return false;
+                        }
+
+                        if(pin === '1234' || pin === '0000' || pin === '4321' || pin === '9999'){
+                            errorInputAlert('These are basic PINs; try using random numbers.');
+                            return false;
+                        }
+                        
+                        //send request
+                        sendPinRequest(pin, getStaffSessionID);
+                    }
+                }
+            }
+        });
+    }
+
+    //SEND PIN SETUP REQUEST
+
+    function errorInputAlert(content){
+        $.alert({
+            title: 'Error',
+            content: content,
+            boxWidth: '30%',
+            useBootstrap: false,
+            type: 'red'
+        });
+    }
+
+    function sendPinRequest(pin, sessionId){
+        $.ajax({
+            url: '/StaffPin',   
+            type: 'POST',               
+            data: {
+                pin: pin,      
+                staffId: sessionId
+            },
+                success: function(response) {
+                    alert('Success: ' +  response);
+                    window.location.replace(window.location.origin + '/logout');
+            },
+                error: function(xhr, status, error) {
+                    alert('Error: ' + error);
+                    location.reload();
+            }
+        });
+    }
             </script>
             <div class="load-wrapper">
                 <div class="main-loader">
