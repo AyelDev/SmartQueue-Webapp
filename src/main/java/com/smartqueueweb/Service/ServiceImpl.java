@@ -116,6 +116,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return staffdata.addVideo(fileName, path, type);
 	}
+
+	@Override
+	public Integer setStaffPin(String pin, int id) {
+		// TODO Auto-generated method stub
+		return staffdata.SetStaffPin(pin, id);
+	}
 	
 	//////////////////////////////////////////////////////////////////////// --------------------
 	//////////////////////////////////////////////////////////////////////// Admin

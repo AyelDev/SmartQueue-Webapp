@@ -11,12 +11,15 @@ public class StaffBean {
 	private String email;
 	private String contactNumber;
 	private int isLocked;
-	
+	private String pin;
+
 	private int requestId;
 	private Date requestedPassCreated;
 	
 	
-	public StaffBean() {}
+	public StaffBean() {
+		super();
+	}
 	
 	/*
 	 * Requested list of staff Constructor
@@ -27,9 +30,10 @@ public class StaffBean {
 		this.requestId = requestId;
 		this.requestedPassCreated = requestedPassCreated;
 	}
-	
+
 	public StaffBean(int staffID, String username, String password, String firstname, String lastname, String email,
-			String contactNumber, int isLocked) {
+			String contactNumber, int isLocked, String pin) {
+		super();
 		this.staffID = staffID;
 		this.username = username;
 		this.password = password;
@@ -38,6 +42,7 @@ public class StaffBean {
 		this.email = email;
 		this.contactNumber = contactNumber;
 		this.isLocked = isLocked;
+		this.pin = pin;
 	}
 
 	public int getStaffID() {
@@ -104,6 +109,14 @@ public class StaffBean {
 		this.isLocked = isLocked;
 	}
 
+	public String getPin() {
+		return pin;
+	}
+
+	public void setPin(String pin) {
+		this.pin = pin;
+	}
+
 	public int getRequestId() {
 		return requestId;
 	}
@@ -124,7 +137,7 @@ public class StaffBean {
 	public String toString() {
 		return "StaffBean [staffID=" + staffID + ", username=" + username + ", password=" + password + ", firstname="
 				+ firstname + ", lastname=" + lastname + ", email=" + email + ", contactNumber=" + contactNumber
-				+ ", isLocked=" + isLocked + ", requestId=" + requestId + ", requestedPassCreated="
+				+ ", isLocked=" + isLocked + ", pin=" + pin + ", requestId=" + requestId + ", requestedPassCreated="
 				+ requestedPassCreated + "]";
 	}
 	

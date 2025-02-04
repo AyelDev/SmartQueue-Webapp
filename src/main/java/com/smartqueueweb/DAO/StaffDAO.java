@@ -66,6 +66,7 @@ public class StaffDAO extends SQLConnection {
 				staffbean.setEmail(rs.getString("email"));
 				staffbean.setContactNumber(rs.getString("contact_number"));
 				staffbean.setIsLocked(rs.getInt("isLocked"));
+				staffbean.setPin(rs.getString("pin_number"));
 			}
 
 		} catch (SQLException e) {
@@ -155,7 +156,8 @@ public class StaffDAO extends SQLConnection {
 						rs.getString("lastname"),
 						rs.getString("email"),
 						rs.getString("contact_number"),
-						rs.getInt("isLocked"));
+						rs.getInt("isLocked"),
+						rs.getString("pin_number"));
 				listOfStaff.add(staffbean);
 			}
 
@@ -365,6 +367,26 @@ public class StaffDAO extends SQLConnection {
 				prs.setString(1, fileName);
 				prs.setString(2, path);
 				prs.setString(3, fileType);
+
+				return prs.executeUpdate();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				SQLClose();
+			}
+			return 0;
+		}
+
+		public Integer SetStaffPin(String pin, int id) {
+			// TODO Auto-generated method stub
+			try {
+				ConnectDriver();
+				prs = conn.prepareStatement(
+						"UPDATE tbl_login_staff SET pin_number = ? WHERE tbl_login_staff.staff_id = ?;");
+
+				prs.setString(1, pin);
+				prs.setInt(2, id);
 
 				return prs.executeUpdate();
 

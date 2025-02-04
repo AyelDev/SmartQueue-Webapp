@@ -38,4 +38,6 @@ public interface StaffServices {
 	Integer updateQueueStatus(String QueueNumber, String queue_status);
 	
 	Integer addVideo(String fileName, String path, String type);
+
+	Integer setStaffPin(String pin, int id);
 }
