@@ -237,3 +237,25 @@ for (i = 0; i < dropdown.length; i++) {
         }
     });
 }
+
+//CALL CUSTOM NAME
+function CallName(){
+    var name = document.querySelector('.custom-call');
+    if(name.value !== '' && counterList.value > 0){
+        alert("calling " + name.value);
+            ws.send(JSON.stringify({
+                message: "Attention. " + name.value + ". Please Proceed to window " + counterList.value + ". Thank you",
+                queueNumber: name.value,
+                windowNumber: counterList.value,
+                tostop: "none"
+            }));
+            //ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
+    }else{
+        alert("Empty name or counter window not set.");
+    }
+       
+
+    
+
+    document.querySelector('.custom-call').value = ''; //clear name after call
+}

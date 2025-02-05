@@ -275,7 +275,7 @@
                         </div>
                         <div class="namecall">
                             <input type="text" class="custom-call" placeholder="Enter name to queue">
-                            <button class="add-name">Add</button>
+                            <button class="add-name" onclick="CallName()">Call Name</button>
                         </div>
 
                         <section class="actions">
