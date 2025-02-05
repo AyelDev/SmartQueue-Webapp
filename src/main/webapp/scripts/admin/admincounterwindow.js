@@ -29,29 +29,29 @@ document.addEventListener("DOMContentLoaded", event => {
 
 async function counterChangeListOnChange() {
 
-    document.getElementById("priority-number-table").innerHTML = `
-       <tr>
-                            <td><div class="tloader"></div></td>
-                            <td><div class="tloader"></div></td>
-                            <td><div class="tloader"></div></td>
-                            <td><div class="tloader"></div></td>
-                            <td><div class="tloader"></div></td>
-                            <td><div class="tloader"></div></td>
-                            <td><div class="tloader"></div></td>
-                        </tr>
-    `;
+    // document.getElementById("priority-number-table").innerHTML = `
+    //    <tr>
+    //                         <td><div class="tloader"></div></td>
+    //                         <td><div class="tloader"></div></td>
+    //                         <td><div class="tloader"></div></td>
+    //                         <td><div class="tloader"></div></td>
+    //                         <td><div class="tloader"></div></td>
+    //                         <td><div class="tloader"></div></td>
+    //                         <td><div class="tloader"></div></td>
+    //                     </tr>
+    // `;
 
-    document.getElementById("counter-access-table").innerHTML = `
-       <tr>
-                            <td><div class="tloader"></div></td>
-                            <td><div class="tloader"></div></td>
-                            <td><div class="tloader"></div></td>
-                            <td><div class="tloader"></div></td>
-                            <td><div class="tloader"></div></td>
-                            <td><div class="tloader"></div></td>
-                            <td><div class="tloader"></div></td>
-                        </tr>
-    `;
+    // document.getElementById("counter-access-table").innerHTML = `
+    //    <tr>
+    //                         <td><div class="tloader"></div></td>
+    //                         <td><div class="tloader"></div></td>
+    //                         <td><div class="tloader"></div></td>
+    //                         <td><div class="tloader"></div></td>
+    //                         <td><div class="tloader"></div></td>
+    //                         <td><div class="tloader"></div></td>
+    //                         <td><div class="tloader"></div></td>
+    //                     </tr>
+    // `;
 
     await CounterList(counterList.value, "QUEUE", '#priority-number-table');
     await CounterList(counterList.value, "SERVING", '#counter-access-table');
@@ -87,7 +87,7 @@ async function CounterList(window_nunber, queue_status, elementid) {
     });
 }
 
-//setInterval(counterChangeListOnChange, 5000); change to websocket
+setInterval(counterChangeListOnChange, 3000); //change to websocket
 
 let priorityNumberTableBody = document.getElementById("priority-number-table");
 let counterAccessTableBody = document.getElementById("counter-access-table");
@@ -198,8 +198,6 @@ function sendMsg(queueNumber, window_number) {
         }));
         //ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
     }
-
-    counterChangeListOnChange();
 }
 
 var ws2 = new WebSocket(wsUrl + window.location.host + "/queueupdate");
