@@ -6,10 +6,15 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+            <script type="text/javascript" src="../scripts/fadetransition.js"></script>
+            <script type="text/javascript" src="../scripts/notify.js"></script>
+            <script type="text/javascript" src="../scripts/prettify.js"></script>
             <link rel="stylesheet" href="../css/userinquiry.css">
             <link rel="stylesheet" href="../css/loader.css">
             <link rel="stylesheet" href="../css/prettify.css">
             <link rel="stylesheet" href="../css/notify.css">
+            <link rel="icon" type="image/x-icon" href="./images/logo.png">
             <title>User Inquiry</title>
         </head>
 
@@ -186,10 +191,6 @@
 
             <div class="footer">© 2024 Cebu Eastern College. All Rights Reserved.</div>
 
-            <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
-            <script type="text/javascript" src="../scripts/fadetransition.js"></script>
-            <script type="text/javascript" src="../scripts/notify.js"></script>
-            <script type="text/javascript" src="../scripts/prettify.js"></script>
             <script type="text/javascript" src="../scripts/user/userinquiry.js"></script>
         </body>
 

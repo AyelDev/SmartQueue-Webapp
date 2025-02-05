@@ -10,13 +10,20 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <!-- default css imports -->
+            <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
+            <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+            <script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
+            <script type="text/javascript" src="../scripts/notify.js"></script>
+            <script type="text/javascript" src="../scripts/prettify.js"></script>
+            <script type="text/javascript" src="../scripts/ping.js"></script>
+            <script type="text/javascript" src="../scripts/fadetransition.js"></script>
+            <script type="text/javascript" src="../scripts/chart.min.js"></script>
             <link rel="stylesheet" href="../css/prettify.css">
 			<link rel="stylesheet" href="../css/notify.css">
 			<link rel="stylesheet" href="../css/jquery-confirm.min.css">
 			<link rel="stylesheet" href="../css/loader.css">
-            <!-- page css import-->
             <link rel="stylesheet" href="../css/videoads.css">
+            <link rel="icon" type="image/x-icon" href="./images/logo.png">
             <title>Video Entertainment</title>
         </head>
 
@@ -203,24 +210,14 @@
                 
 			</div>
             </div>
-        <!-- default js imports -->
-        <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
-        <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
-        <script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
-        <script type="text/javascript" src="../scripts/notify.js"></script>
-        <script type="text/javascript" src="../scripts/prettify.js"></script>
-        <script type="text/javascript" src="../scripts/ping.js"></script>
-        <script type="text/javascript" src="../scripts/fadetransition.js"></script>
-        <script type="text/javascript" src="../scripts/chart.min.js"></script>
-        <!-- page js import -->
-        <script type="text/javascript" src="../scripts/admin/video_ads.js"></script>
-
         <div class="load-wrapper">
             <div class="main-loader">
                 <div class="box-loader">
                 </div>
             </div>
         </div>
+
+        <script type="text/javascript" src="../scripts/admin/video_ads.js"></script>
         </body>
 
 

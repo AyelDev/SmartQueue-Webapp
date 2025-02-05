@@ -75,39 +75,3 @@ $(document).ready(function(){
     });
 });
 
-//notification
-const notificationIcon = document.getElementById('notifications');
-const notificationDropdown = document.getElementById('notificationDropdown');
-const notificationBadge = document.getElementById('notificationBadge');
-const markAllRead = document.getElementById('markAllRead');
-const unreadItems = document.querySelectorAll('.dropdown-item.unread');
-
-// Toggle dropdown visibility
-notifications.addEventListener('click', () => {
-    notificationDropdown.classList.toggle('active');
-});
-
-// Close dropdown when clicking outside
-document.addEventListener('click', (event) => {
-    if (!notifications.contains(event.target) && !notificationDropdown.contains(event.target)) {
-        notificationDropdown.classList.remove('active');
-    }
-});
-
-// Update badge count
-const updateBadgeCount = () => {
-    const unreadCount = document.querySelectorAll('.dropdown-item.unread').length;
-    notificationBadge.textContent = unreadCount;
-    notificationBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
-};
-
-// Mark all notifications as read
-markAllRead.addEventListener('click', () => {
-    unreadItems.forEach(item => item.classList.remove('unread'));
-    updateBadgeCount();
-});
-
-// Initialize badge count
-updateBadgeCount();
-
-

@@ -9,15 +9,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
-    <script type="text/javascript" src="./scripts/ping.js"></script>
-    <script type="text/javascript" src="./scripts/fadetransition.js"></script>
-    <script type="text/javascript" src="./scripts/notify.js"></script>
-    <script type="text/javascript" src="./scripts/prettify.js"></script>
-    <link rel="stylesheet" href="./css/loader.css">
-    <link rel="stylesheet" href="./css/prettify.css">
-    <link rel="stylesheet" href="./css/notify.css">
-    <link rel="stylesheet" href="./css/admincounterwindow.css">
+    <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="../scripts/ping.js"></script>
+    <script type="text/javascript" src="../scripts/fadetransition.js"></script>
+    <script type="text/javascript" src="../scripts/notify.js"></script>
+    <script type="text/javascript" src="../scripts/prettify.js"></script>
+    <link rel="stylesheet" href="../css/loader.css">
+    <link rel="stylesheet" href="../css/prettify.css">
+    <link rel="stylesheet" href="../css/notify.css">
+    <link rel="stylesheet" href="../css/admincounterwindow.css">
+    <link rel="icon" type="image/x-icon" href="./images/logo.png">
     <title>Counter window</title>
 </head>
 
@@ -126,43 +127,7 @@
         <div class="dashboard-section">
             <div class="dashboard-head">
                 <div class="icon-container">
-                    
-                    <!-- <svg class="chat-icon" width="64px" height="30px" viewBox="-2.4 -2.4 28.80 28.80" fill="none"
-                        xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
-                            stroke="#ffffff030303" stroke-width="0.336">
-                            <path
-                                d="M7 4C4.79086 4 3 5.79073 3 7.9997V13.2642C3 15.4732 4.79086 17.2639 7 17.2639L7 19.8998C7 19.9834 7.09639 20.0301 7.16197 19.9783L10.6 17.2639H17C19.2091 17.2639 21 15.4732 21 13.2642V7.99971C21 5.79073 19.2091 4 17 4H7Z"
-                                stroke="#ffffff" stroke-width="0.552" stroke-linecap="round"></path>
-                            <path
-                                d="M9 11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11C7 10.4477 7.44772 10 8 10C8.55228 10 9 10.4477 9 11Z"
-                                fill="#ffffff"></path>
-                            <path
-                                d="M13 11C13 11.5523 12.5523 12 12 12C11.4477 12 11 11.5523 11 11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11Z"
-                                fill="#ffffff"></path>
-                            <path
-                                d="M17 11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11Z"
-                                fill="#ffffff"></path>
-                        </g>
-                        <g id="SVGRepo_iconCarrier">
-                            <path
-                                d="M7 4C4.79086 4 3 5.79073 3 7.9997V13.2642C3 15.4732 4.79086 17.2639 7 17.2639L7 19.8998C7 19.9834 7.09639 20.0301 7.16197 19.9783L10.6 17.2639H17C19.2091 17.2639 21 15.4732 21 13.2642V7.99971C21 5.79073 19.2091 4 17 4H7Z"
-                                stroke="#ffffff" stroke-width="1.608" stroke-linecap="round"></path>
-                            <path
-                                d="M9 11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11C7 10.4477 7.44772 10 8 10C8.55228 10 9 10.4477 9 11Z"
-                                fill="#ffffff"></path>
-                            <path
-                                d="M13 11C13 11.5523 12.5523 12 12 12C11.4477 12 11 11.5523 11 11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11Z"
-                                fill="#ffffff"></path>
-                            <path
-                                d="M17 11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11Z"
-                                fill="#ffffff"></path>
-                        </g>
-                    </svg> -->
                 </div>
-
-
 
                 <!-- admin profile -->
                 <button class="profilebutton" id="profilebutton"><svg class="profile" width="64px" height="64px"
@@ -192,10 +157,6 @@
                     <a href="adminsettings">Settings</a>
                     <a href="logout">Signout</a>
                 </div>
-
-
-
-
                 <div class="counter-container">
                     
                     <select id="counter-list" onchange="counterChangeListOnChange()" class="select">
@@ -322,272 +283,7 @@
                             <button id="recall-button" onclick="recall()" class="btn recall"><b>RECALL</b></button>
                             <button id="done-button" onclick="removeRow()" class="btn done"><b>DONE</b></button>
                         </section>
-
                 </div>
-
-                
-
-                <script>
-                    // document.addEventListener("DOMContentLoaded", function () {
-                    //     var dropdownButton = document.querySelector(".button-profile");
-                    //     var staffProfile = document.getElementById("staffProfile");
-
-                    //     staffProfile.style.display = "none";
-
-                    //     dropdownButton.addEventListener("click", function () {
-                    //         if (staffProfile.style.display === "block") {
-                    //             staffProfile.style.display = "none";
-                    //         } else {
-                    //             staffProfile.style.display = "block";
-                    //         }
-                    //     });
-                    // });
-                    function updateTime() {
-                        const now = new Date();
-                        document.getElementById('date').textContent = now.toLocaleDateString();
-                        document.getElementById('time').textContent = now.toLocaleTimeString();
-                    }
-                    updateTime();
-                    setInterval(updateTime, 1000);
-
-                    let counterList = document.getElementById("counter-list");
-                    document.addEventListener("DOMContentLoaded", event => {
-                        $.ajax({
-                            url: '/JsonAvailableWindow',
-                            method: 'GET',
-                            data: {},
-                            dataType: 'json',
-                            success: function (data) {
-                                const selectCounterListBody = $('#counter-list');
-                                selectCounterListBody.empty();
-                                selectCounterListBody.append(`
-                                <option value="0">CHOOSE COUNTER WINDOW</option>`);
-                                data.forEach(item => {
-                                    selectCounterListBody.append(`
-                                         <option value="`+ item.window_number + `">Counter-Window : ` + item.window_number + ` - ` + item.serviceType + `</option>`);
-                                });
-                            }
-
-                        });
-                    });
-
-                    async function counterChangeListOnChange() {
-
-                        document.getElementById("priority-number-table").innerHTML = `
-                           <tr>
-                                                <td><div class="tloader"></div></td>
-                                                <td><div class="tloader"></div></td>
-                                                <td><div class="tloader"></div></td>
-                                                <td><div class="tloader"></div></td>
-                                                <td><div class="tloader"></div></td>
-                                                <td><div class="tloader"></div></td>
-                                                <td><div class="tloader"></div></td>
-                                            </tr>
-                        `;
-
-                        document.getElementById("counter-access-table").innerHTML = `
-                           <tr>
-                                                <td><div class="tloader"></div></td>
-                                                <td><div class="tloader"></div></td>
-                                                <td><div class="tloader"></div></td>
-                                                <td><div class="tloader"></div></td>
-                                                <td><div class="tloader"></div></td>
-                                                <td><div class="tloader"></div></td>
-                                                <td><div class="tloader"></div></td>
-                                            </tr>
-                        `;
-
-                        await CounterList(counterList.value, "QUEUE", '#priority-number-table');
-                        await CounterList(counterList.value, "SERVING", '#counter-access-table');
-                    }
-
-                    async function CounterList(window_nunber, queue_status, elementid) {
-                        await $.ajax({
-                            url: '/JsonStudentQueueEntriesAPI',
-                            method: 'GET',
-                            data: {
-                                window_number: window_nunber,
-                                queue_status: queue_status
-                            },
-                            dataType: 'json',
-                            success: function (data) {
-                                let prioriyNumberTable = $(elementid);
-                                prioriyNumberTable.empty();
-                                data.forEach(item => {
-                                    prioriyNumberTable.append(`
-                                        <tr>
-                                            <td>`+ item.queue_number + `</td>
-                                            <td>`+ item.purpose + `</td>
-                                            <td>`+ item.fullname + `</td>
-                                            <td>`+ item.id_number + `</td>
-                                            <td>`+ item.date + `</td>
-                                            <td>`+ item.queue_status + `</td>
-                                            <td>`+ item.window_number + `</td>
-                                        </tr>
-                                         `);
-                                });
-                            }
-
-                        });
-                    }
-
-                    //setInterval(counterChangeListOnChange, 5000); change to websocket
-
-                    let priorityNumberTableBody = document.getElementById("priority-number-table");
-                    let counterAccessTableBody = document.getElementById("counter-access-table");
-                    const callButton = document.getElementById("call-button");
-                    const recallButton = document.getElementById("recall-button");
-                    const doneButton = document.getElementById("done-button");
-
-                    async function transferRow() {
-
-                        callButton.disabled = true;
-                        callButton.innerHTML = `<b>LOADING</b> <span id="button-loader"></span>`;
-
-                        setTimeout(() => {
-                            callButton.disabled = false;
-                            callButton.innerHTML = `<b>CALL</b>`;
-                        }, 1000);
-
-                        if (counterAccessTableBody.rows.length > 0) {
-                            await $.notify("Table 2 can only hold one row!", { color: "#fff", background: "#D44950", delay: 1000 })
-                            return;
-                        }
-
-                        if (priorityNumberTableBody.rows.length > 0) {
-
-                            let firstRow = priorityNumberTableBody.rows[0];
-                            await counterAccessTableBody.appendChild(firstRow);
-                            let queueNumber = firstRow.cells[0].innerText;
-                            let window_number = firstRow.cells[6].innerText;
-                            await sendMsg(queueNumber, window_number);
-                            await updateQueueStatus(queueNumber, 'SERVING');
-                        } else {
-                            await $.notify("No more rows to transfer!", { color: "#fff", background: "#D44950", delay: 1000 });
-                        }
-                    }
-
-                    function removeRow() {
-                        doneButton.disabled = true;
-                        doneButton.innerHTML = `<b>LOADING</b> <span id="button-loader"></span>`;
-
-                        setTimeout(() => {
-                            doneButton.disabled = false;
-                            doneButton.innerHTML = `<b>DONE</b>`;
-                        }, 1000);
-
-                        if (counterAccessTableBody.rows.length > 0) {
-                            let secondRow = counterAccessTableBody.rows[0];
-                            let queueNumber = secondRow.cells[0].innerText;
-                            updateQueueStatus(queueNumber, 'DONE');
-                            counterAccessTableBody.deleteRow(0);
-                        } else {
-                            $.notify("No row to remove from Table 2!", { color: "#fff", background: "#D44950", delay: 1000 })
-                        }
-                    }
-
-                    function recall() {
-
-                        recallButton.disabled = true;
-                        recallButton.innerHTML = `<b>LOADING</b> <span id="button-loader"></span>`;
-
-                        setTimeout(() => {
-                            recallButton.disabled = false;
-                            recallButton.innerHTML = `<b>RECALL</b>`;
-                        }, 1000);
-
-                        if (counterAccessTableBody.rows.length > 0) {
-                            let secondRow = counterAccessTableBody.rows[0];
-                            let queueNumber = secondRow.cells[0].innerText;
-                            let window_number = secondRow.cells[6].innerText;
-                            sendMsg(queueNumber, window_number);
-                        } else {
-                            $.notify("No row to recall from Table 2!", { color: "#fff", background: "#D44950", delay: 1000 })
-                        }
-                    }
-
-                    //update queue status
-                    function updateQueueStatus(queueNumber, queueStatus) {
-                        $.ajax({
-                            url: `/updateQueueStatus?queueNumber=` + queueNumber + `&queueStatus=` + queueStatus,
-                            type: 'PUT',
-                            success: function (response) {
-                                $.notify(response, { color: "#fff", background: "#20D67B", delay: 1000 })
-                            }, error: function (xhr, status, error) {
-                                $.notify(xhr.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
-                            }
-                        });
-                    }
-
-                    //websocket
-                    var wsUrl;
-                    if (window.location.protocol == 'http:') {
-                        wsUrl = 'ws://';
-                    } else {
-                        wsUrl = 'wss://';
-                    }
-                    var ws = new WebSocket(wsUrl + window.location.host + "/QueueWebSocketController");
-
-                    ws.onopen = function (event) {
-                        console.log('WebSocket connection opened', event);
-                    };
-
-                    function sendMsg(queueNumber, window_number) {
-                        if (queueNumber) {
-                            ws.send(JSON.stringify({
-                                message: "Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you",
-                                queueNumber: queueNumber,
-                                windowNumber: window_number,
-                                tostop: "none"
-                            }));
-                            //ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
-                        }
-
-                        counterChangeListOnChange();
-                    }
-
-                    var ws2 = new WebSocket(wsUrl + window.location.host + "/queueupdate");
-
-                    ws2.addEventListener("message", async (message) => {
-                        await $.notify("loading new requests...", { color: "#fff", background: "#20D67B", delay: 1000 })
-                        await CounterList(counterList.value, "QUEUE", '#priority-number-table');
-                    })
-
-
-                    var dropdown = document.getElementsByClassName("profilebutton");
-var i;
-
-for (i = 0; i < dropdown.length; i++) {
-    dropdown[i].addEventListener("click", function () {
-
-        var dropdownContent = this.nextElementSibling;
-        if (dropdownContent.style.display === "block") {
-            dropdownContent.style.display = "none";
-        } else {
-            dropdownContent.style.display = "block";
-        }
-    });
-}
-
-
-
-
-
-                    var dropdown = document.getElementsByClassName("button-profile");
-                    var i;
-
-                    for (i = 0; i < dropdown.length; i++) {
-                        dropdown[i].addEventListener("click", function () {
-
-                            var dropdownContent = this.nextElementSibling;
-                            if (dropdownContent.style.display === "block") {
-                                dropdownContent.style.display = "none";
-                            } else {
-                                dropdownContent.style.display = "block";
-                            }
-                        });
-                    }
-                </script>
 
                 <div class="load-wrapper">
                     <div class="main-loader">
@@ -595,6 +291,8 @@ for (i = 0; i < dropdown.length; i++) {
                         </div>
                     </div>
                 </div>
-</body>
+
+        <script type="text/javascript" src="../scripts/admin/admincounterwindow.js"></script>
+    </body>
 
 </html>
