@@ -8,13 +8,15 @@
 		<head>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<script type="text/javascript" src="./scripts/jquery-3.7.1.min.js"></script>
-			<script type="text/javascript" src="./scripts/ping.js"></script>
-			<link rel="stylesheet" type="text/css" href="./css/jquery-confirm.min.css" />
-			<script type="text/javascript" src="./scripts/jquery-confirm.min.js"></script>
-			<script type="text/javascript" src="./scripts/fadetransition.js"></script>
-			<link rel="stylesheet" href="./css/loader.css">
+			<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+			<script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+			<script type="text/javascript" src="../scripts/ping.js"></script>
+			<script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
+			<script type="text/javascript" src="../scripts/fadetransition.js"></script>
+			<link rel="stylesheet" type="text/css" href="../css/jquery-confirm.min.css" />
+			<link rel="stylesheet" href="../css/loader.css">
 			<link rel="stylesheet" href="../css/stafflist.css">
+			<link rel="icon" type="image/x-icon" href="./images/logo.png">
 			<title>Admin | List of Staff</title>
 		</head>
 
@@ -128,60 +130,14 @@
 				<div class="stafflist-section">
 					<div class="dashboard-head">
 						<div class="icon-container">
-							<svg class="bell-icon" id="notifications" width="30px" height="64px" viewBox="0 0 24.00 24.00" fill="none"
-								xmlns="http://www.w3.org/2000/svg">
-								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
-									stroke="#CCCCCC" stroke-width="0.048"></g>
-								<g id="SVGRepo_iconCarrier">
-									<path
-										d="M9.00195 17H5.60636C4.34793 17 3.71872 17 3.58633 16.9023C3.4376 16.7925 3.40126 16.7277 3.38515 16.5436C3.37082 16.3797 3.75646 15.7486 4.52776 14.4866C5.32411 13.1835 6.00031 11.2862 6.00031 8.6C6.00031 7.11479 6.63245 5.69041 7.75766 4.6402C8.88288 3.59 10.409 3 12.0003 3C13.5916 3 15.1177 3.59 16.2429 4.6402C17.3682 5.69041 18.0003 7.11479 18.0003 8.6C18.0003 11.2862 18.6765 13.1835 19.4729 14.4866C20.2441 15.7486 20.6298 16.3797 20.6155 16.5436C20.5994 16.7277 20.563 16.7925 20.4143 16.9023C20.2819 17 19.6527 17 18.3943 17H15.0003M9.00195 17L9.00031 18C9.00031 19.6569 10.3435 21 12.0003 21C13.6572 21 15.0003 19.6569 15.0003 18V17M9.00195 17H15.0003"
-										stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-										stroke-linejoin="round">
-									</path>
-								</g>
-							</svg>
-							<div class="notificationBadge" id="notificationBadge">3</div>
-							<svg class="chat-icon" width="64px" height="30px" viewBox="-2.4 -2.4 28.80 28.80"
-								fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
-								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
-									stroke="#ffffff030303" stroke-width="0.336">
-									<path
-										d="M7 4C4.79086 4 3 5.79073 3 7.9997V13.2642C3 15.4732 4.79086 17.2639 7 17.2639L7 19.8998C7 19.9834 7.09639 20.0301 7.16197 19.9783L10.6 17.2639H17C19.2091 17.2639 21 15.4732 21 13.2642V7.99971C21 5.79073 19.2091 4 17 4H7Z"
-										stroke="#ffffff" stroke-width="0.552" stroke-linecap="round"></path>
-									<path
-										d="M9 11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11C7 10.4477 7.44772 10 8 10C8.55228 10 9 10.4477 9 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M13 11C13 11.5523 12.5523 12 12 12C11.4477 12 11 11.5523 11 11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M17 11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11Z"
-										fill="#ffffff"></path>
-								</g>
-								<g id="SVGRepo_iconCarrier">
-									<path
-										d="M7 4C4.79086 4 3 5.79073 3 7.9997V13.2642C3 15.4732 4.79086 17.2639 7 17.2639L7 19.8998C7 19.9834 7.09639 20.0301 7.16197 19.9783L10.6 17.2639H17C19.2091 17.2639 21 15.4732 21 13.2642V7.99971C21 5.79073 19.2091 4 17 4H7Z"
-										stroke="#ffffff" stroke-width="1.608" stroke-linecap="round"></path>
-									<path
-										d="M9 11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11C7 10.4477 7.44772 10 8 10C8.55228 10 9 10.4477 9 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M13 11C13 11.5523 12.5523 12 12 12C11.4477 12 11 11.5523 11 11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M17 11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11Z"
-										fill="#ffffff"></path>
-								</g>
-							</svg>
+
 						</div>
 
 
 
 						<!-- admin profile -->
-						<button class="profilebutton" id="profilebutton"><svg class="profile" width="64px"
-								height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<button class="profilebutton" id="profilebutton"><svg class="profile" width="64px" height="64px"
+								viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
 								<g id="SVGRepo_iconCarrier">
@@ -192,7 +148,9 @@
 										d="M12.0019 8C10.0219 8 8.42188 9.6 8.42188 11.58C8.42188 13.56 10.0219 15.17 12.0019 15.17C13.9819 15.17 15.5819 13.56 15.5819 11.58C15.5819 9.6 13.9819 8 12.0019 8Z"
 										fill="#ffffff"></path>
 								</g>
-							</svg>ADMIN<svg class="caretdown" width="64px" height="64px" viewBox="0 0 24 24" fill="none"
+							</svg>
+							<c:out value="${sessionScope.sessionAdmin.username}"></c:out><svg class="caretdown"
+								width="64px" height="64px" viewBox="0 0 24 24" fill="none"
 								xmlns="http://www.w3.org/2000/svg">
 								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -202,24 +160,27 @@
 										stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
 										stroke-linejoin="round"></path>
 								</g>
-							</svg></button>
+							</svg>
+						</button>
 						<div class="adminProfile" id="adminProfile">
 							<a href="adminsettings">Settings</a>
 							<a href="logout">Signout</a>
 						</div>
 					</div>
 					<div class="stafflist-content">
-						<button class="add-account-btn"> <img src="./images/add-account.png" alt=""
-								class="add-account-icon"> Add Staff</button>
+						<button class="add-account-btn"> <svg xmlns="http://www.w3.org/2000/svg" height="10"
+								width="12.5"
+								viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+								<path fill="#ffffff"
+									d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
+							</svg> Add Staff</button>
 						<h1>Staff List</h1>
 						<div class="search-container">
 							<input type="text" placeholder="Search.." name="search" class="search-bar" id="searchInput"
 								onkeyup="searchTable()">
-							<button class="search-btn" type="submit"><img src="./images/search-icon.png" alt=""
-									class="search-icon">
 						</div>
 
-						
+
 
 						<div class="table-container">
 							<table id="myTable">
@@ -374,507 +335,48 @@
 
 					<!--overlay form-->
 					<div class="overlay"></div>
-						<div class="fillup-form-container modal">
-							<h1>Staff Registration</h1>
-							<span class="close-btn">&times;</span>
-							<div class="register-form">
-								<form id="staffRegisterForm">
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="firstname-input" required="required" type="text"
-											name="txtFirstname">
-										<label for="firstname" class="firstname-label">First name</label>
-									</div>
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="lastname-input" required="required" type="text"
-											name="txtLastname">
-										<label for="lastname" class="lastname-label">Last name</label>
-									</div>
+					<div class="fillup-form-container modal">
+						<h1>Staff Registration</h1>
+						<span class="close-btn">&times;</span>
+						<div class="register-form">
+							<form id="staffRegisterForm">
+								<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+									<input class="firstname-input" required="required" type="text" name="txtFirstname">
+									<label for="firstname" class="firstname-label">First name</label>
+								</div>
+								<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+									<input class="lastname-input" required="required" type="text" name="txtLastname">
+									<label for="lastname" class="lastname-label">Last name</label>
+								</div>
 
-									<div class="input-container full-width" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="username-input" required="required" type="text"
-											name="txtUsername">
-										<label for="username" class="username-label">Username</label>
-									</div>
+								<div class="input-container full-width" style="width: 40%; margin: 0 20px 0 20px;">
+									<input class="username-input" required="required" type="text" name="txtUsername">
+									<label for="username" class="username-label">Username</label>
+								</div>
 
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="contactno-input" required="required" type="text"
-											name="txtContactno" maxlength="11">
-										<label for="contactno" class="contactno-label">Contact no.</label>
-									</div>
+								<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+									<input class="contactno-input" required="required" type="text" name="txtContactno"
+										maxlength="11">
+									<label for="contactno" class="contactno-label">Contact no.</label>
+								</div>
 
-									<div class="input-container" style="width: 91%; margin-left: 20px;">
-										<input class="email-input" required="required" type="text" name="txtEmail">
-										<label for="email" class="email-label">Email</label>
-									</div>
+								<div class="input-container" style="width: 91%; margin-left: 20px;">
+									<input class="email-input" required="required" type="text" name="txtEmail">
+									<label for="email" class="email-label">Email</label>
+								</div>
 
-									<input class="sign-btn" type="submit" value="Signup">
-								</form>
-							</div>
-						</div>
-
-					<!--notification dropdown-->
-					<div class="notificationdropdown" id="notificationDropdown">
-						<div class="notificationdropdown-header">
-							<span>Notifications</span>
-							<button id="markAllRead" class="text-blue-600 text-sm">Mark all as read</button>
-						</div>
-						<div class="notificationdropdown-item unread" data-id="1">
-							<img src="https://via.placeholder.com/40" alt="Profile">
-							<div>
-								<div class="notification-text">You have a new message.</div>
-								<div class="notification-time">2h ago</div>
-							</div>
-						</div>
-						<div class="notificationdropdown-item unread" data-id="2">
-							<img src="https://via.placeholder.com/40" alt="Profile">
-							<div>
-								<div class="notification-text">Your document has been approved.</div>
-								<div class="notification-time">6h ago</div>
-							</div>
-						</div>
-						<div class="notificationdropdown-item" data-id="3">
-							<img src="https://via.placeholder.com/40" alt="Profile">
-							<div>
-								<div class="notification-text">Your password has been reset.</div>
-								<div class="notification-time">1d ago</div>
-							</div>
+								<input class="sign-btn" type="submit" value="Signup">
+							</form>
 						</div>
 					</div>
-
-
-
-
-					<script>
-						var dropdown = document.getElementsByClassName("profilebutton");
-						var i;
-
-						for (i = 0; i < dropdown.length; i++) {
-							dropdown[i].addEventListener("click", function () {
-
-								var dropdownContent = this.nextElementSibling;
-								if (dropdownContent.style.display === "block") {
-									dropdownContent.style.display = "none";
-								} else {
-									dropdownContent.style.display = "block";
-								}
-							});
-						}
-
-
-
-
-						var staffListInfo = document.getElementById("tablelist");
-
-						function updateData() {
-							var request = new XMLHttpRequest();
-							request.open('GET', '/JsonStaffListAPI');
-							request.onload = function () {
-								var data = JSON.parse(request.responseText);
-								renderHTML(data);
-								searchTable();
-							}
-							request.send();
-						}
-
-						function renderHTML(data) {
-							var htmlString = ``;
-
-							for (var i = 0; i < data.length; i++) {
-
-								htmlString += '<tr>' +
-									'<td>' + data[i].staffID + '</td>' +
-									'<td>' + data[i].firstname + ' ' + data[i].lastname + '</td>' +
-									'<td>' + data[i].contactNumber + '</td>' +
-									'<td>' + data[i].email + '</td>' +
-									'<td>' + data[i].username + '</td>' +
-									'<td>' + data[i].password + '</td>' +
-									'<td>' + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + '</td>' +
-									'<td><button onclick="updateStaff(' + data[i].staffID + ', \'' + data[i].firstname + '\', \'' + data[i].lastname + '\', \'' + data[i].username + '\', \'' + data[i].contactNumber + '\', \'' + data[i].email + '\', \'' + data[i].password + '\', \'' + data[i].isLocked + '\')" class="update" style="background-color: #97BE5A; font-size: .7em;">Update</button>' +
-									'<button onclick="removeStaff(' + data[i].staffID + ')" class="delete" style="background-color: #EE4E4E; font-size: .7em;">Delete</button></td>' +
-									'</tr>';
-
-
-
-
-								// htmlString += "<tr>";
-								// htmlString += "<td>" + data[i].staffID + "</td>";
-								// htmlString += "<td>" + data[i].firstname + " " + data[i].lastname + "</td>";
-								// htmlString += "<td>+63" + data[i].contactNumber + "</td>";
-								// htmlString += "<td>" + data[i].email + "</td>";
-								// htmlString += "<td>" + data[i].username + "</td>";
-								// htmlString += "<td>" + data[i].password + "</td>";
-								// htmlString += "<td>" + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + "</td>";
-								// htmlString += '<td><button onclick="updateStaff(' + data[i].staffID + ', \'' + data[i].firstname + '\')" class="update" style="background-color: #97BE5A; font-size: .7em;">Update</button></td>';
-								// htmlString += '<button onclick="removeStaff(' + data[i].staffID + ')" class="delete" style="background-color: #EE4E4E; font-size: .7em;">Delete</button>';
-								// htmlString += "</tr>";
-							}
-
-							staffListInfo.innerHTML = htmlString;
-						}
-
-						document.addEventListener("DOMContentLoaded", event => {
-							updateData();
-						});
-
-						// Get elements
-						const addAccountButton = document.querySelector('.add-account-btn');
-						const closeModalButton = document.querySelector('.close-btn');
-						const modal = document.querySelector('.modal');
-						const overlay = document.querySelector('.overlay');
-
-						// Function to open the modal
-						function openModal() {
-							modal.classList.add('active');
-							overlay.classList.add('active');
-						}
-
-						// Function to close the modal
-						function closeModal() {
-							modal.classList.remove('active');
-							overlay.classList.remove('active');
-						}
-
-						// Event listeners
-						addAccountButton.addEventListener('click', openModal);
-						closeModalButton.addEventListener('click', closeModal);
-						overlay.addEventListener('click', closeModal);
-
-						$(document).ready(function () {
-							$('#staffRegisterForm').on('submit', function (event) {
-								event.preventDefault(); // Prevent the default form submission
-
-								// Create a new AJAX request
-								var url = 'staffRegister_Servlet';
-
-								// Prepare the POST request with form data
-								var params = $(this).serialize();
-
-								$.ajax({
-									url: url,
-									type: 'POST',
-									data: params,
-									success: function (response) {
-										openModal()
-										$.confirm({
-											boxWidth: '30%',
-											useBootstrap: false,
-											title: 'Registration Successful',
-											content: response,
-											type: 'green',
-											typeAnimated: true,
-											buttons: {
-												tryAgain: {
-													text: 'add more',
-													btnClass: 'btn-green',
-													action: function () {
-														openModal()
-													}
-												},
-												ok: {
-													text: 'ok',
-													action: function () {
-														closeModal()
-													}
-												}
-											}
-										});
-									},
-									error: function (xhr) {
-										openModal()
-										$.confirm({
-											boxWidth: '30%',
-											useBootstrap: false,
-											title: 'Encountered an error!',
-											content: xhr.responseText,
-											type: 'red',
-											typeAnimated: true,
-											buttons: {
-												tryAgain: {
-													text: 'Try again',
-													btnClass: 'btn-red',
-													action: function () {
-														closeModal()
-
-													}
-												},
-											}
-										});
-									}
-								});
-							});
-						});
-
-						//delete staff
-						function removeStaff(id) {
-							$.confirm({
-								boxWidth: '30%',
-								useBootstrap: false,
-								type: 'blue',
-								typeAnimated: true,
-								title: 'Delete staff : ' + id + '?',
-								content: 'This dialog will automatically trigger \'cancel\' in 10 seconds if you don\'t respond.',
-								autoClose: 'cancel|10000',
-								buttons: {
-									deleteUser: {
-										text: 'delete',
-										btnClass: 'btn-red',
-										action: function () {
-											// Create the AJAX request
-											$.ajax({
-												url: 'RemoveStaff_Servlet?idNo=' + id, // Replace with your endpoint
-												type: 'DELETE', // Send the ID as data
-												success: function (response) {
-													$.alert({
-														boxWidth: '30%',
-														useBootstrap: false,
-														typeAnimated: true,
-														type: 'green',
-														title: 'Response',
-														content: response
-													});
-													updateData();
-												},
-												error: function (xhr) {
-													$.alert({
-														boxWidth: '30%',
-														useBootstrap: false,
-														type: 'red',
-														typeAnimated: true,
-														title: 'error',
-														content: xhr.statusText
-													});
-												}
-											});
-										}
-									},
-									cancel: function () {
-										$.alert({
-											boxWidth: '30%',
-											useBootstrap: false,
-											typeAnimated: true,
-											type: 'red',
-											title: 'Canceled',
-											content: 'action is canceled'
-										});
-									}
-								}
-							});
-
-						}
-
-
-						function updateStaff(id, firstname, lastname, username, contactnumber, email, password, islocked) {
-							$.confirm({
-								type: 'blue',
-								boxWidth: '50%',
-								useBootstrap: false,
-								title: 'Update Staff : ' + id,
-								content: `
-								<div class="register-form">
-								<form id="staffRegisterForm">
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="firstname-input" required="required" type="text"
-											name="txtFirstname" value="`+ firstname + `">
-										<label for="firstname" class="firstname-label">First name</label>
-									</div>
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="lastname-input" required="required" type="text"
-											name="txtLastname" value="`+ lastname + `">
-										<label for="lastname" class="lastname-label">Last name</label>
-									</div>
-
-									<div class="input-container full-width" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="username-input" required="required" type="text"
-											name="txtUsername" value="`+ username + `">
-										<label for="username" class="username-label">Username</label>
-									</div>
-
-									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-										<input class="contactno-input" required="required" type="text"
-											name="txtContactno" value="`+ contactnumber + `" maxlength="11">
-										<label for="contactno" class="contactno-label">Contact no.</label>
-									</div>
-
-									<div class="input-container" style="width: 91%; margin-left: 20px;">
-										<input class="email-input" required="required" type="text" name="txtEmail" value="`+ email + `">
-										<label for="email" class="email-label">Email</label>
-									</div>
-
-									
-									<div class="input-container" style="width: 91%; margin-left: 20px;">
-										<input class="password-input" required="required" type="password" name="txtPassword" value="`+ password + `">
-										<label for="password" class="password-label">Password</label>
-									</div>
-
-									<div class="input-container" style="width: 91%; margin: 0 20px 5% 20px;">
-										<input class="confirmpassword-input" required="required" type="password" name="txtConfirmpassword" value="`+ password + `">
-										<label for="confirmpassword" class="confirmpassword-label">Confirm Password</label>
-									</div>	
-
-									<div class="input-container" style="width: 91%; margin: 0 20px 5% 20px;">
-										<input class="checkbox-input" required="required" type="checkbox" name="txtConfirmpassword" `+ (islocked == 1 ? "checked" : "") + `>
-										<label for="confirmpassword" class="confirmpassword-label">Lock Staff</label>
-									</div>	
-								</form>
-							</div>
-								`,
-								buttons: {
-									sayMyName: {
-										text: 'Update',
-										btnClass: 'btn-green',
-										action: function () {
-
-											var firstname = this.$content.find('.firstname-input');
-											var lastname = this.$content.find('.lastname-input');
-											var email = this.$content.find('.email-input');
-											var contactno = this.$content.find('.contactno-input');
-											var username = this.$content.find('.username-input');
-											var password = this.$content.find('.password-input');
-											var confirmpassword = this.$content.find('.confirmpassword-input');
-											var checkbox = this.$content.find('.checkbox-input').is(':checked') ? 1 : 0;
-											if (!firstname.val().trim() || !lastname.val().trim() || !email.val().trim() || !contactno.val().trim() || !username.val().trim() || !password.val().trim() || !confirmpassword.val().trim()) {
-												$.alert({
-													boxWidth: '30%',
-													useBootstrap: false,
-													content: "Please don't keep the field empty.",
-													type: 'red'
-												});
-												return false;
-											} else {
-
-												if (password.val() != confirmpassword.val()) {
-													$.alert({
-														boxWidth: '30%',
-														useBootstrap: false,
-														content: "password and confirm password does not match.",
-														type: 'red'
-													});
-													return false;
-												} else {
-
-													$.ajax({
-														url: 'UpdateStaff_Servlet?idNo=' + id + '&firstname=' + firstname.val() + '&lastname=' + lastname.val() + '&email=' + email.val() + '&contactno=' + contactno.val() + '&username=' + username.val() + '&password=' + password.val() + '&islocked=' + checkbox, // Replace with your endpoint
-														type: 'PUT', // Send the ID as data
-														success: function (response) {
-															var ischecked = checkbox == 1 ? "Locked" : "Not Locked";
-															var successContent = `<h3>Name: ` + firstname.val() + `<br>
-																Lastname: ` + lastname.val() + `<br>
-																Username: ` + username.val() + `<br>
-																Contact Number: ` + contactno.val() + `<br>
-																Email: ` + email.val() + `<br>
-																Password: `+ password.val() + `<br>
-																Restriction: `+ ischecked + `</h3>`;
-
-															updateData();
-															$.alert({
-																boxWidth: '30%',
-																useBootstrap: false,
-																typeAnimated: true,
-																type: 'green',
-																title: 'Response : ' + response,
-																content: successContent
-															});
-														},
-														error: function (xhr) {
-															$.alert({
-																boxWidth: '30%',
-																useBootstrap: false,
-																type: 'red',
-																typeAnimated: true,
-																title: 'error',
-																content: xhr.statusText
-															});
-														}
-													});
-												}
-											}
-										}
-									},
-									Close: function () {
-										// do nothing.
-									}
-								},
-								btnClass: 'btn-red',
-								Close: function () {
-									// do nothing.
-								}
-							});
-						}
-
-						//searchbutton
-						function searchTable() {
-							// Declare variables
-							var input, filter, table, tr, td, i, j, txtValue;
-							input = document.getElementById("searchInput");
-							filter = input.value.toLowerCase();
-							table = document.getElementById("myTable");
-							tr = table.getElementsByTagName("tr");
-
-							// Loop through all table rows, and hide those who don't match the search query
-							for (i = 1; i < tr.length; i++) {
-								tr[i].style.display = "none"; // Initially hide all rows
-								td = tr[i].getElementsByTagName("td");
-								for (j = 0; j < td.length; j++) {
-									if (td[j]) {
-										txtValue = td[j].textContent || td[j].innerText;
-										if (txtValue.toLowerCase().indexOf(filter) > -1) {
-											tr[i].style.display = ""; // Show the row if any column matches the search
-											break;
-										}
-									}
-								}
-							}
-						}
-
-
-
-
-
-
-
-						//notification
-                        const notificationIcon = document.getElementById('notifications');
-                        const notificationDropdown = document.getElementById('notificationDropdown');
-                        const notificationBadge = document.getElementById('notificationBadge');
-                        const markAllRead = document.getElementById('markAllRead');
-                        const unreadItems = document.querySelectorAll('.dropdown-item.unread');
-
-                        // Toggle dropdown visibility
-                        notifications.addEventListener('click', () => {
-                            notificationDropdown.classList.toggle('active');
-                        });
-
-                        // Close dropdown when clicking outside
-                        document.addEventListener('click', (event) => {
-                            if (!notifications.contains(event.target) && !notificationDropdown.contains(event.target)) {
-                                notificationDropdown.classList.remove('active');
-                            }
-                        });
-
-                        // Update badge count
-                        const updateBadgeCount = () => {
-                            const unreadCount = document.querySelectorAll('.dropdown-item.unread').length;
-                            notificationBadge.textContent = unreadCount;
-                            notificationBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
-                        };
-
-                        // Mark all notifications as read
-                        markAllRead.addEventListener('click', () => {
-                            unreadItems.forEach(item => item.classList.remove('unread'));
-                            updateBadgeCount();
-                        });
-
-                        // Initialize badge count
-                        updateBadgeCount();
-					</script>
-
-
 					<div class="load-wrapper">
 						<div class="main-loader">
 							<div class="box-loader">
 							</div>
 						</div>
 					</div>
+
+					<script type="text/javascript" src="../scripts/admin/list_of_staff.js"></script>
 		</body>
 
 		</html>

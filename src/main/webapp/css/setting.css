@@ -1,0 +1,314 @@
+@import url(../css/fonts.css);
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto Condensed", sans-serif;
+    }
+    body {
+        background-color: #fff;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .container {
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        position: absolute;
+        top: 0;
+    }
+    .left-navigation {
+        width: 20%;
+        height: 100%;
+        background-color: #1E91D0;
+        padding: 20px;
+        border-right: 1px solid #ccc;
+        position: relative;
+        margin-right: 1.5%;
+        margin-left: 8%;
+        border-radius: 20px 1px 1px 20px;
+    }
+    
+    .left-navigation h2 {
+        font-size: 20px;
+        margin-top: 40px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .profile-display {
+        text-align: center;
+        margin-bottom: 20px;
+        margin-left: 2%;
+    }
+    .profile-display img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto 10px;
+        border: 2px solid #ccc;
+    }
+    .profile-display p {
+        margin: 0;
+        font-weight: bold;
+    }
+    .left-navigation ul {
+        list-style: none;
+        padding: 0;
+    }
+    .left-navigation ul li {
+        margin-bottom: 15%;
+        cursor: pointer;
+        margin-left: 25%;
+        font-size: 1rem;
+    }
+    .left-navigation ul li.active {
+        font-weight: bold;
+        color: #fff;
+        font-size: 1rem;
+    }
+    .right-navigation {
+        width: 70%;
+        height: 100%;
+        float: right;
+        top: 0;
+        background-color: #FBFBFB;
+        flex-grow: 1;
+        padding: 20px;
+        border-radius: 20px 15px
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+   
+    .form-group input {
+        width: 70%;
+        padding: 8px;
+    }
+    .password {
+        margin-left: 35%;
+    }
+    
+    .profile-picture {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        margin: 10px 0;
+        border: 2px solid #ccc;
+        justify-content: center;
+        align-items: center;
+        margin-left: 42%;
+    }
+    .button-group {
+        margin-top: 20px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+    }
+    .button-group button {
+        padding: 10px 15px;
+        margin-right: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .button-group button.save {
+        background-color: #007bff;
+        color: white;
+        display: flex;
+        flex-direction: row;
+    }
+    .button-group button.cancel {
+        background-color: #f4f4f4;
+        color: black;
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+    }
+    .edit-link {
+        color: #007bff;
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: 14px;
+    }
+   
+    .change-link {
+        color: #007bff;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    .edit-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+    .navigation-section {
+        position: fixed;
+        top: 0;
+       
+        width: 200px;
+        height: 100%;
+        background-color: #1E91D0;
+        color: white;
+        transition: left 0.3s ease;
+        z-index: 1001;
+        padding: 1rem;
+    }
+    
+    .navigation-section .top-lnav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+    .cec {
+        width: 50%;
+        max-width: 100%;
+        object-fit: contain;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+    
+    .bottom-lnav {
+        width: 100%;
+        height: 80%;
+        background-color: transparent;
+        text-align: center;
+        padding-top: 4px;
+    }
+    .bottom-lnav a {
+        display: block;
+        margin: 1rem 0;
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+        margin-top: 40px;
+        margin-left: 10%;
+        text-align: start;
+    }
+    .bottom-lnav a:hover {
+        padding: 15px 20px;
+        width: 12.8vw;
+        background-color: white;
+        position: relative;
+        margin-left: 2px;
+        color: black;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
+    .bottom-lnav img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        margin-right: 10px;
+        filter: invert(1);
+    }
+    .bottom-lnav a:hover img {
+        filter: brightness(0) saturate(100%) hue-rotate(200deg); /*blue color*/
+        transform: scale(1.2);
+    }
+
+    .menu-section {
+        width: 70%;
+        height: 75%;
+        margin: 0 auto;  
+        display: flex;
+        justify-content: space-between;
+        align-items: center; 
+        position: relative;
+        top: 10%; 
+    }
+    .profile-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%; 
+    margin: 0 auto;
+    text-align: center; 
+}
+
+.profile-section label {
+    margin-bottom: 10px;
+}
+
+.profile-section img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+    margin-left: 35%;
+}
+
+.profile-section input {
+    margin-bottom: 10px; 
+    margin-left: 75%;
+}
+#current-password, #new-password, #confirm-password {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 15%;
+    margin-top: 3%;
+}
+.passtext{
+    text-align: center;
+    margin-left: 15%;
+}
+/* username-phonenumber end */
+.save-cancel-buttons {
+    display: flex;
+    margin-top: 5px;
+    margin-left: 1%;
+}
+
+.save-cancel-buttons button {
+    margin-right: 10%;
+    left: 0;
+    width: 35%;
+    height: 5vh;
+    border-radius: 3px;
+    border: 2px;
+    
+}
+.cancel{
+    background-color: #E2E0C8;
+    color: black;
+}
+.save{
+    background-color: #007bff;
+    color: #fff;
+}
+.save-cancel-btn {
+    display: flex;
+    margin-top: -10px;
+    margin-left: 1%;
+}
+/* profile end */
+.save-cancel-btn button { 
+    margin-right: 5%;
+    left: 0;
+    width: 7vw;
+    height: 5vh;
+    border-radius: 5px;
+    border: 2px;
+    
+}
+.cancel{
+    background-color: #E2E0C8;
+    color: black;
+}
+.save{
+    background-color: #007bff;
+    color: #fff;
+}
+

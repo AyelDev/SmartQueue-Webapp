@@ -16,9 +16,18 @@
 			<link rel="stylesheet" href="../css/loader.css">
 			<link rel="stylesheet" href="../css/adminpage.css">
 			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+			<script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
+			<script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+			<script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
+			<script type="text/javascript" src="../scripts/notify.js"></script>
+			<script type="text/javascript" src="../scripts/prettify.js"></script>
+			<script type="text/javascript" src="../scripts/ping.js"></script>
+			<script type="text/javascript" src="../scripts/fadetransition.js"></script>
+			<script type="text/javascript" src="../scripts/chart.min.js"></script>
+			<script type="text/javascript" src="../scripts/admin/adminpage.js"></script>
+			<link rel="icon" type="image/x-icon" href="./images/logo.png">
 			<title>Admin | Dashboard</title>
 		</head>
-
 		<body>
 			<div class="container">
 				<div class="navbar">
@@ -125,56 +134,7 @@
 				<div class="dashboard-section">
 					<div class="dashboard-head">
 						<div class="icon-container">
-							<svg class="bell-icon" id="notifications" width="30px" height="64px" viewBox="0 0 24.00 24.00" fill="none"
-								xmlns="http://www.w3.org/2000/svg">
-								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
-									stroke="#CCCCCC" stroke-width="0.048"></g>
-								<g id="SVGRepo_iconCarrier">
-									<path
-										d="M9.00195 17H5.60636C4.34793 17 3.71872 17 3.58633 16.9023C3.4376 16.7925 3.40126 16.7277 3.38515 16.5436C3.37082 16.3797 3.75646 15.7486 4.52776 14.4866C5.32411 13.1835 6.00031 11.2862 6.00031 8.6C6.00031 7.11479 6.63245 5.69041 7.75766 4.6402C8.88288 3.59 10.409 3 12.0003 3C13.5916 3 15.1177 3.59 16.2429 4.6402C17.3682 5.69041 18.0003 7.11479 18.0003 8.6C18.0003 11.2862 18.6765 13.1835 19.4729 14.4866C20.2441 15.7486 20.6298 16.3797 20.6155 16.5436C20.5994 16.7277 20.563 16.7925 20.4143 16.9023C20.2819 17 19.6527 17 18.3943 17H15.0003M9.00195 17L9.00031 18C9.00031 19.6569 10.3435 21 12.0003 21C13.6572 21 15.0003 19.6569 15.0003 18V17M9.00195 17H15.0003"
-										stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-										stroke-linejoin="round">
-									</path>
-								</g>
-							</svg>
-							<div class="notification-badge" id="notificationBadge">3</div>
-							<svg class="chat-icon" width="64px" height="30px" viewBox="-2.4 -2.4 28.80 28.80"
-								fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
-								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
-									stroke="#ffffff030303" stroke-width="0.336">
-									<path
-										d="M7 4C4.79086 4 3 5.79073 3 7.9997V13.2642C3 15.4732 4.79086 17.2639 7 17.2639L7 19.8998C7 19.9834 7.09639 20.0301 7.16197 19.9783L10.6 17.2639H17C19.2091 17.2639 21 15.4732 21 13.2642V7.99971C21 5.79073 19.2091 4 17 4H7Z"
-										stroke="#ffffff" stroke-width="0.552" stroke-linecap="round"></path>
-									<path
-										d="M9 11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11C7 10.4477 7.44772 10 8 10C8.55228 10 9 10.4477 9 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M13 11C13 11.5523 12.5523 12 12 12C11.4477 12 11 11.5523 11 11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M17 11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11Z"
-										fill="#ffffff"></path>
-								</g>
-								<g id="SVGRepo_iconCarrier">
-									<path
-										d="M7 4C4.79086 4 3 5.79073 3 7.9997V13.2642C3 15.4732 4.79086 17.2639 7 17.2639L7 19.8998C7 19.9834 7.09639 20.0301 7.16197 19.9783L10.6 17.2639H17C19.2091 17.2639 21 15.4732 21 13.2642V7.99971C21 5.79073 19.2091 4 17 4H7Z"
-										stroke="#ffffff" stroke-width="1.608" stroke-linecap="round"></path>
-									<path
-										d="M9 11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11C7 10.4477 7.44772 10 8 10C8.55228 10 9 10.4477 9 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M13 11C13 11.5523 12.5523 12 12 12C11.4477 12 11 11.5523 11 11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11Z"
-										fill="#ffffff"></path>
-									<path
-										d="M17 11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11Z"
-										fill="#ffffff"></path>
-								</g>
-							</svg>
 						</div>
-
-
 
 						<!-- admin profile -->
 						<button class="profilebutton" id="button-profile"><svg class="profile" width="64px"
@@ -189,7 +149,7 @@
 										d="M12.0019 8C10.0219 8 8.42188 9.6 8.42188 11.58C8.42188 13.56 10.0219 15.17 12.0019 15.17C13.9819 15.17 15.5819 13.56 15.5819 11.58C15.5819 9.6 13.9819 8 12.0019 8Z"
 										fill="#ffffff"></path>
 								</g>
-							</svg>ADMIN<svg class="caretdown" width="64px" height="64px" viewBox="0 0 24 24" fill="none"
+							</svg><c:out value="${sessionScope.sessionAdmin.username}"></c:out><svg class="caretdown" width="64px" height="64px" viewBox="0 0 24 24" fill="none"
 								xmlns="http://www.w3.org/2000/svg">
 								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -215,18 +175,17 @@
 								<canvas id="barGraph"></canvas>
 								<div class="total-summary">
 									<h2><br>Total Students: <span class="counts" id="total-student">---</span></h2>
-									<hr>
+									<hr class="hr-graph">
 									<p><br>BEED: <span class="counts" id="total-beed-student">loading...</span></p>
 									<P><br>BSED: <span class="counts" id="total-bsed-student">loading...</span></P>
 									<P><br>BSTM: <span class="counts" id="total-bstm-student">loading...</span></P>
 									<P><br>BSHM: <span class="counts" id="total-bshm-student">loading...</span></P>
 									<P><br>BSIT: <span class="counts" id="total-bsit-student">loading...</span></P>
 									<P><br>BSCRIM: <span class="counts" id="total-crim-student">loading...</span></P>
-									<hr>
+									<hr class="hr-graph">
 									<h2><br>Daily transaction: <span class="counts" id="total-transaction">loading...</span></h2>
 								</div>
 							</div>
-							
 
 							<!-- General - Program -->
 							<div class="table-container">
@@ -237,7 +196,6 @@
 										onclick="ModalInfo('Add Program for General', 'Program', 'GeneralProgramForm', 'general', 'POST', updateAttribute(null, null, null))">+Add
 											Info</button>
 									</div>
-									
 										<table>
 											<thead>
 												<tr>
@@ -263,10 +221,9 @@
 												</tr>
 											</tbody>
 										</table>
-								</div>
+									</div>
 
 								<!-- General - Purpose -->
-
 								<div class="table-content">
 									<div class="table-header">
 										<h3 class="table-title">General - Purpose</h3>
@@ -378,70 +335,7 @@
 						</div>
 					</div>
 				</div>
-
-
-
-				<!--notification dropdown-->
-				<div class="notificationdropdown" id="notificationDropdown">
-					<div class="notificationdropdown-header">
-						<span>Notifications</span>
-						<button id="markAllRead" class="text-blue-600 text-sm">Mark all as read</button>
-					</div>
-					<div class="notificationdropdown-item unread" data-id="1">
-						<img src="https://via.placeholder.com/40" alt="Profile">
-						<div>
-							<div class="notification-text">You have a new message.</div>
-							<div class="notification-time">2h ago</div>
-						</div>
-					</div>
-					<div class="notificationdropdown-item unread" data-id="2">
-						<img src="https://via.placeholder.com/40" alt="Profile">
-						<div>
-							<div class="notification-text">Your document has been approved.</div>
-							<div class="notification-time">6h ago</div>
-						</div>
-					</div>
-					<div class="notificationdropdown-item" data-id="3">
-						<img src="https://via.placeholder.com/40" alt="Profile">
-						<div>
-							<div class="notification-text">Your password has been reset.</div>
-							<div class="notification-time">1d ago</div>
-						</div>
-					</div>
-				</div>
 			</div>
-
-			<!-- Modal for Add/Update Info -->
-			<!-- <div class="modal" id="modal">
-				<div class="modal-content">
-					<h3 id="modal-title"></h3>
-					<form>
-						<label for="name">Program</label>
-						<input type="text" id="program" name="program" placeholder="Enter program"> -->
-
-			<!-- <label for="email">Purpose</label>
-						<input type="email" id="purpose" name="purpose" placeholder="Enter purpose"> -->
-
-			<!-- <button type="button" class="cancel-btn" onclick="hideModal()">Cancel</button>
-						<button type="submit" class="submit-btn">Add</button>
-					</form>
-				</div>
-			</div> -->
-			<script>
- // Sample data: Replace this with actual data from your system
- 
-			</script>
-
-			<script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
-			<script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
-			<script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
-			<script type="text/javascript" src="../scripts/notify.js"></script>
-			<script type="text/javascript" src="../scripts/prettify.js"></script>
-			<script type="text/javascript" src="../scripts/ping.js"></script>
-			<script type="text/javascript" src="../scripts/fadetransition.js"></script>
-			<script type="text/javascript" src="../scripts/chart.min.js"></script>
-			<script type="text/javascript" src="../scripts/admin/adminpage.js"></script>
-
 			<div class="load-wrapper">
 				<div class="main-loader">
 					<div class="box-loader">
@@ -449,12 +343,7 @@
 				</div>
 			</div>
 		</body>
-
 		</html>
-
-
-
-
 		<!-- <h1>
 					Welcome
 					<c:out value="${admin}"></c:out>

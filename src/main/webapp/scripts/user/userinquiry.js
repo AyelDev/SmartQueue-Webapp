@@ -1,9 +1,18 @@
 $(document).ready(function () {
-    updateCounterName();
+    updateCounterName()
+        .then(function () {
+            return getAvailableQueueNUmber();
+        })
+        .catch(function (error) {
+            console.error('Error:', error);
+        });
 });
 
 function updateCounterName() {
-    fetch(window.location.origin + '/CounterlistApi')
+
+    return new Promise(function (resolve, reject) {
+
+        fetch(window.location.origin + '/CounterlistApi')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -16,6 +25,13 @@ function updateCounterName() {
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
         });
+
+        setTimeout(function() {
+            console.log('Counter name updated');
+            resolve();
+        }, 1000); 
+    });
+
 }
 
 function renderCounterListBody(data) {
@@ -129,6 +145,31 @@ function checkQueueLimit() {
     return true;
 }
 
+//need to polish --- BUG: TOO MANY CONNECTIONS PARTIAL FIX
+var queueNumber = 0;
+function getAvailableQueueNUmber(){
+
+    return new Promise(function (resolve, reject) {
+
+        $.ajax({
+            url: 'JsonQueueNumberAvailableAPI?availableNumber=' + queueNumber,
+            type: "GET",
+            success: function (response) {
+                queueNumber = response.id;
+                sendMsg("update queue");
+            },
+            error: function (xhr, status, error) {
+                $.notify(xhr.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
+            }
+        });
+
+        setTimeout(function() {
+            console.log('Counter name updated');
+            resolve(); 
+        }, 1000);
+    });
+}
+
 var isRunning = false;
 // Function to print the queue and check if limit is reached
 async function printQueue(serviceType) {
@@ -140,19 +181,8 @@ async function printQueue(serviceType) {
     }
     isRunning = true;
 
-    //need to polish
-    var queueNumber = '';
-    await $.ajax({
-        url: 'JsonQueueNumberAvailableAPI?availableNumber=1',
-        type: "GET",
-        success: function (response) {
-            queueNumber = response.id;
-            sendMsg("update queue");
-        },
-        error: function (xhr, status, error) {
-            $.notify(xhr.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
-        }
-    });
+    //E INCREMENT KAY MO BUG FIX NALANG NI LATOR
+    queueNumber++;
 
     let studentName = '';
     let studentId = '';
@@ -278,7 +308,7 @@ function closeModal() {
 
 // ---------------------records 
 const recordsButton = document.getElementById("recordsbutton");
-recordsButton.addEventListener("mouseover", event => {
+recordsButton.addEventListener("mouseenter", event => {
     //console.log("records-student-id");
     studentId = document.getElementById('records-student-id');
     let studentName = document.getElementById('records-student-name');

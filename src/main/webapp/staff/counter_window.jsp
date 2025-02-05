@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         
-                        <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b>STAFF</b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
+                        <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b><c:out value="${sessionScope.sessionStaff.firstname}"></c:out></b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
                 <div class="staffProfile" id="staffProfile">
                     <a href="setting">Settings</a>
                     <a href="logout">Signout</a>
@@ -187,29 +187,29 @@
 
                 async function counterChangeListOnChange() {
 
-                    document.getElementById("priority-number-table").innerHTML = `
-                       <tr>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                        </tr>
-                    `;
+                    // document.getElementById("priority-number-table").innerHTML = `
+                    //    <tr>
+                    //                         <td><div class="tloader"></div></td>
+                    //                         <td><div class="tloader"></div></td>
+                    //                         <td><div class="tloader"></div></td>
+                    //                         <td><div class="tloader"></div></td>
+                    //                         <td><div class="tloader"></div></td>
+                    //                         <td><div class="tloader"></div></td>
+                    //                         <td><div class="tloader"></div></td>
+                    //                     </tr>
+                    // `;
 
-                    document.getElementById("counter-access-table").innerHTML = `
-                       <tr>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                        </tr>
-                    `;
+                    // document.getElementById("counter-access-table").innerHTML = `
+                    //    <tr>
+                    //                         <td><div class="tloader"></div></td>
+                    //                         <td><div class="tloader"></div></td>
+                    //                         <td><div class="tloader"></div></td>
+                    //                         <td><div class="tloader"></div></td>
+                    //                         <td><div class="tloader"></div></td>
+                    //                         <td><div class="tloader"></div></td>
+                    //                         <td><div class="tloader"></div></td>
+                    //                     </tr>
+                    // `;
 
                     await CounterList(counterList.value, "QUEUE", '#priority-number-table');
                     await CounterList(counterList.value, "SERVING", '#counter-access-table');
@@ -245,7 +245,7 @@
                     });
                 }
 
-                //setInterval(counterChangeListOnChange, 5000); change to websocket
+                setInterval(counterChangeListOnChange, 3000); //change to websocket
 
                 let priorityNumberTableBody = document.getElementById("priority-number-table");
                 let counterAccessTableBody = document.getElementById("counter-access-table");
@@ -356,9 +356,6 @@
                         }));
                         //ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
                     }
-
-                      //update lists after change partial fix kay naglelebog na ako HAHAHA
-                      counterChangeListOnChange();
                 }
 
                 var ws2 = new WebSocket(wsUrl + window.location.host + "/queueupdate");

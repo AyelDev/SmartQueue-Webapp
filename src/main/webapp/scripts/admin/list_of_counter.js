@@ -203,7 +203,7 @@ function searchTable() {
 
 
 
-var dropdown = document.getElementsByClassName("button-profile");
+var dropdown = document.getElementsByClassName("profilebutton");
 var i;
 
 for (i = 0; i < dropdown.length; i++) {
@@ -217,9 +217,6 @@ for (i = 0; i < dropdown.length; i++) {
         }
     });
 }
-
-// Get elements
-const addAccountButton = document.querySelector('.add-account-btn');
 const closeModalButton = document.querySelector('.close-btn');
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
@@ -236,67 +233,47 @@ function closeModal() {
     overlay.classList.remove('active');
 }
 
-// Event listeners
-addAccountButton.addEventListener('click', openModal);
 closeModalButton.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
-var dropdown = document.getElementsByClassName("button-profile");
-var i;
 
-for (i = 0; i < dropdown.length; i++) {
-    dropdown[i].addEventListener("click", function () {
-
-        var dropdownContent = this.nextElementSibling;
-        if (dropdownContent.style.display === "block") {
-            dropdownContent.style.display = "none";
-        } else {
-            dropdownContent.style.display = "block";
-        }
-    });
-}
 
 var staffListInfo = document.getElementById("tablelist");
 
-//button-profile being active btn
-document.getElementById('button-profile').addEventListener('click', function () {
-    this.classList.toggle('active');
-    document.getElementById('adminProfile').classList.toggle('show');
-});
 
 
 
-//notification
-const notificationIcon = document.getElementById('notifications');
-const notificationDropdown = document.getElementById('notificationDropdown');
-const notificationBadge = document.getElementById('notificationBadge');
-const markAllRead = document.getElementById('markAllRead');
-const unreadItems = document.querySelectorAll('.dropdown-item.unread');
+// //notification
+// const notificationIcon = document.getElementById('notifications');
+// const notificationDropdown = document.getElementById('notificationDropdown');
+// const notificationBadge = document.getElementById('notificationBadge');
+// const markAllRead = document.getElementById('markAllRead');
+// const unreadItems = document.querySelectorAll('.dropdown-item.unread');
 
-// Toggle dropdown visibility
-notifications.addEventListener('click', () => {
-    notificationDropdown.classList.toggle('active');
-});
+// // Toggle dropdown visibility
+// notifications.addEventListener('click', () => {
+//     notificationDropdown.classList.toggle('active');
+// });
 
-// Close dropdown when clicking outside
-document.addEventListener('click', (event) => {
-    if (!notifications.contains(event.target) && !notificationDropdown.contains(event.target)) {
-        notificationDropdown.classList.remove('active');
-    }
-});
+// // Close dropdown when clicking outside
+// document.addEventListener('click', (event) => {
+//     if (!notifications.contains(event.target) && !notificationDropdown.contains(event.target)) {
+//         notificationDropdown.classList.remove('active');
+//     }
+// });
 
-// Update badge count
-const updateBadgeCount = () => {
-    const unreadCount = document.querySelectorAll('.dropdown-item.unread').length;
-    notificationBadge.textContent = unreadCount;
-    notificationBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
-};
+// // Update badge count
+// const updateBadgeCount = () => {
+//     const unreadCount = document.querySelectorAll('.dropdown-item.unread').length;
+//     notificationBadge.textContent = unreadCount;
+//     notificationBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
+// };
 
-// Mark all notifications as read
-markAllRead.addEventListener('click', () => {
-    unreadItems.forEach(item => item.classList.remove('unread'));
-    updateBadgeCount();
-});
+// // Mark all notifications as read
+// markAllRead.addEventListener('click', () => {
+//     unreadItems.forEach(item => item.classList.remove('unread'));
+//     updateBadgeCount();
+// });
 
-// Initialize badge count
-updateBadgeCount();
+// // Initialize badge count
+// updateBadgeCount();

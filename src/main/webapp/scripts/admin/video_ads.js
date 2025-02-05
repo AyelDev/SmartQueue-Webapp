@@ -1,7 +1,18 @@
-document.getElementById('button-profile').addEventListener('click', function () {
-    this.classList.toggle('active');
-    document.getElementById('adminProfile').classList.toggle('show');
-});
+var dropdown = document.getElementsByClassName("profilebutton");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function () {
+
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+    });
+}
+
 
 document.getElementById('uploadButton').addEventListener('click', async function () {
     const videoFiles = document.getElementById('videoFiles').files;

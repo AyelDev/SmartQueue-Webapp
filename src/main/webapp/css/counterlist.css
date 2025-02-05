@@ -275,27 +275,20 @@ body {
 }
 
 .icon-container {
-    width: 5%;
+    width: 7%;
     height: 100%;
-    margin-left: 75%;
+    margin-left: 80%;
+
 }
 
 .bell-icon {
     object-fit: scale-down;
     width: 20px;
-    margin-top: -9%;
+    margin-top: -10%;
     cursor: pointer;
     margin-left: 5%;
 }
 
-.chat-icon {
-    object-fit: scale-down;
-    width: 25px;
-    cursor: pointer;
-    margin-left: 2%;
-    margin-top: 1%;
-    position: absolute;
-}
 
 
 .profilebutton {
@@ -303,7 +296,7 @@ body {
     justify-content: center;
     display: flex;
     width: 10vw;
-    margin-top: -5.5%;
+    margin-top: -6%;
     margin-left: 84%;
     border-radius: 10px;
     padding: 15px 10px 15px 10px;
@@ -335,10 +328,10 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    z-index: 1;
+    z-index: 1000;
     display: none;
     border-radius: 7px;
-    margin-top: -2.5%;
+    margin-top: -3%;
 }
 
 .adminProfile a {
