@@ -1,4 +1,4 @@
-package com.smartqueueweb.Test;
+package com.smartqueueweb.Test.Admin;
 
 import static org.junit.Assert.assertEquals;
 

@@ -16,9 +16,18 @@
 			<link rel="stylesheet" href="../css/loader.css">
 			<link rel="stylesheet" href="../css/adminpage.css">
 			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+			<script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
+			<script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+			<script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
+			<script type="text/javascript" src="../scripts/notify.js"></script>
+			<script type="text/javascript" src="../scripts/prettify.js"></script>
+			<script type="text/javascript" src="../scripts/ping.js"></script>
+			<script type="text/javascript" src="../scripts/fadetransition.js"></script>
+			<script type="text/javascript" src="../scripts/chart.min.js"></script>
+			<script type="text/javascript" src="../scripts/admin/adminpage.js"></script>
+			<link rel="icon" type="image/x-icon" href="./images/logo.png">
 			<title>Admin | Dashboard</title>
 		</head>
-
 		<body>
 			<div class="container">
 				<div class="navbar">
@@ -125,11 +134,7 @@
 				<div class="dashboard-section">
 					<div class="dashboard-head">
 						<div class="icon-container">
-							
-							
 						</div>
-
-
 
 						<!-- admin profile -->
 						<button class="profilebutton" id="button-profile"><svg class="profile" width="64px"
@@ -181,7 +186,6 @@
 									<h2><br>Daily transaction: <span class="counts" id="total-transaction">loading...</span></h2>
 								</div>
 							</div>
-							
 
 							<!-- General - Program -->
 							<div class="table-container">
@@ -192,7 +196,6 @@
 										onclick="ModalInfo('Add Program for General', 'Program', 'GeneralProgramForm', 'general', 'POST', updateAttribute(null, null, null))">+Add
 											Info</button>
 									</div>
-									
 										<table>
 											<thead>
 												<tr>
@@ -218,10 +221,9 @@
 												</tr>
 											</tbody>
 										</table>
-								</div>
+									</div>
 
 								<!-- General - Purpose -->
-
 								<div class="table-content">
 									<div class="table-header">
 										<h3 class="table-title">General - Purpose</h3>
@@ -333,43 +335,7 @@
 						</div>
 					</div>
 				</div>
-
-
-
-				
 			</div>
-
-			<!-- Modal for Add/Update Info -->
-			<!-- <div class="modal" id="modal">
-				<div class="modal-content">
-					<h3 id="modal-title"></h3>
-					<form>
-						<label for="name">Program</label>
-						<input type="text" id="program" name="program" placeholder="Enter program"> -->
-
-			<!-- <label for="email">Purpose</label>
-						<input type="email" id="purpose" name="purpose" placeholder="Enter purpose"> -->
-
-			<!-- <button type="button" class="cancel-btn" onclick="hideModal()">Cancel</button>
-						<button type="submit" class="submit-btn">Add</button>
-					</form>
-				</div>
-			</div> -->
-			<script>
- // Sample data: Replace this with actual data from your system
- 
-			</script>
-
-			<script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
-			<script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
-			<script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
-			<script type="text/javascript" src="../scripts/notify.js"></script>
-			<script type="text/javascript" src="../scripts/prettify.js"></script>
-			<script type="text/javascript" src="../scripts/ping.js"></script>
-			<script type="text/javascript" src="../scripts/fadetransition.js"></script>
-			<script type="text/javascript" src="../scripts/chart.min.js"></script>
-			<script type="text/javascript" src="../scripts/admin/adminpage.js"></script>
-
 			<div class="load-wrapper">
 				<div class="main-loader">
 					<div class="box-loader">
@@ -377,12 +343,7 @@
 				</div>
 			</div>
 		</body>
-
 		</html>
-
-
-
-
 		<!-- <h1>
 					Welcome
 					<c:out value="${admin}"></c:out>

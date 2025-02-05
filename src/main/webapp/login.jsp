@@ -6,13 +6,14 @@
 		<head>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script>
-			<script type="text/javascript" src="scripts/fadetransition.js"></script>
-			<script type="text/javascript" src="scripts/jquery-confirm.min.js"></script>
 			<link rel="stylesheet" href="./css/bootstrap.css">
 			<link rel="stylesheet" type="text/css" href="css/jquery-confirm.min.css" />
 			<link rel="stylesheet" href="css/loginstyle.css">
 			<link rel="stylesheet" href="css/loader.css">
+			<script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script>
+			<script type="text/javascript" src="scripts/fadetransition.js"></script>
+			<script type="text/javascript" src="scripts/jquery-confirm.min.js"></script>
+			<link rel="icon" type="image/x-icon" href="./images/logo.png">
 			<title>Login</title>
 		</head>
 
@@ -85,16 +86,26 @@
 						boxWidth: '30%',
 						useBootstrap: false,
 						title: 'Request Reset Password',
-						content: '' +
-							'<form action="" class="formName">' +
-							'<div class="form-group">' +
-							'<label>Enter Username</label>' +
-							'<input type="text" placeholder="Your name" class="username form-control" required />' +
-							'<br>' +
-							'<label>Enter Email</label>' +
-							'<input type="text" placeholder="Your email" class="email form-control" required />' +
-							'</div>' +
-							'</form>',
+						content: 
+						`
+							 <form action="" class="formName">
+							 <div class="form-group">
+							 <br>
+							 <label>Enter Email</label>
+							 <input type="text" placeholder="Your email" class="email form-control" required />
+							 </div>
+							 </form>
+						`,
+						// content: '' +
+						// 	'<form action="" class="formName">' +
+						// 	'<div class="form-group">' +
+						// 	'<label>Enter Username</label>' +
+						// 	'<input type="text" placeholder="Your name" class="username form-control" required />' +
+						// 	'<br>' +
+						// 	'<label>Enter Email</label>' +
+						// 	'<input type="text" placeholder="Your email" class="email form-control" required />' +
+						// 	'</div>' +
+						// 	'</form>',
 
 						buttons: {
 							formSubmit: {
