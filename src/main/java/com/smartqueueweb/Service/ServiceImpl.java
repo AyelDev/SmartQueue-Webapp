@@ -122,6 +122,18 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return staffdata.SetStaffPin(pin, id);
 	}
+
+	@Override
+	public Boolean resetPasswordStep1(String email) {
+		// TODO Auto-generated method stub
+		return staffdata.ResetPasswordStep1(email);
+	}
+
+	@Override
+	public StaffBean resetPasswordStep2(String pin, String email) {
+		// TODO Auto-generated method stub
+		return staffdata.ResetPasswordStep2(pin, email);
+	}
 	
 	//////////////////////////////////////////////////////////////////////// --------------------
 	//////////////////////////////////////////////////////////////////////// Admin
@@ -311,5 +323,4 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return "";
 
 	}
-
 }

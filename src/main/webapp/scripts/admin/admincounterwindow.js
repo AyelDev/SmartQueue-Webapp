@@ -253,9 +253,6 @@ function CallName(){
     }else{
         alert("Empty name or counter window not set.");
     }
-       
-
-    
 
     document.querySelector('.custom-call').value = ''; //clear name after call
 }

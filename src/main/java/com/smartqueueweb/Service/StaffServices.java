@@ -40,4 +40,8 @@ public interface StaffServices {
 	Integer addVideo(String fileName, String path, String type);
 
 	Integer setStaffPin(String pin, int id);
+
+	Boolean resetPasswordStep1(String email);
+
+	StaffBean resetPasswordStep2(String pin, String email);
 }
