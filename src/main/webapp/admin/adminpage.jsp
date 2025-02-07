@@ -24,7 +24,6 @@
 			<script type="text/javascript" src="../scripts/ping.js"></script>
 			<script type="text/javascript" src="../scripts/fadetransition.js"></script>
 			<script type="text/javascript" src="../scripts/chart.min.js"></script>
-			<script type="text/javascript" src="../scripts/admin/adminpage.js"></script>
 			<link rel="icon" type="image/x-icon" href="./images/logo.png">
 			<title>Admin | Dashboard</title>
 		</head>
@@ -137,7 +136,7 @@
 						</div>
 
 						<!-- admin profile -->
-						<button class="profilebutton" id="button-profile"><svg class="profile" width="64px"
+						<button class="profilebutton" id="profilebutton"><svg class="profile" width="64px"
 								height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -342,6 +341,7 @@
 					</div>
 				</div>
 			</div>
+			<script type="text/javascript" src="../scripts/admin/adminpage.js"></script>
 		</body>
 		</html>
 		<!-- <h1>

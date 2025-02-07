@@ -12,4 +12,7 @@
 	<data name="API.TOKENAUTHTENTICATIONFAILED">
 		<value>Authentication expired, Please log in</value>
 	</data>
+	<data name="API.INTERNALSERVERERROR">
+		<value>There’s an issue with the server. Please try again.</value>
+	</data>
 </Errors>

@@ -232,19 +232,19 @@
                                         <form id="profileForm">
                                             <div class="form-group">
                                                 <label for="name" class="information">Name:</label>
-                                                <input type="text" id="name" value="" required>
+                                                <input type="text" id="name" value="" disabled>
                                             </div>
                                             <div class="form-group">
                                                 <label for="username" class="information">Username:</label>
-                                                <input type="text" id="username" value="" required>
+                                                <input type="text" id="username" value="" disabled>
                                             </div>
                                             <div class="form-group">
                                                 <label for="email" class="information">Email:</label>
-                                                <input type="email" id="email" value="" required>
+                                                <input type="email" id="email" value="" disabled>
                                             </div>
                                             <div class="form-group">
                                                 <label for="phone" class="information">Phone Number:</label>
-                                                <input type="text" id="phone" value="" required>
+                                                <input type="text" id="phone" value="" disabled>
                                             </div>
                                             <button type="submit" class="save-btn">Save</button>
                                         </form>
