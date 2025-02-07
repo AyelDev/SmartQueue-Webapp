@@ -141,6 +141,7 @@ public class StaffDAO extends SQLConnection {
 	}
 
 	List<StaffBean> listOfStaff = null;
+
 	public List<StaffBean> listOfStaff() {
 		try {
 			ConnectDriver();
@@ -149,15 +150,9 @@ public class StaffDAO extends SQLConnection {
 			listOfStaff = new ArrayList<StaffBean>();
 
 			while (rs.next()) {
-				staffbean = new StaffBean(rs.getInt("staff_id"),
-						rs.getString("username"),
-						rs.getString("password"),
-						rs.getString("firstname"),
-						rs.getString("lastname"),
-						rs.getString("email"),
-						rs.getString("contact_number"),
-						rs.getInt("isLocked"),
-						rs.getString("pin_number"));
+				staffbean = new StaffBean(rs.getInt("staff_id"), rs.getString("username"), rs.getString("password"),
+						rs.getString("firstname"), rs.getString("lastname"), rs.getString("email"),
+						rs.getString("contact_number"), rs.getInt("isLocked"), rs.getString("pin_number"));
 				listOfStaff.add(staffbean);
 			}
 
@@ -178,9 +173,7 @@ public class StaffDAO extends SQLConnection {
 			LocalDateTime expiryDate = now.plusHours(2);
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-			prs = conn.prepareStatement(
-					"INSERT INTO accesstokens (role, value, date_expired) "
-							+ " VALUES (?, ?, ?)");
+			prs = conn.prepareStatement("INSERT INTO accesstokens (role, value, date_expired) " + " VALUES (?, ?, ?)");
 
 			prs.setString(1, role);
 			prs.setString(2, value);
@@ -216,56 +209,56 @@ public class StaffDAO extends SQLConnection {
 	public Integer updateStaff(long staffId, String inputFirstname, String inputLastname, String inputEmail,
 			double inputContactnumber, String inputUsername, String inputPassword, int inputStafflocked) {
 
-				try {
-					ConnectDriver();
-					prs = conn.prepareStatement("UPDATE `tbl_login_staff` SET `firstname` = ?, `lastname` = ?, `email` = ?,"+
-					" `contact_number` = ?, `username` = ?, `password` = ?, `isLocked` = ? WHERE `tbl_login_staff`.`staff_id` = ?;");
-					prs.setString(1, inputFirstname);
-					prs.setString(2, inputLastname);
-					prs.setString(3, inputEmail);
-					prs.setDouble(4, inputContactnumber);
-					prs.setString(5, inputUsername);
-					prs.setString(6, inputPassword);
-					prs.setInt(7, inputStafflocked);
-					prs.setLong(8, staffId);
-					
-					return prs.executeUpdate();
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("UPDATE `tbl_login_staff` SET `firstname` = ?, `lastname` = ?, `email` = ?,"
+					+ " `contact_number` = ?, `username` = ?, `password` = ?, `isLocked` = ? WHERE `tbl_login_staff`.`staff_id` = ?;");
+			prs.setString(1, inputFirstname);
+			prs.setString(2, inputLastname);
+			prs.setString(3, inputEmail);
+			prs.setDouble(4, inputContactnumber);
+			prs.setString(5, inputUsername);
+			prs.setString(6, inputPassword);
+			prs.setInt(7, inputStafflocked);
+			prs.setLong(8, staffId);
 
-				} catch (Exception e) {
-					// TODO: handle exception
-					e.printStackTrace();
-				}finally{
-					SQLClose();
-				}
+			return prs.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
 
 		return 0;
 	}
 
 	public List<StaffBean> listOfStaffPasswordRequest(int isCompleted) {
 		try {
-		ConnectDriver();
-		prs = conn.prepareStatement("SELECT * FROM tbl_staff_request_password WHERE is_completed=?");
-		prs.setInt(1, isCompleted);
-		rs = prs.executeQuery();
-		listOfStaff = new ArrayList<StaffBean>();
-		while (rs.next()) {
-			staffbean = new StaffBean(
-					rs.getString("username"),
-					rs.getString("email"),
-					rs.getInt("request_id"),
-					rs.getDate("date_requested"));
-			listOfStaff.add(staffbean);
+			ConnectDriver();
+			prs = conn.prepareStatement("SELECT * FROM tbl_staff_request_password WHERE is_completed=?");
+			prs.setInt(1, isCompleted);
+			rs = prs.executeQuery();
+			listOfStaff = new ArrayList<StaffBean>();
+			while (rs.next()) {
+				staffbean = new StaffBean(
+						rs.getString("username"), 
+						rs.getString("email"), 
+						rs.getInt("request_id"),
+						rs.getDate("date_requested"));
+				listOfStaff.add(staffbean);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			SQLClose();
 		}
-	} catch (Exception e) {
-		// TODO: handle exception
-		e.printStackTrace();
-	} finally {
-		SQLClose();
-	}
-	return listOfStaff;
+		return listOfStaff;
 	}
 
-		public Integer requestStaffPassword(String username, String email) {
+	public Integer requestStaffPassword(String username, String email) {
 		// TODO Auto-generated method stub
 		try {
 			ConnectDriver();
@@ -285,116 +278,182 @@ public class StaffDAO extends SQLConnection {
 	}
 
 	List<ServicesBean> listOfWindow = null;
-        public List<ServicesBean> windowList() {
-			try {
-				ConnectDriver();
-				prs = conn.prepareStatement("SELECT * FROM tbl_servicetype");
-				rs = prs.executeQuery();
-				listOfWindow = new ArrayList<ServicesBean>();
-				while (rs.next()) {
-					servicesBean = new ServicesBean(
-						rs.getInt("window_number"),
-						rs.getString("servicetype")
-					);
-					listOfWindow.add(servicesBean);
-				}
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			} finally {
-				SQLClose();
-			}
-			return listOfWindow;
-        }
 
-		List<ServicesBean> studentQueueEntries = null;
-		public List<ServicesBean> studentQueueEntries(int window_number, String queue_status) {
-			// TODO Auto-generated method stub
-			try {
-				ConnectDriver();
-				prs = conn.prepareStatement("SELECT * FROM student_queue_entries WHERE window_number = ? AND queue_status = ? ");
-				prs.setInt(1, window_number);
-				prs.setString(2, queue_status);
-				rs = prs.executeQuery();
-				studentQueueEntries = new ArrayList<ServicesBean>();
-				while (rs.next()) {
-					servicesBean = new ServicesBean(
-						rs.getInt("id"),
-						rs.getString("queue_number"),
-						rs.getString("purpose"),
-						rs.getString("fullname"),
-						rs.getString("id_number"),
-						rs.getTimestamp("date"),
-						rs.getString("queue_status"),
-						rs.getInt("window_number")
-					);
-					studentQueueEntries.add(servicesBean);
-				}
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			} finally {
-				SQLClose();
+	public List<ServicesBean> windowList() {
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("SELECT * FROM tbl_servicetype");
+			rs = prs.executeQuery();
+			listOfWindow = new ArrayList<ServicesBean>();
+			while (rs.next()) {
+				servicesBean = new ServicesBean(rs.getInt("window_number"), rs.getString("servicetype"));
+				listOfWindow.add(servicesBean);
 			}
-			return studentQueueEntries;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			SQLClose();
 		}
+		return listOfWindow;
+	}
 
-		public Integer updateQueueStatus(String queueNumber, String queue_status) {
-			// TODO Auto-generated method stub
-			try {
-				ConnectDriver();
-				prs = conn.prepareStatement("UPDATE `student_queue_entries` SET `queue_status` = ?"
-						+ " WHERE `student_queue_entries`.`queue_number` = ?");
-				prs.setString(1, queue_status);
-				prs.setString(2, queueNumber);
-				return prs.executeUpdate();
+	List<ServicesBean> studentQueueEntries = null;
 
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			} finally {
-				SQLClose();
+	public List<ServicesBean> studentQueueEntries(int window_number, String queue_status) {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement(
+					"SELECT * FROM student_queue_entries WHERE window_number = ? AND queue_status = ? ");
+			prs.setInt(1, window_number);
+			prs.setString(2, queue_status);
+			rs = prs.executeQuery();
+			studentQueueEntries = new ArrayList<ServicesBean>();
+			while (rs.next()) {
+				servicesBean = new ServicesBean(rs.getInt("id"), rs.getString("queue_number"), rs.getString("purpose"),
+						rs.getString("fullname"), rs.getString("id_number"), rs.getTimestamp("date"),
+						rs.getString("queue_status"), rs.getInt("window_number"));
+				studentQueueEntries.add(servicesBean);
 			}
-			return 0;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			SQLClose();
 		}
-		
-		public Integer addVideo(String fileName, String path, String fileType) {
-			try {
-				ConnectDriver();
-				prs = conn.prepareStatement(
-						"INSERT INTO tbl_media (fileName, path, type) VALUES (?, ?, ?);");
+		return studentQueueEntries;
+	}
 
-				prs.setString(1, fileName);
-				prs.setString(2, path);
-				prs.setString(3, fileType);
+	public Integer updateQueueStatus(String queueNumber, String queue_status) {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("UPDATE `student_queue_entries` SET `queue_status` = ?"
+					+ " WHERE `student_queue_entries`.`queue_number` = ?");
+			prs.setString(1, queue_status);
+			prs.setString(2, queueNumber);
+			return prs.executeUpdate();
 
-				return prs.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return 0;
+	}
 
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				SQLClose();
+	public Integer addVideo(String fileName, String path, String fileType) {
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("INSERT INTO tbl_media (fileName, path, type) VALUES (?, ?, ?);");
+
+			prs.setString(1, fileName);
+			prs.setString(2, path);
+			prs.setString(3, fileType);
+
+			return prs.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return 0;
+	}
+
+	public Integer SetStaffPin(String pin, int id) {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn
+					.prepareStatement("UPDATE tbl_login_staff SET pin_number = ? WHERE tbl_login_staff.staff_id = ?;");
+
+			prs.setString(1, pin);
+			prs.setInt(2, id);
+
+			return prs.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return 0;
+	}
+
+	public Boolean ResetPasswordStep1(String email) {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("SELECT * FROM tbl_login_staff WHERE email = ?;");
+
+			prs.setString(1, email);
+			rs = prs.executeQuery();
+			if(rs.next()) {
+				return rs.getBoolean(1);
 			}
-			return 0;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
 		}
+		return false;
+	}
 
-		public Integer SetStaffPin(String pin, int id) {
-			// TODO Auto-generated method stub
-			try {
-				ConnectDriver();
-				prs = conn.prepareStatement(
-						"UPDATE tbl_login_staff SET pin_number = ? WHERE tbl_login_staff.staff_id = ?;");
+	public StaffBean ResetPasswordStep2(String pin, String email) {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("SELECT * FROM tbl_login_staff WHERE pin_number = ? AND email = ?;");
+			prs.setString(1, pin);
+			prs.setString(2, email);
 
-				prs.setString(1, pin);
-				prs.setInt(2, id);
-
-				return prs.executeUpdate();
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				SQLClose();
+			rs = prs.executeQuery();
+			
+			while (rs.next()) {	
+					staffbean = new StaffBean();
+					staffbean.setStaffID(rs.getInt("staff_id"));
+					staffbean.setUsername(rs.getString("username"));
+					staffbean.setPassword(rs.getString("password"));
+					staffbean.setFirstname(rs.getString("firstname"));
+					staffbean.setLastname(rs.getString("lastname"));
+					staffbean.setEmail(rs.getString("email"));
+					staffbean.setContactNumber(rs.getString("contact_number"));
+					staffbean.setIsLocked(rs.getInt("isLocked"));
+					staffbean.setPin(rs.getString("pin_number"));
 			}
-			return 0;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
 		}
+		return staffbean;
+	}
+
+	public Boolean CompletePasswordReset(String password, int id) {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn
+					.prepareStatement("UPDATE tbl_login_staff SET password = ? WHERE tbl_login_staff.staff_id = ?;");
+
+			prs.setString(1, password);
+			prs.setInt(2, id);
+			
+			int executeQuery = prs.executeUpdate();
+			
+			if(executeQuery > 0)
+				return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return false;
+	}
 }

@@ -144,7 +144,7 @@
                     background: none;
                     display: flex;
                     align-items: center;
-                    width: 14.3vw;
+                    width: 15vw;
                     height: 8vh;
                     border: 0;
                     font-size: 15px;
@@ -220,7 +220,7 @@
                 .active,
                 .dropdown-btn:hover {
                     background-color: var(--background-color);
-                    width: 14.3vw;
+                    width: 15vw;
                     color: var(--text-color);
                     font-weight: bold;
                 }
@@ -413,10 +413,10 @@
 
                 #passwordForm {
                     margin-bottom: 50px;
-                    width: 48vw;
-                    height: 72vh;
+                    width: 50.3vw;
+                    height: 64vh;
                     flex: 1;
-                    margin-left: 2%;
+                    margin-left: -1.8%;
                     background-color: #ffffff;
                     border-radius: 10px;
                     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -452,4 +452,8 @@
                     color: #ffffff;
                     font-size: 0.9rem;
                     border-radius: 5px;
+                }
+                
+                .dashboard-content{
+                    margin-top: 5%;
                 }
