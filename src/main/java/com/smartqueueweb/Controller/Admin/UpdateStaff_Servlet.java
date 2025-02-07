@@ -33,7 +33,7 @@ public class UpdateStaff_Servlet extends HttpServlet {
 		
 		  // Call the service to register staff
         try {
-        	 services.updateStaff(Long.parseLong(idNo), firstname, lastname, email, Double.parseDouble(contacno), username, password, Integer.parseInt(islocked));
+        	 services.updateStaff(Long.parseLong(idNo), firstname, lastname, email, contacno, username, password, Integer.parseInt(islocked));
         	 response.setContentType("text/plain");
              response.setStatus(HttpServletResponse.SC_OK);
              response.getWriter().write("Update success.");

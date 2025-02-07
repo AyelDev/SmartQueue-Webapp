@@ -9,6 +9,9 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="../css/prettify.css">
+			<link rel="stylesheet" href="../css/notify.css">
+			<link rel="stylesheet" href="../css/jquery-confirm.min.css">
             <link rel="stylesheet" href="../css/loader.css">
             <link rel="stylesheet" href="../css/adminsettings.css">
             <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -268,14 +271,14 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="new-password" class="password">New Password:</label>
-                                            <input type="password" id="old-password" value="" required>
+                                            <input type="password" id="new-password" value="" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="confirm-password" class="password">Confirm Password:</label>
                                             <input type="password" id="confirm-password" value="" required>
                                         </div>
 
-                                        <button type="submit" class="save-btn">Save</button>
+                                        <button type="submit" onclick="updateAdminPass()"  class="save-btn">Save</button>
                                     </form>
                                 </div>
                             </div>
@@ -328,6 +331,35 @@
                                         });
                                 }
 
+                                    let pass =  document.querySelector("#new-password");
+                                    let confirmpass = document.querySelector("#confirm-password");
+                                    let username = '<c:out value="${sessionScope.sessionAdmin.username}"/>';
+                                    let id = '<c:out value="${sessionScope.sessionAdmin.adminId}"/>';
+                                   
+                                    function updateAdminPass(){
+
+                                    if(pass.value != confirmpass.value){
+                                        alert("confirm password not matched");
+                                        return false;
+                                    }
+                                    
+                                    $.ajax({
+                                            url: '/UpdateAdmin',
+                                            method: 'POST',
+                                            data: {
+                                            id: id,
+                                            password: pass.value,
+                                            username: username
+                                        }
+                                    }).done(function (response) {
+                                        $.notify(response, { color: "#fff", background: "#20D67B", delay: 1000 })
+                                        pass.value = ``;
+                                        confirmpass.value = ``;
+                                    }).fail(function (jqXHR, error) {
+                                        //notify
+                                        $.notify(jqXHR.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
+                                    });
+                                   }
 
                             </script>
         </body>

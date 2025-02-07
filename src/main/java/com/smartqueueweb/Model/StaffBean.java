@@ -12,6 +12,7 @@ public class StaffBean {
 	private String contactNumber;
 	private int isLocked;
 	private String pin;
+	private String profilePicture;
 
 	private int requestId;
 	private Date requestedPassCreated;
@@ -32,7 +33,7 @@ public class StaffBean {
 	}
 
 	public StaffBean(int staffID, String username, String password, String firstname, String lastname, String email,
-			String contactNumber, int isLocked, String pin) {
+			String contactNumber, int isLocked, String pin, String profilePicture) {
 		super();
 		this.staffID = staffID;
 		this.username = username;
@@ -43,6 +44,7 @@ public class StaffBean {
 		this.contactNumber = contactNumber;
 		this.isLocked = isLocked;
 		this.pin = pin;
+		this.profilePicture = profilePicture;
 	}
 
 	public int getStaffID() {
@@ -117,6 +119,14 @@ public class StaffBean {
 		this.pin = pin;
 	}
 
+	public String getProfilePicture() {
+		return profilePicture;
+	}
+
+	public void setProfilePicture(String profilePicture) {
+		this.profilePicture = profilePicture;
+	}
+
 	public int getRequestId() {
 		return requestId;
 	}
@@ -137,8 +147,8 @@ public class StaffBean {
 	public String toString() {
 		return "StaffBean [staffID=" + staffID + ", username=" + username + ", password=" + password + ", firstname="
 				+ firstname + ", lastname=" + lastname + ", email=" + email + ", contactNumber=" + contactNumber
-				+ ", isLocked=" + isLocked + ", pin=" + pin + ", requestId=" + requestId + ", requestedPassCreated="
-				+ requestedPassCreated + "]";
+				+ ", isLocked=" + isLocked + ", pin=" + pin + ", profilePicture=" + profilePicture + ", requestId="
+				+ requestId + ", requestedPassCreated=" + requestedPassCreated + "]";
 	}
-	
+
 }

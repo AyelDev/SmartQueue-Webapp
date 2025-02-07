@@ -1,5 +1,6 @@
 package com.smartqueueweb.DAO;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -347,6 +348,27 @@ public class AdminDAO extends SQLConnection {
 			} finally {
 				SQLClose();
 			}
+		return false;
+	}
+
+	public Boolean UpdateAdmin(Integer id, String username, String password) throws SQLException {
+		
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("UPDATE tbl_login_admin SET username = ?, password = ? WHERE tbl_login_admin.admin_id = ?;");
+			
+			prs.setString(1, username);
+			prs.setString(2, password);
+			prs.setInt(3, id);
+			
+			int isExecuteUpdate = prs.executeUpdate();
+			
+			if(isExecuteUpdate > 0)
+				return true;
+			
+		} finally {
+			SQLClose();
+		}
 		return false;
 	}
 }

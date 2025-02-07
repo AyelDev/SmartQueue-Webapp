@@ -8,6 +8,7 @@ import com.smartqueueweb.Model.ServicesBean;
 import com.smartqueueweb.Model.QueueEntryBean;
 import com.smartqueueweb.Model.MonthQueueSummaryBean;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface AdminServices {
@@ -41,5 +42,7 @@ public interface AdminServices {
 	Integer addMonthlyEnquiry();
 
 	Boolean clearAllQueueEntries();
+	
+	Boolean updateAdmin(Integer id, String username, String password) throws SQLException;
 
 }

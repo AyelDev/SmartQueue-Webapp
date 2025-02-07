@@ -9,7 +9,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff | Settings</title>
-    <link rel="stylesheet" href="../css/loader.css"> 
+    <link rel="stylesheet" href="../css/prettify.css">
+    <link rel="stylesheet" href="../css/notify.css">
+    <link rel="stylesheet" href="../css/jquery-confirm.min.css">
+    <link rel="stylesheet" href="../css/loader.css">
     <link rel="stylesheet" href="../css/setting.css">
     <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
 			<script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
@@ -47,7 +50,10 @@
                 <h2>Settings</h2>
                 <div class="profile-display">
                     <img id="left-profile-picture" src="" alt="">
-                    <p id="left-profile-name">Irish Cabanero</p>
+                    <p id="left-profile-name">
+                        <c:out value="${sessionScope.sessionStaff.firstname}"/> 
+                        <c:out value="${sessionScope.sessionStaff.lastname}"/> 
+                    </p>
                 </div>
                 <ul id="menu">
                     <li id="profile-tab" class="active" onclick="renderContent('profile')">Profile</li>
@@ -88,7 +94,7 @@
             <div class="form-group">
                 <label for="username">Username</label>
                 <div class="edit-form">
-                    <span id="username-display">irish_cabanero02</span>
+                    <span id="username-display"><c:out value="${sessionScope.sessionStaff.username}"/></span>
                     <span class="edit-link" onclick="editField('username')">Edit</span>
                 </div>
             </div>
@@ -96,21 +102,24 @@
             <div class="form-group">
                 <label for="name">Name</label>
                 <div class="edit-form">
-                    <span id="name-display">Irish Cabanero</span>
+                    <span id="name-display">
+                        <c:out value="${sessionScope.sessionStaff.firstname}"/>
+                         <c:out value="${sessionScope.sessionStaff.lastname}"/>
+                        </span>
                     <span class="edit-link" onclick="editField('name')">Edit</span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <div class="edit-form">
-                    <span id="email-display">irishcabanero@gmail.com</span>
+                    <span id="email-display"><c:out value="${sessionScope.sessionStaff.email}"/></span>
                     <span class="edit-link" onclick="editField('email')">Change</span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="phone">Phone</label>
                 <div class="edit-form">
-                    <span id="phone-display">09638741477</span>
+                    <span id="phone-display"><c:out value="${sessionScope.sessionStaff.contactNumber}"/></span>
                     <span class="edit-link" onclick="editField('phone')">Change</span>
                 </div>
             </div>
@@ -118,7 +127,7 @@
             password: `
             <div class="form-group">
                 <label for="current-password" class="passtext">Old Password</label>
-                <input type="password" id="current-password">
+                <input type="password" id="current-password" value='<c:out value="${sessionScope.sessionStaff.contactNumber}"/>'>
             </div>
             <div class="form-group">
                 <label for="new-password" class="passtext">New Password</label>
@@ -197,7 +206,6 @@
     document.getElementById('cancel-upload').style.display = 'none';
 }
 
-
         function cancelUpload() {
             document.getElementById('photo').value = '';
             document.getElementById('photo-preview').style.display = 'none';
@@ -205,14 +213,60 @@
             document.getElementById('cancel-upload').style.display = 'none';
         }
 
+        window.jstlData = {
+            staffId: '<c:out value="${sessionScope.sessionStaff.staffID}"/>',
+            username: '<c:out value="${sessionScope.sessionStaff.username}"/>',
+            password: '<c:out value="${sessionScope.sessionStaff.password}"/>',
+            firstname: '<c:out value="${sessionScope.sessionStaff.firstname}"/>',
+            lastname: '<c:out value="${sessionScope.sessionStaff.lastname}"/>',
+            email: '<c:out value="${sessionScope.sessionStaff.email}"/>',
+            contactnum: '<c:out value="${sessionScope.sessionStaff.contactNumber}"/>',
+            islocked: '<c:out value="${sessionScope.sessionStaff.isLocked}"/>',
+            pin: '<c:out value="${sessionScope.sessionStaff.pin}"/>',
+            requestId: '<c:out value="${sessionScope.sessionStaff.requestId}"/>',
+            requestPassCreated: '<c:out value="${sessionScope.sessionStaff.requestedPassCreated}"/>',
+            profilePic: '<c:out value="${sessionScope.sessionStaff.profilePicture}"/>'
+        };
+
+        let newPassword = '';
+        let confirmPassword = '';
         function savePassword() {
             // Handle password save logic
-            alert('Password changed successfully!');
+            newPassword = document.querySelector("#new-password");
+            confirmPassword = document.querySelector("#confirm-password");
+            
+            if(newPassword.value !== confirmPassword.value){
+                alert("confirm password does not matched");
+                return false;
+            }
+
+            updateStaffRequest(window.jstlData.staffId,
+                            window.jstlData.firstname,
+                            window.jstlData.lastname,
+                            window.jstlData.email,
+                            window.jstlData.contactnum,
+                            window.jstlData.username,
+                            newPassword.value,
+                            window.jstlData.islocked);
+        
         }
 
         function cancelPassword() {
             // Handle cancel logic
             alert('Password change cancelled!');
+        }
+
+        function updateStaffRequest(idNo, firstname, lastname, email, contactno, username, password, isLocked){
+            $.ajax({
+                    url: 'UpdateStaff_Servlet?idNo=' + idNo + '&firstname=' + firstname + '&lastname=' + lastname + '&email=' + email + '&contactno=' + contactno + '&username=' + username + '&password=' + password + '&islocked=' + isLocked, // Replace with your endpoint
+                    type: 'PUT', // Send the ID as data
+                    success: function (response) {      
+                        $.notify(response, { color: "#fff", background: "#20D67B", delay: 1000 });       
+                    },
+                    error: function (xhr) {
+                        $.notify(xhr.statusText,{ color: "#fff", background: "#D44950", delay: 1000 });
+                    }
+            });
         }
 
         // Initialize with profile content
