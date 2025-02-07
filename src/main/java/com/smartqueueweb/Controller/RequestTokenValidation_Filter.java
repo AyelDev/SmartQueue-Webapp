@@ -47,7 +47,6 @@ import com.smartqueueweb.Service.ServiceImpl;
 		// staff redirection
 		"/counterwindow",
 		"/staffdashboard",
-		"/userwindow",
 		"/counterwindow",
 
 		//ping

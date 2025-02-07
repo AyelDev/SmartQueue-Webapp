@@ -544,3 +544,20 @@ background-color: #c82333;
                 justify-content: center;
             }
         }
+        .custom-call{
+            width: 20vw;
+            height: 5vh;
+            margin-top: .5%;
+            position: absolute;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+        .add-name{
+            margin-top: 5%;
+            width: 5vw;
+            padding: 5px;
+            background-color: #00509d;
+            color: white;
+            border-radius: 5px;
+            border: none;
+        }

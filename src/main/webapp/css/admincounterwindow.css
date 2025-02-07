@@ -831,6 +831,7 @@ body {
     margin-top: .5%;
     position: absolute;
     font-size: 1rem;
+    text-transform: uppercase;
 }
 .add-name{
     margin-top: 5%;

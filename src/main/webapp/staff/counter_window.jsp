@@ -115,6 +115,11 @@
                                 </table>
                             </div>
 
+                            <div class="namecall">
+                                <input type="text" class="custom-call" placeholder="Enter name to queue">
+                                <button class="add-name" onclick="CallName()">Call Name</button>
+                            </div>
+
                             <section class="actions">
                                 <button id="call-button" onclick="transferRow()" class="btn call"><b>CALL</b></button>
                                 <button id="recall-button" onclick="recall()" class="btn recall"><b>RECALL</b></button>
@@ -364,6 +369,24 @@
                     await $.notify("loading new requests...", { color: "#fff", background: "#20D67B", delay: 1000 })
                     await CounterList(counterList.value, "QUEUE", '#priority-number-table');
                 })
+
+                //CALL CUSTOM NAME
+                function CallName(){
+                    var name = document.querySelector('.custom-call');
+                if(name.value !== '' && counterList.value > 0){
+                    ws.send(JSON.stringify({
+                    message: "Attention. " + name.value + ". Please Proceed to window " + counterList.value + ". Thank you",
+                    queueNumber: name.value,
+                    windowNumber: counterList.value,
+                    tostop: "none"
+                }));
+            //ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
+    }else{
+        alert("Empty name or counter window not set.");
+    }
+
+    document.querySelector('.custom-call').value = ''; //clear name after call
+}
             </script>
 
             <div class="load-wrapper">

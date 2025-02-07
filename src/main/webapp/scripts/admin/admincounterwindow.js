@@ -242,7 +242,6 @@ for (i = 0; i < dropdown.length; i++) {
 function CallName(){
     var name = document.querySelector('.custom-call');
     if(name.value !== '' && counterList.value > 0){
-        alert("calling " + name.value);
             ws.send(JSON.stringify({
                 message: "Attention. " + name.value + ". Please Proceed to window " + counterList.value + ". Thank you",
                 queueNumber: name.value,

@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <c:if test="${empty sessionScope.sessionStaff && empty sessionScope.sessionAdmin.getUsername()}">
-      <c:redirect url="/" />
-    </c:if>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -10,7 +7,6 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
-      <script type="text/javascript" src="../scripts/ping.js"></script>
       <script type="text/javascript" src="../scripts/fadetransition.js"></script>
       <script type="text/javascript" src="../scripts/notify.js"></script>
       <script type="text/javascript" src="../scripts/prettify.js"></script>
@@ -40,42 +36,21 @@
               <tbody id="window-1-body">
                 <tr>
                   <td>Window 1</td>
-                  <td>---</td>
+                  <td class="windows" id="window1val" >---</td>
                 </tr>
               </tbody>
 
               <tbody id="window-2-body">
                 <tr>
                   <td>Window 2</td>
-                  <td>---</td>
+                  <td class="windows" id="window2val">---</td>
                 </tr>
               </tbody>
 
               <tbody id="window-3-body">
                 <tr>
                   <td>Window 3</td>
-                  <td>---</td>
-                </tr>
-              </tbody>
-
-              <tbody id="window-4-body">
-                <tr>
-                  <td>Window 4</td>
-                  <td>---</td>
-                </tr>
-              </tbody>
-
-              <tbody id="window-5-body">
-                <tr>
-                  <td>Window 5</td>
-                  <td>---</td>
-                </tr>
-              </tbody>
-
-              <tbody id="window-6-body">
-                <tr>
-                  <td>Window 6</td>
-                  <td>---</td>
+                  <td class="windows" id="window3val" >---</td>
                 </tr>
               </tbody>
             </table>
@@ -85,7 +60,7 @@
 
       <div class="popup" id="popup">
         <div class="popup-content">
-          <h1 id="popup-queue-number">G01</h1>
+          <h1 class="queue-number" id="popup-queue-number">G01</h1>
           <span class="close" id="closeBtn">&times;</span>
           <p id="popup-window-number">Window 1</p>
         </div>
