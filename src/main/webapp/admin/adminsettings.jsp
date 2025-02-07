@@ -11,6 +11,14 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="../css/loader.css">
             <link rel="stylesheet" href="../css/adminsettings.css">
+            <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
+			<script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+			<script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
+			<script type="text/javascript" src="../scripts/notify.js"></script>
+			<script type="text/javascript" src="../scripts/prettify.js"></script>
+			<script type="text/javascript" src="../scripts/ping.js"></script>
+			<script type="text/javascript" src="../scripts/fadetransition.js"></script>
+			<script type="text/javascript" src="../scripts/chart.min.js"></script>
             <title>Settings</title>
         </head>
 
@@ -236,7 +244,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="username" class="information">Username:</label>
-                                                <input type="text" id="username" value="" disabled>
+                                                <input type="text" id="username" value="<c:out value='${sessionScope.sessionAdmin.username}'/>" disabled>
                                             </div>
                                             <div class="form-group">
                                                 <label for="email" class="information">Email:</label>
@@ -256,7 +264,7 @@
                                     <form id="passwordForm">
                                         <div class="form-group">
                                             <label for="old-password" class="password">Old Password:</label>
-                                            <input type="password" id="old-password" value="" required>
+                                            <input type="password" id="old-password" value="<c:out value='${sessionScope.sessionAdmin.password}'/>" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="new-password" class="password">New Password:</label>
@@ -271,6 +279,14 @@
                                     </form>
                                 </div>
                             </div>
+
+                            <div class="load-wrapper">
+                                <div class="main-loader">
+                                    <div class="box-loader">
+                                    </div>
+                                </div>
+                            </div>
+
                             <script>
                                 document.getElementById('changePhotoBtn').addEventListener('click', function () {
                                     const fileInput = document.getElementById('profilePicInput');

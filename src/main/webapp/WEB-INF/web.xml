@@ -74,6 +74,15 @@
 		<url-pattern>/entertainment</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>setting</servlet-name>
+		<jsp-file>/staff/setting.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>setting</servlet-name>
+		<url-pattern>/setting</url-pattern>
+	</servlet-mapping>
+
 <!-- Admin Servlet Redirection -->
 
 	<servlet>

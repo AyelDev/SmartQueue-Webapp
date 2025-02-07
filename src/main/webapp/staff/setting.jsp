@@ -1,18 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <c:if test="${empty sessionScope.sessionStaff && empty sessionScope.sessionAdmin.getUsername()}">
+            <c:redirect url="/" />
+        </c:if>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff | Settings</title>
-    <link rel="stylesheet" href="./css/loader.css"> 
+    <link rel="stylesheet" href="../css/loader.css"> 
     <link rel="stylesheet" href="../css/setting.css">
+    <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
+			<script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+			<script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
+			<script type="text/javascript" src="../scripts/notify.js"></script>
+			<script type="text/javascript" src="../scripts/prettify.js"></script>
+			<script type="text/javascript" src="../scripts/ping.js"></script>
+			<script type="text/javascript" src="../scripts/fadetransition.js"></script>
+			<script type="text/javascript" src="../scripts/chart.min.js"></script>
 </head>
 
 <body>
     <div class="container">
         <div class="navigation-section" id="leftnav">
             <div class="top-lnav">
-                <img src="logo.png" class="cec" alt="CEC Logo">
+                <img src="./images/logo.png" class="cec" alt="CEC Logo">
                 <p class="title"><strong>Cebu Eastern College</strong></p>
             </div>
             <div class="bottom-lnav">
@@ -43,6 +56,13 @@
             </div>
             <div class="right-navigation" id="content-area">
                 <!-- Dynamic content will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="load-wrapper">
+        <div class="main-loader">
+            <div class="box-loader">
             </div>
         </div>
     </div>
@@ -117,21 +137,21 @@
 
         function renderContent(tab) {
             document.querySelectorAll('#menu li').forEach(li => li.classList.remove('active'));
-            document.getElementById(`${tab}-tab`).classList.add('active');
+            document.getElementById(tab+`-tab`).classList.add('active');
             contentArea.innerHTML = tabs[tab];
         }
 
         function editField(field) {
-            const fieldDisplay = document.getElementById(`${field}-display`);
+            const fieldDisplay = document.getElementById(field+`-display`);
             const currentValue = fieldDisplay.textContent;
-            const inputField = `<input type="text" id="${field}-input" value="${currentValue}">`;
+            const inputField = `<input type="text" id="`+field+`-input" value="`+currentValue+`">`;
 
             fieldDisplay.innerHTML = inputField;
 
             const buttonGroup = `
                 <div class="save-cancel-buttons">
-                    <button class="save" onclick="saveField('${field}')">Save</button>
-                    <button class="cancel" onclick="cancelField('${field}', '${currentValue}')">Cancel</button>
+                    <button class="save" onclick="saveField('`+field+`')">Save</button>
+                    <button class="cancel" onclick="cancelField('`+field+`', '`+currentValue+`')">Cancel</button>
                 </div>
             `;
             
@@ -139,15 +159,15 @@
         }
 
         function saveField(field) {
-            const newValue = document.getElementById(`${field}-input`).value;
-            document.getElementById(`${field}-display`).textContent = newValue;
+            const newValue = document.getElementById(field+`-input`).value;
+            document.getElementById(field+`-display`).textContent = newValue;
             if (field === 'name') {
                 document.getElementById('left-profile-name').textContent = newValue;
             }
         }
 
         function cancelField(field, originalValue) {
-            document.getElementById(`${field}-display`).textContent = originalValue;
+            document.getElementById(field+`-display`).textContent = originalValue;
         }
 
         function previewImage(event) {
