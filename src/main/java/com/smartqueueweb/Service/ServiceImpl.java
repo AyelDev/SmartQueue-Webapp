@@ -135,6 +135,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return staffdata.ResetPasswordStep2(pin, email);
 	}
 	
+	@Override
+	public Boolean completePasswordReset(String password, int id) {
+		// TODO Auto-generated method stub
+		return staffdata.CompletePasswordReset(password, id);
+	}
+	
 	//////////////////////////////////////////////////////////////////////// --------------------
 	//////////////////////////////////////////////////////////////////////// Admin
 	@Override

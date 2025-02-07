@@ -433,4 +433,27 @@ public class StaffDAO extends SQLConnection {
 		}
 		return staffbean;
 	}
+
+	public Boolean CompletePasswordReset(String password, int id) {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn
+					.prepareStatement("UPDATE tbl_login_staff SET password = ? WHERE tbl_login_staff.staff_id = ?;");
+
+			prs.setString(1, password);
+			prs.setInt(2, id);
+			
+			int executeQuery = prs.executeUpdate();
+			
+			if(executeQuery > 0)
+				return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return false;
+	}
 }

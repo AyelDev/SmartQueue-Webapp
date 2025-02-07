@@ -42,81 +42,11 @@ forgotPasswordButton.addEventListener("click", event => {
                         }).done(function (response) {
 
                             VerificationStepTwo(email);
-
-                            //  self.setTitle(response.name);
-                            //  self.setContentAppend('<br>' + response + '<br><br><input type="password" id="pin" placeholder="Enter PIN">');
     
-                                        //  const pin = document.getElementById("pin");
-    
-                                        //  self.setContentAppend('<br><button type="button" id="submitPinBtn">Submit</button>');
-    
-                                        //  self.setButtons({}); // Remove OK and Close buttons
-    
-                                        //  -//---SECOND REQUEST
-                                        //     $.ajax({
-                                        //     url: '/ResetPassStepTwo',
-                                        //     method: 'post',
-                                        //     data: {
-                                        //         pin: pin.value
-                                        //     }
-                                        //     }).done(async function (response) {
-                                        //         self.setTitle(response.name);
-                                        //         self.setContentAppend('<br>' + response + '<br><br>success');
-        
-                                        //     }).fail(function (jqXHR, error) {
-                                        //         self.setContentAppend('<br>' + jqXHR.responseText);
-                                        //     });
-    
-                            }).fail(function (jqXHR, error) {
+                        }).fail(function (jqXHR, error) {
                                 //notify
                                 alert(jqXHR.responseText);
-                            });
-
-                        // $.confirm({
-                        //     title: 'Smartqueue Responded',
-                        //     type: 'blue',
-                        //     theme: 'material',
-                        //     boxWidth: '30%',
-                        //     useBootstrap: false,
-                        //     content: function () {
-                        //         var self = this;
-                        //         return $.ajax({
-                        //             url: '/ResetPassStepOne',
-                        //             method: 'post',
-                        //             data: {
-                        //                 email: email
-                        //             }
-                        //         }).done(function (response) {
-                        //             //  self.setTitle(response.name);
-                        //             //  self.setContentAppend('<br>' + response + '<br><br><input type="password" id="pin" placeholder="Enter PIN">');
-
-                        //             //  const pin = document.getElementById("pin");
-
-                        //             //  self.setContentAppend('<br><button type="button" id="submitPinBtn">Submit</button>');
-
-                        //             //  self.setButtons({}); // Remove OK and Close buttons
-
-                        //             //  -//---SECOND REQUEST
-                        //             //     $.ajax({
-                        //             //     url: '/ResetPassStepTwo',
-                        //             //     method: 'post',
-                        //             //     data: {
-                        //             //         pin: pin.value
-                        //             //     }
-                        //             //     }).done(async function (response) {
-                        //             //         self.setTitle(response.name);
-                        //             //         self.setContentAppend('<br>' + response + '<br><br>success');
-    
-                        //             //     }).fail(function (jqXHR, error) {
-                        //             //         self.setContentAppend('<br>' + jqXHR.responseText);
-                        //             //     });
-
-                        //         }).fail(function (jqXHR, error) {
-                        //             self.setContentAppend('<br>' + jqXHR.responseText);
-                        //         });
-                        //     }
-                        // });
-
+                        });
                     }
                 }
             },
@@ -179,83 +109,12 @@ function VerificationStepTwo(email){
                         }
                         }).done(function (response) {
 
-                            alert(response.username + " " + response.staffID);
-                            //setupNewPassword(response.username, response.staffID);
+                            setupNewPassword(response.username, response.staffID)
 
-                            //  self.setTitle(response.name);
-                            //  self.setContentAppend('<br>' + response + '<br><br><input type="password" id="pin" placeholder="Enter PIN">');
-    
-                                        //  const pin = document.getElementById("pin");
-    
-                                        //  self.setContentAppend('<br><button type="button" id="submitPinBtn">Submit</button>');
-    
-                                        //  self.setButtons({}); // Remove OK and Close buttons
-    
-                                        //  -//---SECOND REQUEST
-                                        //     $.ajax({
-                                        //     url: '/ResetPassStepTwo',
-                                        //     method: 'post',
-                                        //     data: {
-                                        //         pin: pin.value
-                                        //     }
-                                        //     }).done(async function (response) {
-                                        //         self.setTitle(response.name);
-                                        //         self.setContentAppend('<br>' + response + '<br><br>success');
-        
-                                        //     }).fail(function (jqXHR, error) {
-                                        //         self.setContentAppend('<br>' + jqXHR.responseText);
-                                        //     });
-    
-                            }).fail(function (jqXHR, error) {
+                        }).fail(function (jqXHR, error) {
                                 //notify
                                 alert(jqXHR.responseText);
-                            });
-
-                        // $.confirm({
-                        //     title: 'Smartqueue Responded',
-                        //     type: 'blue',
-                        //     theme: 'material',
-                        //     boxWidth: '30%',
-                        //     useBootstrap: false,
-                        //     content: function () {
-                        //         var self = this;
-                        //         return $.ajax({
-                        //             url: '/ResetPassStepOne',
-                        //             method: 'post',
-                        //             data: {
-                        //                 email: email
-                        //             }
-                        //         }).done(function (response) {
-                        //             //  self.setTitle(response.name);
-                        //             //  self.setContentAppend('<br>' + response + '<br><br><input type="password" id="pin" placeholder="Enter PIN">');
-
-                        //             //  const pin = document.getElementById("pin");
-
-                        //             //  self.setContentAppend('<br><button type="button" id="submitPinBtn">Submit</button>');
-
-                        //             //  self.setButtons({}); // Remove OK and Close buttons
-
-                        //             //  -//---SECOND REQUEST
-                        //             //     $.ajax({
-                        //             //     url: '/ResetPassStepTwo',
-                        //             //     method: 'post',
-                        //             //     data: {
-                        //             //         pin: pin.value
-                        //             //     }
-                        //             //     }).done(async function (response) {
-                        //             //         self.setTitle(response.name);
-                        //             //         self.setContentAppend('<br>' + response + '<br><br>success');
-    
-                        //             //     }).fail(function (jqXHR, error) {
-                        //             //         self.setContentAppend('<br>' + jqXHR.responseText);
-                        //             //     });
-
-                        //         }).fail(function (jqXHR, error) {
-                        //             self.setContentAppend('<br>' + jqXHR.responseText);
-                        //         });
-                        //     }
-                        // });
-
+                        });
                     }
                 }
             },
@@ -274,21 +133,26 @@ function VerificationStepTwo(email){
         }
     }); 
 }
-userCredentials = [];
+
 function setupNewPassword(username, staffId){
     $.confirm({
         type: 'blue',
         theme: 'material',
         boxWidth: '30%',
         useBootstrap: false,
-        title: 'Enter 4 Digit Pin',
+        title: 'Your Password Can Now Be Reset',
         content: 
         `
              <form action="" class="formName">
              <div class="form-group">
              <br>
-             <label>Enter Pin</label>
-             <input type="text" placeholder="Your pin" class="pin form-control" required />
+             <label>Username : `+username+`</label>
+             <br>
+             <label>Enter Password</label>
+             <input type="text" placeholder="Your password" class="pass form-control" required />
+             <br>
+             <label>Enter Confirm Password</label>
+             <input type="text" placeholder="Your confirm password" class="conpass form-control" required />
              </div>
              </form>
         `,
@@ -297,8 +161,9 @@ function setupNewPassword(username, staffId){
                 text: 'Submit',
                 btnClass: 'btn-blue',
                 action: function () {
-                    var pin = this.$content.find('.pin').val();
-                    if (!pin) {
+                    var pass = this.$content.find('.pass').val();
+                    var conpass = this.$content.find('.conpass').val();
+                    if (!pass || !conpass) {
                         $.alert({
                             title: 'Error!',
                             type: 'red',
@@ -307,48 +172,34 @@ function setupNewPassword(username, staffId){
                             useBootstrap: false,
                         });
                         return false;
-                    } else {
+                    } 
+                    
+                    if(pass !== conpass){
+                        $.alert({
+                            title: 'Error!',
+                            type: 'red',
+                            content: 'Confirm password does not match',
+                            boxWidth: '20%',
+                            useBootstrap: false,
+                        });
+                        return false;
+                    }
 
                         $.ajax({
-                        url: '/ResetPassStepTwo',
-                        method: 'post',
+                        url: '/CompleteResetPass',
+                        method: 'POST',
                         data: {
-                        pin: pin,
-                        email: email
+                        password: pass,
+                        id: staffId
                         }
                         }).done(function (response) {
 
                             alert("password reset complete");
-
-                            //  self.setTitle(response.name);
-                            //  self.setContentAppend('<br>' + response + '<br><br><input type="password" id="pin" placeholder="Enter PIN">');
-    
-                                        //  const pin = document.getElementById("pin");
-    
-                                        //  self.setContentAppend('<br><button type="button" id="submitPinBtn">Submit</button>');
-    
-                                        //  self.setButtons({}); // Remove OK and Close buttons
-    
-                                        //  -//---SECOND REQUEST
-                                        //     $.ajax({
-                                        //     url: '/ResetPassStepTwo',
-                                        //     method: 'post',
-                                        //     data: {
-                                        //         pin: pin.value
-                                        //     }
-                                        //     }).done(async function (response) {
-                                        //         self.setTitle(response.name);
-                                        //         self.setContentAppend('<br>' + response + '<br><br>success');
-        
-                                        //     }).fail(function (jqXHR, error) {
-                                        //         self.setContentAppend('<br>' + jqXHR.responseText);
-                                        //     });
     
                             }).fail(function (jqXHR, error) {
                                 //notify
                                 alert(jqXHR.responseText);
                             });
-                    }
                 }
             },
             cancel: function () {

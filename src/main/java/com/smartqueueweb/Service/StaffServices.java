@@ -44,4 +44,6 @@ public interface StaffServices {
 	Boolean resetPasswordStep1(String email);
 
 	StaffBean resetPasswordStep2(String pin, String email);
+	
+	Boolean completePasswordReset(String password, int id);
 }
