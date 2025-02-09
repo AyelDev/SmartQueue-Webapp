@@ -132,34 +132,78 @@ $(document).ready(function () {
     popwindow.textContent = "Window " + popupwindownumber;
 
     if(popupqueuenumber.length < 3 ){
-
       popqueue.style.fontSize="20rem";
+      
+      switch(popupwindownumber){
+        case '1':
+          window1.style.fontSize="3rem";
+          break;
+        case '2':
+          window2.style.fontSize="3rem";
+          break;
+        case '3':
+          window3.style.fontSize="3rem";
+          break;
+      }
+
+      // if(popupwindownumber == 1)
+      //   window1.style.fontSize="3rem";
+  
+      //   if(popupwindownumber == 2)
+      //   window2.style.fontSize="3rem";
+        
+      //   if(popupwindownumber == 3)
+      //   window3.style.fontSize="3rem";
       
     }else if(popupqueuenumber.length < 20){
 
       popqueue.style.fontSize="10rem";
 
-      if(popupwindownumber == 1)
-      window1.style.fontSize="2.5rem";
+      switch(popupwindownumber){
+        case '1':
+          window1.style.fontSize="2.5rem";
+          break;
+        case '2':
+          window2.style.fontSize="2.5rem";
+          break;
+        case '3':
+          window3.style.fontSize="2.5rem";
+          break;
+      }
 
-      if(popupwindownumber == 2)
-      window2.style.fontSize="2.5rem";
+      // if(popupwindownumber == 1)
+      // window1.style.fontSize="2.5rem";
+
+      // if(popupwindownumber == 2)
+      // window2.style.fontSize="2.5rem";
       
-      if(popupwindownumber == 3)
-      window3.style.fontSize="2.5rem";
+      // if(popupwindownumber == 3)
+      // window3.style.fontSize="2.5rem";
 
     }else{
 
       popqueue.style.fontSize="8rem";
 
-      if(popupwindownumber == 1)
-      window1.style.fontSize="1.5rem";
+      switch(popupwindownumber){
+        case '1':
+          window1.style.fontSize="1.5rem";
+          break;
+        case '2':
+          window2.style.fontSize="1.5rem";
+          break;
+        case '3':
+          window3.style.fontSize="1.5rem";
+          break;
+      }
 
-      if(popupwindownumber == 2)
-      window2.style.fontSize="1.5rem";
+      // if(popupwindownumber == 1)
+      // window1.style.fontSize="1.5rem";
 
-      if(popupwindownumber == 3)
-      window3.style.fontSize="1.5rem";
+      // if(popupwindownumber == 2)
+      // window2.style.fontSize="1.5rem";
+
+      // if(popupwindownumber == 3)
+      // window3.style.fontSize="1.5rem";
     };
 
 

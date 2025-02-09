@@ -108,6 +108,7 @@ $(document).ready(function () {
             data: params,
             success: function (response) {
                 openModal()
+                updateData()
                 $.confirm({
                     boxWidth: '30%',
                     useBootstrap: false,
