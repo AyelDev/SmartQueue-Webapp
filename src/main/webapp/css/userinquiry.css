@@ -162,7 +162,7 @@
 }
 
 .form {
-    margin: 30px;
+    margin: 20px;
     flex-direction: column;
     display: flex;
     color: black;
@@ -220,6 +220,15 @@ label {
     margin-top: 5%;
     margin-left: -28.5%;
     position: absolute;
+}
+.id-button{
+    width: 5vw;
+    padding: 8.7px;
+    outline: none;
+    text-decoration: none;
+    color: black;
+    margin-left: 62%;
+    margin-top: -6.8%;
 }
 
 
