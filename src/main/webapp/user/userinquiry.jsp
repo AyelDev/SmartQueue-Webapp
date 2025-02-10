@@ -71,7 +71,8 @@
             <div id="general-modal" class="modal">
                 <div class="modal-content" id="modal-content">
                     <span class="close">&times;</span>
-                    <h2>Admission Inquiry Form</h2>
+                    <h2>Admission Inquiry Form</h2>  <p>For New Students</p>
+                  
                     <div class="form">
                         <div class="studename">
                             <label for="studentName" class="firstname-label">First Name</label>
@@ -114,11 +115,13 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2>Records Inquiry Form</h2>
+                    <p>For Old Students</p>
                     <form id="form" class="form">
-                        <label for="studentName">Name:</label>
-                        <input type="text" class="student-name" id="records-student-name" name="name" disabled>
                         <label for="studentIdNo">Student ID No.</label>
                         <input type="text" class="student-id" id="records-student-id" required>
+                        <input type="button" class="id-button" id="id-button" value="Confirm">
+                        <label for="studentName">Name:</label>
+                        <input type="text" class="student-name" id="records-student-name" name="name" disabled>
                         <label for="options">Option</label>
                         <select name="purpose" id="records-purpose" class="purpose">
                             <option value="">--</option>
@@ -137,7 +140,12 @@
                 <div class="modal-content">
                     <span class="close" onclick="closeModal('archivingModal')">&times;</span>
                     <h2>Archiving Form</h2>
+                    <p>For New and Old Students</p>
                     <form id="form" class="form">
+                        <label for="studentIdNo">Student ID No. </label>
+                        <input type="text" class="student-id" id="archiving-student-id" onclick="SetEmptyNameFields()"
+                            required>
+                            <input type="button" class="id-button" id="id-button" value="Confirm">
                         <label for="name">First Name</label>
                         <input type="text" class="first-name" id="archiving-student-firstname"
                             onclick="SetEmptyIdField()" required>
@@ -146,10 +154,6 @@
                             onclick="SetEmptyIdField()">
                         <label for="name">Last Name</label>
                         <input type="text" class="last-name" id="archiving-student-lastname" onclick="SetEmptyIdField()"
-                            required>
-
-                        <label for="studentIdNo">Student ID No. </label>
-                        <input type="text" class="student-id" id="archiving-student-id" onclick="SetEmptyNameFields()"
                             required>
                         <label for="options">Option</label>
                         <select name="purpose" id="archiving-purpose" class="purpose">
