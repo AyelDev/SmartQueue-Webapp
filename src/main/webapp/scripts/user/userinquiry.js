@@ -146,7 +146,8 @@ function checkQueueLimit() {
 }
 
 //need to polish --- BUG: TOO MANY CONNECTIONS PARTIAL FIX
-var queueNumber = 0;
+var queueNumber = 1;
+var startAvailQueueCount = false;
 function getAvailableQueueNUmber(){
 
     return new Promise(function (resolve, reject) {
@@ -155,8 +156,14 @@ function getAvailableQueueNUmber(){
             url: 'JsonQueueNumberAvailableAPI?availableNumber=' + queueNumber,
             type: "GET",
             success: function (response) {
+
                 queueNumber = response.id;
-                sendMsg("update queue");
+
+                //TODO update puhon kay naka shortpoll pako hehe
+                //sendMsg("update queue");
+
+                startAvailQueueCount = true;
+
             },
             error: function (xhr, status, error) {
                 $.notify(xhr.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
@@ -182,7 +189,11 @@ async function printQueue(serviceType) {
     isRunning = true;
 
     //E INCREMENT KAY MO BUG FIX NALANG NI LATOR
-    queueNumber++;
+    if(!startAvailQueueCount)
+        queueNumber++;
+
+    //SET TO FALSE IF MAG FIRST QUEUE 
+    startAvailQueueCount = false;
 
     let studentName = '';
     let studentId = '';
