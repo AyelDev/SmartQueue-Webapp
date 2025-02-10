@@ -281,7 +281,7 @@ async function printQueue(serviceType) {
                 purpose.value = "";
                 program.value = "";
             } else if (serviceType === 'Records') {
-                studentName.value = "";
+                document.getElementById('records-student-name').value = "";
                 studentId.value = "";
                 purpose.value = "";
             } else if (serviceType === 'Archiving') {
