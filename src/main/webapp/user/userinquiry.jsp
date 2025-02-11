@@ -145,7 +145,7 @@
                         <label for="studentIdNo">Student ID No. </label>
                         <input type="text" class="student-id" id="archiving-student-id" onclick="SetEmptyNameFields()"
                             required>
-                            <input type="button" class="id-button" id="id-button" value="Confirm">
+                            <input type="button" class="id-button" id="archiving-id-button" value="Confirm">
                         <label for="name">First Name</label>
                         <input type="text" class="first-name" id="archiving-student-firstname"
                             onclick="SetEmptyIdField()" required>

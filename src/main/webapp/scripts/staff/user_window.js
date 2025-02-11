@@ -131,7 +131,7 @@ $(document).ready(function () {
     popqueue.textContent = popupqueuenumber;
     popwindow.textContent = "Window " + popupwindownumber;
 
-    if(popupqueuenumber.length < 3 ){
+    if(popupqueuenumber.length <= 5 ){
       popqueue.style.fontSize="20rem";
       
       switch(popupwindownumber){
