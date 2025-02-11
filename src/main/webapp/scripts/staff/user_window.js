@@ -70,12 +70,30 @@ $(document).ready(function () {
 
         // Optional: Add event listeners
           msg.onstart = async function () {
+
           await videoSetVolume(.0);
-          await showPopup(messageParse.windowNumber, messageParse.queueNumber);
+          await showPopup(messageParse.windowNumber, messageParse.queueNumber.toUpperCase());
           await playDingdong();
-          await CounterList(1, "SERVING", "#window-1-body");
-          await CounterList(2, "SERVING", "#window-2-body");
-          await CounterList(3, "SERVING", "#window-3-body");
+
+          //TODO : change to switch case later
+          if(messageParse.windowNumber == 1){
+            var window1 = document.querySelector("#window1val");
+            window1.innerHTML = messageParse.queueNumber.toUpperCase();
+          }
+
+          if(messageParse.windowNumber == 2){
+            var window2 = document.querySelector("#window2val");
+            window2.innerHTML = messageParse.queueNumber.toUpperCase();
+          }
+
+          if(messageParse.windowNumber == 3){
+            var window3 = document.querySelector("#window3val");
+            window3.innerHTML = messageParse.queueNumber.toUpperCase();
+
+          }
+          // await CounterList(1, "SERVING", "#window-1-body");
+          // await CounterList(2, "SERVING", "#window-2-body");
+          // await CounterList(3, "SERVING", "#window-3-body");
         };
 
         msg.onend = async function () {
@@ -106,8 +124,92 @@ $(document).ready(function () {
     let popqueue = document.getElementById("popup-queue-number");
     let popwindow = document.getElementById("popup-window-number");
 
+    let window1 = document.getElementById("window1val");
+    let window2 = document.getElementById("window2val");
+    let window3 = document.getElementById("window3val");
+
     popqueue.textContent = popupqueuenumber;
     popwindow.textContent = "Window " + popupwindownumber;
+
+    if(popupqueuenumber.length <= 5 ){
+      popqueue.style.fontSize="20rem";
+      
+      switch(popupwindownumber){
+        case '1':
+          window1.style.fontSize="3rem";
+          break;
+        case '2':
+          window2.style.fontSize="3rem";
+          break;
+        case '3':
+          window3.style.fontSize="3rem";
+          break;
+      }
+
+      // if(popupwindownumber == 1)
+      //   window1.style.fontSize="3rem";
+  
+      //   if(popupwindownumber == 2)
+      //   window2.style.fontSize="3rem";
+        
+      //   if(popupwindownumber == 3)
+      //   window3.style.fontSize="3rem";
+      
+    }else if(popupqueuenumber.length < 20){
+
+      popqueue.style.fontSize="10rem";
+
+      switch(popupwindownumber){
+        case '1':
+          window1.style.fontSize="2.5rem";
+          break;
+        case '2':
+          window2.style.fontSize="2.5rem";
+          break;
+        case '3':
+          window3.style.fontSize="2.5rem";
+          break;
+      }
+
+      // if(popupwindownumber == 1)
+      // window1.style.fontSize="2.5rem";
+
+      // if(popupwindownumber == 2)
+      // window2.style.fontSize="2.5rem";
+      
+      // if(popupwindownumber == 3)
+      // window3.style.fontSize="2.5rem";
+
+    }else{
+
+      popqueue.style.fontSize="8rem";
+
+      switch(popupwindownumber){
+        case '1':
+          window1.style.fontSize="1.5rem";
+          break;
+        case '2':
+          window2.style.fontSize="1.5rem";
+          break;
+        case '3':
+          window3.style.fontSize="1.5rem";
+          break;
+      }
+
+      // if(popupwindownumber == 1)
+      // window1.style.fontSize="1.5rem";
+
+      // if(popupwindownumber == 2)
+      // window2.style.fontSize="1.5rem";
+
+      // if(popupwindownumber == 3)
+      // window3.style.fontSize="1.5rem";
+    };
+
+
+
+
+
 
     $("#popup").fadeIn();
     //setTimeout(hidePopup, 8000);

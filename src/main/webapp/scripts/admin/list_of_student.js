@@ -77,6 +77,7 @@ $(document).ready(function () {
             data: params,
             success: function (response) {
                 closeModal()
+                updateData()
                 $.confirm({
                     boxWidth: '30%',
                     useBootstrap: false,
@@ -139,7 +140,7 @@ function removeStudent(id) {
         autoClose: 'cancel|10000',
         buttons: {
             deleteUser: {
-                text: 'delete user',
+                text: 'delete',
                 btnClass: 'btn-red',
                 action: function () {
                     // Create the AJAX request
@@ -155,6 +156,7 @@ function removeStudent(id) {
                                 title: 'Response',
                                 content: response
                             });
+                            updateData();
                         },
                         error: function (xhr) {
                             $.alert({

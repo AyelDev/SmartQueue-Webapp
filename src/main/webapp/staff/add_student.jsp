@@ -256,6 +256,7 @@
 							data: params,
 							success: function (response) {
 								closeModal()
+								updateData()
 								$.confirm({
 									boxWidth: '30%',
 									useBootstrap: false,
@@ -326,6 +327,7 @@
 										url: 'RemoveStudent_Servlet?idNo=' + id, // Replace with your endpoint
 										type: 'DELETE', // Send the ID as data
 										success: function (response) {
+											updateData()
 											$.alert({
 												boxWidth: '30%',
 												useBootstrap: false,

@@ -67,6 +67,7 @@ public class StaffDAO extends SQLConnection {
 				staffbean.setContactNumber(rs.getString("contact_number"));
 				staffbean.setIsLocked(rs.getInt("isLocked"));
 				staffbean.setPin(rs.getString("pin_number"));
+				staffbean.setProfilePicture(rs.getBlob("profile_picture"));
 			}
 
 		} catch (SQLException e) {
@@ -150,9 +151,17 @@ public class StaffDAO extends SQLConnection {
 			listOfStaff = new ArrayList<StaffBean>();
 
 			while (rs.next()) {
-				staffbean = new StaffBean(rs.getInt("staff_id"), rs.getString("username"), rs.getString("password"),
-						rs.getString("firstname"), rs.getString("lastname"), rs.getString("email"),
-						rs.getString("contact_number"), rs.getInt("isLocked"), rs.getString("pin_number"));
+				staffbean = new StaffBean(
+						rs.getInt("staff_id"), 
+						rs.getString("username"), 
+						rs.getString("password"),
+						rs.getString("firstname"), 
+						rs.getString("lastname"), 
+						rs.getString("email"),
+						rs.getString("contact_number"),
+						rs.getInt("isLocked"), 
+						rs.getString("pin_number"),
+						rs.getBlob("profile_picture"));
 				listOfStaff.add(staffbean);
 			}
 
@@ -207,7 +216,7 @@ public class StaffDAO extends SQLConnection {
 	}
 
 	public Integer updateStaff(long staffId, String inputFirstname, String inputLastname, String inputEmail,
-			double inputContactnumber, String inputUsername, String inputPassword, int inputStafflocked) {
+			String inputContactnumber, String inputUsername, String inputPassword, int inputStafflocked) {
 
 		try {
 			ConnectDriver();
@@ -216,7 +225,7 @@ public class StaffDAO extends SQLConnection {
 			prs.setString(1, inputFirstname);
 			prs.setString(2, inputLastname);
 			prs.setString(3, inputEmail);
-			prs.setDouble(4, inputContactnumber);
+			prs.setString(4, inputContactnumber);
 			prs.setString(5, inputUsername);
 			prs.setString(6, inputPassword);
 			prs.setInt(7, inputStafflocked);

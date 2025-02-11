@@ -1,5 +1,6 @@
 package com.smartqueueweb.DAO;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +65,7 @@ public class AdminDAO extends SQLConnection {
 				adminbean.setAdminId(rs.getInt("admin_id"));
 				adminbean.setUsername(rs.getString("username"));
 				adminbean.setPassword(rs.getString("password"));
+				adminbean.setProfilePicture(rs.getBlob("profile_picture"));
 			}
 
 		} catch (SQLException e) {
@@ -322,7 +324,7 @@ public class AdminDAO extends SQLConnection {
     public Integer AddMonthlyEnquiry() {
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("UPDATE tbl_month_queue_summary SET inquiries = inquiries + 1 WHERE month = CURDATE();");
+			prs = conn.prepareStatement("UPDATE tbl_month_queue_summary SET inquiries = inquiries + 1 WHERE MONTH(month) = MONTH(CURDATE());");
 			return prs.executeUpdate();
 			
 		}catch (Exception e) {
@@ -347,6 +349,27 @@ public class AdminDAO extends SQLConnection {
 			} finally {
 				SQLClose();
 			}
+		return false;
+	}
+
+	public Boolean UpdateAdmin(Integer id, String username, String password) throws SQLException {
+		
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("UPDATE tbl_login_admin SET username = ?, password = ? WHERE tbl_login_admin.admin_id = ?;");
+			
+			prs.setString(1, username);
+			prs.setString(2, password);
+			prs.setInt(3, id);
+			
+			int isExecuteUpdate = prs.executeUpdate();
+			
+			if(isExecuteUpdate > 0)
+				return true;
+			
+		} finally {
+			SQLClose();
+		}
 		return false;
 	}
 }

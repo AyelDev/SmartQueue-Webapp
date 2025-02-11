@@ -146,7 +146,8 @@ function checkQueueLimit() {
 }
 
 //need to polish --- BUG: TOO MANY CONNECTIONS PARTIAL FIX
-var queueNumber = 0;
+var queueNumber = 1;
+var startAvailQueueCount = false;
 function getAvailableQueueNUmber(){
 
     return new Promise(function (resolve, reject) {
@@ -155,8 +156,14 @@ function getAvailableQueueNUmber(){
             url: 'JsonQueueNumberAvailableAPI?availableNumber=' + queueNumber,
             type: "GET",
             success: function (response) {
+
                 queueNumber = response.id;
-                sendMsg("update queue");
+
+                //TODO update puhon kay naka shortpoll pako hehe
+                //sendMsg("update queue");
+
+                startAvailQueueCount = true;
+
             },
             error: function (xhr, status, error) {
                 $.notify(xhr.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
@@ -182,7 +189,11 @@ async function printQueue(serviceType) {
     isRunning = true;
 
     //E INCREMENT KAY MO BUG FIX NALANG NI LATOR
-    queueNumber++;
+    if(!startAvailQueueCount)
+        queueNumber++;
+
+    //SET TO FALSE IF MAG FIRST QUEUE 
+    startAvailQueueCount = false;
 
     let studentName = '';
     let studentId = '';
@@ -281,7 +292,7 @@ async function printQueue(serviceType) {
                 purpose.value = "";
                 program.value = "";
             } else if (serviceType === 'Records') {
-                studentName.value = "";
+                document.getElementById('records-student-name').value = "";
                 studentId.value = "";
                 purpose.value = "";
             } else if (serviceType === 'Archiving') {
@@ -306,9 +317,24 @@ function closeModal() {
     modal.style.display = "none";
 }
 
-// ---------------------records 
+// --------------------------records 
+
 const recordsButton = document.getElementById("recordsbutton");
-recordsButton.addEventListener("mouseenter", event => {
+const recordsIdInput = document.getElementById("records-student-id");
+const recordsRegex = /^[0-9]+$/;
+const idButton = document.getElementById("id-button");
+
+recordsIdInput.addEventListener("input", event =>{
+    
+    if(event.target.value.length > 4 && recordsRegex.test(event.target.value)){
+        idButton.style.display = "flex";
+    }else{
+        idButton.style.display = "none";
+    }
+
+});
+
+idButton.addEventListener("click", event => {
     //console.log("records-student-id");
     studentId = document.getElementById('records-student-id');
     let studentName = document.getElementById('records-student-name');
@@ -345,8 +371,32 @@ let archivingStudentMiddleName = document.getElementById('archiving-student-midd
 let archivingStudentLastName = document.getElementById('archiving-student-lastname');
 
 const archivingButton = document.getElementById("archivingButton");
+const archiveStudentIdinp = document.getElementById("archiving-student-id");
+const archivingIdButton = document.getElementById("archiving-id-button");
+archiveStudentIdinp.addEventListener("input", event =>{
+    
+ 
+    if(event.target.value.length > 4 && recordsRegex.test(event.target.value)){
+        archivingIdButton.style.display = "flex";
+        archivingStudentFirstName.style.pointerEvents = "none";
+        archivingStudentMiddleName.style.pointerEvents = "none";
+        archivingStudentLastName.style.pointerEvents = "none";
+    }else{
+        archivingIdButton.style.display = "none";
+        archivingStudentFirstName.style.pointerEvents = "none";
+        archivingStudentMiddleName.style.pointerEvents = "none";
+        archivingStudentLastName.style.pointerEvents = "none";
+    }
 
-archivingButton.addEventListener("mouseover", event => {
+    if(event.target.value === '000'){
+        archivingStudentFirstName.style.pointerEvents = "auto";
+        archivingStudentMiddleName.style.pointerEvents = "auto";
+        archivingStudentLastName.style.pointerEvents = "auto";
+    }
+
+});
+
+archivingIdButton.addEventListener("click", event => {
     if (archiveStudentId.value != "") {
         firstCall();
     } else if (archivingStudentFirstName.value != "" && archivingStudentLastName.value != "") {

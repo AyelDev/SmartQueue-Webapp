@@ -9,8 +9,19 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="../css/prettify.css">
+			<link rel="stylesheet" href="../css/notify.css">
+			<link rel="stylesheet" href="../css/jquery-confirm.min.css">
             <link rel="stylesheet" href="../css/loader.css">
             <link rel="stylesheet" href="../css/adminsettings.css">
+            <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
+			<script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+			<script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
+			<script type="text/javascript" src="../scripts/notify.js"></script>
+			<script type="text/javascript" src="../scripts/prettify.js"></script>
+			<script type="text/javascript" src="../scripts/ping.js"></script>
+			<script type="text/javascript" src="../scripts/fadetransition.js"></script>
+			<script type="text/javascript" src="../scripts/chart.min.js"></script>
             <title>Settings</title>
         </head>
 
@@ -169,7 +180,7 @@
                             </svg>
                         </div>
 
-
+                        
 
                         <!-- admin profile -->
                         <button class="button-profile" id="button-profile"><svg class="profile" width="64px"
@@ -214,6 +225,12 @@
                             <div class="profile-container">
                                 <aside class="sidebar">
                                     <ul>
+                                        <div class="profile-display">
+                                            <img id="left-profile-picture" src="" alt="">
+                                            <p id="left-profile-name">
+                                                <c:out value="${sessionScope.sessionAdmin.username}"/> 
+                                            </p>
+                                        </div>
                                         <li><a href="#profile-default">Profile</a></li>
                                         <li><a href="#changepassword">Change Password</a></li>
 
@@ -236,7 +253,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="username" class="information">Username:</label>
-                                                <input type="text" id="username" value="" disabled>
+                                                <input type="text" id="username" value="<c:out value='${sessionScope.sessionAdmin.username}'/>" disabled>
                                             </div>
                                             <div class="form-group">
                                                 <label for="email" class="information">Email:</label>
@@ -256,22 +273,35 @@
                                     <form id="passwordForm">
                                         <div class="form-group">
                                             <label for="old-password" class="password">Old Password:</label>
-                                            <input type="password" id="old-password" value="" required>
+                                            <input type="password" id="old-password" value="<c:out value='${sessionScope.sessionAdmin.password}'/>" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="new-password" class="password">New Password:</label>
-                                            <input type="password" id="old-password" value="" required>
+                                            <input type="password" id="new-password" value="" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="confirm-password" class="password">Confirm Password:</label>
                                             <input type="password" id="confirm-password" value="" required>
                                         </div>
 
-                                        <button type="submit" class="save-btn">Save</button>
+                                        <button type="submit" onclick="updateAdminPass()"  class="save-btn">Save</button>
                                     </form>
                                 </div>
                             </div>
+
+                            <div class="load-wrapper">
+                                <div class="main-loader">
+                                    <div class="box-loader">
+                                    </div>
+                                </div>
+                            </div>
+
                             <script>
+
+                            window.onload = function() {
+                                FetchImage();
+                            };
+
                                 document.getElementById('changePhotoBtn').addEventListener('click', function () {
                                     const fileInput = document.getElementById('profilePicInput');
                                     fileInput.click();
@@ -312,8 +342,88 @@
                                         });
                                 }
 
+                                    let pass =  document.querySelector("#new-password");
+                                    let confirmpass = document.querySelector("#confirm-password");
+                                    let username = '<c:out value="${sessionScope.sessionAdmin.username}"/>';
+                                    let id = '<c:out value="${sessionScope.sessionAdmin.adminId}"/>';
+                                   
+                                    function updateAdminPass(){
 
-                            </script>
+                                    if(pass.value != confirmpass.value){
+                                        alert("confirm password not matched");
+                                        return false;
+                                    }
+                                    
+                                    $.ajax({
+                                            url: '/UpdateAdmin',
+                                            method: 'POST',
+                                            data: {
+                                            id: id,
+                                            password: pass.value,
+                                            username: username
+                                        }
+                                    }).done(function (response) {
+                                        $.notify(response, { color: "#fff", background: "#20D67B", delay: 1000 })
+                                        pass.value = ``;
+                                        confirmpass.value = ``;
+                                    }).fail(function (jqXHR, error) {
+                                        //notify
+                                        $.notify(jqXHR.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
+                                    });
+                                   }
+
+
+
+
+                                   function previewImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('photo-preview').src = e.target.result;
+                document.getElementById('photo-preview').style.display = 'block';
+                document.getElementById('save-photo').style.display = 'block';
+                document.getElementById('cancel-upload').style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function savePhoto() {
+    // Get the uploaded image's source
+    const photoPreview = document.getElementById('photo-preview').src;
+    
+    // Update the left navigation profile picture
+    document.getElementById('left-profile-picture').src = photoPreview;
+    
+    // Simulate a successful save
+    alert('Do you want to saved Profile photo?');
+    
+    // Hide save/cancel buttons after saving
+    document.getElementById('save-photo').style.display = 'none';
+    document.getElementById('cancel-upload').style.display = 'none';
+    }
+
+        function cancelUpload() {
+            document.getElementById('photo').value = '';
+            document.getElementById('photo-preview').style.display = 'none';
+            document.getElementById('save-photo').style.display = 'none';
+            document.getElementById('cancel-upload').style.display = 'none';
+        }
+
+        async function FetchImage() {
+            return await fetch(window.location.origin + "/myimage")
+        .then((res) => res.blob()) 
+        .then((blob) => {
+           
+            let BlobUrl = URL.createObjectURL(blob);
+        
+            document.querySelector("#left-profile-picture").src = BlobUrl;
+        })
+        .catch((error) => {
+            console.error('Error fetching image:', error);
+        });
+    }
+
+        </script>
         </body>
 
 

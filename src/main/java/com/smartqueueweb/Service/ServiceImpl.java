@@ -1,6 +1,7 @@
 package com.smartqueueweb.Service;
 
 import java.io.InputStream;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -81,7 +82,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 
 	@Override
 	public Integer updateStaff(long staffId, String inputFirstname, String inputLastname, String inputEmail,
-			double inputContactnumber, String inputUsername, String inputPassword, int inputStafflocked) {
+			String inputContactnumber, String inputUsername, String inputPassword, int inputStafflocked) {
 		// TODO Auto-generated method stub
 		return staffdata.updateStaff(staffId, inputFirstname, inputLastname, inputEmail, inputContactnumber,
 				inputUsername, inputPassword, inputStafflocked);
@@ -231,6 +232,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	public Boolean clearAllQueueEntries() {
 		// TODO Auto-generated method stub
 		return admindata.ClearAllQueueEntries();
+	}
+	
+	@Override
+	public Boolean updateAdmin(Integer id, String username, String password) throws SQLException {
+		// TODO Auto-generated method stub
+		return admindata.UpdateAdmin(id, username, password);
 	}
 
 	//////////////////////////////////////////////////////////////////////// -----------------------

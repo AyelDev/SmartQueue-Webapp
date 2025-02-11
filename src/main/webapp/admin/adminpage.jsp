@@ -12,7 +12,6 @@
 			<link rel="stylesheet" href="../css/prettify.css">
 			<link rel="stylesheet" href="../css/notify.css">
 			<link rel="stylesheet" href="../css/jquery-confirm.min.css">
-			<link rel="stylesheet" href="../css/adminpage.css">
 			<link rel="stylesheet" href="../css/loader.css">
 			<link rel="stylesheet" href="../css/adminpage.css">
 			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
