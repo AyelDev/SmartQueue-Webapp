@@ -180,7 +180,7 @@
                             </svg>
                         </div>
 
-
+                        
 
                         <!-- admin profile -->
                         <button class="button-profile" id="button-profile"><svg class="profile" width="64px"
@@ -225,6 +225,12 @@
                             <div class="profile-container">
                                 <aside class="sidebar">
                                     <ul>
+                                        <div class="profile-display">
+                                            <img id="left-profile-picture" src="" alt="">
+                                            <p id="left-profile-name">
+                                                <c:out value="${sessionScope.sessionAdmin.username}"/> 
+                                            </p>
+                                        </div>
                                         <li><a href="#profile-default">Profile</a></li>
                                         <li><a href="#changepassword">Change Password</a></li>
 
@@ -291,6 +297,11 @@
                             </div>
 
                             <script>
+
+                            window.onload = function() {
+                                FetchImage();
+                            };
+
                                 document.getElementById('changePhotoBtn').addEventListener('click', function () {
                                     const fileInput = document.getElementById('profilePicInput');
                                     fileInput.click();
@@ -361,7 +372,58 @@
                                     });
                                    }
 
-                            </script>
+
+
+
+                                   function previewImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('photo-preview').src = e.target.result;
+                document.getElementById('photo-preview').style.display = 'block';
+                document.getElementById('save-photo').style.display = 'block';
+                document.getElementById('cancel-upload').style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function savePhoto() {
+    // Get the uploaded image's source
+    const photoPreview = document.getElementById('photo-preview').src;
+    
+    // Update the left navigation profile picture
+    document.getElementById('left-profile-picture').src = photoPreview;
+    
+    // Simulate a successful save
+    alert('Do you want to saved Profile photo?');
+    
+    // Hide save/cancel buttons after saving
+    document.getElementById('save-photo').style.display = 'none';
+    document.getElementById('cancel-upload').style.display = 'none';
+    }
+
+        function cancelUpload() {
+            document.getElementById('photo').value = '';
+            document.getElementById('photo-preview').style.display = 'none';
+            document.getElementById('save-photo').style.display = 'none';
+            document.getElementById('cancel-upload').style.display = 'none';
+        }
+
+        async function FetchImage() {
+            return await fetch(window.location.origin + "/myimage")
+        .then((res) => res.blob()) 
+        .then((blob) => {
+           
+            let BlobUrl = URL.createObjectURL(blob);
+        
+            document.querySelector("#left-profile-picture").src = BlobUrl;
+        })
+        .catch((error) => {
+            console.error('Error fetching image:', error);
+        });
+    }
+
+        </script>
         </body>
 
 

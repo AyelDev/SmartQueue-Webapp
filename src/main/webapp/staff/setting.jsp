@@ -77,6 +77,10 @@
         const contentArea = document.getElementById('content-area');
         const menu = document.getElementById('menu');
 
+        window.onload = function() {
+            FetchImage();
+        };
+
         const tabs = {
             profile: `
              <div class="form-group">
@@ -271,6 +275,20 @@
 
         // Initialize with profile content
         renderContent('profile');
+
+        async function FetchImage() {
+            return await fetch(window.location.origin + "/myimage")
+        .then((res) => res.blob()) 
+        .then((blob) => {
+           
+            let BlobUrl = URL.createObjectURL(blob);
+        
+            document.querySelector("#left-profile-picture").src = BlobUrl;
+        })
+        .catch((error) => {
+            console.error('Error fetching image:', error);
+        });
+    }
     </script>
 </body>
 </html>

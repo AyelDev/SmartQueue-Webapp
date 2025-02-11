@@ -349,6 +349,24 @@
                 #profileForm {
                     margin-bottom: 20px;
                 }
+                .profile-display {
+                    text-align: center;
+                    margin-bottom: 20px;
+                    margin-left: 2%;
+                }
+                .profile-display img {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    display: block;
+                    margin: 0 auto 10px;
+                    border: 2px solid #ccc;
+                }
+                .profile-display p {
+                    margin: 0;
+                    font-weight: bold;
+                }
 
                 .information {
                     font-size: 1rem;

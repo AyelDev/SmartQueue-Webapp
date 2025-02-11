@@ -1,6 +1,10 @@
 package com.smartqueueweb.Model;
 
+import java.sql.Blob;
 import java.sql.Date;
+
+
+
 
 public class StaffBean {
 	private int staffID;
@@ -12,7 +16,7 @@ public class StaffBean {
 	private String contactNumber;
 	private int isLocked;
 	private String pin;
-	private String profilePicture;
+	private Blob profilePicture;
 
 	private int requestId;
 	private Date requestedPassCreated;
@@ -33,7 +37,7 @@ public class StaffBean {
 	}
 
 	public StaffBean(int staffID, String username, String password, String firstname, String lastname, String email,
-			String contactNumber, int isLocked, String pin, String profilePicture) {
+			String contactNumber, int isLocked, String pin, Blob profilePicture) {
 		super();
 		this.staffID = staffID;
 		this.username = username;
@@ -119,11 +123,11 @@ public class StaffBean {
 		this.pin = pin;
 	}
 
-	public String getProfilePicture() {
+	public Blob getProfilePicture() {
 		return profilePicture;
 	}
 
-	public void setProfilePicture(String profilePicture) {
+	public void setProfilePicture(Blob profilePicture) {
 		this.profilePicture = profilePicture;
 	}
 

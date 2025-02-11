@@ -1,12 +1,13 @@
 package com.smartqueueweb.Model;
 
+import java.sql.Blob;
+
 public class AdminBean {
 
 	private int adminId;
 	private String username;
 	private String password;
-	
-	
+	private Blob profilePicture;
 	public int getAdminId() {
 		return adminId;
 	}
@@ -25,9 +26,17 @@ public class AdminBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public Blob getProfilePicture() {
+		return profilePicture;
+	}
+	public void setProfilePicture(Blob profilePicture) {
+		this.profilePicture = profilePicture;
+	}
 	
-
-	
-
+	@Override
+	public String toString() {
+		return "AdminBean [adminId=" + adminId + ", username=" + username + ", password=" + password
+				+ ", profilePicture=" + profilePicture + "]";
+	}
 	
 }

@@ -65,6 +65,7 @@ public class AdminDAO extends SQLConnection {
 				adminbean.setAdminId(rs.getInt("admin_id"));
 				adminbean.setUsername(rs.getString("username"));
 				adminbean.setPassword(rs.getString("password"));
+				adminbean.setProfilePicture(rs.getBlob("profile_picture"));
 			}
 
 		} catch (SQLException e) {

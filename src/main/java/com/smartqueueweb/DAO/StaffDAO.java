@@ -67,6 +67,7 @@ public class StaffDAO extends SQLConnection {
 				staffbean.setContactNumber(rs.getString("contact_number"));
 				staffbean.setIsLocked(rs.getInt("isLocked"));
 				staffbean.setPin(rs.getString("pin_number"));
+				staffbean.setProfilePicture(rs.getBlob("profile_picture"));
 			}
 
 		} catch (SQLException e) {
@@ -160,7 +161,7 @@ public class StaffDAO extends SQLConnection {
 						rs.getString("contact_number"),
 						rs.getInt("isLocked"), 
 						rs.getString("pin_number"),
-						rs.getString("profile_picture"));
+						rs.getBlob("profile_picture"));
 				listOfStaff.add(staffbean);
 			}
 
