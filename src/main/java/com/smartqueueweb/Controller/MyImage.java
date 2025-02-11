@@ -1,7 +1,9 @@
 package com.smartqueueweb.Controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.Enumeration;
@@ -48,16 +50,16 @@ public class MyImage extends HttpServlet {
 				Object attributeValue = session.getAttribute(attributeName);
 
 				if (attributeValue instanceof StaffBean && attributeName.equals("sessionStaff")) {
-					
+
 					staffBean = (StaffBean) attributeValue;
-					
+
 					ByteArray = GetImageByte(staffBean.getProfilePicture());
 				}
 
 				if (attributeValue instanceof AdminBean && attributeName.equals("sessionAdmin")) {
-					
+
 					adminBean = (AdminBean) attributeValue;
-					
+
 					ByteArray = GetImageByte(adminBean.getProfilePicture());
 				}
 
@@ -74,16 +76,35 @@ public class MyImage extends HttpServlet {
 	}
 
 	public byte[] GetImageByte(Blob imageBlob) {
-		
+
 		try {
-			
+
+			if (imageBlob == null) {
+				String imgFolderPAth = getServletContext().getRealPath("/images");
+
+				File file = new File(imgFolderPAth + File.separator + "tbl_login_admin-profile_picture.bin");
+
+				try {
+					// IF NO PROFILE IMAGE HAVE A TEMPORARY PROFILE PICTURE
+//					if(!file.exists()) {
+//						System.out.println("sdsd");
+//					}
+					return Files.readAllBytes(file.toPath());
+
+				} catch (Exception e) {
+
+					e.printStackTrace();
+
+				}
+			}
+
 			return imageBlob.getBytes(1, (int) imageBlob.length());
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return null;
 
 	}
