@@ -29,16 +29,8 @@
                     <div class="rightnav">
                         <div class="card-section">
                             <div class="dash"> <b>Dashboard</b>
-                                <div class="right-icons">
 
-                                    <div class="icon-container">
-                                        <a href="message"></a>
-                                        <img src="./images/message.png" class="picture" />
-                                        <span class="tooltip-text">Message</span>
-                                    </div>
-                                </div>
-
-                                <button class="button-profile"><img src="./images/profile.png" alt=""
+                                <button class="button-profile"><img src="" alt=""
                                         class="profile"><b><c:out value="${sessionScope.sessionStaff.firstname}"></c:out></b><img src="./images/caretdown.png" alt=""
                                         class="caretdown"></button>
                                 <div class="staffProfile" id="staffProfile">
@@ -99,20 +91,19 @@
 
                         <div class="bottom-lnav">
                             <b><a href="staffdashboard"><img src="./images/dashboard.png"
-                                        alt="Dashboard Icon">Dashboard</a></b>
-                            <b><a href="userwindow"><img src="./images/display.png" alt="UserWindow Icon">User
+                                        alt="">Dashboard</a></b>
+                            <b><a href="userwindow"><img src="./images/display.png" alt="">User
                                     Window</a></b>
-                            <b><a href="counterwindow"><img src="./images/counter.png" alt="CounterWindow Icon">Counter
+                            <b><a href="counterwindow"><img src="./images/counter.png" alt="">Counter
                                     Window</a></b>
-                            <b><a href="addstudent"><img src="./images/studentlist.png" alt="StudentList Icon">Student
+                            <b><a href="addstudent"><img src="./images/studentlist.png" alt="">Student
                                     List</a></b>
                             <b><a href="entertainment"><img src="./images/entertainment.png"
-                                        alt="Entertainment Icon">Entertainment</a></b>
+                                        alt="">Entertainment</a></b>
                         </div>
                     </div>
                 </div>
             </div>
-
 
             <script>
             //---------------------------------------------------------------------------------------------------IF NO PIN SETUP

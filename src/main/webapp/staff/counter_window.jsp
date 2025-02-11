@@ -25,16 +25,8 @@
             <div class="container">
                 <div class="rightnav">
                     <div class="dash"> <b></b>
-                        <div class="right-icons">
-            
-                            <div class="icon-container">
-                                <a href="#"></a>
-                                <img src="./images/message.png" class="picture">
-                                <span class="tooltip-text">Message</span>
-                            </div>
-                        </div>
                         
-                        <button class="button-profile"><img src="./images/profile.png" alt="" class="profile"><b><c:out value="${sessionScope.sessionStaff.firstname}"></c:out></b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
+            <button class="button-profile"><img src="" alt="" class="profile"><b><c:out value="${sessionScope.sessionStaff.firstname}"></c:out></b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
                 <div class="staffProfile" id="staffProfile">
                     <a href="setting">Settings</a>
                     <a href="logout">Signout</a>
@@ -137,11 +129,11 @@
                     <!-- staff profile -->
                     
                     <div class="bottom-lnav">
-                        <b><a href="staffdashboard"><img src="./images/dashboard.png" alt="Dashboard Icon">Dashboard</a></b>
-                        <b><a href="userwindow"><img src="./images/display.png" alt="UserWindow Icon">User Window</a></b>
-                        <b><a href="counterwindow"><img src="./images/counter.png" alt="CounterWindow Icon">Counter Window</a></b>
-                        <b><a href="addstudent"><img src="./images/studentlist.png" alt="StudentList Icon">Student List</a></b>
-                        <b><a href="entertainment"><img src="./images/entertainment.png" alt="Entertainment Icon">Entertainment</a></b>
+                        <b><a href="staffdashboard"><img src="./images/dashboard.png" alt="">Dashboard</a></b>
+                        <b><a href="userwindow"><img src="./images/display.png" alt="">User Window</a></b>
+                        <b><a href="counterwindow"><img src="./images/counter.png" alt="">Counter Window</a></b>
+                        <b><a href="addstudent"><img src="./images/studentlist.png" alt="">Student List</a></b>
+                        <b><a href="entertainment"><img src="./images/entertainment.png" alt="">Entertainment</a></b>
                     </div>
                 </div>
 
