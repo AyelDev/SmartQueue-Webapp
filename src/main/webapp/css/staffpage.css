@@ -101,15 +101,81 @@ body{
 .graphcalendar-container {
     width: 90%;
     height: 50%;
-    background-color: #EEEEEE;
+    background-color: transparent;
     justify-content: center;
     align-items: center;
     display: inline-block;
-    margin-left: 60px;
+    margin-left: 7%;
     border-radius: 10px;
     border: none;
     position: relative;
+    /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
+}
+.graph {
+    width: 50%;
+    height: 48vh;
+    background-color: #F5F5F5;
+    margin-top: 6.5px;
+    margin-left: 15px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 5px;
+}
+
+.calendar {
+    width: 43%;
+    height: 45vh;
+    background-color: #F5F5F5;
+    float: right;
+    margin-right: 2.5%;
+    margin-top: 6px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.calendar header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.calendar header button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+.calendar table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.calendar th, .calendar td {
+    text-align: center;
+    width: 14%;
+    height: 40px;
+}
+.calendar td {
+    cursor: pointer;
+    border-radius: 5px;
+}
+.calendar td:hover {
+    background: #e0e0e0;
+}
+.calendar .today {
+    background: #4285f4;
+    color: white;
+    border-radius: 10%;
+}
+
+.day, .date {
+    padding: 5px;
+    border-radius: 50%;
+}
+.date:hover {
+    background-color: lightgrey;
+}
+
+.current-day {
+    background-color: #5CB3FF;
+    color: white;
 }
 .leftnav {
     width: 15%;
@@ -265,73 +331,6 @@ body{
     background-color: #EEEEEE;
     border-radius: 7px;
     color: black;
-}
-
-.graph {
-    width: 50%;
-    height: 45vh;
-    background-color: #F5F5F5;
-    margin-top: 15px;
-    margin-left: 10px;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    border-radius: 3px;
-}
-
-.calendar {
-    width: 43%;
-    height: 45vh;
-    background-color: #F5F5F5;
-    float: right;
-    margin-right: 20px;
-    margin-top: 6px;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    border-radius: 5px;
-    padding: 10px;
-}
-.calendar header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.calendar header button {
-    background: none;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-}
-.calendar table {
-    width: 100%;
-    border-collapse: collapse;
-}
-.calendar th, .calendar td {
-    text-align: center;
-    width: 14%;
-    height: 40px;
-}
-.calendar td {
-    cursor: pointer;
-    border-radius: 5px;
-}
-.calendar td:hover {
-    background: #e0e0e0;
-}
-.calendar .today {
-    background: #4285f4;
-    color: white;
-    border-radius: 10%;
-}
-
-.day, .date {
-    padding: 5px;
-    border-radius: 50%;
-}
-.date:hover {
-    background-color: lightgrey;
-}
-
-.current-day {
-    background-color: #5CB3FF;
-    color: white;
 }
 
 .dash img.picture{

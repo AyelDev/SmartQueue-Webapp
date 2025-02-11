@@ -222,8 +222,8 @@
                 border: none;
                 float: right;
                 background-color: transparent;
-                color: #fff;
                 filter: invert(1);
+                color: black;
             }
             
             .profile {
