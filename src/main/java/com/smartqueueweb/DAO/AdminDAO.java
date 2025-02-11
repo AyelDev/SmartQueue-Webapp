@@ -323,7 +323,7 @@ public class AdminDAO extends SQLConnection {
     public Integer AddMonthlyEnquiry() {
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("UPDATE tbl_month_queue_summary SET inquiries = inquiries + 1 WHERE month = CURDATE();");
+			prs = conn.prepareStatement("UPDATE tbl_month_queue_summary SET inquiries = inquiries + 1 WHERE MONTH(month) = MONTH(CURDATE());");
 			return prs.executeUpdate();
 			
 		}catch (Exception e) {
