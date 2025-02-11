@@ -10,51 +10,53 @@
       <script type="text/javascript" src="../scripts/fadetransition.js"></script>
       <script type="text/javascript" src="../scripts/notify.js"></script>
       <script type="text/javascript" src="../scripts/prettify.js"></script>
-      <link rel="stylesheet" href="../css/bootstrap.css">
+      <!-- <link rel="stylesheet" href="../css/bootstrap.css"> -->
       <link rel="stylesheet" href="../css/loader.css">
       <link rel="stylesheet" href="../css/user_window.css">
       <link rel="stylesheet" href="../css/notify.css">
       <link rel="stylesheet" href="../css/prettify.css">
-      <link rel="stylesheet" href="../css/user_window.css">
-      <link rel="icon" type="image/x-icon" href="./images/logo.png">  
+      <link rel="icon" type="image/x-icon" href="./images/logo.png">
       <title>SmartQueue</title>
 
     </head>
+
     <body>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-6-1">
-            <video id="video-ads" autoplay muted controls>
-              <source id="videoSource" src="media/videosample3.mp4" type="video/mp4">
-            </video>
-            <div class="datetime">
-              <span id="date"></span> | <span id="time"></span>
-            </div>
+      <div class="container">
+        <div class="left">
+          <div class="datetime">
+            <div id="date"></div>|<div id="time"></div>
           </div>
-          <div class="col-6-2">
-            <table class="table table-info">
-              <tbody id="window-1-body">
-                <tr>
-                  <td>Window 1</td>
-                  <td class="windows" id="window1val" >---</td>
-                </tr>
-              </tbody>
+          <video id="video-ads" autoplay muted controls>
+            <source id="videoSource" src="media/videosample3.mp4" type="video/mp4">
+          </video>
+        </div>
 
-              <tbody id="window-2-body">
-                <tr>
-                  <td>Window 2</td>
-                  <td class="windows" id="window2val">---</td>
-                </tr>
-              </tbody>
+        <div class="right">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td class="windows" >
+                  <h2 id="window1val"></h2>
+                  <p>WINDOW 1</p>
+                
+              </tr>
+              <tr>
+                <td class="windows">
+                  <h2 id="window2val"></h2>
+                  <p>WINDOW 2</p>
+                </td>
+                
+              </tr>
 
-              <tbody id="window-3-body">
-                <tr>
-                  <td>Window 3</td>
-                  <td class="windows" id="window3val" >---</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+              <tr>
+                <td class="windows">
+                  <h2 id="window3val"></h2>
+                  <p>WINDOW 3</p>
+                </td>
+                
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -66,13 +68,14 @@
         </div>
       </div>
 
-      <div>
-
+      <div class="slidetext">
+        <span>ATTENTION! ONCE YOUR NUMBER IS CALLED AND YOU ARE NOT AROUND, YOU NEED TO GET ANOTHER PRIORITY
+          NUMBER.
+          &ensp;</span>
       </div>
+
       <footer>
-        <b style="background-color: #020000;">
-          <p>&copy; 2024 Cebu Eastern College. All Rights Reserved.</p>
-        </b>
+        <p>&copy; 2024 Cebu Eastern College. All Rights Reserved.</p>
       </footer>
 
       <div class="load-wrapper">
