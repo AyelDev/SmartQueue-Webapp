@@ -389,7 +389,7 @@ h1 {
 }
 
 .table-container::-webkit-scrollbar-thumb {
-    background-color: var(--primary-color);
+    background-color: #0056b3;
     border-radius: 5rem;
 }
 
