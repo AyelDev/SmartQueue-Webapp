@@ -55,7 +55,7 @@ body {
   margin-top: 6px;
 }
 
-.title {
+.title b{
   color: var(--background-color);
   font-size: 1rem;
 }
@@ -222,7 +222,7 @@ button {
 }
 
 .search-bar {
-  border-radius: 15px;
+  border-radius: 7px;
   width: 80%;
   padding: 5px;
   border: 1px solid;
@@ -236,6 +236,7 @@ button {
   margin-left: -20%;
   background: none;
   margin-bottom: -5%;
+  filter: invert(-1);
 }
 
 .search-icon {
@@ -456,32 +457,39 @@ form {
   align-items: center;
   justify-content: center;
   display: flex;
-  width: 10vw;
+  width: 8vw;
   margin-top: 1px;
-  margin-left: 80%;
-  border-radius: 10px;
+  margin-left: 83%;
+  border-radius: 5px;
   padding: 5px 3px 5px 3px;
   /*tlbr*/
   overflow: hidden;
   cursor: pointer;
   border: none;
-  float: right;
+  /* float: right; */
   margin-right: 13.5%;
-  background-color: white;
+  background-color: transparent;
   position: fixed;
   font-weight: normal;
+  color: #fff;
+  filter: invert(-1);
 }
 
 .profile {
-  width: 10%;
+  width: 15px;
   object-fit: scale-down;
-  margin-right: 1.25rem;
+  margin-right: 5px;
+  height: 15px;
+  border: 1px solid black;
+  border-radius: 50%;
+  filter: invert(1);
 }
 
 .caretdown {
   mix-blend-mode: multiply;
   width: 0.625rem;
   margin-left: 1.25rem;
+  filter: invert(1);
 }
 .staffProfile {
   position: absolute;
@@ -493,12 +501,12 @@ form {
   z-index: 1;
   display: none;
   margin-top: 8%;
-  right: 2.2%;
+  right: .4%;
 }
 
 .staffProfile a {
   text-decoration: none;
-  background-color: var(--background-color);
+  background-color: #fff;
   color: black;
   overflow: hidden;
   width: 10vw;
