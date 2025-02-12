@@ -392,13 +392,14 @@ background-color: #c82333;
             margin-right: 1.5%;
             background-color: transparent;
             filter: invert(1);
+            color: black;
         }
 
         .profile {
-            width: 15px;
+            width: 25px;
+            height: 25px;
             object-fit: scale-down;
             margin-right: 5px;
-            height: 15px;
             border: 1px solid black;
             border-radius: 50%;
             
