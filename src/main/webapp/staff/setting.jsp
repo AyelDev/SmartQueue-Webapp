@@ -221,12 +221,10 @@
                     })
                         .then((response) => response.text())
                         .then((data) => {
-                            console.log('Photo uploaded successfully:', data);
-                            alert('Photo updated successfully!');
+                            $.notify("Profile updated successfully", { color: "#fff", background: "#20D67B", delay: 1000 })
                         })
                         .catch((error) => {
-                            console.error('Error uploading photo:', error);
-                            alert('Failed to upload photo. Please try again.');
+                            $.notify("an error occured " + error,{ color: "#fff", background: "#D44950", delay: 1000 })
                         });
                 }
 
