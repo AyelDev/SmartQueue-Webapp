@@ -275,8 +275,7 @@ body{
     float: right;
     margin-right: 6%;
     background-color: transparent;
-    filter: invert(1);
-
+    color: #fff;
 }
 
 .profile {
@@ -284,18 +283,16 @@ body{
     height: 25px;
     object-fit: scale-down;
     margin-right: 5px;
-    border: 1px solid black;
+    border: 1px solid #fff;
     border-radius: 50%;
-    
 }
 
 .caretdown {
-    mix-blend-mode: multiply;
+    filter: invert(1);
     width: 0.625rem;
-    margin-left: 1rem;
-    margin-right: .8rem;
-  
-}
+    margin-left: 1.25rem;
+} 
+
 .staffProfile {
   position: absolute;
   background-color: none;

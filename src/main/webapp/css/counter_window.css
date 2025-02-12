@@ -391,8 +391,7 @@ background-color: #c82333;
             float: right;
             margin-right: 1.5%;
             background-color: transparent;
-            filter: invert(1);
-            color: black;
+            color: #fff;
         }
 
         .profile {
@@ -400,15 +399,15 @@ background-color: #c82333;
             height: 25px;
             object-fit: scale-down;
             margin-right: 5px;
-            border: 1px solid black;
+            border: 1px solid #fff;
             border-radius: 50%;
-            
         }
 
         .caretdown {
-            mix-blend-mode: multiply;
+            /* mix-blend-mode: multiply; */
             width: 0.625rem;
             margin-left: 1rem;
+            filter: invert(1);
         }
         .staffProfile {
 			position: absolute;
