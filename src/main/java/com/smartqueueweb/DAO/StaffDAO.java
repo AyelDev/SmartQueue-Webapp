@@ -1,5 +1,6 @@
 package com.smartqueueweb.DAO;
 
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -460,6 +461,26 @@ public class StaffDAO extends SQLConnection {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
+		return false;
+	}
+
+	public Boolean StaffChangeProfilePhoto(InputStream file, int id) throws SQLException {
+		try {
+			ConnectDriver();
+			prs = conn
+					.prepareStatement("UPDATE tbl_login_staff SET profile_picture = ? WHERE tbl_login_staff.staff_id = ?;");
+
+			prs.setBlob(1, file);
+			prs.setInt(2, id);
+			
+			int executeQuery = prs.executeUpdate();
+			
+			if(executeQuery > 0)
+				return true;
+
 		} finally {
 			SQLClose();
 		}

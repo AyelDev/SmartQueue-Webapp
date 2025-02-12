@@ -28,7 +28,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	StaffDAO staffdata = new StaffDAO();
 	AdminDAO admindata = new AdminDAO();
 	StudentDAO studentdata = new StudentDAO();
-	
+
 	//////////////////////////////////////////////////////////////////////// ------------------
 	//////////////////////////////////////////////////////////////////////// Staff
 	@Override
@@ -73,7 +73,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return staffdata.removeStaff(staffId);
 	}
-	
+
 	@Override
 	public List<StaffBean> listOfStaffPasswordRequests(int isCompleted) {
 		// TODO Auto-generated method stub
@@ -99,19 +99,19 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return staffdata.windowList();
 	}
-	
+
 	@Override
 	public List<ServicesBean> studentQueueEntries(int window_number, String queue_status) {
 		// TODO Auto-generated method stub
 		return staffdata.studentQueueEntries(window_number, queue_status);
 	}
-	
+
 	@Override
 	public Integer updateQueueStatus(String QueueNumber, String queue_status) {
 		// TODO Auto-generated method stub
 		return staffdata.updateQueueStatus(QueueNumber, queue_status);
 	}
-	
+
 	@Override
 	public Integer addVideo(String fileName, String path, String type) {
 		// TODO Auto-generated method stub
@@ -135,13 +135,18 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return staffdata.ResetPasswordStep2(pin, email);
 	}
-	
+
 	@Override
 	public Boolean completePasswordReset(String password, int id) {
 		// TODO Auto-generated method stub
 		return staffdata.CompletePasswordReset(password, id);
 	}
-	
+
+	@Override
+	public Boolean staffChangeProfilePhoto(InputStream file, int id) throws SQLException {
+		// TODO Auto-generated method stub
+		return staffdata.StaffChangeProfilePhoto(file, id);
+	}
 	//////////////////////////////////////////////////////////////////////// --------------------
 	//////////////////////////////////////////////////////////////////////// Admin
 	@Override
@@ -161,13 +166,13 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return admindata.serviceList();
 	}
-	
+
 	@Override
 	public Integer addService(String program, String purpose, int amount, ServiceType serviceType) {
 		// TODO Auto-generated method stub
 		return admindata.AddService(program, purpose, amount, serviceType);
 	}
-	
+
 	@Override
 	public Boolean updateService(Integer id, String program, String purpose, int amount) {
 		// TODO Auto-generated method stub
@@ -178,14 +183,14 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 	public Boolean deleteService(Integer id) {
 		// TODO Auto-generated method stub
 		return admindata.DeleteService(id);
-	} 
-	
+	}
+
 	@Override
 	public Integer addCounters(Integer counterNumber, String description) {
 		// TODO Auto-generated method stub
 		return admindata.AddCounters(counterNumber, description);
 	}
-	
+
 	@Override
 	public List<CountersBean> counterList() {
 		// TODO Auto-generated method stub
@@ -203,7 +208,7 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return admindata.DeleteCounters(id);
 	}
-	
+
 	@Override
 	public List<MediaBean> videoList() {
 		// TODO Auto-generated method stub
@@ -233,13 +238,18 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return admindata.ClearAllQueueEntries();
 	}
-	
+
 	@Override
 	public Boolean updateAdmin(Integer id, String username, String password) throws SQLException {
 		// TODO Auto-generated method stub
 		return admindata.UpdateAdmin(id, username, password);
 	}
 
+	@Override
+	public Boolean adminChangeProfilePhoto(InputStream file, int id) throws SQLException {
+		// TODO Auto-generated method stub
+		return admindata.AdminChangeProfilePhoto(file, id);
+	}
 	//////////////////////////////////////////////////////////////////////// -----------------------
 	//////////////////////////////////////////////////////////////////////// Student
 
@@ -267,14 +277,15 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		return studentdata.updateStudent(idNumber, inputIdnumber, inputfirstname, inputMiddlename, inputLastname,
 				inputCourse);
 	}
-	
+
 	@Override
 	public StudentBean searchStudentInquiry(long idnumber, String firstname, String middlename, String lastname) {
 		return studentdata.searchStudentDetail(idnumber, firstname, middlename, lastname);
 	}
-	
+
 	@Override
-	public Integer addToQueue(String queueNumber, String idNumber, String fullname, String purpose, String servicetype) {
+	public Integer addToQueue(String queueNumber, String idNumber, String fullname, String purpose,
+			String servicetype) {
 		return studentdata.addToQueue(queueNumber, idNumber, fullname, purpose, servicetype);
 	}
 
@@ -283,57 +294,56 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return studentdata.queueNumberAvailable(id);
 	}
-	
+
 	@Override
 	public Integer tempRegisterStudent(String idNumber, String firstname, String middlename, String lastname,
 			String course) {
 		// TODO Auto-generated method stub
 		return studentdata.tempRegisterStudent(idNumber, firstname, middlename, lastname, course);
 	}
-	
+
 	public String XMLERRORNAME(String errorName) {
 		try {
-			
+
 			InputStream xmlFile = ServiceImpl.class.getClassLoader().getResourceAsStream("WEB-INF/WebConfigErrors.xml");
 
-		    // Check if file exists
-		    if (xmlFile == null) {
-		        System.out.println("File not found: " + xmlFile);
-		        return "";
-		    }
+			// Check if file exists
+			if (xmlFile == null) {
+				System.out.println("File not found: " + xmlFile);
+				return "";
+			}
 
-		    // Create a DocumentBuilderFactory
-		    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			// Create a DocumentBuilderFactory
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
-		    // Create a DocumentBuilder
-		    DocumentBuilder builder = factory.newDocumentBuilder();
+			// Create a DocumentBuilder
+			DocumentBuilder builder = factory.newDocumentBuilder();
 
-		    // Parse the XML file and build a Document
-		    Document document = builder.parse(xmlFile);
+			// Parse the XML file and build a Document
+			Document document = builder.parse(xmlFile);
 
-		    // Normalize the XML structure
-		    document.getDocumentElement().normalize();
+			// Normalize the XML structure
+			document.getDocumentElement().normalize();
 
-		    // Get all data elements
-		    NodeList nodeList = document.getElementsByTagName("data");
+			// Get all data elements
+			NodeList nodeList = document.getElementsByTagName("data");
 
-		    // Iterate through the data elements
-		    for (int i = 0; i < nodeList.getLength(); i++) {
-		        Element dataElement = (Element) nodeList.item(i);
-		        String value = dataElement.getElementsByTagName("value").item(0).getTextContent();
-		        String name = dataElement.getAttribute("name");
-		        if (name.equals(errorName)) {
-		            // Print the information
-		            // System.out.println("Name: " + name);
-		            // System.out.println("Value: " + value);
-		            // System.out.println();
-		            return value;
-		        }
-		    }
+			// Iterate through the data elements
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				Element dataElement = (Element) nodeList.item(i);
+				String value = dataElement.getElementsByTagName("value").item(0).getTextContent();
+				String name = dataElement.getAttribute("name");
+				if (name.equals(errorName)) {
+					// Print the information
+					// System.out.println("Name: " + name);
+					// System.out.println("Value: " + value);
+					// System.out.println();
+					return value;
+				}
+			}
 		} catch (Exception e) {
-		    e.printStackTrace();
+			e.printStackTrace();
 		}
 		return "";
-
 	}
 }

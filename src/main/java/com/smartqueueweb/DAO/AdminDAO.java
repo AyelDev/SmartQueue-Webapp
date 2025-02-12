@@ -1,6 +1,7 @@
 package com.smartqueueweb.DAO;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -361,6 +362,25 @@ public class AdminDAO extends SQLConnection {
 			prs.setString(1, username);
 			prs.setString(2, password);
 			prs.setInt(3, id);
+			
+			int isExecuteUpdate = prs.executeUpdate();
+			
+			if(isExecuteUpdate > 0)
+				return true;
+			
+		} finally {
+			SQLClose();
+		}
+		return false;
+	}
+
+	public Boolean AdminChangeProfilePhoto(InputStream file, int id) throws SQLException {
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("UPDATE tbl_login_admin SET profile_picture = ? WHERE tbl_login_admin.admin_id = ?;");
+			
+			prs.setBlob(1, file);
+			prs.setInt(2, id);
 			
 			int isExecuteUpdate = prs.executeUpdate();
 			

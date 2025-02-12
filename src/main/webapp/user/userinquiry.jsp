@@ -142,7 +142,7 @@
                     <h2>Archiving Form</h2>
                     <p>For New and Old Students</p>
                     <form id="form" class="form">
-                        <label for="studentIdNo">Student ID No. </label>
+                        <label for="studentIdNo">Student ID No. Type '000' for new student</label>
                         <input type="text" class="student-id" id="archiving-student-id" onclick="SetEmptyNameFields()"
                             required>
                             <input type="button" class="id-button" id="archiving-id-button" value="Confirm">
