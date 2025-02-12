@@ -14,7 +14,6 @@
             <script type="text/javascript" src="../scripts/fadetransition.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
-            <script type="text/javascript" src="../scripts/staff/staffpage.js"></script>
             <link rel="stylesheet" type="text/css" href="../css/jquery-confirm.min.css" />
             <link rel="stylesheet" href="../css/loader.css">
             <link rel="stylesheet" href="../css/staffpage.css">
@@ -105,7 +104,14 @@
                 </div>
             </div>
 
+            <script type="text/javascript" src="../scripts/staff/staffpage.js"></script>
+            <script type="text/javascript" src="../scripts/profilePic.js"></script>
             <script>
+            //----- FETCH PROFILE IMAGE DURING LOAD
+            window.onload = function(){
+                FetchImage(".profile");
+            }
+            
             //---------------------------------------------------------------------------------------------------IF NO PIN SETUP
             let getStaffSessionPin = <c:out value="${sessionScope.sessionStaff.getPin()}"></c:out> + '';
             let getStaffSessionID = <c:out value="${sessionScope.sessionStaff.staffID}"></c:out> + '';

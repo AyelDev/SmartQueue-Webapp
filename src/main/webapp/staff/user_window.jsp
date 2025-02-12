@@ -236,6 +236,14 @@
 
         <script type="text/javascript" src="../scripts/bootstrap.js"></script>
         <script type="text/javascript" src="../scripts/staff/user_window.js"></script>
+        <script type="text/javascript" src="../scripts/profilePic.js"></script>
+        <script>
+            //----- FETCH PROFILE IMAGE DURING LOAD
+            window.onload = function(){
+                FetchImage(".profile");
+            }
+            
+        </script>
 
     </body>
 

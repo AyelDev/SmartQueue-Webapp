@@ -157,8 +157,13 @@
 				</div>
 				</div>
 			</div>
-
+            <script type="text/javascript" src="../scripts/profilePic.js"></script>
 			<script>
+				//----- FETCH PROFILE IMAGE DURING LOAD
+				window.onload = function(){
+					FetchImage(".profile");
+				}
+				
 				var dropdown = document.getElementsByClassName("button-profile");
 				var i;
 

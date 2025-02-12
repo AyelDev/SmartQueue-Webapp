@@ -99,5 +99,12 @@
 			<script type="text/javascript" src="../scripts/chart.min.js"></script>
             <!-- page js import -->
             <script type="text/javascript" src="../scripts/staff/entertainment.js"></script>
+            <script type="text/javascript" src="../scripts/profilePic.js"></script>
+            <script>
+				//----- FETCH PROFILE IMAGE DURING LOAD
+				window.onload = function(){
+					FetchImage(".profile");
+				}
+            </script>
         </body>
         </html>

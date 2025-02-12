@@ -138,12 +138,18 @@
                 </div>
 
             </div>
+
+            <script type="text/javascript" src="../scripts/profilePic.js"></script>
             <script>
                 document.addEventListener("DOMContentLoaded", function () {
-            var dropdownButton = document.querySelector(".button-profile");
-            var staffProfile = document.getElementById("staffProfile");
 
-            staffProfile.style.display = "none";
+                 //----- FETCH PROFILE IMAGE DURING LOAD
+                 FetchImage(".profile");
+                    
+                var dropdownButton = document.querySelector(".button-profile");
+                var staffProfile = document.getElementById("staffProfile");
+
+                staffProfile.style.display = "none";
 
             dropdownButton.addEventListener("click", function () {
                 if (staffProfile.style.display === "block") {
