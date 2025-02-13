@@ -330,8 +330,6 @@
 					</div>
 				</div>
 			</div>
-			<script type="text/javascript" src="../scripts/admin/adminpage.js"></script>
-			<script type="text/javascript" src="../scripts/profilePic.js"></script>
 			<script>
 				window.onload = function(){
 					FetchImage("#profile-picture");
@@ -344,6 +342,8 @@
 					password: "<c:out value='${sessionScope.sessionAdmin.password}'/>"
 				}
 			</script>
+			<script type="text/javascript" src="../scripts/admin/adminpage.js"></script>
+			<script type="text/javascript" src="../scripts/profilePic.js"></script>
 		</body>
 
 		</html>

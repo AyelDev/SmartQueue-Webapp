@@ -307,13 +307,14 @@
 					</div>
 				</div>
 
-				<script type="text/javascript" src="../scripts/admin/list_of_student.js"></script>
-				<script type="text/javascript" src="../scripts/profilePic.js"></script>
 				<script>
 					window.onload = function(){
 						FetchImage("#profile-picture");
 					}
 				</script>
+				<script type="text/javascript" src="../scripts/admin/list_of_student.js"></script>
+				<script type="text/javascript" src="../scripts/profilePic.js"></script>
+			
 		</body>
 
 		</html>

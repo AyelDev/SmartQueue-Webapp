@@ -101,6 +101,7 @@ $(document).ready(function () {
             type: 'POST',
             data: params,
             success: function (response) {
+                updateData()
                 openModal()
                 $.confirm({
                     boxWidth: '30%',
