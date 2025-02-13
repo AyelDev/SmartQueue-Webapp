@@ -208,6 +208,10 @@
         </div>
 
         <script type="text/javascript" src="../scripts/admin/video_ads.js"></script>
+        <script type="text/javascript" src="../scripts/profilePic.js"></script>
+        <script>
+            FetchImage("#profile-picture");
+        </script>
         </body>
 
 

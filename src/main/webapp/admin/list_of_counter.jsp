@@ -214,7 +214,10 @@
                     <script type="text/javascript" src="../scripts/ping.js"></script>
                     <script type="text/javascript" src="../scripts/fadetransition.js"></script>
                     <script type="text/javascript" src="../scripts/admin/list_of_counter.js"></script>
-                  
+                    <script type="text/javascript" src="../scripts/profilePic.js"></script>
+                    <script>
+                        FetchImage("#profile-picture");
+                    </script>
                     <div class="load-wrapper">
                         <div class="main-loader">
                             <div class="box-loader">

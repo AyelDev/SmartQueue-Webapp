@@ -40,14 +40,14 @@ public class QueueWebSocketController {
 	@OnOpen
 	public void onOpen(Session session) {
 
-		System.out.println("Connected: " + session.getId() + clients);
+		//System.out.println("Connected: " + session.getId() + clients);
 		// add session names for auto logout
 		// Retrieve the cookie from the session
 	}
 
 	@OnClose
 	public void onClose(Session session) {
-		System.out.println("Closed: " + session.getId() + clients);
+		//System.out.println("Closed: " + session.getId() + clients);
 		clients.remove(0);
 	}
 

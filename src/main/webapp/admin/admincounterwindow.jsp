@@ -283,6 +283,10 @@
                 </div>
 
         <script type="text/javascript" src="../scripts/admin/admincounterwindow.js"></script>
+        <script type="text/javascript" src="../scripts/profilePic.js"></script>
+        <script>
+            FetchImage("#profile-picture");
+        </script>
     </body>
 
 </html>
