@@ -18,6 +18,7 @@
 			<script type="text/javascript" src="./scripts/jquery-confirm.min.js"></script>
 			<link rel="stylesheet" href="./css/loader.css">
 			<link rel="stylesheet" href="../css/add_student.css">
+			<link rel="icon" type="image/x-icon" href="./images/logo.png">
 			<title>Staff | List of Student</title>
 		</head>
 			

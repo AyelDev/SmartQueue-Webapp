@@ -6,6 +6,7 @@
 
 		<head>
 			<meta charset="UTF-8">
+			<link rel="icon" type="image/x-icon" href="./images/logo.png">
 			<title>Error <c:out value="${requestScope['javax.servlet.error.status_code']}" default="N/A"></c:out>
 			</title>
 			<style>

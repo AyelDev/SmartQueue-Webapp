@@ -55,8 +55,8 @@ public class UserInquiry_Servlet extends HttpServlet {
 			 * Summary run these to service methods to ensure optimization
 			 */
 			Thread thread1 = new Thread(() -> services.addToQueue(queueNum, studentid, fullname, purpose, servicetype));
-			Thread thread2 = new Thread(() -> services.tempRegisterStudent(studentid, fullnameSplitter(0, fullname),
-					fullnameSplitter(1, fullname), fullnameSplitter(2, fullname), program));
+			//Thread thread2 = new Thread(() -> services.tempRegisterStudent(studentid, fullnameSplitter(0, fullname),
+					//fullnameSplitter(1, fullname), fullnameSplitter(2, fullname), program));
 
 			/*
 			 * Summary making sure it thread2 runs only on servicetype general
@@ -64,7 +64,7 @@ public class UserInquiry_Servlet extends HttpServlet {
 			if (servicetype.equals("General")) {
 				// Start the threads
 				thread1.start();
-				thread2.start();
+				//thread2.start();
 			} else {
 				thread1.start();
 			}
@@ -72,7 +72,7 @@ public class UserInquiry_Servlet extends HttpServlet {
 			// Wait for both threads to complete
 			try {
 				thread1.join();
-				thread2.join();
+				//thread2.join();
 
 				response.setContentType("text/plain");
 				response.setStatus(HttpServletResponse.SC_OK);

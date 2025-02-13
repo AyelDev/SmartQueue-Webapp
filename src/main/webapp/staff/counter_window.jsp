@@ -18,6 +18,7 @@
             <link rel="stylesheet" href="./css/prettify.css">
             <link rel="stylesheet" href="./css/notify.css">
             <link rel="stylesheet" href="../css/counter_window.css">
+            <link rel="icon" type="image/x-icon" href="./images/logo.png">
             <title>SmartQueue</title>
            
         </head>

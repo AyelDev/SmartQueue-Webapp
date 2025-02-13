@@ -16,6 +16,7 @@
 			<link rel="stylesheet" href="../css/loader.css">
             <!-- page css import-->
             <link rel="stylesheet" href="../css/entertainment.css">
+            <link rel="icon" type="image/x-icon" href="./images/logo.png">
             <title>SmartQueuWeb</title>
            
         </head>

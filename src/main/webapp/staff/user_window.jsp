@@ -107,6 +107,7 @@
           text-align: center;
           position: fixed;
           bottom: 3%;
+          background-color: #E8F4F8;
         }
 
         td {
@@ -167,7 +168,7 @@
           background-color: #00509d;
         }
       </style>
-      <div class="container-fluid">
+      <div class="container-fluid" style="background-color: #E8F4F8;">
         <div class="row">
           <div class="col" style="padding: 0; margin: 0;">
             <div class="datetime">
