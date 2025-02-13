@@ -9,6 +9,13 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
+            <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+            <script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
+            <script type="text/javascript" src="../scripts/notify.js"></script>
+            <script type="text/javascript" src="../scripts/prettify.js"></script>
+            <script type="text/javascript" src="../scripts/ping.js"></script>
+            <script type="text/javascript" src="../scripts/fadetransition.js"></script>
             <link rel="stylesheet" href="../css/prettify.css">
             <link rel="stylesheet" href="../css/notify.css">
             <link rel="stylesheet" href="../css/jquery-confirm.min.css">
@@ -143,7 +150,7 @@
                                 </svg>
                                 <c:out value="${sessionScope.sessionAdmin.username}"></c:out><svg
                                     xmlns="http://www.w3.org/2000/svg" class="caretdown" height="10" width="6.25"
-                                    viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                    viewBox="0 0 320 512">
                                     <path fill="#ffffff"
                                         d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
                                 </svg>
@@ -199,22 +206,14 @@
                                 </tbody>
                             </table>
                         </div>
-
-
-
-
                     </div>
-                    <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
-                    <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
-                    <script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
-                    <script type="text/javascript" src="../scripts/notify.js"></script>
-                    <script type="text/javascript" src="../scripts/prettify.js"></script>
-                    <script type="text/javascript" src="../scripts/ping.js"></script>
-                    <script type="text/javascript" src="../scripts/fadetransition.js"></script>
+
                     <script type="text/javascript" src="../scripts/admin/list_of_counter.js"></script>
                     <script type="text/javascript" src="../scripts/profilePic.js"></script>
                     <script>
-                        FetchImage("#profile-picture");
+                        window.onload = function(){
+                            FetchImage("#profile-picture");
+                        }
                     </script>
                     <div class="load-wrapper">
                         <div class="main-loader">

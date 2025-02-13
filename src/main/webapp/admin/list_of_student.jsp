@@ -310,7 +310,9 @@
 				<script type="text/javascript" src="../scripts/admin/list_of_student.js"></script>
 				<script type="text/javascript" src="../scripts/profilePic.js"></script>
 				<script>
-					FetchImage("#profile-picture");
+					window.onload = function(){
+						FetchImage("#profile-picture");
+					}
 				</script>
 		</body>
 

@@ -13,9 +13,6 @@ for (i = 0; i < dropdown.length; i++) {
     });
 }
 
-
-
-
 var staffListInfo = document.getElementById("tablelist");
 
 function updateData() {
@@ -45,9 +42,6 @@ function renderHTML(data) {
             '<td><button onclick="updateStaff(' + data[i].staffID + ', \'' + data[i].firstname + '\', \'' + data[i].lastname + '\', \'' + data[i].username + '\', \'' + data[i].contactNumber + '\', \'' + data[i].email + '\', \'' + data[i].password + '\', \'' + data[i].isLocked + '\')" class="update" style="background-color: #0056b3;color: white; font-size: .7em;">Update</button>' +
             '<button onclick="removeStaff(' + data[i].staffID + ')" class="delete" style="background-color: #EE4E4E; font-size: .7em; color: white;">Delete</button></td>' +
             '</tr>';
-
-
-
 
         // htmlString += "<tr>";
         // htmlString += "<td>" + data[i].staffID + "</td>";
@@ -108,7 +102,6 @@ $(document).ready(function () {
             data: params,
             success: function (response) {
                 openModal()
-                updateData()
                 $.confirm({
                     boxWidth: '30%',
                     useBootstrap: false,
@@ -224,55 +217,55 @@ function updateStaff(id, firstname, lastname, username, contactnumber, email, pa
         useBootstrap: false,
         title: 'Update Staff : ' + id,
         content: `
-        <div class="register-form">
-        <form id="staffRegisterForm">
-            <div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-                <input class="firstname-input" required="required" type="text"
-                    name="txtFirstname" value="`+ firstname + `">
-                <label for="firstname" class="firstname-label">First name</label>
-            </div>
-            <div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-                <input class="lastname-input" required="required" type="text"
-                    name="txtLastname" value="`+ lastname + `">
-                <label for="lastname" class="lastname-label">Last name</label>
-            </div>
+								<div class="register-form">
+								<form id="staffRegisterForm">
+									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+										<input class="firstname-input" required="required" type="text"
+											name="txtFirstname" value="`+ firstname + `">
+										<label for="firstname" class="firstname-label">First name</label>
+									</div>
+									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+										<input class="lastname-input" required="required" type="text"
+											name="txtLastname" value="`+ lastname + `">
+										<label for="lastname" class="lastname-label">Last name</label>
+									</div>
 
-            <div class="input-container full-width" style="width: 40%; margin: 0 20px 0 20px;">
-                <input class="username-input" required="required" type="text"
-                    name="txtUsername" value="`+ username + `">
-                <label for="username" class="username-label">Username</label>
-            </div>
+									<div class="input-container full-width" style="width: 40%; margin: 0 20px 0 20px;">
+										<input class="username-input" required="required" type="text"
+											name="txtUsername" value="`+ username + `">
+										<label for="username" class="username-label">Username</label>
+									</div>
 
-            <div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-                <input class="contactno-input" required="required" type="text"
-                    name="txtContactno" value="`+ contactnumber + `" maxlength="11">
-                <label for="contactno" class="contactno-label">Contact no.</label>
-            </div>
+									<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+										<input class="contactno-input" required="required" type="text"
+											name="txtContactno" value="`+ contactnumber + `" maxlength="11">
+										<label for="contactno" class="contactno-label">Contact no.</label>
+									</div>
 
-            <div class="input-container" style="width: 91%; margin-left: 20px;">
-                <input class="email-input" required="required" type="text" name="txtEmail" value="`+ email + `">
-                <label for="email" class="email-label">Email</label>
-            </div>
+									<div class="input-container" style="width: 91%; margin-left: 20px;">
+										<input class="email-input" required="required" type="text" name="txtEmail" value="`+ email + `">
+										<label for="email" class="email-label">Email</label>
+									</div>
 
-            
-            <div class="input-container" style="width: 91%; margin-left: 20px;">
-                <input class="password-input" required="required" type="password" name="txtPassword" value="`+ password + `">
-                <label for="password" class="password-label">Password</label>
-            </div>
+									
+									<div class="input-container" style="width: 91%; margin-left: 20px;">
+										<input class="password-input" required="required" type="password" name="txtPassword" value="`+ password + `">
+										<label for="password" class="password-label">Password</label>
+									</div>
 
-            <div class="input-container" style="width: 91%; margin: 0 20px 5% 20px;">
-                <input class="confirmpassword-input" required="required" type="password" name="txtConfirmpassword" value="`+ password + `">
-                <label for="confirmpassword" class="confirmpassword-label">Confirm Password</label>
-            </div>	
-            
-            <label class="checkbox-container">
-                <input type="checkbox"required="required" type="checkbox" name="txtConfirmpassword" `+ (islocked == 1 ? "checked" : "") + `>
-                <div class="checkbox-custom"></div>
-                <span class="checkbox-label">Lock profile</span>
-            </label>
-        </form>
-    </div>
-        `,
+									<div class="input-container" style="width: 91%; margin: 0 20px 5% 20px;">
+										<input class="confirmpassword-input" required="required" type="password" name="txtConfirmpassword" value="`+ password + `">
+										<label for="confirmpassword" class="confirmpassword-label">Confirm Password</label>
+									</div>	
+									
+									<label class="checkbox-container">
+										<input type="checkbox"required="required" type="checkbox" name="txtConfirmpassword" `+ (islocked == 1 ? "checked" : "") + `>
+										<div class="checkbox-custom"></div>
+										<span class="checkbox-label">Lock profile</span>
+									</label>
+								</form>
+							</div>
+								`,
         buttons: {
             sayMyName: {
                 text: 'Update',
@@ -313,12 +306,12 @@ function updateStaff(id, firstname, lastname, username, contactnumber, email, pa
                                 success: function (response) {
                                     var ischecked = checkbox == 1 ? "Locked" : "Not Locked";
                                     var successContent = `<h3>Name: ` + firstname.val() + `<br>
-                                        Lastname: ` + lastname.val() + `<br>
-                                        Username: ` + username.val() + `<br>
-                                        Contact Number: ` + contactno.val() + `<br>
-                                        Email: ` + email.val() + `<br>
-                                        Password: `+ password.val() + `<br>
-                                        Restriction: `+ ischecked + `</h3>`;
+																Lastname: ` + lastname.val() + `<br>
+																Username: ` + username.val() + `<br>
+																Contact Number: ` + contactno.val() + `<br>
+																Email: ` + email.val() + `<br>
+																Password: `+ password.val() + `<br>
+																Restriction: `+ ischecked + `</h3>`;
 
                                     updateData();
                                     $.alert({

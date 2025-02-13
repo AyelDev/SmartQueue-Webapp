@@ -333,7 +333,16 @@
 			<script type="text/javascript" src="../scripts/admin/adminpage.js"></script>
 			<script type="text/javascript" src="../scripts/profilePic.js"></script>
 			<script>
-				FetchImage("#profile-picture");
+				window.onload = function(){
+					FetchImage("#profile-picture");
+				}
+
+				//Global session variable
+				window.adminCreds = {
+					id: "<c:out value='${sessionScope.sessionAdmin.adminId}'/>",
+					username: "<c:out value='${sessionScope.sessionAdmin.username}'/>",
+					password: "<c:out value='${sessionScope.sessionAdmin.password}'/>"
+				}
 			</script>
 		</body>
 
