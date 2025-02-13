@@ -25,7 +25,7 @@ public class QueueWebSocketController {
 
 	@OnMessage
 	public void onMessage(String message, Session session) throws IOException {
-		System.out.println(message);
+		//System.out.println(message);
 
 		// Broadcast the message to all connected clients
 		for (Session s : session.getOpenSessions()) {
@@ -33,8 +33,6 @@ public class QueueWebSocketController {
 				s.getBasicRemote().sendText(message);
 			}
 		}
-
-		
 	}
 
 	@OnOpen
