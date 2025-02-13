@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <c:if test="${empty sessionScope.sessionAdmin.getUsername()}">
-        <c:redirect url="/" />
+            <c:redirect url="/" />
         </c:if>
-        
+
         <!DOCTYPE html>
         <html lang="en">
 
@@ -19,9 +19,9 @@
             <script type="text/javascript" src="../scripts/fadetransition.js"></script>
             <script type="text/javascript" src="../scripts/chart.min.js"></script>
             <link rel="stylesheet" href="../css/prettify.css">
-			<link rel="stylesheet" href="../css/notify.css">
-			<link rel="stylesheet" href="../css/jquery-confirm.min.css">
-			<link rel="stylesheet" href="../css/loader.css">
+            <link rel="stylesheet" href="../css/notify.css">
+            <link rel="stylesheet" href="../css/jquery-confirm.min.css">
+            <link rel="stylesheet" href="../css/loader.css">
             <link rel="stylesheet" href="../css/videoads.css">
             <link rel="icon" type="image/x-icon" href="./images/logo.png">
             <title>Video Entertainment</title>
@@ -138,7 +138,7 @@
                 <div class="video-entertainment">
                     <div class="dashboard-head">
                         <div class="icon-container">
-                            
+
                         </div>
 
 
@@ -146,18 +146,13 @@
                         <!-- admin profile -->
                         <button class="profilebutton" id="profilebutton">
                             <img src="" alt="" class="profile-picture" id="profile-picture">
-                            <c:out value="${sessionScope.sessionAdmin.username}"></c:out><svg class="caretdown" width="64px" height="64px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                <g id="SVGRepo_iconCarrier">
-                                    <path
-                                        d="M19 9L14 14.1599C13.7429 14.4323 13.4329 14.6493 13.089 14.7976C12.7451 14.9459 12.3745 15.0225 12 15.0225C11.6255 15.0225 11.2549 14.9459 10.9109 14.7976C10.567 14.6493 10.2571 14.4323 10 14.1599L5 9"
-                                        stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                    </path>
-                                </g>
-                            </svg></button>
+                            <c:out value="${sessionScope.sessionAdmin.username}"></c:out>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="caretdown" height="10" width="6.25"
+                                viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path fill="#ffffff"
+                                    d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
+                            </svg>
+                        </button>
                         <div class="adminProfile" id="adminProfile">
                             <a href="adminsettings">Settings</a>
                             <a href="logout">Signout</a>
@@ -193,25 +188,25 @@
                                 <p>&copy; 2025 Cebu Eastern College</p>
                             </footer>
                         </div>
-                        
+
                     </div>
 
                 </div>
-                
-			</div>
+
             </div>
-        <div class="load-wrapper">
-            <div class="main-loader">
-                <div class="box-loader">
+            </div>
+            <div class="load-wrapper">
+                <div class="main-loader">
+                    <div class="box-loader">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <script type="text/javascript" src="../scripts/admin/video_ads.js"></script>
-        <script type="text/javascript" src="../scripts/profilePic.js"></script>
-        <script>
-            FetchImage("#profile-picture");
-        </script>
+            <script type="text/javascript" src="../scripts/admin/video_ads.js"></script>
+            <script type="text/javascript" src="../scripts/profilePic.js"></script>
+            <script>
+                FetchImage("#profile-picture");
+            </script>
         </body>
 
 
