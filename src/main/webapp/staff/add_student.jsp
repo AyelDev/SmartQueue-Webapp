@@ -21,97 +21,103 @@
 			<link rel="icon" type="image/x-icon" href="./images/logo.png">
 			<title>Staff | List of Student</title>
 		</head>
-			
-			<body>
-				<div class="container">
-					<div class="navbar">
+
+		<body>
+			<div class="container">
+				<div class="navbar">
 					<div class="logoContainer">
 						<img src="./images/logo.png" alt="" class="logo">
 						<p class="title"><b>Cebu Eastern College</b></p>
 					</div>
-				   
+
 					<div class="leftnav">
 						<div class="bottom-lnav">
 							<b><a href="staffdashboard"><img src="./images/dashboard.png" alt="">Dashboard</a></b>
 							<b><a href="userwindow"><img src="./images/display.png" alt="">User Window</a></b>
 							<b><a href="counterwindow"><img src="./images/counter.png" alt="">Counter Window</a></b>
 							<b><a href="addstudent"><img src="./images/studentlist.png" alt="">Student List</a></b>
-							<b><a href="entertainment"><img src="./images/entertainment.png" alt="">Entertainment</a></b>
+							<b><a href="entertainment"><img src="./images/entertainment.png"
+										alt="">Entertainment</a></b>
 						</div>
 					</div>
-				</div>				
-
-				</div>
-				</div>
-				<div class="dash">
-					
-					<button class="button-profile"><img src="" alt="" class="profile"><c:out value="${sessionScope.sessionStaff.firstname}"></c:out><img src="./images/caretdown.png" alt="" class="caretdown"></button>
-						<div class="staffProfile" id="staffProfile">
-							<a href="setting">Settings</a>
-							<a href="logout">Signout</a>
-						</div>
 				</div>
 
-				<div class="studentlist-content">
-					<button class="add-account-btn">
-						<img src="./images/add-account.png" alt="" class="add-account-icon">
-						Add Student
+			</div>
+			</div>
+			<div class="dash">
+
+				<button class="button-profile"><img src="" alt="" class="profile">
+					<c:out value="${sessionScope.sessionStaff.firstname}"></c:out>
+					<svg xmlns="http://www.w3.org/2000/svg" class="caretdown height="10" width="6.25"
+						viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+						<path
+							d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
+					</svg>
+				</button>
+				<div class="staffProfile" id="staffProfile">
+					<a href="setting">Settings</a>
+					<a href="logout">Signout</a>
+				</div>
+			</div>
+
+			<div class="studentlist-content">
+				<button class="add-account-btn">
+					<img src="./images/add-account.png" alt="" class="add-account-icon">
+					Add Student
+				</button>
+				<h1>Student List</h1>
+				<div class="search-container">
+					<input type="text" placeholder="Search.." name="search" class="search-bar" id="searchInput"
+						onkeyup="searchTable()">
+					<button class="search-btn" type="submit">
+						<img src="./images/search-icon.png" alt="" class="search-icon">
 					</button>
-					<h1>Student List</h1>
-					<div class="search-container">
-						<input type="text" placeholder="Search.." name="search" class="search-bar"
-							id="searchInput" onkeyup="searchTable()">
-						<button class="search-btn" type="submit">
-							<img src="./images/search-icon.png" alt="" class="search-icon">
-						</button>
+				</div>
+
+				<div class="overlay"></div>
+				<div class="fillup-form-container modal">
+					<h1>Student Registration</h1>
+					<span class="close-btn">&times;</span>
+					<div class="register-form">
+						<form id="studentRegisterForm">
+							<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+								<input class="firstname-input" required="required" type="text" name="txtFirstname">
+								<label for="firstname" class="firstname-label">First name</label>
+							</div>
+							<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+								<input class="middlename-input" type="text" name="txtMiddlename"> <label
+									for="middlename" class="middlename-label">Middle name</label>
+							</div>
+
+							<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+								<input class="lastname-input" required="required" type="text" name="txtLastname"> <label
+									for="lastname" class="lastname-label">Last
+									name</label>
+							</div>
+
+							<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+
+								<select name="purpose" id="records-purpose" class="purpose" required="required">
+									<option value="" disabled selected=hidden>Select course</option>
+									<option value="BEED">BEED</option>
+									<option value="BSHM">BSHM</option>
+									<option value="BSIT">BSIT</option>
+									<option value="BSTM">BSTM</option>
+									<option value="BSED">BSED</option>
+									<option value="BSCRIM">BSCRIM</option>
+								</select>
+							</div>
+							<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
+								<input class="lastname-input" required="required" type="text" name="txtIdnumber"> <label
+									for="lastname" class="lastname-label">Id
+									number</label>
+							</div>
+
+							<input class="sign-btn" type="submit" value="Signup">
+						</form>
 					</div>
-
-					<div class="overlay"></div>
-					<div class="fillup-form-container modal">
-						<h1>Student Registration</h1>
-						<span class="close-btn">&times;</span>
-						<div class="register-form">
-							<form id="studentRegisterForm">
-								<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-									<input class="firstname-input" required="required" type="text"
-										name="txtFirstname"> <label for="firstname"
-										class="firstname-label">First name</label>
-								</div>
-								<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-									<input class="middlename-input" type="text" name="txtMiddlename"> <label
-										for="middlename" class="middlename-label">Middle name</label>
-								</div>
-
-								<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-									<input class="lastname-input" required="required" type="text"
-										name="txtLastname"> <label for="lastname" class="lastname-label">Last
-										name</label>
-								</div>
-
-								<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-
-									<select name="purpose" id="records-purpose" class="purpose"
-										required="required">
-										<option value="" disabled selected = hidden>Select course</option>
-										<option value="BEED">BEED</option>
-										<option value="BSHM">BSHM</option>
-										<option value="BSIT">BSIT</option>
-										<option value="BSTM">BSTM</option>
-										<option value="BSED">BSED</option>
-										<option value="BSCRIM">BSCRIM</option>
-									</select>
-								</div>
-								<div class="input-container" style="width: 40%; margin: 0 20px 0 20px;">
-									<input class="lastname-input" required="required" type="text"
-										name="txtIdnumber"> <label for="lastname" class="lastname-label">Id
-										number</label>
-								</div>
-
-								<input class="sign-btn" type="submit" value="Signup">
-							</form>
-						</div>
-					</div>
-					<div class="table-container">
+				</div>
+				<div class="table-container">
 					<table id="myTable">
 						<thead>
 							<tr>
@@ -124,47 +130,87 @@
 						</thead>
 						<tbody id="tablelist">
 							<tr>
-								<td><div class="tloader"></div></td>
-								<td><div class="tloader"></div></td>
-								<td><div class="tloader"></div></td>
-								<td><div class="tloader"></div></td>
+								<td>
+									<div class="tloader"></div>
+								</td>
+								<td>
+									<div class="tloader"></div>
+								</td>
+								<td>
+									<div class="tloader"></div>
+								</td>
+								<td>
+									<div class="tloader"></div>
+								</td>
 							</tr>
 							<tr>
-								<td><div class="tloader"></div></td>
-								<td><div class="tloader"></div></td>
-								<td><div class="tloader"></div></td>
-								<td><div class="tloader"></div></td>
+								<td>
+									<div class="tloader"></div>
+								</td>
+								<td>
+									<div class="tloader"></div>
+								</td>
+								<td>
+									<div class="tloader"></div>
+								</td>
+								<td>
+									<div class="tloader"></div>
+								</td>
 							</tr>
 							<tr>
-								<td><div class="tloader"></div></td>
-								<td><div class="tloader"></div></td>
-								<td><div class="tloader"></div></td>
-								<td><div class="tloader"></div></td>
+								<td>
+									<div class="tloader"></div>
+								</td>
+								<td>
+									<div class="tloader"></div>
+								</td>
+								<td>
+									<div class="tloader"></div>
+								</td>
+								<td>
+									<div class="tloader"></div>
+								</td>
 							</tr>
 							<tr>
-								<td><div class="tloader"></div></td>
-								<td><div class="tloader"></div></td>
-								<td><div class="tloader"></div></td>
-								<td><div class="tloader"></div></td>
+								<td>
+									<div class="tloader"></div>
+								</td>
+								<td>
+									<div class="tloader"></div>
+								</td>
+								<td>
+									<div class="tloader"></div>
+								</td>
+								<td>
+									<div class="tloader"></div>
+								</td>
 							</tr>
 							<tr>
-								<td><div class="tloader"></div></td>
-								<td><div class="tloader"></div></td>
-								<td><div class="tloader"></div></td>
-								<td><div class="tloader"></div></td>
+								<td>
+									<div class="tloader"></div>
+								</td>
+								<td>
+									<div class="tloader"></div>
+								</td>
+								<td>
+									<div class="tloader"></div>
+								</td>
+								<td>
+									<div class="tloader"></div>
+								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				</div>
 			</div>
-            <script type="text/javascript" src="../scripts/profilePic.js"></script>
+			</div>
+			<script type="text/javascript" src="../scripts/profilePic.js"></script>
 			<script>
 				//----- FETCH PROFILE IMAGE DURING LOAD
-				window.onload = function(){
+				window.onload = function () {
 					FetchImage(".profile");
 				}
-				
+
 				var dropdown = document.getElementsByClassName("button-profile");
 				var i;
 
@@ -210,9 +256,9 @@
 					staffListInfo.innerHTML = htmlString;
 				}
 
-				document.addEventListener("DOMContentLoaded", event =>{
-				updateData();
-			});
+				document.addEventListener("DOMContentLoaded", event => {
+					updateData();
+				});
 
 				// Get elements
 				const addAccountButton = document.querySelector('.add-account-btn');
@@ -508,11 +554,11 @@
 				}
 			</script>
 
-				<div class="load-wrapper">
-					<div class="main-loader">
-						<div class="box-loader"></div>
-					</div>
+			<div class="load-wrapper">
+				<div class="main-loader">
+					<div class="box-loader"></div>
 				</div>
-			</body>
+			</div>
+		</body>
 
 		</html>

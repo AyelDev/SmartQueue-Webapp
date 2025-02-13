@@ -281,7 +281,7 @@ body{
 .profile {
     width: 25px;
     height: 25px;
-    object-fit: scale-down;
+    object-fit: cover;
     margin-right: 5px;
     border: 1px solid #fff;
     border-radius: 50%;

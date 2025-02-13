@@ -6,6 +6,7 @@
 
         <!DOCTYPE html>
         <html lang="en">
+
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,18 +21,25 @@
             <link rel="stylesheet" href="../css/counter_window.css">
             <link rel="icon" type="image/x-icon" href="./images/logo.png">
             <title>SmartQueue</title>
-           
+
         </head>
+
         <body>
             <div class="container">
                 <div class="rightnav">
                     <div class="dash"> <b></b>
-                        
-            <button class="button-profile"><img src="" alt="" class="profile"><b><c:out value="${sessionScope.sessionStaff.firstname}"></c:out></b><img src="./images/caretdown.png" alt="" class="caretdown"></button>
-                <div class="staffProfile" id="staffProfile">
-                    <a href="setting">Settings</a>
-                    <a href="logout">Signout</a>
-                </div>
+
+                        <button class="button-profile"><img src="" alt="" class="profile"><b>
+                                <c:out value="${sessionScope.sessionStaff.firstname}"></c:out>
+                            </b><svg xmlns="http://www.w3.org/2000/svg" class="caretdown" height="10" width="6.25"
+                                viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path
+                                    d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
+                            </svg></button>
+                        <div class="staffProfile" id="staffProfile">
+                            <a href="setting">Settings</a>
+                            <a href="logout">Signout</a>
+                        </div>
                     </div>
 
                     <div class="counter-container">
@@ -43,7 +51,7 @@
                         </section>
                         <h2 class="table-title">PRIORITY NUMBER</h2>
                         <div class="table-container">
-                            
+
                             <table class="data-table">
                                 <thead class="priority-number">
                                     <tr>
@@ -58,22 +66,50 @@
                                 </thead>
                                 <tbody id="priority-number-table">
                                     <tr>
-                                        <td><div class="tloader"></div></td>
-                                        <td><div class="tloader"></div></td>
-                                        <td><div class="tloader"></div></td>
-                                        <td><div class="tloader"></div></td>
-                                        <td><div class="tloader"></div></td>
-                                        <td><div class="tloader"></div></td>
-                                        <td><div class="tloader"></div></td>
+                                        <td>
+                                            <div class="tloader"></div>
+                                        </td>
+                                        <td>
+                                            <div class="tloader"></div>
+                                        </td>
+                                        <td>
+                                            <div class="tloader"></div>
+                                        </td>
+                                        <td>
+                                            <div class="tloader"></div>
+                                        </td>
+                                        <td>
+                                            <div class="tloader"></div>
+                                        </td>
+                                        <td>
+                                            <div class="tloader"></div>
+                                        </td>
+                                        <td>
+                                            <div class="tloader"></div>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td><div class="tloader"></div></td>
-                                        <td><div class="tloader"></div></td>
-                                        <td><div class="tloader"></div></td>
-                                        <td><div class="tloader"></div></td>
-                                        <td><div class="tloader"></div></td>
-                                        <td><div class="tloader"></div></td>
-                                        <td><div class="tloader"></div></td>
+                                        <td>
+                                            <div class="tloader"></div>
+                                        </td>
+                                        <td>
+                                            <div class="tloader"></div>
+                                        </td>
+                                        <td>
+                                            <div class="tloader"></div>
+                                        </td>
+                                        <td>
+                                            <div class="tloader"></div>
+                                        </td>
+                                        <td>
+                                            <div class="tloader"></div>
+                                        </td>
+                                        <td>
+                                            <div class="tloader"></div>
+                                        </td>
+                                        <td>
+                                            <div class="tloader"></div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -96,13 +132,27 @@
                                     </thead>
                                     <tbody id="counter-access-table">
                                         <tr>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
-                                            <td><div class="tloader"></div></td>
+                                            <td>
+                                                <div class="tloader"></div>
+                                            </td>
+                                            <td>
+                                                <div class="tloader"></div>
+                                            </td>
+                                            <td>
+                                                <div class="tloader"></div>
+                                            </td>
+                                            <td>
+                                                <div class="tloader"></div>
+                                            </td>
+                                            <td>
+                                                <div class="tloader"></div>
+                                            </td>
+                                            <td>
+                                                <div class="tloader"></div>
+                                            </td>
+                                            <td>
+                                                <div class="tloader"></div>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -128,7 +178,7 @@
                         <p class="title"><br><b>Cebu Eastern College</b></p>
                     </div>
                     <!-- staff profile -->
-                    
+
                     <div class="bottom-lnav">
                         <b><a href="staffdashboard"><img src="./images/dashboard.png" alt="">Dashboard</a></b>
                         <b><a href="userwindow"><img src="./images/display.png" alt="">User Window</a></b>
@@ -144,22 +194,22 @@
             <script>
                 document.addEventListener("DOMContentLoaded", function () {
 
-                 //----- FETCH PROFILE IMAGE DURING LOAD
-                 FetchImage(".profile");
-                    
-                var dropdownButton = document.querySelector(".button-profile");
-                var staffProfile = document.getElementById("staffProfile");
+                    //----- FETCH PROFILE IMAGE DURING LOAD
+                    FetchImage(".profile");
 
-                staffProfile.style.display = "none";
+                    var dropdownButton = document.querySelector(".button-profile");
+                    var staffProfile = document.getElementById("staffProfile");
 
-            dropdownButton.addEventListener("click", function () {
-                if (staffProfile.style.display === "block") {
                     staffProfile.style.display = "none";
-                } else {
-                    staffProfile.style.display = "block";
-                }
-            });
-        });
+
+                    dropdownButton.addEventListener("click", function () {
+                        if (staffProfile.style.display === "block") {
+                            staffProfile.style.display = "none";
+                        } else {
+                            staffProfile.style.display = "block";
+                        }
+                    });
+                });
                 function updateTime() {
                     const now = new Date();
                     document.getElementById('date').textContent = now.toLocaleDateString();
@@ -169,8 +219,8 @@
                 setInterval(updateTime, 1000);
 
                 let counterList = document.getElementById("counter-list");
-                document.addEventListener("DOMContentLoaded", event =>{
-           $.ajax({
+                document.addEventListener("DOMContentLoaded", event => {
+                    $.ajax({
                         url: '/JsonAvailableWindow',
                         method: 'GET',
                         data: {},
@@ -364,28 +414,28 @@
 
                 var ws2 = new WebSocket(wsUrl + window.location.host + "/queueupdate");
 
-                ws2.addEventListener("message",async (message)=>{
+                ws2.addEventListener("message", async (message) => {
                     await $.notify("loading new requests...", { color: "#fff", background: "#20D67B", delay: 1000 })
                     await CounterList(counterList.value, "QUEUE", '#priority-number-table');
                 })
 
                 //CALL CUSTOM NAME
-                function CallName(){
+                function CallName() {
                     var name = document.querySelector('.custom-call');
-                if(name.value !== '' && counterList.value > 0){
-                    ws.send(JSON.stringify({
-                    message: "Attention. " + name.value + ". Please Proceed to window " + counterList.value + ". Thank you",
-                    queueNumber: name.value,
-                    windowNumber: counterList.value,
-                    tostop: "none"
-                }));
-            //ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
-    }else{
-        alert("Empty name or counter window not set.");
-    }
+                    if (name.value !== '' && counterList.value > 0) {
+                        ws.send(JSON.stringify({
+                            message: "Attention. " + name.value + ". Please Proceed to window " + counterList.value + ". Thank you",
+                            queueNumber: name.value,
+                            windowNumber: counterList.value,
+                            tostop: "none"
+                        }));
+                        //ws.send("Attention. Queue Number," + queueNumber + ". Please Proceed to window " + window_number + ". Thank you");
+                    } else {
+                        alert("Empty name or counter window not set.");
+                    }
 
-    document.querySelector('.custom-call').value = ''; //clear name after call
-}
+                    document.querySelector('.custom-call').value = ''; //clear name after call
+                }
             </script>
 
             <div class="load-wrapper">
