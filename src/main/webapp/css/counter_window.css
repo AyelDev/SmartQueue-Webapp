@@ -172,16 +172,16 @@ margin-top: 1.875rem;
 scroll-behavior: smooth;
 
 }
-.tables::-webkit-scrollbar {
+.table-container::-webkit-scrollbar {
     width: .8rem;
 }
 
-.tables::-webkit-scrollbar-track {
+.table-container::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.tables::-webkit-scrollbar-thumb {
-    background-color: #00509d;
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #1e91d0;
     border-radius: 5rem;
 }
 .table-container {

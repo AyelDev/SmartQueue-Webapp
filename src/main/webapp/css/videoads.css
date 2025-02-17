@@ -40,10 +40,9 @@ body {
 }
 
 .dashboard-head {
-    width: 85vw;
-    margin-left: 15%;
+    width: 100vw;
     height: 7%;
-    background-color: #1477d4fb;
+    background-color: #0056b3;
     position: fixed;
     top: 0;
     z-index: 1000;
@@ -107,7 +106,7 @@ body {
     z-index: 1000;
     display: none;
     border-radius: 7px;
-    margin-top: -1.5%;
+    
 }
 
 .adminProfile a {
@@ -135,7 +134,7 @@ body {
 .navbar {
     width: 15vw;
     height: 100vh;
-    background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
+    background-color: #0056b3;
     position: fixed;
     justify-content: center;
     align-items: center;

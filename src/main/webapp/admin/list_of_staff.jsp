@@ -170,7 +170,6 @@
 										<th>Contact no.</th>
 										<th>Email</th>
 										<th>Username</th>
-										<th>Password</th>
 										<th>Restriction</th>
 										<th>Actions</th>
 									</tr>
@@ -198,40 +197,8 @@
 										<td>
 											<div class="tloader"></div>
 										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
 									</tr>
 									<tr>
-										<td>
-											<div class="tloader"></div>
-										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="tloader"></div>
-										</td>
 										<td>
 											<div class="tloader"></div>
 										</td>
@@ -276,14 +243,31 @@
 										<td>
 											<div class="tloader"></div>
 										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
 									</tr>
 									<tr>
 										<td>
 											<div class="tloader"></div>
 										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+									</tr>
+									<tr>
 										<td>
 											<div class="tloader"></div>
 										</td>

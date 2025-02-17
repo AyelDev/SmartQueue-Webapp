@@ -37,7 +37,6 @@ function renderHTML(data) {
             '<td>' + data[i].contactNumber + '</td>' +
             '<td>' + data[i].email + '</td>' +
             '<td>' + data[i].username + '</td>' +
-            '<td>' + data[i].password + '</td>' +
             '<td>' + (data[i].isLocked === 1 ? "Locked" : "Not Locked") + '</td>' +
             '<td><button onclick="updateStaff(' + data[i].staffID + ', \'' + data[i].firstname + '\', \'' + data[i].lastname + '\', \'' + data[i].username + '\', \'' + data[i].contactNumber + '\', \'' + data[i].email + '\', \'' + data[i].password + '\', \'' + data[i].isLocked + '\')" class="update" style="background-color: #0056b3;color: white; font-size: .7em;">Update</button>' +
             '<button onclick="removeStaff(' + data[i].staffID + ')" class="delete" style="background-color: #EE4E4E; font-size: .7em; color: white;">Delete</button></td>' +

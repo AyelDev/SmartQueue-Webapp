@@ -95,6 +95,18 @@ h1 {
 	overflow-y: auto;
 	max-height: 450px;
 }
+.table-container::-webkit-scrollbar {
+  width: .8rem;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background-color: #1e91d0;
+  border-radius: 5rem;
+}
 table {
   width: 100%;
   border-collapse: separate;

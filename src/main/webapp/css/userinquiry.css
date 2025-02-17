@@ -180,7 +180,10 @@ label {
     margin-top: 5%;
     margin-left: 70%;
 }
-
+.purpose{
+    overflow-y: auto;
+    max-height: 50px;
+}
 .student-id,
 .student-name,
 #yearLevel,
