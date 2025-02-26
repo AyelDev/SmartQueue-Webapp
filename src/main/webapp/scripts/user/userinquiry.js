@@ -13,23 +13,23 @@ function updateCounterName() {
     return new Promise(function (resolve, reject) {
 
         fetch(window.location.origin + '/CounterlistApi')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            renderCounterListBody(data);
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                renderCounterListBody(data);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.log('Counter name updated');
             resolve();
-        }, 1000); 
+        }, 1000);
     });
 
 }
@@ -37,16 +37,16 @@ function updateCounterName() {
 function renderCounterListBody(data) {
     var box1 = `
             <p>-Enrollment </p>
-            <h2>`+data[0].description+`</h2>
+            <h2>`+ data[0].description + `</h2>
             `
-    var box2 =`
+    var box2 = `
             <p>-Certifications <br>-Study Load <br>-TOR</p>
-            <h2>`+data[1].description+`</h2>
+            <h2>`+ data[1].description + `</h2>
              `
 
-    var box3 =`
+    var box3 = `
             <p>-Submit documents</p>
-            <h2>`+data[2].description+`</h2>
+            <h2>`+ data[2].description + `</h2>
             `
 
     $('#box1').html(box1);
@@ -148,7 +148,7 @@ function checkQueueLimit() {
 //need to polish --- BUG: TOO MANY CONNECTIONS PARTIAL FIX
 var queueNumber = 1;
 var startAvailQueueCount = false;
-function getAvailableQueueNUmber(){
+function getAvailableQueueNUmber() {
 
     return new Promise(function (resolve, reject) {
 
@@ -170,9 +170,9 @@ function getAvailableQueueNUmber(){
             }
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
             console.log('Counter name updated');
-            resolve(); 
+            resolve();
         }, 1000);
     });
 }
@@ -189,7 +189,7 @@ async function printQueue(serviceType) {
     isRunning = true;
 
     //E INCREMENT KAY MO BUG FIX NALANG NI LATOR
-    if(!startAvailQueueCount)
+    if (!startAvailQueueCount)
         queueNumber++;
 
     //SET TO FALSE IF MAG FIRST QUEUE 
@@ -324,11 +324,11 @@ const recordsIdInput = document.getElementById("records-student-id");
 const recordsRegex = /^[0-9]+$/;
 const idButton = document.getElementById("id-button");
 
-recordsIdInput.addEventListener("input", event =>{
-    
-    if(event.target.value.length > 4 && recordsRegex.test(event.target.value)){
+recordsIdInput.addEventListener("input", event => {
+
+    if (event.target.value.length > 4 && recordsRegex.test(event.target.value)) {
         idButton.style.display = "flex";
-    }else{
+    } else {
         idButton.style.display = "none";
     }
 
@@ -373,22 +373,23 @@ let archivingStudentLastName = document.getElementById('archiving-student-lastna
 const archivingButton = document.getElementById("archivingButton");
 const archiveStudentIdinp = document.getElementById("archiving-student-id");
 const archivingIdButton = document.getElementById("archiving-id-button");
-archiveStudentIdinp.addEventListener("input", event =>{
-    
- 
-    if(event.target.value.length > 4 && recordsRegex.test(event.target.value)){
+
+archiveStudentIdinp.addEventListener("input", event => {
+
+
+    if (event.target.value.length > 4 && recordsRegex.test(event.target.value)) {
         archivingIdButton.style.display = "flex";
         archivingStudentFirstName.style.pointerEvents = "none";
         archivingStudentMiddleName.style.pointerEvents = "none";
         archivingStudentLastName.style.pointerEvents = "none";
-    }else{
+    } else {
         archivingIdButton.style.display = "none";
         archivingStudentFirstName.style.pointerEvents = "none";
         archivingStudentMiddleName.style.pointerEvents = "none";
         archivingStudentLastName.style.pointerEvents = "none";
     }
 
-    if(event.target.value === '000'){
+    if (event.target.value === '000') {
         archivingStudentFirstName.style.pointerEvents = "auto";
         archivingStudentMiddleName.style.pointerEvents = "auto";
         archivingStudentLastName.style.pointerEvents = "auto";
@@ -552,11 +553,118 @@ function sendMsg(response) {
     }
 }
 
+//-------------------------------------------------------------------------ON - SCREEN KEYBOARD
 
+let defaultKey;
+let themeKey;
+let myKeyboard;
+let Keyboards;
+let component = document.querySelector('.simple-keyboard');
+const computedStyle = window.getComputedStyle(component);
+let keyId;
+//ADMISSION INPUT
+function textKeyboard(inputId){
+    keyId = document.getElementById(inputId);
+    showKey();
+    defaultKey = ["Q W E R T Y U I O P",
+        "A S D F G H J K L {enter}",
+        "Z X C V B N M Ñ {bksp}"];
+    themeKey = "hg-theme-default hg-layout-numeric numeric-theme";
+    Keyboard(defaultKey, themeKey);
+}
 
-//On-screen keyboard
-document.querySelectorAll('input').forEach(input => {
-    input.addEventListener('focus', () => {
-        input.click(); // Ensures compatibility with certain touch systems
+function numericKeyboard(inputId) {
+    keyId = document.getElementById(inputId);
+    showKey();
+    defaultKey = ["7 8 9", "4 5 6", "1 2 3", "{enter} 0 {bksp}"];
+    themeKey = "hg-theme-default hg-layout-numeric numeric-theme";
+    Keyboard(defaultKey, themeKey);
+}
+
+function Keyboard(defaultKey, themeKey) {
+    if (!myKeyboard) {
+        Keyboards = window.SimpleKeyboard.default;
+        myKeyboard = new Keyboards({
+            onChange: input => onChange(input),
+            onKeyPress: button => onKeyPress(button),
+            layout: {
+                default: defaultKey,
+            },
+            theme: themeKey
+        });
+    } else {
+        myKeyboard.setInput(keyId.value);
+        myKeyboard.setOptions({
+            layout: { default: defaultKey },
+            theme: themeKey
+        });
+    }
+}
+
+//show keyboard
+function showKey() {
+    component.style.display = "block";
+}
+
+//hide keyboard
+function hideKey() {
+    component.style.display = "none";
+}
+
+function preventHide(event){
+    event.stopPropagation();
+}
+
+document.onclick = function(event) {
+    const input = document.getElementById('myInput');
+    if (!component.contains(event.target) && event.target !== keyId) {
+        hideKey();
+    }
+};
+
+function onChange(input) {
+    keyId.value = input;
+    //console.log("Input changed", input);
+
+    //RECORDS REGEX
+    if (input.length > 4 && recordsRegex.test(input)) {
+        idButton.style.display = "flex";
+    } else {
+        idButton.style.display = "none";
+    }
+
+    let archiveId = document.querySelector('#archiving-student-id');
+    //ARCHIVING REGEX
+    if (archiveId.value.length > 4 && recordsRegex.test(archiveId.value)) {
+        archivingIdButton.style.display = "flex";
+        archivingStudentFirstName.style.pointerEvents = "none";
+        archivingStudentMiddleName.style.pointerEvents = "none";
+        archivingStudentLastName.style.pointerEvents = "none";
+    }else if (archiveId.value === '000') {
+        archivingStudentFirstName.style.pointerEvents = "auto";
+        archivingStudentMiddleName.style.pointerEvents = "auto";
+        archivingStudentLastName.style.pointerEvents = "auto";
+    }
+     else {
+        archivingIdButton.style.display = "none";
+        archivingStudentFirstName.style.pointerEvents = "none";
+        archivingStudentMiddleName.style.pointerEvents = "none";
+        archivingStudentLastName.style.pointerEvents = "none";
+    }
+
+   
+}
+
+function onKeyPress(button) {
+    if (button == '{enter}') hideKey();
+}
+
+//INCASE IMPLEMENT SHIFT
+function handleShift() {
+    let currentLayout = myKeyboard.options.layoutName;
+    let shiftToggle = currentLayout === "default" ? "shift" : "default";
+
+    myKeyboard.setOptions({
+        layoutName: shiftToggle
     });
-});
+}

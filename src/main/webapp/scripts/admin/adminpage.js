@@ -295,7 +295,7 @@ function ModalInfo(title, context, formId, serviceType, method, updateAttribute)
     if (title == 'Add Document for Records') {
         recordContent = `
         <br><br><label for="Amount">Amount</label><br>
-         <input type="number" id="amount" style="width: 60vh; height: 5vh; "  name="Amount" placeholder="Enter amount">
+         <input type="number" id="amount" style="width: 60vh; height: 5vh; " value="0" name="Amount" placeholder="Enter amount">
     `;
     }
 

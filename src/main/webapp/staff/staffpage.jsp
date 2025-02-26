@@ -14,7 +14,6 @@
             <script type="text/javascript" src="../scripts/fadetransition.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
-            <script type="text/javascript" src="../scripts/staff/staffpage.js"></script>
             <link rel="stylesheet" type="text/css" href="../css/jquery-confirm.min.css" />
             <link rel="stylesheet" href="../css/loader.css">
             <link rel="stylesheet" href="../css/staffpage.css">
@@ -29,18 +28,15 @@
                     <div class="rightnav">
                         <div class="card-section">
                             <div class="dash"> <b>Dashboard</b>
-                                <div class="right-icons">
 
-                                    <div class="icon-container">
-                                        <a href="message"></a>
-                                        <img src="./images/message.png" class="picture" />
-                                        <span class="tooltip-text">Message</span>
-                                    </div>
-                                </div>
-
-                                <button class="button-profile"><img src="./images/profile.png" alt=""
-                                        class="profile"><b><c:out value="${sessionScope.sessionStaff.firstname}"></c:out></b><img src="./images/caretdown.png" alt=""
-                                        class="caretdown"></button>
+                                <button class="button-profile"><img src="" alt="" class="profile"><b></b>
+                                        <c:out value="${sessionScope.sessionStaff.firstname}"></c:out>
+                                    </b>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="10" width="6.25" class="caretdown"
+                                        viewBox="0 0 320 512">
+                                        <path
+                                            d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
+                                    </svg></button>
                                 <div class="staffProfile" id="staffProfile">
                                     <a href="setting">Settings</a>
                                     <a href="logout">Signout</a>
@@ -98,29 +94,34 @@
                         </div>
 
                         <div class="bottom-lnav">
-                            <b><a href="staffdashboard"><img src="./images/dashboard.png"
-                                        alt="Dashboard Icon">Dashboard</a></b>
-                            <b><a href="userwindow"><img src="./images/display.png" alt="UserWindow Icon">User
+                            <b><a href="staffdashboard"><img src="./images/dashboard.png" alt="">Dashboard</a></b>
+                            <b><a href="userwindow"><img src="./images/display.png" alt="">User
                                     Window</a></b>
-                            <b><a href="counterwindow"><img src="./images/counter.png" alt="CounterWindow Icon">Counter
+                            <b><a href="counterwindow"><img src="./images/counter.png" alt="">Counter
                                     Window</a></b>
-                            <b><a href="addstudent"><img src="./images/studentlist.png" alt="StudentList Icon">Student
+                            <b><a href="addstudent"><img src="./images/studentlist.png" alt="">Student
                                     List</a></b>
                             <b><a href="entertainment"><img src="./images/entertainment.png"
-                                        alt="Entertainment Icon">Entertainment</a></b>
+                                        alt="">Entertainment</a></b>
                         </div>
                     </div>
                 </div>
             </div>
 
-
+            <script type="text/javascript" src="../scripts/staff/staffpage.js"></script>
+            <script type="text/javascript" src="../scripts/profilePic.js"></script>
             <script>
-            //---------------------------------------------------------------------------------------------------IF NO PIN SETUP
-            let getStaffSessionPin = <c:out value="${sessionScope.sessionStaff.getPin()}"></c:out> + '';
-            let getStaffSessionID = <c:out value="${sessionScope.sessionStaff.staffID}"></c:out> + '';
+                //----- FETCH PROFILE IMAGE DURING LOAD
+                window.onload = function () {
+                    FetchImage(".profile");
+                }
 
-            if(getStaffSessionPin == '0' || getStaffSessionPin == 0){
-            $.confirm({
+                //---------------------------------------------------------------------------------------------------IF NO PIN SETUP
+                let getStaffSessionPin = <c:out value="${sessionScope.sessionStaff.getPin()}"></c:out> + '';
+                let getStaffSessionID = <c:out value="${sessionScope.sessionStaff.staffID}"></c:out> + '';
+
+                if (getStaffSessionPin == '0' || getStaffSessionPin == 0) {
+                    $.confirm({
                         title: 'Need to setup your 4 digit pin!',
                         content: `
                                 <p>Welcome!</p>
@@ -135,71 +136,71 @@
                         useBootstrap: false,
                         type: 'blue',
                         buttons: {
-                        formSubmit: {
-                        text: 'Confirm',
-                        btnClass: 'btn-blue',
-                action: function () {
-                        var pin = this.$content.find('#pin').val();
-                        var pinconfrm = this.$content.find('#confirm-pin').val();
-                        
-                        if(pin === '' || pinconfrm === ''){
-                            errorInputAlert('Please make sure both the PIN and confirm PIN fields are filled out.');
-                            return false;
-                        }
+                            formSubmit: {
+                                text: 'Confirm',
+                                btnClass: 'btn-blue',
+                                action: function () {
+                                    var pin = this.$content.find('#pin').val();
+                                    var pinconfrm = this.$content.find('#confirm-pin').val();
 
-                        if(pin !== pinconfrm){
-                            errorInputAlert('Please make sure both the PIN and confirm PIN fields are the same.');
-                            return false;
-                        }
+                                    if (pin === '' || pinconfrm === '') {
+                                        errorInputAlert('Please make sure both the PIN and confirm PIN fields are filled out.');
+                                        return false;
+                                    }
 
-                        if(pin.length !== 4 && pinconfrm !== 4 ){
-                            errorInputAlert('Must be 4 digit pin');
-                            return false;
-                        }
+                                    if (pin !== pinconfrm) {
+                                        errorInputAlert('Please make sure both the PIN and confirm PIN fields are the same.');
+                                        return false;
+                                    }
 
-                        if(pin === '1234' || pin === '0000' || pin === '4321' || pin === '9999'){
-                            errorInputAlert('These are basic PINs; try using random numbers.');
-                            return false;
+                                    if (pin.length !== 4 && pinconfrm !== 4) {
+                                        errorInputAlert('Must be 4 digit pin');
+                                        return false;
+                                    }
+
+                                    if (pin === '1234' || pin === '0000' || pin === '4321' || pin === '9999') {
+                                        errorInputAlert('These are basic PINs; try using random numbers.');
+                                        return false;
+                                    }
+
+                                    //send request
+                                    sendPinRequest(pin, getStaffSessionID);
+                                }
+                            }
                         }
-                        
-                        //send request
-                        sendPinRequest(pin, getStaffSessionID);
-                    }
+                    });
                 }
-            }
-        });
-    }
 
-    //SEND PIN SETUP REQUEST
+                //SEND PIN SETUP REQUEST
 
-    function errorInputAlert(content){
-        $.alert({
-            title: 'Error',
-            content: content,
-            boxWidth: '30%',
-            useBootstrap: false,
-            type: 'red'
-        });
-    }
+                function errorInputAlert(content) {
+                    $.alert({
+                        title: 'Error',
+                        content: content,
+                        boxWidth: '30%',
+                        useBootstrap: false,
+                        type: 'red'
+                    });
+                }
 
-    function sendPinRequest(pin, sessionId){
-        $.ajax({
-            url: '/StaffPin',   
-            type: 'POST',               
-            data: {
-                pin: pin,      
-                staffId: sessionId
-            },
-                success: function(response) {
-                    alert('Success: ' +  response);
-                    window.location.replace(window.location.origin + '/logout');
-            },
-                error: function(xhr, status, error) {
-                    alert('Error: ' + error);
-                    location.reload();
-            }
-        });
-    }
+                function sendPinRequest(pin, sessionId) {
+                    $.ajax({
+                        url: '/StaffPin',
+                        type: 'POST',
+                        data: {
+                            pin: pin,
+                            staffId: sessionId
+                        },
+                        success: function (response) {
+                            alert('Success: ' + response);
+                            window.location.replace(window.location.origin + '/logout');
+                        },
+                        error: function (xhr, status, error) {
+                            alert('Error: ' + error);
+                            location.reload();
+                        }
+                    });
+                }
             </script>
             <div class="load-wrapper">
                 <div class="main-loader">
@@ -207,4 +208,5 @@
                 </div>
             </div>
         </body>
+
         </html>

@@ -26,6 +26,7 @@
 			<link rel="icon" type="image/x-icon" href="./images/logo.png">
 			<title>Admin | Dashboard</title>
 		</head>
+
 		<body>
 			<div class="container">
 				<div class="navbar">
@@ -54,9 +55,9 @@
 						</div>
 
 						<div class="dropdown">
-							<button class="dropdown-btn" onclick="window.location.href='counterlist';"><svg class="counter-icon" width="64px" height="64px"
-									viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-									transform="rotate(90)">
+							<button class="dropdown-btn" onclick="window.location.href='counterlist';"><svg
+									class="counter-icon" width="64px" height="64px" viewBox="0 0 24 24" fill="none"
+									xmlns="http://www.w3.org/2000/svg" transform="rotate(90)">
 									<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 									<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
 									<g id="SVGRepo_iconCarrier">
@@ -125,7 +126,7 @@
 								<a href="userinquiry">User Inquiry</a>
 								<a href="userwindow">User Window</a>
 								<a href="admincounterwindow">Counter Window</a>
-							</div>	
+							</div>
 						</div>
 					</div>
 				</div>
@@ -135,29 +136,17 @@
 						</div>
 
 						<!-- admin profile -->
-						<button class="profilebutton" id="profilebutton"><svg class="profile" width="64px"
-								height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-								<g id="SVGRepo_iconCarrier">
-									<path
-										d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.19C2 19 3.29 20.93 5.56 21.66C6.22 21.89 6.98 22 7.81 22H16.19C17.02 22 17.78 21.89 18.44 21.66C20.71 20.93 22 19 22 16.19V7.81C22 4.17 19.83 2 16.19 2ZM20.5 16.19C20.5 18.33 19.66 19.68 17.97 20.24C17 18.33 14.7 16.97 12 16.97C9.3 16.97 7.01 18.32 6.03 20.24H6.02C4.35 19.7 3.5 18.34 3.5 16.2V7.81C3.5 4.99 4.99 3.5 7.81 3.5H16.19C19.01 3.5 20.5 4.99 20.5 7.81V16.19Z"
-										fill="#ffffff"></path>
-									<path
-										d="M12.0019 8C10.0219 8 8.42188 9.6 8.42188 11.58C8.42188 13.56 10.0219 15.17 12.0019 15.17C13.9819 15.17 15.5819 13.56 15.5819 11.58C15.5819 9.6 13.9819 8 12.0019 8Z"
-										fill="#ffffff"></path>
-								</g>
-							</svg><c:out value="${sessionScope.sessionAdmin.username}"></c:out><svg class="caretdown" width="64px" height="64px" viewBox="0 0 24 24" fill="none"
-								xmlns="http://www.w3.org/2000/svg">
-								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-								<g id="SVGRepo_iconCarrier">
-									<path
-										d="M19 9L14 14.1599C13.7429 14.4323 13.4329 14.6493 13.089 14.7976C12.7451 14.9459 12.3745 15.0225 12 15.0225C11.6255 15.0225 11.2549 14.9459 10.9109 14.7976C10.567 14.6493 10.2571 14.4323 10 14.1599L5 9"
-										stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
-										stroke-linejoin="round"></path>
-								</g>
-							</svg></button>
+						<button class="profilebutton" id="profilebutton">
+							<img src="" alt="" class="profile-picture" id="profile-picture">
+
+
+							<c:out value="${sessionScope.sessionAdmin.username}"></c:out>
+							<svg xmlns="http://www.w3.org/2000/svg" class="caretdown" height="10" width="6.25"
+								viewBox="0 0 320 512">
+								<path fill="#ffffff"
+									d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
+							</svg>
+						</button>
 						<div class="adminProfile" id="adminProfile">
 							<a href="adminsettings">Settings</a>
 							<a href="logout">Signout</a>
@@ -181,7 +170,8 @@
 									<P><br>BSIT: <span class="counts" id="total-bsit-student">loading...</span></P>
 									<P><br>BSCRIM: <span class="counts" id="total-crim-student">loading...</span></P>
 									<hr class="hr-graph">
-									<h2><br>Daily transaction: <span class="counts" id="total-transaction">loading...</span></h2>
+									<h2><br>Daily transaction: <span class="counts"
+											id="total-transaction">loading...</span></h2>
 								</div>
 							</div>
 
@@ -191,42 +181,42 @@
 									<div class="table-header">
 										<h3 class="table-title">General - Program</h3>
 										<button class="add-btn-table"
-										onclick="ModalInfo('Add Program for General', 'Program', 'GeneralProgramForm', 'general', 'POST', updateAttribute(null, null, null))">+Add
+											onclick="ModalInfo('Add Program for General', 'Program', 'GeneralProgramForm', 'general', 'POST', updateAttribute(null, null, null))">+Add
 											Info</button>
 									</div>
-										<table>
-											<thead>
-												<tr>
-													<th>#</th>
-													<th>Course</th>
-													<th>Actions</th>
-												</tr>
-											</thead>
-											<tbody id="general-program-tablelist">
-												<tr>
-													<td></td>
-													<td></td>
-													<td><button class="update-btn" onclick="">Update</button>
-														<button class="delete-btn">Delete</button>
-													</td>
-												</tr>
-												<tr>
-													<td></td>
-													<td></td>
-													<td><button class="update-btn">Update</button>
-														<button class="delete-btn">Delete</button>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
+									<table>
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Course</th>
+												<th>Actions</th>
+											</tr>
+										</thead>
+										<tbody id="general-program-tablelist">
+											<tr>
+												<td></td>
+												<td></td>
+												<td><button class="update-btn" onclick="">Update</button>
+													<button class="delete-btn">Delete</button>
+												</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td><button class="update-btn">Update</button>
+													<button class="delete-btn">Delete</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 
 								<!-- General - Purpose -->
 								<div class="table-content">
 									<div class="table-header">
 										<h3 class="table-title">General - Purpose</h3>
 										<button class="add-btn-table"
-										onclick="ModalInfo('Add Purpose for General', 'Purpose', 'GeneralPurposeForm', 'general', 'POST', updateAttribute(null, null, null))">+Add
+											onclick="ModalInfo('Add Purpose for General', 'Purpose', 'GeneralPurposeForm', 'general', 'POST', updateAttribute(null, null, null))">+Add
 											Info</button>
 									</div>
 
@@ -262,7 +252,7 @@
 									<div class="table-header">
 										<h3 class="table-title">Records - Purpose</h3>
 										<button class="add-btn-table"
-										onclick="ModalInfo('Add Document for Records', 'Document', 'RecordsPurposeForm', 'records', 'POST', updateAttribute(null, null, null))">+Add
+											onclick="ModalInfo('Add Document for Records', 'Document', 'RecordsPurposeForm', 'records', 'POST', updateAttribute(null, null, null))">+Add
 											Info</button>
 									</div>
 									<table>
@@ -300,7 +290,7 @@
 									<div class="table-header">
 										<h3 class="table-title">Archiving - Purpose</h3>
 										<button class="add-btn-table"
-										onclick="ModalInfo('Add Purpose for Archiving', 'Purpose', 'ArchivingPurposeForm', 'archiving', 'POST', updateAttribute(null, null, null))">+Add
+											onclick="ModalInfo('Add Purpose for Archiving', 'Purpose', 'ArchivingPurposeForm', 'archiving', 'POST', updateAttribute(null, null, null))">+Add
 											Info</button>
 									</div>
 									<table>
@@ -340,8 +330,22 @@
 					</div>
 				</div>
 			</div>
+			<script>
+				window.onload = function(){
+					FetchImage("#profile-picture");
+				}
+
+				//Global session variable
+				window.adminCreds = {
+					id: "<c:out value='${sessionScope.sessionAdmin.adminId}'/>",
+					username: "<c:out value='${sessionScope.sessionAdmin.username}'/>",
+					password: "<c:out value='${sessionScope.sessionAdmin.password}'/>"
+				}
+			</script>
 			<script type="text/javascript" src="../scripts/admin/adminpage.js"></script>
+			<script type="text/javascript" src="../scripts/profilePic.js"></script>
 		</body>
+
 		</html>
 		<!-- <h1>
 					Welcome

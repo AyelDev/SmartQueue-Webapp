@@ -16,7 +16,6 @@
 			<link rel="stylesheet" type="text/css" href="../css/jquery-confirm.min.css" />
 			<link rel="stylesheet" href="../css/loader.css">
 			<link rel="stylesheet" href="../css/stafflist.css">
-			<link rel="icon" type="image/x-icon" href="./images/logo.png">
 			<title>Admin | List of Staff</title>
 		</head>
 
@@ -136,30 +135,13 @@
 
 
 						<!-- admin profile -->
-						<button class="profilebutton" id="profilebutton"><svg class="profile" width="64px" height="64px"
-								viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-								<g id="SVGRepo_iconCarrier">
-									<path
-										d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.19C2 19 3.29 20.93 5.56 21.66C6.22 21.89 6.98 22 7.81 22H16.19C17.02 22 17.78 21.89 18.44 21.66C20.71 20.93 22 19 22 16.19V7.81C22 4.17 19.83 2 16.19 2ZM20.5 16.19C20.5 18.33 19.66 19.68 17.97 20.24C17 18.33 14.7 16.97 12 16.97C9.3 16.97 7.01 18.32 6.03 20.24H6.02C4.35 19.7 3.5 18.34 3.5 16.2V7.81C3.5 4.99 4.99 3.5 7.81 3.5H16.19C19.01 3.5 20.5 4.99 20.5 7.81V16.19Z"
-										fill="#ffffff"></path>
-									<path
-										d="M12.0019 8C10.0219 8 8.42188 9.6 8.42188 11.58C8.42188 13.56 10.0219 15.17 12.0019 15.17C13.9819 15.17 15.5819 13.56 15.5819 11.58C15.5819 9.6 13.9819 8 12.0019 8Z"
-										fill="#ffffff"></path>
-								</g>
-							</svg>
-							<c:out value="${sessionScope.sessionAdmin.username}"></c:out><svg class="caretdown"
-								width="64px" height="64px" viewBox="0 0 24 24" fill="none"
-								xmlns="http://www.w3.org/2000/svg">
-								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-								<g id="SVGRepo_iconCarrier">
-									<path
-										d="M19 9L14 14.1599C13.7429 14.4323 13.4329 14.6493 13.089 14.7976C12.7451 14.9459 12.3745 15.0225 12 15.0225C11.6255 15.0225 11.2549 14.9459 10.9109 14.7976C10.567 14.6493 10.2571 14.4323 10 14.1599L5 9"
-										stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
-										stroke-linejoin="round"></path>
-								</g>
+						<button class="profilebutton" id="profilebutton">
+							<img src="" alt="" class="profile-picture" id="profile-picture">
+							<c:out value="${sessionScope.sessionAdmin.username}"></c:out>
+							<svg xmlns="http://www.w3.org/2000/svg" class="caretdown" height="10" width="6.25"
+								viewBox="0 0 320 512">
+								<path fill="#ffffff"
+									d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
 							</svg>
 						</button>
 						<div class="adminProfile" id="adminProfile">
@@ -169,8 +151,7 @@
 					</div>
 					<div class="stafflist-content">
 						<button class="add-account-btn"> <svg xmlns="http://www.w3.org/2000/svg" height="10"
-								width="12.5"
-								viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+								width="12.5" viewBox="0 0 640 512">
 								<path fill="#ffffff"
 									d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
 							</svg> Add Staff</button>
@@ -179,8 +160,6 @@
 							<input type="text" placeholder="Search.." name="search" class="search-bar" id="searchInput"
 								onkeyup="searchTable()">
 						</div>
-
-
 
 						<div class="table-container">
 							<table id="myTable">
@@ -191,7 +170,6 @@
 										<th>Contact no.</th>
 										<th>Email</th>
 										<th>Username</th>
-										<th>Password</th>
 										<th>Restriction</th>
 										<th>Actions</th>
 									</tr>
@@ -219,40 +197,8 @@
 										<td>
 											<div class="tloader"></div>
 										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
 									</tr>
 									<tr>
-										<td>
-											<div class="tloader"></div>
-										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="tloader"></div>
-										</td>
 										<td>
 											<div class="tloader"></div>
 										</td>
@@ -297,14 +243,31 @@
 										<td>
 											<div class="tloader"></div>
 										</td>
-										<td>
-											<div class="tloader"></div>
-										</td>
 									</tr>
 									<tr>
 										<td>
 											<div class="tloader"></div>
 										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+										<td>
+											<div class="tloader"></div>
+										</td>
+									</tr>
+									<tr>
 										<td>
 											<div class="tloader"></div>
 										</td>
@@ -369,20 +332,24 @@
 							</form>
 						</div>
 					</div>
+
+					<script>
+						window.onload = function(){
+							FetchImage("#profile-picture");
+						}
+					</script>
+					<script type="text/javascript" src="../scripts/admin/list_of_staff.js"></script>
+					<script type="text/javascript" src="../scripts/profilePic.js"></script>
+
 					<div class="load-wrapper">
 						<div class="main-loader">
 							<div class="box-loader">
 							</div>
 						</div>
 					</div>
-
-					<script type="text/javascript" src="../scripts/admin/list_of_staff.js"></script>
 		</body>
 
 		</html>
-
-
-
 
 		<!-- <h1>
 					Welcome

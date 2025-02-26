@@ -10,18 +10,18 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="../css/prettify.css">
-			<link rel="stylesheet" href="../css/notify.css">
-			<link rel="stylesheet" href="../css/jquery-confirm.min.css">
+            <link rel="stylesheet" href="../css/notify.css">
+            <link rel="stylesheet" href="../css/jquery-confirm.min.css">
             <link rel="stylesheet" href="../css/loader.css">
             <link rel="stylesheet" href="../css/adminsettings.css">
             <script type="text/javascript" src="https://cdn.lordicon.com/lordicon.js"></script>
-			<script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
-			<script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
-			<script type="text/javascript" src="../scripts/notify.js"></script>
-			<script type="text/javascript" src="../scripts/prettify.js"></script>
-			<script type="text/javascript" src="../scripts/ping.js"></script>
-			<script type="text/javascript" src="../scripts/fadetransition.js"></script>
-			<script type="text/javascript" src="../scripts/chart.min.js"></script>
+            <script type="text/javascript" src="../scripts/jquery-3.7.1.min.js"></script>
+            <script type="text/javascript" src="../scripts/jquery-confirm.min.js"></script>
+            <script type="text/javascript" src="../scripts/notify.js"></script>
+            <script type="text/javascript" src="../scripts/prettify.js"></script>
+            <script type="text/javascript" src="../scripts/ping.js"></script>
+            <script type="text/javascript" src="../scripts/fadetransition.js"></script>
+            <script type="text/javascript" src="../scripts/chart.min.js"></script>
             <title>Settings</title>
         </head>
 
@@ -180,7 +180,7 @@
                             </svg>
                         </div>
 
-                        
+
 
                         <!-- admin profile -->
                         <button class="button-profile" id="button-profile"><svg class="profile" width="64px"
@@ -195,7 +195,9 @@
                                         d="M12.0019 8C10.0219 8 8.42188 9.6 8.42188 11.58C8.42188 13.56 10.0219 15.17 12.0019 15.17C13.9819 15.17 15.5819 13.56 15.5819 11.58C15.5819 9.6 13.9819 8 12.0019 8Z"
                                         fill="#ffffff"></path>
                                 </g>
-                            </svg><c:out value="${sessionScope.sessionAdmin.username}"></c:out><svg class="caretdown" width="64px" height="64px" viewBox="0 0 24 24" fill="none"
+                            </svg>
+                            <c:out value="${sessionScope.sessionAdmin.username}"></c:out><svg class="caretdown"
+                                width="64px" height="64px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -205,7 +207,8 @@
                                         stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
                                         stroke-linejoin="round"></path>
                                 </g>
-                            </svg></button>
+                            </svg>
+                        </button>
                         <div class="adminProfile" id="adminProfile">
                             <a href="adminsettings">Settings</a>
                             <a href="logout">Signout</a>
@@ -228,7 +231,7 @@
                                         <div class="profile-display">
                                             <img id="left-profile-picture" src="" alt="">
                                             <p id="left-profile-name">
-                                                <c:out value="${sessionScope.sessionAdmin.username}"/> 
+                                                <c:out value="${sessionScope.sessionAdmin.username}" />
                                             </p>
                                         </div>
                                         <li><a href="#profile-default">Profile</a></li>
@@ -253,7 +256,9 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="username" class="information">Username:</label>
-                                                <input type="text" id="username" value="<c:out value='${sessionScope.sessionAdmin.username}'/>" disabled>
+                                                <input type="text" id="username"
+                                                    value="<c:out value='${sessionScope.sessionAdmin.username}'/>"
+                                                    disabled>
                                             </div>
                                             <div class="form-group">
                                                 <label for="email" class="information">Email:</label>
@@ -273,7 +278,8 @@
                                     <form id="passwordForm">
                                         <div class="form-group">
                                             <label for="old-password" class="password">Old Password:</label>
-                                            <input type="password" id="old-password" value="<c:out value='${sessionScope.sessionAdmin.password}'/>" required>
+                                            <input type="password" id="old-password"
+                                                value="<c:out value='${sessionScope.sessionAdmin.password}'/>" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="new-password" class="password">New Password:</label>
@@ -284,7 +290,7 @@
                                             <input type="password" id="confirm-password" value="" required>
                                         </div>
 
-                                        <button type="submit" onclick="updateAdminPass()"  class="save-btn">Save</button>
+                                        <button type="submit" onclick="updateAdminPass()" class="save-btn">Save</button>
                                     </form>
                                 </div>
                             </div>
@@ -295,136 +301,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <script>
-
-                            window.onload = function() {
-                                FetchImage();
-                            };
-
-                                document.getElementById('changePhotoBtn').addEventListener('click', function () {
-                                    const fileInput = document.getElementById('profilePicInput');
-                                    fileInput.click();
-
-                                    fileInput.addEventListener('change', function () {
-                                        const file = fileInput.files[0];
-                                        if (file) {
-                                            const reader = new FileReader();
-                                            reader.onload = function (e) {
-                                                // Display the uploaded image in the profile picture area
-                                                document.getElementById('profileImage').src = e.target.result;
-
-                                                // OPTIONAL: Save the image to the server
-                                                uploadPhoto(file);
-                                            };
-                                            reader.readAsDataURL(file);
-                                        }
-                                    });
-                                });
-
-                                // Function to upload the photo to the server (optional backend functionality)
-                                function uploadPhoto(file) {
-                                    const formData = new FormData();
-                                    formData.append('profilePhoto', file);
-
-                                    fetch('uploadPhoto.jsp', {
-                                        method: 'POST',
-                                        body: formData,
-                                    })
-                                        .then((response) => response.text())
-                                        .then((data) => {
-                                            console.log('Photo uploaded successfully:', data);
-                                            alert('Photo updated successfully!');
-                                        })
-                                        .catch((error) => {
-                                            console.error('Error uploading photo:', error);
-                                            alert('Failed to upload photo. Please try again.');
-                                        });
-                                }
-
-                                    let pass =  document.querySelector("#new-password");
-                                    let confirmpass = document.querySelector("#confirm-password");
-                                    let username = '<c:out value="${sessionScope.sessionAdmin.username}"/>';
-                                    let id = '<c:out value="${sessionScope.sessionAdmin.adminId}"/>';
-                                   
-                                    function updateAdminPass(){
-
-                                    if(pass.value != confirmpass.value){
-                                        alert("confirm password not matched");
-                                        return false;
-                                    }
-                                    
-                                    $.ajax({
-                                            url: '/UpdateAdmin',
-                                            method: 'POST',
-                                            data: {
-                                            id: id,
-                                            password: pass.value,
-                                            username: username
-                                        }
-                                    }).done(function (response) {
-                                        $.notify(response, { color: "#fff", background: "#20D67B", delay: 1000 })
-                                        pass.value = ``;
-                                        confirmpass.value = ``;
-                                    }).fail(function (jqXHR, error) {
-                                        //notify
-                                        $.notify(jqXHR.responseText, { color: "#fff", background: "#D44950", delay: 1000 })
-                                    });
-                                   }
-
-
-
-
-                                   function previewImage(event) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('photo-preview').src = e.target.result;
-                document.getElementById('photo-preview').style.display = 'block';
-                document.getElementById('save-photo').style.display = 'block';
-                document.getElementById('cancel-upload').style.display = 'block';
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function savePhoto() {
-    // Get the uploaded image's source
-    const photoPreview = document.getElementById('photo-preview').src;
-    
-    // Update the left navigation profile picture
-    document.getElementById('left-profile-picture').src = photoPreview;
-    
-    // Simulate a successful save
-    alert('Do you want to saved Profile photo?');
-    
-    // Hide save/cancel buttons after saving
-    document.getElementById('save-photo').style.display = 'none';
-    document.getElementById('cancel-upload').style.display = 'none';
-    }
-
-        function cancelUpload() {
-            document.getElementById('photo').value = '';
-            document.getElementById('photo-preview').style.display = 'none';
-            document.getElementById('save-photo').style.display = 'none';
-            document.getElementById('cancel-upload').style.display = 'none';
-        }
-
-        async function FetchImage() {
-            return await fetch(window.location.origin + "/myimage")
-        .then((res) => res.blob()) 
-        .then((blob) => {
-           
-            let BlobUrl = URL.createObjectURL(blob);
-        
-            document.querySelector("#left-profile-picture").src = BlobUrl;
-        })
-        .catch((error) => {
-            console.error('Error fetching image:', error);
-        });
-    }
-
-        </script>
-        </body>
-
-
+                            <script type="text/javascript" src="../scripts/adminsettings.js"></script>
+                        </body>
         </html>

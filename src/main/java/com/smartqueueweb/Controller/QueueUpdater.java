@@ -20,7 +20,7 @@ public class QueueUpdater {
 
 	@OnMessage
 	public void onMessage(String message, Session session) throws IOException {
-		System.out.println(message);
+		//System.out.println(message);
 
 		// Broadcast the message to all connected clients
 		for (Session s : session.getOpenSessions()) {
@@ -45,7 +45,7 @@ public class QueueUpdater {
 
 	@OnError
 	public void onError(Throwable t) {
-
-		//System.out.println("Error - " + t.getMessage());
+		
+		System.out.println("Error - " + t.getMessage());
 	}
 }

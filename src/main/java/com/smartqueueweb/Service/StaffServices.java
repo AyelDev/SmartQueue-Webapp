@@ -1,11 +1,11 @@
 package com.smartqueueweb.Service;
 
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.List;
-
-import com.mysql.cj.jdbc.Blob;
 import com.smartqueueweb.Model.ServicesBean;
 import com.smartqueueweb.Model.StaffBean;
-import com.smartqueueweb.Model.StudentBean;
 
 public interface StaffServices {
 
@@ -46,4 +46,6 @@ public interface StaffServices {
 	StaffBean resetPasswordStep2(String pin, String email);
 	
 	Boolean completePasswordReset(String password, int id);
+	
+	Boolean staffChangeProfilePhoto(InputStream file, int id) throws SQLException;
 }

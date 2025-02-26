@@ -296,7 +296,7 @@ body {
     justify-content: center;
     display: flex;
     width: 10vw;
-    margin-top: -5.5%;
+    margin-top: -4.5%;
     margin-left: 84%;
     border-radius: 10px;
     padding: 15px 10px 15px 10px;
@@ -308,9 +308,11 @@ body {
     color: white;
 }
 
-.profile {
-    width: 20px;
-    object-fit: scale-down;
+.profile-picture {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
     margin-right: 10px;
 }
 
@@ -331,7 +333,7 @@ body {
     z-index: 1000;
     display: none;
     border-radius: 7px;
-    margin-top: -2.5%;
+    margin-top: -1.5%;
 }
 
 .adminProfile a {

@@ -136,13 +136,13 @@ $(document).ready(function () {
       
       switch(popupwindownumber){
         case '1':
-          window1.style.fontSize="3rem";
+          window1.style.fontSize="5.5rem";
           break;
         case '2':
-          window2.style.fontSize="3rem";
+          window2.style.fontSize="5.5rem";
           break;
         case '3':
-          window3.style.fontSize="3rem";
+          window3.style.fontSize="5.5rem";
           break;
       }
 
@@ -161,13 +161,13 @@ $(document).ready(function () {
 
       switch(popupwindownumber){
         case '1':
-          window1.style.fontSize="2.5rem";
+          window1.style.fontSize="3.5rem";
           break;
         case '2':
-          window2.style.fontSize="2.5rem";
+          window2.style.fontSize="3.5rem";
           break;
         case '3':
-          window3.style.fontSize="2.5rem";
+          window3.style.fontSize="3.5rem";
           break;
       }
 
@@ -186,13 +186,13 @@ $(document).ready(function () {
 
       switch(popupwindownumber){
         case '1':
-          window1.style.fontSize="1.5rem";
+          window1.style.fontSize="3rem";
           break;
         case '2':
-          window2.style.fontSize="1.5rem";
+          window2.style.fontSize="3rem";
           break;
         case '3':
-          window3.style.fontSize="1.5rem";
+          window3.style.fontSize="3rem";
           break;
       }
 

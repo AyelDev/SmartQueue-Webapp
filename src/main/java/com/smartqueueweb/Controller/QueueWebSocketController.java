@@ -25,7 +25,7 @@ public class QueueWebSocketController {
 
 	@OnMessage
 	public void onMessage(String message, Session session) throws IOException {
-		System.out.println(message);
+		//System.out.println(message);
 
 		// Broadcast the message to all connected clients
 		for (Session s : session.getOpenSessions()) {
@@ -33,21 +33,19 @@ public class QueueWebSocketController {
 				s.getBasicRemote().sendText(message);
 			}
 		}
-
-		
 	}
 
 	@OnOpen
 	public void onOpen(Session session) {
 
-		System.out.println("Connected: " + session.getId() + clients);
+		//System.out.println("Connected: " + session.getId() + clients);
 		// add session names for auto logout
 		// Retrieve the cookie from the session
 	}
 
 	@OnClose
 	public void onClose(Session session) {
-		System.out.println("Closed: " + session.getId() + clients);
+		//System.out.println("Closed: " + session.getId() + clients);
 		clients.remove(0);
 	}
 

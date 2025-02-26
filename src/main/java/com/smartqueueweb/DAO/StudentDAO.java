@@ -104,11 +104,11 @@ public class StudentDAO extends SQLConnection {
 
 	public Integer addToQueue(String queueNumber, String idNumber, String fullname, String purpose,
 			String servicetype) {
-		System.out.println(queueNumber);
-		System.out.println(idNumber);
-		System.out.println(fullname);
-		System.out.println(purpose);
-		System.out.println(servicetype);
+		//System.out.println(queueNumber);
+		//System.out.println(idNumber);
+		//System.out.println(fullname);
+		//System.out.println(purpose);
+		//System.out.println(servicetype);
 
 		try {
 			ConnectDriver();

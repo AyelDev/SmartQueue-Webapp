@@ -1,15 +1,17 @@
 package com.smartqueueweb.Service;
 
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.List;
+
 import com.smartqueueweb.Class.ServiceType;
 import com.smartqueueweb.Model.AdminBean;
 import com.smartqueueweb.Model.CountersBean;
 import com.smartqueueweb.Model.MediaBean;
-import com.smartqueueweb.Model.ServicesBean;
-import com.smartqueueweb.Model.QueueEntryBean;
 import com.smartqueueweb.Model.MonthQueueSummaryBean;
-
-import java.sql.SQLException;
-import java.util.List;
+import com.smartqueueweb.Model.QueueEntryBean;
+import com.smartqueueweb.Model.ServicesBean;
 
 public interface AdminServices {
 
@@ -45,4 +47,5 @@ public interface AdminServices {
 	
 	Boolean updateAdmin(Integer id, String username, String password) throws SQLException;
 
+	Boolean adminChangeProfilePhoto(InputStream file, int id) throws SQLException;
 }
