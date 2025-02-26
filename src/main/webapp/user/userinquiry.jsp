@@ -10,11 +10,13 @@
             <script type="text/javascript" src="../scripts/fadetransition.js"></script>
             <script type="text/javascript" src="../scripts/notify.js"></script>
             <script type="text/javascript" src="../scripts/prettify.js"></script>
+            <script type="text/javascript" src="../scripts/simple-keyboard.js"></script>
             <link rel="stylesheet" href="../css/userinquiry.css">
             <link rel="stylesheet" href="../css/loader.css">
             <link rel="stylesheet" href="../css/prettify.css">
             <link rel="stylesheet" href="../css/notify.css">
             <link rel="icon" type="image/x-icon" href="./images/logo.png">
+            <link rel="stylesheet" href="../css/keyboardstyle.css">
             <title>User Inquiry</title>
         </head>
 
@@ -76,17 +78,17 @@
                     <div class="form">
                         <div class="studename">
                             <label for="studentName" class="firstname-label">First Name</label>
-                            <input type="text" class="generalfirst-name" id="general-student-firstname">
+                            <input type="text" class="generalfirst-name" id="general-student-firstname" onclick="textKeyboard('general-student-firstname')">
                             <label for="studentName" class="middlename-label">Middle Name</label>
-                            <input type="text" class="generalmiddle-name" id="general-student-middlename">
+                            <input type="text" class="generalmiddle-name" id="general-student-middlename" onclick="textKeyboard('general-student-middlename')">
                             <label for="studentName" class="lastname-label">Last Name</label>
-                            <input type="text" class="generallast-name" id="general-student-lastname">
+                            <input type="text" class="generallast-name" id="general-student-lastname" onclick="textKeyboard('general-student-lastname')">
                         </div>
 
 
                         <label for="studentIdNo" class="student-id-no-text">Student ID No. Type '000' for new
                             student</label>
-                        <input type="text" class="student-id" id="general-student-id">
+                        <input type="text" class="student-id" id="general-student-id" onclick="numericKeyboard('general-student-id')">
                         <label for="yearLevel">Year Level</label>
                         <!-- <input type="text" class="yearLevel" id="yearLevel"> -->
                         <select name="program" id="yearLevel" class="yearLevel">
@@ -118,7 +120,7 @@
                     <p>For Old Students</p>
                     <form id="form" class="form">
                         <label for="studentIdNo">Student ID No.</label>
-                        <input type="text" class="student-id" id="records-student-id" required>
+                        <input type="text" class="student-id" id="records-student-id" onclick="numericKeyboard('records-student-id')" required>
                         <input type="button" class="id-button" id="id-button" value="Confirm">
                         <label for="studentName">Name:</label>
                         <input type="text" class="student-name" id="records-student-name" name="name" disabled>
@@ -143,17 +145,17 @@
                     <p>For New and Old Students</p>
                     <form id="form" class="form">
                         <label for="studentIdNo">Student ID No. Type '000' for new student</label>
-                        <input type="text" class="student-id" id="archiving-student-id" onclick="SetEmptyNameFields()"
+                        <input type="text" class="student-id" id="archiving-student-id" onclick="SetEmptyNameFields()" onfocus="numericKeyboard('archiving-student-id')"
                             required>
                             <input type="button" class="id-button" id="archiving-id-button" value="Confirm">
                         <label for="name">First Name</label>
                         <input type="text" class="first-name" id="archiving-student-firstname"
-                            onclick="SetEmptyIdField()" required>
+                            onclick="SetEmptyIdField()" onfocus="textKeyboard('archiving-student-firstname')" required>
                         <label for="name">Middle Name</label>
                         <input type="text" class="middle-name" id="archiving-student-middlename"
-                            onclick="SetEmptyIdField()">
+                            onclick="SetEmptyIdField()" onfocus="textKeyboard('archiving-student-middlename')">
                         <label for="name">Last Name</label>
-                        <input type="text" class="last-name" id="archiving-student-lastname" onclick="SetEmptyIdField()"
+                        <input type="text" class="last-name" id="archiving-student-lastname" onclick="SetEmptyIdField()" onfocus="textKeyboard('archiving-student-lastname')"
                             required>
                         <label for="options">Option</label>
                         <select name="purpose" id="archiving-purpose" class="purpose">
@@ -184,6 +186,9 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- virtual keyboard please do not remove -->
+            <div class="simple-keyboard" onclick="preventHide(event)"></div>
 
             <!-- loader please do not remove -->
             <div class="load-wrapper">

@@ -34,11 +34,11 @@ public class ChatServlet {
 		DecodedJWT decoded = validator.decode(firstPart);
 
 		if (decoded != null) {
-			System.out.println("Subject: " + decoded.getClaim("userName"));
+			//System.out.println("Subject: " + decoded.getClaim("userName"));
 			username = decoded.getClaim("userName").toString().replace("\"", "");
 			clients.put(Integer.parseInt(session.getId()), decoded.getClaim("userName").toString());
 		} else {
-			System.out.println("null");
+			//System.out.println("null");
 		}
 
 		// Broadcast the message to all connected clients
@@ -54,21 +54,21 @@ public class ChatServlet {
 	public void onOpen(Session session) {
 		int sessionId = Integer.parseInt(session.getId()) == 0 ? 1 : Integer.parseInt(session.getId());
 		clients.put(sessionId, "ariel");
-		System.out.println("Connected: " + sessionId + clients );
+		//System.out.println("Connected: " + sessionId + clients );
 		// add session names for auto logout
 		// Retrieve the cookie from the session
 	}
 
 	@OnClose
 	public void onClose(Session session) {
-		System.out.println("Closed: " + session.getId() + clients);
+		//System.out.println("Closed: " + session.getId() + clients);
 		clients.remove(0);
 	}
 
 	@OnError
 	public void onError(Throwable t) {
 
-		System.out.println("Error - " + t.getMessage());
+		//System.out.println("Error - " + t.getMessage());
 	}
 
 }
