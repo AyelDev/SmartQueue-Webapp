@@ -162,7 +162,22 @@
                     <div class="main-container">
                         <aside class="sidebar">
                             <h2>Uploaded Videos</h2>
-                            <ul id="videoList" class="video-list"></ul>
+                            <table class="video-list">
+                                <colgroup>
+                                <col style="width: 80%;"/>
+                                <col style="width: 20%;"/>
+                                </colgroup>
+                                <tbody id="videoListBody">
+                                    <tr>
+                                        <!-- <td id="videoList" class="video-list"><li>videofilesample.mp4</li>
+                                        </td>
+                                        <td><button class="video-removebtn">Remove</button></td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            
+
                         </aside>
 
                         <div class="files-container">
@@ -174,7 +189,7 @@
                                     <label for="videoFiles" class="label">Choose Video Files:</label>
                                     <input type="file" id="videoFiles" name="videoFiles" multiple accept="video/*"
                                         class="file-input" required>
-                                    <button type="button" class="upload-btn" id="uploadButton">Upload Videos</button>
+                                    <button type="button" class="upload-btn" id="uploadButton">Add Videos</button>
                                 </form>
 
                                 <div class="video-preview-container">
@@ -205,6 +220,7 @@
             <script>
                 window.onload = function(){
                     FetchImage("#profile-picture");
+                    updateData();
                 }
             </script>
             <script type="text/javascript" src="../scripts/admin/video_ads.js"></script>

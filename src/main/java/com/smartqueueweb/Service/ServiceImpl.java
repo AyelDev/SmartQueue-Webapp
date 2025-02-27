@@ -250,6 +250,12 @@ public class ServiceImpl implements StaffServices, StudentServices, AdminService
 		// TODO Auto-generated method stub
 		return admindata.AdminChangeProfilePhoto(file, id);
 	}
+	
+	@Override
+	public Boolean deleteVideo(Integer id) throws SQLException{
+		// TODO Auto-generated method stub
+		return admindata.DeleteVideo(id);
+	}
 	//////////////////////////////////////////////////////////////////////// -----------------------
 	//////////////////////////////////////////////////////////////////////// Student
 

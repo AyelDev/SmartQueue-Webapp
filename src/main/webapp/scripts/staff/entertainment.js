@@ -47,17 +47,18 @@
     });
 
     function updateVideoList() {
-        videoList.innerHTML = '';
-        videos.forEach((video) => {
-            const row = document.createElement('tr');
-            const cell = document.createElement('td');
-            cell.textContent = video.name;
-            cell.onclick = function () {
-                playVideo(video.url);
-            };
-            row.appendChild(cell);
-            videoList.appendChild(row);
-        });
+        updateData();
+        // videoList.innerHTML = '';
+        // videos.forEach((video) => {
+        //     const row = document.createElement('tr');
+        //     const cell = document.createElement('td');
+        //     cell.textContent = video.name;
+        //     cell.onclick = function () {
+        //         playVideo(video.url);
+        //     };
+        //     row.appendChild(cell);
+        //     videoList.appendChild(row);
+        // });
     }
 
     function playVideo(url) {
@@ -143,3 +144,64 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+//-----------------------------FETCH VIDEOS
+
+function updateData(){
+    Promise.all([
+        fetch('/JsonVideoListAPI'),
+    ]) .then(responses => {
+        responses.forEach(response => {
+            if (!response.ok) {
+                throw new Error('Network response problem' + response.statusText);
+            }
+        });
+        return Promise.all(responses.map(response => response.json()));
+    })
+    .then(data => {
+        
+        const tableBody = document.querySelector('#videoList');
+        tableBody.innerHTML = '';
+
+        data[0].forEach(item => {
+
+            let row = document.createElement('tr');
+            let cell1 =  document.createElement('td');
+            cell1.textContent = item.fileName;
+            row.appendChild(cell1);
+
+            let cell2 = document.createElement('td');
+            let cell2Button = document.createElement('button');
+            cell2Button.addEventListener('click', function(){
+                DeleteVideos(item.id);
+            });
+            cell2Button.textContent = 'Remove';
+            cell2.appendChild(cell2Button);
+            row.appendChild(cell2);
+            tableBody.appendChild(row);
+        });
+
+    })
+}
+
+function DeleteVideos(id) {
+    $.ajax({
+
+        url: window.location.origin + "/deletevideo",
+        type: 'GET',
+        data: {
+            'id' : id
+        },
+        success: function(response){
+            $.notify("Video deleted", { color: "#fff", background: "#20D67B", delay: 1000 })
+            updateData()
+        },
+        error: function(request, error){
+            console.log("request" + error);
+        }
+
+    });
+}
+
+
+

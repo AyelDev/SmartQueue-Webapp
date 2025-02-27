@@ -22,13 +22,12 @@ public class AdminDAO extends SQLConnection {
 	MediaBean mediaBean = null;
 	QueueEntryBean queueEntryBean = null;
 	MonthQueueSummaryBean monthQueueSummaryBean = null;
- 	
+
 	List<ServicesBean> serviceBeanList = null;
 	List<CountersBean> countersBeanList = null;
 	List<MediaBean> mediaBeanList = null;
 	List<QueueEntryBean> queueEntryBeanList = null;
 	List<MonthQueueSummaryBean> monthQueueSummaryBeanList = null;
-
 
 	public AdminDAO() {
 		super();
@@ -83,12 +82,13 @@ public class AdminDAO extends SQLConnection {
 		try {
 			ConnectDriver();
 			prs = conn.prepareStatement("SELECT * FROM tbl_service");
-			//prs.setString(1, servicetype);
+			// prs.setString(1, servicetype);
 			rs = prs.executeQuery();
 			serviceBeanList = new ArrayList<ServicesBean>();
 
 			while (rs.next()) {
-				serviceBean = new ServicesBean(rs.getInt("id"), rs.getString("purpose"), rs.getString("program"), rs.getInt("amount"), rs.getString("servicetype"));
+				serviceBean = new ServicesBean(rs.getInt("id"), rs.getString("purpose"), rs.getString("program"),
+						rs.getInt("amount"), rs.getString("servicetype"));
 				serviceBeanList.add(serviceBean);
 			}
 		} catch (Exception e) {
@@ -103,15 +103,16 @@ public class AdminDAO extends SQLConnection {
 		// TODO Auto-generated method stub
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("INSERT INTO tbl_service (program, purpose, amount, servicetype) VALUES (?, ?, ?, ?);");
+			prs = conn.prepareStatement(
+					"INSERT INTO tbl_service (program, purpose, amount, servicetype) VALUES (?, ?, ?, ?);");
 			prs.setString(1, program);
 			prs.setString(2, purpose);
 			prs.setInt(3, amount);
 			prs.setString(4, serviceType.toString());
 
 			return prs.executeUpdate();
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			SQLClose();
@@ -123,18 +124,19 @@ public class AdminDAO extends SQLConnection {
 		// TODO Auto-generated method stub
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("UPDATE tbl_service SET program = ?, purpose = ?, amount = ? WHERE tbl_service.id = ?;");
+			prs = conn.prepareStatement(
+					"UPDATE tbl_service SET program = ?, purpose = ?, amount = ? WHERE tbl_service.id = ?;");
 			prs.setString(1, program);
 			prs.setString(2, purpose);
 			prs.setInt(3, amount);
 			prs.setInt(4, id);
-			
-			if(prs.executeUpdate() == 1)
+
+			if (prs.executeUpdate() == 1)
 				return true;
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			SQLClose();
 		}
 		return false;
@@ -146,18 +148,18 @@ public class AdminDAO extends SQLConnection {
 			ConnectDriver();
 			prs = conn.prepareStatement("DELETE FROM tbl_service WHERE tbl_service.id = ?");
 			prs.setInt(1, id);
-			
-			if(prs.executeUpdate() == 1) 
+
+			if (prs.executeUpdate() == 1)
 				return true;
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			SQLClose();
 		}
 		return false;
 	}
-	
+
 	public Integer AddCounters(int counterNumber, String description) {
 		try {
 			ConnectDriver();
@@ -165,10 +167,10 @@ public class AdminDAO extends SQLConnection {
 			prs.setInt(1, counterNumber);
 			prs.setString(2, description);
 			return prs.executeUpdate();
-			
-		}catch (Exception e) {
-			
-		}finally {
+
+		} catch (Exception e) {
+
+		} finally {
 			SQLClose();
 		}
 		return null;
@@ -183,12 +185,8 @@ public class AdminDAO extends SQLConnection {
 			countersBeanList = new ArrayList<CountersBean>();
 
 			while (rs.next()) {
-				countersBean = new CountersBean(
-								rs.getInt("id"), 
-								rs.getInt("counter_number"),
-								rs.getString("description"), 
-								rs.getDate("date_created"), 
-								rs.getString("status"));
+				countersBean = new CountersBean(rs.getInt("id"), rs.getInt("counter_number"),
+						rs.getString("description"), rs.getDate("date_created"), rs.getString("status"));
 				countersBeanList.add(countersBean);
 			}
 		} catch (Exception e) {
@@ -200,41 +198,42 @@ public class AdminDAO extends SQLConnection {
 	}
 
 	public Boolean UpdateCounters(Integer id, Integer counterNumber, String description, String status) {
-		
+
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("UPDATE tbl_counters SET counter_number = ?, description = ?, status = ? WHERE tbl_counters.id = ?");
+			prs = conn.prepareStatement(
+					"UPDATE tbl_counters SET counter_number = ?, description = ?, status = ? WHERE tbl_counters.id = ?");
 			prs.setInt(1, counterNumber);
 			prs.setString(2, description);
 			prs.setString(3, status);
 			prs.setInt(4, id);
-			
-			if(prs.executeUpdate() == 1)
+
+			if (prs.executeUpdate() == 1)
 				return true;
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			SQLClose();
 		}
 		return false;
 	}
 
 	public Boolean DeleteCounters(int id) {
-		
+
 		try {
 			ConnectDriver();
 			prs = conn.prepareStatement("DELETE FROM tbl_counters WHERE tbl_counters.id = ?");
 			prs.setInt(1, id);
-			
+
 			int rowsAffected = prs.executeUpdate();
-			
-			if(rowsAffected > 0)
+
+			if (rowsAffected > 0)
 				return true;
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			SQLClose();
 		}
 		return false;
@@ -249,12 +248,8 @@ public class AdminDAO extends SQLConnection {
 			mediaBeanList = new ArrayList<MediaBean>();
 
 			while (rs.next()) {
-				mediaBean = new MediaBean(
-						rs.getInt("id"), 
-						rs.getString("filename"),
-						rs.getString("path"), 
-						rs.getString("type")
-						);
+				mediaBean = new MediaBean(rs.getInt("id"), rs.getString("filename"), rs.getString("path"),
+						rs.getString("type"));
 				mediaBeanList.add(mediaBean);
 			}
 		} catch (Exception e) {
@@ -265,7 +260,7 @@ public class AdminDAO extends SQLConnection {
 		return mediaBeanList;
 	}
 
-    public List<QueueEntryBean> ListOfEnquiries() {
+	public List<QueueEntryBean> ListOfEnquiries() {
 
 		try {
 			ConnectDriver();
@@ -274,17 +269,10 @@ public class AdminDAO extends SQLConnection {
 			queueEntryBeanList = new ArrayList<QueueEntryBean>();
 
 			while (rs.next()) {
-				queueEntryBean = new QueueEntryBean(
-						rs.getInt("id"), 
-						rs.getString("queue_number"),
-						rs.getString("id_number"), 
-						rs.getString("fullname"), 
-						rs.getString("purpose"), 
-						rs.getString("serviceType"), 
-						rs.getInt("window_number"), 
-						rs.getDate("date"), 
-						rs.getString("queue_status")
-						);
+				queueEntryBean = new QueueEntryBean(rs.getInt("id"), rs.getString("queue_number"),
+						rs.getString("id_number"), rs.getString("fullname"), rs.getString("purpose"),
+						rs.getString("serviceType"), rs.getInt("window_number"), rs.getDate("date"),
+						rs.getString("queue_status"));
 				queueEntryBeanList.add(queueEntryBean);
 			}
 		} catch (Exception e) {
@@ -293,24 +281,20 @@ public class AdminDAO extends SQLConnection {
 			SQLClose();
 		}
 		return queueEntryBeanList;
-        
-    }
 
-    public List<MonthQueueSummaryBean> ListOfMonthlyQueues() {
-       
-    	try {
+	}
+
+	public List<MonthQueueSummaryBean> ListOfMonthlyQueues() {
+
+		try {
 			ConnectDriver();
 			prs = conn.prepareStatement("SELECT * FROM tbl_month_queue_summary ORDER BY id");
 			rs = prs.executeQuery();
 			monthQueueSummaryBeanList = new ArrayList<MonthQueueSummaryBean>();
 
 			while (rs.next()) {
-				monthQueueSummaryBean = new MonthQueueSummaryBean(
-						rs.getInt("id"), 
-						rs.getDate("month"),
-						rs.getInt("inquiries"), 
-						rs.getDate("date_modified")
-						);
+				monthQueueSummaryBean = new MonthQueueSummaryBean(rs.getInt("id"), rs.getDate("month"),
+						rs.getInt("inquiries"), rs.getDate("date_modified"));
 				monthQueueSummaryBeanList.add(monthQueueSummaryBean);
 			}
 		} catch (Exception e) {
@@ -319,55 +303,58 @@ public class AdminDAO extends SQLConnection {
 			SQLClose();
 		}
 		return monthQueueSummaryBeanList;
-        
-    }
 
-    public Integer AddMonthlyEnquiry() {
+	}
+
+	public Integer AddMonthlyEnquiry() {
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("UPDATE tbl_month_queue_summary SET inquiries = inquiries + 1 WHERE MONTH(month) = MONTH(CURDATE());");
+			prs = conn.prepareStatement(
+					"UPDATE tbl_month_queue_summary SET inquiries = inquiries + 1 WHERE MONTH(month) = MONTH(CURDATE());");
 			return prs.executeUpdate();
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			SQLClose();
 		}
 		return 0;
-    }
+	}
 
-    public Boolean ClearAllQueueEntries() {
-        // TODO Auto-generated method stub
-			try {
-				ConnectDriver();
-				prs = conn.prepareStatement("DELETE from student_queue_entries WHERE date < CURDATE();");
-				
-				if(prs.executeUpdate() > 0);
-				return true;
-			
-			}catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				SQLClose();
-			}
+	public Boolean ClearAllQueueEntries() {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("DELETE from student_queue_entries WHERE date < CURDATE();");
+
+			if (prs.executeUpdate() > 0)
+				;
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SQLClose();
+		}
 		return false;
 	}
 
 	public Boolean UpdateAdmin(Integer id, String username, String password) throws SQLException {
-		
+
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("UPDATE tbl_login_admin SET username = ?, password = ? WHERE tbl_login_admin.admin_id = ?;");
-			
+			prs = conn.prepareStatement(
+					"UPDATE tbl_login_admin SET username = ?, password = ? WHERE tbl_login_admin.admin_id = ?;");
+
 			prs.setString(1, username);
 			prs.setString(2, password);
 			prs.setInt(3, id);
-			
+
 			int isExecuteUpdate = prs.executeUpdate();
-			
-			if(isExecuteUpdate > 0)
+
+			if (isExecuteUpdate > 0)
 				return true;
-			
+
 		} finally {
 			SQLClose();
 		}
@@ -377,19 +364,35 @@ public class AdminDAO extends SQLConnection {
 	public Boolean AdminChangeProfilePhoto(InputStream file, int id) throws SQLException {
 		try {
 			ConnectDriver();
-			prs = conn.prepareStatement("UPDATE tbl_login_admin SET profile_picture = ? WHERE tbl_login_admin.admin_id = ?;");
-			
+			prs = conn.prepareStatement(
+					"UPDATE tbl_login_admin SET profile_picture = ? WHERE tbl_login_admin.admin_id = ?;");
+
 			prs.setBlob(1, file);
 			prs.setInt(2, id);
-			
+
 			int isExecuteUpdate = prs.executeUpdate();
-			
-			if(isExecuteUpdate > 0)
+
+			if (isExecuteUpdate > 0)
 				return true;
-			
+
 		} finally {
 			SQLClose();
 		}
 		return false;
+	}
+
+	public Boolean DeleteVideo(Integer id) throws SQLException {
+		// TODO Auto-generated method stub
+		try {
+			ConnectDriver();
+			prs = conn.prepareStatement("DELETE FROM tbl_media WHERE tbl_media.id = ?");
+
+			prs.setInt(1, id);
+
+			return prs.executeUpdate() > 0;
+
+		} finally {
+			SQLClose();
+		}
 	}
 }
