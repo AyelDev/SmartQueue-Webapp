@@ -48,4 +48,6 @@ public interface AdminServices {
 	Boolean updateAdmin(Integer id, String username, String password) throws SQLException;
 
 	Boolean adminChangeProfilePhoto(InputStream file, int id) throws SQLException;
+	
+	Boolean deleteVideo(Integer id) throws SQLException;
 }

@@ -94,7 +94,7 @@ public class UserInquiry_Servlet extends HttpServlet {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println(e.getMessage());
+			//System.out.println(e.getMessage());
 			response.setContentType("text/plain");
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			response.getWriter().write("Enquiry Failed please fill up the necessary form.");

@@ -68,12 +68,18 @@
                     </div>
                     <div class="top-lnav">
                         <table id="videoTable">
+                            <colgroup>
+                                <col style="width: 80%;"/>
+                                <col style="width: 20%;"/>
+                            </colgroup>
                             <thead>
                                 <tr>
                                     <th> Uploaded Videos</th>
+                                    <th> Action </th>
                                 </tr>
                             </thead>
-                            <tbody id="videoList"></tbody>
+                            <tbody id="videoList">
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -115,6 +121,7 @@
                 //----- FETCH PROFILE IMAGE DURING LOAD
                 window.onload = function () {
                     FetchImage(".profile");
+                    updateData();
                 }
             </script>
         </body>

@@ -568,7 +568,7 @@ function textKeyboard(inputId){
     showKey();
     defaultKey = ["Q W E R T Y U I O P",
         "A S D F G H J K L {enter}",
-        "Z X C V B N M Ñ {bksp}"];
+        "Z X C V B N M {bksp}", "Ñ {space} ."];
     themeKey = "hg-theme-default hg-layout-numeric numeric-theme";
     Keyboard(defaultKey, themeKey);
 }

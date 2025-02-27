@@ -435,7 +435,7 @@ main {
 
 /* Sidebar */
 .sidebar {
-    width: 250px;
+    width: 350px;
     background-color: #004aad;
     color: #ffffff;
     padding: 20px;
@@ -450,6 +450,24 @@ main {
     font-size: 1.2rem;
     margin-bottom: 15px;
     text-align: center;
+}
+.video-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+tr td{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.video-removebtn{
+    padding: 11px;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    margin-top: -13%;
 }
 
 .video-list {

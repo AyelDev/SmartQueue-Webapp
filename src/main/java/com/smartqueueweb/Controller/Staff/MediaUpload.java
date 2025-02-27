@@ -80,7 +80,7 @@ public class MediaUpload extends HttpServlet {
 				
 			        	
 						file.write(uploadedFile);
-			            System.out.println("Uploaded file to: " + uploadedFile.getAbsolutePath());
+			            //System.out.println("Uploaded file to: " + uploadedFile.getAbsolutePath());
 			        }
 			        
 			    }

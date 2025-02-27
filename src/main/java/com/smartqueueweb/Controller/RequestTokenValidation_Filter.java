@@ -68,7 +68,7 @@ public class RequestTokenValidation_Filter implements Filter {
 
 	public void destroy() {
 		// TODO Auto-generated method stub
-		System.out.println("destroy");
+		//System.out.println("destroy");
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
