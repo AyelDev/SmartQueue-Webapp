@@ -176,7 +176,7 @@
             </div>
             <div class="video-container">
               <video class="frame" id="video-ads" autoplay muted controls>
-              <source id="videoSource" src="media/videosample3.mp4" type="video/mp4">
+              <source id="videoSource" src="media/defaultvid.mp4" type="video/mp4">
             </div>
 
             <footer>
