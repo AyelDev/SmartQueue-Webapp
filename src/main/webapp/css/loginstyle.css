@@ -125,12 +125,13 @@ body {
     left: 31%;
 }
 
+
 .username-input,
 .password-input {
-    width: 160%;
+    width: 186%;
     height: 11%;
     padding: 15px;
-    margin-left: -27%;
+    margin-left: -39%;
     border-radius: 5px;
     font-size: 15px;
     cursor: pointer;
@@ -139,25 +140,28 @@ body {
     background-color: transparent;
     transition: outline-color 500ms;
 }
-.username-container{
+.username-container, .password-container{
     position: relative;
     border-radius: 15px;
 }
 .username-input:is(:focus, :valid){
 	outline-color: var(--secondary-color);
 }
+.password-input:is(:focus, :valid){
+    outline-color: var(--secondary-color);
+}
 .username-label{
 	position: absolute;
     top: 8%;
-    left: -23%;
+    left: -35%;
     translate: 10px 10px;
     color: var(--text-color);
     transition: translate 500ms, scale 500ms;
 }
 .password-label{
     position: absolute;
-    top: 47.5%;
-    margin-left: -36%;
+    margin-top: -30%;
+    left: -35%;
     translate: 10px 10px;
     color: var(--text-color);
     transition: translate 500ms, scale 500ms;
