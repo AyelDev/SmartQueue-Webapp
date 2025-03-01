@@ -158,10 +158,6 @@ function getAvailableQueueNUmber() {
             success: function (response) {
 
                 queueNumber = response.id;
-
-                //TODO update puhon kay naka shortpoll pako hehe
-                //sendMsg("update queue");
-
                 startAvailQueueCount = true;
 
             },
@@ -182,11 +178,11 @@ var isRunning = false;
 async function printQueue(serviceType) {
 
     //PREVENT FROM DOUBLE REQUEST
-    if (isRunning) {
-        isRunning = false;
-        return;
-    }
-    isRunning = true;
+    // if (isRunning) {
+    //     isRunning = false;
+    //     return;
+    // }
+    // isRunning = true;
 
     //E INCREMENT KAY MO BUG FIX NALANG NI LATOR
     if (!startAvailQueueCount)
@@ -269,6 +265,9 @@ async function printQueue(serviceType) {
         },
         success: function (response) {
             $.notify(response, { color: "#fff", background: "#20D67B", delay: 500 })
+
+            //TODO update puhon kay naka shortpoll pako hehe
+            sendMsg("update queue");
 
             // Inject the receipt content into the modal
             document.getElementById('printArea').innerHTML = receiptContent;

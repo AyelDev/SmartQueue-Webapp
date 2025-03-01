@@ -57,6 +57,7 @@ async function counterChangeListOnChange() {
     await CounterList(counterList.value, "SERVING", '#counter-access-table');
 }
 
+//change to promise
 async function CounterList(window_nunber, queue_status, elementid) {
     await $.ajax({
         url: '/JsonStudentQueueEntriesAPI',
@@ -87,7 +88,7 @@ async function CounterList(window_nunber, queue_status, elementid) {
     });
 }
 
-setInterval(counterChangeListOnChange, 3000); //change to websocket
+//setInterval(counterChangeListOnChange, 5000); //change to websocket
 
 let priorityNumberTableBody = document.getElementById("priority-number-table");
 let counterAccessTableBody = document.getElementById("counter-access-table");
@@ -204,7 +205,8 @@ var ws2 = new WebSocket(wsUrl + window.location.host + "/queueupdate");
 
 ws2.addEventListener("message", async (message) => {
     await $.notify("loading new requests...", { color: "#fff", background: "#20D67B", delay: 1000 })
-    await CounterList(counterList.value, "QUEUE", '#priority-number-table');
+    // //await CounterList(counterList.value, "QUEUE", '#priority-number-table');
+    await counterChangeListOnChange();
 })
 
 
@@ -255,3 +257,7 @@ function CallName(){
 
     document.querySelector('.custom-call').value = ''; //clear name after call
 }
+
+document.querySelector('#call-button').addEventListener("click", function (){
+    counterChangeListOnChange();
+});

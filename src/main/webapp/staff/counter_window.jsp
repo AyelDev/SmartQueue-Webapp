@@ -299,7 +299,7 @@
                     });
                 }
 
-                setInterval(counterChangeListOnChange, 3000); //change to websocket
+                //setInterval(counterChangeListOnChange, 3000); //change to websocket
 
                 let priorityNumberTableBody = document.getElementById("priority-number-table");
                 let counterAccessTableBody = document.getElementById("counter-access-table");
@@ -416,7 +416,8 @@
 
                 ws2.addEventListener("message", async (message) => {
                     await $.notify("loading new requests...", { color: "#fff", background: "#20D67B", delay: 1000 })
-                    await CounterList(counterList.value, "QUEUE", '#priority-number-table');
+                    //await CounterList(counterList.value, "QUEUE", '#priority-number-table');
+                    await counterChangeListOnChange();
                 })
 
                 //CALL CUSTOM NAME
@@ -436,6 +437,10 @@
 
                     document.querySelector('.custom-call').value = ''; //clear name after call
                 }
+
+                document.querySelector('#call-button').addEventListener("click", function (){
+                    counterChangeListOnChange();
+                });
             </script>
 
             <div class="load-wrapper">
