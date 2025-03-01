@@ -52,6 +52,6 @@ public class QueueWebSocketController {
 	@OnError
 	public void onError(Throwable t) {
 
-		System.out.println("Error - " + t.getMessage());
+		//System.out.println("Error - " + t.getMessage());
 	}
 }

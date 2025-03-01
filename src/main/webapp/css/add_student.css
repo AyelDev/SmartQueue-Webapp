@@ -19,7 +19,7 @@ body {
   font-family: var(--body-fonts);
   margin: 0;
   padding: 0;
-  overflow-y:hidden;
+  overflow-y: hidden;
 }
 
 .container {
@@ -30,7 +30,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   align-items: center;
   justify-content: center;
-
+  
 }
 
 .navbar {
@@ -428,7 +428,7 @@ form {
 
 .bottom-lnav a:hover {
   padding: 15px 20px 15px 20px;
-  width: 12.8vw;
+  width: 13vw;
   background-color: white;
   position: relative;
   margin-left: 2px;
@@ -449,12 +449,12 @@ form {
   transform: scale(1.2);
 }
 .dash {
-  width: 81.5%;
+  width: 85%;
   height: 6vh;
   background-color: #1e91d0;
   text-align: start;
   font-size: 1.5625rem;
-  margin-left: 16%;
+  margin-left: 12.9%;
   display: inline-block;
   position: relative;
   color: white;	
@@ -462,7 +462,6 @@ form {
   align-items: center;
   justify-content: space-evenly;
   padding: 0 1rem;
-  z-index: 1;
 }
 
 .button-profile {

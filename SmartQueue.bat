@@ -1,5 +1,6 @@
 @echo off
-echo Please enter the localhost address:
-set /p ip=
-explorer "http://%ip%:8080/"
+@REM echo Please enter the localhost address:
+@REM set /p ip=
+@REM explorer "http://%ip%:8080/"
+explorer "http://169.254.184.206:8080/"
 pause
