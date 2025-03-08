@@ -41,7 +41,7 @@ function uploadPhoto(file) {
 
 let pass = document.querySelector("#new-password");
 let confirmpass = document.querySelector("#confirm-password");
-let username = window.adminCreds.password;
+let username = window.adminCreds.username;
 let id = window.adminCreds.id;
 
 function updateAdminPass() {
