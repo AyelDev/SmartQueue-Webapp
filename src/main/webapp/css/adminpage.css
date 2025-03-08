@@ -454,6 +454,17 @@ canvas{
 	margin-left: -4%;
 
 }
+.print{
+	background-color: #0056b3;
+	color: white;
+	border: none;
+	padding: 8px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 10%;
+	margin-left: 46%;
+}
+
 
 /* table section */
 .table-container {

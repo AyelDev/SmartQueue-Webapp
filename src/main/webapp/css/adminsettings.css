@@ -432,7 +432,7 @@
                 #passwordForm {
                     margin-bottom: 50px;
                     width: 50.3vw;
-                    height: 64vh;
+                    height: 81.2vh;
                     flex: 1;
                     margin-left: -1.8%;
                     background-color: #ffffff;
@@ -473,5 +473,5 @@
                 }
                 
                 .dashboard-content{
-                    margin-top: 5%;
+                    margin-top: 2%;
                 }

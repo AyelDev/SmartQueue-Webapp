@@ -301,14 +301,14 @@ function ModalInfo(title, context, formId, serviceType, method, updateAttribute)
 
     if(title == 'Update Document for Records'){
         recordContent = `
-        <label for="Amount">Amount</label>
-         <input type="number" id="amount" name="Amount" value="`+updateAttribute[2]+`" placeholder="Enter amount">
+        <br><br><label for="Amount">Amount</label>
+         <input type="number" id="amount" name="Amount" style="width: 60vh; height: 5vh; " value="`+updateAttribute[2]+`" placeholder="Enter amount">
     `;
     }
     if(title == 'Delete Document for Records'){
         recordContent = `
-        <label for="Amount">Amount</label>
-         <input type="number" id="amount" name="Amount" value="`+updateAttribute[2]+`" placeholder="Enter amount" disabled>
+        <br><br><label for="Amount">Amount</label>
+         <input type="number" id="amount" name="Amount" style="width: 60vh; height: 5vh; " value="`+updateAttribute[2]+`" placeholder="Enter amount" disabled>
     `;
     }
 
@@ -330,9 +330,9 @@ function ModalInfo(title, context, formId, serviceType, method, updateAttribute)
         `
         <form id="`+formId+`">
         <label for="servicetype">Id No.</label>
-        <input type="text" id="servicetype" name="idNo" value="`+updateAttribute[0]+`" disabled>
-        <label for="`+context+`">`+context+`</label>
-        <input type="text" id="program" name="`+context+`" value="`+updateAttribute[1]+`" placeholder="Enter `+context+`">
+        <input type="text" id="servicetype" style="width: 60vh; height: 5vh; " name="idNo" value="`+updateAttribute[0]+`" disabled>
+        <br><br><label for="`+context+`">`+context+`</label>
+        <input type="text" id="program" style="width: 60vh; height: 5vh; " name="`+context+`" value="`+updateAttribute[1]+`" placeholder="Enter `+context+`">
         `+ recordContent + `
         </form>
         `;
@@ -342,9 +342,9 @@ function ModalInfo(title, context, formId, serviceType, method, updateAttribute)
          `
          <form id="`+formId+`">
          <label for="servicetype">Id No.</label>
-         <input type="text" id="servicetype" name="idNo" value="`+updateAttribute[0]+`" disabled>
-         <label for="`+context+`">`+context+`</label>
-         <input type="text" id="program" name="`+context+`" value="`+updateAttribute[1]+`" placeholder="Enter `+context+`" disabled>
+         <input type="text" id="servicetype" style="width: 60vh; height: 5vh; " name="idNo" value="`+updateAttribute[0]+`" disabled>
+         <br><br><label for="`+context+`">`+context+`</label>
+         <input type="text" id="program" name="`+context+`" style="width: 60vh; height: 5vh; " value="`+updateAttribute[1]+`" placeholder="Enter `+context+`" disabled>
          `+ recordContent + `
          </form>
          `;
@@ -465,8 +465,8 @@ function updateRecordsGeneralArchivingDatas() {
                             <td>`+ (generalitemId++) + `</td>
                             <td>`+ item.course + `</td>
                             <td>
-                            <button class="update-btn"onclick="ModalInfo('Update Program for General', 'Program', 'GeneralProgramForm', 'general', 'GET', updateAttribute(`+item.id+`, '`+item.course+`', `+item.amount+`))">Update</button>
-                            <button class="delete-btn" onclick="ModalInfo('Delete Program for General', 'Program', 'GeneralProgramForm', 'general', 'GET', updateAttribute(`+item.id+`, '`+item.course+`', `+item.amount+`))">Delete</button>
+                            <button class="update-btn"onclick="ModalInfo('Update Program for Admission', 'Program', 'GeneralProgramForm', 'general', 'GET', updateAttribute(`+item.id+`, '`+item.course+`', `+item.amount+`))">Update</button>
+                            <button class="delete-btn" onclick="ModalInfo('Delete Program for Admission', 'Program', 'GeneralProgramForm', 'general', 'GET', updateAttribute(`+item.id+`, '`+item.course+`', `+item.amount+`))">Delete</button>
                             </td>
                         </tr>
                    `);
@@ -476,8 +476,8 @@ function updateRecordsGeneralArchivingDatas() {
                         <tr>
                             <td>`+ (generalitempurposeId++) + `</td>
                             <td>`+ item.purpose + `</td>
-                            <td><button class="update-btn" onclick="ModalInfo('Update Purpose for General', 'Purpose', 'GeneralPurposeForm', 'general', 'GET', updateAttribute(`+item.id+`, '`+item.purpose+`', `+item.amount+`))">Update</button>
-                                <button class="delete-btn" onclick="ModalInfo('Delete Purpose for General', 'Purpose', 'GeneralPurposeForm', 'general', 'GET', updateAttribute(`+item.id+`, '`+item.purpose+`', `+item.amount+`))">Delete</button>
+                            <td><button class="update-btn" onclick="ModalInfo('Update Purpose for Admission', 'Purpose', 'GeneralPurposeForm', 'general', 'GET', updateAttribute(`+item.id+`, '`+item.purpose+`', `+item.amount+`))">Update</button>
+                                <button class="delete-btn" onclick="ModalInfo('Delete Purpose for Admission', 'Purpose', 'GeneralPurposeForm', 'general', 'GET', updateAttribute(`+item.id+`, '`+item.purpose+`', `+item.amount+`))">Delete</button>
                             </td>
                         </tr>
                 `);

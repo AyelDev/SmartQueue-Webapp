@@ -158,10 +158,6 @@ function getAvailableQueueNUmber() {
             success: function (response) {
 
                 queueNumber = response.id;
-
-                //TODO update puhon kay naka shortpoll pako hehe
-                //sendMsg("update queue");
-
                 startAvailQueueCount = true;
 
             },
@@ -182,11 +178,11 @@ var isRunning = false;
 async function printQueue(serviceType) {
 
     //PREVENT FROM DOUBLE REQUEST
-    if (isRunning) {
-        isRunning = false;
-        return;
-    }
-    isRunning = true;
+    // if (isRunning) {
+    //     isRunning = false;
+    //     return;
+    // }
+    // isRunning = true;
 
     //E INCREMENT KAY MO BUG FIX NALANG NI LATOR
     if (!startAvailQueueCount)
@@ -204,6 +200,7 @@ async function printQueue(serviceType) {
     let studentLastname = '';
     let yearLevel = ''
     let program = '';
+    let windowNumber = '';
 
     if (serviceType === 'General') {
         studentFirstname = document.getElementById('general-student-firstname');
@@ -213,12 +210,13 @@ async function printQueue(serviceType) {
         studentId = document.getElementById('general-student-id');
         purpose = document.getElementById('general-purpose');
         program = document.getElementById('general-program');
-
-        charQueue = 'G';
+        windowNumber = '1';
+        charQueue = 'E'; //gi usab ni ni sindi way lingaww
     } else if (serviceType === 'Records') {
         studentName = document.getElementById('records-student-name');
         studentId = document.getElementById('records-student-id');
         purpose = document.getElementById('records-purpose');
+        windowNumber = '2';
         charQueue = 'R';
     } else if (serviceType === 'Archiving') {
         studentFirstname = document.getElementById('archiving-student-firstname');
@@ -227,6 +225,7 @@ async function printQueue(serviceType) {
 
         studentId = document.getElementById('archiving-student-id');
         purpose = document.getElementById('archiving-purpose');
+        windowNumber = '3';
         charQueue = 'A';
     }
 
@@ -244,7 +243,7 @@ async function printQueue(serviceType) {
     // Create the receipt content
     var receiptContent = `
                     <center><h3>CEBU EASTERN COLLEGE</h3></center>
-                    <center><h4>QUEUEING NO.</h4></center>
+                    <center><h4>WINDOW NO. `+windowNumber+`</h4></center>
                     <hr>
                     <h1>`+ (charQueue + queueNumber) + `</h1>
                     <hr>
@@ -269,6 +268,9 @@ async function printQueue(serviceType) {
         },
         success: function (response) {
             $.notify(response, { color: "#fff", background: "#20D67B", delay: 500 })
+
+            //TODO update puhon kay naka shortpoll pako hehe
+            sendMsg("update queue");
 
             // Inject the receipt content into the modal
             document.getElementById('printArea').innerHTML = receiptContent;

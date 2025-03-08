@@ -172,6 +172,7 @@
 									<hr class="hr-graph">
 									<h2><br>Daily transaction: <span class="counts"
 											id="total-transaction">loading...</span></h2>
+									<button class="print">Print Enrollees</button>
 								</div>
 							</div>
 
@@ -179,9 +180,9 @@
 							<div class="table-container">
 								<div class="table-content">
 									<div class="table-header">
-										<h3 class="table-title">General - Program</h3>
+										<h3 class="table-title">Admission - Program</h3>
 										<button class="add-btn-table"
-											onclick="ModalInfo('Add Program for General', 'Program', 'GeneralProgramForm', 'general', 'POST', updateAttribute(null, null, null))">+Add
+											onclick="ModalInfo('Add Program for Admission', 'Program', 'GeneralProgramForm', 'general', 'POST', updateAttribute(null, null, null))">+Add
 											Info</button>
 									</div>
 									<table>
@@ -214,9 +215,9 @@
 								<!-- General - Purpose -->
 								<div class="table-content">
 									<div class="table-header">
-										<h3 class="table-title">General - Purpose</h3>
+										<h3 class="table-title">Admission - Purpose</h3>
 										<button class="add-btn-table"
-											onclick="ModalInfo('Add Purpose for General', 'Purpose', 'GeneralPurposeForm', 'general', 'POST', updateAttribute(null, null, null))">+Add
+											onclick="ModalInfo('Add Purpose for Admission', 'Purpose', 'GeneralPurposeForm', 'general', 'POST', updateAttribute(null, null, null))">+Add
 											Info</button>
 									</div>
 

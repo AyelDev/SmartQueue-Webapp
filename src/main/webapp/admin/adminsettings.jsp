@@ -301,6 +301,15 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <script>
+                                //Global session variable
+				                window.adminCreds = {
+					            id: "<c:out value='${sessionScope.sessionAdmin.adminId}'/>",
+					            username: "<c:out value='${sessionScope.sessionAdmin.username}'/>",
+					            password: "<c:out value='${sessionScope.sessionAdmin.password}'/>"
+				                }
+                            </script>
                             <script type="text/javascript" src="../scripts/adminsettings.js"></script>
                         </body>
         </html>
