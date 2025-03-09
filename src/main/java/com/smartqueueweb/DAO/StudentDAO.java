@@ -48,7 +48,7 @@ public class StudentDAO extends SQLConnection {
 
 			while (rs.next()) {
 				studentbean = new StudentBean(rs.getInt("id_number"), rs.getString("first_name"),
-						rs.getString("middle_name"), rs.getString("last_name"), rs.getString("course"));
+						rs.getString("middle_name"), rs.getString("last_name"), rs.getString("course"), rs.getDate("date_created"));
 				listOfStudent.add(studentbean);
 			}
 

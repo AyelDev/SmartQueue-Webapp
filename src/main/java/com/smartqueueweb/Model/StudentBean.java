@@ -1,5 +1,7 @@
 package com.smartqueueweb.Model;
 
+import java.util.Date;
+
 public class StudentBean {
 
 	private long idnumber;
@@ -7,9 +9,19 @@ public class StudentBean {
 	private String middlename;
 	private String lastname;
 	private String course;
+	private Date dateCreated;
 
 	public StudentBean() {
 		super();
+	}
+	
+	public StudentBean(long idnumber, String firstname, String middlename, String lastname, String course, Date dateCreated) {
+		this.idnumber = idnumber;
+		this.firstname = firstname;
+		this.middlename = middlename;
+		this.lastname = lastname;
+		this.course = course;
+		this.dateCreated = dateCreated;
 	}
 	
 	public StudentBean(long idnumber, String firstname, String middlename, String lastname, String course) {
@@ -63,7 +75,7 @@ public class StudentBean {
 	@Override
 	public String toString() {
 		return "StudentBean [idnumber=" + idnumber + ", firstname=" + firstname + ", middlename=" + middlename
-				+ ", lastname=" + lastname + ", course=" + course + "]";
+				+ ", lastname=" + lastname + ", course=" + course + ", dateCreated=" + dateCreated + "]";
 	}
 
 }

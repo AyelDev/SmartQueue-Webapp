@@ -28,6 +28,9 @@ let inquiryToday = 0;
 
 let months = [0,0,0,0,0,0,0,0,0,0,0,0];
 
+//--------fetch student total data for printing
+let studentData;
+
 //fetch according to todays time, date, year
 //--current date
 const date = new Date();
@@ -56,6 +59,7 @@ Promise.all([
         studentNum = data[1].length; // Student count
         inquiryNum = data[2].length; // Inquiry count
 		
+        studentData = data[1];
 
         data[1].forEach(item => {
 			switch (true) {
@@ -595,4 +599,226 @@ updateRecordsGeneralArchivingDatas();
             config
         );
 		
+}
+
+//---------------------------------PRINT ENROLLEES
+const printEnrolleesBtn = document.querySelector("#print-enrollees");
+
+printEnrolleesBtn.addEventListener("click", function(){
+    OpenPrintEnrolleeModal("Choose a date to generate the student list and view the total number of students for that month and day.", "method", "url", "Print");
+})
+var printContent = '';
+function OpenPrintEnrolleeModal(title, method, url, text){
+    var contents = `<input type="date" id="datepicker"><div id="contentArea"></div>`;
+    $.confirm({
+        type: 'blue',
+        boxWidth: '30%',
+        useBootstrap: false,
+        title: title,
+        content: contents,
+        buttons: {
+            someButton: {
+                text: 'Print',
+                btnClass: 'btn-green',
+                action: function(){
+                    var WinPrint = window.open('Cebu Eastern College', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+                    WinPrint.document.write(
+                        `<center>`+printContent+`<center>
+                        `);
+                    WinPrint.document.close();
+                    WinPrint.focus();
+                    WinPrint.print();
+                    WinPrint.close();
+                    return false; // prevent dialog from closing.
+                }
+            },
+            close: function(){
+                // lets the user close the modal.
+            }
+        },
+        onOpen: function(){
+            // onOpen attach the events.
+            var that = this;
+            this.$content.find('input[type="date"]').on('change', function() {
+
+                var selectedDate = $(this).val();
+                var dateObj = new Date(selectedDate);
+                
+                var formattedDate = dateObj.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+
+                var month = dateObj.toLocaleDateString('en-US', { month: 'long' });
+
+                //---------------list count student data
+                let dailytotalStudent = [0,0,0,0,0,0];
+                let monthlytotalStudent = [0,0,0,0,0,0];
+
+                studentData.forEach(student =>{
+
+                    //specific day
+                    if(student.dateCreated == formattedDate){
+                        switch (true) {
+                            case student.course.includes('BSIT'):
+                                dailytotalStudent[0]++;
+                                break;
+                            case student.course.includes('BEED'):
+                                dailytotalStudent[1]++;
+                                break;
+                            case student.course.includes('BSED'):
+                                dailytotalStudent[2]++;
+                                break;
+                            case student.course.includes('BSTM'):
+                                dailytotalStudent[3]++; 
+                                break;
+                            case student.course.includes('BSHM'):
+                                dailytotalStudent[4]++;;
+                                break;
+                            case student.course.includes('BSCRIM'):
+                                dailytotalStudent[5]++;
+                                break;
+                            }
+                    }
+                    
+                    //specific month
+                    if(formattedDate.includes(dateObj.toLocaleDateString('en-US', { month: 'short' }))){
+                        switch (true) {
+                            case student.course.includes('BSIT'):
+                                monthlytotalStudent[0]++;
+                                break;
+                            case student.course.includes('BEED'):
+                                monthlytotalStudent[1]++;
+                                break;
+                            case student.course.includes('BSED'):
+                                monthlytotalStudent[2]++;
+                                break;
+                            case student.course.includes('BSTM'):
+                                monthlytotalStudent[3]++; 
+                                break;
+                            case student.course.includes('BSHM'):
+                                monthlytotalStudent[4]++;;
+                                break;
+                            case student.course.includes('BSCRIM'):
+                                monthlytotalStudent[5]++;
+                                break;
+                            }
+                    }
+
+                });
+
+                //---------------output before printing
+                that.$content.find('#contentArea').html(` 
+                    <br>  
+                    <table>
+                        <thead>
+                         <tr>
+                            <th colspan="3">Number of Enrollees</th>
+                         </tr>
+                            <tr>
+                                <th>Course</th>
+                                 <th>Enrollees on `+formattedDate+`</th>
+                                 <th>Total Enrollees for `+month+`</th>
+                            </tr>
+                        </thead>
+                        <tbody><br>
+                            <tr>
+                                <td>BSIT</td>
+                                 <td>`+dailytotalStudent[0]+`</td>
+                                    <td>`+monthlytotalStudent[0]+`</td>
+                            </tr>
+                             <tr>
+                                <td>BEED</td>
+                                 <td>`+dailytotalStudent[1]+`</td>
+                                <td>`+monthlytotalStudent[1]+`</td>
+                            </tr>
+                              <tr>
+                                <td>BSED</td>
+                                 <td>`+dailytotalStudent[2]+`</td>
+                                <td>`+monthlytotalStudent[2]+`</td>
+                            </tr>
+                              <tr>
+                                <td>BSTM</td>
+                                 <td>`+dailytotalStudent[3]+`</td>
+                                <td>`+monthlytotalStudent[3]+`</td>
+                            </tr>
+                              <tr>
+                                <td>BSHM</td>
+                                 <td>`+dailytotalStudent[4]+`</td>
+                                <td>`+monthlytotalStudent[4]+`</td>
+                            </tr>
+                                 <tr>
+                                <td>BSCRIM</td>
+                                 <td>`+dailytotalStudent[5]+`</td>
+                                <td>`+monthlytotalStudent[5]+`</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr style="background-color: #D4D4D4;">
+                                <td>Total</td>
+                                <td>`+dailytotalStudent.reduce((sum, number) => sum + number, 0)+`</td>
+                                <td>`+monthlytotalStudent.reduce((sum, number) => sum + number, 0)+`</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    `);
+                    
+                    //-----------for print
+                    printContent = `<br>  
+                    <table border="1" style="width: 100%; border: 1px solid black; border-collapse: collapse;">
+                        <thead>
+                         <tr>
+                            <th colspan="3">Number of Enrollees</th>
+                         </tr>
+                            <tr>
+                                <th>Course</th>
+                                 <th>Enrollees on `+formattedDate+`</th>
+                                 <th>Total Enrollees for `+month+`</th>
+                            </tr>
+                        </thead>
+                        <tbody><br>
+                            <tr>
+                                <td>BSIT</td>
+                                 <td>`+dailytotalStudent[0]+`</td>
+                                    <td>`+monthlytotalStudent[0]+`</td>
+                            </tr>
+                             <tr>
+                                <td>BEED</td>
+                                 <td>`+dailytotalStudent[1]+`</td>
+                                <td>`+monthlytotalStudent[1]+`</td>
+                            </tr>
+                              <tr>
+                                <td>BSED</td>
+                                 <td>`+dailytotalStudent[2]+`</td>
+                                <td>`+monthlytotalStudent[2]+`</td>
+                            </tr>
+                              <tr>
+                                <td>BSTM</td>
+                                 <td>`+dailytotalStudent[3]+`</td>
+                                <td>`+monthlytotalStudent[3]+`</td>
+                            </tr>
+                              <tr>
+                                <td>BSHM</td>
+                                 <td>`+dailytotalStudent[4]+`</td>
+                                <td>`+monthlytotalStudent[4]+`</td>
+                            </tr>
+                                 <tr>
+                                <td>BSCRIM</td>
+                                 <td>`+dailytotalStudent[5]+`</td>
+                                <td>`+monthlytotalStudent[5]+`</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr style="background-color: #D4D4D4;">
+                                <td>Total</td>
+                                <td>`+dailytotalStudent.reduce((sum, number) => sum + number, 0)+`</td>
+                                <td>`+monthlytotalStudent.reduce((sum, number) => sum + number, 0)+`</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    `
+            });
+        },
+    });
 }

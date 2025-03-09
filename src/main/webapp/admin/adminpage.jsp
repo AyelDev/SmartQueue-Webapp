@@ -172,7 +172,7 @@
 									<hr class="hr-graph">
 									<h2><br>Daily transaction: <span class="counts"
 											id="total-transaction">loading...</span></h2>
-									<button class="print">Print Enrollees</button>
+									<button id="print-enrollees" class="print">Print Enrollees</button>
 								</div>
 							</div>
 
