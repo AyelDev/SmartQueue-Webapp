@@ -681,9 +681,9 @@ function OpenPrintEnrolleeModal(title, method, url, text){
                                 break;
                             }
                     }
-                    
+            
                     //specific month
-                    if(formattedDate.includes(dateObj.toLocaleDateString('en-US', { month: 'short' }))){
+                    if(studentData[0].dateCreated.includes(dateObj.toLocaleDateString('en-US', { month: 'short' }))){
                         switch (true) {
                             case student.course.includes('BSIT'):
                                 monthlytotalStudent[0]++;
