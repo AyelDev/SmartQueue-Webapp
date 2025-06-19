@@ -29,8 +29,8 @@ public class SQLConnection {
 
 	public void ConnectDriver(){
 		try {
-			// conn = DriverManager.getConnection(url, username, password);
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/smartqueuedb", "root", "");
+			conn = DriverManager.getConnection(url, username, password);
+			// conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/smartqueuedb", "root", "");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
