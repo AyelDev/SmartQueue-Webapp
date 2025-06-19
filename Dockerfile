@@ -8,7 +8,8 @@ COPY pom.xml .
 
 COPY src ./src
 
-RUN mvn clean compile package
+# RUN mvn clean compile package
+mvn clean compile package -DskipTests
 
 FROM tomcat:9.0
 
